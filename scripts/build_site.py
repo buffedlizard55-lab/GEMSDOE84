@@ -9,7 +9,7 @@ D=ROOT/'docs'
 def esc(x):return html.escape(str(x))
 
 def page(title,body):
-    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{esc(title)} · GEMS84</title><link rel="stylesheet" href="style.css"></head><body><header><a class="brand" href="index.html">GEMS<span>84</span></a><nav><a href="index.html">Run overview</a><a href="executive-summary.html">Submission guide</a><a href="research.html">Research & evidence</a></nav></header><main>{body}</main><footer>Evidence-first fault discovery · snapshot 2026-10-22 · no organizer submission made</footer></body></html>'''
+    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{esc(title)} · GEMS84</title><link rel="stylesheet" href="style.css"></head><body><header><a class="brand" href="index.html">GEMS<span>84</span></a><nav><a href="index.html">Run overview</a><a href="executive-summary.html">Submission guide</a><a href="research.html">Research & evidence</a><a href="liti/index.html">Lane H84-A LITI</a></nav></header><main>{body}</main><footer>Evidence-first fault discovery · snapshot 2026-10-22 · no organizer submission made</footer></body></html>'''
 
 
 def main():

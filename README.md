@@ -65,3 +65,34 @@ The full machine-readable result is `evidence/run-card.json`; source inventory i
 ## Parallel-session integration
 
 Other sessions merged readiness tooling and unexecuted hypothesis proposals while this experiment ran. Their original front pages and README are preserved under `research/concurrent-readiness/`, their source receipts and validators remain intact, and their old JSON cards are marked historical/superseded. They are not additional experiments in H84-RFD. The canonical measured run is `evidence/run-card.json`. Readiness presence checks now point at this lane's actual cache/vendor paths; presence still never authorizes a submission. The combined suite passes 27 tests locally. The existing Pages workflow from those merged changes is retained; deployment success must be checked independently.
+
+---
+
+## Lane H84-A — Leaderboard-Inverted Truth Intensity (LITI) · session `arena/9dbb1208`
+
+> Full standing brief as given for this session: [`PROMPT.md`](PROMPT.md). Lane pages:
+> [`docs/liti/`](https://buffedlizard55-lab.github.io/GEMSDOE84/liti/). Run card:
+> [`evidence/run_card.json`](evidence/run_card.json).
+
+| question | answer |
+|---|---|
+| Is there a TIF to submit from this lane? | **No.** The candidate (27,445 dots) passed the surface-correlation gate (worst ρ 0.274 over 1,143 hash-verified registry rasters). The dot-overlap gate logged it as a **duplicate** under both the literal and the chance-corrected reading (56 binding flags against dense registry fields). It also **failed** the protocol holdout. The fail-closed packager wrote **no TIFF**. Verdict **negative**; 0 slots used. |
+| Why did `h33-h33-2-b2` score 0.2778 (OWNER-REPORTED)? | Byte-exact lineage: the 0.2600 dotted H19-5 field minus every dot ≤ 100 m (0.2708) and then ≤ 200 m (0.2778) from a mapped fault. The metric algebra explains both steps to within 0.0006 DTI if the deleted dots earned zero credit (`evidence/incumbent_anatomy.json`). The limit is the underlying field's precision, not its emission. |
+| What is new and reusable? | A truth intensity λ(x)=exp(θ·φ(x)) inverted from 91 owner-reported live scores of hash-identified rasters, using the official DTI formula in expectation. CV grouped by repo: Spearman 0.907, RMSE 0.034 (score SD ≈ 0.084) (`evidence/e2a_liti_ml_fit.json`, MODEL). |
+| Holdout | HOLDOUT-DTI (gems57-pooled-hide-v2, 22,893 withheld px): LITI 0.0087 [0.0037, 0.0149] vs incumbent recipe 0.1056 [0.0934, 0.1181]. Known biases are recorded in `docs/liti/irregularities.md` (IR-84-04). |
+
+Reproduce (CPU, ~45 min; large inputs under `$GEMS84_DATA`, default `/home/user/gemsdata`):
+
+```bash
+python scripts/fetch_data.py --registry          # registry/data_manifest_liti.json + 1,149-blob corpus
+python scripts/build_registry_index.py
+python scripts/analyze_incumbent.py
+python scripts/e1_liti_fit.py && python scripts/e2_liti_ml_fit.py && python scripts/e2_holdout.py
+python scripts/e3_emit_submission.py place
+python scripts/e3_emit_submission.py surface & python scripts/e3_emit_submission.py dots; wait
+python scripts/e3_chance_corrected.py && python scripts/e3_emit_submission.py package   # fail-closed
+python scripts/build_run_card.py && python scripts/build_site_liti.py
+```
+
+Lane code: `src/gems84/` (basis, inversion, catalogue-analogue field). It uses the shared
+`vendor/gems57` (pinned; see `registry/template_pin.json`).
