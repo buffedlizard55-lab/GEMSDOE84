@@ -1,0 +1,222 @@
+{
+  "generated_utc": "2026-10-04T13:42:39Z",
+  "timestamp_tag": "20261004T134124Z",
+  "bars": {
+    "drift": 0.14801,
+    "catalogue_hidden": 0.09832,
+    "sgmc_veto": 0.054530999999999996,
+    "incumbent": "D2.8-Poisson300m-Ref (owner-reported live 0.2600)"
+  },
+  "min_dist_px": 2.35,
+  "candidates": {
+    "H33-U-44090": {
+      "candidate_id": "H33-U-44090",
+      "emitted_pixels": 44090,
+      "on_catalogue_pixels": 907,
+      "catalogue_hidden_mean": 0.020057907702526134,
+      "sgmc_prevalence_calibrated_dti": 0.029055704604094464,
+      "drift_corrected_holdout_mean": 0.018259312967151307,
+      "drift_corrected_holdout_std": 0.01066453174998221,
+      "catalogue_hidden_per_quadrant": {
+        "NW": 0.009454404463020136,
+        "NE": 0.007072487754003622,
+        "SW": 0.02477430120694779,
+        "SE": 0.038930437386132985
+      },
+      "drift_corrected_per_quadrant": {
+        "NW": 0.009676176993361804,
+        "NE": 0.007369786553337911,
+        "SW": 0.02195061931017534,
+        "SE": 0.03404066901173017
+      },
+      "catalogue_hidden_per_draw": {
+        "draw20": 0.021000445686158366,
+        "draw21": 0.019115369718893903
+      },
+      "verdict": {
+        "primary_drift_beats_incumbent": false,
+        "secondary_cat_beats_incumbent": false,
+        "sgmc_veto_clear": false,
+        "promoted": false
+      }
+    },
+    "D28+H33U-2000": {
+      "candidate_id": "D28+H33U-2000",
+      "emitted_pixels": 46090,
+      "on_catalogue_pixels": 28,
+      "catalogue_hidden_mean": 0.09820982571347853,
+      "sgmc_prevalence_calibrated_dti": 0.06460808664761607,
+      "drift_corrected_holdout_mean": 0.07861853366265295,
+      "drift_corrected_holdout_std": 0.01080472114788855,
+      "catalogue_hidden_per_quadrant": {
+        "NW": 0.09750375599135963,
+        "NE": 0.10650319179857841,
+        "SW": 0.06760585111312074,
+        "SE": 0.1212265039508553
+      },
+      "drift_corrected_per_quadrant": {
+        "NW": 0.07826345382205299,
+        "NE": 0.08261927798280749,
+        "SW": 0.06189284054354567,
+        "SE": 0.09169856230220563
+      },
+      "catalogue_hidden_per_draw": {
+        "draw20": 0.1059687622043916,
+        "draw21": 0.09045088922256543
+      },
+      "verdict": {
+        "primary_drift_beats_incumbent": false,
+        "secondary_cat_beats_incumbent": false,
+        "sgmc_veto_clear": true,
+        "promoted": false
+      }
+    },
+    "D28+H33U-4000": {
+      "candidate_id": "D28+H33U-4000",
+      "emitted_pixels": 48090,
+      "on_catalogue_pixels": 66,
+      "catalogue_hidden_mean": 0.09892100819610788,
+      "sgmc_prevalence_calibrated_dti": 0.06691130283023651,
+      "drift_corrected_holdout_mean": 0.07905402737921527,
+      "drift_corrected_holdout_std": 0.011259734181607889,
+      "catalogue_hidden_per_quadrant": {
+        "NW": 0.09768288445086684,
+        "NE": 0.10594188487139819,
+        "SW": 0.06897258350516308,
+        "SE": 0.12308667995700348
+      },
+      "drift_corrected_per_quadrant": {
+        "NW": 0.07798484084570978,
+        "NE": 0.08196114434028078,
+        "SW": 0.0623895394309425,
+        "SE": 0.09388058489992801
+      },
+      "catalogue_hidden_per_draw": {
+        "draw20": 0.10640110833643886,
+        "draw21": 0.09144090805577693
+      },
+      "verdict": {
+        "primary_drift_beats_incumbent": false,
+        "secondary_cat_beats_incumbent": true,
+        "sgmc_veto_clear": true,
+        "promoted": false
+      }
+    },
+    "H32D+H33U-2000": {
+      "candidate_id": "H32D+H33U-2000",
+      "emitted_pixels": 48090,
+      "on_catalogue_pixels": 29,
+      "catalogue_hidden_mean": 0.10111787140000342,
+      "sgmc_prevalence_calibrated_dti": 0.06522400627908703,
+      "drift_corrected_holdout_mean": 0.0802630442966551,
+      "drift_corrected_holdout_std": 0.01059539855038217,
+      "catalogue_hidden_per_quadrant": {
+        "NW": 0.0979946584590709,
+        "NE": 0.10652779390534858,
+        "SW": 0.07322406987347356,
+        "SE": 0.12672496336212064
+      },
+      "drift_corrected_per_quadrant": {
+        "NW": 0.07841536821940219,
+        "NE": 0.08219616887828429,
+        "SW": 0.06535601122253108,
+        "SE": 0.0950846288664028
+      },
+      "catalogue_hidden_per_draw": {
+        "draw20": 0.10831038896446653,
+        "draw21": 0.09392535383554032
+      },
+      "verdict": {
+        "primary_drift_beats_incumbent": false,
+        "secondary_cat_beats_incumbent": true,
+        "sgmc_veto_clear": true,
+        "promoted": false
+      }
+    },
+    "H32D+H33U-4000": {
+      "candidate_id": "H32D+H33U-4000",
+      "emitted_pixels": 50090,
+      "on_catalogue_pixels": 65,
+      "catalogue_hidden_mean": 0.1013494395710004,
+      "sgmc_prevalence_calibrated_dti": 0.06746364315867129,
+      "drift_corrected_holdout_mean": 0.0803579918102776,
+      "drift_corrected_holdout_std": 0.010800696074773885,
+      "catalogue_hidden_per_quadrant": {
+        "NW": 0.0983450579895174,
+        "NE": 0.10596074921194108,
+        "SW": 0.07426449812605973,
+        "SE": 0.1268274529564834
+      },
+      "drift_corrected_per_quadrant": {
+        "NW": 0.07824466796882712,
+        "NE": 0.08155171701066521,
+        "SW": 0.06564699361625267,
+        "SE": 0.09598858864536537
+      },
+      "catalogue_hidden_per_draw": {
+        "draw20": 0.10843456045035255,
+        "draw21": 0.09426431869164827
+      },
+      "verdict": {
+        "primary_drift_beats_incumbent": false,
+        "secondary_cat_beats_incumbent": true,
+        "sgmc_veto_clear": true,
+        "promoted": false
+      }
+    }
+  },
+  "surface_specs": {
+    "H33-A": {
+      "name": "Multi-physics oriented-lineament consensus",
+      "layers": [
+        "rtp(2)",
+        "tmi(14)",
+        "mag_anom(1)",
+        "iso_grav_anom(13)",
+        "det_elev(12)",
+        "cond_surf(17)",
+        "depth_to_base_surf(15)",
+        "geodawn_rad K/Th/TC",
+        "lidar_scarp_features (ex_max/step_max/downface_max)"
+      ],
+      "signature": "scale-normalised Hessian line response per physics x 2nd-order orientation order parameter (do independent physics agree on the strike?)",
+      "why_off_catalogue": "the catalogue is dominated by faults that were mappable in one dataset (usually topography or the existing maps); requiring multi-physics strike agreement selects the class of curvilinear structure an expert can only accept when several fields agree",
+      "novelty": "no channel or H32 surface requires *independent* physics to agree on an orientation; features.py has per-band ridges and H32-A/C have pixel products",
+      "cost": "~40 s CPU"
+    },
+    "H33-B": {
+      "name": "Aligned drainage-valley chains",
+      "layers": [
+        "det_elev(12)",
+        "det_elev_slope(19)"
+      ],
+      "signature": "valley skeleton (NMS ridge of -det_elev) x 9-px 16-direction collinearity vote, de-emphasised where det_elev_slope is high",
+      "why_off_catalogue": "faults that lack a preserved scarp still deflect and align drainage; a collinear chain of valley segments across several drainages is structural, which a single scarp-height map cannot see",
+      "novelty": "the repo's DEM channels are all local; nothing aggregates evidence *along* a line",
+      "cost": "~25 s CPU"
+    },
+    "H33-C": {
+      "name": "En-echelon scarplet chain vote (1 m LiDAR)",
+      "layers": [
+        "lidar_scarp_features_u8 (ex_max, step_max, downface_max)"
+      ],
+      "signature": "scarplet skeleton x 11-px collinearity vote requiring contrast vs the local minimum (a scarp, not a slope break)",
+      "why_off_catalogue": "a single 1 m scarplet is noise; en-echelon collinear scarplets are what expert mappers accept as a fault, and they are below the 100 m grid",
+      "novelty": "the repo uses the LiDAR product only as a per-pixel corroboration weight",
+      "cost": "~20 s CPU"
+    },
+    "H33-D": {
+      "name": "Long-straight conductive / basement structural boundary",
+      "layers": [
+        "cond_surf(17)",
+        "depth_to_base_surf(15)"
+      ],
+      "signature": "gradient magnitude x directional coherence of the gradient direction over a 3x3 window (a straight boundary, not a blobby anomaly)",
+      "why_off_catalogue": "MT conductivity and basement depth image the *subsurface*; a straight conductivity step locates a fault under cover, where a surface catalogue has nothing",
+      "novelty": "cond_surf/depth are used as scalars or plain gradient magnitudes in features.py",
+      "cost": "~15 s CPU"
+    }
+  },
+  "elapsed_s": 74.9,
+  "promoted": null
+}

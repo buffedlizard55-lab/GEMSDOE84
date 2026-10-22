@@ -25,5 +25,7 @@
   "submission_name": null,
   "submission_note": null,
   "verdict": "negative",
-  "verdict_reason": "Blocked at readiness gate; this is not a measured negative holdout result. The candidate may overlap prior sibling work. No submission slot was used."
+  "verdict_reason": "Blocked at readiness gate; this is not a measured negative holdout result. The candidate may overlap prior sibling work. No submission slot was used.",
+  "historical_record_only": true,
+  "superseded_by": "evidence/run-card.json"
 }

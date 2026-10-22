@@ -1,0 +1,135 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Research · GEMS84</title><link rel="stylesheet" href="style.css"></head><body><header><a class="brand" href="index.html">GEMS<span>84</span></a><nav><a href="index.html">Run overview</a><a href="executive-summary.html">Submission guide</a><a href="research.html">Research & evidence</a></nav></header><main><p class="eyebrow">RESEARCH NOTEBOOK</p><h1>Claims with a trail.</h1><p>Source authority and retrieval status are recorded separately. Links to blocked official hosts are manual-review pointers, not claims of successful verification.</p><section><h2>Final negative result and next steps</h2><p><a href="research/result.md">Open source note</a></p><pre># Final result: negative
+
+**No TIFF is approved, packaged or released. No competition slot was used.**
+
+The new physical surface&#x27;s maximum full-footprint Spearman correlation against the readable registry was 0.08238. All six feature canaries passed across all four folds (maximum holdout diagnostic AUC 0.56945). This is not evidence of strong predictive ability; the AUCs are weak.
+
+HOLDOUT-DTI (`gems57-pooled-hide-v2`, 11,318 withheld-positive pixels):
+
+|Arm|Pooled DTI|95% spatial-bootstrap CI|
+|---|---|---|
+|H84-RFD|0.044298|[0.038195, 0.050494]|
+|Step-only control|0.044364|[0.037376, 0.051673]|
+|Paired difference|−0.000066|[−0.005921, 0.006213]|
+
+The flanking-dipole term did not improve the paired control. The interval includes both beneficial and harmful effects. These are exploratory chunk-holdout results, not full-fault buffered validation, not leaderboard projections, and not organizer-confirmed results.
+
+The production **array**, not a released TIFF, was constructed independently from the cached physical layers. Its decoded-byte SHA-256 is recorded in the run card. Final-dot checking stopped at the first binding duplicate: `17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif` had all candidate dots within its three-pixel support halo. This is a dense probability raster, so the overlap rule labels the placement a duplicate even though its rank correlation is near zero. The rule was applied literally, with no exemption. The remaining final-dot registry comparisons were not performed after this required stop.
+
+The full surface scan recorded one malformed TIFF and five native-grid mismatches. Mismatched grids were reprojected only for comparison and explicitly flagged. No complete uniqueness clearance is claimed.
+
+## Next work, in order
+
+1. Resolve the cross-lane protocol&#x27;s treatment of dense probability rasters centrally. A support-only veto against broad positive probability fields is not equivalent to identifying copied sparse placements. Do not retroactively waive it for this candidate.
+2. Correct and test the shared upstream whole-geological-segment-plus-buffer holdout once. Reproduce the current best under that instrument; do not reuse incomparable historical metrics.
+3. Reject the RFD augmentation in its current fixed form. Do not spend a weekly slot on it. Any new lane requires its own preregistration and budget.
+4. Establish authenticated official-file hashes and organizer score receipts. A public mirror hash alone does not establish authoritative provenance.
+5. Preserve failed artifacts and receipts in a coordinated registry with representation, grid validity, timestamps and immutable hashes. Keep final promotion separate from file-format validation.
+</pre></section><section><h2>Four preregistered hypotheses</h2><p><a href="research/hypotheses.md">Open source note</a></p><pre># Preregistered hypotheses — 2026-10-22
+
+No assigned method paragraph was present. Lane selected explicitly: **H84-RFD: radiometric flanking dipole × relief-normalized LiDAR scarp**. No claim of novelty outside the inspected GEMSDOE32/83 source trees. These are fault-mapping hypotheses, not direct vent detections. Estimated benefit is ordinal judgment, not a projected competition score.
+
+|Rank by expected benefit / cost|Layers and signature|Why potentially unmapped|Non-fault mimic|Difference from inspected code / viability|
+|---|---|---|---|---|
+|1 / low|Cached GeoDAWN K, Th: opposite-signed Gaussian Laplacians; multiply by cached LiDAR step/relief and coherence|A shallow displacement/alteration boundary may persist without a mapped continuous trace|Lithologic contact, soil moisture or transported sediment|Explicit signed cross-channel curvature discordance, rather than K/Th enrichment or gradient fusion. Cached inputs obtained and hash-verified. Exploratory, not established diagnostic.|
+|2 / medium|Cached LiDAR downface/upface imbalance persisting at two neighborhood scales|Buried or degraded scarps may retain unequal facing breaks|Terrace riser and lake shoreline|Facing imbalance persistence rather than scarp maximum. Inputs available; untested.|
+|3 / medium|Cached GeoDAWN U versus Th local rank residual, with scarp continuity|Fluid-mediated redox redistribution could mark an unmapped conduit|Weathering, alluvial sorting, uranium lithology|Conditional local residual rather than raw U or U/K. Inputs available; untested.|
+|4 / medium|Cached LiDAR cross/step responses at radiometric curvature zero-crossings|Cross-cutting breaks could identify displacement across a lithologic marker|Road embankment or erosional contact|Contact-crossing geometry rather than parallel edge concordance. Inputs available; untested.|
+
+Only rank 1 will be tested this run. Three experiments maximum: (1) feature canaries and surface audit; (2) fixed-parameter spatial holdout; (3) dot audit and packaging. Any binding duplicate or canary failure stops the run. No tuning after inspecting holdout results.
+
+## Fixed design
+
+Use cached uint8 derived stacks mirrored from GEMSDOE24 via GEMSDOE83&#x27;s pinned manifest. They are owner-derived, not authenticated original USGS products. Quantized K and Th are **not** physical ratios or calibrated concentrations. Their opposite curvature is a heuristic, not proof of potassium metasomatism. Gaussian sigma = 3 pixels. The candidate is the geometric mean of normalized signed-curvature discordance and relief-normalized coherent step response. Control: relief-normalized coherent step only. Fixed dot separation 3 pixels; full-footprint target 37,654 dots, scaled by scored area per fold. No catalogue feature enters either surface. Visible faults are masked exactly at placement/evaluation. No scores from the production TIFF are used for selection.
+
+Holdout: shared `gems57-pooled-hide-v2`, seed 20, four eroded quadrants, whole **template chunks** withheld, pooled terms and physical-block bootstrap. The template chunks branches to &lt;=12 pixels; this is not withholding entire geological faults. The missing full-branch-plus-buffer instrument prevents claiming compliance with the stronger whole-fault requirement. This limitation must block promotion even if the exploratory score improves.
+
+## Source scope
+
+Official reference code was retrieved from https://github.com/drivendataorg/gems-prize-reference-solution . Its README explicitly supports CPU-only execution; a GPU is not a universal blocker. External network access here is restricted to GitHub and package registries. USGS, DrivenData, GDR and NLR pages cannot be independently refreshed in this environment. Their supplied URLs are review pointers, not freshly verified evidence. No new external dataset is required or proposed as downloaded.
+</pre></section><section><h2>Why H33 might have improved</h2><p><a href="research/h33-analysis.md">Open source note</a></p><pre># What the H33 result does—and does not—establish
+
+## Evidence chain
+
+Inspected primary project artifacts: [original audit](https://github.com/buffedlizard55-lab/GEMSDOE32/blob/main/docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-audit.json), [candidate implementation](https://github.com/buffedlizard55-lab/GEMSDOE32/blob/main/src/gems32/h33.py), [validation implementation](https://github.com/buffedlizard55-lab/GEMSDOE32/blob/main/scripts/run_h33_validation.py). Local archived copies of the audit and earlier experiment receipts are under `evidence/`. These are owner project artifacts, not organizer receipts.
+
+The user&#x27;s reported H33 result is **0.2778, UNVERIFIED USER-REPORTED**, not ORGANIZER-CONFIRMED. The supplied leaderboard values **0.3195 and 0.4413 are conflicting, UNVERIFIED USER-REPORTED snapshots**. No current maximum can be established from this environment. They must not be used as holdout promotion thresholds.
+
+## Verified construction versus causal explanation
+
+The audit describes H33-2-B2 as deleting dots within two pixels of the mapped catalogue from an existing sparse baseline. Its TIFF has a declared finite zero-outside policy and no mapped-fault positives. This is a **placement/pruning intervention**, not evidence that a new geological sensor discovered more faults. We do not copy that TIFF to construct the new candidate.
+
+The plausible reason pruning can help is reduced false-positive mass for a small loss of unique new-fault coverage. Let T be weighted truth coverage, F weighted false-positive mass, and N the count of hidden truth pixels. With beta b and alpha a, D = (1-b)T + aF + bN, score s=T/D. Removing a set losing coverage L and false-positive mass Q improves the score precisely when:
+
+`(T-L)/(D-(1-b)L-aQ) &gt; T/D`
+
+or, for positive denominators,
+
+`L / Q &lt; a*s / (1-(1-b)*s)`.
+
+This is a conditional algebraic explanation. It is **not** a measurement of L or Q on the private competition labels. Near mapped traces, known pixels themselves are excluded from new-fault scoring, and nearby sparse dots can have redundant kernels. However, proximity alone does not prove a point is a false positive: an unmapped splay can be adjacent to a mapped trace. A paired ablation under the organizer&#x27;s actual hidden labels would be needed to establish the causal mechanism.
+
+## Why the old validation is not a promotion certificate
+
+The original H33 audit embeds a projected leaderboard number under `predicted_leaderboard_dti` and a `SLOT_ELIGIBLE` flag. Neither is an organizer result. Its declared aggregate catalogue-hidden value does not equal an ordinary average of the four per-quadrant values printed alongside it; those may refer to different estimands, but the artifact does not establish equivalence. Its note exceeds the current short-note policy. No evaluator version, common positive count and paired confidence interval accompany all those fields. Do not reuse those numbers as the current comparable holdout best.
+
+The accompanying zero-mode TIFF and ZIP are independent files. Actual ZIP inspection found one **empty entry named with a `.zip` suffix**, not a TIFF. It is not a valid single-TIFF submission package; see `evidence/h33-zip-inspection.json`. Do not download that historical ZIP to submit. This does not establish that the separately stored historical TIFF is invalid. The shared writer used here verifies single-TIFF ZIP contents by byte roundtrip.
+
+## Can we beat the reported H33 result?
+
+It is possible in principle, but not established by historical scores, plausible physics, or a projection. The defensible sequence is independent physical features, leakage tests, spatially buffered whole-fault recovery, paired comparisons against the reproduced best on identical folds, registry checks, and an all-finite export. Only a real organizer receipt would establish an improved leaderboard result. We do not promise a higher score.
+
+The new lane asks whether opposing *normalized* K/Th curvature flanks co-located with a coherent terrain step identify structure missed by catalogue geometry. This tests a new feature construction instead of simply deleting or adding dots to the H33 submission. Lithologic contacts, alluvial sorting, paleoshorelines and filtering artifacts can mimic the signature. The hypothesis can therefore fail usefully; no mechanism is asserted as established geothermal physics.
+</pre></section><section><h2>Sources and limitations</h2><p><a href="research/sources.md">Open source note</a></p><pre># Source register and access limitations
+
+|Source|Authority and use|Verification state|
+|---|---|---|
+|[DrivenData official reference](https://github.com/drivendataorg/gems-prize-reference-solution)|Organizer reference implementation; compute setup|README and tree retrieved through GitHub; archived locally. CPU execution supported.|
+|[DrivenData problem](https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/)|Authoritative target, metric and format|User-supplied review pointer; host unavailable under current egress policy. Shared metric is inherited, not freshly certified against this page.|
+|[DrivenData data](https://www.drivendata.org/competitions/306/competition-doe-gems/data/)|Original competition files|No authenticated access; no credentials requested. Restored public mirrors are not organizer-authenticated.|
+|[USGS GeoDAWN](https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and)|Original airborne survey provenance|User-supplied review pointer, not fetched here. Derived uint8 K/Th/U/TC stack obtained from owner GitHub mirror, SHA-256 pinned.|
+|[GEMSDOE24 pinned mirror](https://github.com/buffedlizard55-lab/GEMSDOE24/tree/07345ea0604953d7efb858d9cfbc21e20c7aca0b/data)|Cached derived LiDAR and radiometric stack|Retrieved and hash-verified; transformations and upstream accuracy not independently certified.|
+|[Shared template](https://github.com/buffedlizard55-lab/60GEMSDOE/tree/b99591eede63c6d45c8a896255b8cd34824fa00b)|Shared evaluator, holdout, writer and validators|Reused from GEMSDOE83 vendor snapshot; every vendored file checked against inherited manifest. A recorded upstream-local uniqueness amendment exists; this run does not use its representation exemptions.|
+|[GDR 1391](https://gdr.openei.org/submissions/1391)|Potential geothermal context|Not downloaded or used this run. Availability not certified here.|
+|[NLR submission guidance](https://docs.nlr.gov/docs/fy26osti/96647.pdf)|User-requested PDF|Not downloaded or verified here. No claim of compliance with unseen requirements.|
+
+`registry/inventory.json` records resolved commits, artifact paths, blob identifiers and content hashes for linked public predecessor repositories. This inventory is a timestamped snapshot, not an automatically current leaderboard. It does not include private submissions, unlinked files, or later changes. Geometry-mismatched prior artifacts are flagged and nearest-neighbor reprojected **only for comparison**; their original grids are not submission-valid on the current template.
+
+Numbers in archived upstream receipts retain their original labels. They are historical unverified evidence, not automatically adopted HOLDOUT-DTI or ORGANIZER-CONFIRMED results. Current experiment metrics are in `evidence/holdout.json`, with evaluator identity, withheld-positive count and conditional spatial-bootstrap interval. AUC is explicitly a holdout diagnostic and never a competition score.
+</pre></section><section><h2>Three-pass review and unmet requirements</h2><p><a href="research/review-passes.md">Open source note</a></p><pre># Three-pass implementation review
+
+## Pass 1 — build and execute
+
+- Inspected the empty starting checkout, predecessor repositories and official reference README/tree.
+- Reused pinned shared evaluator, holdout, writer and validators; reused cached derived physical rasters instead of copying prediction TIFFs as features.
+- Preregistered four hypotheses and one selected lane before implementation; restored and hash-verified all required data without requesting credentials.
+- Indexed linked public repositories at resolved commits and downloaded their distinct TIFF blobs to an ignored cache.
+- Implemented canaries, full-footprint pre-placement rank comparisons, fixed-parameter spatial holdout, strict final-dot duplicate stop and guarded packaging.
+
+## Pass 2 — inspect failures and repair
+
+- Found historical H33 ZIP contains no TIFF; recorded byte-level evidence and added warning to the guide.
+- Found geometry-mismatched registry rasters. Added explicitly recorded nearest-neighbor comparison alignment; did not treat their native grids as valid submissions.
+- Found malformed registry TIFF. Added explicit unreadable-row evidence and blocked complete uniqueness clearance. Did not silently count the error as a passing comparison.
+- Added deterministic candidate-bound rank-audit checkpoints so tool repairs do not repeat every expensive comparison or change hypothesis parameters.
+- Verified the shared vendor files against their pinned hashes. No metric, holdout or writer implementation was modified.
+- Added input hash verification to the pipeline, empty-mask/invalid-budget fail-closed guards and output directory creation before packaging.
+
+## Pass 3 — acceptance and edge cases
+
+- Exercised real shared-writer GeoTIFF and ZIP roundtrip in a temporary fixture, rejection of NaN/infinity/out-of-range values, overwrite refusal, exact visible masking, pooled count/CI reporting and dot separation.
+- Kept the scientific verdict distinct from format validity. Missing whole-geological-fault-plus-buffer validation and unreproduced current best block promotion unconditionally.
+- Added a site generated from the negative run card, with no substituting historical TIFF or test fixture. The guide explains future submission steps without asserting the current run is eligible.
+- Preserved bounded experiment scope. Technical retries repair the same fixed experiments; they are not parameter searches or additional hypotheses.
+- Repository checks and deployment status are reported in the PR, not inferred from local success. No organizer submission or weekly slot is used.
+
+## Unmet requirements, explicitly not waived
+
+A guaranteed higher-scoring, globally unique, submission-approved TIFF has **not** been established. Official non-GitHub pages could not be freshly verified under the network policy. The README contains an operational transcription, not the full verbatim original user message. A whole-fault shared-template correction and a coordinated solution to any literal dense-registry overlap veto must happen before a production candidate can be promoted. No claim of complete line-by-line verification of inaccessible sources is made.
+
+Pages configuration was inspected: an existing public legacy Pages site serves `main:/`. Switching it to workflow mode returned HTTP 403 (integration lacks Pages settings permission). The implementation therefore preserves legacy deployment, adds a root redirect to `docs/`, and does not install a conflicting deployment workflow. This permission failure is not evidence of a bad GitHub login.
+
+### Concurrent-main reconciliation
+
+The first merge attempt found conflicts from three parallel-session PRs already merged into main. Their validators, tests, source archives, hypothesis pages and historical JSON cards were retained. Conflicting original landing pages/README were archived under `research/concurrent-readiness/` as source text. Older cards are explicitly marked superseded; the measured H84-RFD card remains canonical. The presence-only readiness helper now reflects actual H84-RFD cache/vendor paths and still does not authorize submission. All 27 combined tests pass locally. The already-merged Pages workflow is preserved rather than silently removed; its eventual deployment result is checked separately.
+</pre></section><section><h2>Machine evidence</h2><ul><li><a href="evidence/canaries.json">canaries.json</a></li><li><a href="evidence/data-verification.json">data-verification.json</a></li><li><a href="evidence/dots-audit.json">dots-audit.json</a></li><li><a href="evidence/h33-original-audit.json">h33-original-audit.json</a></li><li><a href="evidence/h33-zip-inspection.json">h33-zip-inspection.json</a></li><li><a href="evidence/h33_candidates.json">h33_candidates.json</a></li><li><a href="evidence/h33_holdout.json">h33_holdout.json</a></li><li><a href="evidence/h33_validation.json">h33_validation.json</a></li><li><a href="evidence/holdout.json">holdout.json</a></li><li><a href="evidence/inventory.json">inventory.json</a></li><li><a href="evidence/official-tree.json">official-tree.json</a></li><li><a href="evidence/run-card.json">run-card.json</a></li><li><a href="evidence/surface-audit.json">surface-audit.json</a></li></ul></section></main><footer>Evidence-first fault discovery · snapshot 2026-10-22 · no organizer submission made</footer></body></html>

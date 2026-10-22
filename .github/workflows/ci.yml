@@ -1,7 +1,5 @@
-name: Test format inspector
+name: Tests and release-state checks
 on: [push, pull_request]
-permissions:
-  contents: read
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -12,3 +10,5 @@ jobs:
           python-version: '3.11'
       - run: pip install -r requirements.txt
       - run: python -m pytest -q
+      - run: python scripts/build_site.py
+      - run: git diff --exit-code -- docs

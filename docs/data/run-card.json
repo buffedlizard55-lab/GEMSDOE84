@@ -31,5 +31,7 @@
   "verdict": "negative",
   "download_allowed": false,
   "submission_authorized": false,
-  "experiments_executed": 0
+  "experiments_executed": 0,
+  "historical_record_only": true,
+  "superseded_by": "../evidence/run-card.json"
 }

@@ -1,0 +1,32 @@
+{
+  "rows": [
+    {
+      "repo": "buffedlizard55-lab/58GEMSDOE",
+      "path": "docs/downloads/58GEMSDOE-ribbon-sparse-review-only-20261011T182511Z.tif",
+      "sha256": "b4cd208015892a19bb2de36585a6f5ff8203dd78b95d49d6b88c8d4c927c1448",
+      "overlap": 0.05717852021033622,
+      "rho": 0.0017211918640481045
+    },
+    {
+      "repo": "buffedlizard55-lab/GEMSDOE79",
+      "path": "docs/downloads/gems79-tilt-ring-100000dots-20261022T212135Z-50a5d7498c71-zeros.tif",
+      "sha256": "aa0685b0bcbead416b41d22b8c327393d55e32e18e360fa460eb0af020d018ec",
+      "overlap": 0.10150316035480958,
+      "rho": 0.0068596357274395975
+    },
+    {
+      "repo": "buffedlizard55-lab/17GEMSDOE",
+      "path": "docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "overlap": 1.0,
+      "rho": -0.0010655796024000848
+    }
+  ],
+  "duplicate": true,
+  "stopped_at_first_duplicate": true,
+  "thresholds": {
+    "rho": 0.9,
+    "overlap": 0.7
+  },
+  "no_representation_exemptions": true
+}

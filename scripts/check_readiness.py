@@ -12,11 +12,12 @@ from pathlib import Path
 from typing import Iterable
 
 REQUIRED = (
-    ("data/training_features.tif", "official training feature raster"),
-    ("data/labels.tif", "competition fault-label raster"),
-    ("data/sample_submission.tif", "official format/reference raster"),
-    ("scripts/evaluate_holdout.py", "shared spatially blocked holdout evaluator"),
-    ("scripts/submission_writer.py", "shared submission writer"),
+    ("data/raw/external/lidar_scarp_features_u8.tif", "cached derived LiDAR stack, hash verification still required"),
+    ("data/raw/external/geodawn_rad_u8.tif", "cached derived radiometric stack, hash verification still required"),
+    ("data/raw/existing_faults.tif", "mirrored catalogue raster"),
+    ("data/raw/sample_submission.tif", "mirrored reference grid"),
+    ("vendor/gems57/evaluate_holdout.py", "shared spatially blocked holdout evaluator"),
+    ("vendor/gems57/submission_writer.py", "shared submission writer"),
 )
 
 

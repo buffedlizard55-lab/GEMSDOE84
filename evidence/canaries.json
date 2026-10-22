@@ -1,0 +1,198 @@
+{
+  "rows": [
+    {
+      "fold": "draw20_foldNW_all",
+      "feature": "step",
+      "auc": 0.4800485272727272,
+      "withheld_positives": 1925,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldNW_all",
+      "feature": "relief",
+      "auc": 0.5694483792207792,
+      "withheld_positives": 1925,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldNW_all",
+      "feature": "coherence",
+      "auc": 0.5060139506493506,
+      "withheld_positives": 1925,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldNW_all",
+      "feature": "k_curvature",
+      "auc": 0.5213810389610389,
+      "withheld_positives": 1925,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldNW_all",
+      "feature": "th_curvature",
+      "auc": 0.5234784909090909,
+      "withheld_positives": 1925,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldNW_all",
+      "feature": "dipole",
+      "auc": 0.48610432207792215,
+      "withheld_positives": 1925,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldNE_all",
+      "feature": "step",
+      "auc": 0.5225605190677965,
+      "withheld_positives": 2360,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldNE_all",
+      "feature": "relief",
+      "auc": 0.532299061440678,
+      "withheld_positives": 2360,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldNE_all",
+      "feature": "coherence",
+      "auc": 0.5046408516949152,
+      "withheld_positives": 2360,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldNE_all",
+      "feature": "k_curvature",
+      "auc": 0.5113125190677966,
+      "withheld_positives": 2360,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldNE_all",
+      "feature": "th_curvature",
+      "auc": 0.5158786546610169,
+      "withheld_positives": 2360,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldNE_all",
+      "feature": "dipole",
+      "auc": 0.5043024576271187,
+      "withheld_positives": 2360,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldSW_all",
+      "feature": "step",
+      "auc": 0.5014153716931217,
+      "withheld_positives": 3780,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldSW_all",
+      "feature": "relief",
+      "auc": 0.527906712962963,
+      "withheld_positives": 3780,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldSW_all",
+      "feature": "coherence",
+      "auc": 0.4857812671957672,
+      "withheld_positives": 3780,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldSW_all",
+      "feature": "k_curvature",
+      "auc": 0.48768601851851845,
+      "withheld_positives": 3780,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldSW_all",
+      "feature": "th_curvature",
+      "auc": 0.49371373148148145,
+      "withheld_positives": 3780,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldSW_all",
+      "feature": "dipole",
+      "auc": 0.4984127738095238,
+      "withheld_positives": 3780,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldSE_all",
+      "feature": "step",
+      "auc": 0.5249949723332308,
+      "withheld_positives": 3253,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldSE_all",
+      "feature": "relief",
+      "auc": 0.5620891284967722,
+      "withheld_positives": 3253,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldSE_all",
+      "feature": "coherence",
+      "auc": 0.46776207961881344,
+      "withheld_positives": 3253,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldSE_all",
+      "feature": "k_curvature",
+      "auc": 0.502307457731325,
+      "withheld_positives": 3253,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldSE_all",
+      "feature": "th_curvature",
+      "auc": 0.49358357823547494,
+      "withheld_positives": 3253,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    },
+    {
+      "fold": "draw20_foldSE_all",
+      "feature": "dipole",
+      "auc": 0.5024150614817092,
+      "withheld_positives": 3253,
+      "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "caveat": "AUC is a diagnostic, not DTI or organizer score."
+}
