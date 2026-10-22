@@ -59,3 +59,7 @@ Experiments executed: none. No withheld positives, CI, rank correlations, overla
 ### CI follow-up
 
 The first GitHub CI run failed because the initial ignore pattern `data/` also excluded `docs/data/run-card.json`. Corrected it to root-only `/data/` and tracked the run card; the local test had not detected untracked files. GitHub Pages settings currently use legacy builds. Updating Pages to workflow mode via API returned HTTP 403 (integration permission); the workflow exists, but workflow-based deployment cannot be promised until that permission/settings blocker is resolved.
+
+### Concurrent-session reconciliation
+
+Main advanced during this session. Merged its readiness checker, additional documentation and tests into this fixed session branch; retained one strict format inspector with a compatibility `audit` API. Alternate footprint overrides fail closed. Resolved overlapping README/site files to the evidence-backed blocked status. No parallel prediction or assigned scientific lane was overwritten.

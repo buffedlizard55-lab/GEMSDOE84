@@ -51,6 +51,35 @@ def validate(candidate, template):
             'scope': 'Format only; scientific, registry and selector gates remain separate.'}
 
 
+def audit(candidate, reference, footprint_path=None, footprint_band=1):
+    """Compatibility API for the concurrently merged format-inspection tests.
+
+    Uses the same strict implementation; alternate footprint sources are not
+    silently accepted without an agreed authoritative footprint policy.
+    """
+    if footprint_path is not None or footprint_band != 1:
+        raise ValueError('Use the authoritative template dataset mask')
+    result = validate(candidate, reference)
+    checks = result['checks']
+    with rasterio.open(candidate) as src:
+        values = src.read(1)
+        with rasterio.open(reference) as ref:
+            footprint = ref.dataset_mask() > 0
+        compatible = dict(checks)
+        compatible.update(
+            footprint_has_no_nan=bool(not np.isnan(values[footprint]).any()),
+            all_finite_values_in_unit_interval=checks.get('range_all', False),
+            crs_match=checks['crs'], shape_match=checks['shape'],
+            transform_match=checks['transform'],
+            nan_inside_footprint=int(np.isnan(values[footprint]).sum()),
+        )
+        compatible['all_finite_values_in_[0,1]'] = checks.get('range_all', False)
+        compatible['finite_values_outside_[0,1]_count'] = int(
+            (np.isfinite(values) & ((values < 0) | (values > 1))).sum())
+    return dict(result, status='PASS' if result['format_valid'] else 'FAIL',
+                checks=compatible)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('candidate', type=Path)
