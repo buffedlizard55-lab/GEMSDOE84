@@ -1,13 +1,20 @@
-data/
+# Local heavy dataset, memmap & registry caches
 .cache/
+data/raw
+data/processed/
+data/cache/
+data/rasters/
+data/registry/
+
+# Python bytecode & test caches
 .venv/
-.venv_gems/
 __pycache__/
-*.pyc
-*.part
+*.py[cod]
 .pytest_cache/
-*.egg-info/
-docs/downloads/.*.tif
-docs/downloads/.*.zip
-docs/downloads/.*.json
-evidence/_holdout_cache.pkl
+.mypy_cache/
+.ruff_cache/
+
+# OS & temporary scratch
+.DS_Store
+*.log
+*.tmp
