@@ -31,7 +31,8 @@ def validate(candidate, template):
             real_dtype=np.dtype(src.dtypes[0]).kind in 'fiu',
         )
         if not all(checks.values()):
-            return {'format_valid': False, 'checks': checks, 'sha256': sha256(candidate)}
+            return {'format_valid': False, 'checks': checks, 'sha256': sha256(candidate),
+                    'submission_authorized': False}
         footprint_pixels = 0
         checks.update(finite_all=True, range_all=True, no_masked_footprint=True)
         for _, window in ref.block_windows(1):
@@ -61,6 +62,10 @@ def audit(candidate, reference, footprint_path=None, footprint_band=1):
         raise ValueError('Use the authoritative template dataset mask')
     result = validate(candidate, reference)
     checks = result['checks']
+    if not checks.get('shape', False) or not checks.get('real_dtype', False):
+        return dict(result, status='FAIL', checks=dict(
+            checks, crs_match=checks['crs'], shape_match=checks['shape'],
+            transform_match=checks['transform']))
     with rasterio.open(candidate) as src:
         values = src.read(1)
         with rasterio.open(reference) as ref:
@@ -68,12 +73,12 @@ def audit(candidate, reference, footprint_path=None, footprint_band=1):
         compatible = dict(checks)
         compatible.update(
             footprint_has_no_nan=bool(not np.isnan(values[footprint]).any()),
-            all_finite_values_in_unit_interval=checks.get('range_all', False),
+            all_finite_values_in_unit_interval=(checks.get('range_all', False) and checks.get('finite_all', False)),
             crs_match=checks['crs'], shape_match=checks['shape'],
             transform_match=checks['transform'],
             nan_inside_footprint=int(np.isnan(values[footprint]).sum()),
         )
-        compatible['all_finite_values_in_[0,1]'] = checks.get('range_all', False)
+        compatible['all_finite_values_in_[0,1]'] = (checks.get('range_all', False) and checks.get('finite_all', False))
         compatible['finite_values_outside_[0,1]_count'] = int(
             (np.isfinite(values) & ((values < 0) | (values > 1))).sum())
     return dict(result, status='PASS' if result['format_valid'] else 'FAIL',
@@ -90,7 +95,7 @@ def main():
     try:
         result = validate(args.candidate, args.template)
     except (OSError, ValueError, rasterio.errors.RasterioError) as exc:
-        result = {'format_valid': False, 'error': str(exc)}
+        result = {'format_valid': False, 'submission_authorized': False, 'error': str(exc)}
     if args.output is not None:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(result, indent=2) + '\n')

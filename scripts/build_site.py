@@ -12,11 +12,24 @@ def page(title,body):
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{esc(title)} · GEMS84</title><link rel="stylesheet" href="style.css"></head><body><header><a class="brand" href="index.html">GEMS<span>84</span></a><nav><a href="index.html">Run overview</a><a href="executive-summary.html">Submission guide</a><a href="research.html">Research & evidence</a><a href="liti/index.html">Lane H84-A LITI</a></nav></header><main>{body}</main><footer>Evidence-first fault discovery · snapshot 2026-10-22 · no organizer submission made</footer></body></html>'''
 
 
+def check_blocked_release(card, docs):
+    """Reject stale binary downloads before rendering this negative-only site.
+
+    Pages serves files whether or not a button links to them. A hash's mere
+    presence is not a validator receipt and must never unlock a stale artifact.
+    """
+    if card.get('verdict') != 'negative':
+        raise ValueError('This renderer supports negative runs only; selector release required')
+    artifacts = [p for p in docs.rglob('*')
+                 if p.is_file() and p.suffix.lower() in {'.tif', '.tiff', '.zip'}]
+    if artifacts:
+        raise ValueError('Blocked release contains downloadable artifacts: ' +
+                         ', '.join(str(p.relative_to(docs)) for p in artifacts))
+
+
 def main():
     card=json.loads((ROOT/'evidence/run-card.json').read_text())
-    assert card['verdict'] in ['negative','promote']
-    # This run cannot promote: missing full-segment instrument and comparable best.
-    assert card['verdict']=='negative'
+    check_blocked_release(card, D)
     ev=D/'evidence';ev.mkdir(exist_ok=True)
     for p in (ROOT/'evidence').glob('*.json'):shutil.copy2(p,ev/p.name)
     shutil.copy2(ROOT/'registry/inventory.json',ev/'inventory.json')
@@ -26,11 +39,7 @@ def main():
     if scores:
         s=scores['rfd'];c=scores['step_control']
         result=f'''<div class="metrics"><article><small>HOLDOUT-DTI · exploratory candidate</small><strong>{s['dti']:.5f}</strong><p>95% CI [{s['ci95'][0]:.5f}, {s['ci95'][1]:.5f}]</p></article><article><small>HOLDOUT-DTI · paired step control</small><strong>{c['dti']:.5f}</strong><p>95% CI [{c['ci95'][0]:.5f}, {c['ci95'][1]:.5f}]</p></article><article><small>Withheld-positive pixels</small><strong>{s['withheld_positive_pixels']:,}</strong><p>{esc(h['evaluator_version'])}</p></article></div><p>Conditional spatial-block bootstrap; not a leaderboard interval. Chunk holdout is weaker than requested whole-fault validation. <a href="evidence/holdout.json">Read complete metric receipt →</a></p>'''
-    files=list((D/'downloads').glob('*.tif')) if (D/'downloads').exists() else []
     downloads='<p><b>No submission TIFF released.</b> The safety gate stopped this candidate. No old submission has been substituted.</p>'
-    if files:
-        assert card.get('raster_sha256')
-        downloads='<p>Format-valid, research-only artifact. <b>NOT approved for competition submission.</b></p>'+''.join(f'<a class="button" download href="downloads/{esc(p.name)}">Download research-only TIFF</a>' for p in files)
     blockers=''.join(f'<li>{esc(x)}</li>' for x in card['promotion_blockers'])
     body=f'''<p class="eyebrow">GEMSDOE84 / LANE H84-RFD</p><h1>Test the geology.<br>Release only the evidence.</h1><p class="lede">A distinct radiometric–terrain hypothesis, audited against the public submission registry. Built to reject weak ideas before they cost a competition slot.</p><section class="warning"><span class="badge">NEGATIVE · DO NOT SUBMIT</span><h2>Competition submission is blocked</h2>{downloads}<ul>{blockers}</ul><a href="executive-summary.html">Exactly how the submission gate works →</a></section><section><h2>What this run measured</h2>{result}</section><section class="grid"><article><p class="eyebrow">01 / MECHANISM</p><h2>Opposing radiometric flanks</h2><p>{esc(card['mechanism'])}. The signature may be a fault, or simply a lithologic/sedimentary boundary. It is not a direct geothermal-vent detection.</p></article><article><p class="eyebrow">02 / ORIGINALITY</p><h2>New construction, strict veto</h2><p>Built from cached physical layers, not a prior prediction TIFF. Full-footprint rank checks precede placement. Final dots stop on the first registry overlap violation, with no dense-raster exception.</p></article></section><section><h2>Auditable, not assumed</h2><div class="links"><a href="evidence/run-card.json" download>Download JSON run card ↓</a><a href="research.html">Hypotheses & source register →</a><a href="evidence/inventory.json">Pinned public registry →</a></div><p>No current leaderboard score or weekly submission cap was verified. No organizer-confirmed improvement is claimed.</p></section>'''
     (D/'index.html').write_text(page('Run overview',body))

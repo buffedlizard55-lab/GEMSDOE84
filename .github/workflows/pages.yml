@@ -18,6 +18,13 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reject blocked artifacts and render evidence site
+        run: python scripts/build_site.py
+      - name: Verify committed site matches release evidence
+        run: git diff --exit-code -- docs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

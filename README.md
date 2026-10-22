@@ -96,3 +96,13 @@ python scripts/build_run_card.py && python scripts/build_site_liti.py
 
 Lane code: `src/gems84/` (basis, inversion, catalogue-analogue field). It uses the shared
 `vendor/gems57` (pinned; see `registry/template_pin.json`).
+
+## Latest release-safety review (2026-10-22)
+
+Read the [three-pass review](research/SESSION_REVIEW_20261022.md) before resuming.
+**No cleared submission TIFF exists.** The existing duplicate veto remains binding;
+no new scientific experiment or weekly slot was used in this maintenance review.
+The site builder and Pages deployment now reject any stale TIFF/ZIP under `docs/`
+for this negative run. Local verification: **39 tests passed**. Format validation
+now returns an explicit failure for incompatible raster shapes rather than crashing.
+The standing user brief above and [`PROMPT.md`](PROMPT.md) remain the starting point.
