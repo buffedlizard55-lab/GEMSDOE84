@@ -83,15 +83,17 @@ def audit(candidate, reference, footprint_path=None, footprint_band=1):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('candidate', type=Path)
-    parser.add_argument('--template', required=True, type=Path)
-    parser.add_argument('--output', required=True, type=Path)
+    parser.add_argument('--template', '--reference', dest='template', required=True, type=Path)
+    parser.add_argument('--output', type=Path)
+    parser.add_argument('--json', action='store_true', help='JSON is always printed')
     args = parser.parse_args()
     try:
         result = validate(args.candidate, args.template)
     except (OSError, ValueError, rasterio.errors.RasterioError) as exc:
         result = {'format_valid': False, 'error': str(exc)}
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(result, indent=2) + '\n')
+    if args.output is not None:
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(result, indent=2))
     return 0 if result['format_valid'] else 1
 
