@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hypotheses &amp; findings — GEMSDOE84</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="index.html">GEMSDOE84</a>
+  <nav class="site">
+    <a href="index.html">Home</a>
+    <a href="executive-summary.html">How to submit</a>
+    <a href="hypotheses.html" class="active">Hypotheses</a>
+    <a href="leaderboard.html">Leaderboard &amp; irregularities</a>
+    <a href="research.html">Research notes</a>
+    <a href="https://github.com/buffedlizard55-lab/GEMSDOE84">GitHub</a>
+  </nav>
+</header>
+<main>
+  <h1>Hypotheses, ranked before implementation</h1>
+  <p class="muted">Full ledger: <a href="research/h84-hypotheses.md">docs/research/h84-hypotheses.md</a>.
+    Each hypothesis names its layers, physical signature, why it should catch a fault missing
+    from the catalogue, its distinction from prior art, and its external-data dependency.</p>
+
+  <table>
+    <tr><th>#</th><th>Hypothesis</th><th>Layers</th><th>Novelty vs. prior art</th><th>External data?</th><th>Status</th></tr>
+    <tr><td>H84-1</td><td>Demagnetized conductive corridor</td><td><code>rtp</code>, <code>cond_surf</code>, <code>tmi_hg</code></td>
+      <td>Amplitude-minimum + conductivity detector, distinct from every edge/gradient detector in the accessible record</td>
+      <td>None</td><td><span class="tag neg">NEGATIVE</span></td></tr>
+    <tr><td>H84-3</td><td>Conductivity–basement discordance</td><td><code>cond_surf</code>, <code>depth_to_base_surf</code></td>
+      <td>Decoupling/discordance detector between two bands not previously combined this way in the accessible record</td>
+      <td>None</td><td><span class="tag neg">NEGATIVE</span></td></tr>
+    <tr><td>H84-4</td><td>Scarp–alteration concordance (AND of H84-1/3 with a topographic scarp)</td><td><code>det_elev</code> + H84-1/3</td>
+      <td>Conjunction of morphology + geophysics, Sato ridge filter (not the Laplacian zero-crossing used elsewhere)</td>
+      <td>None</td><td><span class="tag neg">NEGATIVE</span></td></tr>
+    <tr><td>H84-2</td><td>Gravity-curvature saddle × seismic quiescence</td><td><code>iso_grav_anom*</code>, <code>ieq_n100a15</code></td>
+      <td>Low — closely resembles prior basement-step × gravity work already documented in the sibling lineage</td>
+      <td>None</td><td>not run (lowest-ranked)</td></tr>
+    <tr><td>H84-5</td><td>GeoDAWN radiometric K/Th/U alteration ratio, differenced from catalogue</td><td>external — not in the 19 official bands at all</td>
+      <td>Complementary alteration proxy, classical K-enrichment/U-mobilization signature</td>
+      <td><strong>Yes</strong> — USGS GeoDAWN release, DOI <a href="https://www.sciencebase.gov/catalog/item/657e1d85d34e23d3533209f7">10.5066/P93LGLVQ</a> (free, public domain). <code>sciencebase.gov</code> itself is not reachable from this sandbox; a hash-pinned mirror is reported to exist in a sibling repo but we have not independently re-verified it this session — see the full ledger for details.</td>
+      <td>deferred</td></tr>
+  </table>
+
+  <h2>The physical mechanism (H84-1/H84-3), with literature</h2>
+  <p>Hydrothermal fluid circulation along a fault destroys primary magnetite (demagnetization)
+    and deposits clay/argillic alteration minerals that raise near-surface electrical
+    conductivity. This produces a local magnetic-amplitude <em>minimum</em> conjugate with a
+    conductivity <em>high</em>, and the halo can be broad and <strong>blind</strong> (no mapped
+    surface rupture) — exactly the kind of structure missing from the USGS/INGENIOUS catalogue
+    that the competition is scoring for. This is documented, peer-reviewed geophysics, not a
+    guess:</p>
+  <ul>
+    <li>Bouligand et al. 2014, <em>JGR Solid Earth</em>, "Distribution of buried hydrothermal
+      alteration deduced from high-resolution magnetic surveys in Yellowstone National Park" —
+      <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013JB010802">full text</a></li>
+    <li>Finn &amp; Morgan 2002 / USGS, "High-resolution aeromagnetic mapping of volcanic terrain,
+      Yellowstone National Park" —
+      <a href="https://www.usgs.gov/publications/high-resolution-aeromagnetic-mapping-volcanic-terrain-yellowstone-national-park">USGS page</a></li>
+    <li>2026, <em>Minerals</em> (MDPI), "Integrated Multiphysics Inversion for Geothermal and
+      Lithium Exploration in <strong>Dixie Valley, Nevada</strong>" (within the Great Basin, the
+      same structural province as the GeoDAWN survey area) —
+      <a href="https://www.mdpi.com/2075-163X/16/8/774">full text</a></li>
+  </ul>
+
+  <h2>Leakage canary (required before trusting any holdout number)</h2>
+  <table>
+    <tr><th>Field</th><th>AUC vs. full visible catalogue</th><th>Leakage flag (&gt;0.90)?</th></tr>
+    <tr><td>H84-1 alone</td><td>0.514</td><td>No</td></tr>
+    <tr><td>H84-3 alone</td><td>0.511</td><td>No</td></tr>
+    <tr><td>H84 fused (max)</td><td>0.517</td><td>No</td></tr>
+    <tr><td>H84-4 (scarp-alteration concordance)</td><td>0.507</td><td>No</td></tr>
+    <tr><td>Uniform-random control</td><td>0.501</td><td>No</td></tr>
+  </table>
+
+  <h2>Holdout DTI by emission budget <span class="tag hold">HOLDOUT-DTI</span></h2>
+  <p class="muted">Evaluator: <code>gems84.metric</code> v1 (crop-exact finite-kernel DTI,
+    unit-tested against brute force) + <code>gems84.holdout</code> v1 (6×6 spatially-blocked, 6
+    folds, 3px/300m buffer). Ground truth: the <strong>public</strong> USGS/INGENIOUS fault
+    catalogue — not the private competition test set. Full numbers:
+    <a href="../evidence/h84_holdout.json">evidence/h84_holdout.json</a>,
+    <a href="../evidence/h84_4_holdout.json">evidence/h84_4_holdout.json</a>.</p>
+  <table>
+    <tr><th>Budget (px)</th><th>H84 fused</th><th>H84-4</th><th>Uniform random</th></tr>
+    <tr><td>15,000</td><td>0.0120</td><td>0.0053</td><td>—</td></tr>
+    <tr><td>30,000</td><td>0.0184</td><td>0.0099</td><td>—</td></tr>
+    <tr><td>44,090</td><td>0.0219</td><td>0.0134</td><td><strong>0.0608</strong></td></tr>
+    <tr><td>60,000</td><td>0.0250</td><td>0.0163</td><td>—</td></tr>
+    <tr><td>90,000</td><td>0.0284</td><td>0.0225</td><td>—</td></tr>
+    <tr><td>120,000</td><td>0.0314</td><td>—</td><td>—</td></tr>
+    <tr><td>150,000</td><td>0.0349</td><td>—</td><td><strong>0.1382</strong></td></tr>
+    <tr><td>1,000,000</td><td>0.0601</td><td>—</td><td><strong>0.1536</strong></td></tr>
+  </table>
+
+  <h2>Why it failed — the mechanism, not just the number</h2>
+  <p>Not leakage (all AUCs ≈0.51, far below the 0.90 threshold). We measured the real cause
+    directly: <strong>8.16% of the entire footprint lies within the 300 m kernel radius of some
+    mapped fault</strong> — the catalogue is geographically pervasive across this Basin-and-Range
+    terrain, so <em>any</em> spatially-uniform field earns substantial credit purely from
+    ubiquity. Our field instead concentrates its highest-confidence mass in specific conductive
+    sub-basins whose geometry does not coincide with the basin-margin trend the mapped network
+    follows — i.e. the <strong>named non-fault mimic we tried to guard against</strong> (broad,
+    equant, undeformed basin-fill producing the same joint magnetic-low/conductivity-high
+    signature with zero fault control) dominated the field's extreme tail despite the Sato
+    ridge-filter guard meant to suppress it.</p>
+
+  <div class="banner warn">
+    This does not prove the underlying geological mechanism (demagnetized alteration haloes
+    along blind faults) is wrong — it proves this specific field, scored against the
+    <em>public</em> catalogue (itself biased toward easy, well-mapped surface ruptures), does not
+    reproduce that catalogue better than chance. The real competition scores against genuinely
+    <em>new</em> faults, a target this sandbox cannot evaluate directly. See
+    <a href="../README.md#7-suggested-next-steps-prioritized">Suggested next steps</a> for how a
+    future session should close this gap.
+  </div>
+</main>
+<footer>GEMSDOE84 · <a href="https://github.com/buffedlizard55-lab/GEMSDOE84">source on GitHub</a></footer>
+</body>
+</html>

@@ -1,0 +1,8 @@
+data/
+.venv/
+.venv_gems/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+evidence/_holdout_cache.pkl

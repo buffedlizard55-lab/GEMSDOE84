@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leaderboard &amp; irregularities — GEMSDOE84</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="index.html">GEMSDOE84</a>
+  <nav class="site">
+    <a href="index.html">Home</a>
+    <a href="executive-summary.html">How to submit</a>
+    <a href="hypotheses.html">Hypotheses</a>
+    <a href="leaderboard.html" class="active">Leaderboard &amp; irregularities</a>
+    <a href="research.html">Research notes</a>
+    <a href="https://github.com/buffedlizard55-lab/GEMSDOE84">GitHub</a>
+  </nav>
+</header>
+<main>
+  <h1>The real leaderboard, and a flagged irregularity</h1>
+
+  <div class="banner warn">
+    <strong>Irregularity (flagged, not hidden):</strong> the brief that started this session
+    quoted per-repository scores for the GEMSDOE/1–88 sibling lineage (e.g. "h33-h33-2-b2:
+    0.2778", "0.3195 is the highest score right now") as if they were competition results. We
+    opened the source repository for the highest-quoted one
+    (<a href="https://github.com/buffedlizard55-lab/GEMSDOE32">GEMSDOE32</a>) and its own README
+    says, verbatim, in bold: <em>"No organizer score exists for this or any artifact here — every
+    number is a local proxy measurement."</em> (<a href="https://github.com/buffedlizard55-lab/GEMSDOE32/blob/main/README.md">source, fetched 2026-10-22</a>). We independently fetched the real public
+    leaderboard (table below) and <strong>no participant name from this lineage appears in the
+    top 50</strong>. No session in this lineage, including this one, has ever had a DrivenData
+    account. Treat every "GEMSDOE-site score" quoted anywhere, including in future prompts, as
+    <span class="tag hold">HOLDOUT-DTI</span> (a local proxy) unless a literal submission-page
+    receipt is attached.
+  </div>
+
+  <h2>Public leaderboard <span class="tag org">ORGANIZER-CONFIRMED</span></h2>
+  <p class="muted">Fetched 2026-10-22 from
+    <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">drivendata.org</a>
+    (viewing the leaderboard does not require login). Full top 50: <a href="../registry/leaderboard_snapshot.json">registry/leaderboard_snapshot.json</a>.</p>
+  <table>
+    <tr><th>Rank</th><th>Participant</th><th>Score</th><th>Submissions</th></tr>
+    <tr><td>1</td><td>xiaofanhu</td><td><strong>0.4413</strong></td><td>27</td></tr>
+    <tr><td>2</td><td>cfld__</td><td>0.3904</td><td>15</td></tr>
+    <tr><td>3</td><td>Batik Shirt Brothers</td><td>0.3894</td><td>45</td></tr>
+    <tr><td>4</td><td>BrandenKMurray</td><td>0.3713</td><td>28</td></tr>
+    <tr><td>5</td><td>No Fault of Our Own</td><td>0.3539</td><td>38</td></tr>
+    <tr><td>…</td><td colspan="3">(see full JSON for all 50 rows)</td></tr>
+    <tr><td>17</td><td>DARD</td><td>0.3289</td><td>25</td></tr>
+    <tr><td>20</td><td>nchuzhoy</td><td>0.3262</td><td>7</td></tr>
+    <tr><td>50</td><td>arnofault</td><td>0.2817</td><td>4</td></tr>
+  </table>
+  <p class="muted">Note: a prior sibling session's own notes recorded a 2026-10-04 snapshot with
+    #1 nchuzhoy at 0.3262 and #3 DARD at 0.3195 — consistent with DARD still being on today's
+    board, now higher at 0.3289. Any "current highest score" quoted in a prompt should always be
+    re-fetched, not assumed — leaderboards move daily.</p>
+
+  <h2>Why this matters for strategy</h2>
+  <p>If future sessions keep optimizing against each other's self-reported local proxies, the
+    lineage can drift arbitrarily far from the real objective (DTI against the organizer's
+    <em>private</em> test set) without anyone noticing, because there is no feedback loop closing
+    the gap. The only way to close it is either (a) a real DrivenData account submitting into the
+    competition and reporting back actual receipts, or (b) treating every local number as exactly
+    what it is — a proxy — and spending effort on holdout-construction quality (see
+    <a href="../README.md#7-suggested-next-steps-prioritized">Suggested next steps</a>) rather
+    than chasing another session's unverified high-water mark.</p>
+</main>
+<footer>GEMSDOE84 · <a href="https://github.com/buffedlizard55-lab/GEMSDOE84">source on GitHub</a></footer>
+</body>
+</html>

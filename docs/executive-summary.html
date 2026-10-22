@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to submit — GEMSDOE84</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="index.html">GEMSDOE84</a>
+  <nav class="site">
+    <a href="index.html">Home</a>
+    <a href="executive-summary.html" class="active">How to submit</a>
+    <a href="hypotheses.html">Hypotheses</a>
+    <a href="leaderboard.html">Leaderboard &amp; irregularities</a>
+    <a href="research.html">Research notes</a>
+    <a href="https://github.com/buffedlizard55-lab/GEMSDOE84">GitHub</a>
+  </nav>
+</header>
+<main>
+  <h1>Executive summary: how to submit to the DOE GEMS Prize</h1>
+
+  <div class="banner danger">
+    <strong>Current status for this repo's file: do not submit it as your real entry.</strong>
+    It is format-valid but failed its own holdout validation gate (verdict: <span class="tag neg">NEGATIVE</span>,
+    details on the <a href="hypotheses.html">Hypotheses</a> page). The steps below are accurate
+    and reusable for whatever candidate eventually passes.
+  </div>
+
+  <h2>Step by step</h2>
+  <ol>
+    <li>Go to the competition's
+      <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">submissions page</a>
+      (requires a free DrivenData account and competition registration).</li>
+    <li>Click <strong>"New submission"</strong>.</li>
+    <li><strong>File to submit:</strong> upload a single-band GeoTIFF (<code>.tif</code>) — or a
+      <code>.zip</code> containing exactly one GeoTIFF — of your predictions. It must match the
+      sample submission's CRS (EPSG:32611), shape (3730×3292), and geotransform exactly. Use
+      <a href="downloads/">docs/downloads/</a> in this repo, or your own
+      <code>scripts/build_submission.py</code> output.</li>
+    <li><strong>Note (optional but recommended):</strong> a short, unique comment so you and your
+      team can tell submissions apart later, e.g. <code>GEMSDOE84 H84-fused, top-44090px,
+      audit-only, holdout DTI 0.0219 vs random 0.0608 — NOT for scoring</code>. Keep it ≤140
+      characters if you also want it to match this repo's run-card convention.</li>
+    <li>Click submit. You get a limited number of scored submissions per week (see the
+      <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/rules/">rules
+      page</a> for the current cap) and <strong>one</strong> file is carried forward to both the
+      Initial Prize Round and the Final Prize Round — choose carefully.</li>
+  </ol>
+
+  <h2>If you got the error "Predicted values must be in range [0, 1]"</h2>
+  <p>This is a known community issue (reported by this project's own user). Our working theory,
+    corroborated by how most of the GEMSDOE-lineage sibling repos structure their own "primary"
+    downloads: a <strong>NaN-outside</strong> file (matching the spec's literal wording
+    "data outside the bounds is null or nan") can trip this validator. We cannot see the portal's
+    validator source to confirm the exact cause (no login-gated access from this sandbox), so we
+    ship <strong>both</strong> variants and recommend the <strong>0.0-outside ("zeros")</strong>
+    file as primary. If you hit the error again on a <code>-zeros</code> file, please flag it —
+    that would be new information worth re-opening this question for.</p>
+
+  <h2>Format checklist (enforced by <code>src/gems84/submission.py</code>)</h2>
+  <table>
+    <tr><th>Requirement</th><th>Source</th><th>How this repo enforces it</th></tr>
+    <tr><td>CRS = EPSG:32611 (UTM 11N)</td><td>OFFICIAL, page 967</td><td>copied from <code>sample_submission.tif</code>'s own profile, re-checked on write</td></tr>
+    <tr><td>Resolution = 100 m</td><td>OFFICIAL, page 967</td><td>same transform as the template</td></tr>
+    <tr><td>Same bounds; outside = null/nan</td><td>OFFICIAL, page 967</td><td>footprint mask from the intersection of all 19 feature bands' own validity + labels validity</td></tr>
+    <tr><td>Single band, float32, values in [0,1]</td><td>OFFICIAL, page 967</td><td><code>np.clip(...,0,1)</code> on write + an independent re-read-from-disk validator before shipping</td></tr>
+  </table>
+
+  <h2>Before you spend a weekly slot</h2>
+  <p>Per this project's own governing protocol (<a href="../NORTH_STAR.md">NORTH_STAR.md</a>):
+    validate any new candidate on the spatially-blocked holdout
+    (<code>scripts/evaluate_holdout.py</code>) and confirm it beats both (a) a uniform-random
+    control at matched emission mass, and (b) this repo's current best holdout result, before
+    using a real submission slot. Submission slots and final-round placement are a human
+    decision, never an automatic one made by this pipeline.</p>
+</main>
+<footer>GEMSDOE84 · <a href="https://github.com/buffedlizard55-lab/GEMSDOE84">source on GitHub</a></footer>
+</body>
+</html>

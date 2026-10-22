@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "note": "Every sha256 below was independently recomputed in THIS session on 2026-10-22 after downloading the named path from the named repo/ref via `gh api repos/<repo>/contents/<path>?ref=<ref>` (Accept: application/vnd.github.raw), which resolves through api.github.com. These are owner-supplied mirrors of login-walled DrivenData competition files placed into public sibling repositories by the human project owner on an earlier (unsandboxed) machine. The hash match proves byte-for-byte mirror consistency with the file that previous sessions also verified -- it does NOT constitute organizer authentication. No DrivenData login was used or is available in this sandbox.",
+  "verified_by": "arena/4ac2f662-gemsdoe84, 2026-10-22, via scripts/restore_data.py",
+  "files": [
+    {
+      "id": "training_features",
+      "repo": "buffedlizard55-lab/GEMSDOE",
+      "ref": "c0c06ac82178f26b94fce3397036ef8f12a2f3a0",
+      "parts": [
+        "data/bridge/gems-geodawn-numerical-features.tif.part-000",
+        "data/bridge/gems-geodawn-numerical-features.tif.part-001",
+        "data/bridge/gems-geodawn-numerical-features.tif.part-002",
+        "data/bridge/gems-geodawn-numerical-features.tif.part-003",
+        "data/bridge/gems-geodawn-numerical-features.tif.part-004"
+      ],
+      "dest": "training_features.tif",
+      "group": "core",
+      "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+      "bytes": 418912844,
+      "provenance": "owner-supplied mirror of the DrivenData competition file gems-geodawn-numerical-features.tif (login-walled at https://www.drivendata.org/competitions/306/competition-doe-gems/data/). Re-verified in this session: sha256 match CONFIRMED, bytes CONFIRMED (418,912,844). 19-band float32 GeoTIFF, EPSG:32611, 100 m, 3730x3292, nodata -3.4028234663852886e+38. Band descriptions read directly from the GeoTIFF's own metadata (not retyped by hand) -- see data_dictionary.json."
+    },
+    {
+      "id": "labels",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/bridge/labels.tif",
+      "dest": "labels.tif",
+      "group": "core",
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+      "bytes": 425830,
+      "provenance": "owner-supplied mirror of labels.tif. Re-verified in this session: sha256 CONFIRMED, bytes CONFIRMED. int8 GeoTIFF, values {-1 nodata, 0 no-fault, 1 fault}, byte-identical to existing_faults.tif. This is the PUBLIC USGS Quaternary-fault / INGENIOUS training label raster -- it is NOT the private expert-labeled test set used to score the real competition; no sandbox session has ever had access to that private set."
+    },
+    {
+      "id": "existing_faults",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/bridge/existing_faults.tif",
+      "dest": "existing_faults.tif",
+      "group": "core",
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+      "bytes": 425830,
+      "provenance": "owner-supplied mirror; re-verified in this session: sha256 CONFIRMED (byte-identical to labels.tif, as the manifest this was copied from already disclosed)."
+    },
+    {
+      "id": "sample_submission",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "data/bridge/sample_submission.tif",
+      "dest": "sample_submission.tif",
+      "group": "core",
+      "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "bytes": 1599597,
+      "provenance": "owner-supplied mirror; re-verified in this session: sha256 CONFIRMED. float32, EPSG:32611, 100 m, 3730x3292, nodata=NaN, used ONLY as the grid/footprint/CRS/transform template. CAUTION (re-confirmed in this session by directly counting pixels): this file has 60,988 pixels equal to 1.0 (sitting exactly on the labelled faults) and is NOT the 'predicts total fault absence' file the competition problem page describes -- the all-zero template must be built by us, not assumed from this file's values."
+    },
+    {
+      "id": "example_submission",
+      "repo": "buffedlizard55-lab/GEMSDOE",
+      "ref": "c0c06ac82178f26b94fce3397036ef8f12a2f3a0",
+      "path": "data/bridge/example_submission.tif",
+      "dest": "example_submission.tif",
+      "group": "core",
+      "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "bytes": 1599597,
+      "provenance": "owner-supplied mirror; re-verified in this session: sha256 CONFIRMED, byte-identical to sample_submission.tif."
+    }
+  ]
+}

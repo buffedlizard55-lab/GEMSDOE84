@@ -1,0 +1,48 @@
+{
+  "zeros": {
+    "write": {
+      "path": "/home/user/GEMSDOE84/docs/downloads/gemsdoe84-h84-fused-demag-cond-corridor-20261022T000000Z-auditonly-zeros.tif",
+      "sha256": "e65539d392345b10028d949a76937370b6806f193fa093e40a3393b6b82f54cf",
+      "bytes": 331629
+    },
+    "validate": {
+      "single_band": true,
+      "dtype_float32": true,
+      "crs_matches": true,
+      "shape_matches": true,
+      "transform_matches": true,
+      "has_nan_or_nodata": false,
+      "finite_values_in_0_1": true,
+      "no_negative": true,
+      "no_above_one": true,
+      "min": 0.0,
+      "max": 1.0,
+      "n_finite_px": 12279160,
+      "n_nonfinite_px": 0,
+      "all_pass": true
+    }
+  },
+  "nan": {
+    "write": {
+      "path": "/home/user/GEMSDOE84/docs/downloads/gemsdoe84-h84-fused-demag-cond-corridor-20261022T000000Z-auditonly-nan.tif",
+      "sha256": "69674e62fe45cd274e418de9912a2625e09fd21e1af6123e0eddcbb9cf69e565",
+      "bytes": 380693
+    },
+    "validate": {
+      "single_band": true,
+      "dtype_float32": true,
+      "crs_matches": true,
+      "shape_matches": true,
+      "transform_matches": true,
+      "has_nan_or_nodata": true,
+      "finite_values_in_0_1": true,
+      "no_negative": true,
+      "no_above_one": true,
+      "min": 0.0,
+      "max": 1.0,
+      "n_finite_px": 5164300,
+      "n_nonfinite_px": 7114860,
+      "all_pass": true
+    }
+  }
+}
