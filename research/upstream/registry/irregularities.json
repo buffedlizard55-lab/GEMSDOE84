@@ -1,0 +1,228 @@
+{
+ "schema": 1,
+ "items": [
+  {
+   "id": "IR-32-DATA-01",
+   "severity": "high",
+   "statement": "The competition rasters used here are owner-supplied public GitHub mirrors (buffedlizard55-lab/GEMSDOE ref c0c06ac..., GEMSDOE24 ref 07345ea...), integrity-pinned by sha256 (training_features 4371c82e..., labels/existing_faults 7ba308cc...) but NOT organizer-authenticated. All numbers computed from them are conditional on that provenance.",
+   "mitigation": "hash-pinned manifest + independent re-hash on every fetch (scripts/fetch_data.py, registry/data_manifest.json)"
+  },
+  {
+   "id": "IR-32-DATA-02",
+   "severity": "medium",
+   "statement": "Own footprint computation gives 5,165,852 finite pixels; the group's record says 5,167,373. A 0.03% difference in the footprint criterion (threshold on -3.4e38 vs isfinite).",
+   "mitigation": "both criteria are recorded; the submission writer uses the finite test and its receipt reports the count"
+  },
+  {
+   "id": "IR-32-SCORE-01",
+   "severity": "high",
+   "statement": "Every live score in the group's ledger (0.2477, 0.2600, 0.1922, ...) is an owner/leaderboard-row report, not an organizer receipt linking those bytes to that row. The public leaderboard rows verified today (nchuzhoy 0.3262, DARD 0.3195) are the only scores this repository treats as observed, and they are observed for *other* teams, not for our files.",
+   "mitigation": "registry/submissions.json keeps 'claim' and 'verified' fields separate; the site prints the distinction on every card"
+  },
+  {
+   "id": "IR-32-PROXY-01",
+   "severity": "medium",
+   "statement": "The blocked holdout scores the visible catalogue as truth (hide-and-recover). The competition's hidden truth is a set of faults NOT in that catalogue, so a proxy win is necessary but not sufficient for a live win.",
+   "mitigation": "the harness reports per-fold pairs and the site labels the result 'proxy'; no slot is spent on the proxy alone (bo.slot_gate)"
+  },
+  {
+   "id": "IR-32-LEAK-01",
+   "severity": "high",
+   "statement": "A 'distance to catalogue' feature makes a detector AUC exactly 1.0 on the visible labels (found by the group: GEMSDOE29 README). No such channel is used in this repository's feature stack.",
+   "mitigation": "features.CHANNELS excludes it; verified by tests/test_features.py"
+  },
+  {
+   "id": "IR-32-VERIFY-01",
+   "severity": "open",
+   "statement": "The historical DrivenData rejection \"Predicted values must be in range [0, 1]\" CANNOT be reproduced from anything currently shipped. scripts/audit_shipped.py re-reads all six GeoTIFFs in docs/downloads/ from disk and finds every one portal-legal: EPSG:32611, 3730x3292, single-band float32, 12,279,160/12,279,160 cells finite, 0 NaN, and ZERO values outside [0, 1]. The specific file behind that one upload was never obtained, so the trigger remains inferred, not proven.",
+   "mitigation": "Two mechanisms that CAN produce the condition do exist in the competition's own inputs and are measured here: (1) training_features.tif declares its nodata as -3.4028234663852886e+38 (the float32 minimum, not NaN) and 3,061 cells per band inside the 5,167,373-cell scored footprint carry that sentinel; (2) a footprint mask derived from band 1 is 1,521 cells smaller than the template footprint, stranding those cells as NaN. Both are engineered out: every shipped file is written all-finite with no nodata tag, and the writer fails closed by re-reading the bytes it just wrote. Both the NaN-outside and zero-outside encodings are published."
+  },
+  {
+   "id": "IR-32-FIELD-01",
+   "severity": "informational",
+   "statement": "The group's best-scoring field (H19-5) is identically ZERO on every pixel of the given catalogue: 0 of its 121,131 positive pixels touch the 60,988 catalogue pixels. Measured here two ways (evidence/h60_2_catalogue_difference.json, registry/submission_build.json -> catalogue_px_emitted = 0).",
+   "mitigation": "Round-1 hidden truth therefore excludes the given catalogue, and mass spent on a mapped line can never earn credit. The build script removes a 1 px buffer around the catalogue from the emission domain (the first smooth-field build wasted 994 px = 2.3 % of its mass there)."
+  },
+  {
+   "id": "IR-32-PROXY-02",
+   "severity": "high",
+   "statement": "The two local instruments DISAGREE about the same change, which is the drift the brief asks to chase rather than shrug off. Blocked holdout with catalogue truth: greedy surface-coverage packing beats the incumbent raster-order dot-thin at matched mass, +0.0100 mean over 4 folds (4/4 positive). Live-anchored generative truth model, official metric, paired draws: that same change is NEGATIVE, -0.0033 (0/12 draws positive).",
+   "mitigation": "Both are published. The disagreement has a mechanism, not noise: the holdout's truth is the catalogue, so it rewards covering the field surface where the catalogue is; the hidden set is scattered *around* the surface with a 1.85 px scale, so covering the surface is the wrong objective. The rule was re-derived from the second instrument (cover the scatter-smoothed density) and now measures +0.0247 (12/12 draws) over the incumbent on the catalogue-aware variant. The holdout keeps its role as a cheap screen; the model anchor decides."
+  },
+  {
+   "id": "IR-32-NAME-01",
+   "severity": "low",
+   "statement": "The group's file named 'dotted-h19-5-d2-8' corresponds to a thinning parameter of 2.4 px in the group's own density sweep (whose peak they report at d = 2.4 px / 44,090 px), not 2.8 px. Byte identity is unaffected (sha256 91eae1ca... re-verified here) but the name is misleading.",
+   "mitigation": "This repository names artifacts by rule and mass (gems32-h19-5-smoothmaxcov-44090) and records the sha256 in registry/submission_build.json; the claim ledger keeps the owner's original name verbatim."
+  },
+  {
+   "id": "IR-32-MASS-01",
+   "severity": "medium",
+   "statement": "An emission-rule comparison at unequal emitted mass is meaningless under this metric (the first ladder compared 8,000 greedy pixels against ~1,900 dot-thin pixels).",
+   "mitigation": "Every arm in the ladder is now re-emitted at the SAME pixel count as the arm it is compared with (holdout.run_fold), and the shipped build is mass-matched to the incumbent's 44,090 px, so no contrast is a mass effect."
+  },
+  {
+   "id": "IR-32-TOOLS-01",
+   "severity": "low",
+   "statement": "The sandbox has 2 vCPU / 3 GB RAM and no GPU, and two background runs were OOM-killed while a third was live.",
+   "mitigation": "Heavy jobs are serialised, the 35-channel stack is a disk-backed memmap, and the detector in the harness is a CPU gradient-boosted tree rather than the official reference solution's U-Net; the emission rule being validated is detector-agnostic."
+  },
+  {
+   "id": "IR-32-SESSION-01",
+   "severity": "medium",
+   "statement": "A parallel session's tree (merged to main as PR #1, package src/gemsdoe32/) advertises a note string reading 'Holdout DTI: 0.2600'. 0.2600 is the group's OWNER-REPORTED leaderboard score for a different artifact; no holdout in either tree has returned it, and the same tree's artifact (45,000 dots, sha256 2c1861f1...) carries no receipt linking those bytes to any score.",
+   "mitigation": "Its files are preserved, its download is listed with its own provenance, and the root README labels those numbers as that session's claims. This repository's own recommended download and its measured numbers are kept separate in registry/submission_build.json and evidence/."
+  },
+  {
+   "id": "IR-32-MERGE-01",
+   "severity": "blocking (FIXED 2026-10-04)",
+   "statement": "README.md and .gitignore were committed to main with UNRESOLVED MERGE-CONFLICT MARKERS: '<<<<<<< HEAD' on README line 1, '=======' line 300, '>>>>>>> origin/main' line 570; the same in .gitignore at lines 1/24/54. The repository's own front page was unreadable on GitHub, and the .gitignore rules that RE-INCLUDE the downloadable GeoTIFFs ('!docs/downloads/*.tif') sat inside the conflicted region next to a bare 'downloads/' pattern that would have excluded the docs/downloads/ directory entirely (git cannot re-include a file whose parent directory is excluded).",
+   "mitigation": "Both files rewritten on 2026-10-04: README combines both sides and leads with the one-click download; .gitignore keeps the data/large-artifact rules, anchors the Python template's 'downloads/' to '/downloads/' so docs/downloads/ stays trackable, and drops the duplicated blocks. tests/test_repo_hygiene.py now FAILS on any conflict marker in any tracked text file and asserts that the primary download is not git-ignored."
+  },
+  {
+   "id": "IR-32-SHIP-01",
+   "severity": "high -> superseded",
+   "statement": "The repository's previously-shipped PRIMARY download, docs/downloads/gems32-h19-5-smoothmaxcov-44090.tif (sha256 2dc67f4bdb8d1bf2...), places 25,485 of its 44,090 emitted pixels (57.8%) OFF the belief field it is supposed to be packing, and scores 0.0163197 against the only real truth raster in this competition (labels.tif, 60,988 catalogue pixels) versus the incumbent's 0.1617720. That is a 10x collapse in credit per unit of emitted mass at IDENTICAL budget (0.0213 vs 0.2154). The README advertised +0.0100 (blocked holdout) and +0.0247 (live-anchored model) for this same artifact. Those two figures are a different frame and a model estimate respectively, so they are not the same measurement -- but neither was ever checked against the artifact's own internal consistency, and on that test it fails outright. SUPERSEDED 2026-10-04: the primary download is now gems32-heatfield-44090-cv-supconfined-zeros.tif (sha256 a84734ab532fffde...), a cross-validated field that beats the shipped artifact by +15.0% at matched mass under the whole-raster protocol. The defective file is retained on disk for the audit trail.",
+   "mitigation": "Root cause isolated and reproduced: the superseded rule smooths a 1-px binary ridge by sigma = 1.85 px and then runs a max-coverage greedy on the blur; smoothing lowers and SHIFTS the peak, so the sweep spreads mass over the blurred blob instead of locking onto the crest. Replaced by src/gems32/emitter.py: support-confined, lazy-greedy on the EXACT coverage-deducted marginal gain. Measured at matched 44,090-px budget: 0 off-support pixels, credit delivered on the field's own surface 90,230.9 vs the incumbent's 88,569.5 (+1.9%), and +0.1314 over the rule it replaces on the catalogue proxy. All six previously shipped files are demoted to comparators and the audit is reproducible with scripts/audit_shipped.py."
+  },
+  {
+   "id": "IR-32-BAR-01",
+   "severity": "medium",
+   "statement": "Two documents in this repository state DIFFERENT marginal bars for the same metric. src/gems32/metric.py and the passing test tests/test_metric.py::test_marginal_emission_rule_exact_single_truth_pixel say k > alpha*s = 0.0520 at s = 0.26. docs/research/score-ceiling-analysis.md section 1 states k > alpha*s/(1 - alpha*s) = 0.0549. The latter form does not follow from the metric: adding one unit of mass raises the denominator by EXACTLY alpha regardless of where it lands, giving k > alpha*s. A brute-force sweep over 300 random configurations agrees with the alpha*s form 300/300.",
+   "mitigation": "The exact theorem is stated, machine-verified in scripts/verify_theorems.py block (B), and used by src/gems32/emitter.py. NOTE the propagated consequence: the successor repository GEMSDOE28 uses tau_live = 0.05485 as its live break-even efficiency, which is 5.5% too high, biasing its pruning rule toward deleting dots that were still profitable."
+  },
+  {
+   "id": "IR-32-BAR-02",
+   "severity": "medium",
+   "statement": "The 'adaptive credit bar' that this project has repeatedly cited as its stopping rule CANNOT BIND on an emission confined to its own belief support. For a support pixel of a binary field, kbar(x) = sum_delta field(x+delta)k(delta) >= field(x)k(0) = 1, so the added false-positive mass 1 - kbar <= 0 and the acceptance inequality holds unconditionally for any s < 1/alpha = 5. Measured: emitter.emit(field, budget=None, prior_dti=0.26) consumes the ENTIRE 121,131-px H19-5 support and terminates with stopped_by='exhausted_support'.",
+   "mitigation": "Stated openly in knowledge/02 section 4b. The bar is still the correct rule for deciding whether a dot PAYS; it is simply not a constraint on an emission that never leaves its own support. Budget must therefore come from somewhere else -- which is exactly why the three-slot identification experiment that measures the hidden-set quantities is the next action rather than another budget sweep."
+  },
+  {
+   "id": "IR-32-FETCH-01",
+   "severity": "medium (FIXED 2026-10-04)",
+   "statement": "scripts/fetch_data.py's cache guard compared a file's sha256 TO ITSELF: 'hashlib.sha256(dest.read_bytes()).hexdigest() == _sha(dest)' is vacuously true, so any pre-existing file was accepted WITHOUT verification. A corrupted or truncated mirror would have been used silently.",
+   "mitigation": "The pinned digest is now passed into gh_raw(..., want_sha=...) so a stale file is re-fetched rather than trusted, and the post-fetch verification is unchanged. scripts/fetch_mirrors.sh is added as a fail-closed shell entry point that exits non-zero on any digest mismatch. All six mirrors were re-fetched and matched their pins on 2026-10-04."
+  },
+  {
+   "id": "IR-32-SCORE-02",
+   "severity": "high",
+   "statement": "The standing brief states that the highest score from the group's sites is 'h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan: 0.2708' on GEMSDOE28. That page itself prints 'NO GEMSDOE28 SCORE' and prices the same family as a PROJECTION to 0.2701, i.e. a model estimate, not a score. The live public leaderboard's 0.2708 is rank #13, participant smashi34 -- an unrelated team. The brief also states '0.3195 is the highest score right now'; the official leaderboard read on 2026-10-04 has 0.3262 at #1 (nchuzhoy), 0.3222 at #2 (kinghorton42), and 0.3195 at #3 (DARD).",
+   "mitigation": "Both corrections are printed at the top of README.md and in knowledge/02 section 1 with the leaderboard link and the read date. No projection or owner report is presented as an organizer-verified result anywhere in this repository."
+  },
+  {
+   "id": "IR-32-REDUND-01",
+   "severity": "low",
+   "statement": "src/gems32/features.py spends derived channels recomputing layers that the organizers already supply. MEASURED: tmi_edge (= gaussian-smoothed |grad tmi|) correlates with official band 3 'tmi_hg' at Spearman rho = +0.9330. The measured participation ratio of the 35-channel stack is 16.95 effective dimensions. Conversely, 13 of the 19 official bands receive NO derived transform, including band 6 'tc', which the organizers describe as a magnetic field derivative FOR EDGE DETECTION, and bands 10/16 (seismicity).",
+   "mitigation": "Recorded rather than silently changed: altering the feature stack would invalidate the stored holdout receipts. NOTE a claim in this session's own first draft was that grav_edge duplicates official band 18; that is FALSE and is retracted here -- measured Spearman rho = -0.0098. The redundancy finding is limited to tmi_edge and is the motivation for hypotheses H61-3 (use band 6) and H61-2 (use bands 10/16)."
+  },
+  {
+   "id": "IR-32-DATA-03",
+   "severity": "informational (RESOLVED 2026-10-04)",
+   "statement": "The standing brief recorded 'the single remaining blocker to training is data placement'. Every hash-pinned competition raster is now fetched and digest-verified in this checkout: training_features.tif 418,912,844 bytes sha256 4371c82e...; labels.tif and existing_faults.tif 425,830 bytes 7ba308cc...; sample_submission.tif 1,599,597 bytes 2176d08e...; h19_5.tif 1,712,322 bytes ec1f9b56...; qfaults_v2_in_footprint.json 1,252,341 bytes 4d6efc7b... . All six match their manifest pins. The feature stack builds in 147 s on 2 vCPU.",
+   "mitigation": "bash scripts/fetch_mirrors.sh reproduces the fetch with no DrivenData credentials; drivendata.org is never contacted by any script in this repository. The provenance caveat IR-32-DATA-01 still stands: these are owner mirrors, not organizer bytes, and only the sha256 pins make them usable."
+  },
+  {
+   "id": "IR-32-SCRIPT-01",
+   "severity": "low (FIXED 2026-10-04)",
+   "statement": "scripts/run_holdout.py used 'a' as the variable of its arm-logging loop, shadowing the argparse Namespace created earlier in the same function. The evidence JSON had already been written by then, so the 4-fold result is valid, but the closing print raised AttributeError: 'str' object has no attribute 'tag' and the process exited non-zero -- a successful run that reported itself as a failure. The observation log (registry/observations.jsonl, 38 entries) was also written before the crash, so no surrogate training data was lost.",
+   "mitigation": "loop variable renamed to 'arm'; comment records the defect in place; scripts/run_holdout.py compiles and the recorded evidence/holdout_run2.json is unaffected."
+  },
+  {
+   "id": "IR-32-FIELD-01",
+   "severity": "high (measured)",
+   "statement": "The group's emission field is barely better than chance. Measured against the only truth in the checkout (labels.tif): a uniform-random 44,090-px emission scores DTI 0.078315 (5 seeds, range 0.077684-0.078960) while the group's dotted-d2.8 artifact at the same mass scores 0.161772 - a factor of 2.07. At 121,131 px the margin collapses: random 0.151988 vs the group's h19_5 field 0.166351, i.e. +9.4%. The field's support is 8.0% within 1 px of a mapped fault and 20.0% within 3 px, versus 3.55% and 8.56% for random support of the same size. The field is informative, but most of the emitted mass is spent where the kernel cannot reach it.",
+   "mitigation": "A 35-channel gradient-boosted field, cross-validated on four spatially blocked quadrants with a 30 px buffer, beats every shipped artifact at matched mass under two independent protocols (docs/research/hypotheses-round3.md, knowledge/02 section 13)."
+  },
+  {
+   "id": "IR-32-EMIT-01",
+   "severity": "high (measured)",
+   "statement": "Emitted-mass optimum. Every informed field measured here peaks between 44,000 and 88,000 px and then loses score, because its ranking runs out of signal; a uniform-random emission has no ranking and keeps improving to 176,000 px, where it overtakes three of the five shipped artifacts. The previously shipped budget of 44,090 px sits just below the measured peak (88,000 px) under the whole-raster protocol.",
+   "mitigation": "Emit to the measured peak; the analytical stopping rule is the same bar as the marginal theorem - stop where the marginal expected kernel weight falls to alpha*DTI."
+  },
+  {
+   "id": "IR-32-BAND-01",
+   "severity": "medium (measured)",
+   "statement": "13 of the 19 official bands have no derived channel in src/gems32/features.py (bands 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16, 18, 19). Derived channels are built from only 6 bands (2, 12, 13, 14, 15, 17). Band 6 'tc' is the single most discriminative official band on the map (two-sided blocked AUC 0.5735, best of 19) and has no transform at all.",
+   "mitigation": "Round-3 hypotheses H62-1..5 address this; H62-1 was falsified on its own falsifier."
+  },
+  {
+   "id": "IR-32-HYP-01",
+   "severity": "informational (falsification recorded)",
+   "statement": "Hypothesis H62-1 (tilt-angle zero-crossing lineaments on band 6, the rank-1 candidate by univariate band ranking) was FALSIFIED by its own preregistered falsifier: ten transform variants were built (hard and soft zero-crossing locators and a negative Laplacian, each at sigma = 1.5, 3.0 and 6.0 px, plus a gradient magnitude). The best variant TIES the raw band (0.5737 vs 0.5736) and NOT ONE variant beats raw on all four spatial blocks; the textbook hard zero-crossing locator is worse than random (0.5058). The layer is already a derivative product, so re-differentiating it amplifies noise.",
+   "mitigation": "H62-4 (detrended-elevation curvature) rises to rank 1. The general law is recorded in docs/research/hypotheses-round3.md: transform only layers that are still raw fields."
+  },
+  {
+   "id": "IR-32-TRANS-01",
+   "severity": "medium (measured)",
+   "statement": "Transform direction is layer-dependent and the repository applies it uniformly. Measured on four spatial blocks: the zero-crossing transform of det_elev gains +10.1% (0.5256 -> 0.5786) and of depth_to_base_surf gains +3.5% (0.5246 -> 0.5429), but the same transforms LOSE 0.04-0.06 on tc, 0.00-0.06 on geod_shearrate and 0.02-0.04 on geod_2ndinv. The repository's features.py docstring argues for replacing raw fields with line transforms as a general principle; that argument is measurably wrong for the strain-rate bands.",
+   "mitigation": "Use raw strain-rate layers (H62-3) and transform only the potential-field and subsurface field layers (H62-2, H62-4)."
+  },
+  {
+   "id": "IR-32-EMIT-02",
+   "severity": "high (FIXED 2026-10-04)",
+   "statement": "src/gems32/emission.py was dead in two places. _kernel_offsets() returns a 3-TUPLE OF ARRAYS, but coverage_credit() and greedy_cover() both wrote 'for dy, dx, k in _OFF', which iterates the three arrays and tries to unpack each one; for any footprint wider than 3 px this raises ValueError: too many values to unpack. Consequence: emission.greedy_cover -- the module's own REFERENCE greedy, the thing greedy_cover_fast is supposed to agree with -- could not run at all, so the fast path had never been checked against it. greedy_cover also used an inexact gain update ('coverage_credit * (1 - C)') that is not the metric's marginal gain.",
+   "mitigation": "Both call sites fixed to zip(*_OFF); added coverage_credit_residual() which computes the exact marginal gain sum_o f(x+o)*max(0, k(o) - C(x+o)) as a sum of shifted products; greedy_cover now uses it. After the fix greedy_cover and greedy_cover_fast produce BIT-IDENTICAL masks and identical objective values on all four test seeds."
+  },
+  {
+   "id": "IR-32-MERGE-02",
+   "severity": "medium (FIXED 2026-10-04)",
+   "statement": "The parallel-session rewrite of src/gems32/holdout.py deleted greedy_cover_adaptive while tests/test_emission.py still imported and used it, so the merged tree contained a test suite that could not pass against its own modules (27 failures at merge time). Related: paths.data_dir() did not look in data/raw/, which is where the fetched inputs actually land.",
+   "mitigation": "Tests re-pointed at the production pair emission.greedy_cover vs emission.greedy_cover_fast (a stronger test than the original, since it now exercises the shipped fast path); paths.data_dir() extended to search .cache/gems_data/, data/ and data/raw/. Full suite: 60 passed."
+  },
+  {
+   "id": "IR-32-CI-01",
+   "severity": "high",
+   "statement": "main's CI was RED before this merge (runs 37177047885 and 37177047887, both failure) because PR #7 added tests that depend on artifacts which are gitignored and were never committed: tests/test_gems32.py::test_all_12_submission_geotiffs_pass_range_01_audit requires docs/downloads/submissions_manifest.json plus 12 GeoTIFFs, and test_docs_and_readme_integrity requires the Core Values block and the portal-error string in docs/index.html, which scripts/build_site.py did not emit.",
+   "mitigation": "The artifact-dependent audit now SKIPS with an explicit reason when its manifest is absent (a silent pass would be worse than a failure); build_site.py now emits the Core Values strip on every page and a dedicated portal-error block on the home page; scripts/build_site.py data_dir() resolution fixed. All 60 tests pass in a clean checkout with only the hash-pinned inputs restored. This merge is what turns main green."
+  },
+  {
+   "id": "IR-32-MANIFEST-01",
+   "severity": "high",
+   "status": "fixed 2026-10-04",
+   "statement": "scripts/run_pipeline.py requires scored/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif, which was absent from registry/data_manifest.json and therefore never restored; the documented reproduce command (and step [3/6]) aborted with rasterio CPLE_OpenFailedError.",
+   "evidence": "traceback reproduced twice this session; the file was then pinned from the GEMSDOE27 manifest (sha256 33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d, 1,635,084 bytes) and fetch_mirrors.sh now reports 23/23 PASS.",
+   "mitigation": "manifest entry added (group 'scored'); fetch_mirrors.sh fails closed on digest mismatch."
+  },
+  {
+   "id": "IR-32-INSTR-01",
+   "severity": "high",
+   "status": "open (instrument defect, quantified)",
+   "statement": "The repository's promotion instrument drift_corrected_holdout_mean is discontinuous in the number of dots placed on the visible catalogue: holdout.py sets debiased_folds = dti and sym_factor = 1/(1+(n/60000)^2) whenever n_on_cat > 0. Adding ONE dot on a mapped fault to the 0.2600 emission moves drift 0.14801 -> 0.07831 (-47%) while catalogue_hidden_mean (0.09832) and SGMC (0.06059) are unchanged.",
+   "evidence": "controlled experiment this session: base mask + 1 catalogue pixel at (yy[0], xx[0]); outputs recorded in the session log and reproducible from src/gems32/holdout.py lines ~200-215.",
+   "consequence": "every cross-candidate drift comparison that straddles this branch is invalid, and every artifact in this repository that was 'promoted' happens to carry 0 on-catalogue dots.",
+   "mitigation": "slot decisions this session require on_catalogue_pixels == 0 AND agreement with the catalogue-hidden and SGMC instruments (registry/slot_plan.json); a branch-free estimator is proposed as next work."
+  },
+  {
+   "id": "IR-32-INSTR-02",
+   "severity": "medium",
+   "status": "open (cross-repository contradiction)",
+   "statement": "Over the 12 stored artifacts with owner-reported live scores the rank correlation with the live board is: catalogue_hidden Spearman +0.140, catalogue_hidden_strict +0.140, SGMC-calibrated +0.537, drift-corrected +0.529 (LOO MAE 0.053). The sibling repository GEMSDOE29 reports +0.709 for the catalogue-hidden proxy on a set of ten stored artifacts. The two measurements disagree about the same instrument.",
+   "evidence": "evidence/instrument_calibration.json (this checkout, n=12, scripts/calibrate_instrument.py).",
+   "mitigation": "only the drift/SGMC pair is used for promotion here, and both are labelled as weak rankers (n=12, p approx 0.09); the contradiction is disclosed rather than resolved."
+  },
+  {
+   "id": "IR-32-SITE-01",
+   "severity": "high",
+   "status": "fixed 2026-10-04",
+   "statement": "The published site's one-click file (gems32-heatfield-44090-cv-supconfined-zeros.tif) measures catalogue_hidden 0.11549 but SGMC-calibrated 0.01124 and drift 0.07789 -- below the owner-reported 0.2600 incumbent on two of the three instruments -- while the README's slot table advertised the H32-D family that the site never offered. The obvious download was therefore not the best-validated artifact.",
+   "evidence": "evidence/h33_probe_controls.json; registry/submission_build.json before/after this session.",
+   "mitigation": "scripts/build_slot_plan.py selects the headline artifact by the frozen rule and rewrites registry/submission_build.json; the site is regenerated from it."
+  },
+  {
+   "id": "IR-32-DUP-01",
+   "severity": "low",
+   "status": "flagged",
+   "statement": "registry/irregularities.json contains the id IR-32-FIELD-01 twice, so an id-based lookup silently returns the first entry only.",
+   "evidence": "python3 -c \"import json;print([x['id'] for x in json.load(open('registry/irregularities.json'))['items']])\"",
+   "mitigation": "flagged for a deduplicating pass; ids are stable and referenced from the site, so the rename is deferred to avoid breaking links."
+  },
+  {
+   "id": "IR-32-H33-01",
+   "severity": "medium",
+   "status": "open (instrument power)",
+   "statement": "All four label-free H33 surfaces score BELOW a uniform-random control on the catalogue-hidden instrument at 44,090 px (H33-A 0.01874, H33-B 0.02177, H33-C 0.02407, H33-D 0.00394, union 0.02006, random 0.03438), while H33-B scores 0.09072 on the off-catalogue SGMC instrument against the incumbent's 0.06059. The catalogue-hidden instrument therefore has no power to rank hypotheses whose purpose is to find faults the catalogue lacks.",
+   "evidence": "evidence/h33_holdout.json; evidence/h33_candidates.json.",
+   "mitigation": "the sign disagreement is reported as the session's central finding; promotion stays gated on the identification experiment (measuring T, K and F live) rather than on this instrument."
+  }
+ ]
+}
