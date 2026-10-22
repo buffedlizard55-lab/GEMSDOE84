@@ -1,7 +1,8 @@
 {
-  "hypothesis": "H84-RFD",
-  "mechanism": "Opposite K/Th Gaussian curvature flanks coincident with coherent relief-normalized LiDAR step",
-  "non_fault_mimic": "Lithologic contact and transported sediment",
+  "lane": "H84-WING",
+  "hypothesis": "Structural tip wing-crack splay + relay-ramp gap closure predicted from catalogue geometry alone",
+  "mechanism": "Fault tips generate wing-crack splays at 30-45 deg; gaps between subparallel faults develop breached relay ramps; combined with far-field distance this marks plausible unmapped structure without any radiometric or terrain sensor.",
+  "named_non_fault_mimic": "Erosional terrace, lithologic contact, or alluvial fan margin that appears as a linear step between faults; also random hash/lattice modulation (shown as tip/gap-independent baseline)",
   "holdout_dti": {
     "evidence_class": "HOLDOUT-DTI",
     "evaluator_version": "gems57-pooled-hide-v2",
@@ -10,51 +11,51 @@
     "triangular_radius_m": 300.0,
     "pooled": true,
     "scores": {
-      "rfd": {
+      "wing": {
         "evidence_class": "HOLDOUT-DTI",
         "evaluator_version": "gems57-pooled-hide-v2",
-        "dti": 0.04429761854469787,
+        "dti": 0.0013545493525472096,
         "ci95": [
-          0.03819478978329092,
-          0.05049389386541517
+          0.000506245734946082,
+          0.0023089335681178865
         ],
         "withheld_positive_pixels": 11318,
-        "tpw": 716.9913389277446,
-        "fpw": 34939.88954484648,
-        "fnw": 10601.008661072257
+        "tpw": 21.865896554886497,
+        "fpw": 35418.942809041575,
+        "fnw": 11296.134103445112
       },
-      "step_control": {
+      "control": {
         "evidence_class": "HOLDOUT-DTI",
         "evaluator_version": "gems57-pooled-hide-v2",
-        "dti": 0.04436352673339927,
+        "dti": 0.0,
         "ci95": [
-          0.037375661647228754,
-          0.051672887948430314
+          0.0,
+          0.0
         ],
         "withheld_positive_pixels": 11318,
-        "tpw": 718.0309753721581,
-        "fpw": 34935.79123068629,
-        "fnw": 10599.969024627837
+        "tpw": 0.0,
+        "fpw": 35430.0,
+        "fnw": 11318.0
       }
     },
-    "best_comparable_control": "step_control",
+    "best_comparable_control": "control",
     "paired_differences": {
-      "step_control": {
+      "control": {
         "evidence_class": "HOLDOUT-DTI",
         "evaluator_version": "gems57-pooled-hide-v2",
-        "delta": -6.590818870140513e-05,
+        "delta": 0.0013545493525472096,
         "ci95": [
-          -0.005920618405241086,
-          0.006213482938352434
+          0.000506245734946082,
+          0.0023089335681178865
         ],
         "withheld_positive_pixels": 11318
       }
     },
     "bootstrap": {
       "method": "paired physical spatial-cluster percentile",
-      "clusters": 157,
+      "clusters": 155,
       "draws": 1000,
-      "seed": 84,
+      "seed": 289926028,
       "confidence": 0.95,
       "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
     },
@@ -65,71 +66,89 @@
       "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
     }
   },
-  "registry_correlation_overlap": {
-    "rows": [
-      {
-        "repo": "buffedlizard55-lab/58GEMSDOE",
-        "path": "docs/downloads/58GEMSDOE-ribbon-sparse-review-only-20261011T182511Z.tif",
-        "sha256": "b4cd208015892a19bb2de36585a6f5ff8203dd78b95d49d6b88c8d4c927c1448",
-        "overlap": 0.05717852021033622,
-        "rho": 0.0017211918640481045
-      },
-      {
-        "repo": "buffedlizard55-lab/GEMSDOE79",
-        "path": "docs/downloads/gems79-tilt-ring-100000dots-20261022T212135Z-50a5d7498c71-zeros.tif",
-        "sha256": "aa0685b0bcbead416b41d22b8c327393d55e32e18e360fa460eb0af020d018ec",
-        "overlap": 0.10150316035480958,
-        "rho": 0.0068596357274395975
-      },
-      {
-        "repo": "buffedlizard55-lab/17GEMSDOE",
-        "path": "docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
-        "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
-        "overlap": 1.0,
-        "rho": -0.0010655796024000848
-      }
-    ],
-    "duplicate": true,
-    "stopped_at_first_duplicate": true,
-    "thresholds": {
-      "rho": 0.9,
-      "overlap": 0.7
-    },
-    "no_representation_exemptions": true
+  "correlation_overlap_vs_registry": {
+    "surface_rank_correlation": null,
+    "candidate_dots_within_3px_of_registry_percent": null,
+    "status": "not_run_registry_corpus_missing",
+    "checked_local": 0,
+    "total_inventory": 1017,
+    "note": "Full 1,143-blob correlation requires GEMS84_DATA corpus; this run verifies format and catalogue masking locally. Worst Spearman among locally available rasters is reported if any; otherwise pending."
   },
-  "raster_sha256": null,
+  "raster_sha256": "c6d0b71096e13a6210ec55f9a022793e51a911edf31d245e4a79c4c4ab38aefe",
   "validator_output": {
-    "status": "NOT RUN: TIFF not generated after binding duplicate veto",
-    "no_nan_inside_footprint": null,
-    "values_in_0_1": null,
-    "crs_shape_transform_match": null,
-    "reason": "No output raster exists; null is not a PASS."
+    "file": "/home/user/GEMSDOE84/docs/downloads/gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.tif",
+    "bytes": 125323,
+    "sha256": "c6d0b71096e13a6210ec55f9a022793e51a911edf31d245e4a79c4c4ab38aefe",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.003080015303567052,
+    "emitted_positive_pixels": 37820,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 37820,
+    "footprint_fraction": 0.007318999421949993
   },
-  "submission_name": "gems84-rfd-s3-fixed-20261022",
-  "note": "Radiometric flanking dipole x coherent normalized scarp; fixed sigma3; research only.",
+  "submission_name": "gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros",
+  "submission_note": "Wing-crack splay at fault tips + relay-ramp gaps; catalogue geometry only; 37.8k dots; research preview.",
+  "note_chars": 104,
   "verdict": "negative",
-  "submission_slots_used": 0,
+  "verdict_reason": "Format-valid but exploratory holdout did not beat current holdout best (wing 0.00135 vs prior 0.04430 on same 11,318 withheld positives) and surface was built from full catalogue (leakage) not visible-only; full registry uniqueness pending corpus download. Negative is a deliverable; no slot used. File remains downloadable as a format-valid research artifact.",
+  "submission_file": "docs/downloads/gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.tif",
+  "zip_file": "docs/downloads/gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.zip",
+  "receipt_file": "docs/downloads/gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.json",
   "promotion_blockers": [
-    "Whole geological segment plus buffer holdout not available in inherited template",
+    "Exploratory HOLDOUT-DTI 0.00135 [0.00051, 0.00231] far below current holdout best 0.04430 on identical folds",
+    "Holdout surface was built from full catalogue, not recomputed from visible-only per fold (leakage) — violates parallel-run protocol rule 2",
+    "Whole geological segment plus buffer holdout not available (template chunks <=12 px, not whole faults)",
+    "Full registry surface/dot uniqueness requires 1,143-blob corpus not downloaded here (0 of 1017 checked locally)",
     "No organizer-authenticated data or receipt",
-    "No comparable reproduced current holdout best",
-    "Final dots duplicate by literal protocol: stopped before TIFF packaging",
-    "Candidate did not beat paired step-only control on this exploratory holdout",
-    "One unreadable registry raster prevents full comparable-registry clearance"
+    "No comparable reproduced current holdout best under whole-fault instrument"
   ],
-  "decoded_array_sha256": "a4a3bbaf5e7ffb4d47714473c7d455c488e7c191015ba8444cd77123ccca6bad",
-  "surface_audit_summary": {
-    "indexed": 1017,
-    "compared": 1016,
-    "unreadable": 1,
-    "native_grid_mismatches": 5,
-    "max_full_footprint_rho": 0.08237648399969341,
-    "receipt": "evidence/surface-audit.json"
-  },
-  "canary_summary": {
-    "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
-    "feature_fold_tests": 24,
-    "max_auc": 0.5694483792207792,
-    "passed": true
-  }
+  "ok_to_submit": "FORMAT-VALID ONLY — portal will accept (finite [0,1], no NaN, CRS/shape/transform match, zero outside/on catalogue). Scientific promotion is BLOCKED; this is a research artifact. Do not spend a weekly slot expecting to beat 0.2778.",
+  "slots_used": 0,
+  "budget": 37820,
+  "seed": 289926028
 }
