@@ -1,0 +1,453 @@
+{
+ "evidence_class": "HOLDOUT-DTI",
+ "evaluator_version": "gems57-pooled-hide-v2",
+ "split": "holdout.buffered_component_draw (whole components, 3 px buffer, 4 quadrants)",
+ "seeds": [
+  20,
+  21
+ ],
+ "selected_model": [
+  "intercept",
+  "dcat_0_1.5",
+  "dcat_1.5_2.5",
+  "dcat_2.5_4",
+  "dcat_4_7",
+  "dcat_7_12",
+  "dcat_12_20",
+  "dcat_20_35",
+  "cat_density_5km",
+  "det_elev_slope",
+  "det_elev_line_s1p5",
+  "det_elev_line_s4",
+  "iso_grav_hg",
+  "tmi_hg",
+  "basement_depth_grad",
+  "cond_surf",
+  "geod_2ndinv",
+  "relief_local_10m",
+  "curv_prof_absmax_10m",
+  "hs_lineament_10m",
+  "lidar_ex_max",
+  "lidar_valid",
+  "ml_prob",
+  "ml_ridge"
+ ],
+ "summary": {
+  "evidence_class": "HOLDOUT-DTI",
+  "evaluator_version": "gems57-pooled-hide-v2",
+  "alpha": 0.2,
+  "beta": 0.8,
+  "triangular_radius_m": 300.0,
+  "pooled": true,
+  "scores": {
+   "liti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.008671628338565563,
+    "ci95": [
+     0.003737103006582962,
+     0.014936738102491296
+    ],
+    "withheld_positive_pixels": 22893,
+    "tpw": 239.95899738109853,
+    "fpw": 46546.713683459326,
+    "fnw": 22653.0410026189
+   },
+   "incumbent_recipe": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.10564450185732029,
+    "ci95": [
+     0.0934191422179486,
+     0.11807626043390937
+    ],
+    "withheld_positive_pixels": 22893,
+    "tpw": 3524.103620286295,
+    "fpw": 71694.57447131119,
+    "fnw": 19368.896379713697
+   },
+   "incumbent_asis": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.0038851762665228526,
+    "ci95": [
+     0.003327429387914053,
+     0.004465175255602928
+    ],
+    "withheld_positive_pixels": 22893,
+    "tpw": 126.10656936923311,
+    "fpw": 70593.84715207116,
+    "fnw": 22766.893430630775
+   }
+  },
+  "best_comparable_control": "incumbent_recipe",
+  "paired_differences": {
+   "incumbent_recipe": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "delta": -0.09697287351875472,
+    "ci95": [
+     -0.10829544544766745,
+     -0.08548269991909563
+    ],
+    "withheld_positive_pixels": 22893
+   },
+   "incumbent_asis": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "delta": 0.00478645207204271,
+    "ci95": [
+     -3.760647604302402e-05,
+     0.010965696373914136
+    ],
+    "withheld_positive_pixels": 22893
+   }
+  },
+  "bootstrap": {
+   "method": "paired physical spatial-cluster percentile",
+   "clusters": 155,
+   "draws": 1000,
+   "seed": 520810,
+   "confidence": 0.95,
+   "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
+  },
+  "implementation_sha256": {
+   "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+   "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+   "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+   "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+  }
+ },
+ "per_fold": [
+  {
+   "seed": 20,
+   "fold": "NW",
+   "arm": "liti",
+   "dti": 0.0058827710017581416,
+   "tp": 19.41599040151079,
+   "fp": 8791.003019031345,
+   "fn": 1903.5840095984893,
+   "n_truth": 1923,
+   "n_emitted_in_region": 8829
+  },
+  {
+   "seed": 20,
+   "fold": "NW",
+   "arm": "incumbent_recipe",
+   "dti": 0.08832142341103347,
+   "tp": 292.0641186177866,
+   "fp": 8550.096413338762,
+   "fn": 1630.9358813822134,
+   "n_truth": 1923,
+   "n_emitted_in_region": 8681
+  },
+  {
+   "seed": 20,
+   "fold": "NW",
+   "arm": "incumbent_asis",
+   "dti": 0.0033190361096884797,
+   "tp": 10.722201368809387,
+   "fp": 8449.860980101541,
+   "fn": 1912.2777986311905,
+   "n_truth": 1923,
+   "n_emitted_in_region": 8458
+  },
+  {
+   "seed": 20,
+   "fold": "NE",
+   "arm": "liti",
+   "dti": 0.001986736379814971,
+   "tp": 6.0950744526270455,
+   "fp": 5865.319139109746,
+   "fn": 2360.904925547373,
+   "n_truth": 2367,
+   "n_emitted_in_region": 5872
+  },
+  {
+   "seed": 20,
+   "fold": "NE",
+   "arm": "incumbent_recipe",
+   "dti": 0.11120102275283777,
+   "tp": 437.21106720209445,
+   "fp": 9753.379131822716,
+   "fn": 1929.7889327979055,
+   "n_truth": 2367,
+   "n_emitted_in_region": 9943
+  },
+  {
+   "seed": 20,
+   "fold": "NE",
+   "arm": "incumbent_asis",
+   "dti": 0.004407926168167087,
+   "tp": 16.83908815957236,
+   "fp": 9616.07993491746,
+   "fn": 2350.1609118404276,
+   "n_truth": 2367,
+   "n_emitted_in_region": 9629
+  },
+  {
+   "seed": 20,
+   "fold": "SW",
+   "arm": "liti",
+   "dti": 0.0,
+   "tp": 0.0,
+   "fp": 947.0,
+   "fn": 3781.0,
+   "n_truth": 3781,
+   "n_emitted_in_region": 947
+  },
+  {
+   "seed": 20,
+   "fold": "SW",
+   "arm": "incumbent_recipe",
+   "dti": 0.08291502326744625,
+   "tp": 428.8670933234493,
+   "fp": 10308.977746309443,
+   "fn": 3352.1329066765506,
+   "n_truth": 3781,
+   "n_emitted_in_region": 10495
+  },
+  {
+   "seed": 20,
+   "fold": "SW",
+   "arm": "incumbent_asis",
+   "dti": 0.0031089001997361824,
+   "tp": 15.737440997325816,
+   "fp": 10170.565216291698,
+   "fn": 3765.262559002674,
+   "n_truth": 3781,
+   "n_emitted_in_region": 10184
+  },
+  {
+   "seed": 20,
+   "fold": "SE",
+   "arm": "liti",
+   "dti": 0.004452450792307119,
+   "tp": 18.523482238587423,
+   "fp": 7782.921724738236,
+   "fn": 3231.4765177614127,
+   "n_truth": 3250,
+   "n_emitted_in_region": 7825
+  },
+  {
+   "seed": 20,
+   "fold": "SE",
+   "arm": "incumbent_recipe",
+   "dti": 0.10441871196782418,
+   "tp": 430.7781741169538,
+   "fp": 7196.663306376249,
+   "fn": 2819.221825883046,
+   "n_truth": 3250,
+   "n_emitted_in_region": 7374
+  },
+  {
+   "seed": 20,
+   "fold": "SE",
+   "arm": "incumbent_asis",
+   "dti": 0.004072828198897818,
+   "tp": 16.355680318400545,
+   "fp": 7062.664989920877,
+   "fn": 3233.6443196815994,
+   "n_truth": 3250,
+   "n_emitted_in_region": 7074
+  },
+  {
+   "seed": 20,
+   "liti_emission": {
+    "G": 20448.806640625,
+    "n_dots": 27823,
+    "surrogate_dti": 0.6421934783225965,
+    "rounds": 4
+   },
+   "dots": {
+    "liti": 27823,
+    "incumbent_recipe": 38802,
+    "incumbent_asis": 37654
+   }
+  },
+  {
+   "seed": 21,
+   "fold": "NW",
+   "arm": "liti",
+   "dti": 0.022037556561828858,
+   "tp": 66.49248882413757,
+   "fp": 7347.682931210598,
+   "fn": 1851.5075111758624,
+   "n_truth": 1918,
+   "n_emitted_in_region": 7488
+  },
+  {
+   "seed": 21,
+   "fold": "NW",
+   "arm": "incumbent_recipe",
+   "dti": 0.0933684246676595,
+   "tp": 308.85570425383366,
+   "fp": 8558.767051147193,
+   "fn": 1609.1442957461663,
+   "n_truth": 1918,
+   "n_emitted_in_region": 8699
+  },
+  {
+   "seed": 21,
+   "fold": "NW",
+   "arm": "incumbent_asis",
+   "dti": 0.004664369495109798,
+   "tp": 15.051149496310579,
+   "fp": 8447.122517588221,
+   "fn": 1902.9488505036895,
+   "n_truth": 1918,
+   "n_emitted_in_region": 8458
+  },
+  {
+   "seed": 21,
+   "fold": "NE",
+   "arm": "liti",
+   "dti": 0.012046580278805338,
+   "tp": 33.80432379005556,
+   "fp": 4552.867870181301,
+   "fn": 2327.1956762099444,
+   "n_truth": 2361,
+   "n_emitted_in_region": 4619
+  },
+  {
+   "seed": 21,
+   "fold": "NE",
+   "arm": "incumbent_recipe",
+   "dti": 0.12685392447038712,
+   "tp": 500.0152908988018,
+   "fp": 9764.29460122147,
+   "fn": 1860.9847091011982,
+   "n_truth": 2361,
+   "n_emitted_in_region": 9975
+  },
+  {
+   "seed": 21,
+   "fold": "NE",
+   "arm": "incumbent_asis",
+   "dti": 0.005103989714363047,
+   "tp": 19.47402997758061,
+   "fp": 9613.788138849957,
+   "fn": 2341.525970022419,
+   "n_truth": 2361,
+   "n_emitted_in_region": 9629
+  },
+  {
+   "seed": 21,
+   "fold": "SW",
+   "arm": "liti",
+   "dti": 0.00787305061729796,
+   "tp": 26.290336598502684,
+   "fp": 1418.119909221526,
+   "fn": 3786.7096634014974,
+   "n_truth": 3813,
+   "n_emitted_in_region": 1479
+  },
+  {
+   "seed": 21,
+   "fold": "SW",
+   "arm": "incumbent_recipe",
+   "dti": 0.08407923928888746,
+   "tp": 437.20293493012883,
+   "fp": 10310.255351552774,
+   "fn": 3375.797065069871,
+   "n_truth": 3813,
+   "n_emitted_in_region": 10504
+  },
+  {
+   "seed": 21,
+   "fold": "SW",
+   "arm": "incumbent_asis",
+   "dti": 0.004262438821274605,
+   "tp": 21.688185523596268,
+   "fp": 10167.36379550027,
+   "fn": 3791.311814476404,
+   "n_truth": 3813,
+   "n_emitted_in_region": 10184
+  },
+  {
+   "seed": 21,
+   "fold": "SE",
+   "arm": "liti",
+   "dti": 0.014547627930521249,
+   "tp": 69.33730107567753,
+   "fp": 9841.799089966571,
+   "fn": 3410.6626989243223,
+   "n_truth": 3480,
+   "n_emitted_in_region": 9979
+  },
+  {
+   "seed": 21,
+   "fold": "SE",
+   "arm": "incumbent_recipe",
+   "dti": 0.1576097509489634,
+   "tp": 689.1092369432467,
+   "fp": 7252.140869542592,
+   "fn": 2790.8907630567533,
+   "n_truth": 3480,
+   "n_emitted_in_region": 7509
+  },
+  {
+   "seed": 21,
+   "fold": "SE",
+   "arm": "incumbent_asis",
+   "dti": 0.0024381980512183255,
+   "tp": 10.23879352763757,
+   "fp": 7066.401578901131,
+   "fn": 3469.7612064723626,
+   "n_truth": 3480,
+   "n_emitted_in_region": 7074
+  },
+  {
+   "seed": 21,
+   "liti_emission": {
+    "G": 22034.068359375,
+    "n_dots": 27180,
+    "surrogate_dti": 0.6406181941261957,
+    "rounds": 4
+   },
+   "dots": {
+    "liti": 27180,
+    "incumbent_recipe": 38996,
+    "incumbent_asis": 37654
+   }
+  }
+ ],
+ "leakage_canary": {
+  "rule": "single feature AUC > 0.90 => leakage until proven otherwise",
+  "auc_max_over_polarity": {
+   "det_elev_slope": 0.5630894939592344,
+   "det_elev_line_s1p5": 0.5512444984702184,
+   "det_elev_line_s4": 0.551383221001748,
+   "iso_grav_hg": 0.522326006042986,
+   "tmi_hg": 0.5338671728116192,
+   "basement_depth_grad": 0.5338292661250039,
+   "cond_surf": 0.5132648557985713,
+   "geod_2ndinv": 0.5618859024256682,
+   "relief_local_10m": 0.5640591647592232,
+   "curv_prof_absmax_10m": 0.5773748747802467,
+   "hs_lineament_10m": 0.5706600825912178,
+   "lidar_ex_max": 0.5736354784070317,
+   "lidar_valid": 0.5271418513485411,
+   "region_00": 0.5109696124848645,
+   "region_01": 0.5183101572794471,
+   "region_02": 0.5298603589906783,
+   "region_10": 0.5072123030820574,
+   "region_11": 0.5224794283899961,
+   "region_12": 0.5,
+   "region_20": 0.5,
+   "region_21": 0.5128880425724619,
+   "dcat_0_1.5": 0.513146875,
+   "dcat_1.5_2.5": 0.50992875,
+   "dcat_2.5_4": 0.5360133316571456,
+   "dcat_4_7": 0.5918980642215028,
+   "dcat_7_12": 0.5736208064667758,
+   "dcat_12_20": 0.5198667399825971,
+   "dcat_20_35": 0.5411826569472119,
+   "cat_density_5km": 0.6968539460146341,
+   "ml_prob": 0.749232498246162,
+   "ml_ridge": 0.6233488591818461
+  },
+  "flagged": []
+ },
+ "seconds": 250.0
+}

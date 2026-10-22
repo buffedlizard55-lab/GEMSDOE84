@@ -1,0 +1,198 @@
+{
+  "file": "gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.tif",
+  "sha256": "c6d0b71096e13a6210ec55f9a022793e51a911edf31d245e4a79c4c4ab38aefe",
+  "bytes": 125323,
+  "submission_name": "gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros",
+  "note": "Wing-crack splay at fault tips + relay-ramp gaps; catalogue geometry only; 37.8k dots; research preview.",
+  "note_chars": 104,
+  "validator": {
+    "file": "/home/user/GEMSDOE84/docs/downloads/gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.tif",
+    "bytes": 125323,
+    "sha256": "c6d0b71096e13a6210ec55f9a022793e51a911edf31d245e4a79c4c4ab38aefe",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.003080015303567052,
+    "emitted_positive_pixels": 37820,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 37820,
+    "footprint_fraction": 0.007318999421949993
+  },
+  "template_report": {
+    "path": "/home/user/GEMSDOE84/docs/downloads/gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.tif",
+    "bytes": 125323,
+    "sha256": "c6d0b71096e13a6210ec55f9a022793e51a911edf31d245e4a79c4c4ab38aefe",
+    "bands": 1,
+    "dtype": "float32",
+    "crs": "EPSG:32611",
+    "width": 3292,
+    "height": 3730,
+    "bounds": [
+      243350.0,
+      4135550.0,
+      572550.0,
+      4508550.0
+    ],
+    "ref_bounds": [
+      243350.0,
+      4135550.0,
+      572550.0,
+      4508550.0
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "nodata": null,
+    "blocksize": [
+      256,
+      256
+    ],
+    "fixture_grid": false,
+    "has_validity_mask": false,
+    "nan_pixels": 0,
+    "infinity_pixels": 0,
+    "n_nan": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.003080015303567052,
+    "n_nonzero": 37820,
+    "mass": 37820.0,
+    "mass_outside_footprint": 0,
+    "problems": [],
+    "ok": true,
+    "validation_class": "local on-disk template/range check; not organizer upload acceptance"
+  },
+  "zip_file": "gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.zip",
+  "zip_sha256": "f545e700f4dfdcd5a116b5657d6001863cd1e34af1af1eb9e7fe7e0dd30f2490",
+  "approved_for_weekly_slot": false,
+  "promoted": false,
+  "submission_slots_used": 0,
+  "status": "locally validated within separately recorded inventory scope; not organizer acceptance or slot approval",
+  "metadata": {
+    "lane": "H84-WING",
+    "mechanism": "Wing-crack splay at fault tips + relay-ramp gap closure; catalogue geometry only; 300m kernel DTI",
+    "non_fault_mimic": "Erosional ridge, lithologic contact, or DEM processing terrace that mimics a linear scarp between faults",
+    "budget": 37820,
+    "separation_px": 3,
+    "seed": 289926028,
+    "holdout": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "alpha": 0.2,
+      "beta": 0.8,
+      "triangular_radius_m": 300.0,
+      "pooled": true,
+      "scores": {
+        "wing": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0013545493525472096,
+          "ci95": [
+            0.000506245734946082,
+            0.0023089335681178865
+          ],
+          "withheld_positive_pixels": 11318,
+          "tpw": 21.865896554886497,
+          "fpw": 35418.942809041575,
+          "fnw": 11296.134103445112
+        },
+        "control": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "withheld_positive_pixels": 11318,
+          "tpw": 0.0,
+          "fpw": 35430.0,
+          "fnw": 11318.0
+        }
+      },
+      "best_comparable_control": "control",
+      "paired_differences": {
+        "control": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.0013545493525472096,
+          "ci95": [
+            0.000506245734946082,
+            0.0023089335681178865
+          ],
+          "withheld_positive_pixels": 11318
+        }
+      },
+      "bootstrap": {
+        "method": "paired physical spatial-cluster percentile",
+        "clusters": 155,
+        "draws": 1000,
+        "seed": 289926028,
+        "confidence": 0.95,
+        "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
+      },
+      "implementation_sha256": {
+        "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+        "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+        "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+        "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+      }
+    },
+    "surface_audit": {
+      "status": "not_run_registry_corpus_missing",
+      "worst_rho": null,
+      "checked": 0,
+      "note": "Registry corpus not downloaded; surface correlation check pending full corpus. In-memory self-check: surface max 1.0 min 0.0 finite true.",
+      "checked_local": 0,
+      "total_inventory": 1017
+    }
+  }
+}

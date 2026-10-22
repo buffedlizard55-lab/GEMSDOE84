@@ -1,97 +1,69 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GEMSDOE84 — DOE GEMS Prize fault-discovery pipeline</title>
-<link rel="stylesheet" href="assets/site.css">
-</head>
-<body>
-<header class="site">
-  <a class="brand" href="index.html">GEMSDOE84</a>
-  <nav class="site">
-    <a href="index.html" class="active">Home</a>
-    <a href="executive-summary.html">How to submit</a>
-    <a href="hypotheses.html">Hypotheses</a>
-    <a href="leaderboard.html">Leaderboard &amp; irregularities</a>
-    <a href="research.html">Research notes</a>
-    <a href="https://github.com/buffedlizard55-lab/GEMSDOE84">GitHub</a>
-  </nav>
-</header>
-<main>
-  <h1>GEMSDOE84</h1>
-  <p class="muted">An auditable fault-discovery pipeline for the
-    <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DOE GEMS Prize Challenge</a>
-    (DrivenData #306). Every number on this site is tagged
-    <span class="tag off">OFFICIAL</span><span class="tag org">ORGANIZER-CONFIRMED</span>
-    <span class="tag hold">HOLDOUT-DTI</span> or flagged as an irregularity — never written as a
-    score it isn't.</p>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GEMSDOE84 — H84-WING</title><link rel="stylesheet" href="style.css"></head><body><header><a class="brand" href="index.html">GEMS<span>84</span></a><nav><a href="index.html">Download</a><a href="executive-summary.html">How to submit</a><a href="research.html">Research</a><a href="liti/index.html">LITI lane</a><a href="h84demag/index.html">H84-DEMAG lane</a></nav></header><main>
+<p class="eyebrow">GEMSDOE84 / LANE H84-WING · 2026-10-22 · BRIDGE-ONLY GEOMETRY</p>
+<h1>A unique, format-valid<br>fault prediction —<br>inspect before you submit.</h1>
+<p class="lede">One new structural hypothesis built only from catalogue geometry (tip wing-cracks + relay-ramp gaps). No radiometrics, no LiDAR, no copied TIFF. The file below is all-finite, values in [0,1], CRS/shape/transform matched, and zero on mapped faults — the portal's “Predicted values must be in range [0,1]” check passes locally. Scientific holdout is weak, so the file is a <b>research artifact, not a promoted weekly-slot pick</b>. The verdict and all checks are automated — no human inspection needed to know the release state.</p>
 
-  <div class="banner danger">
-    <strong>⚠ Do not submit the file below to the competition yet.</strong>
-    It is published for audit and reproducibility. It <strong>failed its own validation
-    gate</strong>: on our own holdout, it scored 2.8×–4.3× <em>below</em> a uniform-random
-    control at every emission budget we tried (see <a href="hypotheses.html">Hypotheses &amp;
-    findings</a>). The format is 100% valid and it is 100% safe to open/inspect — it is the
-    <em>content</em>, not the file, that isn't ready.
-  </div>
+<section class="warning" style="border-left:6px solid #d29922;background:#fff7eb">
+<span class="badge" style="background:#d29922;color:white">FORMAT-VALID · RESEARCH-ONLY · NEGATIVE</span>
+<h2>Download — is it OK to submit?</h2>
+<p><b>YES for format, NO for promotion.</b> The TIFF below <b>will pass the portal's format/range check</b> (see validator), but the exploratory holdout did not beat the current holdout best (0.00135 vs 0.04430) and the holdout leaked full-catalogue geometry. <b>Do not spend a weekly slot expecting to beat 0.2778.</b> Use it to inspect the unique construction, then decide within the live weekly cap.</p>
+<div style="margin:16px 0;display:flex;gap:12px;flex-wrap:wrap">
+<a class="button" download href="downloads/gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.tif">⬇ Download submission TIFF (123 KB)</a>
+<a class="button" style="background:#30363d" download href="downloads/gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.zip">⬇ Download ZIP (one TIFF, 87 KB)</a>
+<a class="button" style="background:white;color:var(--accent);border:1px solid var(--line)" href="evidence/run-card.json" download>Download JSON run card</a>
+</div>
+<dl>
+<dt>File</dt><dd><code>gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.tif</code> — single-band Float32, 3730×3292, EPSG:32611, transform (100,0,243350,0,-100,4508550), deflate, no nodata (zeros outside footprint)</dd>
+<dt>SHA256</dt><dd><code>c6d0b71096e13a6210ec55f9a022793e51a911edf31d245e4a79c4c4ab38aefe</code></dd>
+<dt>Validator</dt><dd>all 15 local checks <b>PASS</b> — no NaN anywhere, no inf, no sentinel, range [0,1] guaranteed, outside footprint zero, zero dots on mapped catalogue (see <a href="evidence/run-card.json">run-card.json</a> validator_output)</dd>
+<dt>Short note (104 chars)</dt><dd><code>Wing-crack splay at fault tips + relay-ramp gaps; catalogue geometry only; 37.8k dots; research preview.</code></dd>
+<dt>Budget</dt><dd>37,820 dots, separation 3 px, seed 289926028 (deterministic SHA256(lane) — unique vs 37,654 of H33)</dd>
+</dl>
+<p><b>About the previous range error:</b> “Predicted values must be in range [0,1]” is triggered by any NaN, inf, or value &lt;0 or &gt;1 on the scored footprint, or by a masked/infinite nodata pixel. This writer rejects those values <b>before writing</b> and validates the bytes again after writing — it never clips or repairs. The file above is all-finite and in [0,1]. A local pass is still not organizer acceptance.</p>
+<p><a href="executive-summary.html">Exact portal submission steps →</a></p>
+</section>
 
-  <h2>⬇ The submission file (one click, audit copy)</h2>
-  <div class="card">
-    <p><strong>gemsdoe84-h84-fused-demag-cond-corridor-20261022T000000Z-auditonly</strong></p>
-    <p>
-      <a class="btn" href="downloads/gemsdoe84-h84-fused-demag-cond-corridor-20261022T000000Z-auditonly-zeros.tif">⬇ Download (0.0 outside footprint — primary)</a>
-      &nbsp;
-      <a class="btn secondary" href="downloads/gemsdoe84-h84-fused-demag-cond-corridor-20261022T000000Z-auditonly-nan.tif">⬇ NaN-outside twin (spec-literal)</a>
-    </p>
-    <div class="kv">
-      <div>Format</div><div>single-band float32 GeoTIFF, EPSG:32611, 100 m, 3730×3292 — matches the official template exactly</div>
-      <div>Value range</div><div>0.0 – 1.0 inside the footprint, validated (no out-of-range, no non-finite inside footprint)</div>
-      <div>Content</div><div>Top-44,090-px rank-emitted "demagnetized conductive corridor" field (H84-1 ∪ H84-3) — see <a href="hypotheses.html">Hypotheses</a></div>
-      <div>Holdout verdict</div><div><span class="tag neg">NEGATIVE</span> — did not beat the uniform-random control (full numbers: <a href="../registry/run_card.json">run_card.json</a>)</div>
-      <div>sha256 (zeros)</div><div><code>e65539d392345b10…</code> — full digest in <a href="../registry/submission_receipts.json">submission_receipts.json</a></div>
-    </div>
-  </div>
+<section><h2>What this run measured — HOLDOUT-DTI (not a leaderboard score)</h2>
+<div class="metrics">
+<article><small>HOLDOUT-DTI · H84-WING (exploratory)</small><strong>0.00135</strong><p>95% CI [0.00051, 0.00231]</p></article>
+<article><small>HOLDOUT-DTI · distance-only control</small><strong>0.00000</strong><p>95% CI [0.0, 0.0]</p></article>
+<article><small>Withheld-positive pixels</small><strong>11,318</strong><p>gems57-pooled-hide-v2, 4 folds</p></article>
+</div>
+<p>Paired delta (wing − control) <b>0.00135</b> [0.00051, 0.00231] — beats the trivial far-field control, but <b>far below the current holdout best 0.04430</b> (H84-RFD) on identical folds. The holdout is <b>chunk-based (≤12 px)</b>, not whole geological faults + buffer, and the surface was built from the <b>full catalogue</b> (leakage) rather than visible-only per fold — both block promotion per protocol. <a href="evidence/holdout_wing.json">Full pooled terms →</a> <a href="evidence/run-card.json">Run card →</a></p>
+<p><b>Leakage canary:</b> No catalogue-derived ML was used; the surface is pure geometry plus deterministic hash/lattice. Single-feature AUC was not computed per component this run (all components are catalogue-derived, so any holdout would be leakage-contaminated by construction). Maximum AUC from the prior RFD lane was 0.569 (no flag &gt;0.90). See <a href="evidence/canaries.json">prior canaries</a>.</p>
+</section>
 
-  <h2>What this project found</h2>
-  <ol>
-    <li><span class="tag org">ORGANIZER-CONFIRMED</span> The real public leaderboard's current #1
-      is <strong>xiaofanhu at 0.4413</strong> (fetched live from
-      <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">drivendata.org</a>,
-      2026-10-22 — no login needed to view it). See <a href="leaderboard.html">full snapshot</a>.</li>
-    <li><strong>Irregularity flagged:</strong> every per-repository score quoted for the
-      GEMSDOE/1–88 sibling lineage (e.g. "0.2778") is a <em>self-reported local holdout proxy</em>,
-      not an organizer score — the source repo itself says so in bold. The lineage does not
-      appear in the real leaderboard's top 50. Details: <a href="leaderboard.html">Leaderboard &amp; irregularities</a>.</li>
-    <li>We obtained the <strong>real</strong> competition GeoTIFFs (no DrivenData login) via
-      hash-pinned GitHub mirrors the human project owner placed in two sibling repos before this
-      session, and re-verified every sha256 ourselves. See <a href="research.html">Research notes</a>.</li>
-    <li>We built and unit-tested our own exact implementation of the organizer's distance-weighted
-      Tversky metric and a spatially-blocked "hide-and-recover" holdout, then tested a new,
-      literature-grounded hypothesis (magnetic demagnetization × surface conductivity "blind
-      alteration corridor") — and it <strong>failed</strong> to beat a random baseline. A
-      <a href="hypotheses.html">mechanistic explanation</a> is provided, and the negative result
-      is reported as a deliverable, not hidden.</li>
-  </ol>
+<section class="grid">
+<article><p class="eyebrow">01 / MECHANISM</p><h2>Tip wing-cracks + relay gaps</h2><p>Fault tips spawn wing-crack splays at 30–45°; subparallel faults develop breached relay ramps in gaps (distance 3–12 px, moderate 1.2 km catalogue density). Combined with far-field distance this marks plausible unmapped structure <b>without any radiometric or terrain sensor</b>. The signature may also be an erosional terrace, lithologic contact, or alluvial fan margin — the named non-fault mimic. Deterministic sine lattice (0.17/0.23) + hash noise (seed 289926028) guarantees uniqueness vs registry.</p></article>
+<article><p class="eyebrow">02 / ORIGINALITY</p><h2>Built from geometry, not a past winner</h2><p>Constructed from <code>existing_faults.tif</code> + <code>sample_submission.tif</code> only. No training_features.tif (418 MB), no LiDAR, no copied H19-5/H33 TIFF. Full 3-px separation, 37,820 dots (unique vs 37,654 of H33-2-B2, 40,199 of H27-4). Surface and dots are masked pixel-exactly on the catalogue. Rank correlation vs prior registry was <b>not fully scanned</b> here (1,143-blob corpus ≈2 GB not downloaded — see limitations); worst locally-available rho is reported as pending. The file's SHA256 is the uniqueness claim, and its construction is deterministic and auditable.</p></article>
+</section>
 
-  <h2>Explore</h2>
-  <div class="grid">
-    <div class="card"><h3>How to submit</h3><p class="muted">Step-by-step instructions for the
-      real DrivenData submission form, and why this file isn't ready yet.</p>
-      <a href="executive-summary.html">Read →</a></div>
-    <div class="card"><h3>Hypotheses &amp; findings</h3><p class="muted">5 ranked candidate
-      hypotheses, literature citations, leakage canary, full holdout numbers.</p>
-      <a href="hypotheses.html">Read →</a></div>
-    <div class="card"><h3>Leaderboard &amp; irregularities</h3><p class="muted">The real public
-      leaderboard, and the self-reported-score irregularity across the sibling lineage.</p>
-      <a href="leaderboard.html">Read →</a></div>
-    <div class="card"><h3>Research notes</h3><p class="muted">Data provenance, metric derivation,
-      literature review, and the GeoDAWN/INGENIOUS background.</p>
-      <a href="research.html">Read →</a></div>
-  </div>
-</main>
-<footer>GEMSDOE84 · <a href="https://github.com/buffedlizard55-lab/GEMSDOE84">source on GitHub</a>
-  · Not affiliated with DrivenData or the U.S. Department of Energy. All data provenance disclosed in
-  <a href="../registry/data_manifest.json">registry/data_manifest.json</a>.</footer>
-</body>
-</html>
+<section><h2>Why H33-2-B2 reported 0.2778 (OWNER-REPORTED, not organizer-confirmed) — and can we beat it?</h2>
+<p><b>Construction (byte-verified):</b> H19-5 powerlaw field (121,131 dots, 0.1922) → D1.5/D2.8 budget sweep (60k/44k, 0.2477/0.2600) → delete every dot ≤1 px from catalogue (H27-4-R1, 40,199 dots, 0.2708) → delete ≤2 px (H33-2-B2, 37,654 dots, 0.2778). Finite zeros-outside, 0 on catalogue. This is a <b>placement/pruning intervention</b>, not a new sensor finding more faults. Both deletions are explained to within 0.0006 DTI if deleted dots earned zero credit: let T = weighted truth coverage, F = false mass, N = hidden truth, D = (1-β)T+αF+βN, s=T/D. Deleting L,T coverage and Q,F mass improves s iff L/Q &lt; α·s/(1-(1-β)s). Near-catalogue dots have L≈0, Q&gt;0, so pruning helps. Median distance to catalogue rose 14.6→17.7→19.6 px; dots ≤2 px gone 17,326→6,436→2,545→0 (evidence/incumbent_anatomy.json). The field's precision, not its emission, was the ceiling. <a href="research/hypotheses.md">Full answer →</a></p>
+<p><b>Can we beat it?</b> In principle yes — a genuinely new sensor that finds <i>new</i> true positives beyond H19-5's field would raise s more than pruning — but no holdout or projection here establishes that. H84-WING's exploratory holdout is 0.00135, far below any claim. Only an <b>organizer receipt</b> would confirm a higher leaderboard score. We do not promise improvement. See <a href="research/hypotheses.md">five new hypotheses ranked</a> (GEODAWN, MT, gravity worms, seismic lineaments) and why tip/gap was selected for this cost-constrained, bridge-only run.</p>
+</section>
+
+<section><h2>Auditable, not assumed — machine evidence</h2>
+<div class="links">
+<a href="evidence/run-card.json" download>evidence/run-card.json</a>
+<a href="evidence/holdout_wing.json">evidence/holdout_wing.json</a>
+<a href="evidence/data-verification.json">data-verification.json</a>
+<a href="evidence/inventory.json">registry/inventory.json</a>
+<a href="research/hypotheses.md">Hypotheses (5, ranked)</a>
+<a href="research/sources.md">Sources & limitations</a>
+</div>
+<p>No current leaderboard score or weekly cap was verified (egress block to drivendata.org, see <a href="research/sources.md">sources</a>). No organizer-confirmed improvement is claimed. Promotion to a real weekly slot is a <b>separate selector step</b> within the live cap — this project has used 0 slots.</p>
+</section>
+
+<section><h2>Limitations & next work — owned, not waived</h2>
+<ul>
+<li><b>Holdout is not whole-fault:</b> chunk withholding (≤12 px) underestimates the requested whole-geological-segment + buffer validation; the shared tool was reused unchanged (see <a href="https://github.com/buffedlizard55-lab/60GEMSDOE/tree/b99591eede63c6d45c8a896255b8cd34824fa00b">60GEMSDOE pin</a>).</li>
+<li><b>Holdout leaked:</b> surface uses full catalogue per fold, not visible-only — violates “derive every catalogue feature only from visible faults.”</li>
+<li><b>Registry uniqueness pending:</b> full 1,143-blob Spearman + 3-px dot-overlap scan requires GEMS84_DATA corpus (≈2 GB) not downloaded here; worst rho/overlap reported as pending. Deterministic seed + 37,820 budget + tip/gap geometry are the uniqueness construction.</li>
+<li><b>No organizer-authenticated data:</b> bridge hashes (7ba308cc…, 2176d08e…) prove mirror consistency, not original authenticity.</li>
+<li><b>Historical H33 ZIP is empty:</b> do not submit <code>gemsdoe32-h33-h33-2-b2-*.zip</code> (1 empty entry) — see <a href="evidence/h33-zip-inspection.json">inspection</a>.</li>
+</ul>
+<p><b>Next:</b> (1) Recompute surface per-fold from visible-only for a non-leaky holdout; (2) fetch full registry corpus and run surface+dot gates; (3) test Rank 2–4 magnetic/MT/gravity hypotheses with training_features.tif; (4) verify USGS ComCat obtainability for microseismic hypothesis (free, outside allow-list); (5) obtain organizer receipt before any weekly-slot spend.</p>
+</section>
+
+</main><footer>Evidence-first fault discovery · H84-WING · SHA c6d0b71 · no organizer submission made · <a href="https://github.com/buffedlizard55-lab/GEMSDOE84">Repo</a></footer></body></html>

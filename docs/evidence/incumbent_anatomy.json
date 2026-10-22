@@ -1,0 +1,130 @@
+{
+ "evidence_class": "MEASURED from hash-verified bytes; scores OWNER-REPORTED",
+ "rasters": {
+  "h19_5_solid": {
+   "file": "19GEMSDOE__h19-5-powerlaw-budget-multiline.tif",
+   "sha256": "ef2ae808eb7179861b9f1ff753fd3ded625ace7b7c158e29cec45bbd8fa3cfaa",
+   "owner_reported_live": 0.1922,
+   "dots": 121131,
+   "unique_values": [
+    0.0,
+    1.0
+   ],
+   "dots_dcat_le1": 9651,
+   "dots_dcat_le2": 17326,
+   "dots_dcat_le3": 24167,
+   "median_dcat_px": 14.560219778561036,
+   "on_catalogue": 0
+  },
+  "d1_5": {
+   "file": "GEMSDOE24__h25-1-dotted-h19-5-d1-5.tif",
+   "sha256": "3e0730e8d4f7db095dd80246a98cba3bc0fc9a28f436b91db27ca34df4d0d1ce",
+   "owner_reported_live": 0.2477,
+   "dots": 60069,
+   "unique_values": [
+    0.0,
+    1.0
+   ],
+   "dots_dcat_le1": 5355,
+   "dots_dcat_le2": 8769,
+   "dots_dcat_le3": 11938,
+   "median_dcat_px": 14.866068747318506,
+   "on_catalogue": 0
+  },
+  "d2_8": {
+   "file": "GEMSDOE25__dotted-h19-5-d2-8.tif",
+   "sha256": "3e78737f0da8dd2ca66cc6caac0ce8eeefcd6715707f8d1bd3091845cd9bcc30",
+   "owner_reported_live": 0.26,
+   "dots": 44090,
+   "unique_values": [
+    0.0,
+    1.0
+   ],
+   "dots_dcat_le1": 3891,
+   "dots_dcat_le2": 6436,
+   "dots_dcat_le3": 8607,
+   "median_dcat_px": 15.0,
+   "on_catalogue": 0
+  },
+  "h27_4_r1": {
+   "file": "GEMSDOE28__h27-4-r1-solo-d2-8.tif",
+   "sha256": "2fc94a38d77f74d4f4ed1a97a83e7bb71a1ceea090515ec641e6681cc47c44c8",
+   "owner_reported_live": 0.2708,
+   "dots": 40199,
+   "unique_values": [
+    0.0,
+    1.0
+   ],
+   "dots_dcat_le1": 0,
+   "dots_dcat_le2": 2545,
+   "dots_dcat_le3": 4716,
+   "median_dcat_px": 17.69180601295413,
+   "on_catalogue": 0
+  },
+  "h36_1_rung30": {
+   "file": "GEMSDOE28__h36-1-rung30-blind-r1.tif",
+   "sha256": "7c74270ad48fa0b865163853046a6d3815967c5bf37bbda5b74ca7fa22583a32",
+   "owner_reported_live": 0.271,
+   "dots": 37660,
+   "unique_values": [
+    0.0,
+    1.0
+   ],
+   "dots_dcat_le1": 0,
+   "dots_dcat_le2": 2353,
+   "dots_dcat_le3": 4377,
+   "median_dcat_px": 17.72004514666935,
+   "on_catalogue": 0
+  },
+  "h33_2_b2": {
+   "file": "GEMSDOE32__h33-2-b2-zeros.tif",
+   "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+   "owner_reported_live": 0.2778,
+   "dots": 37654,
+   "unique_values": [
+    0.0,
+    1.0
+   ],
+   "dots_dcat_le1": 0,
+   "dots_dcat_le2": 0,
+   "dots_dcat_le3": 2171,
+   "median_dcat_px": 19.6468827043885,
+   "on_catalogue": 0
+  },
+  "anderson_pinn": {
+   "file": "GEMSDOE36__anderson-geothermal-pinn-38854.tif",
+   "sha256": "e15891020b9c57056ac7fa874a5e506fbd6ed9314a4ea8e73af0753887a3708a",
+   "owner_reported_live": 0.275,
+   "dots": 38854,
+   "unique_values": [
+    0.0,
+    1.0
+   ],
+   "dots_dcat_le1": 0,
+   "dots_dcat_le2": 0,
+   "dots_dcat_le3": 2281,
+   "median_dcat_px": 19.235384061671343,
+   "on_catalogue": 0
+  }
+ },
+ "lineage": {
+  "h27_4_subset_of_d2_8": true,
+  "h27_4_equals_d2_8_minus_dcat_le1": true,
+  "h33_2_b2_subset_of_h27_4": true,
+  "h33_2_b2_equals_h27_4_minus_dcat_le2": true,
+  "d2_8_subset_of_h19_5": true
+ },
+ "algebra": {
+  "assumption": "removed dots (within 100 m, then 200 m of a mapped fault) earned zero TP credit",
+  "removed_step1": 3891,
+  "removed_step2": 2545,
+  "implied_TPw": 5073.287555555577,
+  "predicted_s2_if_zero_credit": 0.27836289924342644,
+  "reported_s2": 0.2778,
+  "residual": -0.0005628992434264513,
+  "implied_denominator_at_s2": 18262.37421006327,
+  "marginal_bar_at_s2": 0.05556,
+  "mean_credit_per_kept_dot": 0.1347343590469957,
+  "interpretation": "Both pruning steps are explained to within 0.0006 DTI by deleting dots that earned ~no credit: near-catalogue dots are almost pure false-positive mass on the live board. Kept dots average ~2.4x the marginal bar, so the field's precision, not its density, is what limits the score."
+ }
+}
