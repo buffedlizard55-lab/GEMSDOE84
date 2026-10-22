@@ -38,3 +38,5 @@ The inspector requires a single-band real GeoTIFF, matching CRS/shape/transform,
 The Pages workflow deploys `docs/` on pushes to main; actual deployment depends on repository Pages settings and workflow permissions. GitHub/network access is available. This sandbox's outbound network permits GitHub, npm and PyPI hosts only. DrivenData, USGS, GDR, NLR and Dropbox were not directly verified here. No organizer authentication or current weekly-slot receipt is available. GPU availability was not assessed; the official reference supports CPU training too. A GPU is not a categorical data-placement prerequisite.
 
 This is a negative scientific deliverable plus tested infrastructure, **not completion of the requested new TIFF**. Do not infer a leaderboard score or exhaustive cross-repository uniqueness from this review.
+
+**Hosting irregularity:** the Pages API reports legacy build mode. Changing it to workflow mode returned HTTP 403 for this integration. The committed deployment workflow may require a repository administrator to select GitHub Actions as the Pages source. This is a hosting-permission blocker, not a scientific inspection requirement.

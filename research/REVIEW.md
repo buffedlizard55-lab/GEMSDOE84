@@ -55,3 +55,7 @@ Experiments executed: none. No withheld positives, CI, rank correlations, overla
 - **Pass 1:** inspected empty checkout, fetched upstream evidence, created truthful blocked site, format inspector and tests. No copied competition raster was published.
 - **Pass 2:** tested NaN, infinity, both range violations, CRS, transform, shape, multiband and nodata rejection. Fixed dependency pins to actual installed versions. Missing evidence remains a blocker rather than a successful validation.
 - **Pass 3:** checked mandate coverage; separated format validity, research promotion and slot authorization; documented missing lane/cache/evaluator, source restrictions, unverified scores, incomplete full-prompt archival and incomplete broader-repo review. New-TIFF generation remains unsatisfied and is explicitly disclosed.
+
+### CI follow-up
+
+The first GitHub CI run failed because the initial ignore pattern `data/` also excluded `docs/data/run-card.json`. Corrected it to root-only `/data/` and tracked the run card; the local test had not detected untracked files. GitHub Pages settings currently use legacy builds. Updating Pages to workflow mode via API returned HTTP 403 (integration permission); the workflow exists, but workflow-based deployment cannot be promised until that permission/settings blocker is resolved.

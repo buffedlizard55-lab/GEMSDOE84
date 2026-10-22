@@ -1,0 +1,35 @@
+{
+  "run_id": "gems84-review-20261022",
+  "hypothesis": "Candidate A: covered structural breaks inferred from phase-symmetric magnetic derivatives persistent across scales; unassigned proposal only",
+  "mechanism": "Potential magnetic contrast across buried offsets without surface relief; not implemented or validated",
+  "non_fault_mimic": "Buried volcanic dike",
+  "holdout": {
+    "label": "HOLDOUT-DTI",
+    "status": "not_run",
+    "dti": null,
+    "ci95": null,
+    "evaluator_version": null,
+    "withheld_positives": null,
+    "incumbent": null
+  },
+  "registry": {
+    "status": "unavailable_not_checked",
+    "surface_rank_correlation_max": null,
+    "final_rank_correlation_max": null,
+    "final_dot_overlap_within_3px_max": null,
+    "duplicate": null
+  },
+  "raster_sha256": null,
+  "validator_output": {
+    "status": "not_run_no_candidate",
+    "no_nan_inside_footprint": null,
+    "values_in_unit_interval": null,
+    "crs_shape_transform_match": null
+  },
+  "submission_name": null,
+  "note": "Blocked: missing lane, shared cache/evaluator/writer and full registry. No TIFF generated; no competition slot used.",
+  "verdict": "negative",
+  "download_allowed": false,
+  "submission_authorized": false,
+  "experiments_executed": 0
+}
