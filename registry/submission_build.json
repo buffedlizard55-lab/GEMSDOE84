@@ -1,0 +1,22 @@
+{
+  "schema": "gems84-submission-build-v1",
+  "lane": "H84-THMS",
+  "submission_name": "gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros",
+  "submission_note": "H84-THMS silica-valve & 1m/10m scarp-chi Dual-Head Dinkelbach 300m; 37654 dots >3px off cat; HOLDOUT-DTI 0.2255",
+  "submission_note_length": 111,
+  "tif_path": "submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif",
+  "tif_sha256": "509fa4971a3cdf119a0ae7140b0fac31860d063af9bcc914266d98294f2ba7b5",
+  "tif_bytes": 144420,
+  "zip_path": "submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.zip",
+  "zip_sha256": "ef336ef406c1489a26bc4ff7ffeb0328e5b96eeaacda684df235713533093fb0",
+  "zip_bytes": 111224,
+  "array_sha256": "2f4190b44e0f0df487ef1fd1b86d6082fb3a7d1a5bc29d792cf763350a8a3d8d",
+  "dots_emitted": 37654,
+  "dots_300m_1200m": 23366,
+  "dots_1200m_5000m": 14225,
+  "dots_over_5000m": 63,
+  "min_dist_to_catalogue_px": 3.1622776985168457,
+  "all_checks_passed": true,
+  "ok_to_download": true,
+  "ok_to_submit": true
+}

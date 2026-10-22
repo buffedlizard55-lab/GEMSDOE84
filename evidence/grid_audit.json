@@ -1,0 +1,37 @@
+{
+  "schema": "gemsdoe84-grid-audit-v1",
+  "crs": "EPSG:32611",
+  "shape": [
+    3730,
+    3292
+  ],
+  "transform": [
+    100.0,
+    0.0,
+    243350.0,
+    0.0,
+    -100.0,
+    4508550.0
+  ],
+  "total_grid_cells": 12279160,
+  "active_footprint_cells": 5167373,
+  "outside_footprint_cells": 7111787,
+  "mapped_catalogue_cells": 60988,
+  "mapped_catalogue_footprint_fraction": 0.011803,
+  "labels_equals_existing_faults_byte_identical": true,
+  "sample_submission_positive_cells": 60988,
+  "training_features_bands": 19,
+  "training_features_shape": [
+    3730,
+    3292
+  ],
+  "training_features_crs": "EPSG:32611",
+  "training_features_transform": [
+    100.0,
+    0.0,
+    243350.0,
+    0.0,
+    -100.0,
+    4508550.0
+  ]
+}
