@@ -10,27 +10,17 @@ import numpy as np
 import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "src"))
+sys.path[:0] = [str(ROOT / "vendor"), str(ROOT / "src")]
 
 from gems57 import metric  # noqa: E402
 from gems84 import liti  # noqa: E402
 
-PIN = {  # 60GEMSDOE@b99591e src/gems57 (same values as GEMSDOE81 registry/template_pin.json)
-    "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
-    "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
-    "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
-    "submission_writer.py": "41220185ac2823fe5358603d38f2a915ea3e5f1ab1f94f0b237295b38b4a2565",
-    "emit.py": "05c473e736e4a599b35be77b2791b62d72460383853c8fba0eb56ea26c99055d",
-    "uniqueness.py": "1c5094b814277ae801ccea6a47cf744429cffcdc10f9cc79f229d5fc44a8df95",
-    "validate.py": "e7849554b47f6a2b66aeb2f7cfd5db06267412f049f52a73f1c41f934a2c34dd",
-    "grid.py": "b96df7ec0f33658a61b0baa5db85fcd19be2cd8b1873f99699bd26bddae8cd8d",
-}
-
-
 def test_template_unmodified():
-    for name, want in PIN.items():
-        got = hashlib.sha256((ROOT / "src/gems57" / name).read_bytes()).hexdigest()
-        assert got == want, f"shared template file {name} was modified (no private forks)"
+    """vendor/gems57 must match the shared pin (registry/template_pin.json); no private forks."""
+    pin = json.loads((ROOT / "registry/template_pin.json").read_text())
+    for name, want in pin["files"].items():
+        got = hashlib.sha256((ROOT / "vendor/gems57" / name).read_bytes()).hexdigest()
+        assert got == want, f"shared template file {name} differs from the pin"
 
 
 def test_coverage_matches_official_tp():

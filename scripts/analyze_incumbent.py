@@ -18,7 +18,7 @@ import rasterio
 from scipy import ndimage as ndi
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "src"))
+sys.path[:0] = [str(ROOT / "vendor"), str(ROOT / "src")]
 from gems57.grid import load_grid  # noqa: E402
 from gems84.paths import BRIDGE  # noqa: E402
 

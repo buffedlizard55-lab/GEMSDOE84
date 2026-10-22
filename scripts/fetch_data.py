@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fetch every pinned input (registry/data_manifest.json) and the uniqueness corpus.
+"""Fetch every pinned input (registry/data_manifest_liti.json) and the uniqueness corpus.
 
 Fail-closed: a file is accepted only if its SHA-256 (data) or git blob SHA-1
 (registry corpus) matches the pin.  Uses the authenticated ``gh`` CLI (GitHub API).
@@ -18,7 +18,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "src"))
+sys.path[:0] = [str(ROOT / "vendor"), str(ROOT / "src")]
 from gems84.paths import DATA, REGISTRY_DIR  # noqa: E402
 
 
@@ -42,7 +42,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--registry", action="store_true")
     a = ap.parse_args()
-    man = json.loads((ROOT / "registry/data_manifest.json").read_text())
+    man = json.loads((ROOT / "registry/data_manifest_liti.json").read_text())
     bad = []
     for f in man["files"]:
         if f["dest"].startswith("(in repo)"):

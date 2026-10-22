@@ -1,9 +1,10 @@
-__pycache__/
-*.pyc
-.venv/
+data/
 .cache/
+__pycache__/
+.pytest_cache/
+.venv/
+*.pyc
 *.part
 docs/downloads/.*.tif
 docs/downloads/.*.zip
 docs/downloads/.*.json
-.pytest_cache/

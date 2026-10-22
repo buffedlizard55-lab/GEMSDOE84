@@ -1,3 +1,4 @@
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parent / "src"))
+_root = Path(__file__).resolve().parent
+sys.path[:0] = [str(_root / "vendor"), str(_root / "src")]

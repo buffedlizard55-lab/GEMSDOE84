@@ -1,0 +1,20 @@
+{
+ "gate": "dots",
+ "unique": false,
+ "worst_dot_overlap": 1.0,
+ "worst_overlap_submission": "17GEMSDOE:docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+ "worst_spearman_full_footprint": 0.11185411224523178,
+ "worst_rho_submission": "GEMSDOE52:docs/downloads/gems52-h52-cotrain-disagreement-emission-composite-37654px-r1.tif",
+ "worst_jaccard_dot_sets": 0.061536199686356506,
+ "worst_jaccard_submission": "GEMSDOE52:docs/downloads/gems52-h52-cotrain-disagreement-emission-composite-37654px-r1.tif",
+ "registry_rasters_checked": 1143,
+ "registry_rasters_expected": 1143,
+ "complete_accessible_scan": true,
+ "duplicate_count": 124,
+ "missing_or_invalid": 0,
+ "verdict": "negative",
+ "rho_limit": 0.9,
+ "overlap_limit": 0.7,
+ "passed": false,
+ "seconds": 711.0
+}

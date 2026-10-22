@@ -18,7 +18,7 @@ import numpy as np
 from scipy.stats import spearmanr
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "src")); sys.path.insert(0, str(ROOT / "scripts"))
+sys.path[:0] = [str(ROOT / "vendor"), str(ROOT / "src")]; sys.path.insert(0, str(ROOT / "scripts"))
 from e1_liti_fit import N_SAMPLE, SEED  # noqa: E402
 from gems57.grid import load_grid  # noqa: E402
 from gems84 import basis, liti, mlfield  # noqa: E402

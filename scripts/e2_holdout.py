@@ -33,7 +33,7 @@ import rasterio
 from scipy import ndimage as ndi
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "src"))
+sys.path[:0] = [str(ROOT / "vendor"), str(ROOT / "src")]
 from gems57 import emit, evaluate_holdout, holdout  # noqa: E402
 from gems57.grid import load_grid  # noqa: E402
 from gems84 import basis, liti, mlfield  # noqa: E402

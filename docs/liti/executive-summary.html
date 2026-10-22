@@ -1,0 +1,29 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><title>How to submit · GEMSDOE84</title><style>
+:root{--bg:#0f1720;--card:#16212c;--ink:#e6edf3;--mut:#9fb0c0;--ok:#2ea043;--bad:#da3633;--warn:#d29922;--acc:#58a6ff}
+*{box-sizing:border-box}body{margin:0;font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+header{padding:18px 24px;border-bottom:1px solid #253241;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+header b{font-size:18px}nav a{color:var(--mut);margin-right:14px;text-decoration:none}nav a:hover{color:var(--ink)}
+main{max-width:1060px;margin:0 auto;padding:24px}.card{background:var(--card);border:1px solid #253241;border-radius:10px;padding:18px 20px;margin:0 0 18px}
+h1{font-size:24px;margin:0 0 6px}h2{font-size:19px;margin:0 0 10px}h3{font-size:16px;margin:16px 0 6px}
+.banner{border-left:6px solid var(--bad)}.banner.ok{border-left-color:var(--ok)}.pill{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:600}
+.pass{background:#12361f;color:#56d364}.fail{background:#3d1214;color:#ff7b72}.info{background:#14283f;color:#79c0ff}
+a{color:var(--acc)}code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:#0b121a;padding:1px 5px;border-radius:5px;word-break:break-all}
+table{border-collapse:collapse;width:100%;font-size:14px}th,td{border-bottom:1px solid #253241;padding:6px 8px;text-align:left;vertical-align:top}th{color:var(--mut);font-weight:600}
+.btn{display:inline-block;background:#238636;color:#fff;padding:9px 16px;border-radius:8px;text-decoration:none;font-weight:600;margin:6px 8px 6px 0}
+.btn.sec{background:#30363d}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.k{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.04em}.v{font-size:20px;font-weight:700}
+small{color:var(--mut)}
+</style></head><body><header><b>GEMSDOE84 · lane H84-A LITI</b><nav><a href="index.html">Submission</a><a href="executive-summary.html">How to submit</a><a href="research.html">Research &amp; results</a><a href="irregularities.html">Irregularities</a><a href="sources.html">Sources</a><a href="../index.html">Project home</a><a href="https://github.com/buffedlizard55-lab/GEMSDOE84">Repo</a></nav></header><main>
+<div class="card banner "><h1>Executive summary — how to make a submission</h1>
+<p><b>Current file status:</b> NO — this lane produced no submittable file. Its candidate was logged as a duplicate and also failed the holdout gate; nothing was written to docs/downloads/.</p></div>
+<div class="card"><h2>Steps</h2><ol>
+<li>Log in and open the competition (<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">drivendata.org/competitions/306/competition-doe-gems/</a>), then go to its submissions area. (This sandbox cannot load DrivenData pages, so no deeper URL is quoted.)</li>
+<li><b>This lane has no file to submit</b> (see the front page). When a lane does produce a cleared file, download it from that lane's front page and check its <code>sha256sum</code> against the run card.</li><li>Click <b>Submit</b> → <b>File to submit</b> → choose the .tif (or the .zip holding exactly one TIFF).</li><li>Paste the lane's <b>Note</b> (≤ 140 characters, e.g. “clustering with k=25”) and keep the file stem as the submission name.</li>
+<li>Submit, then copy the score from the submission page receipt into <code>registry/live_scores.csv</code> as ORGANIZER-CONFIRMED.</li></ol>
+<h3>What the portal checks, and how a cleared file meets it</h3>
+<table><tr><th>Portal requirement (submission page text, as quoted by the owner)</th><th>How the shared writer enforces it</th></tr>
+<tr><td>single-band GeoTIFF (.tif) or a .zip with a single GeoTIFF</td><td>1 band float32; the ZIP holds only the TIFF (shared <code>submission_writer</code>)</td></tr>
+<tr><td>must match the submission format's CRS, shape and geotransform</td><td>EPSG:32611, 3730×3292, (100, 0, 243350, 0, −100, 4508550), checked against <code>data/bridge/sample_submission.tif</code></td></tr>
+<tr><td>“Predicted values must be in range [0, 1]” (the earlier failure)</td><td>all-finite policy: no NaN anywhere, outside-footprint cells are 0, values in [0, 1]; the writer refuses to repair or clip</td></tr></table>
+<h3>Weekly cap</h3><p>The cap is shown on the submission page. Promotion to a real slot is a separate selector step; this session used 0 slots.</p></div>
+</main></body></html>
