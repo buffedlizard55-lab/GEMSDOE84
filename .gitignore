@@ -1,10 +1,13 @@
 data/
 .cache/
-__pycache__/
-.pytest_cache/
 .venv/
+.venv_gems/
+__pycache__/
 *.pyc
 *.part
+.pytest_cache/
+*.egg-info/
 docs/downloads/.*.tif
 docs/downloads/.*.zip
 docs/downloads/.*.json
+evidence/_holdout_cache.pkl
