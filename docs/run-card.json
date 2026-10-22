@@ -1,0 +1,29 @@
+{
+  "hypothesis": "Rank 1: cross-physics edge persistence with a matched-null penalty",
+  "mechanism": "Multiscale directional edges in magnetic, gravity, and strain feature channels persist at a shared geometry around some buried or unmapped structures; a spatial/orientation-matched null is intended to suppress isolated and broad background edges.",
+  "named_non_fault_mimic": "Lithologic contacts and survey-line leveling seams can produce persistent, aligned geophysical edges without a fault.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "value": null,
+    "evaluator_version": null,
+    "withheld_positive_count": null,
+    "confidence_interval_95": null,
+    "status": "NOT RUN: competition labels/features and shared evaluator are absent from checkout"
+  },
+  "correlation_overlap_vs_registry": {
+    "surface_rank_correlation": null,
+    "candidate_dots_within_3px_of_registry_percent": null,
+    "status": "NOT RUN: registry rasters and candidate surface/dots are absent"
+  },
+  "raster_sha256": null,
+  "validator_output": {
+    "status": "NOT RUN: no candidate raster exists",
+    "no_nan_inside_footprint": null,
+    "values_in_[0,1]": null,
+    "crs_shape_transform_match": null
+  },
+  "submission_name": null,
+  "submission_note": null,
+  "verdict": "negative",
+  "verdict_reason": "Blocked at readiness gate; this is not a measured negative holdout result. No submission slot was used."
+}
