@@ -1,0 +1,65 @@
+[
+  {
+    "local": "research/upstream/README.md",
+    "repo": "buffedlizard55-lab/GEMSDOE32",
+    "path": "README.md",
+    "git_blob_sha": "91abbf982eda2ef1a585b94bf09aee60bbf58500",
+    "sha256": "4b58a9f14d016d71906a7d07d4c9ce41079eb3f2f48187ed91e8020cafbb143a",
+    "retrieved_date": "2026-10-22",
+    "trust": "archival source, not independently verified science"
+  },
+  {
+    "local": "research/upstream/reference-README.md",
+    "repo": "drivendataorg/gems-prize-reference-solution",
+    "path": "README.md",
+    "git_blob_sha": "a8814f99c395d12a8e1c3731c738e61d7dca06b5",
+    "sha256": "cfa4d55559c9128313beb9417eae7e0a94c31677132afb1120f9e86222804239",
+    "retrieved_date": "2026-10-22",
+    "trust": "archival source, not independently verified science"
+  },
+  {
+    "local": "research/upstream/evidence/h33_candidates.json",
+    "repo": "buffedlizard55-lab/GEMSDOE32",
+    "path": "evidence/h33_candidates.json",
+    "git_blob_sha": "375ed7858cdaaeeb7fd23b15ff7f7457ad06fdcc",
+    "sha256": "d9336421437308876fc3440cd3ff6a4371e2ebb56ab790fccc1076bf7eb4edf6",
+    "retrieved_date": "2026-10-22",
+    "trust": "archival source, not independently verified science"
+  },
+  {
+    "local": "research/upstream/evidence/h33_validation.json",
+    "repo": "buffedlizard55-lab/GEMSDOE32",
+    "path": "evidence/h33_validation.json",
+    "git_blob_sha": "29a11d5a65154a310364474957de3fd14a7a8ed7",
+    "sha256": "74d416a733cddbb3bc841680bb5d01270fd7958b18cba710786484c0e397348a",
+    "retrieved_date": "2026-10-22",
+    "trust": "archival source, not independently verified science"
+  },
+  {
+    "local": "research/upstream/src/gems32/h33.py",
+    "repo": "buffedlizard55-lab/GEMSDOE32",
+    "path": "src/gems32/h33.py",
+    "git_blob_sha": "86eb18e89e92a7982804e2a367f646ac8f1ba895",
+    "sha256": "e478a6f4cb5beb6dd79f711cde43b77748010154d73d1e11b33cf3df47301516",
+    "retrieved_date": "2026-10-22",
+    "trust": "archival source, not independently verified science"
+  },
+  {
+    "local": "research/upstream/registry/data_manifest.json",
+    "repo": "buffedlizard55-lab/GEMSDOE32",
+    "path": "registry/data_manifest.json",
+    "git_blob_sha": "dbe6753836ca509269971bd824f0e95018474d33",
+    "sha256": "f08f96e534cf91dbb02d7655a4e6d661837235ebb88b2e5eabdc0b3cc7bcee21",
+    "retrieved_date": "2026-10-22",
+    "trust": "archival source, not independently verified science"
+  },
+  {
+    "local": "research/upstream/registry/irregularities.json",
+    "repo": "buffedlizard55-lab/GEMSDOE32",
+    "path": "registry/irregularities.json",
+    "git_blob_sha": "c00ece260cd69c131f802a60bdcc4d661674ccdb",
+    "sha256": "4f2bd495f4a00439314bab651122f9575d86df59c558c0c554411762622088e3",
+    "retrieved_date": "2026-10-22",
+    "trust": "archival source, not independently verified science"
+  }
+]

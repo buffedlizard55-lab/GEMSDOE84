@@ -61,3 +61,7 @@ OPENBLAS_NUM_THREADS=1 .venv/bin/python scripts/run_lane.py
 - Do not consume a real submission slot, claim leaderboard improvement, or package a duplicate just to produce a download button.
 
 The full machine-readable result is `evidence/run-card.json`; source inventory is `registry/inventory.json`; hypothesis preregistration is `docs/research/hypotheses.md`.
+
+## Parallel-session integration
+
+Other sessions merged readiness tooling and unexecuted hypothesis proposals while this experiment ran. Their original front pages and README are preserved under `research/concurrent-readiness/`, their source receipts and validators remain intact, and their old JSON cards are marked historical/superseded. They are not additional experiments in H84-RFD. The canonical measured run is `evidence/run-card.json`. Readiness presence checks now point at this lane's actual cache/vendor paths; presence still never authorizes a submission. The combined suite passes 27 tests locally. The existing Pages workflow from those merged changes is retained; deployment success must be checked independently.
