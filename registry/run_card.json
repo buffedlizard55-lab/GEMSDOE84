@@ -1,0 +1,56 @@
+{
+  "session": "arena/4ac2f662-gemsdoe84",
+  "date_utc": "2026-10-22",
+  "hypothesis": "H84-1/H84-3 (fused): blind, altered fault conduits produce a local RTP magnetic-amplitude MINIMUM (demagnetization from hydrothermal alteration) spatially conjugate with a local surface-conductivity HIGH (clay-cap/argillic alteration), and/or a basement-high (shallow depth_to_base_surf) that is anomalously conductive at surface (a fault-controlled conduit cross-cutting a horst). Both are pure functions of 4 official bands (rtp, cond_surf, tmi_hg, depth_to_base_surf); neither uses labels.tif as a model input.",
+  "mechanism": "Hydrothermal fluid circulation along a fault destroys primary magnetite (demagnetization) and deposits clay/argillic alteration minerals that raise near-surface electrical conductivity; the alteration halo can be broad and blind (no surface rupture) when the fault does not reach the surface expression mapped by USGS/INGENIOUS, which is exactly the catalogue-gap the competition is scoring for.",
+  "named_non_fault_mimic": "Thick, undeformed sedimentary basin-fill produces the SAME joint signature (low magnetization, high near-surface conductivity from clay/groundwater) with NO fault control whatsoever. A Sato ridge/vesselness filter was used specifically to try to prefer elongated, fault-aligned corridors over this basin-fill's broad, equant lows -- diagnostics below show this guard was insufficient.",
+  "evidence_sources": [
+    {"claim": "Hydrothermal demagnetization / magnetic-low association with geothermal fault conduits is a real, reproducible phenomenon in Basin-and-Range and caldera settings", "class": "OFFICIAL/LITERATURE",
+     "links": [
+       "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013JB010802",
+       "https://www.usgs.gov/publications/high-resolution-aeromagnetic-mapping-volcanic-terrain-yellowstone-national-park",
+       "https://www.mdpi.com/2075-163X/16/8/774"
+     ]},
+    {"claim": "Competition metric formula (DTI, alpha=0.2, beta=0.8, R=300m triangular kernel)", "class": "OFFICIAL",
+     "links": ["https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/"]}
+  ],
+  "holdout_dti": {
+    "evaluator_version": "gems84.metric v1 (crop-exact finite-kernel), gems84.holdout v1 (6x6 spatially-checkerboarded blocks, 6 folds, 3px/300m buffer, whole-segment withholding)",
+    "class": "HOLDOUT-DTI",
+    "note": "Computed against the PUBLIC USGS/INGENIOUS fault catalogue (labels.tif), which is NOT the private expert-labelled test set the real competition scores against. This is the only ground truth available in any sandbox in this lineage.",
+    "candidates_tested": {
+      "H84-1_alone": {"pooled_DTI_at_44090px": 0.0164, "fold_95CI": [0.0058, 0.0125], "n_folds": 6},
+      "H84-3_alone": {"pooled_DTI_at_44090px": 0.0166, "fold_95CI": [0.0055, 0.0183], "n_folds": 6},
+      "H84_fused_max": {"pooled_DTI_by_budget": {"15000": 0.0120, "30000": 0.0184, "44090": 0.0219,
+                          "60000": 0.0250, "90000": 0.0284, "120000": 0.0314, "150000": 0.0349,
+                          "200000": 0.0399, "300000": 0.0466, "450000": 0.0530, "700000": 0.0578,
+                          "1000000": 0.0601}},
+      "H84_4_scarp_alteration_concordance": {"pooled_DTI_by_budget": {"15000": 0.0053, "30000": 0.0099,
+                          "44090": 0.0134, "60000": 0.0163, "90000": 0.0225}},
+      "uniform_random_control": {"pooled_DTI_by_budget": {"44090": 0.0608, "150000": 0.1382, "1000000": 0.1536},
+                                  "fold_95CI_at_44090": [0.0355, 0.0412]}
+    },
+    "verdict_detail": "At every emission budget tested (15,000 to 1,000,000 px, i.e. 0.3%-19.4% of the 5,164,300-px footprint), a spatially-UNIFORM-random field outperforms the fused H84 field by 2.8x-4.3x. This gap is NOT explained by the leakage canary (all AUCs 0.507-0.517, i.e. barely above the 0.500 chance line and nowhere near the 0.90 leakage threshold) -- it is explained by a spatial-coverage mechanism quantified directly: 8.16% of the entire footprint lies within the 300 m kernel radius of SOME mapped fault (the catalogue is geographically pervasive across this Basin-and-Range terrain), so ANY spatially-uniform emission earns substantial credit purely from ubiquity, while the H84 field concentrates its highest-confidence mass in specific sub-basins whose geometry does not coincide with where the mapped range-front fault network actually runs -- i.e. the named non-fault mimic (basin-fill lows) dominates the field's extreme tail despite the Sato ridge-filter guard."
+  },
+  "correlation_vs_registry": {
+    "class": "LANE-CHECK, PARTIAL",
+    "note": "This is a freshly-initialized repository (GEMSDOE84) with no prior submissions of its own to compare against. We cross-checked our implementation's uniform-random baseline (0.0498-0.0608 depending on exact holdout construction) against the independently-computed uniform-random baseline reported in a sibling repository's own knowledge base (buffedlizard55-lab/GEMSDOE32, commit c0c06ac8-era checkout, docs/research and knowledge/02_the_ceiling_and_the_instrument.md: 'uniform random (3 seeds) 0.0498') -- same order of magnitude, different holdout construction, which cross-validates that our metric/holdout implementation is not pathologically broken. We did NOT compute pixel-level rank correlation against every raster in every sibling repo (80+ repositories); that full audit is listed as a limitation below.",
+    "limitation": "Full rank-correlation / 3px-overlap duplicate-lane check against all registry rasters was not completed given the 3-experiment/time budget; see 'Suggested next steps' in README.md."
+  },
+  "raster_sha256": {
+    "zeros_variant": "e65539d392345b10...(see registry/submission_receipts.json for full digest)",
+    "nan_variant": "69674e62fe45cd27...(see registry/submission_receipts.json for full digest)"
+  },
+  "validator_output": {
+    "class": "MEASURED",
+    "crs_matches_template": true, "shape_matches_template": true, "transform_matches_template": true,
+    "dtype_float32": true, "single_band": true,
+    "zeros_variant": {"min": 0.0, "max": 1.0, "n_nonfinite_px": 0, "all_pass": true},
+    "nan_variant": {"min": 0.0, "max": 1.0, "n_nonfinite_px": 7114860, "all_pass": true,
+                    "note": "NaN only OUTSIDE the scoring footprint, matching the spec's literal text; shipped as a SECONDARY file because of the user's own reported portal error ('Predicted values must be in range [0, 1]') on a NaN-outside file from a different pipeline -- see README Known Issues."}
+  },
+  "submission_name": "gemsdoe84-h84-fused-demag-cond-corridor-20261022T000000Z-auditonly",
+    "submission_note_140char": "AUDIT ONLY, NOT RECOMMENDED. H84 demag+conductivity corridor; holdout DTI 2.8-4.3x BELOW uniform-random at matched mass.",
+  "verdict": "negative",
+  "verdict_reason": "Failed to beat the uniform-random control at every tested emission budget on our own spatially-blocked holdout against the public fault catalogue. Per the parallel-run protocol, a submission slot must not be spent on an idea that has not beaten the holdout baseline. This artifact is published for audit, reproducibility and as a documented negative result only."
+}

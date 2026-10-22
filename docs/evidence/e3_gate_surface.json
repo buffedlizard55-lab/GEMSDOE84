@@ -1,0 +1,11 @@
+{
+ "gate": "surface",
+ "reading": "Spearman only (a whole-footprint surface trivially overlaps everything)",
+ "worst_spearman": 0.27429388743081395,
+ "worst_submission": "GEMSDOE48:docs/downloads/GEMSDOE48-H53-3SRC-DS-20261007-9242c831-diag-plausibility-nan.tif",
+ "checked": 1143,
+ "errors": 0,
+ "limit": 0.9,
+ "passed": true,
+ "seconds": 708.6
+}
