@@ -1,7 +1,7 @@
 {
-  "hypothesis": "Rank 1: cross-physics edge persistence with a matched-null penalty",
-  "mechanism": "Multiscale directional edges in magnetic, gravity, and strain feature channels persist at a shared geometry around some buried or unmapped structures; a spatial/orientation-matched null is intended to suppress isolated and broad background edges.",
-  "named_non_fault_mimic": "Lithologic contacts and survey-line leveling seams can produce persistent, aligned geophysical edges without a fault.",
+  "hypothesis": "Rank 1: conductivity / conductive-base edge coherence with matched-null controls",
+  "mechanism": "Aligned, scale-persistent lateral breaks cohere between the surface-conductivity field and depth-to-conductive-base geometry; an edge-coherence interaction tests whether these independent expressions mark concealed fluid pathways.",
+  "named_non_fault_mimic": "Lithologic or clay-content boundaries, salinity variation, groundwater, and survey-resolution transitions can create similar conductivity patterns.",
   "holdout_dti": {
     "evidence_class": "HOLDOUT-DTI",
     "value": null,
@@ -25,5 +25,5 @@
   "submission_name": null,
   "submission_note": null,
   "verdict": "negative",
-  "verdict_reason": "Blocked at readiness gate; this is not a measured negative holdout result. No submission slot was used."
+  "verdict_reason": "Blocked at readiness gate; this is not a measured negative holdout result. The candidate may overlap prior sibling work. No submission slot was used."
 }
