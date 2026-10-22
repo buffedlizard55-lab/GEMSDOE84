@@ -64,7 +64,31 @@ The full machine-readable result is `evidence/run-card.json`; source inventory i
 
 ## Parallel-session integration
 
-Other sessions merged readiness tooling and unexecuted hypothesis proposals while this experiment ran. Their original front pages and README are preserved under `research/concurrent-readiness/`, their source receipts and validators remain intact, and their old JSON cards are marked historical/superseded. They are not additional experiments in H84-RFD. The canonical measured run is `evidence/run-card.json`. Readiness presence checks now point at this lane's actual cache/vendor paths; presence still never authorizes a submission. The combined suite passes 27 tests locally. The existing Pages workflow from those merged changes is retained; deployment success must be checked independently.
+Other sessions merged readiness tooling and unexecuted hypothesis proposals while this experiment ran. Their original front pages and README are preserved under `research/concurrent-readiness/`, their source receipts and validators remain intact, and their old JSON cards are marked historical/superseded. They are not additional experiments in H84-RFD. The canonical measured run is `evidence/run-card.json`. Readiness presence checks now point at this lane's actual cache/vendor paths; presence still never authorizes a submission. The combined suite passes 31 tests locally. The existing Pages workflow from those merged changes is retained; deployment success must be checked independently.
+
+---
+
+## Lane H84-WING — Structural tip wing-crack + relay-ramp gap closure · session `arena/c0200192`
+
+> Full brief: [`PROMPT.md`](PROMPT.md). Site: [`docs/index.html`](https://buffedlizard55-lab.github.io/GEMSDOE84/) (download at the very top). Run cards: [`evidence/run-card.json`](evidence/run-card.json) (current), [`evidence/run_card.json`](evidence/run_card.json) (historical LITI). Research: [`docs/research/hypotheses.md`](docs/research/hypotheses.md) (5 ranked, this lane), [`docs/research/sources.md`](docs/research/sources.md), [`docs/research/result.md`](docs/research/result.md).
+
+| question | answer |
+|---|---|
+| Is there a TIF to download? | **Yes — 37,820 dots, path `docs/downloads/gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.tif`**, SHA256 `c6d0b71096e13a6210ec55f9a022793e51a911edf31d245e4a79c4c4ab38aefe`, ZIP `…-zeros.zip`. Single-band Float32 3730×3292 EPSG:32611, all-finite, no NaN, values in [0,1], zeros outside footprint and on mapped catalogue — local validator PASS (no “Predicted values must be in range [0,1]” error). |
+| Is it OK to submit? | **Format-valid yes, scientifically no.** The file will pass the portal's format check, but the exploratory HOLDOUT-DTI is 0.00135 [0.00051,0.00231] (11,318 withheld, gems57-pooled-hide-v2) vs distance control 0.0 and vs prior lane 0.04430 — far below any claim to beat 0.2778. Holdout leaked full-catalogue geometry and uses chunk withholding, not whole-fault+buffer. Full registry Spearman/dot-overlap not scanned (0/1017 locally, 1,143-blob corpus ≈2 GB not fetched). Verdict **negative** (research artifact); 0 slots used. |
+| Why 0.2778 (OWNER-REPORTED)? | H19-5 (121k dots, 0.1922) → D2.8 (44k,0.2600) → H27-4-R1 (delete ≤1 px, 40k,0.2708) → H33-2-B2 (delete ≤2 px, 37.6k,0.2778). Finite zeros-outside. Each deletion explained to within 0.0006 DTI if deleted dots earned zero credit (L/Q < α·s/(1-(1-β)s); see `evidence/incumbent_anatomy.json`). Pruning near-catalogue false mass, not a new sensor. |
+| What is new & reusable? | First **catalogue-only tip/gap predictor**: tips (degree-1) × exp(-d/10) + gap (3–12 px band × 1.2 km Gaussian density) + far-field + 0.17/0.23 lattice + hash noise (seed SHA256(lane)). Bridge-only (no 418 MB training_features), unique budget 37,820 vs 37,654 of H33, deterministic, 5 hypotheses ranked (mag analytic signal, MT curvature, gravity worms, microseismic ComCat). Sources in `docs/research/sources.md`; code in `scripts/generate_unique_submission.py`. |
+| How to submit (if you choose) | See [`docs/executive-summary.html`](docs/executive-summary.html): download TIFF/ZIP at the very top, check live weekly cap on the competition site, select New submission → TIFF or one-TIFF ZIP → paste 104-char note `Wing-crack splay at fault tips + relay-ramp gaps; catalogue geometry only; 37.8k dots; research preview.` — preserve organizer receipt. No slot consumed by this project. |
+
+Reproduce this lane (bridge-only, CPU, ~3 min holdout):
+
+```bash
+python -m venv .venv && .venv/bin/pip install -r requirements.txt  # rasterio, scipy, sklearn
+.venv/bin/python scripts/generate_unique_submission.py            # builds surface, 37,820 dots, runs 4-fold holdout, writes docs/downloads/*.tif + .zip + .json + evidence/run-card.json
+.venv/bin/python scripts/validate_submission.py --template data/bridge/sample_submission.tif docs/downloads/gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.tif
+.venv/bin/python -m pytest -q                                      # 31 tests
+```
+Artifacts: `docs/downloads/gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.tif` (and .zip/.json), `evidence/run-card.json` (HOLDOUT-DTI 0.00135 [0.00051,0.00231], 11,318 withheld, validator 15/15 PASS, SHA c6d0b71), `evidence/holdout_wing.json`, `docs/research/hypotheses.md` (Rank 1 wing, Ranks 2–5 magnetic/MT/gravity/ComCat). Full registry scan and whole-fault holdout remain as next work; they are not claimed here.
 
 ---
 
