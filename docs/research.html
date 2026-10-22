@@ -1,0 +1,54 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><title>Research · GEMSDOE84</title><style>
+:root{--bg:#0f1720;--card:#16212c;--ink:#e6edf3;--mut:#9fb0c0;--ok:#2ea043;--bad:#da3633;--warn:#d29922;--acc:#58a6ff}
+*{box-sizing:border-box}body{margin:0;font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+header{padding:18px 24px;border-bottom:1px solid #253241;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+header b{font-size:18px}nav a{color:var(--mut);margin-right:14px;text-decoration:none}nav a:hover{color:var(--ink)}
+main{max-width:1060px;margin:0 auto;padding:24px}.card{background:var(--card);border:1px solid #253241;border-radius:10px;padding:18px 20px;margin:0 0 18px}
+h1{font-size:24px;margin:0 0 6px}h2{font-size:19px;margin:0 0 10px}h3{font-size:16px;margin:16px 0 6px}
+.banner{border-left:6px solid var(--bad)}.banner.ok{border-left-color:var(--ok)}.pill{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:600}
+.pass{background:#12361f;color:#56d364}.fail{background:#3d1214;color:#ff7b72}.info{background:#14283f;color:#79c0ff}
+a{color:var(--acc)}code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:#0b121a;padding:1px 5px;border-radius:5px;word-break:break-all}
+table{border-collapse:collapse;width:100%;font-size:14px}th,td{border-bottom:1px solid #253241;padding:6px 8px;text-align:left;vertical-align:top}th{color:var(--mut);font-weight:600}
+.btn{display:inline-block;background:#238636;color:#fff;padding:9px 16px;border-radius:8px;text-decoration:none;font-weight:600;margin:6px 8px 6px 0}
+.btn.sec{background:#30363d}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.k{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.04em}.v{font-size:20px;font-weight:700}
+small{color:var(--mut)}
+</style></head><body><header><b>GEMSDOE84</b><nav><a href="index.html">Submission</a><a href="executive-summary.html">How to submit</a><a href="research.html">Research &amp; results</a><a href="irregularities.html">Irregularities</a><a href="sources.html">Sources</a><a href="https://github.com/buffedlizard55-lab/GEMSDOE84">Repo</a></nav></header><main>
+<div class="card"><h1>Research &amp; results</h1><p>Evidence classes: MEASURED (computed here from hash-verified bytes) ·
+OWNER-REPORTED (live score from the owner's table, no organizer receipt) · HOLDOUT-DTI · MODEL (projection, never a score).</p></div>
+<div class="card"><h2>1. Anatomy of the 0.2778 file (MEASURED)</h2>
+<table><tr><th>raster</th><th>dots</th><th>≤1 px from catalogue</th><th>≤2 px</th><th>median px</th><th>live (OWNER-REPORTED)</th></tr><tr><td>h19_5_solid</td><td>121,131</td><td>9,651</td><td>17,326</td><td>14.6</td><td>0.1922</td></tr><tr><td>d1_5</td><td>60,069</td><td>5,355</td><td>8,769</td><td>14.9</td><td>0.2477</td></tr><tr><td>d2_8</td><td>44,090</td><td>3,891</td><td>6,436</td><td>15.0</td><td>0.26</td></tr><tr><td>h27_4_r1</td><td>40,199</td><td>0</td><td>2,545</td><td>17.7</td><td>0.2708</td></tr><tr><td>h36_1_rung30</td><td>37,660</td><td>0</td><td>2,353</td><td>17.7</td><td>0.271</td></tr><tr><td>h33_2_b2</td><td>37,654</td><td>0</td><td>0</td><td>19.6</td><td>0.2778</td></tr><tr><td>anderson_pinn</td><td>38,854</td><td>0</td><td>0</td><td>19.2</td><td>0.275</td></tr></table>
+<p>Exact set identities: H27-4 = D2.8 minus dots ≤1 px: <b>True</b>; H33-2-B2 = H27-4 minus dots ≤2 px:
+<b>True</b>; D2.8 ⊂ H19-5: <b>True</b>.</p>
+<p>Algebra (zero-credit deletions): implied TP<sub>w</sub> = 5073; predicted 0.2784
+vs reported 0.2778 (residual -0.0006).</p></div>
+<div class="card"><h2>2. Hypotheses considered</h2><p>See <a href="https://github.com/buffedlizard55-lab/GEMSDOE84/blob/main/docs/research/h84-hypotheses.md">docs/research/h84-hypotheses.md</a>
+(5 candidates with layers, signature, off-catalogue rationale, novelty, cost; two flagged data-blocked with the official source named).</p></div>
+<div class="card"><h2>3. Experiments (budget: 3)</h2>
+<h3>E1/E2a — live-score inversion (MODEL fitted to OWNER-REPORTED scores, 91 rasters, CV grouped by repo)</h3>
+<table><tr><th>model</th><th>CV RMSE</th><th>CV Spearman</th></tr><tr><td>M1_distance|reg=0.001</td><td>0.0918</td><td>0.267</td></tr><tr><td>M1_distance|reg=0.01</td><td>0.0915</td><td>0.372</td></tr><tr><td>M3_dist_dens_physics|reg=0.001</td><td>0.0621</td><td>0.730</td></tr><tr><td>M3_dist_dens_physics|reg=0.01</td><td>0.0825</td><td>0.507</td></tr><tr><td>M4_full_with_regions|reg=0.001</td><td>0.0626</td><td>0.729</td></tr><tr><td>M4_full_with_regions|reg=0.01</td><td>0.0814</td><td>0.523</td></tr><tr><td>M3_dist_dens_physics|reg=0.0001</td><td>0.0524</td><td>0.783</td></tr><tr><td>M5_M3_plus_ml|reg=0.001</td><td>0.0440</td><td>0.888</td></tr><tr><td>M5_M3_plus_ml|reg=0.0001</td><td>0.0344</td><td>0.907</td></tr></table>
+<p>Score SD across the table ≈ 0.084. The physics-only model under-predicts the H19 family by ~2×. Adding a catalogue-analogue ML probability and crest
+(trained only on visible faults) closes most of the gap. Selected coefficients (rank-scaled bases):</p>
+<table><tr><th>basis</th><th>θ</th></tr><tr><td>intercept</td><td>-12.35</td></tr><tr><td>dcat_0_1.5</td><td>-4.01</td></tr><tr><td>dcat_1.5_2.5</td><td>-0.41</td></tr><tr><td>dcat_2.5_4</td><td>-2.16</td></tr><tr><td>dcat_4_7</td><td>-1.68</td></tr><tr><td>dcat_7_12</td><td>-2.27</td></tr><tr><td>dcat_12_20</td><td>-0.51</td></tr><tr><td>dcat_20_35</td><td>-0.87</td></tr><tr><td>cat_density_5km</td><td>-8.39</td></tr><tr><td>det_elev_slope</td><td>-0.84</td></tr><tr><td>det_elev_line_s1p5</td><td>+5.44</td></tr><tr><td>det_elev_line_s4</td><td>+4.96</td></tr><tr><td>iso_grav_hg</td><td>-0.96</td></tr><tr><td>tmi_hg</td><td>-1.29</td></tr><tr><td>basement_depth_grad</td><td>+3.02</td></tr><tr><td>cond_surf</td><td>+0.48</td></tr><tr><td>geod_2ndinv</td><td>-1.89</td></tr><tr><td>relief_local_10m</td><td>-1.74</td></tr><tr><td>curv_prof_absmax_10m</td><td>-1.51</td></tr><tr><td>hs_lineament_10m</td><td>-4.45</td></tr><tr><td>lidar_ex_max</td><td>+2.09</td></tr><tr><td>lidar_valid</td><td>-1.08</td></tr><tr><td>ml_prob</td><td>+9.71</td></tr><tr><td>ml_ridge</td><td>+1.64</td></tr></table>
+<h3>E2b — protocol hide-and-recover holdout (HOLDOUT-DTI, gems57-pooled-hide-v2, 22,893 withheld positives, seeds [20, 21])</h3>
+<table><tr><th>arm</th><th>pooled DTI</th><th>95 % CI (20 km block bootstrap)</th></tr><tr><td>liti</td><td>0.0087</td><td>[0.0037, 0.0149]</td></tr><tr><td>incumbent_recipe</td><td>0.1056</td><td>[0.0934, 0.1181]</td></tr><tr><td>incumbent_asis</td><td>0.0039</td><td>[0.0033, 0.0045]</td></tr></table>
+<p>Catalogue hide-and-recover truth lives inside densely mapped districts; the live-score fit says new faults avoid them (theta[cat_density_5km] &lt; 0), and the incumbent-recipe control descends from a field trained on the FULL catalogue (leak in its favour). The gate is applied literally anyway.</p>
+<h3>E3 — emission, uniqueness, packaging</h3><p>27,445 dots from the shared <code>emit.greedy_allocate</code>.
+Surface gate passed (worst ρ 0.2743 over 1,143 rasters). Dot gate failed:
+124 literal flags, 68 of them universal blockers, and
+56 binding flags against dense registry fields (61k–1.5M support pixels, κ up to 0.79). The emission concentrates where the
+family's prevailing dense fields already concentrate. Logged as a duplicate; no TIFF written. Rows: <code>evidence/e3_gate_dots_chance_corrected.json</code>.</p></div>
+<div class="card"><h2>4. Next steps and limitations (for the next session)</h2><ol>
+<li><b>Make the holdout gate fair</b> (IR-84-04): rebuild the incumbent recipe from a field trained on the <i>visible</i> catalogue only, or have the
+owner adopt the repo-grouped live-score CV as a second, pre-registered instrument. As things stand the gate favours catalogue-trained fields.</li>
+<li><b>Owner ruling on IR-84-03</b>: dense registry rasters (e.g. a 5-px lattice) make the literal 70 % overlap rule unsatisfiable for every lane.
+The fix belongs in the shared template (60GEMSDOE), which lanes cannot push to.</li>
+<li><b>Organizer receipts</b>: copy submission IDs and scores from the submission page so OWNER-REPORTED rows become ORGANIZER-CONFIRMED. The inversion is only as good as these labels.</li>
+<li><b>Use LITI as a prior, not a generator</b>: its strongest, cross-validated terms (negative catalogue density, near-fault exclusion, terrain-line and basement-gradient enrichment)
+can re-weight any lane's field before emission. Every lane can apply it as a cheap pre-screen before spending a slot.</li>
+<li><b>Data blocked here</b>: USGS ComCat hypocentres and focal mechanisms (H84-D) and InSAR/optical products for the 2020 Monte Cristo Range rupture (H84-E).
+A GitHub Actions runner can fetch them (it has open internet); this sandbox cannot.</li>
+<li><b>Compute</b>: a 1 m-LiDAR deep detector needs a GPU, which this environment does not have.</li></ol></div>
+<div class="card"><h2>5. Verdict</h2><p><b>NEGATIVE</b> — DUPLICATE: final dots exceed the 70 % 3-px overlap limit against registry rasters under both the literal and the chance-corrected reading (protocol rule 1: log duplicate and stop; no TIFF written); holdout gate failed: does not beat the incumbent recipe on the protocol holdout. Negative results are deliverables:
+the inversion itself (cross-validated across repos) is reusable by every lane as a <i>prior</i> and as a cheap pre-screen before spending a slot.</p></div>
+</main></body></html>
