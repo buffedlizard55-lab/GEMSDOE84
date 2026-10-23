@@ -1,0 +1,255 @@
+{
+  "schema_version": "gemsdoe84-run-card-v2",
+  "run_id": "gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros",
+  "lane": "Lane H84-B \u2014 Crack-Tip Hydrothermal-Geopotential Posterior (CTHF) + Comonotonic 1D-Trace Fractional Optimization (CTFO)",
+  "hypothesis": "H84-B (CTHF + CTFO): Unmapped Basin-and-Range geothermal faults in GeoDAWN are discoverable by fusing (1) multi-altitude FFT upward-continued magnetic/gravity tilt worms pulled back updip to footwall subcrop with 1 m LiDAR / 10 m fluvial chi scarps, (2) DOE GDR-1391 2 m temperature probes (F2mDAB), Quaternary sinter/travertine vents, and cationic/silica geothermometers, and (3) fold-visible crack-tip stress lobes & dilational relay bridges, then solving Charnes-Cooper fractional submodular allocation using comonotonic 1D cross-strike self-credit Q_1D-trace(x).",
+  "mechanism": "2-seed out-of-fold LightGBM + HistGradientBoosting ensemble over 57 non-catalogue geopotential, 1m/10m tectonic geomorphology, and GDR-1391 hydrothermal features plus 27 fold-visible kinematic features, combined via Noisy-OR prior coupling and allocated by exact CELF Charnes-Cooper Dinkelbach optimization on the official 300 m triangular DTI kernel.",
+  "named_nonfault_mimic": "Pleistocene Lake Lahontan wave-cut shoreline benches (~1,265-1,348 m ASL Sehoo highstand contour-parallel scarps) and lateral shallow thermal outflow plumes in piedmont gravels.",
+  "experiments_executed": 3,
+  "budget_cap_respected": true,
+  "leakage_canaries": {
+    "evidence_class": "HOLDOUT-AUC-CANARY",
+    "n_features_checked": 84,
+    "auc_threshold": 0.9,
+    "max_single_feature_abs_auc": 0.7423,
+    "passed": true
+  },
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "alpha": 0.2,
+    "beta": 0.8,
+    "triangular_radius_m": 300.0,
+    "n_folds_pooled": 8,
+    "withheld_positive_pixels": 22893,
+    "dti": 0.15811508653582998,
+    "ci95": [
+      0.14273205135334238,
+      0.1719895157691462
+    ],
+    "tpw": 5420.5636273354385,
+    "fpw": 74419.40426565563,
+    "fnw": 17472.436372664557,
+    "all_arms": {
+      "EXP_84_3_CTHF_CTFO": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.15811508653582998,
+        "ci95": [
+          0.14273205135334238,
+          0.1719895157691462
+        ],
+        "withheld_positive_pixels": 22893,
+        "tpw": 5420.5636273354385,
+        "fpw": 74419.40426565563,
+        "fnw": 17472.436372664557
+      },
+      "EXP_84_3_EQBUDGET_37654": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.1577833027262077,
+        "ci95": [
+          0.14264012502746998,
+          0.17138285621948499
+        ],
+        "withheld_positive_pixels": 22893,
+        "tpw": 5183.658978365179,
+        "fpw": 67509.47202095494,
+        "fnw": 17709.341021634824
+      },
+      "EXP_84_2_CTHF_NMS": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.14583190058551818,
+        "ci95": [
+          0.13121324775831186,
+          0.15952111898559268
+        ],
+        "withheld_positive_pixels": 22893,
+        "tpw": 4776.761598220357,
+        "fpw": 67427.53079876406,
+        "fnw": 18116.238401779636
+      },
+      "EXP_84_1_HUPW_NMS": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.09528491611049408,
+        "ci95": [
+          0.08112483904471406,
+          0.10885887103315874
+        ],
+        "withheld_positive_pixels": 22893,
+        "tpw": 3041.62337671446,
+        "fpw": 64993.138158728325,
+        "fnw": 19851.37662328554
+      },
+      "incumbent_recipe": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.10564450185732029,
+        "ci95": [
+          0.09297452014408822,
+          0.11645170690896636
+        ],
+        "withheld_positive_pixels": 22893,
+        "tpw": 3524.103620286295,
+        "fpw": 71694.57447131119,
+        "fnw": 19368.896379713697
+      },
+      "incumbent_asis": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "dti": 0.0038851762665228526,
+        "ci95": [
+          0.0032914731003380084,
+          0.004500158295414441
+        ],
+        "withheld_positive_pixels": 22893,
+        "tpw": 126.10656936923311,
+        "fpw": 70593.84715207116,
+        "fnw": 22766.893430630775
+      }
+    },
+    "paired_differences_vs_exp_84_3": {
+      "EXP_84_3_EQBUDGET_37654": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.00033178380962228804,
+        "ci95": [
+          -0.0008562653724273727,
+          0.0014975088478575635
+        ],
+        "withheld_positive_pixels": 22893
+      },
+      "EXP_84_2_CTHF_NMS": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.012283185950311803,
+        "ci95": [
+          0.00910964934364728,
+          0.01517710831172018
+        ],
+        "withheld_positive_pixels": 22893
+      },
+      "EXP_84_1_HUPW_NMS": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.0628301704253359,
+        "ci95": [
+          0.04503354940081741,
+          0.07827936286822054
+        ],
+        "withheld_positive_pixels": 22893
+      },
+      "incumbent_recipe": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.052470584678509694,
+        "ci95": [
+          0.03702438278294799,
+          0.06758178877143413
+        ],
+        "withheld_positive_pixels": 22893
+      },
+      "incumbent_asis": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.15422991026930713,
+        "ci95": [
+          0.1388568807211795,
+          0.1681863021904893
+        ],
+        "withheld_positive_pixels": 22893
+      }
+    },
+    "blind_sgmc_validation": {
+      "total_dots": 41500,
+      "dinkelbach_lambda": 0.16305,
+      "outer_iters": 1,
+      "dots_proximal_2_to_6px": 18199,
+      "dots_intermediate_6_to_15px": 16539,
+      "dots_distal_blind_gt_15px": 6762,
+      "fraction_distal_blind_gt_15px": 0.1629,
+      "median_dcat_px": 7.0,
+      "wall_s": 809.86,
+      "blind_sgmc_cthf": {
+        "n_blind_sgmc_pixels": 56467,
+        "dots_in_blind_domain": 25633,
+        "weighted_tp_sgmc": 2757.9,
+        "recall_within_300m": 0.1047,
+        "random_coverage_fraction": 0.0853,
+        "enrichment_lift_over_random": 1.23
+      },
+      "blind_sgmc_incumbent_asis": {
+        "n_blind_sgmc_pixels": 56467,
+        "dots_in_blind_domain": 32017,
+        "weighted_tp_sgmc": 4647.39,
+        "recall_within_300m": 0.206,
+        "random_coverage_fraction": 0.1446,
+        "enrichment_lift_over_random": 1.43
+      }
+    }
+  },
+  "incumbent_forensics": {
+    "evidence_class": "OWNER-REPORTED-AND-GEOMETRIC-EXACT",
+    "live_incumbent": "h33-h33-2-b2-zeros (GEMSDOE32)",
+    "owner_reported_dti": 0.2778,
+    "closed_form_covered_truth_T": 5073.287555555577,
+    "closed_form_predicted_h33_dti": 0.27836289924342644,
+    "residual": -0.0005628992434264513
+  },
+  "registry_correlation_overlap": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "non_sample_rasters_checked": 1191,
+    "pre_placement_surface_passed": true,
+    "pre_placement_surface_worst_abs_spearman": 0.6952864168704195,
+    "final_dots_byte_unique": true,
+    "final_dots_pixel_unique": true,
+    "final_dots_worst_abs_spearman": 0.10856861401212024,
+    "final_dots_worst_jaccard": 0.0345342728381844,
+    "final_dots_overlap_vs_h33_2_b2_3px": 0.382602,
+    "final_dots_overlap_vs_h33_2_b2_1px": 0.024,
+    "final_dots_worst_forward_overlap_discriminating": 0.9686746987951808,
+    "duplicate": true
+  },
+  "raster_sha256": "34dfefb16c0c54e9537a3c7988f3ffb9d5c0d3938cb706b58502567b5311e701",
+  "decoded_array_sha256": "8c0b5a8b4ffc849b81106f62239f5f9bde6e5eb54c08068873d570112e1550fa",
+  "submission_file": "docs/downloads/gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.tif",
+  "submission_zip": "docs/downloads/gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.zip",
+  "submissions_dir_tif": "submissions/gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.tif",
+  "submissions_dir_zip": "submissions/gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.zip",
+  "submission_bytes": 142468,
+  "n_dots": 41500,
+  "dinkelbach_lambda_star": 0.16305,
+  "submission_name": "gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros",
+  "note": "GEMSDOE84 H84-B CTHF+CTFO: FFT upward-continued pullback + GDR-1391 F2mDAB/sinter + crack-tip relay + Dinkelbach 1D-trace dots",
+  "note_chars": 126,
+  "validator_output": {
+    "format_valid": true,
+    "checks": {
+      "geotiff": true,
+      "single_band": true,
+      "crs": true,
+      "shape": true,
+      "transform": true,
+      "real_dtype": true,
+      "finite_all": true,
+      "range_all": true,
+      "no_masked_footprint": true,
+      "nonempty_footprint": true
+    },
+    "footprint_pixels": 5167373,
+    "sha256": "34dfefb16c0c54e9537a3c7988f3ffb9d5c0d3938cb706b58502567b5311e701",
+    "template_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+    "submission_authorized": false,
+    "scope": "Format only; scientific, registry and selector gates remain separate."
+  },
+  "verdict": "negative",
+  "download_allowed": true,
+  "submission_authorized": false,
+  "approved_for_weekly_slot": false,
+  "submission_slots_used": 0,
+  "promotion_blockers": [
+    "Protocol Rule 1 asymmetric forward 3-px overlap exceeded 0.70 against multi-lane corridor priors (0.9687) despite byte_unique=True, pixel_unique=True, max exact Jaccard=0.0345, max surface |Spearman|=0.6953 <= 0.90, max dot |Spearman|=0.1086 <= 0.90, and 38.26% 3-px overlap against live incumbent h33-2-b2 (61.7% novel dots)."
+  ]
+}

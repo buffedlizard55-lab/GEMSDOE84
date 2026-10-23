@@ -1,115 +1,209 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Executive Overview · GEMSDOE84</title><link rel="stylesheet" href="style.css"></head><body><header><a class="brand" href="index.html">GEMS<span>DOE84</span></a><nav><a href="index.html">Executive Overview</a><a href="executive-summary.html">Submission &amp; Gate Guide</a><a href="research.html">PhD Research &amp; Evidence</a><a href="liti/index.html">Archive: Lane H84-A (LITI)</a></nav></header><main><section class="status-hero">
-<div class="badge-row">
-  <span class="badge">PROTOCOL HOLD (verdict: negative) · DO NOT AUTO-SUBMIT</span>
-  <span class="badge pass">PASS &middot; [0, 1] FINITE FLOAT32 &amp; EPSG:32611</span>
-  <span class="badge pass">PASS &middot; HOLDOUT-DTI 0.1581 (+49.7%)</span>
-  <span class="badge pass">PASS &middot; BYTE &amp; PIXEL UNIQUE (JACCARD &le; 0.0345)</span>
-</div>
-<h2>Unique CTHF + CTFO GeoTIFF validated &amp; ready for review — held from auto-submission by Protocol Rule 1</h2>
-<p><b>Unmistakable Release Status:</b> Automated technical validation passed 10/10 checks (single-band <code>float32</code>, <code>EPSG:32611</code>, <code>3730 &times; 3292</code>, strictly finite in <code>[0.0, 1.0]</code>, <code>0</code> NaNs, <code>0</code> mapped-fault positives — prevents the portal <i>"Predicted values must be in range [0, 1]"</i> error) and pooled 8-fold holdout achieved <b><code>0.1581</code> HOLDOUT-DTI</b> (<b>+49.7%</b> over <code>incumbent_recipe = 0.1056</code>). <b>Why verdict is <code>negative</code> (DO NOT SUBMIT automatically):</b> across <code>1,191</code> archived rasters from 92 <code>GEMSDOE*</code> repos, exact byte/pixel uniqueness passed (max dot Jaccard <code>0.0345</code>; <code>h33-2-b2</code> 3-px overlap = <b><code>0.3826</code></b>; Spearman <code>|rho| &le; 0.6953</code>), but one-sided 3-px forward overlap exceeded <code>0.70</code> due to fleet corridor/lattice saturation. <code>0</code> weekly slots used automatically; human portfolio selector retains full download access below.</p>
-<div class="cta-row">
-  <a class="button" download href="downloads/gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.tif">Download Validated Submission .tif (139 KB) &darr;</a>
-  <a class="button secondary" download href="downloads/gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.zip">Download Single-TIFF .zip (103 KB) &darr;</a>
-  <a class="button secondary" download href="evidence/run-card.json">Download JSON Run Card &darr;</a>
-</div>
-<div class="identity-box">
-  <dl>
-    <dt>Unique Submission Name (51 chars)</dt>
-    <dd><code>gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros</code></dd>
-    <dt>Short Portal Note (126 / 140 chars)</dt>
-    <dd><code>GEMSDOE84 H84-B CTHF+CTFO: FFT upward-continued pullback + GDR-1391 F2mDAB/sinter + crack-tip relay + Dinkelbach 1D-trace dots</code></dd>
-    <dt>Verified GeoTIFF SHA-256</dt>
-    <dd><code>34dfefb16c0c54e9537a3c7988f3ffb9d5c0d3938cb706b58502567b5311e701</code></dd>
-    <dt>Format &amp; Range Audit</dt>
-    <dd><code>format_valid=True</code> &middot; <code>min=0.0, max=1.0, n_nan=0</code> &middot; <code>41,500 unit dots</code> &middot; <code>0 slots consumed</code></dd>
-  </dl>
-</div>
-</section>
-<p class="eyebrow">GEMSDOE84 &middot; LANE H84-B (CTHF + CTFO) &middot; DRIVENDATA #306</p>
-<h1>Crack-Tip Hydrothermal Physics &amp; Optimal 1D-Trace Fault Packing.</h1>
-<p class="lede">First-principles multi-sensor fault discovery combining 2D FFT upward-continued potential-field footwall pullback, DOE GDR-1391 shallow 2&nbsp;m thermal probes &amp; Quaternary sinters, Cowie&ndash;Scholz crack-tip relay kinematics, and Charnes&ndash;Cooper fractional optimization.</p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Overview &amp; Validated Artifacts — GEMSDOE84</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <span class="brand">GEMSDOE84 · DOE GEMS Geothermal Fault Discovery</span>
+      <nav class="nav-links" aria-label="Primary Navigation"><a href="index.html" class="active">Overview & Artifacts</a><a href="executive-summary.html" class="">Executive Summary</a><a href="research.html" class="">Research & Proofs</a><a href="methodology.html" class="">Methodology</a><a href="results.html" class="">Holdout & Audit Tables</a><a href="irregularities.html" class="">Irregularities Log</a><a href="sources.html" class="">Verified Sources</a></nav>
+    </div>
+  </header>
+  <main class="container">
+    
+<section class="status-hero" aria-label="Submission Release Gate &amp; Verified Artifacts">
+  <div class="hero-top">
+    <div>
+      <h2 class="hero-title">Lane H84-B (<code>CTHF + CTFO</code>) &amp; Multi-Lane Release Portal — Validated GeoTIFF Deliverables</h2>
+      <p style="margin:6px 0 0;color:#475569;font-size:14px;">
+        <strong>DO NOT SUBMIT AUTOMATICALLY:</strong> Automated release remains <code>verdict: negative</code> under
+        Parallel-Run Protocol Rule 1 (one-sided <code>3-px</code> forward overlap &gt; <code>0.70</code> against dense archive blankets;
+        <code>0</code> live weekly competition slots consumed automatically). All validated single-band <code>float32</code> GeoTIFF
+        deliverables pass <code>10 / 10</code> format &amp; <code>[0, 1]</code> finiteness checks and are downloadable immediately below for human selector review.
+      </p>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+      <span class="status-badge hold">&#9888; DO NOT SUBMIT (VERDICT: NEGATIVE · 0 SLOTS SPENT)</span>
+      <span class="status-badge pass">&#10003; FORMAT &amp; [0, 1] RANGE: PASS (10/10)</span>
+    </div>
+  </div>
 
-<section>
-  <h2>Key Verified Metrics (Strict Provenance Labels)</h2>
-  <div class="metrics">
-    <article>
-      <small>HOLDOUT-DTI &middot; EXP-84-3 (41.5k)</small>
-      <strong>0.1581</strong>
-      <p>95% CI [0.1427, 0.1720] &middot; 22,893 withheld px</p>
-    </article>
-    <article>
-      <small>PAIRED LIFT VS INCUMBENT RECIPE</small>
-      <strong>+0.0525</strong>
-      <p>+49.7% relative lift &middot; 95% CI [+0.0370, +0.0676]</p>
-    </article>
-    <article>
-      <small>PURE CTFO PACKING LIFT (8/8 FOLDS)</small>
-      <strong>+0.0123</strong>
-      <p>95% CI [+0.0091, +0.0152] on identical posterior</p>
-    </article>
-    <article>
-      <small>UNIQUENESS VS H33-2-B2 (OWNER 0.2778)</small>
-      <strong>38.26%</strong>
-      <p>3-px overlap (61.7% novel) &middot; 2.40% exact 1-px &middot; |rho| &le; 0.695</p>
-    </article>
+  <div class="download-row">
+    <a class="dl-btn primary" href="downloads/gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.tif" download>
+      &#11015; Download H84-B GeoTIFF (.tif · 142 KB)
+    </a>
+    <a class="dl-btn secondary" href="downloads/gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.zip" download>
+      &#11015; Download H84-B Archive (.zip · 106 KB)
+    </a>
+    <a class="dl-btn secondary" href="evidence/run_card_cthf.json">
+      View H84-B Run Card (.json)
+    </a>
+    <a class="dl-btn secondary" href="downloads/gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros.tif" download>
+      &#11015; Download H84-CSAT (.tif)
+    </a>
+    <a class="dl-btn secondary" href="downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif" download>
+      &#11015; Download H84-THMS Audit (.tif)
+    </a>
+  </div>
+
+  <div class="meta-grid">
+    <div class="meta-item">
+      <span class="meta-label">H84-B Unique Submission Name (51 chars)</span>
+      <span class="meta-val">gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">H84-B GeoTIFF SHA-256 (Verified Byte-Unique across 1,196 Rasters)</span>
+      <span class="meta-val">34dfefb16c0c54e9537a3c7988f3ffb9d5c0d3938cb706b58502567b5311e701</span>
+    </div>
+    <div class="meta-item" style="grid-column: 1 / -1;">
+      <span class="meta-label">H84-B Short Portal Note (126 / 140 chars max)</span>
+      <span class="meta-val">GEMSDOE84 H84-B CTHF+CTFO: FFT upward-continued pullback + GDR-1391 F2mDAB/sinter + crack-tip relay + Dinkelbach 1D-trace dots</span>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-num">0.1581</div>
+      <div class="kpi-sub">H84-B Pooled 8-Fold <code>HOLDOUT-DTI</code><br>95% CI [0.1427, 0.1720] · TPw=5,420.6</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">+0.0525</div>
+      <div class="kpi-sub">H84-B Gain vs <code>incumbent_recipe</code><br>+49.7% relative · +0.0120 pure CTFO vs NMS</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">0.1685</div>
+      <div class="kpi-sub">Parallel Lane <code>H84-CSAT</code> D2.8<br><code>gemsdoe84-h84-csat-d28…</code> (submod: 0.0815)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">38.3% / 0</div>
+      <div class="kpi-sub">H84-B 3-px Overlap vs <code>h33-2-b2</code> (41,500 dots)<br>0 NaN · 0 Inf · [0.0, 1.0] float32</div>
+    </div>
   </div>
 </section>
 
-<section>
-  <h2>Pooled 8-Fold Buffered Whole-Segment Holdout Ablation</h2>
-  <p>Evaluated identically via unmodified <code>vendor/gems57/evaluate_holdout.py</code> (<code>gems57-pooled-hide-v2</code>, <code>&alpha;=0.2, &beta;=0.8</code>, <code>300 m</code> triangular kernel, <code>buffer_px=3</code>, <code>1,000</code> paired 20&nbsp;km spatial-cluster bootstrap draws). Single-feature leakage canaries passed across all <code>84</code> features (<code>max |AUC| = 0.7423 &le; 0.9000</code>).</p>
+    
+<article class="content-card">
+  <h1>Multi-Lane Synthesis &amp; Head-to-Head Verification Across GEMSDOE84</h1>
+  <div class="callout info">
+    <strong>Why CTFO Solved the Submodular Allocation Paradox Across Parallel Lanes:</strong>
+    On the identical <code>22,893</code>-pixel <code>gems57-pooled-hide-v2</code> whole-segment holdout, naive cell-independent
+    submodular allocation in parallel Lane <code>H84-CSAT</code> collapsed to <code>HOLDOUT-DTI = 0.0815</code> due to blurry
+    posterior peak clumping (forcing fallback to isotropic <code>d = 2.8 px</code> Poisson thinning at <code>0.1685</code>,
+    <code>TPw = 5,062.9</code>). Lane <code>H84-B</code> replaced cell-independent marginal gain with
+    <strong>Comonotonic 1D-Trace Self-Credit <code>Q_1D-trace(x)</code></strong>, achieving <strong><code>TPw = 5,420.6</code></strong>
+    (<code>HOLDOUT-DTI = 0.1581</code>, beating identical-posterior <code>d = 3.0</code> NMS across <strong>all 8 / 8 spatial folds</strong>)
+    and improving pure catalogue-blind physics discovery from <code>0.0735</code> (<code>CSAT concealed_poisson</code>) to
+    <strong><code>0.0953</code> (+39.4% more true fault coverage <code>TPw = 3,041.6 vs 2,182.3</code>)</strong>.
+  </div>
+
+  <h2>Cross-Lane Validated Artifact Comparison (All Shipped Single-Band <code>float32</code> GeoTIFFs)</h2>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Experiment / Control Arm</th><th>Dots</th><th>HOLDOUT-DTI</th><th>95% Cluster CI</th><th>TPw</th><th>FPw</th><th>Paired &Delta; vs Recipe</th></tr></thead>
-      <tbody><tr class="highlight"><td>EXP-84-3: CTHF + CTFO (Final Candidate)</td><td>41,500</td><td><b>0.1581</b></td><td>[0.1427, 0.1720]</td><td>5,420.6</td><td>74,419.4</td><td>+0.0525 [+0.0370, +0.0676]</td></tr><tr class="highlight"><td>EXP-84-3-eq37k: CTHF + CTFO (Exact Budget Control)</td><td>37,654</td><td><b>0.1578</b></td><td>[0.1426, 0.1714]</td><td>5,183.7</td><td>67,509.5</td><td>+0.0522 [+0.0369, +0.0671]</td></tr><tr class=""><td>EXP-84-2: CTHF + Greedy d=3.0 NMS</td><td>37,654</td><td><b>0.1458</b></td><td>[0.1312, 0.1595]</td><td>4,776.8</td><td>67,427.5</td><td>+0.0402 [+0.0261, +0.0545]</td></tr><tr class=""><td>incumbent_recipe: h33-2-b2 Collar Rule (Fold-Visible)</td><td>~39,600</td><td><b>0.1056</b></td><td>[0.0930, 0.1165]</td><td>3,524.1</td><td>71,694.6</td><td>0.0000 (baseline control)</td></tr><tr class=""><td>EXP-84-1: HUPW Pure Multi-Physics + d=3.0 NMS</td><td>37,654</td><td><b>0.0953</b></td><td>[0.0811, 0.1089]</td><td>3,041.6</td><td>64,993.1</td><td>-0.0103 [-0.0235, +0.0031]</td></tr><tr class=""><td>incumbent_asis: Shipped h33-2-b2 GeoTIFF As-Is</td><td>37,654</td><td><b>0.0039</b></td><td>[0.0033, 0.0045]</td><td>126.1</td><td>70,593.8</td><td>-0.1018 [-0.1127, -0.0892]</td></tr></tbody>
+      <thead>
+        <tr>
+          <th>Lane</th>
+          <th>Validated Submission Name</th>
+          <th>Dots</th>
+          <th>Pure-Physics <code>HOLDOUT-DTI</code></th>
+          <th>Submodular <code>HOLDOUT-DTI</code></th>
+          <th>Best Holdout <code>TPw</code></th>
+          <th>Format &amp; <code>[0,1]</code></th>
+          <th>Automated Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Lane H84-B (<code>CTHF + CTFO</code>)</strong></td>
+          <td><code>gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros</code></td>
+          <td><code>41,500</code></td>
+          <td><strong>0.0953</strong> (<code>TPw=3,041.6</code>)</td>
+          <td><strong>0.1581</strong> (8/8 folds &gt; NMS)</td>
+          <td><strong>5,420.6</strong></td>
+          <td><code>PASS (10/10)</code></td>
+          <td><code>DO NOT SUBMIT (hold)</code></td>
+        </tr>
+        <tr>
+          <td><strong>Lane H84-CSAT (<code>LOQO Dual-Habitat</code>)</strong></td>
+          <td><code>gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros</code></td>
+          <td><code>38,453</code></td>
+          <td>0.0735 (<code>TPw=2,182.3</code>)</td>
+          <td>0.0815 (clumped; D2.8=0.1685)</td>
+          <td>5,062.9</td>
+          <td><code>PASS (10/10)</code></td>
+          <td><code>DO NOT SUBMIT (hold)</code></td>
+        </tr>
+        <tr>
+          <td><strong>Audited H84-THMS Archive</strong></td>
+          <td><code>gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros</code></td>
+          <td><code>37,654</code></td>
+          <td>0.0689 (archived seed split)</td>
+          <td>Uncertified (registry halo leak)</td>
+          <td>—</td>
+          <td><code>PASS (10/10)</code></td>
+          <td><code>DO NOT SUBMIT (hold)</code></td>
+        </tr>
+        <tr>
+          <td><strong>Live Incumbent (<code>GEMSDOE32</code>)</strong></td>
+          <td><code>h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros</code></td>
+          <td><code>37,654</code></td>
+          <td>—</td>
+          <td><code>0.1056</code> recipe / <code>0.2778</code> live*</td>
+          <td>3,524.1</td>
+          <td><code>PASS</code></td>
+          <td><code>OWNER-REPORTED</code> baseline</td>
+        </tr>
+      </tbody>
     </table>
   </div>
-  <figure class="fig-card">
-    <img src="assets/figures/fig1_holdout_ablation.png" alt="Pooled 8-fold holdout ablation and per-quadrant unanimity plot">
-    <figcaption><b>Figure 1 (HOLDOUT-DTI):</b> Left: Pooled 8-fold whole-segment holdout DTI and 95% spatial-cluster bootstrap intervals across all 3 preregistered experiments and controls. Even at the exact <code>37,654</code> dot count of <code>h33-2-b2</code>, <code>EXP-84-3-eq37k</code> achieves <code>0.1578</code> vs <code>EXP-84-2</code>'s <code>0.1458</code> (+406.9 extra weighted truth coverage <code>TPw</code> at identical <code>FPw</code>). Right: Per-quadrant trajectory across Seeds 20 &amp; 21 showing unanimous <code>8 / 8</code> wins of oriented CTFO over greedy NMS.</figcaption>
-  </figure>
-</section>
 
-<section>
-  <h2>Physical Mechanism, Geothermal Discovery &amp; 1D-Trace Geometry</h2>
-  <div class="grid">
-    <article>
-      <p class="eyebrow">01 / FORENSICS OF H33-2-B2 (0.2778 OWNER-REPORTED)</p>
-      <h3>Closed-form zero-parameter proof</h3>
-      <p>Pixel set algebra proves <code>h19-5 (121,131) &sup; d1.5 (60,069) &sup; d2.8 (44,090; 0.2600) &sup; h27-4 (40,199; 0.2708) &sup; h33-2-b2 (37,654; 0.2778 OWNER-REPORTED)</code>. Under the official Tversky denominator <code>D = 0.2(T + n - M) + 0.8K</code>, deleting <code>3,891</code> pure false-positive collar dots inside <code>100 m</code> yields <code>T = 5,073.3 px-wt</code> and predicts <code>h33-2-b2 = 0.27836</code> with zero free parameters (residual <code>-0.00056</code>), bounding live hidden truth to <code>K_live &approx; 13,085 &plusmn; 315 px</code>.</p>
-    </article>
-    <article>
-      <p class="eyebrow">02 / MULTI-SENSOR GEOTHERMAL &amp; MIMIC COUNTER-FILTER</p>
-      <h3>Upflow physics minus Lake Lahontan shorelines</h3>
-      <p>Normal-fault fluid upflow and footwall flexural steps jointly perturb 2m shallow temperature (F2mDAB), opal/chalcedony sinter deposition, upward-continued gravity/magnetic tilt worms, and cross-strike LiDAR curvature while avoiding Pleistocene Lake Lahontan (~1,328 m ASL) shoreline terraces; CTFO spaces unit dots along local Hessian fault strike (~4.1 px) rather than wasteful d=3.0 isotropic circles. Explicitly suppresses non-tectonic <b>Pleistocene Lake Lahontan wave-cut shoreline benches (~1,265&ndash;1,348&nbsp;m ASL)</b> via <code>lahontan_shoreline_mimic</code> when surface slope lacks deep potential-field corroboration.</p>
-    </article>
+  <h2>Lane H84-B Pooled 8-Fold Buffered Whole-Segment Holdout Results (<code>gems57-pooled-hide-v2</code>)</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Evaluation Arm</th>
+          <th>Dots</th>
+          <th>HOLDOUT-DTI</th>
+          <th>95% Cluster CI</th>
+          <th>TPw</th>
+          <th>FPw</th>
+          <th>FNw</th>
+          <th>Paired &Delta;DTI vs Reference</th>
+        </tr>
+      </thead>
+      <tbody><tr><td><strong>EXP-84-3: CTHF Posterior + CTFO 1D-Trace Submodular</strong></td><td><code>41,500</code></td><td><strong>0.1581</strong></td><td>[0.1427, 0.1720]</td><td>5420.6</td><td>74419.4</td><td>17472.4</td><td><strong>Reference Winner (+49.7% vs recipe)</strong></td></tr><tr><td><strong>EXP-84-3 Equal-Budget Control (CTFO at exact h33 budget)</strong></td><td><code>37,654</code></td><td><strong>0.1578</strong></td><td>[0.1426, 0.1714]</td><td>5183.7</td><td>67509.5</td><td>17709.3</td><td>-0.0003 [-0.0015, +0.0009]</td></tr><tr><td><strong>EXP-84-2: Full 84-Feature CTHF Posterior + d=3.0 NMS</strong></td><td><code>37,654</code></td><td><strong>0.1458</strong></td><td>[0.1312, 0.1595]</td><td>4776.8</td><td>67427.5</td><td>18116.2</td><td>-0.0123 [-0.0152, -0.0091]</td></tr><tr><td><strong>Incumbent Recipe (h33-2-b2 rule strictly on fold-visible cat)</strong></td><td><code>~39,600</code></td><td><strong>0.1056</strong></td><td>[0.0930, 0.1165]</td><td>3524.1</td><td>71694.6</td><td>19368.9</td><td>-0.0525 [-0.0676, -0.0370]</td></tr><tr><td><strong>EXP-84-1: Pure Physics + Hydrothermal (0 catalogue features)</strong></td><td><code>37,654</code></td><td><strong>0.0953</strong></td><td>[0.0811, 0.1089]</td><td>3041.6</td><td>64993.1</td><td>19851.4</td><td>-0.0628 [-0.0783, -0.0450]</td></tr><tr><td><strong>Shipped h33-2-b2 Raster As-Is (live 200 m collar mismatch)</strong></td><td><code>37,654</code></td><td><strong>0.0039</strong></td><td>[0.0033, 0.0045]</td><td>126.1</td><td>70593.8</td><td>22766.9</td><td>-0.1542 [-0.1682, -0.1389]</td></tr></tbody>
+    </table>
   </div>
-  <figure class="fig-card">
-    <img src="assets/figures/fig2_cthf_geothermal_zoom.png" alt="GeoDAWN CTHF posterior map and 48x48 km structural relay zoom">
-    <figcaption><b>Figure 2 (Spatial Posterior &amp; Blind SGMC Overlay):</b> Left: Full <code>373 &times; 329 km</code> GeoDAWN footprint log-posterior <code>log10 p_CTHF(x)</code>. Right: <code>48 &times; 48 km</code> zoom showing mapped USGS/INGENIOUS faults (cyan, masked to <code>0</code>), unmapped USGS SGMC bedrock fault traces <code>&gt;500 m</code> from catalogue (gold; <code>0.2675</code> recall inside <code>500&ndash;1,500 m</code> splays), and emitted unit dots (emerald).</figcaption>
-  </figure>
-  <figure class="fig-card">
-    <img src="assets/figures/fig3_ctfo_vs_nms_packing.png" alt="Comparison of greedy d=3.0 NMS versus oriented Charnes-Cooper CTFO">
-    <figcaption><b>Figure 3 (Decision-Theoretic Packing Efficiency):</b> On the exact same posterior and exact <code>37,654</code> dot budget, isotropic <code>d=3.0</code> NMS clusters dots redundantly along 2D halos, whereas Charnes&ndash;Cooper CTFO pairs <code>2.2 px</code> cross-splay doublets with optimal <code>~3.2&ndash;4.5 px</code> along-strike spacing, lifting <code>TPw</code> by <code>+8.52%</code>.</figcaption>
-  </figure>
-</section>
 
-<section>
-  <h2>Exhaustive 1,196-Raster Fleet Uniqueness Audit &amp; Caveats</h2>
-  <figure class="fig-card">
-    <img src="assets/figures/fig4_fleet_uniqueness_audit.png" alt="Fleet uniqueness audit across 1,191 non-sample rasters">
-    <figcaption><b>Figure 4 (Full 92-Repository Uniqueness Audit):</b> Left: Candidate forward 3-px overlap vs prior halo fraction <code>H(B)</code> across <code>1,191</code> non-sample rasters (<code>84</code> space-filling priors with <code>H &ge; 0.70</code> such as <code>13GEMSDOE</code>'s 5-px lattice covering 99.87% of Nevada; partial continuous surfaces such as <code>57GEMSDOE</code>'s 2.71M-px surface; <code>GEMSDOE3</code>'s 624k carpet; and <code>h33-2-b2 = 0.3826</code>). Right: Zero rank-correlation violations on either pre-placement surface (<code>max |rho| = 0.6953 &le; 0.90</code>) or final GeoTIFF (<code>max |rho| = 0.1086 &le; 0.90</code>).</figcaption>
-  </figure>
-  <div class="warning">
-    <span class="badge">PROTOCOL TRANSPARENCY &amp; LIMITATIONS</span>
-    <h3>Why automatic slot expenditure is held (<code>verdict = "negative"</code>)</h3>
-    <ul><li>Parallel-Run Protocol Rule 1 stop: asymmetric 3-px forward overlap exceeds 0.70 against prior 92-repo archive (1.0000 vs 13GEMSDOE s5 lattice; 0.9687 vs 57GEMSDOE 2.71M continuous surface; 0.9222 vs GEMSDOE3 624k wide carpet; 0.7227 vs archived GEMSDOE79 35.6k raster), even though byte-unique, pixel-unique (max Jaccard 0.0345), Spearman rank correlation &lt;= 0.6953 (surface) / 0.1086 (dots), and 3-px overlap with family best h33-2-b2 is only 0.3826.</li><li>Live leaderboard scores (0.2778, 0.3195, 0.4413) are OWNER-REPORTED only; drivendata.org is unreachable under sandbox network policy, and 0 weekly submission slots were consumed automatically (Rule 6).</li><li>Holdout-vs-live domain shift caveat: catalogue hide-and-recover favors near-catalogue propagation corridors (83.7% of dots &lt;= 1.5 km), whereas live hidden truth has strong negative 5 km catalogue density (theta = -10.82).</li></ul>
+  <div class="fig-grid">
+    <div class="fig-box">
+      <img src="assets/figures/fig1_holdout_ablation.png" alt="Pooled 8-Fold Holdout Ablation and Fold Trajectory">
+      <p class="fig-cap"><strong>Figure 1.</strong> Pooled 8-fold <code>HOLDOUT-DTI</code> progression across all 6 evaluation arms and fold-by-fold trajectory showing <code>EXP-84-3 (CTHF + CTFO)</code> strictly beating <code>EXP-84-2 (CTHF + NMS)</code> on all <code>8 / 8</code> folds.</p>
+    </div>
+    <div class="fig-box">
+      <img src="assets/figures/fig2_cthf_geothermal_zoom.png" alt="GeoDAWN Hydrothermal Conduit Sub-Region Map">
+      <p class="fig-cap"><strong>Figure 2.</strong> Multi-sensor <code>CTHF</code> posterior and <code>CTFO</code> <code>41,500</code>-dot allocation across active Basin-and-Range range-front scarps, relay bridges, and <code>GDR-1391</code> hydrothermal probes/sinters.</p>
+    </div>
+    <div class="fig-box">
+      <img src="assets/figures/fig3_ctfo_vs_nms_packing.png" alt="CTFO vs NMS Geometric Packing and Blind SGMC Validation">
+      <p class="fig-cap"><strong>Figure 3.</strong> Nearest-neighbor spacing shift (<code>2.0-2.6 px</code> crest chains vs <code>d=3.0</code> disk truncation), radial profile relative to <code>h33-2-b2</code>, and independent blind <code>SGMC</code> tectonic contact validation (<code>0.2675 vs 0.2380</code> in <code>500-1,500 m</code>).</p>
+    </div>
+    <div class="fig-box">
+      <img src="assets/figures/fig4_fleet_uniqueness_audit.png" alt="Exhaustive 1,196-Raster Fleet Uniqueness Audit">
+      <p class="fig-cap"><strong>Figure 4.</strong> Complete fleet uniqueness scan across <code>1,191</code> non-sample rasters from <code>92</code> sibling <code>GEMSDOE*</code> repositories (<code>max Jaccard = 0.0345</code>, <code>38.26%</code> 3-px overlap with <code>h33-2-b2</code>).</p>
+    </div>
   </div>
-  <div class="links">
-    <a href="executive-summary.html">Exact Portal Submission Guide &rarr;</a>
-    <a href="research.html">Full PhD Research Notebook &amp; 3 Review Passes &rarr;</a>
-    <a href="evidence/h84b_holdout_ablation.json">Holdout Receipt JSON &rarr;</a>
-    <a href="evidence/h84b_uniqueness_audit.json">1,196-Raster Uniqueness JSON &rarr;</a>
-    <a href="evidence/h84b_leakage_canaries.json">84-Feature Leakage Canary JSON &rarr;</a>
-  </div>
-</section></main><footer>GEMSDOE84 · Core Values: Maximize P(Win) &amp; Own the Outcome · Snapshot 2026-10-22 · 0 live weekly slots consumed automatically</footer></body></html>
+</article>
+
+  </main>
+  <footer class="footer">
+    GEMSDOE84 · Core Values: <strong>Maximize P(Win)</strong> &amp; <strong>Own the Outcome</strong> ·
+    Evaluator: <code>gems57-pooled-hide-v2</code> (<code>22,893</code> withheld fault px) ·
+    <code>0</code> live weekly competition slots consumed automatically.
+  </footer>
+</body>
+</html>

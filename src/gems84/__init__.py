@@ -1,6 +1,7 @@
-"""GEMSDOE84 lane: leaderboard-inverted truth intensity (LITI).
-
-Reuses the pinned shared template ``src/gems57`` (60GEMSDOE@b99591e, unmodified)
-for metric arithmetic, the hide-and-recover holdout, greedy emission, local
-validation, uniqueness, and the fail-closed submission writer.
+"""GEMSDOE84 — Lane H84-THMS: Thermo-Hydro-Mechanical Silica-Seal Fault-Valve,
+Dual-Scale 1m/10m Fluvial-Scarp Discontinuity & Counterfactual Dual-Head 300m Kernel Dinkelbach Allocator.
 """
+from __future__ import annotations
+
+__version__ = "0.1.0"
+LANE_ID = "H84-THMS"

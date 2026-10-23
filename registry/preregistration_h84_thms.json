@@ -1,0 +1,32 @@
+{
+  "schema": "gems84-preregistration-v1",
+  "lane": "H84-THMS",
+  "title": "Thermo-Hydro-Mechanical Silica-Seal Fault-Valve Breach, Seamless 1m-LiDAR + 10m-3DEP Fluvial-Chi Scarp Bridge, and Collar-Decoupled Dual-Head Ridge-Coherent Dinkelbach 300 m Submodular Allocator",
+  "preregistered_utc": "2026-10-22T00:00:00Z",
+  "evaluator_pin": {
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "template_repo": "buffedlizard55-lab/60GEMSDOE",
+    "template_commit": "b99591eede63c6d45c8a896255b8cd34824fa00b",
+    "alpha": 0.2,
+    "beta": 0.8,
+    "kernel_radius_px": 3.0,
+    "hide_frac": 0.2,
+    "buffer_px": 3,
+    "seeds": [30, 20],
+    "withheld_positives_seed_30": 11342,
+    "withheld_positives_seed_20": 11321,
+    "withheld_positives_pooled": 22663
+  },
+  "protocol_gates": {
+    "leakage_canary_max_auc": 0.9,
+    "uniqueness_max_spearman_r": 0.9,
+    "uniqueness_max_overlap_3px": 0.7,
+    "max_experiments": 3,
+    "max_wall_clock_hours": 2.0
+  },
+  "experiments": [
+    "EXP-84-1: 96-Channel Single-Feature Leakage Canary Audit on Seed 30 (11,342 px) and Seed 20 (11,321 px)",
+    "EXP-84-2: 6-Arm Paired Dual-Seed Holdout Evaluation (A0_random through A5_thms96_dualhead_dink_c30) + Piedmont SGMC Diagnostic",
+    "EXP-84-3: Full-Catalogue 4-Quadrant LOQO Surface + 37,654-Dot Dual-Head Dinkelbach Production Build + 359-Raster Uniqueness & Validator Audit"
+  ]
+}

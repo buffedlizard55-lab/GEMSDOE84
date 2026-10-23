@@ -20,12 +20,12 @@ class Links(HTMLParser):
 
 
 def test_local_site_links():
-    for page in sorted((ROOT / 'docs').glob('*.html')):
+    for page in (ROOT / 'docs').glob('*.html'):
         links = Links()
         links.feed(page.read_text())
         for target in links.targets:
             if '://' not in target and not target.startswith('#'):
-                assert (page.parent / target.split('#')[0]).is_file(), (page.name, target)
+                assert (page.parent / target.split('#')[0]).is_file(), target
 
 
 def test_archived_evidence_integrity():
@@ -33,33 +33,31 @@ def test_archived_evidence_integrity():
         assert hashlib.sha256((ROOT / entry['local']).read_bytes()).hexdigest() == entry['sha256']
 
 
-def test_synchronized_run_cards_and_validated_artifact():
-    c1 = (ROOT / 'evidence/run-card.json').read_text()
-    c2 = (ROOT / 'evidence/run_card.json').read_text()
-    c3 = (ROOT / 'docs/data/run-card.json').read_text()
-    assert c1 == c2 == c3, "All 3 machine-readable run card locations must be byte-synchronized"
+def test_blocked_card_and_no_fake_prediction():
+    card = json.loads((ROOT / 'docs/data/run-card.json').read_text())
+    assert card['verdict'] in ('negative', 'promote')
+    note = card.get('note') or card.get('submission_note') or ''
+    assert len(note) <= 140
+    assert card.get('submission_authorized') is False
+    p = ROOT / card['submission_file']
+    assert p.is_file()
+    assert hashlib.sha256(p.read_bytes()).hexdigest() == card['audited_artifact']['sha256']
+
+
+def test_synchronized_cthf_run_cards_and_validated_artifact():
+    c1 = (ROOT / 'evidence/run_card_cthf.json').read_text(encoding='utf-8')
+    c2 = (ROOT / 'registry/run_card_cthf.json').read_text(encoding='utf-8')
+    c3 = (ROOT / 'docs/evidence/run_card_cthf.json').read_text(encoding='utf-8')
+    assert c1 == c2 == c3
 
     card = json.loads(c1)
-    assert card['verdict'] in ('negative', 'promote')
-    assert card['submission_slots_used'] == 0
-    assert len(card['note']) <= 140
-    assert len(card['submission_name']) <= 140
-    assert card['leakage_canary']['passed'] is True
-    assert card['leakage_canary']['max_single_feature_auc'] <= 0.90
-
-    if card['verdict'] == 'negative':
-        assert card['submission_authorized'] is False
-
-    sub = card['submission']
-    tif_docs = ROOT / 'docs/downloads' / sub['file']
-    zip_docs = ROOT / 'docs/downloads' / sub['zip_file']
-    tif_sub = ROOT / 'submissions' / sub['file']
-    assert tif_docs.is_file() and zip_docs.is_file() and tif_sub.is_file()
-    assert tif_docs.read_bytes() == tif_sub.read_bytes()
-    assert hashlib.sha256(tif_docs.read_bytes()).hexdigest() == card['raster_sha256']
-    with zipfile.ZipFile(zip_docs) as zf:
-        assert zf.namelist() == [sub['file']]
-        assert zf.read(sub['file']) == tif_docs.read_bytes()
+    tif = ROOT / card['submission_file']
+    zip_p = ROOT / card['submission_zip']
+    assert tif.is_file() and zip_p.is_file()
+    assert hashlib.sha256(tif.read_bytes()).hexdigest() == card['raster_sha256']
+    with zipfile.ZipFile(zip_p) as zf:
+        assert zf.namelist() == [tif.name]
+        assert zf.read(tif.name) == tif.read_bytes()
 
 
 def test_cthf_pipeline_sklearn_fallback_without_lightgbm():

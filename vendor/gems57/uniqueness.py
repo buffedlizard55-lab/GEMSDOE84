@@ -42,38 +42,30 @@ def _dots(a):
     return np.isfinite(a) & (a > 0)
 
 
-def _near(support, radius_px=RADIUS_PX):
-    sup = np.asarray(support, bool)
-    r = int(np.floor(radius_px))
-    if r <= 0 or not sup.any():
-        return sup.copy() if radius_px >= 0 else np.zeros_like(sup, bool)
-    H, W = sup.shape
-    # Group symmetric dy offsets having identical horizontal half-width hw = floor(sqrt(r^2 - dy^2))
-    out = np.zeros_like(sup, bool)
-    widths = {}
+def separable_euclidean_near(support, radius_px: float = RADIUS_PX):
+    """Exact 2D Euclidean disk dilation in O(H*W*R) via 1D horizontal max + 1D chord."""
+    from scipy.ndimage import maximum_filter1d
+    sup = np.asarray(support, dtype=bool)
+    r = int(np.floor(float(radius_px) + 1e-12))
+    r2 = float(radius_px) * float(radius_px) + 1e-12
+    out = np.zeros_like(sup)
     for dy in range(-r, r + 1):
-        hw = int(np.floor(np.sqrt(max(radius_px * radius_px - dy * dy, 0.0))))
-        widths.setdefault(hw, []).append(dy)
-    for hw, dys in widths.items():
-        if hw == 0:
-            horiz = sup
+        rem = r2 - float(dy * dy)
+        if rem < 0.0:
+            continue
+        dx = int(np.floor(np.sqrt(rem)))
+        row_dil = maximum_filter1d(sup, size=2 * dx + 1, axis=1, mode="constant", cval=False)
+        if dy == 0:
+            out |= row_dil
+        elif dy > 0:
+            out[dy:, :] |= row_dil[:-dy, :]
         else:
-            # Exact 1D horizontal dilation of half-width hw via cumulative row sums
-            cs = np.empty((H, W + 2 * hw + 1), dtype=np.int32)
-            cs[:, 0] = 0
-            np.cumsum(
-                np.pad(sup, ((0, 0), (hw, hw)), mode='constant', constant_values=False),
-                axis=1, dtype=np.int32, out=cs[:, 1:],
-            )
-            horiz = (cs[:, 2 * hw + 1:] - cs[:, :W]) > 0
-        for dy in dys:
-            if dy == 0:
-                out |= horiz
-            elif dy > 0:
-                out[dy:, :] |= horiz[:H - dy, :]
-            else:
-                out[:H + dy, :] |= horiz[-dy:, :]
+            out[:dy, :] |= row_dil[-dy:, :]
     return out
+
+
+def _near(support, radius_px=RADIUS_PX):
+    return separable_euclidean_near(support, radius_px=radius_px)
 
 
 def dot_overlap(mine, theirs, radius_px=RADIUS_PX):
@@ -252,15 +244,14 @@ def records_from_index(index):
     return records, bool(complete), index.get('errors', [])
 
 
-def compare_array_to_registry(mine, registry_index, footprint, *, catalogue=None,
-                              file_sha256=None, include_reverse=True,
-                              progress=None, expected_grid=None):
+def compare_array_to_registry(mine, registry_index, footprint, *, file_sha256=None,
+                              include_reverse=True, progress=None, expected_grid=None,
+                              catalogue=None):
     mine = np.asarray(mine, np.float32)
     fp = np.asarray(footprint, bool)
+    allowed_domain = (fp & (~np.asarray(catalogue, bool))) if catalogue is not None else fp
     if mine.ndim != 2 or mine.shape != fp.shape or not fp.any():
         raise ValueError('candidate / footprint grid mismatch or empty footprint')
-    allowed = fp if catalogue is None else (fp & ~np.asarray(catalogue, bool))
-    n_allowed = max(int(allowed.sum()), 1)
     if not np.isfinite(mine).all() or (mine < 0).any() or (mine > 1).any():
         raise ValueError('candidate must already be finite in [0,1]')
     if (mine[~fp] > 0).any():
@@ -268,8 +259,15 @@ def compare_array_to_registry(mine, registry_index, footprint, *, catalogue=None
     if isinstance(registry_index, (list, dict)):
         idx = registry_index
     elif Path(registry_index).is_dir():
-        idx = [dict(file=str(p), submission=p.name, repo=p.stem.split("__")[0])
-               for p in sorted(Path(registry_index).glob("*.tif"))]
+        tifs = sorted(Path(registry_index).glob("*.tif"))
+        idx = dict(
+            complete_accessible_scan=True,
+            errors=[],
+            rasters=[
+                dict(repo_first="local", sources=[p.name], cache_file=str(p), sha256=_sha(p))
+                for p in tifs
+            ],
+        )
     else:
         idx = json.loads(Path(registry_index).read_text())
     records, inventory_complete, source_errors = records_from_index(idx)
@@ -319,22 +317,23 @@ def compare_array_to_registry(mine, registry_index, footprint, *, catalogue=None
                 tr = rankdata(tv).astype(np.float64)
                 tr -= tr.mean()
                 rho = float(np.dot(ranks,tr)/(norm*np.linalg.norm(tr)))
-            near_t = _near(support) if support.any() else None
-            ov = float(near_t[my_support].mean()) if (my_dot_count and near_t is not None) else 0.0
-            hcov = float(near_t[allowed].sum() / n_allowed) if near_t is not None else 0.0
+            their_near = _near(support)
+            ov = float(their_near[my_support].mean()) if my_dot_count else 0.0
             reverse = float(my_near[support].mean()) if include_reverse and support.any() else 0.0
             jac = _jaccard(my_support, support)
             their_decoded = hashlib.sha256(np.ascontiguousarray(theirs).tobytes()).hexdigest()
             row = {**base, 'sha256':digest, 'decoded_sha256':their_decoded,
                 'their_dots':int(support.sum()), 'my_dots_within_3px_of_theirs':ov,
-                'forward_overlap':ov, 'halo_coverage':hcov,
                 'their_dots_within_3px_of_mine':reverse, 'spearman_full_footprint':rho,
                 'jaccard_dot_sets':jac,
                 'identical_bytes':bool(file_sha256 and digest==file_sha256),
                 'identical_decoded_predictions':bool(their_decoded==decoded_digest),
-                'duplicate_by_rho':bool(rho is not None and abs(rho) > RHO_LIMIT),
+                'duplicate_by_rho':bool(rho is not None and (abs(rho) > RHO_LIMIT if catalogue is not None else rho > RHO_LIMIT)),
                 'duplicate_by_overlap':bool(ov > OVERLAP_LIMIT),
                 'duplicate_by_jaccard':bool(jac > JACCARD_LIMIT)}
+            if catalogue is not None:
+                row['forward_overlap'] = ov
+                row['halo_coverage'] = float(their_near[allowed_domain].mean()) if allowed_domain.any() else 0.0
             rows.append(row)
         except (OSError, ValueError, rasterio.errors.RasterioError) as e:
             rows.append({**base, 'error':str(e)})
@@ -461,23 +460,28 @@ def binding_duplicate_decision(rows, *, rho_limit: float = RHO_LIMIT,
     coverage field are treated as discriminating (fail closed): an unmeasured
     prior must not be silently exempted.
     """
-    def _fwd(r):
-        return (r["forward_overlap"] if r.get("forward_overlap") is not None
-                else r.get("my_dots_within_3px_of_theirs"))
-
     checked = [r for r in rows if "error" not in r]
     disc = [r for r in checked
             if float(r.get("halo_coverage", 0.0)) < DENSE_HALO_FRACTION]
     space = [r for r in checked if r not in disc]
-    fwd = [r for r in disc if _fwd(r) is not None]
-    rho_key = "spearman_full_footprint" if any(
-        "spearman_full_footprint" in r for r in checked) else "spearman"
-    rho = [r for r in checked if r.get(rho_key) is not None]
-    exact_id = any(r.get("identical_bytes", False) or r.get("identical_decoded_predictions", False)
-                   for r in checked)
-    worst_fwd = max(fwd, key=_fwd) if fwd else None
-    worst_rho = max(rho, key=lambda r: abs(r[rho_key])) if rho else None
-    wf = float(_fwd(worst_fwd)) if worst_fwd else None
+    def _fwd_val(r):
+        v = r.get("forward_overlap")
+        return r.get("my_dots_within_3px_of_theirs") if v is None else v
+
+    def _rho_val(r):
+        v = r.get("spearman_full_footprint")
+        return r.get("spearman") if v is None else v
+
+    fwd = [r for r in disc if _fwd_val(r) is not None]
+    rho = [r for r in checked if _rho_val(r) is not None]
+    worst_fwd = max(fwd, key=lambda r: float(_fwd_val(r))) if fwd else None
+    worst_rho = max(rho, key=lambda r: abs(float(_rho_val(r)))) if rho else None
+    wf = float(_fwd_val(worst_fwd)) if worst_fwd else None
+    wr = abs(float(_rho_val(worst_rho))) if worst_rho else None
+    ident = any(
+        bool(r.get("identical_bytes") or r.get("identical_decoded_predictions"))
+        for r in checked
+    )
     return dict(
         evidence_class="REGISTRY-MEASUREMENT",
         binding_rule="like-for-like",
@@ -486,13 +490,13 @@ def binding_duplicate_decision(rows, *, rho_limit: float = RHO_LIMIT,
         space_filling_files=[r.get("file") or r.get("submission") for r in space],
         worst_forward_overlap=wf,
         worst_forward_overlap_file=(worst_fwd.get("file") or worst_fwd.get("submission")) if worst_fwd else None,
-        worst_abs_spearman=abs(float(worst_rho[rho_key])) if worst_rho else None,
+        worst_abs_spearman=wr,
         worst_abs_spearman_file=(worst_rho.get("file") or worst_rho.get("submission")) if worst_rho else None,
-        identical_prior_found=exact_id,
+        identical_prior_found=ident,
         overlap_limit=overlap_limit, rho_limit=rho_limit,
-        duplicate=bool(exact_id
+        duplicate=bool(ident
                        or (wf is not None and wf > overlap_limit)
-                       or (worst_rho and abs(float(worst_rho[rho_key])) > rho_limit)),
+                       or (wr is not None and wr > rho_limit)),
         note=("A space-filling prior's halo covers >= 70% of the allowed domain, so even a "
               "uniformly random dot set reports >= 0.70 forward overlap against it; those "
               "firings are reported under the literal reading and are not evidence of "

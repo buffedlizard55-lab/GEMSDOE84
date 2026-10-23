@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Irregularities &amp; Protocol Audit Log — GEMSDOE84</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <span class="brand">GEMSDOE84 · DOE GEMS Geothermal Fault Discovery</span>
+      <nav class="nav-links" aria-label="Primary Navigation"><a href="index.html" class="">Overview & Artifacts</a><a href="executive-summary.html" class="">Executive Summary</a><a href="research.html" class="">Research & Proofs</a><a href="methodology.html" class="">Methodology</a><a href="results.html" class="">Holdout & Audit Tables</a><a href="irregularities.html" class="active">Irregularities Log</a><a href="sources.html" class="">Verified Sources</a></nav>
+    </div>
+  </header>
+  <main class="container">
+    
+<section class="status-hero" aria-label="Submission Release Gate &amp; Verified Artifacts">
+  <div class="hero-top">
+    <div>
+      <h2 class="hero-title">Lane H84-B (<code>CTHF + CTFO</code>) &amp; Multi-Lane Release Portal — Validated GeoTIFF Deliverables</h2>
+      <p style="margin:6px 0 0;color:#475569;font-size:14px;">
+        <strong>DO NOT SUBMIT AUTOMATICALLY:</strong> Automated release remains <code>verdict: negative</code> under
+        Parallel-Run Protocol Rule 1 (one-sided <code>3-px</code> forward overlap &gt; <code>0.70</code> against dense archive blankets;
+        <code>0</code> live weekly competition slots consumed automatically). All validated single-band <code>float32</code> GeoTIFF
+        deliverables pass <code>10 / 10</code> format &amp; <code>[0, 1]</code> finiteness checks and are downloadable immediately below for human selector review.
+      </p>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+      <span class="status-badge hold">&#9888; DO NOT SUBMIT (VERDICT: NEGATIVE · 0 SLOTS SPENT)</span>
+      <span class="status-badge pass">&#10003; FORMAT &amp; [0, 1] RANGE: PASS (10/10)</span>
+    </div>
+  </div>
+
+  <div class="download-row">
+    <a class="dl-btn primary" href="downloads/gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.tif" download>
+      &#11015; Download H84-B GeoTIFF (.tif · 142 KB)
+    </a>
+    <a class="dl-btn secondary" href="downloads/gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.zip" download>
+      &#11015; Download H84-B Archive (.zip · 106 KB)
+    </a>
+    <a class="dl-btn secondary" href="evidence/run_card_cthf.json">
+      View H84-B Run Card (.json)
+    </a>
+    <a class="dl-btn secondary" href="downloads/gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros.tif" download>
+      &#11015; Download H84-CSAT (.tif)
+    </a>
+    <a class="dl-btn secondary" href="downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif" download>
+      &#11015; Download H84-THMS Audit (.tif)
+    </a>
+  </div>
+
+  <div class="meta-grid">
+    <div class="meta-item">
+      <span class="meta-label">H84-B Unique Submission Name (51 chars)</span>
+      <span class="meta-val">gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">H84-B GeoTIFF SHA-256 (Verified Byte-Unique across 1,196 Rasters)</span>
+      <span class="meta-val">34dfefb16c0c54e9537a3c7988f3ffb9d5c0d3938cb706b58502567b5311e701</span>
+    </div>
+    <div class="meta-item" style="grid-column: 1 / -1;">
+      <span class="meta-label">H84-B Short Portal Note (126 / 140 chars max)</span>
+      <span class="meta-val">GEMSDOE84 H84-B CTHF+CTFO: FFT upward-continued pullback + GDR-1391 F2mDAB/sinter + crack-tip relay + Dinkelbach 1D-trace dots</span>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-num">0.1581</div>
+      <div class="kpi-sub">H84-B Pooled 8-Fold <code>HOLDOUT-DTI</code><br>95% CI [0.1427, 0.1720] · TPw=5,420.6</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">+0.0525</div>
+      <div class="kpi-sub">H84-B Gain vs <code>incumbent_recipe</code><br>+49.7% relative · +0.0120 pure CTFO vs NMS</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">0.1685</div>
+      <div class="kpi-sub">Parallel Lane <code>H84-CSAT</code> D2.8<br><code>gemsdoe84-h84-csat-d28…</code> (submod: 0.0815)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">38.3% / 0</div>
+      <div class="kpi-sub">H84-B 3-px Overlap vs <code>h33-2-b2</code> (41,500 dots)<br>0 NaN · 0 Inf · [0.0, 1.0] float32</div>
+    </div>
+  </div>
+</section>
+
+    <article class="content-card"><h1 id="three-pass-line-by-line-verification-log-remaining-work-limitations">Three-Pass Line-by-Line Verification Log &amp; Remaining Work / Limitations</h1>
+<h2 id="pass-1-mathematical-algebra-physical-equations-and-byte-level-factual-verification">Pass 1 — Mathematical Algebra, Physical Equations, and Byte-Level Factual Verification</h2>
+<ol><li><strong>Official Metric Algebra (<code>vendor/gems57/metric.py</code> vs Prose Drafts):</strong> - Verified <code>vendor/gems57/metric.py</code> line-by-line: $\mathrm{TP}_w = \sum_{g \in G} \max_{x \in E} p(x)\,k(d(x, g))$ sums over <strong>truth pixels $G$</strong> whereas $\mathrm{FP}_w = \sum_{x \in E} p(x)\,[1 - \max_{g \in G} k(d(x, g))] = n - M(E)$ sums over <strong>emitted unit dots $E$</strong> (<code>|E| = n</code>). - <strong>Bug caught &amp; fixed before commit:</strong> An initial prose draft in <code>docs/research/h33-analysis.md</code> momentarily wrote <code>FP_w</code> as a <code>29</code>-pixel 2D kernel sum (<code>M_max</code>), whereas <code>metric.py</code> defines <code>FP_w = n - M(E)</code> per emitted pixel. Immediately reconciled <code>docs/research/h33-analysis.md</code>, <code>docs/research/hypotheses.md</code>, <code>docs/research/result.md</code>, <code>scripts/build_site.py</code>, and <code>README.md</code> against the exact <code>metric.py</code> identity $D(E) = 0.2(T + n - M(E)) + 0.8 K_{\text{live}}$, confirming $T = 5,073.3$, zero-parameter out-of-sample prediction $s_2^{\text{pred}} = 0.27836$ vs <code>0.2778</code> (<code>OWNER-REPORTED</code>, residual <code>-0.00056</code>), and $K_{\text{live}} \in [12,770,\; 13,400]\text{ px}$.</li><li><strong>Spatial Dot Distribution of <code>h33-2-b2</code> (<code>17a76895f68174cc93f3cb1597d25686f6d6bc67.tif</code>):</strong> - <strong>Bug caught &amp; fixed before commit:</strong> Verified actual GeoTIFF pixel counts across <code>d_cat</code> bands directly on disk instead of assuming a <code>1.5 km</code> cutoff: <code>h33-2-b2</code> has <code>0</code> dots in $(\le 200\text{ m}]$, <code>5,637</code> in $(200, 500\text{ m}]$, <code>10,028</code> in $(500, 1,500\text{ m}]$, and <code>21,989</code> (<code>58.4%</code>) in $(&gt; 1,500\text{ m})$. Reported both <code>500–1,500 m</code> SGMC recall (<code>CTHF = 0.2675</code> vs <code>h33-2-b2 = 0.2380</code>) and <code>&gt; 1,500 m</code> SGMC recall (<code>CTHF = 0.0433</code> vs <code>h33-2-b2 = 0.1940</code>) transparently.</li><li><strong>Hessian Fault-Normal Angle Sign (<code>src/gems84/ctfo.py</code>):</strong> - Verified on synthetic horizontal (<code>y = const</code>, <code>H_yy &lt; 0, H_xx = 0 -&gt; theta_n = 0</code>) and vertical (<code>x = const</code>, <code>H_xx &lt; 0, H_yy = 0 -&gt; theta_n = pi/2</code>) ridges that cross-strike normal requires $\theta_n = \frac{1}{2}\operatorname{atan2}(-2 H_{xy},\; H_{yy} - H_{xx})$ (<code>hyy - hxx</code>, not <code>hxx - hyy</code>), validated by unit tests in <code>tests/test_cthf.py</code>.</li><li><strong>Anti-Leakage Audit on Registry-Mask Sensitivity Experiment:</strong> - <strong>Critical trap caught &amp; rejected:</strong> Tested Lagrangian dual reweighting against unioned prior registry <code>3-px</code> halos; immediately detected that prior submissions had zeroed <code>usgs_faults_100m.tif</code>, artificially boosting <code>8</code>-fold holdout DTI to <code>0.4909</code> via zero-mask leakage on withheld segments. Rejected completely; zero registry information ever enters feature construction, model training, probability calibration, or <code>EXP-84-1..3</code> emission.</li></ol>
+<hr>
+<h2 id="pass-2-code-memory-hygiene-visual-figures-and-clean-ci-runner-audit">Pass 2 — Code, Memory Hygiene, Visual Figures, and Clean CI Runner Audit</h2>
+<ol><li><strong><code>lightgbm</code> Optional Dependency Guard (<code>src/gems84/cthf_pipeline.py</code>):</strong> - <code>.github/workflows/ci.yml</code> installs <code>requirements.txt</code> (<code>numpy</code>, <code>scipy</code>, <code>rasterio</code>, <code>scikit-learn</code>, <code>pytest</code>) without <code>lightgbm</code>. Added <code>try: import lightgbm as lgb except ImportError: lgb = None</code> plus a clean <code>HistGradientBoostingClassifier</code> fallback in <code>_fit_heterogeneous_gbdt</code>, verified directly by <code>tests/test_repository.py::test_cthf_pipeline_sklearn_fallback_without_lightgbm</code>.</li><li><strong>Deterministic Static Site Build (<code>scripts/build_site.py</code>):</strong> - Replaced unsorted filesystem <code>.glob(...)</code> calls with <code>sorted(...)</code> and removed non-stdlib dependencies so <code>python scripts/build_site.py &amp;&amp; git diff --exit-code -- docs</code> passes deterministically on every Linux runner.</li><li><strong>Visual Figure Inspection (<code>docs/assets/figures/fig1..4.png</code>):</strong> - Opened all 4 rendered PNGs directly via image reader; caught slight right-edge title clipping on <code>fig1</code> Panel B (<code>"Folds"</code>) and <code>fig3</code> Panel C (<code>")"</code>), tightened titles and added <code>bbox_inches="tight"</code>, regenerated, and re-inspected visually to verify zero clipping and sharp typography.</li><li><strong>String Length &amp; Checksum Exactness:</strong> - Verified exact character counts via Python <code>len(...)</code>: <code>submission_name</code> = <code>51</code> chars (<code>&lt;= 140</code>), <code>note</code> = <code>126</code> chars (<code>&lt;= 140</code>), GeoTIFF <code>sha256</code> = <code>34dfefb16c0c54e9537a3c7988f3ffb9d5c0d3938cb706b58502567b5311e701</code> identical across <code>submissions/</code>, <code>docs/downloads/</code>, inner <code>.zip</code> entry, <code>h84b_validator_receipt.json</code>, and all three synchronized JSON run cards (<code>evidence/run-card.json</code>, <code>evidence/run_card.json</code>, <code>docs/data/run-card.json</code>).</li></ol>
+<hr>
+<h2 id="pass-3-standing-prompt-compliance-limitations-and-next-steps">Pass 3 — Standing Prompt Compliance, Limitations, and Next Steps</h2>
+<ol><li><strong>Compliance Verification Against Every Standing Requirement:</strong> - <strong>Unique validated <code>.tif</code> &amp; <code>.zip</code> deliverable:</strong> Generated <code>gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.{tif,zip}</code> (<code>142 KB</code> / <code>106 KB</code>), byte-unique and pixel-unique across all <code>1,196</code> fleet rasters (<code>max Jaccard = 0.0345</code>, <code>38.26%</code> <code>3-px</code> overlap with <code>h33-2-b2</code>), <code>10/10</code> format/range checks passed (<code>min=0.0, max=1.0, n_nan=0</code>), placed prominently with one-click download buttons and unmistakable status right at the top of <code>docs/index.html</code> and <code>docs/executive-summary.html</code>. - <strong>Strict 6-Rule Parallel-Run Protocol:</strong> <code>3</code> preregistered experiments (<code>&lt;= 3</code> cap), <code>0</code> live submission slots consumed automatically, <code>84</code>-feature single-feature AUC canaries (<code>max = 0.7423 &lt;= 0.9000</code>), whole-segment buffered <code>8</code>-fold pooled <code>HOLDOUT-DTI</code> (<code>0.1581 [0.1427, 0.1720]</code> vs <code>incumbent_recipe 0.1056 [0.0930, 0.1165]</code>, <code>+49.7%</code>), strict <code>HOLDOUT-DTI</code> / <code>OWNER-REPORTED</code> labels, and honest <code>verdict = "negative"</code> stop on asymmetric one-sided <code>3-px</code> forward overlap (<code>&gt; 0.70</code> against 92-repo archive). - <strong>Core Values Preserved Explicitly:</strong> <strong>Maximize P(Win)</strong> and <strong>Own the Outcome</strong> embedded across <code>README.md</code> and <code>docs/</code>.</li></ol>
+<ol><li><strong>Remaining Limitations &amp; Recommended Next Steps (Outside Sandbox):</strong> - <strong>Live Egress &amp; Authenticated Portal Quota:</strong> <code>drivendata.org</code>, <code>usgs.gov</code>, <code>gdr.openei.org</code>, <code>search.asf.alaska.edu</code>, and <code>docs.nlr.gov</code> are blocked under the sandbox egress allowlist; live weekly quota and <code>ORGANIZER-CONFIRMED</code> receipts must be recorded manually by the human competition account holder. - <strong>External InSAR / Double-Difference Microseismicity (<code>H84-H4</code>):</strong> Incorporating ARIA/ASF Sentinel-1 LOS phase-gradient creep maps and USGS ComCat double-difference hypocenter lineations on an unrestricted workstation directly attacks blind aseismic basin faults beyond <code>1.5 km</code> (<code>d_cat &gt; 1,500 m</code>). - <strong>Symmetric Overlap Protocol Amendment Across Future Fleet Runs:</strong> After <code>92</code> repositories (<code>1,196</code> rasters including <code>13GEMSDOE</code>'s <code>s5</code> lattice covering <code>99.87%</code> of Nevada within <code>2.83 px</code>, <code>57GEMSDOE</code>'s <code>2.71M</code>-px surface, and <code>GEMSDOE3</code>'s <code>624k</code>-dot carpet), one-sided asymmetric <code>forward_overlap &lt;= 0.70</code> is mathematically unattainable for any realistic fault map. Coordinated adoption of <strong>symmetric <code>3-px</code> harmonic F1 overlap (<code>&lt;= 0.70</code>)</strong> cleanly separates genuine duplicate submissions (<code>F1 &gt; 0.70</code>) from space-filling carpets (<code>F1 &lt; 0.22</code>) without weakening protection against copied sparse submissions.</li></ol></article>
+  </main>
+  <footer class="footer">
+    GEMSDOE84 · Core Values: <strong>Maximize P(Win)</strong> &amp; <strong>Own the Outcome</strong> ·
+    Evaluator: <code>gems57-pooled-hide-v2</code> (<code>22,893</code> withheld fault px) ·
+    <code>0</code> live weekly competition slots consumed automatically.
+  </footer>
+</body>
+</html>

@@ -1,0 +1,48 @@
+{
+  "leakage_canary": {
+    "H84-4_scarp_alteration_concordance": {
+      "AUC_vs_full_catalogue": 0.5067919364250447,
+      "leakage_flag": false
+    }
+  },
+  "holdout_dti_top44090": {
+    "H84-4": {
+      "pooled_DTI": 0.013442159580960936,
+      "n_folds": 6,
+      "DTI_95CI_across_folds": [
+        0.004719139823993696,
+        0.011964242717784406
+      ],
+      "mean_fold_DTI": 0.008561950270411466,
+      "n_withheld_truth_px_pooled": 60415
+    },
+    "fused_max_prev": {
+      "pooled_DTI": 0.021878862799432828,
+      "n_folds": 6,
+      "DTI_95CI_across_folds": [
+        0.009428272359057778,
+        0.020997348374586642
+      ],
+      "mean_fold_DTI": 0.013873568892482285,
+      "n_withheld_truth_px_pooled": 60415
+    },
+    "uniform_random": {
+      "pooled_DTI": 0.060813358821566424,
+      "n_folds": 6,
+      "DTI_95CI_across_folds": [
+        0.03548185459974061,
+        0.041246876325688256
+      ],
+      "mean_fold_DTI": 0.037923519667925655,
+      "n_withheld_truth_px_pooled": 60415
+    }
+  },
+  "budget_sweep_h84_4": {
+    "15000": 0.0052816538046839695,
+    "30000": 0.00994231519748876,
+    "44090": 0.013442159580960936,
+    "60000": 0.016267520868024684,
+    "90000": 0.02250295247521845
+  },
+  "elapsed_sec": 272.869375705719
+}

@@ -1,1 +1,99 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sources &amp; evidence — GEMSDOE84</title><link rel="stylesheet" href="site.css"></head><body><header class="top"><div class="wrap"><a class="brand" href="index.html">GEMSDOE84</a><nav class="nav"><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="hypotheses.html">Hypotheses</a></nav></div></header><main class="wrap"><div class="crumb"><a href="index.html">Home</a> / Sources &amp; evidence</div><section class="section"><div class="eyebrow">Source register · checked for this review</div><h1 style="font:800 clamp(34px,5vw,52px)/1.1 Manrope,sans-serif;letter-spacing:-.05em">Evidence, provenance, and limits</h1><p>Primary-source details below were read during this session. “Page reviewed” means the public page content was retrieved; it does not mean every linked dataset was downloaded, independently reproduced, or endorsed as scientifically sufficient.</p><div class="card"><table><thead><tr><th>Claim or resource</th><th>Primary source</th><th>What it supports / limits</th></tr></thead><tbody><tr><td>Task and evaluation context</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DrivenData problem description</a></td><td>States the target is geological faults indicative of geothermal resources; explains incomplete labels and expert evaluation, metric, features and submission format. Page reviewed. Exact competition raster still needed for profiles.</td></tr><tr><td>Data files</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">DrivenData data page</a></td><td>Retrieved URL redirected to DrivenData login. No gated files were accessed by this session.</td></tr><tr><td>Public standings</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Official public leaderboard</a></td><td>Page reviewed on 2026-10-22 UTC. This is time-sensitive and distinct from a candidate's submission receipt; consult the source for current standings.</td></tr><tr><td>Reference model</td><td><a href="https://github.com/drivendataorg/gems-prize-reference-solution">DrivenData reference-solution repository</a></td><td>Repository page states that code/notebook is a benchmark reference and requires participants to download the competition data. It does not supply this checkout with the specified local cached feature stack or evaluation/writer tools.</td></tr><tr><td>GeoDAWN geophysical source</td><td><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN page</a>; <a href="https://doi.org/10.5066/P93LGLVQ">DOI 10.5066/P93LGLVQ</a></td><td>USGS describes airborne magnetic/radiometric survey data and associated grids, reports a March 4, 2024 page date, and identifies CC0 1.0 rights for the release. Files were not downloaded here; product-specific usage and alignment still require checking.</td></tr><tr><td>INGENIOUS context</td><td><a href="https://gbcge.org/current-projects/ingenious/">Great Basin Center for Geothermal Energy</a></td><td>Project landing page supplied as a starting point. It is not evidence that a particular fault trace is geothermal or absent from the challenge labels.</td></tr><tr><td>CRS identifier</td><td><a href="https://epsg.io/32611">EPSG:32611</a></td><td>Coordinate-system reference link supplied by the user and cited by DrivenData. Submission match must be checked against official raster metadata.</td></tr><tr><td>Technical report</td><td><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">NLR technical report PDF</a></td><td>Officially linked by the user. PDF not retrieved in this session; cite only after its relevant requirements have been checked against current competition rules.</td></tr><tr><td>Rules</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/rules/">DrivenData rules</a></td><td>Official rules entry point. Detailed rules have not been independently parsed during this review.</td></tr><tr><td>Prior candidate archives</td><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html">GEMSDOE32 page</a>; <a href="https://buffedlizard55-lab.github.io/GEMSDOE83/docs/index.html">GEMSDOE83 page</a></td><td>GEMSDOE32 marks its candidate unscored; GEMSDOE83 makes an opposite owner-reported organizer-confirmed claim and describes byte forensics. No DrivenData submission-page receipt for the H33 result was independently retrieved here. Treat the conflict as unresolved; neither owner page is itself the required receipt.</td></tr></tbody></table></div></section><section class="section" style="padding-top:0"><div class="card"><h2>Evidence categories used here</h2><ul><li><strong>Official source:</strong> a page maintained by the organizer or public agency. It supports only claims actually present on that page.</li><li><strong>HOLDOUT-DTI:</strong> must include evaluator version, number of withheld positives, and 95% confidence interval. No value is available in this checkout.</li><li><strong>ORGANIZER-CONFIRMED:</strong> only a result copied from a submission-page receipt. None is present here.</li><li><strong>Owner report / projection:</strong> useful for prioritizing what to reproduce, but not an organizer-confirmed score and not a holdout result unless its exact evaluator protocol and artifacts are accessible and reproduced.</li></ul></div></section></main><footer class="footer"><div class="wrap"><a href="index.html">GEMSDOE84</a> · evidence classifications are not interchangeable</div></footer></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verified Data &amp; Archival Sources — GEMSDOE84</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <span class="brand">GEMSDOE84 · DOE GEMS Geothermal Fault Discovery</span>
+      <nav class="nav-links" aria-label="Primary Navigation"><a href="index.html" class="">Overview & Artifacts</a><a href="executive-summary.html" class="">Executive Summary</a><a href="research.html" class="">Research & Proofs</a><a href="methodology.html" class="">Methodology</a><a href="results.html" class="">Holdout & Audit Tables</a><a href="irregularities.html" class="">Irregularities Log</a><a href="sources.html" class="active">Verified Sources</a></nav>
+    </div>
+  </header>
+  <main class="container">
+    
+<section class="status-hero" aria-label="Submission Release Gate &amp; Verified Artifacts">
+  <div class="hero-top">
+    <div>
+      <h2 class="hero-title">Lane H84-B (<code>CTHF + CTFO</code>) &amp; Multi-Lane Release Portal — Validated GeoTIFF Deliverables</h2>
+      <p style="margin:6px 0 0;color:#475569;font-size:14px;">
+        <strong>DO NOT SUBMIT AUTOMATICALLY:</strong> Automated release remains <code>verdict: negative</code> under
+        Parallel-Run Protocol Rule 1 (one-sided <code>3-px</code> forward overlap &gt; <code>0.70</code> against dense archive blankets;
+        <code>0</code> live weekly competition slots consumed automatically). All validated single-band <code>float32</code> GeoTIFF
+        deliverables pass <code>10 / 10</code> format &amp; <code>[0, 1]</code> finiteness checks and are downloadable immediately below for human selector review.
+      </p>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+      <span class="status-badge hold">&#9888; DO NOT SUBMIT (VERDICT: NEGATIVE · 0 SLOTS SPENT)</span>
+      <span class="status-badge pass">&#10003; FORMAT &amp; [0, 1] RANGE: PASS (10/10)</span>
+    </div>
+  </div>
+
+  <div class="download-row">
+    <a class="dl-btn primary" href="downloads/gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.tif" download>
+      &#11015; Download H84-B GeoTIFF (.tif · 142 KB)
+    </a>
+    <a class="dl-btn secondary" href="downloads/gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.zip" download>
+      &#11015; Download H84-B Archive (.zip · 106 KB)
+    </a>
+    <a class="dl-btn secondary" href="evidence/run_card_cthf.json">
+      View H84-B Run Card (.json)
+    </a>
+    <a class="dl-btn secondary" href="downloads/gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros.tif" download>
+      &#11015; Download H84-CSAT (.tif)
+    </a>
+    <a class="dl-btn secondary" href="downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif" download>
+      &#11015; Download H84-THMS Audit (.tif)
+    </a>
+  </div>
+
+  <div class="meta-grid">
+    <div class="meta-item">
+      <span class="meta-label">H84-B Unique Submission Name (51 chars)</span>
+      <span class="meta-val">gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">H84-B GeoTIFF SHA-256 (Verified Byte-Unique across 1,196 Rasters)</span>
+      <span class="meta-val">34dfefb16c0c54e9537a3c7988f3ffb9d5c0d3938cb706b58502567b5311e701</span>
+    </div>
+    <div class="meta-item" style="grid-column: 1 / -1;">
+      <span class="meta-label">H84-B Short Portal Note (126 / 140 chars max)</span>
+      <span class="meta-val">GEMSDOE84 H84-B CTHF+CTFO: FFT upward-continued pullback + GDR-1391 F2mDAB/sinter + crack-tip relay + Dinkelbach 1D-trace dots</span>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-num">0.1581</div>
+      <div class="kpi-sub">H84-B Pooled 8-Fold <code>HOLDOUT-DTI</code><br>95% CI [0.1427, 0.1720] · TPw=5,420.6</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">+0.0525</div>
+      <div class="kpi-sub">H84-B Gain vs <code>incumbent_recipe</code><br>+49.7% relative · +0.0120 pure CTFO vs NMS</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">0.1685</div>
+      <div class="kpi-sub">Parallel Lane <code>H84-CSAT</code> D2.8<br><code>gemsdoe84-h84-csat-d28…</code> (submod: 0.0815)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">38.3% / 0</div>
+      <div class="kpi-sub">H84-B 3-px Overlap vs <code>h33-2-b2</code> (41,500 dots)<br>0 NaN · 0 Inf · [0.0, 1.0] float32</div>
+    </div>
+  </div>
+</section>
+
+    <article class="content-card"><h1 id="source-register-data-provenance-access-limitations">Source Register, Data Provenance &amp; Access Limitations</h1>
+<div class="table-wrap"><table><thead><tr><th>Source</th><th>Authority and use</th><th>Verification state</th></tr></thead><tbody><tr><td><a href="https://github.com/drivendataorg/gems-prize-reference-solution">DrivenData official reference</a></td><td>Organizer reference implementation; compute setup</td><td>README and tree retrieved through GitHub (<code>evidence/official-reference-README.md</code>, <code>evidence/official-tree.json</code>); CPU execution supported.</td></tr><tr><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DrivenData problem</a></td><td>Authoritative target, metric (<code>DTI</code>, <code>alpha=0.2</code>, <code>beta=0.8</code>, <code>R=300 m</code>) and format</td><td>User-supplied review pointer; <code>drivendata.org</code> unreachable under sandbox egress allowlist. Shared <code>vendor/gems57/metric.py</code> cross-verified algebraically and by unit tests (<code>tests/test_lane.py</code>, <code>tests/test_gems84.py</code>).</td></tr><tr><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">DrivenData data</a></td><td>Original competition files</td><td>No authenticated portal access; zero credentials requested. SHA-256-pinned mirrors restored via allowed GitHub archives (<code>registry/data_manifest.json</code>).</td></tr><tr><td><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN</a></td><td>Original airborne magnetic &amp; gamma-ray survey provenance</td><td>User-supplied pointer (<code>usgs.gov</code> blocked under sandbox allowlist); derived <code>3730 x 3292</code> <code>EPSG:32611</code> geophysical stack SHA-256 verified from owner GitHub mirrors.</td></tr><tr><td><a href="https://github.com/buffedlizard55-lab/GEMSDOE24/tree/07345ea0604953d7efb858d9cfbc21e20c7aca0b/data">GEMSDOE24 pinned mirror</a></td><td>Cached derived 3DEP <code>1 m</code> LiDAR scarp, <code>10 m</code> fluvial $\chi / k_{sn}$, and radiometric stack</td><td>Retrieved and SHA-256 verified on local disk.</td></tr><tr><td><a href="https://github.com/buffedlizard55-lab/GEMSDOE32/blob/main/docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif">GEMSDOE32 family leader</a></td><td><code>h33-2-b2</code> (<code>0.2778</code> <code>OWNER-REPORTED</code>) reference GeoTIFF &amp; audit receipt</td><td>Retrieved and SHA-256 verified (<code>c55bafc470054e82...</code>); inspected strictly for forensic comparison (<code>incumbent_recipe</code> / <code>incumbent_asis</code>), never copied into candidate generation.</td></tr><tr><td><a href="https://github.com/buffedlizard55-lab/60GEMSDOE/tree/b99591eede63c6d45c896255b8cd34824fa00b">Shared template</a></td><td>Shared evaluator (<code>gems57-pooled-hide-v2</code>), whole-segment holdout, writer, and uniqueness scanner</td><td>SHA-256 pinned in <code>registry/template_pin.json</code> (verified by <code>tests/test_lane.py</code> &amp; <code>tests/test_gems84.py</code>), documenting the <code>vendor/gems57/uniqueness.py</code> space-filler diagnostics amendment.</td></tr><tr><td><a href="https://gdr.openei.org/submissions/1391">GDR 1391 (INGENIOUS)</a></td><td>DOE Geothermal Data Repository INGENIOUS shallow <code>2 m</code> temperature (<code>F2mDAB</code>), Quaternary sinter/travertine paleovents, and geothermometers</td><td>Pre-staged rasterized layers verified in SHA-pinned external stack (<code>/home/user/gemsdata/external/*</code>, <code>24</code> files) and single-feature canary audited (`max</td><td>AUC</td><td>= 0.7423 &lt;= 0.90`).</td></tr><tr><td><a href="https://search.asf.alaska.edu/">Sentinel-1 InSAR / USGS ComCat</a></td><td>Candidate external creep &amp; double-difference seismicity layers (<code>H84-H4</code>)</td><td>Explicitly blocked under sandbox egress allowlist (<code>github.com</code>, <code>codeload.github.com</code>, <code>api.github.com</code>, <code>registry.npmjs.org</code>, <code>pypi.org</code>, <code>files.pythonhosted.org</code>); <code>H84-H4</code> deferred honestly without fabrication.</td></tr><tr><td><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">NLR submission guidance</a></td><td>User-referenced competition rules PDF</td><td><code>docs.nlr.gov</code> unreachable under sandbox egress allowlist; no unverified compliance claim made.</td></tr></tbody></table></div>
+<h2 id="fleet-registry-score-provenance-notes">Fleet Registry &amp; Score Provenance Notes</h2>
+<ul><li><strong>Exhaustive <code>1,196</code>-raster fleet scan:</strong> All <code>92</code> sibling <code>GEMSDOE*</code> repositories (<code>1,194</code> registry entries resolving to <code>1,212</code> <code>.tif</code> blobs: <code>1,196</code> single-band <code>3730 x 3292</code> rasters including <code>5</code> <code>sample_submission.tif</code> copies and <code>1,191</code> non-sample rasters, plus <code>16</code> non-standard multi-band/grid feature rasters documented in <code>evidence/h84b_nonstandard_blobs_manifest.json</code>) were downloaded and SHA-256 verified locally before running both Gate 1 (pre-placement continuous surface) and Gate 2 (post-placement GeoTIFF bytes).</li><li><strong>Strict score labels:</strong> All local evaluation metrics are labelled <strong><code>HOLDOUT-DTI</code></strong> (<code>gems57-pooled-hide-v2</code>, <code>22,893</code> withheld positive pixels, <code>1,000</code> paired <code>20 km</code> cluster-bootstrap draws). All historical leaderboard scores (<code>0.2778</code>, <code>0.3195</code>, <code>0.4413</code>, etc.) are labelled <strong><code>OWNER-REPORTED</code></strong>. <code>0</code> live weekly competition submission slots were used (<code>ORGANIZER-CONFIRMED</code>: none claimed in this session). Single-feature AUC values (<code>evidence/h84b_leakage_canaries.json</code>) are reported strictly as holdout leakage diagnostics and never as competition scores.</li></ul></article>
+  </main>
+  <footer class="footer">
+    GEMSDOE84 · Core Values: <strong>Maximize P(Win)</strong> &amp; <strong>Own the Outcome</strong> ·
+    Evaluator: <code>gems57-pooled-hide-v2</code> (<code>22,893</code> withheld fault px) ·
+    <code>0</code> live weekly competition slots consumed automatically.
+  </footer>
+</body>
+</html>

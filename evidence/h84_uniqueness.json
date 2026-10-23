@@ -1,0 +1,129 @@
+{
+  "evidence_class": "REGISTRY-MEASUREMENT",
+  "rasters_checked": 359,
+  "thresholds": {
+    "max_spearman_rho": 0.9,
+    "max_3px_overlap": 0.7
+  },
+  "pre_placement_surface": {
+    "unique": true,
+    "worst_spearman_full_footprint": 0.365582,
+    "worst_spearman_file": "GEMSDOE82__surface_h82.tif",
+    "worst_dot_overlap_3px": 0.649997,
+    "worst_dot_overlap_file": "GEMSDOE79__g79-cskd-ccsubmod-20261022-cdfdd16f-zeros-DO-NOT-SUBMIT.tif",
+    "binding_decision": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "binding_rule": "like-for-like",
+      "discriminating_priors": 359,
+      "space_filling_priors": 0,
+      "space_filling_files": [],
+      "worst_forward_overlap": 0.649997,
+      "worst_forward_overlap_file": "GEMSDOE79__g79-cskd-ccsubmod-20261022-cdfdd16f-zeros-DO-NOT-SUBMIT.tif",
+      "worst_abs_spearman": 0.365582,
+      "worst_abs_spearman_file": "GEMSDOE82__surface_h82.tif",
+      "overlap_limit": 0.7,
+      "rho_limit": 0.9,
+      "duplicate": false,
+      "note": "A space-filling prior's halo covers >= 70% of the allowed domain, so even a uniformly random dot set reports >= 0.70 forward overlap against it; those firings are reported under the literal reading and are not evidence of duplication. Thresholds are unchanged."
+    }
+  },
+  "final_emitted_dots": {
+    "unique": true,
+    "worst_spearman_full_footprint": 0.085702,
+    "worst_spearman_file": "GEMSDOE83__gems83-h83-gvcd-dink300-37654dots-20261021-1a373694-zeros.tif",
+    "worst_dot_overlap_3px": 0.649997,
+    "worst_dot_overlap_file": "GEMSDOE83__gems83-h83-gvcd-dink300-37654dots-20261021-1a373694-zeros.tif",
+    "binding_decision": {
+      "evidence_class": "REGISTRY-MEASUREMENT",
+      "binding_rule": "like-for-like",
+      "discriminating_priors": 359,
+      "space_filling_priors": 0,
+      "space_filling_files": [],
+      "worst_forward_overlap": 0.649997,
+      "worst_forward_overlap_file": "GEMSDOE83__gems83-h83-gvcd-dink300-37654dots-20261021-1a373694-zeros.tif",
+      "worst_abs_spearman": 0.085702,
+      "worst_abs_spearman_file": "GEMSDOE83__gems83-h83-gvcd-dink300-37654dots-20261021-1a373694-zeros.tif",
+      "overlap_limit": 0.7,
+      "rho_limit": 0.9,
+      "duplicate": false,
+      "note": "A space-filling prior's halo covers >= 70% of the allowed domain, so even a uniformly random dot set reports >= 0.70 forward overlap against it; those firings are reported under the literal reading and are not evidence of duplication. Thresholds are unchanged."
+    }
+  },
+  "key_comparisons": {
+    "GEMSDOE25__dotted-h19-5-d2-8.tif": {
+      "spearman_rho": 0.019369,
+      "forward_overlap_3px": 0.331811,
+      "their_dots": 44090
+    },
+    "GEMSDOE32__gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif": {
+      "spearman_rho": 0.019369,
+      "forward_overlap_3px": 0.331811,
+      "their_dots": 44090
+    },
+    "GEMSDOE32__gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-zeros.tif": {
+      "spearman_rho": 0.019369,
+      "forward_overlap_3px": 0.331811,
+      "their_dots": 44090
+    },
+    "GEMSDOE32__gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif": {
+      "spearman_rho": 0.022159,
+      "forward_overlap_3px": 0.321666,
+      "their_dots": 37654
+    },
+    "GEMSDOE32__gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif": {
+      "spearman_rho": 0.022159,
+      "forward_overlap_3px": 0.321666,
+      "their_dots": 37654
+    },
+    "GEMSDOE82__gems82-h82-csam-dinkelbach-37654-20261021-zeros.tif": {
+      "spearman_rho": 0.033157,
+      "forward_overlap_3px": 0.465927,
+      "their_dots": 37654
+    },
+    "GEMSDOE82__gems82-h82-csam-dinkelbach-41200-20261021-zeros.tif": {
+      "spearman_rho": 0.033831,
+      "forward_overlap_3px": 0.484464,
+      "their_dots": 41200
+    },
+    "GEMSDOE83__gems83-h83-gvcd-dink300-37654dots-20261021-1a373694-zeros.tif": {
+      "spearman_rho": 0.085702,
+      "forward_overlap_3px": 0.649997,
+      "their_dots": 37654
+    },
+    "gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif": {
+      "spearman_rho": 0.019369,
+      "forward_overlap_3px": 0.331811,
+      "their_dots": 44090
+    },
+    "gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-zeros.tif": {
+      "spearman_rho": 0.019369,
+      "forward_overlap_3px": 0.331811,
+      "their_dots": 44090
+    },
+    "gems82-h82-csam-dinkelbach-37654-20261021-zeros.tif": {
+      "spearman_rho": 0.033157,
+      "forward_overlap_3px": 0.465927,
+      "their_dots": 37654
+    },
+    "gems82-h82-csam-dinkelbach-41200-20261021-zeros.tif": {
+      "spearman_rho": 0.033831,
+      "forward_overlap_3px": 0.484464,
+      "their_dots": 41200
+    },
+    "gems83-h83-gvcd-dink300-37654dots-20261021-1a373694-zeros.tif": {
+      "spearman_rho": 0.085702,
+      "forward_overlap_3px": 0.649997,
+      "their_dots": 37654
+    },
+    "gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif": {
+      "spearman_rho": 0.022159,
+      "forward_overlap_3px": 0.321666,
+      "their_dots": 37654
+    },
+    "gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif": {
+      "spearman_rho": 0.022159,
+      "forward_overlap_3px": 0.321666,
+      "their_dots": 37654
+    }
+  }
+}
