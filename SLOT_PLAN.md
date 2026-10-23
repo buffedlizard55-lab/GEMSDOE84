@@ -1,26 +1,28 @@
-# SLOT PLAN — HOLD (2026-10-23, America/Los_Angeles)
+# SLOT PLAN — PRUNE1.5 (2026-10-23, America/Los_Angeles)
 
-**No upload is authorized.** AXIS/values, TOP_PUBLIC/date and remaining single-entity quota were not supplied. R0's `0.2778` is **CLAIM**, not RECEIPT. Fresh [preflight](evidence/brief_v2_preflight_796cb891.json): 23 manifest + 4 lineage hashes match; both R0 encodings rebuild exactly; **1,611 / 37,654 dots are <3 px from the catalogue**. No implicit collar exception is permitted. All six inherited MASS/SNAP files pass format but fail that strict collar rule. No new variants or slots used.
+**Agent-selected AXIS = PRUNE**, under the owner's explicit delegation. One unused interpolation was built: [`h33-h33-2-b2-PRUNE1p5-20261023-3d2ac85f`](docs/SUBMIT.md). R0 rebuilt byte-identically; all 23 manifest + four lineage pins match. Count stays **37,654**; **1,344 in / 1,344 out**, exactly **7.138683805173421%** symmetric difference. PRUNE permits the 2 px ring; catalogue mass is zero. No new field or external data. No slots used.
 
-## Next three slots, in conditional order — not build assignments
+**MODEL:** weak positive central **+0.002**, plausible **−0.010..+0.015**; uncalibrated scenario, not CI. No automatic promotion. R0 `0.2778` is CLAIM; TOP_PUBLIC/date and quota are unknown. Live comparisons require parent/candidate submission-page RECEIPTs. **Every |live Δ|<0.01 is no evidence**; public changes need not transfer privately.
 
-| Order | Experiment / prerequisite | What a receipt would change |
+## Next three conditional slots — one entity, never automatic
+
+| Order | File / experiment | What its receipt changes |
 |---|---|---|
-| 1 | **Collar-only PRUNE control**, fixed count. Review existing PRUNE3 in [PR #21](https://github.com/buffedlizard55-lab/GEMSDOE84/pull/21) without rebuilding it; require its reproducible recipe, exact artifact validation and human approval first. PRUNE 1/3/4 are already reserved. | A paired change ≥+0.01 supports excluding the collar; ≤−0.01 supports retaining its potential splays. Otherwise no evidence. Human names the next parent; do not silently replace R0. |
-| 2 | **CONCENTRATION**, proposed 10% redistribution between **5 km** prior blocks at fixed count, only after parent/collar resolution and human axis assignment. Report density CV before/after. Not built. | ≥+0.01 supports concentrating the existing field; ≤−0.01 supports spatial coverage. Do not infer public-test locations or prevalence. |
-| 3 | **RELIEF**, proposed 10% basin-to-range-front redistribution using detrended-elevation terciles, fixed count, with an assigned unused value. Not built. | ≥+0.01 supports range-front allocation; ≤−0.01 supports retaining basin dots. Hold everything else fixed. |
+| 1 | **PRUNE1.5**, new fixed-count 200 m-ring control; review before allocating a slot because predicted central gain is below 0.01. | ≥+0.01 supports restoring the 200 m ring; ≤−0.01 contradicts its benefit under this compensation policy. Otherwise no evidence; do not promote on the catalogue PROXY. |
+| 2 | Existing **PRUNE >3 px/refill** (`h33-h33-2-b2-prune-dgt3refill-20261023-10ce9ad1`), only if unscored and still informative. **Do not rebuild** or also spend a slot on its nearly equivalent 3 px twin. | A ≥0.01 paired change supports the opposite collar direction. Compare with R0, not by fitting a mass/prevalence curve from unrelated files. |
+| 3 | Proposed **CONCENTRATION 10%**, 5 km blocks, from an explicitly named, pinned parent satisfying ≥3 px. Not built here. | ≥+0.01 supports concentration; ≤−0.01 supports distributed coverage. Report density CV, not a gate. Do not silently combine collar repair with another axis. |
 
-Compare against a **submission-page parent RECEIPT**, never against a PROXY or an unverified claim. **Every |Δ|<0.01 is no evidence**, including the inherited MASS projections. Public-chunk differences need not transfer privately. One human entity, at most three scored submissions per rolling week; record actual submission dates before scheduling. Never spend another slot on an encoding twin or an exact repeat.
+The shared catalogue **PROXY** is **0.016259 [0.013981, 0.018417]** vs R0 **0.003885 [0.003318, 0.004453]**, with 22,893 withheld positive instances (21,032 unique). **Biased shipped-mask instrument:** the ring mechanically improves it; it cannot predict live gain. Binary canary strength **0.51171** does not certify leakage freedom. SGMC is **NOT RUN**: derived-mirror license/shareability UNVERIFIED. See [evidence](evidence/prune_1p5_796cb891.json).
 
 ## Weeks to the supplied deadline
 
-`2026-12-03` is **UNVERIFIED here**: 41 calendar days from today, with exact cutoff/timezone and quota for the human to confirm on the [competition page](https://www.drivendata.org/competitions/306/competition-doe-gems/) / [rules](https://docs.nlr.gov/docs/fy26osti/96647.pdf). No automated access. Do not assume 18 slots remain.
+`2026-12-03` / exact cutoff is **UNVERIFIED here**; 41 calendar days remain by the supplied date. Human confirms via the [competition page](https://www.drivendata.org/competitions/306/competition-doe-gems/) / [rules](https://docs.nlr.gov/docs/fy26osti/96647.pdf); no automated access. At most three scored submissions per rolling week; record actual dates. Do not assume 18 slots remain.
 
-- **Weeks 1–2 (Oct 23–Nov 5):** resolve collar/assignment, then controlled MASS, CONCENTRATION, SNAP, PRUNE, RELIEF tests as authorized; never rebuild recorded pairs.
-- **Weeks 3–4 (Nov 6–19):** combine the two best receipt-supported axes, one interaction at a time; no winner if changes are <0.01.
-- **Weeks 5–6 (Nov 20–Dec 3):** confirm; choose one blind final and a fallback, revalidate both. TRACKB is Phase-2 review work, not a weekly-slot candidate absent human approval.
+- **Weeks 1–2 (Oct 23–Nov 5):** isolated MASS/CONCENTRATION/SNAP/PRUNE/RELIEF controls as feasible; no repeated pairs, twins, or implicit collar waiver. SNAP on unchanged R0 is infeasible for 30 dots.
+- **Weeks 3–4 (Nov 6–19):** combine the two best receipt-supported axes, one interaction at a time.
+- **Weeks 5–6 (Nov 20–Dec 3):** confirm, choose one blind final and fallback; revalidate both. TRACKB is geologist review work, not a weekly-slot candidate absent human approval.
 
 ## Better axes proposed only — none built
 
-- **EDGE_COHERENCE:** favor gradients persistent across scales at fixed mass; mimic: unfaulted lithologic contacts; falsifier: ≥0.01 live loss versus matched parent.
-- **SHORELINE_CONTROL:** suppress contour-parallel benches unless independent cross-drainage breaks agree; mimic: genuine faults shaping shorelines; falsifier: ≥0.01 loss despite improved geomorphic control.
+- **EDGE_COHERENCE:** favor persistent multi-scale gradients; mimic: unfaulted contacts; falsifier: ≥0.01 live loss at fixed mass.
+- **SHORELINE_CONTROL:** suppress contour-parallel benches absent cross-drainage breaks; mimic: fault-shaped shores; falsifier: ≥0.01 live loss.

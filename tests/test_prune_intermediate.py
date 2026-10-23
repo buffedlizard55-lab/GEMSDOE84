@@ -91,3 +91,105 @@ def test_binary_canary_auc_handles_ties_exactly():
     p, n = feature[pos], feature[neg]
     brute = ((p[:, None] > n[None, :]) + .5 * (p[:, None] == n[None, :])).mean()
     assert binary_auc(feature, pos, neg) == pytest.approx(brute)
+
+
+def test_built_intermediate_pair_and_evidence_are_consistent():
+    import csv
+    import hashlib
+    import json
+    from pathlib import Path
+    import rasterio
+    from scipy.ndimage import distance_transform_edt
+    from scripts.validate_submission import validate
+
+    root = Path(__file__).resolve().parents[1]
+    report_path = root / 'evidence/prune_1p5_796cb891.json'
+    if not report_path.exists():
+        pytest.skip('one planned candidate has not been built yet')
+    report = json.loads(report_path.read_text())
+    assert report['axis'] == 'PRUNE' and report['value'] == '1.5'
+    assert report['n_dots'] == 37654
+    assert report['dots_added'] == report['dots_removed'] == 1344
+    assert report['pct_changed'] == pytest.approx(100 * 2688 / 37654)
+    assert report['historical_ledger_rows'] == 125 and report['historical_bytes_preserved']
+    assert report['submission_slots_used'] == 0 and not report['submission_authorized']
+    assert len(report['verified_inputs']) == 27 and all(f['verified'] for f in report['verified_inputs'])
+    assert report['parent_rebuild']['all_checks_passed']
+    assert all(report['mask_checks'].values())
+    assert len(report['form_note']) <= 140
+    assert report['snap_infeasibility']['dots_without_any_allowed_target'] == 30
+    assert report['ranking']['reference_evidence_class'] == 'MODEL'
+    assert report['no_similarity_thresholds_applied']
+    template = root / 'data/bridge/sample_submission.tif'
+    catalogue = root / 'data/bridge/existing_faults.tif'
+    manifest = json.loads((root / 'registry/data_manifest.json').read_text())
+    pins = {r['id']: r['sha256'] for r in manifest['files']}
+    assert hashlib.sha256(template.read_bytes()).hexdigest() == pins['sample_submission']
+    assert hashlib.sha256(catalogue.read_bytes()).hexdigest() == pins['existing_faults']
+    with rasterio.open(template) as ds:
+        foot = np.isfinite(ds.read(1))
+    with rasterio.open(catalogue) as ds:
+        cat = (ds.read(1) > 0) & foot
+    distance = distance_transform_edt(~cat)
+    masks = []
+    for encoding in ('nan', 'zeros'):
+        file = report['files'][encoding]
+        path = root / file['path']
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == file['sha256']
+        assert validate(path, template, encoding)['format_valid']
+        with rasterio.open(path) as ds:
+            values = ds.read(1)
+        mask = np.isfinite(values) & (values > 0)
+        masks.append(mask)
+        assert np.isin(values[foot], [0, 1]).all()
+        assert int(mask.sum()) == 37654
+        assert float(values[cat].sum()) == 0
+        assert float(distance[mask].min()) == 2.0
+        assert not (mask & ~foot).any()
+    assert np.array_equal(*masks)
+    rows = list(csv.DictReader((root / 'ledger/submissions.csv').open()))
+    own = [r for r in rows if r['id'] == report['id']]
+    assert len(own) == 1
+    row = own[0]
+    assert row['axis'] == 'PRUNE' and row['value'] == '1.5'
+    assert row['sha256'] == report['files']['nan']['sha256']
+    assert row['sha256_zeros'] == report['files']['zeros']['sha256']
+    for other in rows:
+        if other['id'] != row['id']:
+            assert row['sha256'] not in (other.get('sha256'), other.get('sha256_zeros'))
+            assert row['sha256_zeros'] not in (other.get('sha256'), other.get('sha256_zeros'))
+    diagnostics = report['report_only_diagnostics']
+    control = diagnostics['catalogue_hide_and_recover']
+    assert control['report_only'] and 'NOT fold-clean' in control['mode']
+    summary = control['shared_summary']
+    assert summary['evidence_class'] == 'PROXY'
+    assert summary['scores']['PRUNE1.5']['withheld_positive_pixels'] == 22893
+    assert len(summary['scores']['PRUNE1.5']['ci95']) == 2
+    assert control['unique_withheld_pixels_across_draws'] == 21032
+    assert diagnostics['leakage_canary']['max_single_feature_strength'] <= .90
+    assert diagnostics['sgmc_control']['status'] == 'NOT_RUN'
+    assert 'UNVERIFIED' in diagnostics['sgmc_control']['license']
+
+
+def test_recorded_intermediate_cannot_be_rebuilt_and_ledger_cannot_be_replaced(tmp_path):
+    import csv
+    import subprocess
+    import sys
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parents[1]
+    ledger = root / 'ledger/submissions.csv'
+    rows = list(csv.DictReader(ledger.open()))
+    if not any(row['axis'] == 'PRUNE' and row['value'] == '1.5' for row in rows):
+        pytest.skip('candidate is not built yet')
+    before = ledger.read_bytes()
+    result = subprocess.run([sys.executable, str(root / 'scripts/build_prune_intermediate.py'),
+                             '--axis', 'PRUNE', '--data-dir', str(tmp_path / 'missing')],
+                            cwd=root, capture_output=True, text=True)
+    assert result.returncode != 0 and 'Already built/recorded' in result.stderr
+    assert not (tmp_path / 'missing').exists()
+    assert ledger.read_bytes() == before
+    replacement = subprocess.run([sys.executable, str(root / 'scripts/build_ledger.py')],
+                                 cwd=root, capture_output=True, text=True)
+    assert replacement.returncode == 2 and 'Refusing to replace existing ledger' in replacement.stderr
+    assert ledger.read_bytes() == before

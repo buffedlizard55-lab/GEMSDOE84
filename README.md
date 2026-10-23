@@ -6,16 +6,19 @@
 
 | Field | Value | Evidence |
 | :--- | :--- | :--- |
-| **Parent (R0)** | `h33-h33-2-b2` (`GEMSDOE32`), **37,654 unit-mass dots**, zero catalogue mass. Fresh rebuild matches `-zeros.tif` SHA-256 `c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9` and `-nan.tif` `baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd`. | [Local preflight](evidence/brief_v2_preflight_796cb891.json), not a score receipt |
-| **Best receipt** | **None supplied.** Incumbent `0.2778` remains owner-reported; no submission-page receipt in the ledger. | CLAIM |
-| **TOP_PUBLIC** | **Not supplied with a current date.** Historical figures below are not session targets. | UNVERIFIED |
-| **Slots left** | **Unknown this week / total.** One entity, three scored submissions per rolling week; **0 used here**. Supplied `2026-12-03` deadline/cutoff needs human confirmation. | Human input required |
-| **AXIS / status** | **Unassigned → HOLD.** R0 retains **1,611 dots at <3 px**. No collar waiver is inferred. All six inherited MASS/SNAP files pass format but fail the strict non-PRUNE collar. No new candidate is built or authorized. | Fresh disk re-read |
-| **Next 3 slots** | Conditional only: **1)** collar-only PRUNE control (PRUNE 1/3/4 already reserved in [PR #21](https://github.com/buffedlizard55-lab/GEMSDOE84/pull/21), never rebuild); **2)** proposed CONCENTRATION 10%, 5 km blocks; **3)** proposed RELIEF 10%. Each needs human assignment, parent/collar resolution, validation and quota confirmation. | [SLOT_PLAN.md](SLOT_PLAN.md) · [docs/SUBMIT.md](docs/SUBMIT.md) |
+| **Parent R0** | `h33-h33-2-b2` (GEMSDOE32), **37,654 unit dots**. Rebuilt exactly: zeros SHA-256 `c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9`; NaN `baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd`. All 23 manifest + four lineage pins verified. | [Build evidence](evidence/prune_1p5_796cb891.json) |
+| **Best receipt** | **None supplied.** R0 `0.2778` remains owner-reported, not a submission-page receipt. | CLAIM |
+| **TOP_PUBLIC** | **Not supplied with a current date.** Historical figures below are not targets. | UNVERIFIED |
+| **Slots left / deadline** | **Unknown this week / total.** One entity, three scored per rolling week; **0 used here**. Supplied `2026-12-03` cutoff/timezone requires human confirmation. | Human input required |
+| **AXIS / build** | **Agent-selected PRUNE**, explicitly delegated by the owner. One new file: **`h33-h33-2-b2-PRUNE1p5-20261023-3d2ac85f`**; `>1.5 px` collar, **1,344 original 200 m-ring dots in / 1,344 least H19-kernel-loss dots out**, count unchanged; **7.138683805173421%** symmetric difference. Zero catalogue mass. Both encodings pass disk validation. **The <3 px mass is permitted only by the PRUNE exception.** | BUILT, unscored |
+| **Prediction** | Weak positive **+0.002 DTI**, plausible **−0.010..+0.015**; uncalibrated scenario, not CI. No automatic weekly-slot promotion. **Every absolute live change <0.01 is no evidence.** | MODEL |
+| **Next 3 conditional slots** | **1)** review PRUNE1.5 vs R0; **2)** existing outward PRUNE >3 px control if unscored (never rebuild its twin); **3)** proposed CONCENTRATION 10%, 5 km blocks, only from a named pinned ≥3 px parent. | [SLOT_PLAN.md](SLOT_PLAN.md) · [file/name/note](docs/SUBMIT.md) |
 
-Archived, **not submission-cleared** MASS IDs: `h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3`, `h33-h33-2-b2-mass-add10pct-20261023-ad925bd2`, `h33-h33-2-b2-mass-drop20pct-20261023-62bfc392`. Three SNAP settings are likewise already built; [cross-session reservations](ledger/experiment_reservations.json) also preserve the PRUNE work without replacing the 119-row ledger.
+The catalogue shipped-mask **PROXY** is biased toward restoring the ring: `0.016259 [0.013981, 0.018417]` vs R0 `0.003885 [0.003318, 0.004453]`, with 22,893 withheld instances (21,032 unique). **Not live evidence or a gate.** Binary canary strength `0.51171` does not prove leakage freedom; SGMC is not run because derived-mirror license/shareability is UNVERIFIED. Only pinned parent-lineage competition artifacts were consumed; no new physical field/external data.
 
-**Current instructions supersede the frozen historical recommendations below.** No correlation/overlap uniqueness gates apply under Brief v2. Any absolute live change below **0.01 is no evidence**. No feature fitting or new PROXY was run; no live improvement is predicted for this audit-only session. Existing public competition-data mirrors remain a data-use issue for the human to resolve (`IR-DEC-01`).
+Archived MASS example `h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3` and SNAP example `h33-2-b2-snap1p4px-g0p02-20261023-0b6a2ab2` are already built, not new candidates. They still violate the strict non-PRUNE collar. Integer/fractional PRUNE endpoints in the ledger and [PR #21](https://github.com/buffedlizard55-lab/GEMSDOE84/pull/21) are not rebuilt. The complete 125-row historical ledger prefix and all receipt fields were preserved before appending one row.
+
+**Frozen recommendations below are historical, not current submission approval.** No correlation/overlap uniqueness gates apply. Existing public competition-data mirrors remain flagged for human data-use review (`IR-DEC-01`). The agent never submits.
 <!-- CURRENT_STATE_END -->
 <!-- /CURRENT STATE -->
 

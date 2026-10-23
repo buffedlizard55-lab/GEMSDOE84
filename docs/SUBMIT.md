@@ -1,3 +1,63 @@
+# CURRENT SUBMISSION PACKET — PRUNE1.5 (2026-10-23)
+
+**One new, locally validated candidate; no submission performed or slot authorized.** The owner delegated axis selection. The agent chose PRUNE and one unused 1.5 px collar interpolation; all other built pairs remain historical. Parent R0's `0.2778` remains **CLAIM**, not RECEIPT. Human alone decides whether to upload after confirming quota, baseline receipt, deadline and data-use terms.
+
+## File, name and form note
+
+- **Name:** `h33-h33-2-b2-PRUNE1p5-20261023-3d2ac85f`
+- **Primary (NaN outside footprint):** [h33-h33-2-b2-PRUNE1p5-20261023-3d2ac85f.tif](../releases/h33-h33-2-b2-PRUNE1p5-20261023-3d2ac85f.tif)
+  - SHA-256: `3d2ac85f0d3b9e6c353214fa9b0a1eecf55d9b46231f39e9203cce05525e8cba`
+- **Fallback (zero outside, nodata=None):** [h33-h33-2-b2-PRUNE1p5-20261023-3d2ac85f-zeros.tif](../releases/h33-h33-2-b2-PRUNE1p5-20261023-3d2ac85f-zeros.tif)
+  - SHA-256: `b11fc67e790ab36f2d7ad0a115c7495d116b6a535d19ad987fde8ac35068b498`
+- **Form note (88/140 characters):**
+  ```text
+  h33-h33-2-b2; PRUNE >1.5px, 1344 ring-in/tail-out, n37654; MODEL +0.002 (-0.010..+0.015)
+  ```
+
+Upload **only one encoding**, never both as separate experiments. A local format pass is not organizer acceptance. NaN is the supplied primary specification; zeros is the conservative fallback, not proof of what caused any prior portal error. No agent code logs in, fetches DrivenData pages or submits.
+
+## Local format and parent-difference receipt
+
+[Structured build evidence](../evidence/prune_1p5_796cb891.json) · [full read-only self-check](../evidence/prune_1p5_selfcheck_796cb891.json) · [preregistered decision](../registry/preregistration_prune_1p5.json).
+
+- R0 rebuilt byte-identically in both encodings; **23 manifest + four lineage input hashes** match. Build source commit: `23f5dbcacc3568e6469843693f67758611aa3442`; deterministic ranking, diagnostic seed `520810`.
+- Both final files re-read: one band, **float32**, **EPSG:32611**, shape **3730 × 3292**, exact template transform `(100,0,243350,0,-100,4508550)` / bounds, finite [0,1] inside all **5,167,373** footprint cells. Outside is NaN (primary) or zero (fallback).
+- **37,654 unit dots; zero catalogue mass** on all 60,988 known pixels. Minimum catalogue distance **2.0 px**, valid under **AXIS=PRUNE's explicit collar exception**, not a waiver for other axes.
+- **1,344 added / 1,344 removed = 2,688 changed pixels.** Exact percentage is `(2688 / 37654) × 100 = (134400 / 18827)% ≈ 7.138683805173421% of R0`. This replaces 3.5693419025867104% of original parent dots. All retained/added positions remain on the pinned H19-5 field and original pre-prune dot pool; no new spacing or field is introduced.
+- Both exact file hashes were absent from all recorded pre-build hashes; `(R0, PRUNE, 1.5)` was unused. No correlation/overlap gate. One BUILT row appended; the entire 125-row historical CSV prefix and human receipt fields were preserved. New `receipt_score` and `date` remain blank.
+
+## Mechanism card — structural-geologist reading
+
+- **Hypothesis:** Restoring the original **200 m** ring but excluding the **141 m** diagonal ring captures unmapped near-trace splays or refined geometry removed by R0's >2 px collar.
+- **Mechanism:** Keep count fixed. Insert all 1,344 pre-prune lineage dots at distance 2 px; remove 1,344 original R0 dots with the least exact shared-kernel DTI loss against the **fixed H19-5 lineament MODEL reference**, updating neighbours after each removal. This reference is not fault truth or a calibrated posterior. The actual operation is collar allocation, not a new physical detector. Selected marginal losses tie; the preregistered tie-break is row-major, not a geological confidence claim.
+- **Non-fault mimic / confounder:** Misregistered existing linework, fault-parallel erosion/fan margins or lithologic contacts can occupy the same ring. Equal MODEL-loss tie-breaking and budget compensation also change the spatial distribution; a live change would price this complete specified policy, not prove a universal collar optimum.
+- **Predicted live change:** **MODEL central +0.002 DTI**, plausible **−0.010..+0.015**. Weak positive, explicitly uncalibrated and fixed before diagnostics; not a confidence interval or promise to beat TOP_PUBLIC.
+- **Falsifier:** Comparable submission-page receipts show **Δ≤−0.01**. **Δ≥+0.01** supports this policy on public chunks only. **Every |Δ|<0.01 is no evidence**; private/expert-expanded labels may differ.
+- **Basis supplied by the owner:** Known pixels are masked pixel-exactly; neighbours can contain new-fault truth ([organizer clarification](https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516); [new geometry definition](https://community.drivendata.org/t/where-do-you-draw-the-line/11536)). These pages were not fetched here.
+
+## REPORT ONLY — not promotion gates
+
+- Shared `gems57-pooled-hide-v2`, seeds 20/21, **22,893 withheld instances / 21,032 unique pixels**, paired physical 20 km-block bootstrap, 1,000 draws, seed 520810.
+- **Shipped-mask PROXY:** candidate **0.01625854**, conditional 95% CI **[0.01398145, 0.01841676]**; R0 **0.00388518 [0.00331822, 0.00445260]**. Paired PROXY difference **+0.01237337 [0.01038476, 0.01423613]**.
+- **This diagnostic is biased and NOT fold-clean:** R0, its fixed upstream field and full-catalogue exclusion predate withholding. Restored near-catalogue dots mechanically regain credit against catalogue-derived truth. Do not convert this PROXY lift or CI into a live prediction or scientific confirmation.
+- **Single-feature canary:** fixed binary H19-5 reference, AUC 0.48829004 / absolute strength **0.51170996** on both seeds. No >0.90 trigger. Passing this low-power binary check does not certify the upstream field or catalogue conditioning leakage-free.
+- **SGMC:** **NOT RUN**, derived-mirror license/shareability **UNVERIFIED** ([source pointer](https://doi.org/10.3133/ds1052)). No new external data consumed; this omission is reported, not used as a gate.
+
+## Re-validation and human action
+
+```bash
+python scripts/validate_submission.py releases/h33-h33-2-b2-PRUNE1p5-20261023-3d2ac85f.tif --reference data/bridge/sample_submission.tif --encoding nan
+python scripts/validate_submission.py releases/h33-h33-2-b2-PRUNE1p5-20261023-3d2ac85f-zeros.tif --reference data/bridge/sample_submission.tif --encoding zeros
+python scripts/validate_prune_intermediate.py  # full scientific gates; reads files, never rebuilds
+python -m pytest -q
+```
+
+The recipe is pinned at the build commit above; current-ledger reruns intentionally refuse a repeated experiment. Re-validation reads existing bytes and does not rebuild them. Human must supply current **TOP_PUBLIC/date**, the **R0 submission-page receipt**, **slots left this rolling week / total and actual submission dates**, **deadline/cutoff confirmation**, and **competition-data-use/mirror permission** before upload. An explicit SGMC license/shareability record is needed only if that optional diagnostic is wanted. No further axis choice is requested.
+
+---
+
+# HISTORICAL PACKETS — superseded; do not treat old slot orders, sub-0.01 falsifiers or HOLD reasons as current
+
 # SUBMISSION PACKET — HOLD (2026-10-23)
 
 **Current-session file: NONE. Name: not applicable. Form note: not applicable.** No candidate was built and no upload is authorized. The human did not assign an AXIS/unused value or resolve the strict catalogue-collar conflict. This session used zero slots; it has no predicted live improvement.

@@ -82,3 +82,57 @@ is predicted for this audit-only session; zero candidates built and zero slots u
 - **AI wrote**: the collar-sweep builder `scripts/build_prune_collar_sweep.py` (reuses the recorded `scripts/build_r0_variants.py` ranking, the shared `gems57` holdout evaluator and the shared `gems84.parent` emitter rather than any private metric or writer), `tests/test_prune_collar_sweep.py` (10 tests: format gates, refill floor, distinctness, ledger/receipt consistency), the `README.md` CURRENT STATE block, `SLOT_PLAN.md`, the collar-sweep section of `docs/SUBMIT.md`, and `IR-DEC-08..12`. Its original filenames (`scripts/build_prune_variants.py`, `tests/test_prune_axis.py`) collided with the parallel `arena/8db38540-gemsdoe84` PRUNE session that merged first, so they were renamed on merge; both implementations are kept because their variants are not exact repeats (`IR-DEC-12`).
 - **AI executed**: restored the pinned inputs from `codeload.github.com` (`scripts/restore_pinned_inputs.py`; 23/23 manifest hashes verified, receipt committed as `evidence/input_restore_receipt.json`), re-ran the parent gate (`scripts/rebuild_r0.py`: 6/6 checks PASS, `c55bafc4…`), built/gated/re-read the three collar variants, and ran the report-only diagnostics.
 - **Human decided / must still supply**: the axis for this session (blank in both 2026-10-23 briefs — `PRUNE` chosen independently twice and logged as `IR-DEC-07`/`IR-DEC-08`); `TOP_PUBLIC` with a date; remaining weekly/total slot quota; and every `receipt_score` + `date` after uploading from the human's own account. The AI has never logged in, scraped the leaderboard, or submitted anything.
+
+## Current continuation — owner-delegated PRUNE1.5 (2026-10-23)
+
+**This section supersedes the earlier current-session HOLD for an unassigned
+axis.** The owner explicitly said not to ask for an axis and to pick a session.
+The human did **not** pick PRUNE1.5, its compensation ranking, prediction, slot
+allocation or final file; those are agent decisions, not human endorsements.
+
+### What the AI chose, wrote and executed
+
+- Reverified all **23 manifest + four parent-lineage hashes**, then reconstructed
+  R0 byte-for-byte in both encodings. Selected **AXIS=PRUNE**, value **1.5**: the
+  1/3 px endpoints and 2.5/3/4 px sweeps were already built/reserved. One unused
+  intermediate lattice state was built; no three-file quota-filling exercise.
+- Proved that 30 R0 dots have **no** >=3 px allowed target within 2 px. A pure
+  count-preserving SNAP cannot resolve this; no collar rule was silently waived.
+  The new candidate uses only the brief's explicit **PRUNE exception**.
+- Wrote `prune_intermediate.py`, `build_prune_intermediate.py`, preregistration and
+  tests. Kept the physical field and original pre-prune dot pool: all **1,344**
+  d_cat=2 px dots in, equal count of R0 dots out. Ranking is greedy exact shared
+  kernel deletion loss against the **fixed H19-5 MODEL lineament reference**,
+  updated after each removal, with row-major ties. This is not hidden truth,
+  a calibrated posterior, or a claim that the discarded dots are non-faults.
+- Preregistered **MODEL central +0.002 DTI**, plausible **−0.010..+0.015**, before
+  diagnostics. It is an uncalibrated scenario, not a confidence interval. Did not
+  use the catalogue PROXY to fit or upgrade that prediction.
+- Built **one** 37,654-unit-dot mask, exactly **7.138683805173421%** symmetric
+  difference from R0; wrote primary NaN-exterior and fallback zero-exterior TIFFs.
+  Both were independently re-read and validated; the fallback used the unchanged
+  shared writer. No original competition raster was added to Git/releases.
+- Executed the unchanged shared catalogue evaluator: 22,893 withheld instances /
+  21,032 unique pixels, conditional paired 20 km-block CIs, seeds 20/21 and
+  bootstrap seed 520810. Clearly labelled **PROXY / shipped-mask / NOT fold-clean**:
+  restoring catalogue-adjacent dots mechanically favors this instrument. The
+  passing one-feature binary canary is not a leakage-freedom certificate.
+- **Did not run SGMC**: the owner-derived mirror's license/shareability has no
+  explicit verified receipt here. Reported that omission, not a gate. No new
+  external data, lidar, feature fitting or physical detector was introduced.
+- Merged concurrent main history on the fixed branch, preserving all 125 prior
+  CSV rows and receipt bytes before appending one BUILT row. Protected the ledger
+  initialiser against replacing existing history. Updated only README's CURRENT
+  STATE, current packet/plan and decision records; did not redesign the site.
+- Build source commit `23f5dbcacc3568e6469843693f67758611aa3442`, exact source hashes
+  and input pins are in `evidence/prune_1p5_796cb891.json`. No forbidden host,
+  login/submission code or credential access. The shared metric was not modified.
+
+### What remains the human's decision/input
+
+Only the human chooses whether/when to submit one encoding, manages the one-entity
+rolling-week quota, selects the blind final, supplies TOP_PUBLIC with a read date,
+the R0 submission-page receipt, remaining weekly/total quota and actual submission
+dates, exact deadline/cutoff confirmation, and competition-data-use/public-mirror
+permission. An explicit SGMC license is needed only to add that optional control.
+The agent spent **zero** scored slots and requests **no further axis decision**.
