@@ -153,6 +153,8 @@ def proxy_report(folds: list[dict], footprint: np.ndarray, masks: dict[str, np.n
     pooled = {name: np.sum(parts, axis=0) for name, parts in terms.items()}
     anchor = "concentration15pct"
     all_summary = shared_eval.pooled_summary(pooled, draws=1000, seed=520810, candidate=anchor)
+    for item in all_summary["scores"].values():
+        item["evidence_class"] = "PROXY"
     paired = {}
     for name in masks:
         if name == "r0":
@@ -160,6 +162,7 @@ def proxy_report(folds: list[dict], footprint: np.ndarray, masks: dict[str, np.n
         summary = shared_eval.pooled_summary({"r0": pooled["r0"], name: pooled[name]},
                                              draws=1000, seed=520810, candidate=name)
         paired[name] = summary["paired_differences"]["r0"]
+        paired[name]["evidence_class"] = "PROXY"
     return {"evidence_class": "PROXY", "evaluator_version": shared_eval.VERSION,
             "scores": all_summary["scores"], "paired_vs_r0": paired,
             "bootstrap": all_summary["bootstrap"], "implementation_sha256": all_summary["implementation_sha256"],
@@ -288,6 +291,7 @@ def main() -> int:
     new_hashes: set[str] = set()
     variants = []
     releases = ROOT / "releases"
+    releases.mkdir(parents=True, exist_ok=True)
     work = ROOT / ".cache/r0_build"
     for value, _fraction, prediction in VALUES:
         name = f"concentration{value}"
