@@ -10,3 +10,18 @@ Per Brief v2 Section 7, this register lists **only** findings that change a conc
 | **`IR-DEC-04`** | **Maximal packing of `h19_5` at $r_{\min} = 2.8\text{ px}$**: Because `d2_8` (`44,090` dots) is already a maximal BFS disk packing (`dot_thin(h19_5, 2.8)`) of `h19_5`, `h19_5` alone contains only `201` additional pixels at $r_{\min} = 2.8\text{ px}, d_{\text{cat}} \ge 3.0\text{ px}$, which cannot supply `+10%` (`+3,765` dots) for `MASS +10%`. | Following `GEMSDOE32/src/gems32/hypotheses.py` (`cand_ridges_only`), the candidate addition pool for `MASS +10%` uses the corroborated ridge union `h19_5 | h19_4 | h16_1 | tgc_v2_d15` thinned at $r_{\min} = 2.8\text{ px}$ (`19,243` candidate dots outside R0 at $d_{\text{cat}} \ge 3.0\text{ px}$), ranked by exact 25-offset marginal DTI gain. |
 | **`IR-DEC-05`** | **Holdout catalogue-masking leakage trap (`max_auc = 1.0` if `q[cat] = 0`)**: Zeroing out the full `existing_faults.tif` (`cat`) inside the continuous ranking surface `q` before running the holdout leakage canary forces `q = 0` on 100% of withheld catalogue positives (`pos subset cat`), producing a trivial `abs_strength = 1.0` canary trigger and censoring `MASS +10%` candidates within $3\text{ px}$ of withheld faults. | Removed full-catalogue masking from `q` (`q[~foot] = 0.0` only) and deferred catalogue exclusion to emission (`d_cat > 2.0` / `>= 3.0` on live; `d_vis > 2.0` / `>= 3.0` on fold-clean holdout). All 27 features now pass the single-feature leakage canary (`max_single_feature_auc = 0.5949 <= 0.90`), and `MASS +10%` achieves `+0.00172` fold-clean holdout `PROXY` lift over R0. |
 | **`IR-DEC-06`** | **Portal outer-cell `NaN` vs `0.0` validator discrepancy**: Problem spec requests `NaN` outside the active footprint (`releases/<id>.tif`), whereas DrivenData's portal range check has historically rejected `NaN` outer cells with `"Predicted values must be in range [0, 1]"` (`IR-84-04`). | Both `releases/<id>.tif` (`NaN` outside footprint, per spec) and `releases/<id>-zeros.tif` (`0.0` outside footprint, `nodata=None`, fallback) are generated, re-read from disk, and verified for all variants. |
+
+## Current-session overrides — 2026-10-23 / 0a63cbb2
+
+- **HOLD:** AXIS remains unassigned after clarification was skipped. No variants built.
+- **Collar constraint:** IR-DEC-03's inherited exception is not authorized by the current
+  brief. Non-PRUNE builds must satisfy >=3 px or await explicit human resolution;
+  silently removing the collar would confound a different axis.
+- **Protocol:** Current brief supersedes PROMPT.md/AGENTS.md overlap and correlation
+  gates. Only exact hashes and repeated (parent, axis, value) are deduplication gates.
+- **Evidence:** Prior slot plan treated changes below 0.01 as decisive and inferred
+  hidden truth from public results. Replaced with the brief's no-evidence threshold.
+- Competition inputs remain tracked under data/bridge (data-use terms unchecked;
+  source URL in IR-DEC-01). No additional raster bytes are committed this session.
+- Deadline confirmation conflicts with the ban on fetching competition pages;
+  human must supply a dated excerpt from the official page. Deadline UNVERIFIED here.

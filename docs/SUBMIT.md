@@ -1,3 +1,9 @@
+> **CURRENT SESSION HOLD — 2026-10-23 (`arena/0a63cbb2-gemsdoe84`)**
+> No new candidate file, name, form note or format receipt. Do not treat the historical
+> packet below as current authorization. AXIS was not assigned (clarification skipped).
+> R0 rebuild receipt: `evidence/r0_preflight_0a63cbb2.json`; this is integrity evidence,
+> not a submission-page score receipt. No submissions made.
+
 # SUBMISSION PACKET — `AXIS = MASS` & `AXIS = SNAP` Variants of Parent R0 (`h33-h33-2-b2`)
 
 - **Parent R0**: `h33-h33-2-b2` (`GEMSDOE32`, `37,654` unit-mass dots, `d_cat > 2.0 px`, `0.2778` `CLAIM` in `registry/live_scores.csv`)
