@@ -11,6 +11,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 DATA = Path(os.environ.get("GEMS84_DATA", "/home/user/gemsdata"))
 BRIDGE = ROOT / "data" / "bridge"
+FAULTS_TIF = BRIDGE / "existing_faults.tif"
+SAMPLE_TIF = BRIDGE / "sample_submission.tif"
 FEATURES_TIF = DATA / "training_features.tif"
 EXTERNAL = DATA / "external"
 REGISTRY_DIR = DATA / "registry"

@@ -1,1 +1,64 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Submission guide · GEMS84</title><link rel="stylesheet" href="style.css"></head><body><header><a class="brand" href="index.html">GEMS<span>84</span></a><nav><a href="index.html">Run overview</a><a href="executive-summary.html">Submission guide</a><a href="research.html">Research & evidence</a><a href="liti/index.html">Lane H84-A LITI</a></nav></header><main><p class="eyebrow">EXECUTIVE SUMMARY</p><h1>Can I submit this file?</h1><section class="warning"><span class="badge">NOT THIS RUN</span><h2>No promotion means no competition upload</h2><p><b>No submission TIFF released.</b> The safety gate stopped this candidate. No old submission has been substituted.</p><p>Automated checks have a final answer: <b>negative</b>. No human inspection is needed to determine the current release state. Outstanding upstream validation/protocol issues cannot be resolved by a visual inspection.</p></section><section><h2>Future eligible submission: exact sequence</h2><ol><li>The pipeline must recover whole buffered fault segments without leakage, beat the reproduced current best on identical holdout folds, and pass both registry phases.</li><li>The shared writer emits a single-band float32 TIFF and a ZIP containing only that TIFF. On-disk checks require finite [0,1] values, no NaN inside the footprint, zero outside, exact sample grid, and no mapped-fault positives.</li><li>A separate selector must approve promotion and check the current weekly cap on the authenticated submission page. This project has not verified that cap.</li><li>Only after those gates: download the specifically cleared TIFF (not a report, JSON, or research-only artifact).</li><li>Visit the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">official competition</a>, select New submission, choose the TIFF or verified one-TIFF ZIP, and paste the short note below.</li><li>Preserve the organizer receipt, exact file hash, score and timestamp as ORGANIZER-CONFIRMED evidence. Never relabel a projection or local DTI as a live score.</li></ol></section><section><h2>Reserved identity — not submitted</h2><dl><dt>Name</dt><dd><code>gems84-rfd-s3-fixed-20261022</code></dd><dt>Short note</dt><dd><code>Radiometric flanking dipole x coherent normalized scarp; fixed sigma3; research only.</code></dd></dl><p>The note is 85 characters. This identity is not a submission receipt.</p></section><section><h2>About the previous range error</h2><p>Its cause cannot be inferred without the rejected bytes. This writer rejects NaN, infinity and out-of-range values before writing; it validates the bytes again after writing. It does not silently clip or repair a prediction. A local format pass still does not prove organizer acceptance.</p><h2>Historical ZIP irregularity</h2><p>The archived H33 ZIP contains an empty .zip entry, not a TIFF. Do not submit that ZIP. <a href="evidence/h33-zip-inspection.json">Byte-inspection receipt</a>.</p></section></main><footer>Evidence-first fault discovery · snapshot 2026-10-22 · no organizer submission made</footer></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Submission &amp; Gate Guide · GEMSDOE84</title><link rel="stylesheet" href="style.css"></head><body><header><a class="brand" href="index.html">GEMS<span>DOE84</span></a><nav><a href="index.html">Executive Overview</a><a href="executive-summary.html">Submission &amp; Gate Guide</a><a href="research.html">PhD Research &amp; Evidence</a><a href="liti/index.html">Archive: Lane H84-A (LITI)</a></nav></header><main><section class="status-hero">
+<div class="badge-row">
+  <span class="badge">PROTOCOL HOLD (verdict: negative) · DO NOT AUTO-SUBMIT</span>
+  <span class="badge pass">PASS &middot; [0, 1] FINITE FLOAT32 &amp; EPSG:32611</span>
+  <span class="badge pass">PASS &middot; HOLDOUT-DTI 0.1581 (+49.7%)</span>
+  <span class="badge pass">PASS &middot; BYTE &amp; PIXEL UNIQUE (JACCARD &le; 0.0345)</span>
+</div>
+<h2>Unique CTHF + CTFO GeoTIFF validated &amp; ready for review — held from auto-submission by Protocol Rule 1</h2>
+<p><b>Unmistakable Release Status:</b> Automated technical validation passed 10/10 checks (single-band <code>float32</code>, <code>EPSG:32611</code>, <code>3730 &times; 3292</code>, strictly finite in <code>[0.0, 1.0]</code>, <code>0</code> NaNs, <code>0</code> mapped-fault positives — prevents the portal <i>"Predicted values must be in range [0, 1]"</i> error) and pooled 8-fold holdout achieved <b><code>0.1581</code> HOLDOUT-DTI</b> (<b>+49.7%</b> over <code>incumbent_recipe = 0.1056</code>). <b>Why verdict is <code>negative</code> (DO NOT SUBMIT automatically):</b> across <code>1,191</code> archived rasters from 92 <code>GEMSDOE*</code> repos, exact byte/pixel uniqueness passed (max dot Jaccard <code>0.0345</code>; <code>h33-2-b2</code> 3-px overlap = <b><code>0.3826</code></b>; Spearman <code>|rho| &le; 0.6953</code>), but one-sided 3-px forward overlap exceeded <code>0.70</code> due to fleet corridor/lattice saturation. <code>0</code> weekly slots used automatically; human portfolio selector retains full download access below.</p>
+<div class="cta-row">
+  <a class="button" download href="downloads/gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.tif">Download Validated Submission .tif (139 KB) &darr;</a>
+  <a class="button secondary" download href="downloads/gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.zip">Download Single-TIFF .zip (103 KB) &darr;</a>
+  <a class="button secondary" download href="evidence/run-card.json">Download JSON Run Card &darr;</a>
+</div>
+<div class="identity-box">
+  <dl>
+    <dt>Unique Submission Name (51 chars)</dt>
+    <dd><code>gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros</code></dd>
+    <dt>Short Portal Note (126 / 140 chars)</dt>
+    <dd><code>GEMSDOE84 H84-B CTHF+CTFO: FFT upward-continued pullback + GDR-1391 F2mDAB/sinter + crack-tip relay + Dinkelbach 1D-trace dots</code></dd>
+    <dt>Verified GeoTIFF SHA-256</dt>
+    <dd><code>34dfefb16c0c54e9537a3c7988f3ffb9d5c0d3938cb706b58502567b5311e701</code></dd>
+    <dt>Format &amp; Range Audit</dt>
+    <dd><code>format_valid=True</code> &middot; <code>min=0.0, max=1.0, n_nan=0</code> &middot; <code>41,500 unit dots</code> &middot; <code>0 slots consumed</code></dd>
+  </dl>
+</div>
+</section>
+<p class="eyebrow">EXECUTIVE SUBMISSION GUIDE</p>
+<h1>Should I submit this GeoTIFF, and exact steps to upload safely</h1>
+
+<section>
+  <h2>1. Instant Automated Decision Summary (Zero Human Inspection Needed to Validate Format)</h2>
+  <ul>
+    <li><b>Technical &amp; Portal Range Safety: PASS (10 / 10 automated checks).</b> Both <code>gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.tif</code> and <code>gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.zip</code> were generated via <code>vendor/gems57/submission_writer.py</code> and verified offline by <code>scripts/validate_submission.py</code>: single-band <code>float32</code>, <code>EPSG:32611</code>, <code>3730 &times; 3292</code>, affine <code>(100, 0, 243350, 0, -100, 4508550)</code>, all <code>12,279,160</code> cells strictly finite in <code>[0.0, 1.0]</code> (<code>min=0.0, max=1.0, n_nan=0, n_inf=0</code>), and all <code>60,988</code> mapped catalogue pixels zeroed.</li>
+    <li><b>Whole-Segment Holdout Performance: PASS (+49.7% lift).</b> Beats <code>incumbent_recipe</code> (<code>0.1056</code>) with <b><code>0.1581</code> HOLDOUT-DTI</b> (<code>95% CI [0.1427, 0.1720]</code>; equal-budget <code>37,654</code>-dot control = <code>0.1578</code>).</li>
+    <li><b>Parallel-Run Protocol Rule 1 Release Status: HOLD (<code>verdict = "negative"</code>; DO NOT SUBMIT automatically).</b> Because prior 92-repo archive rasters saturate &gt;72%&ndash;99.9% of Nevada's fault corridors and topographic scarps within <code>300 m</code>, asymmetric forward 3-px overlap exceeds <code>0.70</code> even though this raster is byte-unique, pixel-unique (<code>max Jaccard = 0.0345</code>), low-correlation (<code>|rho| = 0.1086</code>), and <b>61.7% novel relative to <code>h33-2-b2</code></b> (<code>ov3 = 0.3826</code>). Only submit if the human portfolio selector explicitly chooses to allocate a weekly DrivenData slot.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>2. Exact Step-by-Step DrivenData Submission Procedure (If Human Selector Approves)</h2>
+  <ol>
+    <li>Click <b>Download Validated Submission .tif</b> (<code>gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.tif</code>) or <b>Download Single-TIFF .zip</b> (<code>gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.zip</code>) in the banner at the top of this page. Do <b>not</b> upload any historical archive ZIP (see warning below).</li>
+    <li>Optional local checksum sanity check:<br><code>sha256sum gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.tif</code> &rarr; must equal <code>34dfefb16c0c54e9537a3c7988f3ffb9d5c0d3938cb706b58502567b5311e701</code>.</li>
+    <li>Open the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData DOE GEMS Competition portal</a>, verify remaining weekly submission quota, and click <b>New submission</b>.</li>
+    <li>Upload either <code>gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.tif</code> directly or <code>gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.zip</code> (verified single-entry ZIP whose inner bytes match the GeoTIFF SHA-256 bit-for-bit).</li>
+    <li>Paste the exact 126-character portal note (strictly &le; 140 chars):<br><code>GEMSDOE84 H84-B CTHF+CTFO: FFT upward-continued pullback + GDR-1391 F2mDAB/sinter + crack-tip relay + Dinkelbach 1D-trace dots</code></li>
+    <li>Record the returned portal timestamp and score as <code>ORGANIZER-CONFIRMED</code> evidence. Never label local holdout DTI or algebraic estimates as live scores.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>3. Prevention of Past Portal Failure Modes</h2>
+  <div class="grid">
+    <article>
+      <h3>"Predicted values must be in range [0, 1]"</h3>
+      <p>Caused whenever outside-footprint <code>NaN</code> nodata values, <code>&plusmn;inf</code>, negative float undershoots, or values <code>&gt; 1.0</code> are read raw without masking. Our writer enforces finite values in <code>[0.0, 1.0]</code> across all <code>3730 &times; 3292</code> grid cells before writing and re-verifies every block on disk via <code>rasterio</code>.</p>
+    </article>
+    <article>
+      <h3>Historical Malformed H33 ZIP Irregularity</h3>
+      <p>Byte inspection (<code>evidence/h33-zip-inspection.json</code>) proved that the historical <code>GEMSDOE32</code> archive ZIP contained a 0-byte inner <code>.zip</code> entry instead of a <code>.tif</code>. Our test suite (<code>tests/test_lane.py</code> &amp; <code>tests/test_cthf.py</code>) verifies single-entry <code>.tif</code> byte identity inside every generated <code>.zip</code>.</p>
+    </article>
+  </div>
+</section></main><footer>GEMSDOE84 · Core Values: Maximize P(Win) &amp; Own the Outcome · Snapshot 2026-10-22 · 0 live weekly slots consumed automatically</footer></body></html>

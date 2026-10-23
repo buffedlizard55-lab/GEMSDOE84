@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "registered_utc": "2026-10-22T23:05:00Z",
+  "repository": "buffedlizard55-lab/GEMSDOE84",
+  "branch": "arena/225224a5-gemsdoe84",
+  "lane": "H84-B (CTHF) — Crustal Transfer, Hydrothermal Upflow & Comonotonic 1D-Trace Fractional Allocation",
+  "budget_limit": {
+    "max_experiments": 3,
+    "max_wall_hours": 2.0,
+    "planned_experiments": [
+      {
+        "id": "EXP-84-1",
+        "name": "LOQO Spectral Crustal + Multi-Scale Geomorphic Surface + Standard d=3 NMS",
+        "tests": "H84-H2 alone (19 official bands + 2D FFT harmonic upward-continued RTP/gravity worms + 60-deg up-dip footwall subcrop pullback + 1m LiDAR + 10m DEM/chi + paleoshoreline filter) under standard 3-px NMS"
+      },
+      {
+        "id": "EXP-84-2",
+        "name": "LOQO Two-Regime Ensemble Adding DOE GDR-1391 Geothermal Conduits & Fold-Strict Crack-Tip/Relay Kinematics + Standard d=3 NMS",
+        "tests": "Adds H84-H3 (3,800 INGENIOUS 2m temperature probes F2mDAB/T2m + 709 Quaternary sinter/travertine paleovents + 27,092 Quartz/Chalcedony/Cation geothermometers + volcanic vents + K/Th alteration + cond_surf smectite margin + visible-only crack-tip propagation cones, opposing relay bridges & 2theta/4theta Bingham stress alignment), isolating pure posterior gain over EXP-84-1 under identical d=3 NMS"
+      },
+      {
+        "id": "EXP-84-3",
+        "name": "Full CTHF Posterior + Comonotonic 1D-Trace Fractional Optimization (CTFO)",
+        "tests": "Applies H84-H1 exact Comonotonic 1D-Trace self-credit Q_1D_trace + Minoux/CELF submodular Dinkelbach fractional optimizer to the exact calibrated posterior from EXP-84-2, isolating exact decision-theoretic gain"
+      }
+    ]
+  },
+  "hypotheses_ranked": [
+    {
+      "rank": 1,
+      "id": "H84-H1",
+      "title": "Comonotonic 1D-Trace Fractional Optimization (CTFO) with Paleoshoreline Rejection",
+      "expected_dti_impact": "high (+0.05 to +0.10 HOLDOUT-DTI over fixed-spacing NMS)",
+      "implementation_cost": "medium",
+      "viable_in_sandbox": true
+    },
+    {
+      "rank": 2,
+      "id": "H84-H2",
+      "title": "2D FFT Harmonic Upward-Continuation Potential-Field Worm Persistence & 60-deg Footwall Trace Pullback (HUPW)",
+      "expected_dti_impact": "high on concealed basin faults (+0.02 to +0.05)",
+      "implementation_cost": "low-medium",
+      "viable_in_sandbox": true
+    },
+    {
+      "rank": 3,
+      "id": "H84-H3",
+      "title": "Advective Hydrothermal Upflow, 2m Temperature Probe (F2mDAB) & Quaternary Sinter/Travertine Fault-Valve Conduits (AHFV)",
+      "expected_dti_impact": "medium-high on blind geothermal faults & off-catalogue conduits (+0.015 to +0.04)",
+      "implementation_cost": "low",
+      "viable_in_sandbox": true
+    },
+    {
+      "rank": 4,
+      "id": "H84-H4",
+      "title": "Sentinel-1 InSAR Phase-Gradient Creep Steps & Double-Difference Microseismic Hypocenter Planes (ISD-DD)",
+      "expected_dti_impact": "medium",
+      "implementation_cost": "high",
+      "viable_in_sandbox": false,
+      "required_external_sources": [
+        "https://earthquake.usgs.gov/fdsnws/event/1/",
+        "https://search.asf.alaska.edu/"
+      ],
+      "blocker": "Outbound network policy restricts sandbox access to github.com, pypi.org, and registry.npmjs.org; cannot fetch live USGS ComCat API or NASA ASF Sentinel-1 SLC products in this session."
+    }
+  ],
+  "gates": {
+    "leakage_canary_max_single_feature_auc": 0.9,
+    "holdout_evaluator": "vendor/gems57/evaluate_holdout.py (gems57-pooled-hide-v2, unmodified)",
+    "holdout_split": "vendor/gems57/holdout.py::buffered_component_draw(seeds=(20, 21), hide_frac=0.20, buffer_px=3)",
+    "must_beat_incumbent_recipe_95ci": true,
+    "registry_rho_limit": 0.9,
+    "registry_overlap_limit": 0.7,
+    "submission_writer": "vendor/gems57/submission_writer.py (unmodified)"
+  }
+}

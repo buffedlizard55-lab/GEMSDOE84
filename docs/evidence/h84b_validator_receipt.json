@@ -1,0 +1,20 @@
+{
+  "format_valid": true,
+  "checks": {
+    "geotiff": true,
+    "single_band": true,
+    "crs": true,
+    "shape": true,
+    "transform": true,
+    "real_dtype": true,
+    "finite_all": true,
+    "range_all": true,
+    "no_masked_footprint": true,
+    "nonempty_footprint": true
+  },
+  "footprint_pixels": 5167373,
+  "sha256": "34dfefb16c0c54e9537a3c7988f3ffb9d5c0d3938cb706b58502567b5311e701",
+  "template_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+  "submission_authorized": false,
+  "scope": "Format only; scientific, registry and selector gates remain separate."
+}

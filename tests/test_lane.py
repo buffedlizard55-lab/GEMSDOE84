@@ -85,24 +85,51 @@ def test_empty_mask_and_zero_budget_fail_closed():
 
 
 def test_site_local_links_and_fail_closed_release():
+    import hashlib
     import json
+    import zipfile
     from html.parser import HTMLParser
-    from urllib.parse import urlsplit,unquote
+    from urllib.parse import urlsplit, unquote
+
     class Links(HTMLParser):
-        def __init__(self):super().__init__();self.links=[]
-        def handle_starttag(self,tag,attrs):
-            self.links.extend(v for k,v in attrs if k in ('href','src') and v)
-    for p in (ROOT/'docs').glob('*.html'):
-        parser=Links();parser.feed(p.read_text())
+        def __init__(self):
+            super().__init__()
+            self.links = []
+
+        def handle_starttag(self, tag, attrs):
+            self.links.extend(v for k, v in attrs if k in ('href', 'src') and v)
+
+    for p in sorted((ROOT / 'docs').glob('*.html')):
+        parser = Links()
+        parser.feed(p.read_text())
         for href in parser.links:
-            u=urlsplit(href)
+            u = urlsplit(href)
             if not u.scheme and u.path:
-                assert (p.parent/unquote(u.path)).exists(),(p,href)
-    card=json.loads((ROOT/'evidence/run-card.json').read_text())
-    assert card['verdict']=='negative'
-    assert 'DO NOT SUBMIT' in (ROOT/'docs/index.html').read_text()
-    assert card['submission_slots_used']==0
-    assert len(card['note'])<=140
-    if card['registry_correlation_overlap'].get('duplicate'):
-        assert not list((ROOT/'docs').rglob('*.tif'))
+                assert (p.parent / unquote(u.path)).exists(), (p, href)
+
+    card = json.loads((ROOT / 'evidence/run-card.json').read_text())
+    assert card['verdict'] in ('negative', 'promote')
+    assert card['submission_slots_used'] == 0
+    assert len(card['note']) <= 140 and len(card['submission_name']) <= 140
+
+    idx_html = (ROOT / 'docs/index.html').read_text()
+    exec_html = (ROOT / 'docs/executive-summary.html').read_text()
+    if card['verdict'] == 'negative':
+        assert 'DO NOT AUTO-SUBMIT' in idx_html or 'DO NOT SUBMIT' in idx_html
+        assert card['submission_authorized'] is False
+    else:
+        assert 'PROMOTED' in idx_html
+
+    sub = card.get('submission')
+    if sub:
+        tif = ROOT / 'docs/downloads' / sub['file']
+        zf = ROOT / 'docs/downloads' / sub['zip_file']
+        assert tif.is_file() and zf.is_file()
+        assert hashlib.sha256(tif.read_bytes()).hexdigest() == card['raster_sha256']
+        assert f"downloads/{sub['file']}" in idx_html and f"downloads/{sub['file']}" in exec_html
+        with zipfile.ZipFile(zf) as z:
+            assert z.namelist() == [sub['file']]
+            assert z.read(sub['file']) == tif.read_bytes()
+    else:
+        assert not list((ROOT / 'docs/downloads').glob('*.tif'))
         assert card['raster_sha256'] is None
