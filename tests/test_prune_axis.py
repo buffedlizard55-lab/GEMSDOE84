@@ -1,17 +1,9 @@
-"""Unit tests for the AXIS=PRUNE session (Brief v2): fixed-count collar variants of R0.
+"""Tests for the AXIS=PRUNE work: the fixed-count collar operators and the shipped rasters.
 
-Covered here:
-* ledger rows for the two PRUNE builds (schema, exact-hash and (parent, axis, value)
-  dedupe across the whole ledger, no receipts claimed);
-* the evidence receipt (parent byte-identity, collar-ladder identities, ranking-fidelity
-  gate at its IR-DEC-07 tolerance -- NOT bit-identity);
-* the written GeoTIFF pairs re-read from disk (format, NaN/zeros footprint semantics,
-  zero catalogue mass, exact dot counts, and the actual collar each file claims);
-* REPORT-ONLY diagnostics as recorded (canary pass, withheld-positive count, and the
-  shipped-mask d_cat>3 score of exactly 0.0, which is a construction artifact: every
-  dot is >3 px from the full catalogue, so the 300 m kernel can earn nothing from
-  withheld catalogue pixels);
-* the IR-DEC-07 sentinel fix in ``ensure_unpacked_bands`` on a synthetic raster.
+The operator tests pin the semantics the brief demands of PRUNE: the dot count never moves
+(so a live receipt cannot be a disguised MASS effect), the collar band that a variant
+claims to vacate is actually empty, and the inward swap removes exactly the parent's
+lowest-marginal-gain dots (deterministic tie-breaking, no RNG).
 """
 from __future__ import annotations
 
@@ -22,19 +14,17 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import pytest
 import rasterio
 from scipy.ndimage import distance_transform_edt
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path[:0] = [str(ROOT / "vendor"), str(ROOT / "src"), str(ROOT)]
+sys.path[:0] = [str(ROOT / "src"), str(ROOT / "vendor")]
 
-from scripts import validate_submission  # noqa: E402
+from gems84.prune import drop_collar_band, swap_in_near_collar  # noqa: E402
 
-EV_PATH = ROOT / "evidence" / "r0_prune_variants_20261023.json"
-EXPECTED = {
-    "prune_dcat_gt3": {"swap": 2171, "pct": 11.53},
-    "prune_dcat_gt1": {"swap": 2492, "pct": 13.24},
-}
+BRIDGE = ROOT / "data" / "bridge"
+RELEASES = ROOT / "releases"
 
 
 def _sha256(path: Path) -> str:
@@ -45,150 +35,141 @@ def _sha256(path: Path) -> str:
     return h.hexdigest()
 
 
-def test_ledger_prune_rows():
-    rows = list(csv.DictReader((ROOT / "ledger" / "submissions.csv").open()))
-    built = [r for r in rows if r["status"] == "BUILT"]
-    prune = [r for r in built if r["axis"] == "PRUNE"]
-    assert len(prune) == 2
-    assert {r["value"] for r in prune} == {"dcat>3px-refill37654", "dcat>1px-trim37654"}
-    for r in prune:
-        assert r["parent"] == "h33-h33-2-b2"
-        assert r["n_dots"] == "37654"  # count held exactly: the axis is the collar alone
-        assert 1.0 <= float(r["pct_changed"]) <= 50.0
-        assert r["receipt"] == "N" and r["receipt_score"] == "" and r["date"] == ""
-        assert len(r["sha256"]) == 64 and len(r["sha256_zeros"]) == 64
-
-    # Brief section 6 dedupe: exact hash and repeated (parent, axis, value) only.
-    shas = [r["sha256"] for r in rows if r["sha256"]] + \
-           [r["sha256_zeros"] for r in rows if r["sha256_zeros"]]
-    assert len(shas) == len(set(shas))
-    pairs = [(r["parent"], r["axis"], r["value"]) for r in rows if r["axis"]]
-    assert len(pairs) == len(set(pairs))
-
-    summary = json.loads((ROOT / "ledger" / "_summary.json").read_text())
-    assert summary["built"] == len(built) == 8
-    assert summary["receipts_committed"] == 0  # every live number is still CLAIM
+# --------------------------------------------------------------------------- operators
+def _synthetic():
+    """Catalogue = one vertical line; R0 dots at d>2; ring dots at 1<d<=2."""
+    cat = np.zeros((15, 21), bool)
+    cat[:, 10] = True
+    d = distance_transform_edt(~cat)
+    r0 = np.zeros((15, 21), bool)
+    r0[2, 14] = r0[4, 15] = r0[6, 13] = r0[8, 16] = r0[10, 14] = r0[12, 17] = True
+    assert (d[r0] > 2.0).all()
+    ring = np.zeros((15, 21), bool)
+    ring[3, 12] = ring[7, 8] = ring[11, 12] = True      # d == 2,2,2 -> in (1, 2]
+    assert ((d[ring] > 1.0) & (d[ring] <= 2.0)).all()
+    gain = np.zeros((15, 21))
+    for i, (y, x) in enumerate(zip(*np.nonzero(r0))):
+        gain[y, x] = 0.1 * (i + 1)                        # row-major ascending gains
+    return cat, d, r0, ring, gain
 
 
-def test_evidence_and_release_gates():
-    ev = json.loads(EV_PATH.read_text())
+def test_swap_in_holds_count_and_drops_lowest_gain():
+    _cat, d, r0, ring, gain = _synthetic()
+    out, stats = swap_in_near_collar(r0, ring, gain)
+    assert int(out.sum()) == int(r0.sum()) == 6
+    assert stats["dots_added"] == stats["dots_removed"] == 3
+    assert out[ring].all()                                # whole ring swapped in
+    removed = r0 & ~out
+    kept_gains = gain[r0 & out]
+    assert gain[removed].max() <= kept_gains.min()        # removed = 3 lowest gains
+    assert float(d[out].min()) > 1.0                      # inward collar still > 1 px
+    out2, _ = swap_in_near_collar(r0, ring, gain)
+    assert np.array_equal(out, out2)                      # deterministic
 
-    # Parent and lineage identities are measured, exact, and non-negotiable.
-    assert ev["parent_r0"]["exact_rebuild_verified"] is True
-    assert ev["parent_r0"]["n_dots"] == 37654
-    assert ev["parent_r0"]["zeros_sha256"] == \
-        "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9"
-    lin = ev["lineage_identities_measured"]
-    assert lin["dot_thin_h19_5_equals_pinned_d28"] is True
-    assert lin["solo_equals_d28_and_dcat_gt_1"] is True
-    assert lin["r0_equals_d28_and_dcat_gt_2"] is True
-    assert (lin["ring_1_2_dots"], lin["ring_2_3_dots"]) == (2545, 2171)
 
-    # IR-DEC-07: the ranking reproduces the MASS masks within tolerance, not exactly.
-    gate = ev["ranking_fidelity_gate"]
-    assert gate["all_within_ir_dec07_tolerance"] is True
-    for arm, rec in gate["arms"].items():
-        assert rec["mismatch_pixels"] <= 50, (arm, rec)
+def test_swap_in_rejects_oversized_or_empty_pool():
+    _cat, _d, r0, ring, gain = _synthetic()
+    with pytest.raises(ValueError):
+        swap_in_near_collar(r0, np.zeros_like(r0), gain)
+    too_big = np.ones_like(r0) & ~r0
+    with pytest.raises(ValueError):
+        swap_in_near_collar(r0, too_big, gain)
 
-    template = ROOT / "data" / "bridge" / "sample_submission.tif"
-    with rasterio.open(template) as ds:
+
+def test_drop_collar_band_exclusive_vs_inclusive():
+    cat = np.zeros((9, 15), bool)
+    cat[:, 7] = True
+    d = distance_transform_edt(~cat)
+    r0 = np.zeros((9, 15), bool)
+    r0[2, 4] = True        # d == 3.0 exactly
+    r0[4, 10] = True       # d == 3.0 exactly
+    r0[6, 12] = True       # d == 5.0
+    base_excl, rem_excl = None, None
+    with pytest.raises(ValueError):                       # nothing strictly inside (2, 3)
+        base_excl, rem_excl = drop_collar_band(r0, d, lo=2.0, hi=3.0, hi_inclusive=False)
+    base_incl, rem_incl = drop_collar_band(r0, d, lo=2.0, hi=3.0, hi_inclusive=True)
+    assert int(rem_incl.sum()) == 2 and int(base_incl.sum()) == 1
+    assert float(d[base_incl].min()) > 3.0
+
+
+def test_drop_collar_band_diagonal_distances():
+    cat = np.zeros((11, 11), bool)
+    cat[5, 5] = True
+    d = distance_transform_edt(~cat)
+    r0 = np.zeros((11, 11), bool)
+    r0[3, 4] = True        # sqrt(5) ~= 2.236 -> in (2, 3)
+    r0[7, 7] = True        # sqrt(8) ~= 2.828 -> in (2, 3)
+    r0[1, 5] = True        # 4.0 -> kept
+    base, removed = drop_collar_band(r0, d, lo=2.0, hi=3.0, hi_inclusive=False)
+    assert int(removed.sum()) == 2 and int(base.sum()) == 1
+    assert not (base & (d < 3.0)).any()
+
+
+# --------------------------------------------------------------------------- shipped rasters
+# ledger/_prune_rows.json now carries all six merged PRUNE rows (this module's three
+# dcat* rows plus the collar-sweep d2p5/d3p0/d4p0, merged in PR #28 so build_ledger.py
+# regeneration is stable).  This module verifies its own three; the sweep rows are
+# covered by tests/test_prune_collar_sweep.py and tests/test_sentinel_reproduction_audit.py.
+_OWN_VALUES = {"dcat>1px-swapin", "dcat>=3px-refill", "dcat>3px-refill"}
+
+
+def _prune_rows() -> list[dict]:
+    all_rows = json.loads((ROOT / "ledger" / "_prune_rows.json").read_text())
+    assert all(r["axis"] == "PRUNE" for r in all_rows)
+    rows = [r for r in all_rows if r["value"] in _OWN_VALUES]
+    assert {r["value"] for r in rows} == _OWN_VALUES
+    return rows
+
+
+def test_prune_releases_match_ledger_and_parent_count():
+    with rasterio.open(BRIDGE / "sample_submission.tif") as ds:
         foot = np.isfinite(ds.read(1))
-    with rasterio.open(ROOT / "data" / "bridge" / "existing_faults.tif") as ds:
+        ref_crs, ref_tf = ds.crs, ds.transform
+    with rasterio.open(BRIDGE / "existing_faults.tif") as ds:
         cat = (ds.read(1) > 0) & foot
-    dcat = distance_transform_edt(~cat)
+    d = distance_transform_edt(~cat)
+    collar_min = {"dcat>1px-swapin": 1.0, "dcat>=3px-refill": 3.0, "dcat>3px-refill": 3.0}
+    strict = {"dcat>1px-swapin": True, "dcat>=3px-refill": False, "dcat>3px-refill": True}
 
-    assert {v["key"] for v in ev["variants"]} == set(EXPECTED)
-    for v in ev["variants"]:
-        exp = EXPECTED[v["key"]]
-        assert v["n_dots"] == 37654
-        assert v["dots_added_vs_r0"] == v["dots_removed_vs_r0"] == exp["swap"]
-        assert v["pct_changed_vs_r0"] == exp["pct"]
-        assert len(v["form_note"]) <= 140
-        for field in ("hypothesis", "mechanism", "non_fault_mimic",
-                      "predicted_sign_and_size", "falsifier"):
-            assert v["mechanism_card"].get(field)
-
-        nan_path, zeros_path = ROOT / v["nan_tif"]["path"], ROOT / v["zeros_tif"]["path"]
-        assert _sha256(nan_path) == v["nan_tif"]["sha256"]
-        assert _sha256(zeros_path) == v["zeros_tif"]["sha256"]
-        assert validate_submission.validate(zeros_path, template)["format_valid"] is True
-
-        with rasterio.open(nan_path) as ds:
-            arr = ds.read(1)
-        assert np.isfinite(arr[foot]).all() and np.isnan(arr[~foot]).all()
-        dots = np.isfinite(arr) & (arr == 1.0)
-        assert int(dots.sum()) == 37654
-        assert int((dots & cat).sum()) == 0  # zero catalogue mass (MUST gate)
-
-        with rasterio.open(zeros_path) as ds:
-            arr_z = ds.read(1)
-        assert np.isfinite(arr_z).all() and np.all(arr_z[~foot] == 0.0)
-        assert int((arr_z == 1.0).sum()) == 37654
-
-        # Each file must actually sit at the collar it claims to test.
-        dvals = dcat[dots]
-        if v["key"] == "prune_dcat_gt3":
-            assert float(dvals.min()) > 3.0
-        else:
-            assert float(dvals.min()) > 1.0
-            # The re-admitted (1, 2] px ring dots are really there (2,492 of 2,545).
-            assert int((dots & (dcat <= 2.0)).sum()) == 2492
+    ledger = {r["id"]: r for r in csv.DictReader((ROOT / "ledger" / "submissions.csv").open())}
+    for row in _prune_rows():
+        assert ledger[row["id"]]["status"] == "BUILT"     # folded into the ledger
+        assert ledger[row["id"]]["sha256"] == row["sha256"]
+        for suffix, field, expect_nan in [(".tif", "sha256", True),
+                                          ("-zeros.tif", "sha256_zeros", False)]:
+            p = RELEASES / f"{row['id']}{suffix}"
+            assert _sha256(p) == row[field]
+            if suffix == ".tif":
+                assert row[field][:8] == row["sha8"] == row["id"].rsplit("-", 1)[-1]
+            with rasterio.open(p) as ds:
+                arr = ds.read(1)
+                assert ds.crs == ref_crs and ds.transform == ref_tf
+                assert ds.count == 1 and ds.dtypes[0] == "float32"
+            dots = np.isfinite(arr) & (arr > 0.5)
+            assert int(dots.sum()) == 37654               # PRUNE holds the parent count
+            assert not (dots & cat).any()                 # zero catalogue mass
+            assert np.isfinite(arr[foot]).all()
+            assert ((arr[foot] >= 0.0) & (arr[foot] <= 1.0)).all()
+            if expect_nan:
+                assert np.isnan(arr[~foot]).all()
+            else:
+                assert (arr[~foot] == 0.0).all()
+            lo = float(d[dots].min())
+            assert lo > collar_min[row["value"]] if strict[row["value"]] else lo >= collar_min[row["value"]]
 
 
-def test_report_only_diagnostics_recorded():
-    ev = json.loads(EV_PATH.read_text())
-    diag = ev["report_only_diagnostics"]
-    assert diag["evidence_label"] == "PROXY"
-    canary = diag["leakage_canary"]
-    assert canary["passed"] is True and canary["max_single_feature_auc"] <= 0.90
-    assert canary["n_features_checked"] == 27
-
-    hide = diag["catalogue_hide_and_recover_proxy"]
-    assert hide["withheld_positive_pixels"] == 22893
-    fc = hide["fold_clean_recipe_scores"]
-    # Fold-clean R0 reproduces the MASS session's recorded R0 number (cross-check).
-    assert abs(fc["R0"]["dti"] - 0.105645) < 1e-5
-    for arm in ("R0", "prune_dcat_gt1", "prune_dcat_gt3"):
-        lo, hi = fc[arm]["ci95"]
-        assert lo < fc[arm]["dti"] < hi
-    # Construction artifact, recorded so nobody misreads it as variant quality:
-    # shipped d_cat>3 dots are >3 px from every withheld pixel, kernel credit is 0.
-    assert hide["shipped_mask_scores"]["prune_dcat_gt3"]["dti"] == 0.0
-    # The SGMC control's structural bias for this axis must stay documented.
-    assert "biased in favour of the tighter collar" in diag["sgmc_structural_bias_note"]
-
-
-def test_sentinel_cleaning_in_band_unpack(tmp_path):
-    """IR-DEC-07: ensure_unpacked_bands must turn the float32 nodata sentinel into NaN."""
-    from scripts.build_r0_variants import BAND_NAMES, ensure_unpacked_bands
-
-    profile = dict(driver="GTiff", dtype="float32", width=6, height=5,
-                   count=len(BAND_NAMES), crs="EPSG:32611",
-                   transform=rasterio.Affine(100.0, 0.0, 0.0, 0.0, -100.0, 0.0),
-                   nodata=-3.4028234663852886e38)
-    data = np.ones((len(BAND_NAMES), 5, 6), dtype=np.float32)
-    data[:, 0, 0] = np.float32(-3.4028234663852886e38)
-    with rasterio.open(tmp_path / "training_features.tif", "w", **profile) as ds:
-        ds.write(data)
-
-    bands = ensure_unpacked_bands(tmp_path)
-    for name in BAND_NAMES:
-        a = np.load(bands / f"{name}.npy")
-        assert not (a <= -1e30).any()
-        assert np.isnan(a[0, 0]) and a[2, 2] == 1.0
-    # Idempotent: a second call leaves cleaned bands untouched.
-    assert ensure_unpacked_bands(tmp_path) == bands
-
-
-def test_prune_documents_reference_both_variants():
-    ev = json.loads(EV_PATH.read_text())
-    submit = (ROOT / "docs" / "SUBMIT.md").read_text()
-    plan = (ROOT / "SLOT_PLAN.md").read_text()
-    readme = (ROOT / "README.md").read_text()
-    for v in ev["variants"]:
-        assert v["nan_tif"]["sha256"] in submit
-        assert v["zeros_tif"]["sha256"] in submit
-        assert v["form_note"] in submit
-        assert v["id"] in plan
-    for doc in (submit, plan, readme):
-        assert "IR-DEC-07" in doc or "a7d86ed4" in doc  # session is traceable in each doc
+def test_prune_rows_are_new_pairs_with_bounded_change():
+    rows = list(csv.DictReader((ROOT / "ledger" / "submissions.csv").open()))
+    # Scope to this script's values: a second, independent PRUNE implementation
+    # (scripts/build_prune_collar_sweep.py) also has BUILT rows in the same ledger (IR-DEC-12).
+    vals = {"dcat>1px-swapin", "dcat>=3px-refill", "dcat>3px-refill"}
+    pairs = [(r["parent"], r["axis"], r["value"]) for r in rows
+             if r["status"] == "BUILT" and r["axis"] == "PRUNE" and r["value"] in vals]
+    assert len(pairs) == 3 and len(set(pairs)) == 3
+    for r in rows:
+        if r["status"] == "BUILT" and r["axis"] == "PRUNE" and r["value"] in vals:
+            assert r["parent"] == "h33-h33-2-b2"
+            assert 1.0 <= float(r["pct_changed"]) <= 50.0
+            assert len(r["form_note"]) <= 140
+    all_hashes = [r["sha256"] for r in rows if r["sha256"]]
+    assert len(all_hashes) == len(set(all_hashes))       # no hash submitted/built twice

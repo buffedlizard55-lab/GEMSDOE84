@@ -1,0 +1,410 @@
+{
+  "schema_version": 1,
+  "axis": "PRUNE",
+  "generated_utc": "2026-10-23T15:37:39Z",
+  "git_sha": "cd20b0c1113c6e193b875a0ae7a74651bf97f9ae",
+  "seed": 520810,
+  "manifest_files_verified": 23,
+  "parent": {
+    "id": "h33-2-b2",
+    "n_dots": 37654,
+    "zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "rebuild_byte_identical": true,
+    "claimed_live": 0.2778,
+    "claimed_live_evidence_class": "CLAIM",
+    "collar_px": 2.0,
+    "d_cat_min_px": 2.2361,
+    "dots_within_2p5_px": 941,
+    "dots_within_3p0_px": 2171,
+    "dots_within_4p0_px": 3825
+  },
+  "brief_values_not_buildable": {
+    "<=": "1 px and <= 2 px collars remove 0 dots from R0 because R0 already excludes every dot at d_cat <= 2 px; recorded rather than emitted as empty variants."
+  },
+  "refill_rule": "pool = dot_thin(h19_5|h19_4|h16_1|tgc, 2.8) & ~R0 & d_cat >= 3.0; 1:1 replacement by descending exact marginal DTI gain at s0 = 0.2778",
+  "variants": [
+    {
+      "id": "h33-2-b2-pruned2p5-20261023-45faee56",
+      "parent": "h33-2-b2",
+      "axis": "PRUNE",
+      "value": "d2p5",
+      "collar_px": 2.5,
+      "n_dots": 37654,
+      "dots_removed_collar": 941,
+      "dots_added_refill": 941,
+      "pct_changed_vs_r0": 5.0,
+      "jaccard_vs_r0": 0.951237,
+      "removed_d_cat_max_px": 2.2361,
+      "added_d_cat_min_px": 3.0,
+      "added_d_cat_median_px": 13.3417,
+      "model_delta_dti": 0.00102,
+      "model_delta_components": {
+        "lineage_anchor_central_dti": 0.00102,
+        "predicted_band_dti": [
+          0.0,
+          0.00205
+        ],
+        "anchor_slope_dti_per_removed_dot": 1.0876320696084525e-06,
+        "ranking_arithmetic_sign": "negative",
+        "ranking_units_refill_gain_sum": 1448.946,
+        "ranking_units_collar_gain_lost_sum": 1654.185,
+        "ranking_units_note": "ranking units only (q is a continuous posterior, not indicator truth); not commensurate with the live DTI denominator, used for sign alone",
+        "live_anchor_denominator_reference": 18734.44
+      },
+      "nan_tif": {
+        "path": "releases/h33-2-b2-pruned2p5-20261023-45faee56.tif",
+        "sha256": "45faee562e55c0b48d123ebbdf553f17ecfaf24cdd5592c27437c0d316ecb3c8",
+        "dots": 37654,
+        "checks": {
+          "crs_epsg32611": true,
+          "shape_matches_template": true,
+          "transform_matches_template": true,
+          "single_band": true,
+          "float32": true,
+          "no_nan_in_footprint": true,
+          "values_in_0_1": true,
+          "outside_is_nan": true
+        }
+      },
+      "zeros_tif": {
+        "path": "releases/h33-2-b2-pruned2p5-20261023-45faee56-zeros.tif",
+        "sha256": "d484d54d200126fefbe37868993b4019d836f9bf9afd72bc2faab8cccca614ca",
+        "dots": 37654,
+        "checks": {
+          "crs_epsg32611": true,
+          "shape_matches_template": true,
+          "transform_matches_template": true,
+          "single_band": true,
+          "float32": true,
+          "no_nan_in_footprint": true,
+          "values_in_0_1": true,
+          "outside_is_zero": true
+        }
+      },
+      "form_note": "h33-2-b2; PRUNE collar 2.5px (941 dots out, 941 refill at dcat>=3px); pred +0.001 DTI",
+      "predicted_change": "MODEL +0.0000..+0.0020 DTI (lineage-anchored +0.0010 central, refill assumed neutral); ranking arithmetic favors negative",
+      "mechanism_card": {
+        "hypothesis": "Cutting the collar from 2.0 to 2.5 px removes only the 941 R0 dots in the innermost diagonal shell (d_cat in (2.0, 2.5]); at that distance a dot's 3 px triangular kernel is >83% dominated by masked catalogue pixels, so those dots should pay false-positive mass with little collectable credit. Refilling them from the off-catalogue ridge pool should be weakly positive.",
+        "mechanism": "Under DTI = T / (0.2T + 0.2(S-M) + 0.8|G|) each unit-mass dot adds 0.2(1 - m_q) to the denominator and (1 - 0.2s)dT to the numerator. Known USGS/INGENIOUS pixels are masked pixel-exactly out of the label set, so a dot inside the 3 px (300 m) kernel footprint of a masked catalogue pixel can only collect credit from *new-fault* truth. Collar dots are swapped 1:1 for the highest exact-marginal-gain off-catalogue ridge dots (d_cat >= 3.0 px, r_min = 2.8 px) from the parent's own ranked pool, so total mass and mean spacing are held and only collar geometry changes.",
+        "non_fault_mimic": "Alluvial-fan head-cut scarps, pediment slope breaks and playa margins that parallel mapped range-front faults at 200-400 m; these mimic an unmapped splay and would make collar dots productive rather than wasteful.",
+        "predicted_sign_and_size": "MODEL +0.0000..+0.0020 DTI (central +0.0010 from 1.088e-6 DTI per removed collar dot x 941 dots, refill assumed neutral). Note the disagreement: the parent's own masking-blind ranking arithmetic prices the collar dots higher than the refill pool (negative), yet the lineage's one measured collar prune (0.2708 -> 0.2778 CLAIM) moved the other way, which is exactly why this axis is worth a slot. Live changes under 0.010 count as no evidence (public chunks only).",
+        "falsifier": "A live score below 0.2768 (>= 0.0010 under R0's 0.2778 CLAIM) falsifies the claim that the innermost diagonal shell is net false-positive dominated."
+      }
+    },
+    {
+      "id": "h33-2-b2-pruned3p0-20261023-26e80847",
+      "parent": "h33-2-b2",
+      "axis": "PRUNE",
+      "value": "d3p0",
+      "collar_px": 3.0,
+      "n_dots": 37654,
+      "dots_removed_collar": 2171,
+      "dots_added_refill": 2171,
+      "pct_changed_vs_r0": 11.53,
+      "jaccard_vs_r0": 0.890973,
+      "removed_d_cat_max_px": 3.0,
+      "added_d_cat_min_px": 3.0,
+      "added_d_cat_median_px": 13.9284,
+      "model_delta_dti": 0.00236,
+      "model_delta_components": {
+        "lineage_anchor_central_dti": 0.00236,
+        "predicted_band_dti": [
+          0.0,
+          0.00472
+        ],
+        "anchor_slope_dti_per_removed_dot": 1.0876320696084525e-06,
+        "ranking_arithmetic_sign": "negative",
+        "ranking_units_refill_gain_sum": 3063.705,
+        "ranking_units_collar_gain_lost_sum": 3764.559,
+        "ranking_units_note": "ranking units only (q is a continuous posterior, not indicator truth); not commensurate with the live DTI denominator, used for sign alone",
+        "live_anchor_denominator_reference": 18734.44
+      },
+      "nan_tif": {
+        "path": "releases/h33-2-b2-pruned3p0-20261023-26e80847.tif",
+        "sha256": "26e808472dd6a35eed7ab42762ebada2c7236370e2ca7dc42b4393cdbcd1d9c8",
+        "dots": 37654,
+        "checks": {
+          "crs_epsg32611": true,
+          "shape_matches_template": true,
+          "transform_matches_template": true,
+          "single_band": true,
+          "float32": true,
+          "no_nan_in_footprint": true,
+          "values_in_0_1": true,
+          "outside_is_nan": true
+        }
+      },
+      "zeros_tif": {
+        "path": "releases/h33-2-b2-pruned3p0-20261023-26e80847-zeros.tif",
+        "sha256": "5a8161562a07dd04fcb87972e23623ce3850cb9571d52f5486c50988e0f4b80d",
+        "dots": 37654,
+        "checks": {
+          "crs_epsg32611": true,
+          "shape_matches_template": true,
+          "transform_matches_template": true,
+          "single_band": true,
+          "float32": true,
+          "no_nan_in_footprint": true,
+          "values_in_0_1": true,
+          "outside_is_zero": true
+        }
+      },
+      "form_note": "h33-2-b2; PRUNE collar 3px (2171 dots out, 2171 refill at dcat>=3px); pred +0.002 DTI",
+      "predicted_change": "MODEL +0.0000..+0.0047 DTI (lineage-anchored +0.0024 central, refill assumed neutral); ranking arithmetic favors negative",
+      "mechanism_card": {
+        "hypothesis": "Removing every R0 dot within one full kernel radius (300 m) of masked catalogue pixels (2,171 dots, 5.77% of R0) and refilling at matched count with off-catalogue corroborated ridge dots removes mass that can earn almost no credit, because the catalogue pixels underneath are masked out of the label set.",
+        "mechanism": "Under DTI = T / (0.2T + 0.2(S-M) + 0.8|G|) each unit-mass dot adds 0.2(1 - m_q) to the denominator and (1 - 0.2s)dT to the numerator. Known USGS/INGENIOUS pixels are masked pixel-exactly out of the label set, so a dot inside the 3 px (300 m) kernel footprint of a masked catalogue pixel can only collect credit from *new-fault* truth. Collar dots are swapped 1:1 for the highest exact-marginal-gain off-catalogue ridge dots (d_cat >= 3.0 px, r_min = 2.8 px) from the parent's own ranked pool, so total mass and mean spacing are held and only collar geometry changes.",
+        "non_fault_mimic": "Alluvial-fan head-cut scarps, pediment slope breaks and playa margins that parallel mapped range-front faults at 200-400 m; these mimic an unmapped splay and would make collar dots productive rather than wasteful.",
+        "predicted_sign_and_size": "MODEL +0.0000..+0.0047 DTI (central +0.0024 from 1.088e-6 DTI per removed collar dot x 2171 dots, refill assumed neutral). Note the disagreement: the parent's own masking-blind ranking arithmetic prices the collar dots higher than the refill pool (negative), yet the lineage's one measured collar prune (0.2708 -> 0.2778 CLAIM) moved the other way, which is exactly why this axis is worth a slot. Live changes under 0.010 count as no evidence (public chunks only).",
+        "falsifier": "A live score below 0.2768 falsifies the collar-false-positive hypothesis and would show that unmapped new-fault truth sits inside 300 m of the known traces (as the organizer allowed), making the collar a productive band."
+      }
+    },
+    {
+      "id": "h33-2-b2-pruned4p0-20261023-ff079f66",
+      "parent": "h33-2-b2",
+      "axis": "PRUNE",
+      "value": "d4p0",
+      "collar_px": 4.0,
+      "n_dots": 37654,
+      "dots_removed_collar": 3825,
+      "dots_added_refill": 3825,
+      "pct_changed_vs_r0": 20.32,
+      "jaccard_vs_r0": 0.815569,
+      "removed_d_cat_max_px": 4.0,
+      "added_d_cat_min_px": 3.0,
+      "added_d_cat_median_px": 12.2066,
+      "model_delta_dti": 0.00416,
+      "model_delta_components": {
+        "lineage_anchor_central_dti": 0.00416,
+        "predicted_band_dti": [
+          0.0,
+          0.00832
+        ],
+        "anchor_slope_dti_per_removed_dot": 1.0876320696084525e-06,
+        "ranking_arithmetic_sign": "negative",
+        "ranking_units_refill_gain_sum": 5103.21,
+        "ranking_units_collar_gain_lost_sum": 6392.286,
+        "ranking_units_note": "ranking units only (q is a continuous posterior, not indicator truth); not commensurate with the live DTI denominator, used for sign alone",
+        "live_anchor_denominator_reference": 18734.44
+      },
+      "nan_tif": {
+        "path": "releases/h33-2-b2-pruned4p0-20261023-ff079f66.tif",
+        "sha256": "ff079f66304afebb07e6ce0167fa848ebd1920020ce4f96421bb36a489d9a730",
+        "dots": 37654,
+        "checks": {
+          "crs_epsg32611": true,
+          "shape_matches_template": true,
+          "transform_matches_template": true,
+          "single_band": true,
+          "float32": true,
+          "no_nan_in_footprint": true,
+          "values_in_0_1": true,
+          "outside_is_nan": true
+        }
+      },
+      "zeros_tif": {
+        "path": "releases/h33-2-b2-pruned4p0-20261023-ff079f66-zeros.tif",
+        "sha256": "37be4a3f4bd5d020487f47bed65c08ad665223542f771e5f57b9b90a3ff41c56",
+        "dots": 37654,
+        "checks": {
+          "crs_epsg32611": true,
+          "shape_matches_template": true,
+          "transform_matches_template": true,
+          "single_band": true,
+          "float32": true,
+          "no_nan_in_footprint": true,
+          "values_in_0_1": true,
+          "outside_is_zero": true
+        }
+      },
+      "form_note": "h33-2-b2; PRUNE collar 4px (3825 dots out, 3825 refill at dcat>=3px); pred +0.004 DTI",
+      "predicted_change": "MODEL +0.0000..+0.0083 DTI (lineage-anchored +0.0042 central, refill assumed neutral); ranking arithmetic favors negative",
+      "mechanism_card": {
+        "hypothesis": "If the collar penalty is monotone, a 4 px exclusion (3,825 dots, 10.16% of R0) should beat the 3 px variant. Along-strike continuations and relay splays of mapped faults live in this band, so the sign is genuinely uncertain: this point measures where the collar-vs-continuation trade turns over.",
+        "mechanism": "Under DTI = T / (0.2T + 0.2(S-M) + 0.8|G|) each unit-mass dot adds 0.2(1 - m_q) to the denominator and (1 - 0.2s)dT to the numerator. Known USGS/INGENIOUS pixels are masked pixel-exactly out of the label set, so a dot inside the 3 px (300 m) kernel footprint of a masked catalogue pixel can only collect credit from *new-fault* truth. Collar dots are swapped 1:1 for the highest exact-marginal-gain off-catalogue ridge dots (d_cat >= 3.0 px, r_min = 2.8 px) from the parent's own ranked pool, so total mass and mean spacing are held and only collar geometry changes.",
+        "non_fault_mimic": "Alluvial-fan head-cut scarps, pediment slope breaks and playa margins that parallel mapped range-front faults at 200-400 m; these mimic an unmapped splay and would make collar dots productive rather than wasteful.",
+        "predicted_sign_and_size": "MODEL +0.0000..+0.0083 DTI (central +0.0042 from 1.088e-6 DTI per removed collar dot x 3825 dots, refill assumed neutral). Note the disagreement: the parent's own masking-blind ranking arithmetic prices the collar dots higher than the refill pool (negative), yet the lineage's one measured collar prune (0.2708 -> 0.2778 CLAIM) moved the other way, which is exactly why this axis is worth a slot. Live changes under 0.010 count as no evidence (public chunks only).",
+        "falsifier": "A live score below the 3 px variant falsifies monotonicity of the collar penalty and bounds the optimum collar width at or below 3 px."
+      }
+    }
+  ],
+  "report_only_diagnostics": {
+    "evidence_label": "PROXY",
+    "note": "REPORT ONLY (Brief v2 section 6): never gates.",
+    "leakage_canary": {
+      "threshold": 0.9,
+      "n_features_checked": 27,
+      "max_single_feature_auc": 0.5944,
+      "passed": true,
+      "withheld_positives_seed20": 11321,
+      "withheld_positives_seed21": 11572,
+      "total_withheld_positive_pixels": 22893,
+      "top_10_features": [
+        {
+          "feature": "q_posterior",
+          "auc_mean": 0.5944,
+          "abs_strength": 0.5944
+        },
+        {
+          "feature": "lidar_scarp_composite",
+          "auc_mean": 0.5735,
+          "abs_strength": 0.5735
+        },
+        {
+          "feature": "h33_union",
+          "auc_mean": 0.5696,
+          "abs_strength": 0.5696
+        },
+        {
+          "feature": "07_geod_shearrate",
+          "auc_mean": 0.5637,
+          "abs_strength": 0.5637
+        },
+        {
+          "feature": "19_det_elev_slope",
+          "auc_mean": 0.5629,
+          "abs_strength": 0.5629
+        },
+        {
+          "feature": "04_geod_2ndinv",
+          "auc_mean": 0.562,
+          "abs_strength": 0.562
+        },
+        {
+          "feature": "16_ieq_n100a15",
+          "auc_mean": 0.5529,
+          "abs_strength": 0.5529
+        },
+        {
+          "feature": "06_tc",
+          "auc_mean": 0.451,
+          "abs_strength": 0.549
+        },
+        {
+          "feature": "10_deq_n100a15",
+          "auc_mean": 0.5385,
+          "abs_strength": 0.5385
+        },
+        {
+          "feature": "13_iso_grav_anom",
+          "auc_mean": 0.4629,
+          "abs_strength": 0.5371
+        }
+      ]
+    },
+    "catalogue_hide_and_recover_proxy": {
+      "withheld_positive_pixels": 22893,
+      "bootstrap_draws": 1000,
+      "shipped_mask_scores": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0038851762665228526,
+          "ci95": [
+            0.003318222733791532,
+            0.004452597240467501
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 126.10656936923311,
+          "fpw": 70593.84715207116,
+          "fnw": 22766.893430630775
+        },
+        "d2p5": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.00043869955793470654,
+          "ci95": [
+            0.00036752566197592726,
+            0.0005184879956419985
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 14.240548646066202,
+          "fpw": 70717.87383327079,
+          "fnw": 22878.75945135395
+        },
+        "d3p0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 0.0,
+          "fpw": 70780.0,
+          "fnw": 22893.0
+        },
+        "d4p0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 0.0,
+          "fpw": 70838.0,
+          "fnw": 22893.0
+        }
+      },
+      "shipped_mask_paired_differences_vs_d3p0": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": -0.0038851762665228526,
+          "ci95": [
+            -0.004452597240467501,
+            -0.0033182227337915323
+          ],
+          "withheld_positive_pixels": 22893
+        },
+        "d2p5": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": -0.00043869955793470654,
+          "ci95": [
+            -0.0005184879956419985,
+            -0.00036752566197592726
+          ],
+          "withheld_positive_pixels": 22893
+        },
+        "d4p0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "withheld_positive_pixels": 22893
+        }
+      }
+    },
+    "sgmc_off_catalogue_control": {
+      "R0": {
+        "sgmc_raw_dti": 0.09606,
+        "sgmc_coverage": 0.089346,
+        "sgmc_prevalence_calibrated_dti": 0.064121
+      },
+      "d2p5": {
+        "sgmc_raw_dti": 0.098556,
+        "sgmc_coverage": 0.091705,
+        "sgmc_prevalence_calibrated_dti": 0.065814
+      },
+      "d3p0": {
+        "sgmc_raw_dti": 0.100485,
+        "sgmc_coverage": 0.093532,
+        "sgmc_prevalence_calibrated_dti": 0.067125
+      },
+      "d4p0": {
+        "sgmc_raw_dti": 0.101121,
+        "sgmc_coverage": 0.094143,
+        "sgmc_prevalence_calibrated_dti": 0.067564
+      }
+    }
+  },
+  "parent_marginal_gain_sum": -589189.875,
+  "elapsed_s": 215.7
+}

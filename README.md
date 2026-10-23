@@ -2,18 +2,22 @@
 
 <!-- CURRENT STATE — the only block a session may edit. Everything below it is frozen. -->
 <!-- CURRENT_STATE_START -->
-## CURRENT STATE (2026-10-23, branch `arena/5be6452b-gemsdoe84`, session AXIS=PRUNE agent-selected — IR-DEC-08)
+## CURRENT STATE (2026-10-23; two parallel PRUNE sessions merged on `main`)
 
 | Field | Value | Evidence class |
 | :--- | :--- | :--- |
-| **Parent (R0)** | `h33-h33-2-b2` (`GEMSDOE32`), `37,654` unit-mass dots (`d_cat > 2.0 px`), SHA-256 `c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9` (`-zeros.tif`) / `baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd` (`-nan.tif`) — **rebuilt byte-identically again this session** (`evidence/r0_rebuild_receipt_20261023_prune.json`) | REBUILD |
-| **Best receipt** | **none.** No submission-page receipt is committed in this repo (`ledger/submissions.csv`: `receipts_committed = 0`). The incumbent's `0.2778` is owner-reported. | CLAIM |
+| **Parent (R0)** | `h33-h33-2-b2` (`GEMSDOE32`), `37,654` unit-mass dots (`d_cat > 2.0 px`), SHA-256 `c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9` (`-zeros.tif`) / `baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd` (`-nan.tif`) — rebuilt byte-identically twice on 2026-10-23 from pinned inputs (`evidence/r0_prune_variants_20261023.json`, `evidence/prune_variants_receipt.json`, `evidence/r0_rebuild_receipt.json`) | REBUILD |
+| **Best receipt** | **none.** No submission-page receipt is committed (`receipts_committed = 0`); the incumbent's `0.2778` is owner-reported. | CLAIM |
 | **TOP_PUBLIC** | `UNVERIFIED` live (latest manual snapshot in repo: `0.3195`, rank 1 "DARD", read `2026-10-03` — owner must refresh with a date) | OFFICIAL_SNAPSHOT (stale) |
-| **Slots left this week** | **unknown — owner must fill** (`1` entity, `3` scored/rolling week, `41 days` to the `2026-12-03` deadline (UNVERIFIED) = max ~`18` slots). `0` live slots consumed by agent sessions; `8` variants BUILT unscored. | — |
-| **Next 3 slots (`AXIS = MASS`)** | 1) `releases/h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3` (`33,889` dots, pred `+0.0020..+0.0045`) · 2) `releases/h33-h33-2-b2-mass-add10pct-20261023-ad925bd2` (`41,419` dots, pred `-0.0030..+0.0025`) · 3) `releases/h33-h33-2-b2-mass-drop20pct-20261023-62bfc392` (`30,123` dots, pred `+0.0010..+0.0065`) — full queue incl. SNAP x3 and PRUNE x2 in [`SLOT_PLAN.md`](SLOT_PLAN.md) / [`docs/SUBMIT.md`](docs/SUBMIT.md) | BUILT (unscored) |
-| **Built this session (`AXIS = PRUNE`)** | `releases/h33-h33-2-b2-prune-dcatgt3px-20261023-a7d86ed4` (`37,654` dots, 2,171 ring dots swapped, `11.53%` changed, pred `+0.001..+0.007`, queued slot 5) · `releases/h33-h33-2-b2-prune-dcatgt1px-20261023-f5c7e4fb` (`37,654` dots, 2,492 ring dots re-admitted, `13.24%` changed, pred `-0.007..+0.001`, conditional) — `evidence/r0_prune_variants_20261023.json` | BUILT (unscored) |
+| **Slots left this week** | **unknown — owner must fill** (`1` entity, `3` scored/rolling week, `41 days` / `5.86` weeks to `2026-12-03` = max `18` slots). `0` live slots consumed; assumed nothing submitted yet (`IR-DEC-07`). | — |
+| **Next 3 slots** | 1) `h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3` · 2) `h33-h33-2-b2-prune-dgt3refill-20261023-10ce9ad1` · 3) `h33-2-b2-snap2p0px-g0p01-20261023-7bdaa58b`; queue in [`SLOT_PLAN.md`](SLOT_PLAN.md) | BUILT (unscored) |
 
-Session status: PRUNE collar sweep built at fixed count from the parent's own ranking after fixing a silent ranking-pipeline failure (float32 nodata sentinel zeroing H33-A; IR-DEC-07 in `IRREGULARITIES.md` — with the fix, the committed MASS masks and their recorded canary/holdout numbers reproduce). Leakage canary max AUC `0.5949 <= 0.90` (27 features). **The `H84-KTHM` banner below is frozen history from an earlier session and is not this session's recommendation.**
+Session status — `AXIS = PRUNE`, six collar variants at the fixed parent count `37,654`, from two parallel sessions (no exact hash and no repeated `(parent, axis, value)`):
+- `scripts/build_prune_variants.py` + `src/gems84/prune.py` (`evidence/r0_prune_variants_20261023.json`): `prune-dgt1in` (`>1 px` swap-in, `13.52%`), `prune-dge3refill` (`>=3 px`, `8.56%`), `prune-dgt3refill` (`>3 px`, `11.53%`).
+- `scripts/build_prune_collar_sweep.py` (`evidence/prune_variants_receipt.json`): `pruned2p5` (`2.5 px`, `5.00%`), `pruned3p0` (`3.0 px`, `11.53%`), `pruned4p0` (`4.0 px`, `20.32%` — the only point beyond the kernel radius).
+- `pruned3p0` and `prune-dgt3refill` remove the same `2,171` collar dots and differ only in the refill floor (`d_cat >= 3.0` vs `> 3.0`): submit **one**, they are a near-duplicate probe (`IR-DEC-12`).
+- All six gated and re-read from disk; 27-feature leakage canary `max_auc = 0.5944 <= 0.90`.
+- Reproduction audit (third parallel session, PR #28 / `IR-DEC-13`): the six files above were ranked with a silently degraded H33-A surface (float32 nodata sentinel in the unpacked bands; canary fingerprint `0.5944` vs the MASS session's `0.5949`). The shared unpacker is fixed in this branch, the MASS masks now reproduce to ≤14 boundary dots, and a clean-ranking rebuild would change ≤273 dots in any `>3 px`-class file — so nothing is rebuilt and the queue is unchanged (`evidence/prune_reproduction_audit_20261023.json`). That session's own two duplicate collar files were withdrawn before merge and are not in `releases/` or the ledger. **The `H84-KTHM` banner below is frozen history and is not this session's recommendation.**
 <!-- CURRENT_STATE_END -->
 <!-- /CURRENT STATE -->
 
