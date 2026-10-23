@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "evidence_class": "REBUILD (byte-identity against a SHA-256-pinned parent artifact)",
+  "generated_utc": "2026-10-23T03:42:14Z",
+  "git_sha": "cf7f56115fca67550c5dc11fc81c448494673130",
+  "parent": {
+    "candidate_id": "H33-2-B2",
+    "slug": "h33-h33-2-b2",
+    "role": "R0 / incumbent; owner-reported live 0.2778 is a CLAIM (no receipt in ledger/)",
+    "claimed_live": 0.2778,
+    "claimed_live_evidence_class": "CLAIM",
+    "zeros_sha256_pin": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "nan_sha256_pin": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "base_02708_sha256_pin": "ab02300152248fdda04e988e2cd2a0c13f35eec42fcf670a15e8b76b19e24a73"
+  },
+  "recipe": {
+    "foot": "np.isfinite(sample_submission.tif band 1)",
+    "catalogue": "read_binary(labels.tif) & foot   (existing_faults.tif is byte-identical)",
+    "base": "read_binary(gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif)",
+    "mask": "base & (distance_transform_edt(~catalogue) > 2)",
+    "emit": "clean = mask & foot & ~catalogue; GTiff deflate/predictor=3/zlevel=9/tiled256",
+    "upstream_source": "buffedlizard55-lab/GEMSDOE32@main src/gems32/hypotheses33.py:307-329, src/gems32/submission.py:118-166, scripts/run_h33_validation.py:112"
+  },
+  "rebuilt": {
+    "dots": 37654,
+    "zeros_tif": {
+      "path": "/home/user/GEMSDOE84/.cache/r0_rebuild/r0-rebuilt-zeros.tif",
+      "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "bytes": 219065,
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "nodata": null,
+      "dots": 37654,
+      "on_catalogue_dots": 0,
+      "in_footprint_min": 0.0,
+      "in_footprint_max": 1.0,
+      "in_footprint_nan": 0,
+      "in_footprint_finite": 5167373,
+      "outside_nan": 0,
+      "outside_zero": 7111787,
+      "outside_count": 7111787
+    },
+    "nan_tif": {
+      "path": "/home/user/GEMSDOE84/.cache/r0_rebuild/r0-rebuilt-nan.tif",
+      "sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+      "bytes": 355443,
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "nodata": null,
+      "dots": 37654,
+      "on_catalogue_dots": 0,
+      "in_footprint_min": 0.0,
+      "in_footprint_max": 1.0,
+      "in_footprint_nan": 0,
+      "in_footprint_finite": 5167373,
+      "outside_nan": 7111787,
+      "outside_zero": 0,
+      "outside_count": 7111787
+    }
+  },
+  "checks": {
+    "footprint_pixels_5167373": true,
+    "dots_37654": true,
+    "zero_on_catalogue": true,
+    "zeros_sha256_matches_pin": true,
+    "nan_sha256_matches_pin": true,
+    "base_sha256_matches_pin": true
+  },
+  "all_checks_passed": true,
+  "elapsed_s": 6.8
+}

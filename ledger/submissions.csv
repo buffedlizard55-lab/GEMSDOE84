@@ -1,107 +1,120 @@
-id,parent,axis,value,n_dots,pct_changed,sha256,status,predicted_change,receipt_score,date,repeat_count,evidence_label,filename
-h33-h33-2-b2,h27-4-cat-collar-r1-on-d28,PRUNE,dcat>2px,37654,6.33,c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9,CLAIM,,0.2778,2026-10-04,1,CLAIM,h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros
-gems-submission-20260925T001403Z-7f00890a,,HISTORICAL,,,,,CLAIM,,0.1563,2026-09-25,1,CLAIM,gems-submission-20260925T001403Z-7f00890a
-gems6_hgb88-topk03_33cec71ff0,,HISTORICAL,,,,,CLAIM,,0.0286,,1,CLAIM,gems6_hgb88-topk03_33cec71ff0
-pindrop-v4-nodes-20260925T152420Z-f347b70daa,,HISTORICAL,,,,,CLAIM,,0.1193,2026-09-25,1,CLAIM,pindrop-v4-nodes-20260925T152420Z-f347b70daa
-pindrop-v4-discovery-20260925T152423Z-37f9d5b855,,HISTORICAL,,,,,CLAIM,,0.0830,2026-09-25,1,CLAIM,pindrop-v4-discovery-20260925T152423Z-37f9d5b855
-pindrop-v4-ridge-20260925T152422Z-4e03fc9705,,HISTORICAL,,,,,CLAIM,,0.1152,2026-09-25,1,CLAIM,pindrop-v4-ridge-20260925T152422Z-4e03fc9705
-gemsdoe2-dual-family-union-20260925T160406Z-f68e590f,,HISTORICAL,,,,,CLAIM,,0.1560,2026-09-25,1,CLAIM,gemsdoe2-dual-family-union-20260925T160406Z-f68e590f
-gems-submission-20260926T163915Z-237f0063,,HISTORICAL,,,,,CLAIM,,0.0343,2026-09-26,1,CLAIM,gems-submission-20260926T163915Z-237f0063
-gems-submission-20260926T175114Z-7f00890a,,HISTORICAL,,,,,CLAIM,,0.1563,2026-09-26,1,CLAIM,gems-submission-20260926T175114Z-7f00890a
-lidarscarp-ridge-top2pct-36c3a3f341c8,,HISTORICAL,,,,,CLAIM,,0.1461,,1,CLAIM,lidarscarp-ridge-top2pct-36c3a3f341c8
-Hedge-v2_submission,,HISTORICAL,,,,,CLAIM,,0.1563,,1,CLAIM,Hedge-v2_submission
-2314b599,,HISTORICAL,,,,,CLAIM,,0.0107,,1,CLAIM,2314b599
-gems-structural-area06-v1,,HISTORICAL,,,,,CLAIM,,0.0202,,1,CLAIM,gems-structural-area06-v1
-r7-nms3-dem10-scarp_0c9199f14e62,,HISTORICAL,,,,,CLAIM,,0.1294,,1,CLAIM,r7-nms3-dem10-scarp_0c9199f14e62
-r7-nms3-dem10-scarp_0c9199f14e62_allfinite,,HISTORICAL,,,,,CLAIM,,0.1294,,1,CLAIM,r7-nms3-dem10-scarp_0c9199f14e62_allfinite
-gems-tso1-20260929T005627Z-conj_alteration_mag,,HISTORICAL,,,,,CLAIM,,0.0782,2026-09-29,1,CLAIM,gems-tso1-20260929T005627Z-conj_alteration_mag
-GEMS_r5-geom-horse-ensemble_20260929T154852Z_ccbe1de0_site_e96e942f,,HISTORICAL,,,,,CLAIM,,0.0020,2026-09-29,1,CLAIM,GEMS_r5-geom-horse-ensemble_20260929T154852Z_ccbe1de0_site_e96e942f
-17GEMSDOE_F-ensemble-2pct_20260930T050626Z,,HISTORICAL,,,,,CLAIM,,0.0187,2026-09-30,1,CLAIM,17GEMSDOE_F-ensemble-2pct_20260930T050626Z
-H19-C_20260930T212401Z_c11e495e,,HISTORICAL,,,,,CLAIM,,0.0297,2026-09-30,1,CLAIM,H19-C_20260930T212401Z_c11e495e
-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan,,HISTORICAL,,,,,CLAIM,,0.1894,2026-09-30,1,CLAIM,h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan
-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan,,HISTORICAL,,,,,CLAIM,,0.1922,2026-09-30,1,CLAIM,h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan
-h16-continuation-20260927T065521077735Z-3431b83c7c,,HISTORICAL,,,,,CLAIM,,0.0461,2026-09-27,1,CLAIM,h16-continuation-20260927T065521077735Z-3431b83c7c
-h20-dem10-scarp-thin-20260927T155223039488Z-ffc91a1686,,HISTORICAL,,,,,CLAIM,,0.0921,2026-09-27,1,CLAIM,h20-dem10-scarp-thin-20260927T155223039488Z-ffc91a1686
-H25-ctx-ridge-20260927T232947704150Z-6452ae1d00,,HISTORICAL,,,,,CLAIM,,0.1280,2026-09-27,1,CLAIM,H25-ctx-ridge-20260927T232947704150Z-6452ae1d00
-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00,,HISTORICAL,,,,,CLAIM,,0.1839,2026-09-28,1,CLAIM,h28-dotted-ridge-20260928T020256236880Z-6452ae1d00
-20261001_r13-lattice-s5_v2_nan-outside,,HISTORICAL,,,,,CLAIM,,0.0904,2026-10-01,1,CLAIM,20261001_r13-lattice-s5_v2_nan-outside
-h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan,,HISTORICAL,,,,,CLAIM,,0.1855,2026-09-30,1,CLAIM,h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan
-h18-3a-topo-geophys-x-complexity-prior-20260930-c502dfab-nan,,HISTORICAL,,,,,CLAIM,,0.0976,2026-09-30,1,CLAIM,h18-3a-topo-geophys-x-complexity-prior-20260930-c502dfab-nan
-h18-4-usgs-geologic-map-faults-gap-20260930-aef8f42c-nan,,HISTORICAL,,,,,CLAIM,,0.0360,2026-09-30,1,CLAIM,h18-4-usgs-geologic-map-faults-gap-20260930-aef8f42c-nan
-h19-4-reference-20260930-691e4dfa,,HISTORICAL,,,,,CLAIM,,0.1894,2026-09-30,1,CLAIM,h19-4-reference-20260930-691e4dfa
-h20-1-sarnnpu-powerlaw-pi0363-tilt-wingcrack-20260930-be0e8f6b-nan,,HISTORICAL,,,,,CLAIM,,0.1890,2026-09-30,1,CLAIM,h20-1-sarnnpu-powerlaw-pi0363-tilt-wingcrack-20260930-be0e8f6b-nan
-h20-5-continuous-pu-proxy-unverified-20260930-824ce73a-nan,,HISTORICAL,,,,,CLAIM,,0.1859,2026-09-30,1,CLAIM,h20-5-continuous-pu-proxy-unverified-20260930-824ce73a-nan
-h23-a-dti-optimal-emission-6pct-20261002-e2ec4b49-nan,,HISTORICAL,,,,,CLAIM,,0.1002,2026-10-02,1,CLAIM,h23-a-dti-optimal-emission-6pct-20261002-e2ec4b49-nan
-h23-b-dti-optimal-emission-10pct-20261002-86176698-nan,,HISTORICAL,,,,,CLAIM,,0.0748,2026-10-02,1,CLAIM,h23-b-dti-optimal-emission-10pct-20261002-86176698-nan
-h30-arrangement-matched-habitat-20261002-0d4e02e8-nan,,HISTORICAL,,,,,CLAIM,,0.1352,2026-10-02,1,CLAIM,h30-arrangement-matched-habitat-20261002-0d4e02e8-nan
-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan,,HISTORICAL,,,,,CLAIM,,0.2477,2026-10-02,1,CLAIM,h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan
-dotted-h19-5-d2-8-20261002-e56ea318af89-nan,,HISTORICAL,,,,,CLAIM,,0.2600,2026-10-02,1,CLAIM,dotted-h19-5-d2-8-20261002-e56ea318af89-nan
-dilcond-oof-v1-20261003-47629f496133-nan,,HISTORICAL,,,,,CLAIM,,0.1223,2026-10-03,1,CLAIM,dilcond-oof-v1-20261003-47629f496133-nan
-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan,,HISTORICAL,,,,,CLAIM,,0.2449,2026-10-02,1,CLAIM,topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan
-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca,,HISTORICAL,,,,,CLAIM,,0.2600,2026-10-03,1,CLAIM,d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca
-h27-4-solo-d28-20261004-8acb75e1-nan,,HISTORICAL,,,,,CLAIM,,0.2708,2026-10-04,1,CLAIM,h27-4-solo-d28-20261004-8acb75e1-nan
-h33d-analog-tip-stepover-r30-20261004-cb490425926e,,HISTORICAL,,,,,CLAIM,,0.2632,2026-10-04,1,CLAIM,h33d-analog-tip-stepover-r30-20261004-cb490425926e
-h34-scatter-q50-arr-matched-20261004T223317Z,,HISTORICAL,,,,,CLAIM,,0.0778,2026-10-04,1,CLAIM,h34-scatter-q50-arr-matched-20261004T223317Z
-h35-06-aaa86efb25-20261004T225420098147Z-candidate,,HISTORICAL,,,,,CLAIM,,0.0418,2026-10-04,1,CLAIM,h35-06-aaa86efb25-20261004T225420098147Z-candidate
-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros,,HISTORICAL,,,,,CLAIM,,0.2750,2026-10-04,1,CLAIM,anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros
-h6-physics-dotted-80k-20261005T055000Z-0bef9211631c,,HISTORICAL,,,,,CLAIM,,0.1193,2026-10-05,1,CLAIM,h6-physics-dotted-80k-20261005T055000Z-0bef9211631c
-D-step-3p0-07pct-tipProt-20261005-ecfbf59e2b48-zero,,HISTORICAL,,,,,CLAIM,,0.0763,2026-10-05,1,CLAIM,D-step-3p0-07pct-tipProt-20261005-ecfbf59e2b48-zero
-xscale-worm-persistence-20261006T000541Z-nan,,HISTORICAL,,,,,CLAIM,,0.0581,2026-10-06,1,CLAIM,xscale-worm-persistence-20261006T000541Z-nan
-sup01-hgb21-sep40-n40000-20261006-bc2e4e9a8d6f-nan,,HISTORICAL,,,,,CLAIM,,0.0424,2026-10-06,1,CLAIM,sup01-hgb21-sep40-n40000-20261006-bc2e4e9a8d6f-nan
-h51-km-faultzone-20261006-zeros,,HISTORICAL,,,,,CLAIM,,0.0106,2026-10-06,1,CLAIM,h51-km-faultzone-20261006-zeros
-gate_ortho_w0.25-40k-20261006T213721Z-nan,,HISTORICAL,,,,,CLAIM,,0.2376,2026-10-06,1,CLAIM,gate_ortho_w0.25-40k-20261006T213721Z-nan
-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan,,HISTORICAL,,,,,CLAIM,,0.2708,2026-10-03,1,CLAIM,h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan
-h32-1-prethin-tip-euler-d2-8-20261003-31e35eee884e-nan,,HISTORICAL,,,,,CLAIM,,0.2649,2026-10-03,1,CLAIM,h32-1-prethin-tip-euler-d2-8-20261003-31e35eee884e-nan
-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan,,HISTORICAL,,,,,CLAIM,,0.2710,2026-10-03,1,CLAIM,h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan
-h38-1-hf-euler-r30-r1-20261003-56a9f473edc7-nan,,HISTORICAL,,,,,CLAIM,,0.2707,2026-10-03,1,CLAIM,h38-1-hf-euler-r30-r1-20261003-56a9f473edc7-nan
-efd28-repro-20261003-1cc7dc534d51-nan,,HISTORICAL,,,,,CLAIM,,0.2600,2026-10-03,1,CLAIM,efd28-repro-20261003-1cc7dc534d51-nan
-repo-c0-habitat-emission-20261003-a4d439b07426-nan,,HISTORICAL,,,,,CLAIM,,0.0041,2026-10-03,1,CLAIM,repo-c0-habitat-emission-20261003-a4d439b07426-nan
-sgmc-off-catalogue-44k-20261003-c8dcd780e3fd-nan,,HISTORICAL,,,,,CLAIM,,0.0512,2026-10-03,1,CLAIM,sgmc-off-catalogue-44k-20261003-c8dcd780e3fd-nan
-wormrank-d28-20261003-59dcaf6dd11d-zeros,,HISTORICAL,,,,,CLAIM,,0.2560,2026-10-03,1,CLAIM,wormrank-d28-20261003-59dcaf6dd11d-zeros
-wormsurv-filter-20261003-921f10960d6e-zeros,,HISTORICAL,,,,,CLAIM,,0.0532,2026-10-03,1,CLAIM,wormsurv-filter-20261003-921f10960d6e-zeros
-xfit-c0-habitat-20261003-ca879db0089a-zeros,,HISTORICAL,,,,,CLAIM,,0.0439,2026-10-03,1,CLAIM,xfit-c0-habitat-20261003-ca879db0089a-zeros
-xfit-h41-union-qfaults-20261003-9edb34b99e3a-zeros,,HISTORICAL,,,,,CLAIM,,0.0356,2026-10-03,1,CLAIM,xfit-h41-union-qfaults-20261003-9edb34b99e3a-zeros
-r11f-scarp-radiometric-fusion-00e049b51218-zeros,,HISTORICAL,,,,,CLAIM,,0.1589,,1,CLAIM,r11f-scarp-radiometric-fusion-00e049b51218-zeros
-r12-scarp-rad-concordance-23e807e2de9f-zeros,,HISTORICAL,,,,,CLAIM,,0.0843,,1,CLAIM,r12-scarp-rad-concordance-23e807e2de9f-zeros
-h40-e-disc-h40e-30k-zeros,,HISTORICAL,,,,,CLAIM,,0.0339,,1,CLAIM,h40-e-disc-h40e-30k-zeros
-h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1,,HISTORICAL,,,,,CLAIM,,0.0355,2026-10-06,1,CLAIM,h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1
-h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1-hard,,HISTORICAL,,,,,CLAIM,,0.0397,2026-10-06,1,CLAIM,h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1-hard
-h45-eulerdepthreadcluster-20261006-f28e5cff6826-zeros,,HISTORICAL,,,,,CLAIM,,0.0984,2026-10-06,1,CLAIM,h45-eulerdepthreadcluster-20261006-f28e5cff6826-zeros
-h42-submission-primary,,HISTORICAL,,,,,CLAIM,,0.0245,,1,CLAIM,h42-submission-primary
-h46-twostageAB_20261006T160000Z_b0cfe956-zeros,,HISTORICAL,,,,,CLAIM,,0.0715,2026-10-06,1,CLAIM,h46-twostageAB_20261006T160000Z_b0cfe956-zeros
-h60-lidarscarp-s2p0-20261007-nanoutside,,HISTORICAL,,,,,CLAIM,,0.0430,2026-10-07,1,CLAIM,h60-lidarscarp-s2p0-20261007-nanoutside
-h59-cover-ds-belief-b2xh33d-20261008T184547Z-b79c4c61d8d8,,HISTORICAL,,,,,CLAIM,,0.2296,2026-10-08,1,CLAIM,h59-cover-ds-belief-b2xh33d-20261008T184547Z-b79c4c61d8d8
-h59-sharpened-scarp-scatter-90k-20261007T171954Z-allfinite,,HISTORICAL,,,,,CLAIM,,0.0764,2026-10-07,1,CLAIM,h59-sharpened-scarp-scatter-90k-20261007T171954Z-allfinite
-h53-twostage-20261008T040951Z-9a0b32c871,,HISTORICAL,,,,,CLAIM,,0.1047,2026-10-08,1,CLAIM,h53-twostage-20261008T040951Z-9a0b32c871
-h97b-candidate,,HISTORICAL,,,,,CLAIM,,0.0856,,1,CLAIM,h97b-candidate
-h8-tiprelay-ridgeconcord-pr2-n80000-20261009-49bec522-zeros,,HISTORICAL,,,,,CLAIM,,0.0159,2026-10-09,1,CLAIM,h8-tiprelay-ridgeconcord-pr2-n80000-20261009-49bec522-zeros
-h54c-manifest-edge-20261009T025732Z-73454bc5,,HISTORICAL,,,,,CLAIM,,0.0449,2026-10-09,1,CLAIM,h54c-manifest-edge-20261009T025732Z-73454bc5
-tensor_full-n16000-sep3-20261009T211747Z-nan,,HISTORICAL,,,,,CLAIM,,0.0290,2026-10-09,1,CLAIM,tensor_full-n16000-sep3-20261009T211747Z-nan
-h56-final-dotted-ridge-d2p8-20261009T190421Z,,HISTORICAL,,,,,CLAIM,,0.0658,2026-10-09,1,CLAIM,h56-final-dotted-ridge-d2p8-20261009T190421Z
-h57r-joint-strata-38000-20261010T214547Z-00cf5b2066f1-zeros,,HISTORICAL,,,,,CLAIM,,0.0254,2026-10-10,1,CLAIM,h57r-joint-strata-38000-20261010T214547Z-00cf5b2066f1-zeros
-ml-binary-ridge-20261012T000000Z,,HISTORICAL,,,,,CLAIM,,0.0180,2026-10-12,1,CLAIM,ml-binary-ridge-20261012T000000Z
-h59j-coherence-consensus-dotted-20261011T043000Z,,HISTORICAL,,,,,CLAIM,,0.0499,2026-10-11,1,CLAIM,h59j-coherence-consensus-dotted-20261011T043000Z
-h73-chi-coherent-corridor-12000-20261011T195818Z-zeros,,HISTORICAL,,,,,CLAIM,,0.0351,2026-10-11,1,CLAIM,h73-chi-coherent-corridor-12000-20261011T195818Z-zeros
-h61a-basement-step-20000dots-20261011T012029Z-eb2ae4bb024b-zeros,,HISTORICAL,,,,,CLAIM,,0.0009,2026-10-11,1,CLAIM,h61a-basement-step-20000dots-20261011T012029Z-eb2ae4bb024b-zeros
-h61o-vardepth-none-40000dots-20261011T160711Z-28d4fac611ea-zeros-zeros,,HISTORICAL,,,,,CLAIM,,0.0751,2026-10-11,1,CLAIM,h61o-vardepth-none-40000dots-20261011T160711Z-28d4fac611ea-zeros-zeros
-datum-lahontan-strain-gauge-defensible-440dots-zeros,,HISTORICAL,,,,,CLAIM,,0.0000,,1,CLAIM,datum-lahontan-strain-gauge-defensible-440dots-zeros
-cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros,,HISTORICAL,,,,,CLAIM,,0.2303,2026-10-11,1,CLAIM,cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros
-h64-lidar-scarp-cv-20261011T220000Z,,HISTORICAL,,,,,CLAIM,,0.0383,2026-10-11,1,CLAIM,h64-lidar-scarp-cv-20261011T220000Z
-sar-em-propensity-half-20261011T223500Z-5e4660cd-zeros,,HISTORICAL,,,,,CLAIM,,0.0431,2026-10-11,1,CLAIM,sar-em-propensity-half-20261011T223500Z-5e4660cd-zeros
-gems66-lidar03-cvretrain-reliefdecile-37654dots-20261020T190152Z-zeros,,HISTORICAL,,,,,CLAIM,,0.1152,2026-10-20,1,CLAIM,gems66-lidar03-cvretrain-reliefdecile-37654dots-20261020T190152Z-zeros
-h67a-orientip-lane-29447dots-20261012T021226Z-allfinite,,HISTORICAL,,,,,CLAIM,,0.0356,2026-10-12,1,CLAIM,h67a-orientip-lane-29447dots-20261012T021226Z-allfinite
-ovtr-ml-cover-tau3p0-20261012-nan,,HISTORICAL,,,,,CLAIM,,0.1426,2026-10-12,1,CLAIM,ovtr-ml-cover-tau3p0-20261012-nan
-gems68-autoctx-s3-strands-35000dots-20261020T210000Z-849a0f04-nan,,HISTORICAL,,,,,CLAIM,,0.0437,2026-10-20,1,CLAIM,gems68-autoctx-s3-strands-35000dots-20261020T210000Z-849a0f04-nan
-gems68-autoctx-s3-strands-35000dots-20261020T210000Z-849a0f04-zeros,,HISTORICAL,,,,,CLAIM,,0.0437,2026-10-20,1,CLAIM,gems68-autoctx-s3-strands-35000dots-20261020T210000Z-849a0f04-zeros
-h69-joint-relayramp-pullapart-38669-20261020T201504Z-f29b6df5,,HISTORICAL,,,,,CLAIM,,0.0053,2026-10-20,1,CLAIM,h69-joint-relayramp-pullapart-38669-20261020T201504Z-f29b6df5
-gems70-p5-dual-submod300-oof38k-20261020,,HISTORICAL,,,,,CLAIM,,0.2478,2026-10-20,1,CLAIM,gems70-p5-dual-submod300-oof38k-20261020
-gems71-hydro-conduit-38800-20261020T120000Z-zeros,,HISTORICAL,,,,,CLAIM,,0.0558,2026-10-20,1,CLAIM,gems71-hydro-conduit-38800-20261020T120000Z-zeros
-gemsdoe72-h72-1-sgmc-offcatalogue-20261020T195456Z-6e6525e5-zeros,,HISTORICAL,,,,,CLAIM,,0.0492,2026-10-20,1,CLAIM,gemsdoe72-h72-1-sgmc-offcatalogue-20261020T195456Z-6e6525e5-zeros
-gems73-h73-mcsc-seamfree-blakely-37654dots-20261021T073716Z-b27ac445-zeros,,HISTORICAL,,,,,CLAIM,,0.1917,2026-10-21,1,CLAIM,gems73-h73-mcsc-seamfree-blakely-37654dots-20261021T073716Z-b27ac445-zeros
-gemsdoe74-triregime-radon-piedmont-37654-20261021T051000Z-zeros,,HISTORICAL,,,,,CLAIM,,0.0669,2026-10-21,1,CLAIM,gemsdoe74-triregime-radon-piedmont-37654-20261021T051000Z-zeros
-gems75-trlt-radon-loco-ridge-20261021-zeros,,HISTORICAL,,,,,CLAIM,,0.1627,2026-10-21,1,CLAIM,gems75-trlt-radon-loco-ridge-20261021-zeros
-gems76_h76_3_geotherm_tilt_axial_submod_20261021_zeros,,HISTORICAL,,,,,CLAIM,,0.1555,2026-10-21,1,CLAIM,gems76_h76_3_geotherm_tilt_axial_submod_20261021_zeros
-gems85-h85-edti-collar35-skel-r33-20261021-d97b248e-zeros,,HISTORICAL,,,,,CLAIM,,0.0964,2026-10-21,1,CLAIM,gems85-h85-edti-collar35-skel-r33-20261021-d97b248e-zeros
-h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3,h33-h33-2-b2,MASS,-10pct,33889,10.00,2cde51f32b5a22a4489044904a3fabc3dba8f41a5488bad044d6f12ac0783079,BUILT,"+0.0020 to +0.0045 DTI (MODEL: prunes 3,765 lowest-marginal-gain dots where FP penalty outweighs marginal coverage)",,,1,MODEL,h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3.tif
-h33-h33-2-b2-mass-add10pct-20261023-ad925bd2,h33-h33-2-b2,MASS,+10pct,41419,10.00,ad925bd2a42f5b231fa3cb4c5e35fa28aa491602c45c8a6da09df6143494b4b5,BUILT,"-0.0030 to +0.0025 DTI (MODEL: adds 3,765 next-ranked corroborated ridge dots at r>=2.8px, d_cat>=3px; tests if G_test > 15k)",,,1,MODEL,h33-h33-2-b2-mass-add10pct-20261023-ad925bd2.tif
-h33-h33-2-b2-mass-drop20pct-20261023-62bfc392,h33-h33-2-b2,MASS,-20pct,30123,20.00,62bfc392b6a1e6cbffcf0e1ac7085b6d02a8676044dae8f0df031ffd416e2e5c,BUILT,"+0.0010 to +0.0065 DTI (MODEL: prunes 7,531 lowest-ranked 20% of R0 -> 30,123 dots; tests steeper precision-recall regime)",,,1,MODEL,h33-h33-2-b2-mass-drop20pct-20261023-62bfc392.tif
+id,site,name,score,evidence_class,encoding,n_dots,pct_changed,sha8,sha256,sha256_zeros,parent,axis,value,status,receipt,receipt_score,predicted_change,date,form_note,notes
+h33-2-b2-snap1p4px-g0p02-20261023-0b6a2ab2,GEMSDOE84,h33-2-b2-snap1p4px-g0p02-20261023-0b6a2ab2,,BUILT (unscored),nan+zeros,37654,6.416,0b6a2ab2,535bcc04b99b119670d6398fc3801ee9ad4b7f4467c6c7c8e9f4569ebf4d4bc7,24239d99cf95c06186060c192c862c822d31d5632073e0de27c0443565dd1c5e,"h33-2-b2 (R0, sha256 c55bafc47005...)",snap,1p4px-g0p02,BUILT,N,,+0.0043..+0.0107,,"R0 + snap 1p4px-g0p02 (2,416/37,654 dots moved, mean 1.38 px); predicted +0.004..+0.011","window 1.42 px, gate 0.02, 2,416 dots moved, mean displacement 1.383 px"
+h33-2-b2-snap2p0px-g0p01-20261023-7bdaa58b,GEMSDOE84,h33-2-b2-snap2p0px-g0p01-20261023-7bdaa58b,,BUILT (unscored),nan+zeros,37654,26.467,7bdaa58b,f5b5b8c9e1e1d819e7aeea04e3b4be7f4d7abc5e75fc220293e9b83df8437e05,9bec3cc89934e86823a8bb8fc7aebb80552566b5e44c89206a2f9d4c7eb1b481,"h33-2-b2 (R0, sha256 c55bafc47005...)",snap,2p0px-g0p01,BUILT,N,,+0.0177..+0.0443,,"R0 + snap 2p0px-g0p01 (9,966/37,654 dots moved, mean 1.90 px); predicted +0.018..+0.044","window 2.0 px, gate 0.01, 9,966 dots moved, mean displacement 1.898 px"
+h33-2-b2-snap2p0px-g0p02-20261023-b2019f55,GEMSDOE84,h33-2-b2-snap2p0px-g0p02-20261023-b2019f55,,BUILT (unscored),nan+zeros,37654,11.027,b2019f55,2d9c6f7253b8b3502b4ca0160c71b1aa6950dfe3585f0bfcd56dc85433073811,259a8d88eb3f06a557f20a24fc137f6d8b3cf66f36ffe2e4221417561b960d38,"h33-2-b2 (R0, sha256 c55bafc47005...)",snap,2p0px-g0p02,BUILT,N,,+0.0074..+0.0185,,"R0 + snap 2p0px-g0p02 (4,152/37,654 dots moved, mean 1.91 px); predicted +0.007..+0.018","window 2.0 px, gate 0.02, 4,152 dots moved, mean displacement 1.910 px"
+h33-h33-2-b2-mass-add10pct-20261023-ad925bd2,GEMSDOE84,h33-h33-2-b2-mass-add10pct-20261023-ad925bd2,,BUILT (unscored),nan+zeros,41419,10.00,ad925bd2,ad925bd2a42f5b231fa3cb4c5e35fa28aa491602c45c8a6da09df6143494b4b5,dc3444636f8f80661f87fda61a700572a54cb60ab88ae28130f9e5b57fd13100,h33-h33-2-b2,MASS,+10pct,BUILT,N,,"-0.0030 to +0.0025 DTI (MODEL: adds 3,765 next-ranked corroborated ridge dots at r>=2.8px, d_cat>=3px; tests if G_test > 15k)",,h33-h33-2-b2; MASS +10% (add 3765 top-rank dots at dcat>=3px -> 41419); pred -0.003 to +0.003,"adds 3,765 next-ranked corroborated ridge dots at r>=2.8 px, d_cat>=3.0 px (37,654 -> 41,419)"
+h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3,GEMSDOE84,h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3,,BUILT (unscored),nan+zeros,33889,10.00,2cde51f3,2cde51f32b5a22a4489044904a3fabc3dba8f41a5488bad044d6f12ac0783079,fa0d0564258f3445ba5756f1585d5d341718196fa37b92ecb91ee66c24fe4e32,h33-h33-2-b2,MASS,-10pct,BUILT,N,,"+0.0020 to +0.0045 DTI (MODEL: prunes 3,765 lowest-marginal-gain dots where FP penalty outweighs marginal coverage)",,h33-h33-2-b2; MASS -10% (drop 3765 lowest-rank dots -> 33889); pred +0.002 to +0.005 DTI,"removes 3,765 lowest-ranked R0 dots (37,654 -> 33,889)"
+h33-h33-2-b2-mass-drop20pct-20261023-62bfc392,GEMSDOE84,h33-h33-2-b2-mass-drop20pct-20261023-62bfc392,,BUILT (unscored),nan+zeros,30123,20.00,62bfc392,62bfc392b6a1e6cbffcf0e1ac7085b6d02a8676044dae8f0df031ffd416e2e5c,53e39cd15731233b7a05ee5a89d53e439a76318453637295dc9be64a7264f929,h33-h33-2-b2,MASS,-20pct,BUILT,N,,"+0.0010 to +0.0065 DTI (MODEL: prunes 7,531 lowest-ranked 20% of R0 -> 30,123 dots; tests steeper precision-recall regime)",,h33-h33-2-b2; MASS -20% (drop 7531 lowest-rank dots -> 30123); pred +0.001 to +0.007 DTI,"removes 7,531 lowest-ranked R0 dots (37,654 -> 30,123)"
+h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros,GEMSDOE32,h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros,0.2778,CLAIM,zeros,37654,,e5eb6e7e,c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9,,h27-4-r1-solo-d2-8 (8acb75e1f2cc),,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros,GEMSDOE36,anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros,0.2750,CLAIM,zeros,,,9b9ea4e6,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan,GEMSDOE28,h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan,0.2710,CLAIM,nan,37660,,b531dae0a36f,7c74270ad48fa0b865163853046a6d3815967c5bf37bbda5b74ca7fa22583a32,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan,GEMSDOE28,h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan,0.2708,CLAIM,nan,40199,,8acb75e1f2cc,ab02300152248fdda04e988e2cd2a0c13f35eec42fcf670a15e8b76b19e24a73,,dotted-h19-5-d2-8 (e56ea318af89),,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h27-4-solo-d28-20261004-8acb75e1-nan,GEMSDOE31,h27-4-solo-d28-20261004-8acb75e1-nan,0.2708,CLAIM,nan,,,8acb75e1,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h38-1-hf-euler-r30-r1-20261003-56a9f473edc7-nan,GEMSDOE28,h38-1-hf-euler-r30-r1-20261003-56a9f473edc7-nan,0.2707,CLAIM,nan,,,56a9f473edc7,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h32-1-prethin-tip-euler-d2-8-20261003-31e35eee884e-nan,GEMSDOE28,h32-1-prethin-tip-euler-d2-8-20261003-31e35eee884e-nan,0.2649,CLAIM,nan,,,31e35eee884e,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h33d-analog-tip-stepover-r30-20261004-cb490425926e,GEMSDOE33,h33d-analog-tip-stepover-r30-20261004-cb490425926e,0.2632,CLAIM,,,,cb490425926e,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca,GEMSDOE30,d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca,0.2600,CLAIM,,,,91eae1ca,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+dotted-h19-5-d2-8-20261002-e56ea318af89-nan,GEMSDOE25,dotted-h19-5-d2-8-20261002-e56ea318af89-nan,0.2600,CLAIM,nan,44090,,e56ea318af89,91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8,,h19-5 (e27054cf),,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+efd28-repro-20261003-1cc7dc534d51-nan,GEMSDOE29,efd28-repro-20261003-1cc7dc534d51-nan,0.2600,CLAIM,nan,,,1cc7dc534d51,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+wormrank-d28-20261003-59dcaf6dd11d-zeros,GEMSDOE29,wormrank-d28-20261003-59dcaf6dd11d-zeros,0.2560,CLAIM,zeros,,,59dcaf6dd11d,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+gems70-p5-dual-submod300-oof38k-20261020,GEMSDOE70,gems70-p5-dual-submod300-oof38k-20261020,0.2478,CLAIM,,,,20261020,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan,GEMSDOE24,h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan,0.2477,CLAIM,nan,60069,,989f59505db1,68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310,,h19-5 (e27054cf),,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan,GEMSDOE27,topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan,0.2449,CLAIM,nan,,,5512495c6bd1,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+gate_ortho_w0.25-40k-20261006T213721Z-nan,GEMSDOE49,gate_ortho_w0.25-40k-20261006T213721Z-nan,0.2376,CLAIM,nan,,,20261006,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros,GEMSDOE63,cvarlw-thin-s3p17-54864-20261011T220606Z-c58f60c4-zeros,0.2303,CLAIM,zeros,,,c58f60c4,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h59-cover-ds-belief-b2xh33d-20261008T184547Z-b79c4c61d8d8,GEMSDOE48,h59-cover-ds-belief-b2xh33d-20261008T184547Z-b79c4c61d8d8,0.2296,CLAIM,,,,b79c4c61d8d8,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan,19GEMSDOE,h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan,0.1922,CLAIM,nan,121131,,e27054cf,ec1f9b56b83ce33cad781ceb9f104b18fb4f2ff785263a4e89616af4aabdee8d,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+gems73-h73-mcsc-seamfree-blakely-37654dots-20261021T073716Z-b27ac445-zeros,GEMSDOE73,gems73-h73-mcsc-seamfree-blakely-37654dots-20261021T073716Z-b27ac445-zeros,0.1917,CLAIM,zeros,,,b27ac445,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan,19GEMSDOE+GEMSDOE21,h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan,0.1894,CLAIM,nan,,,691e4dfa,,,,,,SUBMITTED,N,,,,,"owner-reported; no submission-page receipt in this repo; collapsed exact repeat (same digest, same score)"
+h20-1-sarnnpu-powerlaw-pi0363-tilt-wingcrack-20260930-be0e8f6b-nan,20GEMSDOE,h20-1-sarnnpu-powerlaw-pi0363-tilt-wingcrack-20260930-be0e8f6b-nan,0.1890,CLAIM,nan,,,be0e8f6b,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h20-5-continuous-pu-proxy-unverified-20260930-824ce73a-nan,20GEMSDOE,h20-5-continuous-pu-proxy-unverified-20260930-824ce73a-nan,0.1859,CLAIM,nan,,,824ce73a,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan,16GEMSDOE,h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan,0.1855,CLAIM,nan,,,df20f65e,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h28-dotted-ridge-20260928T020256236880Z-6452ae1d00,GEMSDOE10,h28-dotted-ridge-20260928T020256236880Z-6452ae1d00,0.1839,CLAIM,,,,6452ae1d00,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+gems75-trlt-radon-loco-ridge-20261021-zeros,GEMSDOE75,gems75-trlt-radon-loco-ridge-20261021-zeros,0.1627,CLAIM,zeros,,,20261021,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+r11f-scarp-radiometric-fusion-00e049b51218-zeros,GEMSDOE46,r11f-scarp-radiometric-fusion-00e049b51218-zeros,0.1589,CLAIM,zeros,,,00e049b51218,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+Hedge-v2_submission,8GEMSDOE,Hedge-v2_submission,0.1563,CLAIM,,,,,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+gems-submission-20260925T001403Z-7f00890a,GEMSDOE+5GEMSDOE,gems-submission-20260925T001403Z-7f00890a,0.1563,CLAIM,,,,7f00890a,,,,,,SUBMITTED,N,,,,,"owner-reported; no submission-page receipt in this repo; collapsed exact repeat (same digest, same score)"
+gemsdoe2-dual-family-union-20260925T160406Z-f68e590f,GEMSDOE2,gemsdoe2-dual-family-union-20260925T160406Z-f68e590f,0.1560,CLAIM,,,,f68e590f,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+gems76_h76_3_geotherm_tilt_axial_submod_20261021_zeros,GEMSDOE76,gems76_h76_3_geotherm_tilt_axial_submod_20261021_zeros,0.1555,CLAIM,zeros,,,20261021,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+lidarscarp-ridge-top2pct-36c3a3f341c8,7GEMSDOE,lidarscarp-ridge-top2pct-36c3a3f341c8,0.1461,CLAIM,,,,36c3a3f341c8,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+ovtr-ml-cover-tau3p0-20261012-nan,GEMSDOE67,ovtr-ml-cover-tau3p0-20261012-nan,0.1426,CLAIM,nan,,,20261012,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h30-arrangement-matched-habitat-20261002-0d4e02e8-nan,GEMSDOE23,h30-arrangement-matched-habitat-20261002-0d4e02e8-nan,0.1352,CLAIM,nan,,,0d4e02e8,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+r7-nms3-dem10-scarp_0c9199f14e62,12GEMSDOE,r7-nms3-dem10-scarp_0c9199f14e62,0.1294,CLAIM,allfinite,,,0c9199f14e62,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+H25-ctx-ridge-20260927T232947704150Z-6452ae1d00,GEMSDOE10,H25-ctx-ridge-20260927T232947704150Z-6452ae1d00,0.1280,CLAIM,,,,6452ae1d00,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+dilcond-oof-v1-20261003-47629f496133-nan,GEMSDOE26,dilcond-oof-v1-20261003-47629f496133-nan,0.1223,CLAIM,nan,,,47629f496133,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h6-physics-dotted-80k-20261005T055000Z-0bef9211631c,GEMSDOE37,h6-physics-dotted-80k-20261005T055000Z-0bef9211631c,0.1193,CLAIM,,,,0bef9211631c,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+pindrop-v4-nodes-20260925T152420Z-f347b70daa,GEMSDOE3,pindrop-v4-nodes-20260925T152420Z-f347b70daa,0.1193,CLAIM,,,,f347b70daa,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+gems66-lidar03-cvretrain-reliefdecile-37654dots-20261020T190152Z-zeros,GEMSDOE66,gems66-lidar03-cvretrain-reliefdecile-37654dots-20261020T190152Z-zeros,0.1152,CLAIM,zeros,,,20261020,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+pindrop-v4-ridge-20260925T152422Z-4e03fc9705,GEMSDOE3,pindrop-v4-ridge-20260925T152422Z-4e03fc9705,0.1152,CLAIM,,,,4e03fc9705,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h53-twostage-20261008T040951Z-9a0b32c871,GEMSDOE51,h53-twostage-20261008T040951Z-9a0b32c871,0.1047,CLAIM,,,,9a0b32c871,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h23-a-dti-optimal-emission-6pct-20261002-e2ec4b49-nan,GEMSDOE22,h23-a-dti-optimal-emission-6pct-20261002-e2ec4b49-nan,0.1002,CLAIM,nan,,,e2ec4b49,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h45-eulerdepthreadcluster-20261006-f28e5cff6826-zeros,GEMSDOE40,h45-eulerdepthreadcluster-20261006-f28e5cff6826-zeros,0.0984,CLAIM,zeros,,,f28e5cff6826,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h18-3a-topo-geophys-x-complexity-prior-20260930-c502dfab-nan,16GEMSDOE,h18-3a-topo-geophys-x-complexity-prior-20260930-c502dfab-nan,0.0976,CLAIM,nan,,,c502dfab,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+gems85-h85-edti-collar35-skel-r33-20261021-d97b248e-zeros,GEMSDOE77,gems85-h85-edti-collar35-skel-r33-20261021-d97b248e-zeros,0.0964,CLAIM,zeros,,,d97b248e,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h20-dem10-scarp-thin-20260927T155223039488Z-ffc91a1686,GEMSDOE10,h20-dem10-scarp-thin-20260927T155223039488Z-ffc91a1686,0.0921,CLAIM,,,,ffc91a1686,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+20261001_r13-lattice-s5_v2_nan-outside,13GEMSDOE,20261001_r13-lattice-s5_v2_nan-outside,0.0904,CLAIM,nan-outside,,,20261001,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h97b-candidate,GEMSDOE52,h97b-candidate,0.0856,CLAIM,,,,,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+r12-scarp-rad-concordance-23e807e2de9f-zeros,GEMSDOE46,r12-scarp-rad-concordance-23e807e2de9f-zeros,0.0843,CLAIM,zeros,,,23e807e2de9f,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+pindrop-v4-discovery-20260925T152423Z-37f9d5b855,GEMSDOE3,pindrop-v4-discovery-20260925T152423Z-37f9d5b855,0.0830,CLAIM,,,,37f9d5b855,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+gems-tso1-20260929T005627Z-conj_alteration_mag,15GEMSDOE,gems-tso1-20260929T005627Z-conj_alteration_mag,0.0782,CLAIM,,,,20260929,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h34-scatter-q50-arr-matched-20261004T223317Z,GEMSDOE34,h34-scatter-q50-arr-matched-20261004T223317Z,0.0778,CLAIM,,,,20261004,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h59-sharpened-scarp-scatter-90k-20261007T171954Z-allfinite,GEMSDOE50,h59-sharpened-scarp-scatter-90k-20261007T171954Z-allfinite,0.0764,CLAIM,allfinite,,,20261007,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+D-step-3p0-07pct-tipProt-20261005-ecfbf59e2b48-zero,GEMSDOE38,D-step-3p0-07pct-tipProt-20261005-ecfbf59e2b48-zero,0.0763,CLAIM,,,,ecfbf59e2b48,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h61o-vardepth-none-40000dots-20261011T160711Z-28d4fac611ea-zeros-zeros,61GEMSDOE,h61o-vardepth-none-40000dots-20261011T160711Z-28d4fac611ea-zeros-zeros,0.0751,CLAIM,zeros,,,28d4fac611ea,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h23-b-dti-optimal-emission-10pct-20261002-86176698-nan,GEMSDOE22,h23-b-dti-optimal-emission-10pct-20261002-86176698-nan,0.0748,CLAIM,nan,,,86176698,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h46-twostageAB_20261006T160000Z_b0cfe956-zeros,GEMSDOE44,h46-twostageAB_20261006T160000Z_b0cfe956-zeros,0.0715,CLAIM,zeros,,,b0cfe956,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+gemsdoe74-triregime-radon-piedmont-37654-20261021T051000Z-zeros,GEMSDOE74,gemsdoe74-triregime-radon-piedmont-37654-20261021T051000Z-zeros,0.0669,CLAIM,zeros,,,20261021,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h56-final-dotted-ridge-d2p8-20261009T190421Z,56GEMSDOE,h56-final-dotted-ridge-d2p8-20261009T190421Z,0.0658,CLAIM,,,,20261009,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+xscale-worm-persistence-20261006T000541Z-nan,GEMSDOE42,xscale-worm-persistence-20261006T000541Z-nan,0.0581,CLAIM,nan,,,20261006,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+gems71-hydro-conduit-38800-20261020T120000Z-zeros,GEMSDOE71,gems71-hydro-conduit-38800-20261020T120000Z-zeros,0.0558,CLAIM,zeros,,,20261020,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+wormsurv-filter-20261003-921f10960d6e-zeros,GEMSDOE29,wormsurv-filter-20261003-921f10960d6e-zeros,0.0532,CLAIM,zeros,,,921f10960d6e,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+sgmc-off-catalogue-44k-20261003-c8dcd780e3fd-nan,GEMSDOE29,sgmc-off-catalogue-44k-20261003-c8dcd780e3fd-nan,0.0512,CLAIM,nan,,,c8dcd780e3fd,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h59j-coherence-consensus-dotted-20261011T043000Z,59GEMSDOE,h59j-coherence-consensus-dotted-20261011T043000Z,0.0499,CLAIM,,,,20261011,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+gemsdoe72-h72-1-sgmc-offcatalogue-20261020T195456Z-6e6525e5-zeros,GEMSDOE72,gemsdoe72-h72-1-sgmc-offcatalogue-20261020T195456Z-6e6525e5-zeros,0.0492,CLAIM,zeros,,,6e6525e5,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h16-continuation-20260927T065521077735Z-3431b83c7c,GEMSDOE10,h16-continuation-20260927T065521077735Z-3431b83c7c,0.0461,CLAIM,,,,3431b83c7c,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h54c-manifest-edge-20261009T025732Z-73454bc5,GEMSDOE54,h54c-manifest-edge-20261009T025732Z-73454bc5,0.0449,CLAIM,,,,73454bc5,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+xfit-c0-habitat-20261003-ca879db0089a-zeros,GEMSDOE29,xfit-c0-habitat-20261003-ca879db0089a-zeros,0.0439,CLAIM,zeros,,,ca879db0089a,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+gems68-autoctx-s3-strands-35000dots-20261020T210000Z-849a0f04-nan,GEMSDOE68,gems68-autoctx-s3-strands-35000dots-20261020T210000Z-849a0f04-nan,0.0437,CLAIM,nan+zeros,,,849a0f04,,,,,,SUBMITTED,N,,,,,"owner-reported; no submission-page receipt in this repo; collapsed exact repeat (same digest, same score)"
+sar-em-propensity-half-20261011T223500Z-5e4660cd-zeros,GEMSDOE65,sar-em-propensity-half-20261011T223500Z-5e4660cd-zeros,0.0431,CLAIM,zeros,,,5e4660cd,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h60-lidarscarp-s2p0-20261007-nanoutside,GEMSDOE47,h60-lidarscarp-s2p0-20261007-nanoutside,0.0430,CLAIM,nanoutside,,,20261007,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+sup01-hgb21-sep40-n40000-20261006-bc2e4e9a8d6f-nan,GEMSDOE43,sup01-hgb21-sep40-n40000-20261006-bc2e4e9a8d6f-nan,0.0424,CLAIM,nan,,,bc2e4e9a8d6f,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h35-06-aaa86efb25-20261004T225420098147Z-candidate,GEMSDOE35,h35-06-aaa86efb25-20261004T225420098147Z-candidate,0.0418,CLAIM,,,,225420098147,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1-hard,GEMSDOE40,h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1-hard,0.0397,CLAIM,,,,785c4f5d5ce1,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h64-lidar-scarp-cv-20261011T220000Z,GEMSDOE64,h64-lidar-scarp-cv-20261011T220000Z,0.0383,CLAIM,,,,20261011,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h18-4-usgs-geologic-map-faults-gap-20260930-aef8f42c-nan,16GEMSDOE,h18-4-usgs-geologic-map-faults-gap-20260930-aef8f42c-nan,0.0360,CLAIM,nan,,,aef8f42c,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h67a-orientip-lane-29447dots-20261012T021226Z-allfinite,GEMSDOE67,h67a-orientip-lane-29447dots-20261012T021226Z-allfinite,0.0356,CLAIM,allfinite,,,20261012,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+xfit-h41-union-qfaults-20261003-9edb34b99e3a-zeros,GEMSDOE29,xfit-h41-union-qfaults-20261003-9edb34b99e3a-zeros,0.0356,CLAIM,zeros,,,9edb34b99e3a,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1,GEMSDOE40,h8-euler-lineament-depthcluster-20261006-785c4f5d5ce1,0.0355,CLAIM,,,,785c4f5d5ce1,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h73-chi-coherent-corridor-12000-20261011T195818Z-zeros,60GEMSDOE,h73-chi-coherent-corridor-12000-20261011T195818Z-zeros,0.0351,CLAIM,zeros,,,20261011,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+gems-submission-20260926T163915Z-237f0063,GEMSDOE4,gems-submission-20260926T163915Z-237f0063,0.0343,CLAIM,,,,237f0063,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h40-e-disc-h40e-30k-zeros,GEMSDOE39,h40-e-disc-h40e-30k-zeros,0.0339,CLAIM,zeros,,,,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+H19-C_20260930T212401Z_c11e495e,18GEMSDOE,H19-C_20260930T212401Z_c11e495e,0.0297,CLAIM,,,,c11e495e,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+tensor_full-n16000-sep3-20261009T211747Z-nan,55GEMSDOE,tensor_full-n16000-sep3-20261009T211747Z-nan,0.0290,CLAIM,nan,,,20261009,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+gems6_hgb88-topk03_33cec71ff0,6GEMSDOE,gems6_hgb88-topk03_33cec71ff0,0.0286,CLAIM,,,,33cec71ff0,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h57r-joint-strata-38000-20261010T214547Z-00cf5b2066f1-zeros,57GEMSDOE,h57r-joint-strata-38000-20261010T214547Z-00cf5b2066f1-zeros,0.0254,CLAIM,zeros,,,00cf5b2066f1,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h42-submission-primary,GEMSDOE41,h42-submission-primary,0.0245,CLAIM,,,,,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+gems-structural-area06-v1,11GEMSDOE,gems-structural-area06-v1,0.0202,CLAIM,,,,,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+17GEMSDOE_F-ensemble-2pct_20260930T050626Z,17GEMSDOE,17GEMSDOE_F-ensemble-2pct_20260930T050626Z,0.0187,CLAIM,,,,20260930,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+ml-binary-ridge-20261012T000000Z,58GEMSDOE,ml-binary-ridge-20261012T000000Z,0.0180,CLAIM,,,,20261012,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h8-tiprelay-ridgeconcord-pr2-n80000-20261009-49bec522-zeros,GEMSDOE53,h8-tiprelay-ridgeconcord-pr2-n80000-20261009-49bec522-zeros,0.0159,CLAIM,zeros,,,49bec522,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+2314b599,GEMSDOE9,2314b599,0.0107,CLAIM,,,,2314b599,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h51-km-faultzone-20261006-zeros,GEMSDOE45,h51-km-faultzone-20261006-zeros,0.0106,CLAIM,zeros,,,20261006,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h69-joint-relayramp-pullapart-38669-20261020T201504Z-f29b6df5,GEMSDOE69,h69-joint-relayramp-pullapart-38669-20261020T201504Z-f29b6df5,0.0053,CLAIM,,,,f29b6df5,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+repo-c0-habitat-emission-20261003-a4d439b07426-nan,GEMSDOE29,repo-c0-habitat-emission-20261003-a4d439b07426-nan,0.0041,CLAIM,nan,,,a4d439b07426,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+GEMS_r5-geom-horse-ensemble_20260929T154852Z_ccbe1de0_site_e96e942f,14GEMSDOE,GEMS_r5-geom-horse-ensemble_20260929T154852Z_ccbe1de0_site_e96e942f,0.0020,CLAIM,,,,e96e942f,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+h61a-basement-step-20000dots-20261011T012029Z-eb2ae4bb024b-zeros,61GEMSDOE,h61a-basement-step-20000dots-20261011T012029Z-eb2ae4bb024b-zeros,0.0009,CLAIM,zeros,,,eb2ae4bb024b,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+datum-lahontan-strain-gauge-defensible-440dots-zeros,62GEMSDOE,datum-lahontan-strain-gauge-defensible-440dots-zeros,0.0000,CLAIM,zeros,,,,,,,,,SUBMITTED,N,,,,,owner-reported; no submission-page receipt in this repo
+leaderboard-rank-1 DARD (best public DW-Tversky),official public leaderboard,rank-1 DARD (best public DW-Tversky),0.3195,OFFICIAL_SNAPSHOT,,,,,,,,,,OTHER_TEAM,N,,,2026-10-03,,Rank 1 on the page at review time; no private score implied
+leaderboard-rank-2 nchuzhoy (best public DW-Tversky),official public leaderboard,rank-2 nchuzhoy (best public DW-Tversky),0.3128,OFFICIAL_SNAPSHOT,,,,,,,,,,OTHER_TEAM,N,,,2026-10-03,,"read 2026-10-03 by autonomous session; DrivenData ToS prohibit automated monitoring, so snapshots are dated manual reads"
+leaderboard-rank-3 alexoktaba (best public DW-Tversky),official public leaderboard,rank-3 alexoktaba (best public DW-Tversky),0.3042,OFFICIAL_SNAPSHOT,,,,,,,,,,OTHER_TEAM,N,,,2026-10-03,,"read 2026-10-03 by autonomous session; DrivenData ToS prohibit automated monitoring, so snapshots are dated manual reads"
+leaderboard-rank-4 Batik Shirt Brothers (best public DW-Tversky),official public leaderboard,rank-4 Batik Shirt Brothers (best public DW-Tversky),0.2998,OFFICIAL_SNAPSHOT,,,,,,,,,,OTHER_TEAM,N,,,2026-10-03,,"read 2026-10-03 by autonomous session; DrivenData ToS prohibit automated monitoring, so snapshots are dated manual reads"
+leaderboard-rank-5 xiaofanhu (best public DW-Tversky),official public leaderboard,rank-5 xiaofanhu (best public DW-Tversky),0.2941,OFFICIAL_SNAPSHOT,,,,,,,,,,OTHER_TEAM,N,,,2026-10-03,,"read 2026-10-03 by autonomous session; DrivenData ToS prohibit automated monitoring, so snapshots are dated manual reads"
+leaderboard-rank-6 joeyfezster (best public DW-Tversky),official public leaderboard,rank-6 joeyfezster (best public DW-Tversky),0.2919,OFFICIAL_SNAPSHOT,,,,,,,,,,OTHER_TEAM,N,,,2026-10-03,,No file attribution; public score only
+leaderboard-rank-7 ndavis7 (best public DW-Tversky),official public leaderboard,rank-7 ndavis7 (best public DW-Tversky),0.2888,OFFICIAL_SNAPSHOT,,,,,,,,,,OTHER_TEAM,N,,,2026-10-03,,No file attribution; public score only
+leaderboard-rank-8 mzoorob (best public DW-Tversky),official public leaderboard,rank-8 mzoorob (best public DW-Tversky),0.2884,OFFICIAL_SNAPSHOT,,,,,,,,,,OTHER_TEAM,N,,,2026-10-03,,No file attribution; public score only
+leaderboard-rank-9 GrigorSargsyan (best public DW-Tversky),official public leaderboard,rank-9 GrigorSargsyan (best public DW-Tversky),0.2876,OFFICIAL_SNAPSHOT,,,,,,,,,,OTHER_TEAM,N,,,2026-10-03,,No file attribution; public score only
+leaderboard-rank-10 HardcoreTechGod (best public DW-Tversky),official public leaderboard,rank-10 HardcoreTechGod (best public DW-Tversky),0.2854,OFFICIAL_SNAPSHOT,,,,,,,,,,OTHER_TEAM,N,,,2026-10-03,,No file attribution; public score only
+leaderboard-rank-12 kinghorton42 (best public DW-Tversky),official public leaderboard,rank-12 kinghorton42 (best public DW-Tversky),0.2635,OFFICIAL_SNAPSHOT,,,,,,,,,,OTHER_TEAM,N,,,2026-10-03,,Reads as a plausible public-cluster neighbour of the owner-reported 0.2600/0.2477 values; attribution deliberately NOT inferred
+leaderboard-rank-14 No Fault of Our Own (best public DW-Tversky),official public leaderboard,rank-14 No Fault of Our Own (best public DW-Tversky),0.2624,OFFICIAL_SNAPSHOT,,,,,,,,,,OTHER_TEAM,N,,,2026-10-03,,No file attribution; public score only
+leaderboard-rank-15 wbg1 (best public DW-Tversky),official public leaderboard,rank-15 wbg1 (best public DW-Tversky),0.2600,OFFICIAL_SNAPSHOT,,,,,,,,,,OTHER_TEAM,N,,,2026-10-03,,Rank 15 on the page at review time; not matched to the GEMSDOE25 TIFF
+leaderboard-rank-19 extradr19 (best public DW-Tversky),official public leaderboard,rank-19 extradr19 (best public DW-Tversky),0.2449,OFFICIAL_SNAPSHOT,,,,,,,,,,OTHER_TEAM,N,,,2026-10-03,,"Value equals the owner-reported GEMSDOE27 score 0.2449; numeric coincidence only, not a file attribution (IR-30-002 class)"

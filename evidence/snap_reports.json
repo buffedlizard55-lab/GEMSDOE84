@@ -1,0 +1,347 @@
+{
+  "schema_version": 1,
+  "evidence_class": "PROXY (local holdout) + MODEL controls. NOT scores.",
+  "generated_utc": "2026-10-23T03:50:41Z",
+  "evaluator_version": "gems57-pooled-hide-v2",
+  "implementation_hashes": {
+    "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
+    "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
+    "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
+    "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
+  },
+  "caveat": "The catalogue hide-and-recover proxy is reported only. The brief records that it correlated -0.87..+0.54 with live scores over 12-14 files; a file that passed it (lidar03) scored 0.1152 live. No number here is a leaderboard score and none of these instruments gates a slot.",
+  "arms": {
+    "R0_parent": {
+      "holdout_proxy": {
+        "pooled_dti": 0.004384809290509451,
+        "pooled_coverage": 0.0062471799292281825,
+        "coverage_wilson95": [
+          0.005301297510354568,
+          0.007360582277993353
+        ],
+        "withheld_positive_pixels": 22641,
+        "emitted_pixels": 37654,
+        "on_visible_catalogue": 0,
+        "mean_fold_dti": 0.004418799268365232,
+        "std_fold_dti": 0.0009607840781818374,
+        "per_fold_dti": {
+          "draw20_foldNW_all": 0.005119234300348168,
+          "draw20_foldNE_all": 0.005721849025628992,
+          "draw20_foldSW_all": 0.0036614968254688987,
+          "draw20_foldSE_all": 0.0034797123829621137,
+          "draw21_foldNW_all": 0.0031000233064623294,
+          "draw21_foldNE_all": 0.0058060526566376,
+          "draw21_foldSW_all": 0.004172962032270323,
+          "draw21_foldSE_all": 0.004289063617143429
+        },
+        "per_quadrant_dti": {
+          "foldNE": 0.005763950841133296,
+          "foldNW": 0.004109628803405248,
+          "foldSE": 0.0038843880000527715,
+          "foldSW": 0.003917229428869611
+        }
+      },
+      "sgmc_control": {
+        "dti": 0.09606004283619353,
+        "tp": 5602.256935996715,
+        "fp": 35187.57721839605,
+        "fn": 57100.74306400328,
+        "n_truth": 62703,
+        "n_emitted": 37654
+      }
+    },
+    "h33-2-b2-snap1p4px-g0p02-20261023-0b6a2ab2": {
+      "holdout_proxy": {
+        "pooled_dti": 0.004355075005611406,
+        "pooled_coverage": 0.006204717799835384,
+        "coverage_wilson95": [
+          0.005262302193625398,
+          0.007314667742442874
+        ],
+        "withheld_positive_pixels": 22641,
+        "emitted_pixels": 37654,
+        "on_visible_catalogue": 0,
+        "mean_fold_dti": 0.004396564308990729,
+        "std_fold_dti": 0.0010061170003923914,
+        "per_fold_dti": {
+          "draw20_foldNW_all": 0.005197626587800145,
+          "draw20_foldNE_all": 0.005855576898444018,
+          "draw20_foldSW_all": 0.003661678245804127,
+          "draw20_foldSE_all": 0.0033530067548227746,
+          "draw21_foldNW_all": 0.0031787189591801573,
+          "draw21_foldNE_all": 0.005806356757588066,
+          "draw21_foldSW_all": 0.0040839308955787825,
+          "draw21_foldSE_all": 0.0040356193727077595
+        },
+        "per_quadrant_dti": {
+          "foldNE": 0.005830966828016043,
+          "foldNW": 0.004188172773490151,
+          "foldSE": 0.003694313063765267,
+          "foldSW": 0.0038728045706914547
+        }
+      },
+      "sgmc_control": {
+        "dti": 0.09553843924191081,
+        "tp": 5571.439459988581,
+        "fp": 35197.59871676346,
+        "fn": 57131.56054001142,
+        "n_truth": 62703,
+        "n_emitted": 37654
+      }
+    },
+    "h33-2-b2-snap2p0px-g0p01-20261023-7bdaa58b": {
+      "holdout_proxy": {
+        "pooled_dti": 0.004282426925367808,
+        "pooled_coverage": 0.006101871747856605,
+        "coverage_wilson95": [
+          0.005167902969133893,
+          0.0072034097564755845
+        ],
+        "withheld_positive_pixels": 22641,
+        "emitted_pixels": 37654,
+        "on_visible_catalogue": 0,
+        "mean_fold_dti": 0.004316682219020501,
+        "std_fold_dti": 0.0009616381096943101,
+        "per_fold_dti": {
+          "draw20_foldNW_all": 0.005119849913148281,
+          "draw20_foldNE_all": 0.00576496065470959,
+          "draw20_foldSW_all": 0.0034483775733826485,
+          "draw20_foldSE_all": 0.003309643922294982,
+          "draw21_foldNW_all": 0.0029860942528136575,
+          "draw21_foldNE_all": 0.005367583367627409,
+          "draw21_foldSW_all": 0.004205986622940618,
+          "draw21_foldSE_all": 0.004330961445246825
+        },
+        "per_quadrant_dti": {
+          "foldNE": 0.005566272011168499,
+          "foldNW": 0.0040529720829809695,
+          "foldSE": 0.0038203026837709034,
+          "foldSW": 0.003827182098161633
+        }
+      },
+      "sgmc_control": {
+        "dti": 0.09331999062237108,
+        "tp": 5440.247851614329,
+        "fp": 35231.271131411035,
+        "fn": 57262.75214838567,
+        "n_truth": 62703,
+        "n_emitted": 37654
+      }
+    },
+    "h33-2-b2-snap2p0px-g0p02-20261023-b2019f55": {
+      "holdout_proxy": {
+        "pooled_dti": 0.004286421678870039,
+        "pooled_coverage": 0.006107163586891858,
+        "coverage_wilson95": [
+          0.005172758439266352,
+          0.0072091361690041315
+        ],
+        "withheld_positive_pixels": 22641,
+        "emitted_pixels": 37654,
+        "on_visible_catalogue": 0,
+        "mean_fold_dti": 0.004328947643402458,
+        "std_fold_dti": 0.0009946115741210492,
+        "per_fold_dti": {
+          "draw20_foldNW_all": 0.00510187560466847,
+          "draw20_foldNE_all": 0.005788521093970744,
+          "draw20_foldSW_all": 0.0034375035407017657,
+          "draw20_foldSE_all": 0.0032751077854304266,
+          "draw21_foldNW_all": 0.0031613908573949103,
+          "draw21_foldNE_all": 0.0056727617958935335,
+          "draw21_foldSW_all": 0.0041449824195846025,
+          "draw21_foldSE_all": 0.004049438049575207
+        },
+        "per_quadrant_dti": {
+          "foldNE": 0.005730641444932139,
+          "foldNW": 0.00413163323103169,
+          "foldSE": 0.0036622729175028166,
+          "foldSW": 0.003791242980143184
+        }
+      },
+      "sgmc_control": {
+        "dti": 0.09479472509289452,
+        "tp": 5527.487566564614,
+        "fp": 35210.889374131526,
+        "fn": 57175.51243343539,
+        "n_truth": 62703,
+        "n_emitted": 37654
+      }
+    }
+  },
+  "leakage_canary": {
+    "limit": 0.9,
+    "worst_max_auc": 0.5765349639830508,
+    "passed": true,
+    "rows": [
+      {
+        "fold": "draw20_foldNW_all",
+        "feature": "band:tmi_hg",
+        "auc": 0.5421708805194806,
+        "withheld_positives": 1925,
+        "passed": true
+      },
+      {
+        "fold": "draw20_foldNW_all",
+        "feature": "band:iso_grav_anom_hg",
+        "auc": 0.5405906077922077,
+        "withheld_positives": 1925,
+        "passed": true
+      },
+      {
+        "fold": "draw20_foldNW_all",
+        "feature": "fused:max(tmi_hg,grav_hg)",
+        "auc": 0.5072271064935066,
+        "withheld_positives": 1925,
+        "passed": true
+      },
+      {
+        "fold": "draw20_foldNE_all",
+        "feature": "band:tmi_hg",
+        "auc": 0.5324255974576271,
+        "withheld_positives": 2360,
+        "passed": true
+      },
+      {
+        "fold": "draw20_foldNE_all",
+        "feature": "band:iso_grav_anom_hg",
+        "auc": 0.5765349639830508,
+        "withheld_positives": 2360,
+        "passed": true
+      },
+      {
+        "fold": "draw20_foldNE_all",
+        "feature": "fused:max(tmi_hg,grav_hg)",
+        "auc": 0.5534018813559322,
+        "withheld_positives": 2360,
+        "passed": true
+      },
+      {
+        "fold": "draw20_foldSW_all",
+        "feature": "band:tmi_hg",
+        "auc": 0.5392017513227513,
+        "withheld_positives": 3780,
+        "passed": true
+      },
+      {
+        "fold": "draw20_foldSW_all",
+        "feature": "band:iso_grav_anom_hg",
+        "auc": 0.5059084497354498,
+        "withheld_positives": 3780,
+        "passed": true
+      },
+      {
+        "fold": "draw20_foldSW_all",
+        "feature": "fused:max(tmi_hg,grav_hg)",
+        "auc": 0.5266426785714285,
+        "withheld_positives": 3780,
+        "passed": true
+      },
+      {
+        "fold": "draw20_foldSE_all",
+        "feature": "band:tmi_hg",
+        "auc": 0.5170677682139564,
+        "withheld_positives": 3253,
+        "passed": true
+      },
+      {
+        "fold": "draw20_foldSE_all",
+        "feature": "band:iso_grav_anom_hg",
+        "auc": 0.5099250230556409,
+        "withheld_positives": 3253,
+        "passed": true
+      },
+      {
+        "fold": "draw20_foldSE_all",
+        "feature": "fused:max(tmi_hg,grav_hg)",
+        "auc": 0.5008546418690439,
+        "withheld_positives": 3253,
+        "passed": true
+      },
+      {
+        "fold": "draw21_foldNW_all",
+        "feature": "band:tmi_hg",
+        "auc": 0.5218114799374675,
+        "withheld_positives": 1919,
+        "passed": true
+      },
+      {
+        "fold": "draw21_foldNW_all",
+        "feature": "band:iso_grav_anom_hg",
+        "auc": 0.5009829989577905,
+        "withheld_positives": 1919,
+        "passed": true
+      },
+      {
+        "fold": "draw21_foldNW_all",
+        "feature": "fused:max(tmi_hg,grav_hg)",
+        "auc": 0.5117548957790516,
+        "withheld_positives": 1919,
+        "passed": true
+      },
+      {
+        "fold": "draw21_foldNE_all",
+        "feature": "band:tmi_hg",
+        "auc": 0.5357953488372094,
+        "withheld_positives": 2365,
+        "passed": true
+      },
+      {
+        "fold": "draw21_foldNE_all",
+        "feature": "band:iso_grav_anom_hg",
+        "auc": 0.5658068731501058,
+        "withheld_positives": 2365,
+        "passed": true
+      },
+      {
+        "fold": "draw21_foldNE_all",
+        "feature": "fused:max(tmi_hg,grav_hg)",
+        "auc": 0.5426451987315011,
+        "withheld_positives": 2365,
+        "passed": true
+      },
+      {
+        "fold": "draw21_foldSW_all",
+        "feature": "band:tmi_hg",
+        "auc": 0.5411081510829371,
+        "withheld_positives": 3786,
+        "passed": true
+      },
+      {
+        "fold": "draw21_foldSW_all",
+        "feature": "band:iso_grav_anom_hg",
+        "auc": 0.5075081708927629,
+        "withheld_positives": 3786,
+        "passed": true
+      },
+      {
+        "fold": "draw21_foldSW_all",
+        "feature": "fused:max(tmi_hg,grav_hg)",
+        "auc": 0.5182458293713682,
+        "withheld_positives": 3786,
+        "passed": true
+      },
+      {
+        "fold": "draw21_foldSE_all",
+        "feature": "band:tmi_hg",
+        "auc": 0.5093110820780817,
+        "withheld_positives": 3253,
+        "passed": true
+      },
+      {
+        "fold": "draw21_foldSE_all",
+        "feature": "band:iso_grav_anom_hg",
+        "auc": 0.5006900307408546,
+        "withheld_positives": 3253,
+        "passed": true
+      },
+      {
+        "fold": "draw21_foldSE_all",
+        "feature": "fused:max(tmi_hg,grav_hg)",
+        "auc": 0.5021239271441746,
+        "withheld_positives": 3253,
+        "passed": true
+      }
+    ]
+  },
+  "elapsed_s": 27.2
+}

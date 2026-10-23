@@ -2,20 +2,22 @@
 
 - **Current date**: `2026-10-23` (UTC) | **Competition deadline**: `2026-12-03` (`41 days` = `5.86 weeks`, max `18 slots` at `3 slots/week` for ONE entity; human to confirm exact remaining weekly/total quota).
 - **Parent R0**: `h33-h33-2-b2` (`GEMSDOE32`, `37,654` unit-mass dots, `d_cat > 2.0 px`, `0.2778` `CLAIM` — owner-reported in `registry/live_scores.csv`; `0` organizer receipts in repo).
-- **Active session axis**: `AXIS = MASS` (`3` variants built in `releases/` and logged as `status = BUILT` in `ledger/submissions.csv`).
+- **Built single-axis variants in `releases/` and `ledger/submissions.csv`**:
+  - `AXIS = MASS`: `3` variants (`-10pct`, `+10pct`, `-20pct`) built by `scripts/build_r0_variants.py` (`evidence/r0_mass_variants_20261023.json`).
+  - `AXIS = SNAP`: `3` variants (`1p4px-g0p02`, `2p0px-g0p02`, `2p0px-g0p01`) built by `scripts/build_snap_variants.py` (`evidence/snap_variants_receipt.json`).
 
 ## 1. Next 3 Slots in Order (Week 1 — `AXIS = MASS`)
 
 | Slot | Variant ID (`releases/<id>.tif` & `<id>-zeros.tif`) | Change vs R0 (`37,654` dots) | Predicted Live Change (`MODEL`) | Fold-Clean Hide & Recover (`PROXY`, $n=22,893$) | SGMC Off-Cat Control (`PROXY`, $n=62,703$) | Decision Rule: What the Live Receipt Changes |
 |---:|---|---|---|---|---|---|
-| **1** | `h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3` | Drop lowest-ranked `10.00%` (`-3,765` dots $\to$ `33,889`) | `+0.0020` to `+0.0045` DTI | `0.10439` (`95% CI [0.09228, 0.11565]`, $\Delta = -0.00126$) | `0.09156` raw / `0.06298` cal | **If $> 0.2778$**: R0 is over-budgeted; adopt `33,889`-dot parent as $R_1$ and testSlot 3 (`-20%`). **If $< 0.2778$**: R0 tail decile carries net-positive truth credit; prioritize Slot 2 (`+10%`). |
+| **1** | `h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3` | Drop lowest-ranked `10.00%` (`-3,765` dots $\to$ `33,889`) | `+0.0020` to `+0.0045` DTI | `0.10439` (`95% CI [0.09228, 0.11565]`, $\Delta = -0.00126$) | `0.09156` raw / `0.06298` cal | **If $> 0.2778$**: R0 is over-budgeted; adopt `33,889`-dot parent as $R_1$ and test Slot 3 (`-20%`). **If $< 0.2778$**: R0 tail decile carries net-positive truth credit; prioritize Slot 2 (`+10%`). |
 | **2** | `h33-h33-2-b2-mass-add10pct-20261023-ad925bd2` | Add next-ranked `10.00%` (`+3,765` dots at $r \ge 2.8\text{ px}, d_{\text{cat}} \ge 3.0\text{ px} \to$ `41,419`) | `-0.0030` to `+0.0025` DTI | `0.10737` (`95% CI [0.09503, 0.11862]`, $\Delta = +0.00172$) | `0.10719` raw / `0.06962` cal | **If $> 0.2778$**: unseen test fault prevalence $|G_{\text{test}}|$ supports $>37.6\text{k}$ dots; promote `41,419`-dot map to $R_1$. **If $< 0.2778$**: secondary ridges ($d_{\text{cat}} \ge 3\text{ px}$) dilute precision below the `7.19%` break-even bar. |
 | **3** | `h33-h33-2-b2-mass-drop20pct-20261023-62bfc392` | Drop lowest-ranked `20.00%` (`-7,531` dots $\to$ `30,123`) | `+0.0010` to `+0.0065` DTI | `0.10149` (`95% CI [0.08969, 0.11274]`, $\Delta = -0.00416$) | `0.08368` raw / `0.05940` cal | Together with Slots 1–2, fits the 3-point quadratic $\text{DTI}(S)$ across $S \in \{30123, 33889, 37654, 41419\}$ to lock optimal mass $S^*$ before Week 2. |
 
 ## 2. Multi-Week Schedule (6 Weeks / 18 Slots to `2026-12-03`)
 
-- **Weeks 1–2 (Slots 1–6)**: Single-axis isolation on `MASS` (Week 1: Slots 1–3 above) followed by `PRUNE` (`d_cat > 3.0 px` refilled at $S^*$ vs `d_cat > 2.0 px`), `CONCENTRATION` (reallocating 10–15% of dots from lowest-prior to highest-prior 10 km structural blocks at fixed $S^*$), or `SNAP` ($\le 2\text{ px}$ move onto local TMI/gravity-HGM/LiDAR scarp maximum).
-- **Weeks 3–4 (Slots 7–12)**: Orthogonal combination of the 2–3 single axes that beat R0's live receipt (`MASS` $S^*$ + winning `PRUNE`/`CONCENTRATION`/`SNAP`/`RELIEF` setting), testing one interaction at a time.
+- **Weeks 1–2 (Slots 1–6)**: Single-axis isolation on `MASS` (Week 1: Slots 1–3 above) followed by `SNAP` (`h33-2-b2-snap1p4px-g0p02-20261023-0b6a2ab2`, `h33-2-b2-snap2p0px-g0p02-20261023-b2019f55`, `h33-2-b2-snap2p0px-g0p01-20261023-7bdaa58b`), `PRUNE` (`d_cat > 3.0 px` refilled at $S^*$ vs `d_cat > 2.0 px`), or `CONCENTRATION`.
+- **Weeks 3–4 (Slots 7–12)**: Orthogonal combination of the 2–3 single axes that beat R0's live receipt (`MASS` $S^*$ + winning `SNAP`/`PRUNE`/`CONCENTRATION`/`RELIEF` setting), testing one interaction at a time.
 - **Weeks 5–6 (Slots 13–18)**: Reserve slots for final variance-reduced ensemble verification and `TRACKB` geologist-vetted $\ge 1\text{ km}$ strike-consistent fault traces (GeoJSON + raster).
 
 ## 3. Proposed Better Single-Axis Experiments for Future Sessions (Not Built This Session)
