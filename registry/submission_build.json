@@ -18,5 +18,16 @@
   "min_dist_to_catalogue_px": 3.1622776985168457,
   "all_checks_passed": true,
   "ok_to_download": true,
-  "ok_to_submit": true
+  "ok_to_submit": false,
+  "submission_authorized": false,
+  "selector_status": "pending",
+  "authorization_note": "Local format validation only; no organizer acceptance or weekly-slot approval.",
+  "verdict": "negative",
+  "download_scope": "research/review only",
+  "organizer_acceptance": "not observed; no receipt",
+  "release_status_receipt": "registry/release_status.json",
+  "release_blockers": [
+    "Full candidate-specific 1,143-raster uniqueness clearance not established; do not submit."
+  ],
+  "decision_note": "Archived research artifact only. Current literal registry-witness audit is NEGATIVE; do not submit."
 }

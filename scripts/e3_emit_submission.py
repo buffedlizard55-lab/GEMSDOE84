@@ -43,6 +43,8 @@ def _design_full(fp, cat, cols):
 
 
 def place():
+    from audit_release import assert_lane_open
+    assert_lane_open()
     t0 = time.time()
     g = load_grid(BRIDGE); fp, cat = g.footprint, g.catalogue
     sel = np.load(WORK / "liti_ml_selected.npz")
@@ -95,12 +97,14 @@ def gate(kind):
 
 
 def package():
+    from audit_release import assert_lane_open
+    assert_lane_open()
     t0 = time.time()
     gs = json.loads((ROOT / "evidence/e3_gate_surface.json").read_text())
     gd = json.loads((ROOT / "evidence/e3_gate_dots.json").read_text())
     cc_path = ROOT / "evidence/e3_gate_dots_chance_corrected.json"
     gc = json.loads(cc_path.read_text()) if cc_path.exists() else {"passed": False}
-    dots_ok = gd["passed"] or gc["passed"]   # literal, or chance-corrected (IR-84-03); both recorded
+    dots_ok = gd["passed"]  # literal only; chance correction is diagnostic, never an override
     if not (gs["passed"] and dots_ok):
         (ROOT / "evidence/e3_duplicate_stop.json").write_text(json.dumps(dict(surface=gs, dots=gd, chance=gc), indent=1))
         raise SystemExit("uniqueness gate failed -> logged as duplicate; stopping without a TIFF")

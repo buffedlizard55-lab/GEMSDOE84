@@ -1,56 +1,173 @@
 {
-  "session": "arena/4ac2f662-gemsdoe84",
-  "date_utc": "2026-10-22",
-  "hypothesis": "H84-1/H84-3 (fused): blind, altered fault conduits produce a local RTP magnetic-amplitude MINIMUM (demagnetization from hydrothermal alteration) spatially conjugate with a local surface-conductivity HIGH (clay-cap/argillic alteration), and/or a basement-high (shallow depth_to_base_surf) that is anomalously conductive at surface (a fault-controlled conduit cross-cutting a horst). Both are pure functions of 4 official bands (rtp, cond_surf, tmi_hg, depth_to_base_surf); neither uses labels.tif as a model input.",
-  "mechanism": "Hydrothermal fluid circulation along a fault destroys primary magnetite (demagnetization) and deposits clay/argillic alteration minerals that raise near-surface electrical conductivity; the alteration halo can be broad and blind (no surface rupture) when the fault does not reach the surface expression mapped by USGS/INGENIOUS, which is exactly the catalogue-gap the competition is scoring for.",
-  "named_non_fault_mimic": "Thick, undeformed sedimentary basin-fill produces the SAME joint signature (low magnetization, high near-surface conductivity from clay/groundwater) with NO fault control whatsoever. A Sato ridge/vesselness filter was used specifically to try to prefer elongated, fault-aligned corridors over this basin-fill's broad, equant lows -- diagnostics below show this guard was insufficient.",
-  "evidence_sources": [
-    {"claim": "Hydrothermal demagnetization / magnetic-low association with geothermal fault conduits is a real, reproducible phenomenon in Basin-and-Range and caldera settings", "class": "OFFICIAL/LITERATURE",
-     "links": [
-       "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013JB010802",
-       "https://www.usgs.gov/publications/high-resolution-aeromagnetic-mapping-volcanic-terrain-yellowstone-national-park",
-       "https://www.mdpi.com/2075-163X/16/8/774"
-     ]},
-    {"claim": "Competition metric formula (DTI, alpha=0.2, beta=0.8, R=300m triangular kernel)", "class": "OFFICIAL",
-     "links": ["https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/"]}
-  ],
-  "holdout_dti": {
-    "evaluator_version": "gems84.metric v1 (crop-exact finite-kernel), gems84.holdout v1 (6x6 spatially-checkerboarded blocks, 6 folds, 3px/300m buffer, whole-segment withholding)",
-    "class": "HOLDOUT-DTI",
-    "note": "Computed against the PUBLIC USGS/INGENIOUS fault catalogue (labels.tif), which is NOT the private expert-labelled test set the real competition scores against. This is the only ground truth available in any sandbox in this lineage.",
-    "candidates_tested": {
-      "H84-1_alone": {"pooled_DTI_at_44090px": 0.0164, "fold_95CI": [0.0058, 0.0125], "n_folds": 6},
-      "H84-3_alone": {"pooled_DTI_at_44090px": 0.0166, "fold_95CI": [0.0055, 0.0183], "n_folds": 6},
-      "H84_fused_max": {"pooled_DTI_by_budget": {"15000": 0.0120, "30000": 0.0184, "44090": 0.0219,
-                          "60000": 0.0250, "90000": 0.0284, "120000": 0.0314, "150000": 0.0349,
-                          "200000": 0.0399, "300000": 0.0466, "450000": 0.0530, "700000": 0.0578,
-                          "1000000": 0.0601}},
-      "H84_4_scarp_alteration_concordance": {"pooled_DTI_by_budget": {"15000": 0.0053, "30000": 0.0099,
-                          "44090": 0.0134, "60000": 0.0163, "90000": 0.0225}},
-      "uniform_random_control": {"pooled_DTI_by_budget": {"44090": 0.0608, "150000": 0.1382, "1000000": 0.1536},
-                                  "fold_95CI_at_44090": [0.0355, 0.0412]}
-    },
-    "verdict_detail": "At every emission budget tested (15,000 to 1,000,000 px, i.e. 0.3%-19.4% of the 5,164,300-px footprint), a spatially-UNIFORM-random field outperforms the fused H84 field by 2.8x-4.3x. This gap is NOT explained by the leakage canary (all AUCs 0.507-0.517, i.e. barely above the 0.500 chance line and nowhere near the 0.90 leakage threshold) -- it is explained by a spatial-coverage mechanism quantified directly: 8.16% of the entire footprint lies within the 300 m kernel radius of SOME mapped fault (the catalogue is geographically pervasive across this Basin-and-Range terrain), so ANY spatially-uniform emission earns substantial credit purely from ubiquity, while the H84 field concentrates its highest-confidence mass in specific sub-basins whose geometry does not coincide with where the mapped range-front fault network actually runs -- i.e. the named non-fault mimic (basin-fill lows) dominates the field's extreme tail despite the Sato ridge-filter guard."
+  "schema": "gems84-release-audit-v1",
+  "audited_utc": "2026-10-23T00:30:39.347301+00:00",
+  "lane": "H84-THMS (inherited; no new lane selected)",
+  "hypothesis": "Thermal/sinter evidence corroborates geomorphic fault-valve corridors.",
+  "mechanism": "Existing H84-THMS candidate; audit only, no new fit or prediction.",
+  "named_nonfault_mimic": "Lateral thermal outflow in an alluvial aquifer; pluvial shoreline benches.",
+  "new_candidate": null,
+  "new_raster_sha256": null,
+  "new_submission_name": null,
+  "note": "NEGATIVE: literal registry overlap blocks H84; archived TIFF is format-valid research only. No slot authorized.",
+  "verdict": "negative",
+  "stop_required": true,
+  "download_allowed_for_research": true,
+  "submission_authorized": false,
+  "new_experiments_executed": 0,
+  "submission_slots_used_this_session": 0,
+  "holdout_dti": null,
+  "holdout_status": "Not rerun. Archived A5 uses full-catalogue registry halos during hide-and-recover; not certified leakage-free.",
+  "organizer_confirmed_score": null,
+  "witness_provenance": {
+    "repository": "buffedlizard55-lab/17GEMSDOE",
+    "git_blob": "374c88b1da2b803e2ed160de467fd71ae114010d",
+    "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "url": "https://api.github.com/repos/buffedlizard55-lab/17GEMSDOE/git/blobs/374c88b1da2b803e2ed160de467fd71ae114010d",
+    "trust": "Team registry artifact, not an official scientific source."
   },
-  "correlation_vs_registry": {
-    "class": "LANE-CHECK, PARTIAL",
-    "note": "This is a freshly-initialized repository (GEMSDOE84) with no prior submissions of its own to compare against. We cross-checked our implementation's uniform-random baseline (0.0498-0.0608 depending on exact holdout construction) against the independently-computed uniform-random baseline reported in a sibling repository's own knowledge base (buffedlizard55-lab/GEMSDOE32, commit c0c06ac8-era checkout, docs/research and knowledge/02_the_ceiling_and_the_instrument.md: 'uniform random (3 seeds) 0.0498') -- same order of magnitude, different holdout construction, which cross-validates that our metric/holdout implementation is not pathologically broken. We did NOT compute pixel-level rank correlation against every raster in every sibling repo (80+ repositories); that full audit is listed as a limitation below.",
-    "limitation": "Full rank-correlation / 3px-overlap duplicate-lane check against all registry rasters was not completed given the 3-experiment/time budget; see 'Suggested next steps' in README.md."
+  "audited_artifact": {
+    "name": "gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros",
+    "path": "submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif",
+    "sha256": "509fa4971a3cdf119a0ae7140b0fac31860d063af9bcc914266d98294f2ba7b5",
+    "newly_generated": false
   },
-  "raster_sha256": {
-    "zeros_variant": "e65539d392345b10...(see registry/submission_receipts.json for full digest)",
-    "nan_variant": "69674e62fe45cd27...(see registry/submission_receipts.json for full digest)"
+  "certificate": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "witness_file": "/home/user/GEMSDOE84/.cache/audit/registry-witness.tif",
+    "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "positive_pixels": 5167373,
+    "allowed_pixels": 5106385,
+    "uncovered_allowed_pixels": 0,
+    "covered_allowed_fraction": 1.0,
+    "universal_overlap_blocker": true,
+    "overlap_limit": 0.7,
+    "support_definition": "finite prediction > 0 (inherited literal support rule)",
+    "implication": "Every nonempty candidate dot set in the allowed domain has forward overlap 1.0 with this prior; therefore it cannot pass the 0.70 gate."
+  },
+  "registry_comparison": {
+    "my_file": null,
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "my_dots": 37654,
+    "candidate_decoded_sha256": "2f4190b4e72e9a129ad7125daa9188c6918ba3937d82f50c23301f2047b68ce9",
+    "candidate_file_sha256": "509fa4971a3cdf119a0ae7140b0fac31860d063af9bcc914266d98294f2ba7b5",
+    "rho_limit": 0.9,
+    "overlap_limit": 0.7,
+    "jaccard_limit": 0.5,
+    "registry_rasters_expected": 1,
+    "registry_rasters_checked": 1,
+    "complete_accessible_scan": false,
+    "missing_or_invalid": 0,
+    "source_errors": [],
+    "worst_spearman_full_footprint": 0.06683575204996181,
+    "worst_rho_submission": "17GEMSDOE E-proba-multiscale (literal witness)",
+    "worst_dot_overlap": 1.0,
+    "worst_overlap_submission": "17GEMSDOE E-proba-multiscale (literal witness)",
+    "worst_jaccard_dot_sets": 0.007286874781441169,
+    "worst_jaccard_submission": "17GEMSDOE E-proba-multiscale (literal witness)",
+    "byte_unique_among_checked": true,
+    "pixel_unique_among_checked": true,
+    "duplicate_count": 1,
+    "unique": false,
+    "rows": [
+      {
+        "repo": "buffedlizard55-lab/17GEMSDOE",
+        "submission": "17GEMSDOE E-proba-multiscale (literal witness)",
+        "file": "/home/user/GEMSDOE84/.cache/audit/registry-witness.tif",
+        "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+        "decoded_sha256": "11cb7dffcc88926fee8260f61df01d7712d3a7bb34fcc1bb333fb6b47f77ec05",
+        "their_dots": 5167373,
+        "my_dots_within_3px_of_theirs": 1.0,
+        "their_dots_within_3px_of_mine": 0.15009580303183068,
+        "spearman_full_footprint": 0.06683575204996181,
+        "jaccard_dot_sets": 0.007286874781441169,
+        "identical_bytes": false,
+        "identical_decoded_predictions": false,
+        "duplicate_by_rho": false,
+        "duplicate_by_overlap": true,
+        "duplicate_by_jaccard": false
+      }
+    ],
+    "jaccard_diagnostic_only": true,
+    "verdict": "negative",
+    "stop_required": true,
+    "candidate_rank_variation": true,
+    "scope": "All hash-verified accessible entries in the indexed public owner-repository inventory; not a complete organizer registry. External/private/unlinked/inaccessible files may be absent. Reverse overlap is diagnostic only."
   },
   "validator_output": {
-    "class": "MEASURED",
-    "crs_matches_template": true, "shape_matches_template": true, "transform_matches_template": true,
-    "dtype_float32": true, "single_band": true,
-    "zeros_variant": {"min": 0.0, "max": 1.0, "n_nonfinite_px": 0, "all_pass": true},
-    "nan_variant": {"min": 0.0, "max": 1.0, "n_nonfinite_px": 7114860, "all_pass": true,
-                    "note": "NaN only OUTSIDE the scoring footprint, matching the spec's literal text; shipped as a SECONDARY file because of the user's own reported portal error ('Predicted values must be in range [0, 1]') on a NaN-outside file from a different pipeline -- see README Known Issues."}
+    "file": "/home/user/GEMSDOE84/submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif",
+    "bytes": 144420,
+    "sha256": "509fa4971a3cdf119a0ae7140b0fac31860d063af9bcc914266d98294f2ba7b5",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030664964579045773,
+    "emitted_positive_pixels": 37654,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 37654,
+    "footprint_fraction": 0.007286874781441169
   },
-  "submission_name": "gemsdoe84-h84-fused-demag-cond-corridor-20261022T000000Z-auditonly",
-    "submission_note_140char": "AUDIT ONLY, NOT RECOMMENDED. H84 demag+conductivity corridor; holdout DTI 2.8-4.3x BELOW uniform-random at matched mass.",
-  "verdict": "negative",
-  "verdict_reason": "Failed to beat the uniform-random control at every tested emission budget on our own spatially-blocked holdout against the public fault catalogue. Per the parallel-run protocol, a submission slot must not be spent on an idea that has not beaten the holdout baseline. This artifact is published for audit, reproducibility and as a documented negative result only."
+  "pre_placement_stop": true,
+  "final_duplicate": true,
+  "limitations": [
+    "A single pinned witness refutes uniqueness; no complete registry refresh was performed.",
+    "Surface is absent locally; its correlation is not invented. Universal saturation proves a pre-placement impossibility.",
+    "No organizer submission receipt, current leaderboard or weekly cap was retrieved.",
+    "Cached training/external feature stacks are absent from this checkout."
+  ],
+  "raster_sha256": null,
+  "submission_name": null,
+  "submission_note": "NEGATIVE: literal registry overlap blocks H84; archived TIFF is format-valid research only. No slot authorized.",
+  "download_allowed": true,
+  "submission_file": "docs/downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif",
+  "registry_correlation_overlap": {
+    "duplicate": true,
+    "complete_accessible_scan": false,
+    "overlap_3px": 1.0,
+    "rank_correlation": 0.06683575204996181,
+    "pre_placement_stop": true
+  },
+  "submission_slots_used": 0
 }

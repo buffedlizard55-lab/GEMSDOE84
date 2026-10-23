@@ -9,9 +9,10 @@ dots 37,654 ✓ · binary {0,1} ✓ · 0 on catalogue ✓ · min inter-dot 2.828
 `research/why-h33-scored-02778.md` §1/§4 claims median 5.385 px, max 12.000 px, "0 dots
 beyond 1.2 km" — **contradicted**. "Bottleneck 1 (1.2 km truncation)" and every design
 justification built on it (incl. parts of H84-THMS) must be re-read with this correction.
-The collar/pruning genealogy (37,654 = D2.8 minus 2-px collar dots, score chain
-0.2600→0.2708→0.2778, all ORGANIZER-CONFIRMED per owner receipts) is *not* impugned by
-this — only the distance-distribution claims are.
+The collar/pruning genealogy and score chain are **prior-session / owner-supplied claims, not
+re-verified here** (a parallel 2026-10-23 review traces H33 to a GEMSDOE28 BASE-0.2708 and
+notes no organizer receipt is on file in this repo — see research/SESSION_REVIEW_20261023.md).
+Only H33's file invariants and distance distribution were directly measured this session.
 
 ## 2. Why H33 scored 0.2778 (corrected PhD reading)
 H33 wins because of *emission hygiene on a wide-area field*, not catalogue hugging:
@@ -39,9 +40,12 @@ Pooled over 4 spatial folds, 59,282 withheld positives, budget-matched 37,653 do
 - A3 soft fractional: 0.1356 — negative as linear-fractional (bang-bang) theory predicts
 - A4 μ-sharpness-adaptive spacing: 0.1561 [0.1305, 0.1862] — FALSIFIED
 Canary (EXP-1): max single-channel symmetric AUC 0.5735 ≤ 0.90 PASS (59 distance-blind
-channels). Verdict: **lane negative**. The shipped candidate TIF is the A0 control
-surface (full-catalogue training), labelled UNPROMOTED; H84-THMS remains this repo's
-primary promoted file. Selector decides any portal use (protocol §6).
+channels). Verdict: **lane negative**. The candidate TIF (A0 control surface, full-catalogue training) is
+**RESEARCH ONLY / DO NOT SUBMIT**: on merged main, H84-THMS itself is STOPPED
+(registry/release_status.json, submission_authorized=false) and this candidate's literal
+forward overlap vs the space-filling 17GEMSDOE witness (positive on all 5,167,373
+footprint px) measures **1.0 > 0.70** — no nonempty candidate can pass the literal
+any-raster gate until the owner revises the support definition.
 
 ## 4. Can anything beat 0.2778? (judgement, not a score)
 Yes in principle — the 0.4413 OWNER-REPORTED leader proves headroom exists — but the

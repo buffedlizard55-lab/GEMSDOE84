@@ -37,6 +37,8 @@ def top_k_emission(field, valid, k):
 
 
 def main():
+    from audit_release import assert_lane_open
+    assert_lane_open()
     t0 = time.time()
     bands, feat_valid, _ = F.load_stack()
     fault, label_valid, _ = F.load_labels()
