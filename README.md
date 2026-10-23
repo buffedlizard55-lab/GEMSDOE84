@@ -13,6 +13,17 @@
 > - **ZIP SHA-256:** `a97e3a38713321ca6cee024d8d91ece45c9c4f75416afd2ade102ecc4bb91653`
 > - **Weekly Live Submission Slots Automatically Consumed:** `0` (`weekly_live_slot_consumed = false`)
 
+
+## CURRENT STATE (2026-10-23 Controlled PRUNE Session)
+
+- **Parent R0:** `h33-h33-2-b2` (GEMSDOE32) — 37,654 dots, 0 within 2 px, 2,171 within 3 px, median d_cat 19.65 px, **claimed 0.2778 = CLAIM** (no receipt in `ledger/`), verified sha256 `c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9`
+- **Best receipt:** _none yet this week_ — last family anchor 0.2778 CLAIM; H84-KTHM `0.1654 HOLDOUT-DTI` and H84-THMS/H84-CSAT archived as SECONDARY (not this session’s lineage)
+- **TOP_PUBLIC:** 0.4413 OWNER-REPORTED (2026-10-22 snapshot `registry/leaderboard_snapshot.json` rank 1 xiaofanhu) — human to confirm date on leaderboard; no other target valid
+- **Slots left this week:** 3/3 (this session consumed 0 live slots, 3 BUILT variants in `releases/`); total to deadline 2026-12-03: ~6 weeks → ~18 slots remain
+- **Next 3 slots (this AXIS=PRUNE):** 1) PRUNE3 `h33-h33-2-b2-PRUNE3-20261023-10737d46` (5.77% changed, pred +0.006) → 2) PRUNE1 `h33-h33-2-b2-PRUNE1-20261023-29e1ae46` (6.76%, pred −0.004) → 3) PRUNE4 `h33-h33-2-b2-PRUNE4-20261023-f1facecf` (10.16%, pred +0.002). See `SLOT_PLAN.md` and `docs/SUBMIT.md` for names/notes/receipts.
+- **Gates:** All 3 `-zeros.tif` PASS format (CRS/shape/transform/dtype, 37,654 dots, n_nan 0, range [0,1], zero on catalogue 60,988, SHA not in ledger). NaN twins are spec-literal portals-failing twins (IR-57-NAN-02). No rank-correlation/overlap uniqueness gates applied (per brief).
+
+
 ## Standing prompt — read at the start of every session
 
 ## 1. Project Mandate & PARALLEL-RUN PROTOCOL Governance
