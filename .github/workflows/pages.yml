@@ -26,9 +26,22 @@ jobs:
           python scripts/build_run_card.py
           python scripts/build_site.py
           git diff --exit-code -- docs index.html executive-summary.html run_card.json evidence/run-card.json evidence/run_card.json registry/run_card.json
+      - name: Detect configured publishing mode
+        id: pages_mode
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mode=$(gh api "repos/$GITHUB_REPOSITORY/pages" --jq .build_type)
+          echo "build_type=$mode" >> "$GITHUB_OUTPUT"
+          if [ "$mode" != workflow ]; then
+            echo "Repository uses legacy Pages; main/root publishing serves the generated root entry points. No settings change attempted."
+          fi
       - uses: actions/configure-pages@v5
+        if: steps.pages_mode.outputs.build_type == 'workflow'
       - uses: actions/upload-pages-artifact@v3
+        if: steps.pages_mode.outputs.build_type == 'workflow'
         with:
           path: docs
       - uses: actions/deploy-pages@v4
+        if: steps.pages_mode.outputs.build_type == 'workflow'
         id: deployment
