@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "evidence_class": "REBUILD (byte-identity against a SHA-256-pinned parent artifact)",
-  "generated_utc": "2026-10-23T15:23:23Z",
-  "git_sha": "cd20b0c1113c6e193b875a0ae7a74651bf97f9ae",
+  "generated_utc": "2026-10-23T16:02:28Z",
+  "git_sha": "322cc9b80976aa437f3f5f53973e9a80d8a937b4",
   "parent": {
     "candidate_id": "H33-2-B2",
     "slug": "h33-h33-2-b2",
@@ -93,5 +93,5 @@
     "base_sha256_matches_pin": true
   },
   "all_checks_passed": true,
-  "elapsed_s": 7.2
+  "elapsed_s": 6.0
 }

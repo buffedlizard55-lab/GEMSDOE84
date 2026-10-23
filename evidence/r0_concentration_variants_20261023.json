@@ -1,0 +1,657 @@
+{
+  "generated_utc": "2026-10-23T16:16:03Z",
+  "git_head_sha": "322cc9b80976aa437f3f5f53973e9a80d8a937b4",
+  "seed": 520810,
+  "axis": "CONCENTRATION",
+  "axis_assignment": "not assigned by human (clarifying questions skipped 2026-10-23, third consecutive session); CONCENTRATION is the next unbuilt axis on merged main after MASS/SNAP/PRUNE (IR-DEC-08 names CONCENTRATION and RELIEF as unbuilt)",
+  "manifest_files_verified": 23,
+  "parent_r0": {
+    "id": "h33-h33-2-b2",
+    "live_score": 0.2778,
+    "evidence_label": "CLAIM",
+    "n_dots": 37654,
+    "digest8": "e5eb6e7e",
+    "nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "exact_rebuild_verified": true
+  },
+  "ranking_audit": {
+    "canonical_ranking_reproduces_prune_dgt1in_removals": true,
+    "mass_concordance": {
+      "drop3765": {
+        "overlap_dots": 3045,
+        "of_n": 3765,
+        "overlap_frac": 0.8088,
+        "shipped_dropped_mean_canonical_gain": 0.8644,
+        "canonical_bottom_mean_gain": 0.8477
+      },
+      "drop7531": {
+        "overlap_dots": 6408,
+        "of_n": 7531,
+        "overlap_frac": 0.8509,
+        "shipped_dropped_mean_canonical_gain": 0.9529,
+        "canonical_bottom_mean_gain": 0.9378
+      }
+    }
+  },
+  "block_design": {
+    "block_px": 50,
+    "block_km": 5.0,
+    "eligible_blocks": 2046,
+    "prior_percentiles": {
+      "0": 0.05585,
+      "10": 0.07476,
+      "25": 0.08711,
+      "50": 0.10746,
+      "75": 0.12718,
+      "90": 0.14287,
+      "100": 0.20838
+    },
+    "prior_mean_bot50": 0.08648,
+    "prior_mean_top50": 0.12996,
+    "prior_mean_top25": 0.14277,
+    "r0_shares": {
+      "dots_bot50": 11807,
+      "share_bot50": 0.3136,
+      "dots_top50": 24930,
+      "share_top50": 0.6621,
+      "dots_top25": 14947,
+      "share_top25": 0.397,
+      "dots_outside_eligible_blocks": 917,
+      "n_dots": 37654
+    },
+    "density_cv_definition": "gems84.snap.density_cv: std/mean of dots-per-footprint-pixel over blocks with any footprint (10px grid crop)",
+    "r0_density_cv": {
+      "1km_10px": 1.8834,
+      "5km_50px": 0.9608,
+      "10km_100px": 0.8012
+    },
+    "brief_reported_best_cv": "0.51-0.59 (UNVERIFIED: definition/block size unstated; R0 measures 1.88/0.96/0.80 at 1/5/10 km under the definition above, so the reported range is not comparable and is not used as a target)"
+  },
+  "pre_registered_ordering": "conc arms >= R0 >= spread (MODEL); t50 vs t25 unordered; every |change| may be <0.01 = no evidence singly (brief s5); the signed t25-vs-spread pair at equal dose is the primary contrast",
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-conc5km-t50-m3765-20261023-6310efe0",
+      "key": "t50m3765",
+      "parent": "h33-h33-2-b2",
+      "axis": "CONCENTRATION",
+      "value": "5km-t50-move3765",
+      "n_dots": 37654,
+      "dots_added": 3765,
+      "dots_removed": 3765,
+      "dots_moved": 3765,
+      "pct_moved_vs_r0": 10.0,
+      "pct_changed_vs_r0": 20.0,
+      "pct_changed_definition": "symmetric-difference dots / 37654 * 100 (a move of k dots counts 2k), as in MASS/PRUNE rows",
+      "jaccard_vs_r0": 0.818199,
+      "donor_blocks": "bot50",
+      "recipient_blocks": "top50",
+      "d_cat_min_px": 2.2361,
+      "added_dots_d_cat_min_px": 3.0,
+      "density_cv": {
+        "1km_10px": 1.847,
+        "5km_50px": 1.0131,
+        "10km_100px": 0.8425
+      },
+      "block_shares": {
+        "dots_bot50": 8042,
+        "share_bot50": 0.2136,
+        "dots_top50": 28695,
+        "share_top50": 0.7621,
+        "dots_top25": 17303,
+        "share_top25": 0.4595,
+        "dots_outside_eligible_blocks": 917,
+        "n_dots": 37654
+      },
+      "build_stats": {
+        "n_moved": 3765,
+        "removed_gain_mean": 0.883254,
+        "refill_gain_mean": 1.175599,
+        "refill_gain_min": 0.578149,
+        "cand_pool_in_recip": 12581
+      },
+      "digest8_mask": "360dca22",
+      "nan_tif": {
+        "path": "releases/h33-h33-2-b2-conc5km-t50-m3765-20261023-6310efe0.tif",
+        "sha256": "6310efe0df90949cb8e5a8463d450e52fb9ed1aa212e0c045a11ceda70ce5ee5",
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "no_nan_in_footprint": true,
+        "values_in_0_1": true,
+        "outside_footprint_encoding_ok": true,
+        "n_dots": 37654,
+        "catalogue_mass": 0.0,
+        "gate_passed": true
+      },
+      "zeros_tif": {
+        "path": "releases/h33-h33-2-b2-conc5km-t50-m3765-20261023-6310efe0-zeros.tif",
+        "sha256": "cb7e964222c6bb5fe71c8163dda26a84e39ff49738b071c69e7d52237e01c537",
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "no_nan_in_footprint": true,
+        "values_in_0_1": true,
+        "outside_footprint_encoding_ok": true,
+        "n_dots": 37654,
+        "catalogue_mass": 0.0,
+        "gate_passed": true
+      },
+      "form_note": "h33-h33-2-b2; CONC 5km move 3765 (10%) low->high prior blocks, 37654; pred -0.004..+0.013",
+      "predicted_change": "-0.004 to +0.013 DTI (MODEL: 5km-block move of 3765 dots at fixed count; credit scenario in receipt)",
+      "model_scenario": {
+        "n_move": 3765,
+        "assumed_mean_live_credit_in": [
+          0.035,
+          0.085
+        ],
+        "assumed_mean_live_credit_out": [
+          0.02,
+          0.055
+        ],
+        "predicted_live_change": [
+          -0.0039,
+          0.0127
+        ],
+        "basis": "credit-scenario on incumbent_anatomy anchor (D=18262.37 at s=0.2778 CLAIM; marginal bar 0.0556); c ranges bracket second-tier refill dots vs weakest retained-class dots. No ranking-unit sum is divided by D (IR-DEC-11)."
+      },
+      "mechanism_card": {
+        "hypothesis": "Shifting 10% of R0's dots from the bottom-half 5 km blocks (by mean parent field q) into the top half at fixed count gains DTI because Basin-and-Range faulting is clustered at km scale (systems, relays, step-overs): blocks where independent physics already agree host denser unmapped structure per ridge pixel.",
+        "mechanism": "Per-dot ranking saturates locally (maximal 2.8 px packing); the remaining allocation question is geographic. Donor dots are the lowest exact-gain R0 dots in low-prior blocks; refills are the greedy top-gain canonical-pool dots in high-prior blocks at d_cat>=3 px, so only block membership changes.",
+        "non_fault_mimic": "Block q tracks data, not faults: GeoDAWN Area 1 vs Area 2 line spacing, lidar/radiometric coverage edges, and lineament-rich volcanic/caldera terrains raise mean q without raising throughgoing-fault density.",
+        "predicted_sign_and_size": "Bracketing, positive center: -0.004 to +0.013 DTI (MODEL credit scenario).",
+        "falsifier": "Live <= R0 CLAIM - 0.002 while spread-m2400 >= R0 falsifies the clustering prior at 5 km: high-q blocks are then catalogue-complete (already mapped), and residual truth sits in quiet blocks."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-conc5km-t25-m2400-20261023-caadfcce",
+      "key": "t25m2400",
+      "parent": "h33-h33-2-b2",
+      "axis": "CONCENTRATION",
+      "value": "5km-t25-move2400",
+      "n_dots": 37654,
+      "dots_added": 2400,
+      "dots_removed": 2400,
+      "dots_moved": 2400,
+      "pct_moved_vs_r0": 6.37,
+      "pct_changed_vs_r0": 12.75,
+      "pct_changed_definition": "symmetric-difference dots / 37654 * 100 (a move of k dots counts 2k), as in MASS/PRUNE rows",
+      "jaccard_vs_r0": 0.880162,
+      "donor_blocks": "bot50",
+      "recipient_blocks": "top25",
+      "d_cat_min_px": 2.2361,
+      "added_dots_d_cat_min_px": 3.0,
+      "density_cv": {
+        "1km_10px": 1.855,
+        "5km_50px": 0.9985,
+        "10km_100px": 0.8291
+      },
+      "block_shares": {
+        "dots_bot50": 9407,
+        "share_bot50": 0.2498,
+        "dots_top50": 27330,
+        "share_top50": 0.7258,
+        "dots_top25": 17347,
+        "share_top25": 0.4607,
+        "dots_outside_eligible_blocks": 917,
+        "n_dots": 37654
+      },
+      "build_stats": {
+        "n_moved": 2400,
+        "removed_gain_mean": 0.827236,
+        "refill_gain_mean": 1.224266,
+        "refill_gain_min": 0.578149,
+        "cand_pool_in_recip": 7443
+      },
+      "digest8_mask": "56ac96fb",
+      "nan_tif": {
+        "path": "releases/h33-h33-2-b2-conc5km-t25-m2400-20261023-caadfcce.tif",
+        "sha256": "caadfccefec8e5202c0b8f10884a972ae49130a79517f10e34d0cf54008a01a7",
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "no_nan_in_footprint": true,
+        "values_in_0_1": true,
+        "outside_footprint_encoding_ok": true,
+        "n_dots": 37654,
+        "catalogue_mass": 0.0,
+        "gate_passed": true
+      },
+      "zeros_tif": {
+        "path": "releases/h33-h33-2-b2-conc5km-t25-m2400-20261023-caadfcce-zeros.tif",
+        "sha256": "e264e73a95540812a15e11c2355e33afebb93c8fc3617c5d19461de215d3b2f6",
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "no_nan_in_footprint": true,
+        "values_in_0_1": true,
+        "outside_footprint_encoding_ok": true,
+        "n_dots": 37654,
+        "catalogue_mass": 0.0,
+        "gate_passed": true
+      },
+      "form_note": "h33-h33-2-b2; CONC 5km move 2400 (6.4%) low->top-quartile blocks, 37654; pred -0.002..+0.009",
+      "predicted_change": "-0.002 to +0.009 DTI (MODEL: 5km-block move of 2400 dots at fixed count; credit scenario in receipt)",
+      "model_scenario": {
+        "n_move": 2400,
+        "assumed_mean_live_credit_in": [
+          0.04,
+          0.09
+        ],
+        "assumed_mean_live_credit_out": [
+          0.02,
+          0.055
+        ],
+        "predicted_live_change": [
+          -0.0019,
+          0.0087
+        ],
+        "basis": "credit-scenario on incumbent_anatomy anchor (D=18262.37 at s=0.2778 CLAIM; marginal bar 0.0556); c ranges bracket second-tier refill dots vs weakest retained-class dots. No ranking-unit sum is divided by D (IR-DEC-11)."
+      },
+      "mechanism_card": {
+        "hypothesis": "Same mechanism, stronger per-dot contrast: refills only into the top-quartile prior blocks. If the km prior is real, this arm should match or beat conc-t50 per receipt despite moving 36% fewer dots; if capacity-driven second-tier placements dominate, it will not.",
+        "mechanism": "Top-quartile blocks are the most packing-saturated (greedy capacity 2,496 dots measured), so dose is capacity-limited to 2,400; the arm therefore also prices saturation: refills must use residual ridge gaps between retained dots.",
+        "non_fault_mimic": "Saturated blocks are saturated because ridge detectors fire densely on non-fault lineament swarms (joint sets, flow banding, yardang/dune lineations).",
+        "predicted_sign_and_size": "Bracketing: -0.002 to +0.009 DTI (MODEL). Pre-registered >= spread-m2400; unordered vs t50 (contrast vs dose).",
+        "falsifier": "Live < conc-t50 receipt by >=0.002 with conc-t50 > R0: concentration helps only before saturation; top-quartile infill is kernel-redundant with retained dots."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-spread5km-b50-m2400-20261023-ceb1073d",
+      "key": "spreadm2400",
+      "parent": "h33-h33-2-b2",
+      "axis": "CONCENTRATION",
+      "value": "spread5km-move2400",
+      "n_dots": 37654,
+      "dots_added": 2400,
+      "dots_removed": 2400,
+      "dots_moved": 2400,
+      "pct_moved_vs_r0": 6.37,
+      "pct_changed_vs_r0": 12.75,
+      "pct_changed_definition": "symmetric-difference dots / 37654 * 100 (a move of k dots counts 2k), as in MASS/PRUNE rows",
+      "jaccard_vs_r0": 0.880162,
+      "donor_blocks": "top25",
+      "recipient_blocks": "bot50",
+      "d_cat_min_px": 2.2361,
+      "added_dots_d_cat_min_px": 3.0,
+      "density_cv": {
+        "1km_10px": 1.8168,
+        "5km_50px": 0.9013,
+        "10km_100px": 0.771
+      },
+      "block_shares": {
+        "dots_bot50": 14207,
+        "share_bot50": 0.3773,
+        "dots_top50": 22530,
+        "share_top50": 0.5983,
+        "dots_top25": 12547,
+        "share_top25": 0.3332,
+        "dots_outside_eligible_blocks": 917,
+        "n_dots": 37654
+      },
+      "build_stats": {
+        "n_moved": 2400,
+        "removed_gain_mean": 1.119625,
+        "refill_gain_mean": 0.817429,
+        "refill_gain_min": 0.371171,
+        "cand_pool_in_recip": 6156
+      },
+      "digest8_mask": "550787e0",
+      "nan_tif": {
+        "path": "releases/h33-h33-2-b2-spread5km-b50-m2400-20261023-ceb1073d.tif",
+        "sha256": "ceb1073d77869b920cd82c6283bb27b68af4c12b95c02416fcacd7ee9bc07422",
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "no_nan_in_footprint": true,
+        "values_in_0_1": true,
+        "outside_footprint_encoding_ok": true,
+        "n_dots": 37654,
+        "catalogue_mass": 0.0,
+        "gate_passed": true
+      },
+      "zeros_tif": {
+        "path": "releases/h33-h33-2-b2-spread5km-b50-m2400-20261023-ceb1073d-zeros.tif",
+        "sha256": "bd9e30dc346eca9675fdeecc5d25e21323ee4a299a15351d6059eb2a4f60a0d2",
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "no_nan_in_footprint": true,
+        "values_in_0_1": true,
+        "outside_footprint_encoding_ok": true,
+        "n_dots": 37654,
+        "catalogue_mass": 0.0,
+        "gate_passed": true
+      },
+      "form_note": "h33-h33-2-b2; SPREAD 5km move 2400 (6.4%) high->low prior blocks, 37654; pred -0.006..+0.003",
+      "predicted_change": "-0.006 to +0.003 DTI (MODEL: 5km-block move of 2400 dots at fixed count; credit scenario in receipt)",
+      "model_scenario": {
+        "n_move": 2400,
+        "assumed_mean_live_credit_in": [
+          0.015,
+          0.05
+        ],
+        "assumed_mean_live_credit_out": [
+          0.03,
+          0.065
+        ],
+        "predicted_live_change": [
+          -0.0062,
+          0.0025
+        ],
+        "basis": "credit-scenario on incumbent_anatomy anchor (D=18262.37 at s=0.2778 CLAIM; marginal bar 0.0556); c ranges bracket second-tier refill dots vs weakest retained-class dots. No ranking-unit sum is divided by D (IR-DEC-11)."
+      },
+      "mechanism_card": {
+        "hypothesis": "Reverse arm: spreading mass into low-prior blocks loses DTI under the clustering hypothesis. It wins only if the completeness mechanism dominates -- high-q blocks are already captured by USGS/INGENIOUS mapping (masked from labels), so undiscovered faults disproportionately remain where the field and the catalogue are quiet.",
+        "mechanism": "Mirror construction of conc-t25 (same donor/recipient block sets, roles swapped, same pool/selector/spacing), giving a signed dose pair at equal moved count.",
+        "non_fault_mimic": "Low-q blocks may be low because thick Quaternary cover hides scarps (blind faults present but field-blind) -- the genuine signal this arm hopes for if it wins; mimicked by playa/evaporite lineaments in the same basins.",
+        "predicted_sign_and_size": "Negative center: -0.006 to +0.003 DTI (MODEL).",
+        "falsifier": "Live >= both CONC receipts: the km block prior is anti-informative for NEW-fault labels; allocation should flatten or invert the prior (completeness beats clustering)."
+      }
+    }
+  ],
+  "report_only_diagnostics": {
+    "evidence_label": "PROXY",
+    "note": "REPORT ONLY (never gates, Brief s6). Fold-clean arms rebuild each CONC move against the fold VISIBLE catalogue (d_vis>=3 refills), same block prior (q is catalogue-masked only via emission rules, as in MASS/PRUNE), move counts scaled by |R0_vis|/37654 and capped at greedy capacity.",
+    "fold_clean_moved_dots": {
+      "20": {
+        "t50m3765": 3880,
+        "t25m2400": 2473,
+        "spreadm2400": 2473
+      },
+      "21": {
+        "t50m3765": 3899,
+        "t25m2400": 2486,
+        "spreadm2400": 2486
+      }
+    },
+    "leakage_canary": {
+      "gate": "single_feature_holdout_auc_canary",
+      "threshold": 0.9,
+      "n_features_checked": 27,
+      "max_single_feature_auc": 0.5944,
+      "passed": true,
+      "withheld_positives_seed20": 11321,
+      "withheld_positives_seed21": 11572,
+      "total_withheld_positive_pixels": 22893,
+      "top_10_features": [
+        {
+          "feature": "q_posterior",
+          "auc_seed20": 0.6035,
+          "auc_seed21": 0.5853,
+          "auc_mean": 0.5944,
+          "abs_strength": 0.5944
+        },
+        {
+          "feature": "lidar_scarp_composite",
+          "auc_seed20": 0.5855,
+          "auc_seed21": 0.5616,
+          "auc_mean": 0.5735,
+          "abs_strength": 0.5735
+        },
+        {
+          "feature": "h33_union",
+          "auc_seed20": 0.581,
+          "auc_seed21": 0.5583,
+          "auc_mean": 0.5696,
+          "abs_strength": 0.5696
+        },
+        {
+          "feature": "07_geod_shearrate",
+          "auc_seed20": 0.5663,
+          "auc_seed21": 0.5611,
+          "auc_mean": 0.5637,
+          "abs_strength": 0.5637
+        },
+        {
+          "feature": "19_det_elev_slope",
+          "auc_seed20": 0.5636,
+          "auc_seed21": 0.5622,
+          "auc_mean": 0.5629,
+          "abs_strength": 0.5629
+        },
+        {
+          "feature": "04_geod_2ndinv",
+          "auc_seed20": 0.5668,
+          "auc_seed21": 0.5573,
+          "auc_mean": 0.562,
+          "abs_strength": 0.562
+        },
+        {
+          "feature": "16_ieq_n100a15",
+          "auc_seed20": 0.5428,
+          "auc_seed21": 0.563,
+          "auc_mean": 0.5529,
+          "abs_strength": 0.5529
+        },
+        {
+          "feature": "06_tc",
+          "auc_seed20": 0.4715,
+          "auc_seed21": 0.4305,
+          "auc_mean": 0.451,
+          "abs_strength": 0.549
+        },
+        {
+          "feature": "10_deq_n100a15",
+          "auc_seed20": 0.5371,
+          "auc_seed21": 0.5398,
+          "auc_mean": 0.5385,
+          "abs_strength": 0.5385
+        },
+        {
+          "feature": "13_iso_grav_anom",
+          "auc_seed20": 0.4593,
+          "auc_seed21": 0.4665,
+          "auc_mean": 0.4629,
+          "abs_strength": 0.5371
+        }
+      ]
+    },
+    "catalogue_hide_and_recover_proxy": {
+      "evidence_label": "PROXY",
+      "withheld_positive_pixels": 22893,
+      "spatial_clusters_20km": 156,
+      "bootstrap_draws": 1000,
+      "fold_clean_recipe_scores": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.10564450185732029,
+          "ci95": [
+            0.09363329810252148,
+            0.11695500848630204
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 3524.103620286295,
+          "fpw": 71694.57447131119,
+          "fnw": 19368.896379713697
+        },
+        "t50m3765": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.10405261166904384,
+          "ci95": [
+            0.09210458448731226,
+            0.11476949671782553
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 3470.6037204261424,
+          "fpw": 71728.97773035757,
+          "fnw": 19422.39627957385
+        },
+        "t25m2400": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.10489088394325445,
+          "ci95": [
+            0.0927441357615149,
+            0.11574662461815159
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 3498.7931412966054,
+          "fpw": 71711.72454581904,
+          "fnw": 19394.20685870338
+        },
+        "spreadm2400": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.10520108923458953,
+          "ci95": [
+            0.09328628978017561,
+            0.11648337441351098
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 3511.0623935917624,
+          "fpw": 71790.79885333845,
+          "fnw": 19381.937606408228
+        }
+      },
+      "fold_clean_paired_differences_vs_t50m3765": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": -0.0015918901882764486,
+          "ci95": [
+            -0.005192064508151607,
+            0.0015652225623636541
+          ],
+          "withheld_positive_pixels": 22893
+        },
+        "t25m2400": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": -0.0008382722742106136,
+          "ci95": [
+            -0.002576398035655821,
+            0.0008094834750337707
+          ],
+          "withheld_positive_pixels": 22893
+        },
+        "spreadm2400": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": -0.0011484775655456886,
+          "ci95": [
+            -0.0054471614448353585,
+            0.0026471009387154716
+          ],
+          "withheld_positive_pixels": 22893
+        }
+      },
+      "shipped_mask_scores": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0038851762665228526,
+          "ci95": [
+            0.003318222733791532,
+            0.004452597240467501
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 126.10656936923311,
+          "fpw": 70593.84715207116,
+          "fnw": 22766.893430630775
+        },
+        "t50m3765": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0037550120870636712,
+          "ci95": [
+            0.003204169030048799,
+            0.004299368803012909
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 121.8865725478065,
+          "fpw": 70604.62235597981,
+          "fnw": 22771.1134274522
+        },
+        "t25m2400": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0038208115759587645,
+          "ci95": [
+            0.003239161190222329,
+            0.0043909254518448414
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 124.01222635081463,
+          "fpw": 70589.17756306706,
+          "fnw": 22768.987773649194
+        },
+        "spreadm2400": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0038542720940039615,
+          "ci95": [
+            0.003283067394517989,
+            0.004411631636673502
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 125.17106447147908,
+          "fpw": 70682.47082200299,
+          "fnw": 22767.828935528527
+        }
+      },
+      "warning": "Withheld truth is catalogue-derived and clustered where the catalogue is dense; this PROXY is structurally kind to concentration into mapped-fault neighbourhoods. Report only."
+    },
+    "sgmc_off_catalogue_control": {
+      "R0": {
+        "evidence_label": "PROXY",
+        "sgmc_off_catalogue_truth_pixels": 62703,
+        "emitted_dots": 37654,
+        "sgmc_raw_dti": 0.09606,
+        "sgmc_coverage": 0.089346,
+        "sgmc_prevalence_calibrated_dti": 0.064121
+      },
+      "t50m3765": {
+        "evidence_label": "PROXY",
+        "sgmc_off_catalogue_truth_pixels": 62703,
+        "emitted_dots": 37654,
+        "sgmc_raw_dti": 0.100422,
+        "sgmc_coverage": 0.093465,
+        "sgmc_prevalence_calibrated_dti": 0.067077
+      },
+      "t25m2400": {
+        "evidence_label": "PROXY",
+        "sgmc_off_catalogue_truth_pixels": 62703,
+        "emitted_dots": 37654,
+        "sgmc_raw_dti": 0.099128,
+        "sgmc_coverage": 0.092243,
+        "sgmc_prevalence_calibrated_dti": 0.0662
+      },
+      "spreadm2400": {
+        "evidence_label": "PROXY",
+        "sgmc_off_catalogue_truth_pixels": 62703,
+        "emitted_dots": 37654,
+        "sgmc_raw_dti": 0.099309,
+        "sgmc_coverage": 0.092419,
+        "sgmc_prevalence_calibrated_dti": 0.066326
+      }
+    }
+  },
+  "elapsed_seconds": 269.54
+}
