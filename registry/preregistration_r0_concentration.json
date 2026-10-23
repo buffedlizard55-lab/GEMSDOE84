@@ -1,0 +1,41 @@
+{
+  "schema": "r0-controlled-axis-preregistration-v1",
+  "date": "2026-10-23",
+  "parent": {
+    "id": "h33-h33-2-b2",
+    "sha256_zeros": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "dots": 37654,
+    "live_evidence": "CLAIM 0.2778; no receipt"
+  },
+  "axis": "CONCENTRATION",
+  "block_size": "1 km = 10 x 10 100-m pixels, aligned to the raster origin",
+  "prior": "H19-5 positive-support pixels per strictly eligible pixel in each block; fixed before looking at holdout or live results",
+  "donor_rule": "Ascending-prior occupied blocks sufficient for the 20% dose; one donor per block per pass, raster-order within a block",
+  "receiver_rule": "Same number of descending-prior blocks as donor blocks; one receiver per block per pass; vacant H19-5 support only, max-min distance from the compliant parent within a block",
+  "compliance_rule": "Because the brief requires >=3 Euclidean px for non-PRUNE arms while R0 contains 1,611 dots at 2<d<3, relocate those dots before dosing. Preserve block counts where possible, prefer H19-5 support, and disclose all fallback moves. This fixed repair is a confound versus R0, not a concentration effect.",
+  "count": 37654,
+  "seed": 20261023,
+  "variants": [
+    {
+      "value": "10pct",
+      "requested_fraction": 0.10,
+      "predicted_live_change": "MODEL +0.005",
+      "subjective_plausible_range_not_ci": [-0.008, 0.015]
+    },
+    {
+      "value": "15pct",
+      "requested_fraction": 0.15,
+      "predicted_live_change": "MODEL +0.008",
+      "subjective_plausible_range_not_ci": [-0.012, 0.020]
+    },
+    {
+      "value": "20pct",
+      "requested_fraction": 0.20,
+      "predicted_live_change": "MODEL -0.006",
+      "subjective_plausible_range_not_ci": [-0.022, 0.010]
+    }
+  ],
+  "decision_rule": "A live change below 0.01 in absolute value is no evidence. Proxy, canary, SGMC, CV, and overlap diagnostics never authorize or rank a submission.",
+  "falsifier": "A same-arm live decrease of at least 0.01 falsifies the predicted sign; a negative 15% result also falsifies the occupied-block-CV motivation. No result validates private chunks or expert-expanded labels.",
+  "human_axis_assignment": "CONCENTRATION selected by the human on 2026-10-23"
+}

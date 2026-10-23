@@ -260,6 +260,28 @@
       "sha256": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
       "bytes": 1635084,
       "provenance": "owner-supplied scored-artifact mirror (GEMSDOE27 primary candidate manifest, generated_utc 2026-10-03T00:32:37Z); UNSCORED on the leaderboard; added 2026-10-04 because scripts/run_pipeline.py required it and it was absent from this manifest, which made the documented reproduce command abort (IR-32-MANIFEST-01)"
+    },
+    {
+      "id": "r0_base_h27_4",
+      "repo": "buffedlizard55-lab/GEMSDOE28",
+      "ref": "94b027bed628422b7b39b485cb918a3fc15e5364",
+      "path": "docs/downloads/gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif",
+      "dest": "lineage/gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif",
+      "group": "lineage",
+      "sha256": "ab02300152248fdda04e988e2cd2a0c13f35eec42fcf670a15e8b76b19e24a73",
+      "bytes": 1595850,
+      "provenance": "Owner-supplied mirror of the recorded 40,199-dot R0 base; pinned in registry/inventory.json; CLAIM 0.2708, no receipt used here."
+    },
+    {
+      "id": "r0_reference_zeros",
+      "repo": "buffedlizard55-lab/GEMSDOE32",
+      "ref": "780a5a534269c79adfe6d1d7d5aadead161332aa",
+      "path": "docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+      "dest": "lineage/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+      "group": "lineage",
+      "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "bytes": 219065,
+      "provenance": "Owner-supplied R0 reference used only for byte-exact rebuild verification; CLAIM 0.2778, no receipt."
     }
   ]
 }
