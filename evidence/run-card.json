@@ -141,13 +141,13 @@
   "receipt_file": "docs/downloads/gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.json",
   "promotion_blockers": [
     "Exploratory HOLDOUT-DTI 0.00135 [0.00051, 0.00231] far below current holdout best 0.04430 on identical folds",
-    "Holdout surface was built from full catalogue, not recomputed from visible-only per fold (leakage) \u2014 violates parallel-run protocol rule 2",
+    "Holdout surface was built from full catalogue, not recomputed from visible-only per fold (leakage) — violates parallel-run protocol rule 2",
     "Whole geological segment plus buffer holdout not available (template chunks <=12 px, not whole faults)",
     "Full registry surface/dot uniqueness requires 1,143-blob corpus not downloaded here (0 of 1017 checked locally)",
     "No organizer-authenticated data or receipt",
     "No comparable reproduced current holdout best under whole-fault instrument"
   ],
-  "ok_to_submit": "FORMAT-VALID ONLY \u2014 portal will accept (finite [0,1], no NaN, CRS/shape/transform match, zero outside/on catalogue). Scientific promotion is BLOCKED; this is a research artifact. Do not spend a weekly slot expecting to beat 0.2778.",
+  "ok_to_submit": false,
   "slots_used": 0,
   "budget": 37820,
   "seed": 289926028,
@@ -222,5 +222,8 @@
       "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
       "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
     }
-  }
+  },
+  "submission_authorized": false,
+  "selector_status": "pending; format validity is not slot authorization",
+  "organizer_acceptance": "not observed; no submission-page receipt"
 }

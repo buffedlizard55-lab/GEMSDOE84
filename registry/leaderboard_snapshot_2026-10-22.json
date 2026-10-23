@@ -1,21 +1,23 @@
 {
   "schema": "gems84-leaderboard-snapshot-v1",
   "snapshot_date_utc": "2026-10-22",
-  "competition_url": "https://www.drivendata.org/competitions/311/competition-doe-gems/leaderboard/",
-  "organizer_confirmed_anchors": [
+  "competition_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+  "evidence_class": "OWNER-REPORTED (no submission-page receipts retained)",
+  "verification_note": "Historical file contains inconsistencies with the separate top-50 snapshot (including the stated participant associated with 0.4413). Scores and participant anchors are not verified in this review; do not use as a current leaderboard or ORGANIZER-CONFIRMED evidence.",
+  "reported_anchors": [
     {
       "rank_context": "Top External Competitor",
       "participant_or_repo": "etiennedufayet",
       "submission_id": "external-leaderboard-1",
       "score": 0.4413,
-      "label": "ORGANIZER-CONFIRMED"
+      "label": "OWNER-REPORTED (no receipt)"
     },
     {
       "rank_context": "Prompt Target Benchmark",
       "participant_or_repo": "External Reference Target",
       "submission_id": "external-leaderboard-ref",
       "score": 0.3195,
-      "label": "ORGANIZER-CONFIRMED"
+      "label": "OWNER-REPORTED (no receipt)"
     },
     {
       "rank_context": "Highest Confirmed GEMSDOE Fleet Submission",
@@ -25,7 +27,7 @@
       "dots": 37654,
       "min_dist_cat_px": 2.236068,
       "score": 0.2778,
-      "label": "ORGANIZER-CONFIRMED"
+      "label": "OWNER-REPORTED (no receipt)"
     },
     {
       "rank_context": "1-px Collar Prune Anchor",
@@ -34,7 +36,7 @@
       "dots": 40199,
       "min_dist_cat_px": 1.414214,
       "score": 0.2708,
-      "label": "ORGANIZER-CONFIRMED"
+      "label": "OWNER-REPORTED (no receipt)"
     },
     {
       "rank_context": "Poisson-Disk r=2.8 px Parent Anchor",
@@ -43,8 +45,8 @@
       "sha256": "91eae1ca42ecce7bfad752d277fd2793961ed42eb700ab881728446c8f32fb2a",
       "dots": 44090,
       "min_dist_cat_px": 1.0,
-      "score": 0.2600,
-      "label": "ORGANIZER-CONFIRMED"
+      "score": 0.26,
+      "label": "OWNER-REPORTED (no receipt)"
     },
     {
       "rank_context": "Poisson-Disk r=1.5 px Anchor",
@@ -53,7 +55,7 @@
       "sha256": "68d0e2e4fcc50ab198fb289b10862e39a8da30404ecfb40e3de7e82e7830633b",
       "dots": 116973,
       "score": 0.2477,
-      "label": "ORGANIZER-CONFIRMED"
+      "label": "OWNER-REPORTED (no receipt)"
     },
     {
       "rank_context": "Continuous Multi-Line Ridge Anchor",
@@ -62,7 +64,7 @@
       "sha256": "ec1f9b56b83ccd73a48da2796a1c8a91908db731318ff953bfbd012f384fd13e",
       "dots": 351613,
       "score": 0.1922,
-      "label": "ORGANIZER-CONFIRMED"
+      "label": "OWNER-REPORTED (no receipt)"
     }
   ]
 }

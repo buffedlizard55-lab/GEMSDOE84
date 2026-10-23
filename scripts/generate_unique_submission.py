@@ -343,7 +343,9 @@ def main():
         "zip_file": str((out_path.with_suffix(".zip")).relative_to(ROOT)),
         "receipt_file": str((out_path.with_suffix(".json")).relative_to(ROOT)),
         "promotion_blockers": [] if val["all_checks_passed"] else ["Validator failed"],
-        "ok_to_submit": "YES — format-valid for portal upload (values finite [0,1], no NaN, CRS/shape/transform match). Scientific validation (holdout DTI, full registry uniqueness) is reported in the run card and has not been organizer-confirmed; use within weekly cap at your discretion.",
+        "ok_to_submit": False,
+        "submission_authorized": False,
+        "selector_status": "pending; local format validation does not authorize a slot",
         "slots_used": 0,
         "budget": args.budget,
         "seed": SEED,
@@ -355,11 +357,11 @@ def main():
         if delta <= 0:
             run_card["verdict"] = "negative"
             run_card["verdict_reason"] = f"Holdout did not beat distance-only control (delta {delta:.5f}); file is format-valid but not scientifically promoted. See holdout_wing.json."
-            run_card["ok_to_submit"] = "FORMAT-VALID ONLY — holdout did not beat control, so this is a research artifact, not a promoted submission. Portal will accept it, but we do not recommend spending a weekly slot without further validation."
+            run_card["ok_to_submit"] = "FORMAT-VALID ONLY — holdout did not beat control, so this is a research artifact, not a promoted submission. Portal acceptance is not established; do not spend a weekly slot without separate selector approval."
         else:
             run_card["verdict"] = "promote"
             run_card["verdict_reason"] = f"Holdout beat control (delta {delta:.5f}) and format validation passed; ready for selector review within weekly cap."
-            run_card["ok_to_submit"] = "YES — both format and exploratory holdout passed; still requires organizer receipt to claim leaderboard improvement."
+            run_card["ok_to_submit"] = "NOT AUTHORIZED — format and exploratory holdout passed; separate selector approval and organizer acceptance remain outstanding."
 
     (ROOT / "evidence" / "run-card.json").write_text(json.dumps(run_card, indent=2, allow_nan=False) + "\n")
     # Also write to docs/data/run-card.json for site (historical helper)
