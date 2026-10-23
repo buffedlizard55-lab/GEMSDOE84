@@ -1,0 +1,1003 @@
+{
+  "schema_version": 1,
+  "measurement_kind": "Local hash/rebuild/format audit, not a submission-page score receipt",
+  "generated_utc": "2026-10-23T15:40:59.347456+00:00",
+  "git_sha": "607b00eb74be6376000e03e5a193face97811300",
+  "source_sha256": {
+    "registry/data_manifest.json": "f08f96e534cf91dbb02d7655a4e6d661837235ebb88b2e5eabdc0b3cc7bcee21",
+    "ledger/experiment_reservations.json": "9fb55174b3b7cb332ea56e03d0da1d833cc50d41df381b977f946ef3805d2143",
+    "requirements-lock.txt": "08c4d00589d06320ec46d14f0eba5b778cf28c8c879510934b896c4eb9238763",
+    "src/gems84/brief_v2.py": "83ad88050149b6b7516eaa21a453f80f32e756be54b7641745284338632a9390",
+    "src/gems84/parent.py": "0f5fccaa48e6f8794148966b8d3dca7e2f7eeff57ed17ac7792f234a0d5ce157",
+    "scripts/preflight_brief_v2.py": "6081eaaf3e0bd5a83e5301409f6de4ed13bd4cb40f561b5e2893f3fd330e43df",
+    "scripts/rebuild_r0.py": "600c9d06922bf34f41faa25c626d8dfc350120401c682a73b0d45b68f69e52da",
+    "scripts/restore_pinned_inputs.py": "eda809103d08c001504d5adc0cbd4dff8c33428477c10c0ff5a571c7284c1c52",
+    "scripts/validate_submission.py": "0ea0d194a842e513a632c6d15dabbebfff34547e067d09378f87a150c39b8b63",
+    "vendor/gems57/validate.py": "e7849554b47f6a2b66aeb2f7cfd5db06267412f049f52a73f1c41f934a2c34dd"
+  },
+  "runtime": {
+    "python": "3.11.2",
+    "gdal": "3.10.3",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "rasterio": "1.4.4"
+  },
+  "assigned_axis": null,
+  "requested_values": [],
+  "randomness": {
+    "uses_rng": false,
+    "seed": null,
+    "method": "Deterministic recorded R0 recipe; no new feature fit or placement"
+  },
+  "new_variants_built": 0,
+  "submission_slots_used": 0,
+  "submission_authorized": false,
+  "verdict": "BLOCKED",
+  "blockers": [
+    {
+      "code": "EXPERIMENT_NOT_ASSIGNED_OR_ALREADY_BUILT",
+      "detail": "The human must explicitly assign one AXIS; there is no default."
+    },
+    {
+      "code": "R0_COLLAR_CONFLICT_UNRESOLVED",
+      "detail": "R0 has 1611 dots below 3 px. Do not implicitly waive the rule or introduce a second-axis collar edit."
+    }
+  ],
+  "policy": {
+    "dedupe": [
+      "exact full file SHA-256",
+      "repeated (parent, axis, value)"
+    ],
+    "similarity_gates_applied": false,
+    "non_prune_catalogue_clearance_px": 3.0,
+    "implicit_parent_collar_exception": false,
+    "no_evidence_absolute_live_delta_below": 0.01
+  },
+  "human_inputs_unverified": [
+    "AXIS and unused value(s)",
+    "catalogue-collar conflict decision",
+    "TOP_PUBLIC and read date",
+    "single-entity slots left / rolling-week submission dates",
+    "R0 submission-page receipt",
+    "2026-12-03 deadline and exact cutoff/timezone",
+    "permission/data-use terms for existing public competition-data mirrors"
+  ],
+  "report_only_diagnostics": {
+    "catalogue_hide_and_recover": "NOT RERUN: no new variant; inherited results are PROXY, not a gate",
+    "single_feature_canary": "NOT RERUN: no features fitted/used; AUC>0.90 would require investigation",
+    "sgmc_control": "NOT RERUN: no new variant; REPORT ONLY"
+  },
+  "inputs": {
+    "manifest_sha256": "f08f96e534cf91dbb02d7655a4e6d661837235ebb88b2e5eabdc0b3cc7bcee21",
+    "manifest_files_verified": 23,
+    "parent_lineage_pins_verified": 4,
+    "all_hashes_match": true,
+    "files": [
+      {
+        "id": "training_features",
+        "dest": "training_features.tif",
+        "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+        "bytes": 418912844,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "labels",
+        "dest": "labels.tif",
+        "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+        "bytes": 425830,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "existing_faults",
+        "dest": "existing_faults.tif",
+        "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+        "bytes": 425830,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "sample_submission",
+        "dest": "sample_submission.tif",
+        "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+        "bytes": 1599597,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "ext_lidar_scarp_features_u8",
+        "dest": "external/lidar_scarp_features_u8.tif",
+        "sha256": "d580bb8bdcdb941e32fefb8b38044bc5bf04e199bf2e83498c3576e6fc465568",
+        "bytes": 36943606,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "ext_geodawn_rad_u8",
+        "dest": "external/geodawn_rad_u8.tif",
+        "sha256": "c22420f75999030d7cc65c9e31e50d232ea6158423bca051613a18a8b20ba682",
+        "bytes": 26612970,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "ext_geodawn_extensions_u8",
+        "dest": "external/geodawn_extensions_u8.tif",
+        "sha256": "a35a9c6d2a14786f4dab85481ee59769213072f5dab5b2535ea82ae4d9bb7d9b",
+        "bytes": 27132925,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "ext_derived_sgmc_faults_100m_u8",
+        "dest": "external/derived_sgmc_faults_100m_u8.tif",
+        "sha256": "643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0",
+        "bytes": 198602,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "ext_gdr_wellspring_in_footprint",
+        "dest": "external/gdr_wellspring_in_footprint.csv",
+        "sha256": "122718e65bdf55aab0ee12ad20d80062f0deb1de957225a61ad880dd5dc196ea",
+        "bytes": 2146771,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "ext_gdr_qfaults_traces",
+        "dest": "external/gdr_qfaults_traces.csv",
+        "sha256": "9702f2e5c382a4f472ae834d22b94990983b059677a37adfafd51c50f75e643c",
+        "bytes": 126177,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "ext_gdr_volcanic_vents_in_footprint",
+        "dest": "external/gdr_volcanic_vents_in_footprint.csv",
+        "sha256": "f91bafbaccaaf2754e71d60434fc0f9eb2c7b880c6e714883f4974542ff6a0bf",
+        "bytes": 672,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "scored_h19_5",
+        "dest": "scored/gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan.tif",
+        "sha256": "ec1f9b56b83ce33cad781ceb9f104b18fb4f2ff785263a4e89616af4aabdee8d",
+        "bytes": 1712322,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "scored_h19_4",
+        "dest": "scored/gems19-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan.tif",
+        "sha256": "89109a3bd2cd3b12e7a0f388113c519843acfc9c4f46825affefc3e63dd99b22",
+        "bytes": 1716768,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "scored_h16_1",
+        "dest": "scored/gems16-h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan.tif",
+        "sha256": "055309694ed499ca3d87e76b3f5e81c292aef6e39c418d33ff5a817aa1309bea",
+        "bytes": 1718028,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "scored_d15_scored",
+        "dest": "scored/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+        "sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+        "bytes": 1632732,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "scored_d28_unscored",
+        "dest": "scored/gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+        "sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+        "bytes": 1603424,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "calib_13gems_20261001_r13-lattice-s5_v2_nan-ou",
+        "dest": "scored/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+        "sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
+        "bytes": 1706456,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "calib_8GEMSDOE_Hedge-v2_submission",
+        "dest": "scored/8GEMSDOE_Hedge-v2_submission.tif",
+        "sha256": "052688eafbc7a55d90caab72252a50304fe5caa8ecf973f8e791b4ae910f0792",
+        "bytes": 736494,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "calib_gems10-h25-ctx-ridge-20260927T2329477041",
+        "dest": "scored/gems10-h25-ctx-ridge-20260927T232947704150Z-6452ae1d00.tif",
+        "sha256": "1381e784fb8b8340beffd0e735ac9eea89ad35d1a807f8a9bab5506e3fc8275e",
+        "bytes": 1772935,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "calib_gems10-h28-dotted-ridge-20260928T0202562",
+        "dest": "scored/gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+        "sha256": "7637b72d4c6c3e10226bf46bd72a20272d62ccbe29743062632d10b158b49c58",
+        "bytes": 1620739,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "calib_gemsdoe-ens12-adopted-7f00890a",
+        "dest": "scored/gemsdoe-ens12-adopted-7f00890a.tif",
+        "sha256": "7f00890a62878d612fb5eef67a9a364a2df819433dde74b6762ce4fc0fc4fe15",
+        "bytes": 570890,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "calib_gemsdoe9-PLACEHOLDER-2314b599",
+        "dest": "scored/gemsdoe9-PLACEHOLDER-2314b599.tif",
+        "sha256": "2314b59920bfeeaf6a592d4868b25eca62212825620f9945723c2f6d0a2e5b22",
+        "bytes": 439456,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "scored_gems27_tgc_v2_d15",
+        "dest": "scored/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+        "sha256": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+        "bytes": 1635084,
+        "verified": true,
+        "pin_source": "registry/data_manifest.json"
+      },
+      {
+        "id": "parent_r0_h33_2_b2_zeros",
+        "dest": "parent/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+        "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+        "bytes": 219065,
+        "verified": true,
+        "pin_source": "evidence/h33-original-audit.json:zeros_tif.sha256 and evidence/incumbent_anatomy.json:rasters.h33_2_b2.sha256"
+      },
+      {
+        "id": "parent_r0_h33_2_b2_nan",
+        "dest": "parent/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif",
+        "sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+        "bytes": 355443,
+        "verified": true,
+        "pin_source": "evidence/h33-original-audit.json:nan_tif.sha256"
+      },
+      {
+        "id": "parent_base_h27_4_r1_solo_nan",
+        "dest": "parent/gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif",
+        "sha256": "ab02300152248fdda04e988e2cd2a0c13f35eec42fcf670a15e8b76b19e24a73",
+        "bytes": 1595850,
+        "verified": true,
+        "pin_source": "evidence/h33_validation.json:base.sha256"
+      },
+      {
+        "id": "parent_base_h27_4_r1_solo_allfinite",
+        "dest": "parent/gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-allfinite.tif",
+        "sha256": "2fc94a38d77f74d4f4ed1a97a83e7bb71a1ceea090515ec641e6681cc47c44c8",
+        "bytes": 830036,
+        "verified": true,
+        "pin_source": "evidence/incumbent_anatomy.json:rasters.h27_4_r1.sha256"
+      }
+    ],
+    "provenance": "Integrity-pinned owner mirrors; NOT organizer-authenticated"
+  },
+  "parent_rebuild": {
+    "schema_version": 1,
+    "evidence_class": "REBUILD (byte-identity against a SHA-256-pinned parent artifact)",
+    "generated_utc": "2026-10-23T15:41:05Z",
+    "git_sha": "607b00eb74be6376000e03e5a193face97811300",
+    "parent": {
+      "candidate_id": "H33-2-B2",
+      "slug": "h33-h33-2-b2",
+      "role": "R0 / incumbent; owner-reported live 0.2778 is a CLAIM (no receipt in ledger/)",
+      "claimed_live": 0.2778,
+      "claimed_live_evidence_class": "CLAIM",
+      "zeros_sha256_pin": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "nan_sha256_pin": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+      "base_02708_sha256_pin": "ab02300152248fdda04e988e2cd2a0c13f35eec42fcf670a15e8b76b19e24a73"
+    },
+    "recipe": {
+      "foot": "np.isfinite(sample_submission.tif band 1)",
+      "catalogue": "read_binary(labels.tif) & foot   (existing_faults.tif is byte-identical)",
+      "base": "read_binary(gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif)",
+      "mask": "base & (distance_transform_edt(~catalogue) > 2)",
+      "emit": "clean = mask & foot & ~catalogue; GTiff deflate/predictor=3/zlevel=9/tiled256",
+      "upstream_source": "buffedlizard55-lab/GEMSDOE32@main src/gems32/hypotheses33.py:307-329, src/gems32/submission.py:118-166, scripts/run_h33_validation.py:112"
+    },
+    "rebuilt": {
+      "dots": 37654,
+      "zeros_tif": {
+        "path": "/home/user/GEMSDOE84/.cache/brief-v2-preflight/parent/r0-rebuilt-zeros.tif",
+        "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+        "bytes": 219065,
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "transform": [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ],
+        "nodata": null,
+        "dots": 37654,
+        "on_catalogue_dots": 0,
+        "in_footprint_min": 0.0,
+        "in_footprint_max": 1.0,
+        "in_footprint_nan": 0,
+        "in_footprint_finite": 5167373,
+        "outside_nan": 0,
+        "outside_zero": 7111787,
+        "outside_count": 7111787
+      },
+      "nan_tif": {
+        "path": "/home/user/GEMSDOE84/.cache/brief-v2-preflight/parent/r0-rebuilt-nan.tif",
+        "sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+        "bytes": 355443,
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "transform": [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ],
+        "nodata": null,
+        "dots": 37654,
+        "on_catalogue_dots": 0,
+        "in_footprint_min": 0.0,
+        "in_footprint_max": 1.0,
+        "in_footprint_nan": 0,
+        "in_footprint_finite": 5167373,
+        "outside_nan": 7111787,
+        "outside_zero": 0,
+        "outside_count": 7111787
+      }
+    },
+    "checks": {
+      "footprint_pixels_5167373": true,
+      "dots_37654": true,
+      "zero_on_catalogue": true,
+      "zeros_sha256_matches_pin": true,
+      "nan_sha256_matches_pin": true,
+      "base_sha256_matches_pin": true
+    },
+    "all_checks_passed": true,
+    "elapsed_s": 6.2
+  },
+  "parent_format": {
+    "zeros": {
+      "format_valid": true,
+      "checks": {
+        "geotiff": true,
+        "single_band": true,
+        "crs": true,
+        "shape": true,
+        "transform": true,
+        "real_dtype": true,
+        "dtype_float32": true,
+        "finite_inside": true,
+        "range_inside": true,
+        "no_masked_footprint": true,
+        "finite_all": true,
+        "range_all": true,
+        "outside_zero": true,
+        "nonempty_footprint": true
+      },
+      "encoding": "zeros",
+      "footprint_pixels": 5167373,
+      "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "template_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "submission_authorized": false,
+      "scope": "Format only; scientific and human slot decisions remain separate."
+    },
+    "nan": {
+      "format_valid": true,
+      "checks": {
+        "geotiff": true,
+        "single_band": true,
+        "crs": true,
+        "shape": true,
+        "transform": true,
+        "real_dtype": true,
+        "dtype_float32": true,
+        "finite_inside": true,
+        "range_inside": true,
+        "no_masked_footprint": true,
+        "outside_nan": true,
+        "nonempty_footprint": true
+      },
+      "encoding": "nan",
+      "footprint_pixels": 5167373,
+      "sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+      "template_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "submission_authorized": false,
+      "scope": "Format only; scientific and human slot decisions remain separate."
+    },
+    "shared_zeros": {
+      "file": "/home/user/GEMSDOE84/.cache/brief-v2-preflight/parent/r0-rebuilt-zeros.tif",
+      "bytes": 219065,
+      "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "meta": {
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "nodata": null,
+        "transform": [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ],
+        "profile_compress": "deflate"
+      },
+      "band_description": [
+        null
+      ],
+      "n_finite": 12279160,
+      "n_nan": 0,
+      "n_infinite": 0,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.0030664964579045773,
+      "emitted_positive_pixels": 37654,
+      "checks": {
+        "single_band": true,
+        "dtype_float32": true,
+        "dimensions_3730x3292": true,
+        "crs_epsg_32611": true,
+        "transform_matches_sample_submission": true,
+        "no_nan_anywhere": true,
+        "no_inf_anywhere": true,
+        "no_sentinel_values": true,
+        "range_0_1_guaranteed": true,
+        "min_ge_0": true,
+        "max_le_1": true,
+        "in_footprint_all_finite": true,
+        "in_footprint_range_0_1": true,
+        "outside_footprint_zero": true,
+        "zero_dots_on_mapped_catalogue": true
+      },
+      "all_checks_passed": true,
+      "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+      "on_catalogue_positive_pixels": 0,
+      "in_footprint_positive_pixels": 37654,
+      "footprint_fraction": 0.007286874781441169
+    }
+  },
+  "parent_catalogue_geometry": {
+    "minimum_distance_px": 2.23606797749979,
+    "catalogue_dots": 0,
+    "dots_below_3px": 1611,
+    "prune_collar_exception": false,
+    "passed": false,
+    "dots": 37654,
+    "at_or_below_2px": 0,
+    "exactly_3px": 560,
+    "strictly_above_3px": 35483
+  },
+  "ledger": {
+    "sha256": "23ef001a55c6545d7c4d5cee1dee3cfe76a1acd62402c25270678b1010564dd0",
+    "rows": 119,
+    "built_rows": 6,
+    "submission_page_receipts": 0,
+    "cross_session_reserved_rows": 3,
+    "used_pairs": [
+      [
+        "h33-h33-2-b2",
+        "MASS",
+        "+10pct"
+      ],
+      [
+        "h33-h33-2-b2",
+        "MASS",
+        "-10pct"
+      ],
+      [
+        "h33-h33-2-b2",
+        "MASS",
+        "-20pct"
+      ],
+      [
+        "h33-h33-2-b2",
+        "PRUNE",
+        "1"
+      ],
+      [
+        "h33-h33-2-b2",
+        "PRUNE",
+        "3"
+      ],
+      [
+        "h33-h33-2-b2",
+        "PRUNE",
+        "4"
+      ],
+      [
+        "h33-h33-2-b2",
+        "SNAP",
+        "1p4px-g0p02"
+      ],
+      [
+        "h33-h33-2-b2",
+        "SNAP",
+        "2p0px-g0p01"
+      ],
+      [
+        "h33-h33-2-b2",
+        "SNAP",
+        "2p0px-g0p02"
+      ]
+    ],
+    "r0_claim": {
+      "value": 0.2778,
+      "evidence_class": "CLAIM",
+      "parent": "h33-h33-2-b2"
+    }
+  },
+  "inherited_variants": [
+    {
+      "id": "h33-2-b2-snap1p4px-g0p02-20261023-0b6a2ab2",
+      "parent": "h33-2-b2 (R0, sha256 c55bafc47005...)",
+      "axis": "snap",
+      "value": "1p4px-g0p02",
+      "status": "BUILT",
+      "files": {
+        "nan": {
+          "format_valid": true,
+          "checks": {
+            "geotiff": true,
+            "single_band": true,
+            "crs": true,
+            "shape": true,
+            "transform": true,
+            "real_dtype": true,
+            "dtype_float32": true,
+            "finite_inside": true,
+            "range_inside": true,
+            "no_masked_footprint": true,
+            "outside_nan": true,
+            "nonempty_footprint": true
+          },
+          "encoding": "nan",
+          "footprint_pixels": 5167373,
+          "sha256": "535bcc04b99b119670d6398fc3801ee9ad4b7f4467c6c7c8e9f4569ebf4d4bc7",
+          "template_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+          "submission_authorized": false,
+          "scope": "Format only; scientific and human slot decisions remain separate."
+        },
+        "zeros": {
+          "format_valid": true,
+          "checks": {
+            "geotiff": true,
+            "single_band": true,
+            "crs": true,
+            "shape": true,
+            "transform": true,
+            "real_dtype": true,
+            "dtype_float32": true,
+            "finite_inside": true,
+            "range_inside": true,
+            "no_masked_footprint": true,
+            "finite_all": true,
+            "range_all": true,
+            "outside_zero": true,
+            "nonempty_footprint": true
+          },
+          "encoding": "zeros",
+          "footprint_pixels": 5167373,
+          "sha256": "24239d99cf95c06186060c192c862c822d31d5632073e0de27c0443565dd1c5e",
+          "template_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+          "submission_authorized": false,
+          "scope": "Format only; scientific and human slot decisions remain separate."
+        }
+      },
+      "n_dots": 37654,
+      "dots_added": 2416,
+      "dots_removed": 2416,
+      "symmetric_diff_pixels": 4832,
+      "symmetric_diff_pct": 12.832633983109364,
+      "removed_parent_dots_pct": 6.416316991554682,
+      "strict_catalogue_clearance": {
+        "minimum_distance_px": 2.23606797749979,
+        "catalogue_dots": 0,
+        "dots_below_3px": 1605,
+        "prune_collar_exception": false,
+        "passed": false
+      },
+      "rebuilt_this_session": false,
+      "submission_authorized": false
+    },
+    {
+      "id": "h33-2-b2-snap2p0px-g0p01-20261023-7bdaa58b",
+      "parent": "h33-2-b2 (R0, sha256 c55bafc47005...)",
+      "axis": "snap",
+      "value": "2p0px-g0p01",
+      "status": "BUILT",
+      "files": {
+        "nan": {
+          "format_valid": true,
+          "checks": {
+            "geotiff": true,
+            "single_band": true,
+            "crs": true,
+            "shape": true,
+            "transform": true,
+            "real_dtype": true,
+            "dtype_float32": true,
+            "finite_inside": true,
+            "range_inside": true,
+            "no_masked_footprint": true,
+            "outside_nan": true,
+            "nonempty_footprint": true
+          },
+          "encoding": "nan",
+          "footprint_pixels": 5167373,
+          "sha256": "f5b5b8c9e1e1d819e7aeea04e3b4be7f4d7abc5e75fc220293e9b83df8437e05",
+          "template_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+          "submission_authorized": false,
+          "scope": "Format only; scientific and human slot decisions remain separate."
+        },
+        "zeros": {
+          "format_valid": true,
+          "checks": {
+            "geotiff": true,
+            "single_band": true,
+            "crs": true,
+            "shape": true,
+            "transform": true,
+            "real_dtype": true,
+            "dtype_float32": true,
+            "finite_inside": true,
+            "range_inside": true,
+            "no_masked_footprint": true,
+            "finite_all": true,
+            "range_all": true,
+            "outside_zero": true,
+            "nonempty_footprint": true
+          },
+          "encoding": "zeros",
+          "footprint_pixels": 5167373,
+          "sha256": "9bec3cc89934e86823a8bb8fc7aebb80552566b5e44c89206a2f9d4c7eb1b481",
+          "template_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+          "submission_authorized": false,
+          "scope": "Format only; scientific and human slot decisions remain separate."
+        }
+      },
+      "n_dots": 37654,
+      "dots_added": 9966,
+      "dots_removed": 9966,
+      "symmetric_diff_pixels": 19932,
+      "symmetric_diff_pct": 52.93461518032613,
+      "removed_parent_dots_pct": 26.467307590163063,
+      "strict_catalogue_clearance": {
+        "minimum_distance_px": 2.23606797749979,
+        "catalogue_dots": 0,
+        "dots_below_3px": 1579,
+        "prune_collar_exception": false,
+        "passed": false
+      },
+      "rebuilt_this_session": false,
+      "submission_authorized": false
+    },
+    {
+      "id": "h33-2-b2-snap2p0px-g0p02-20261023-b2019f55",
+      "parent": "h33-2-b2 (R0, sha256 c55bafc47005...)",
+      "axis": "snap",
+      "value": "2p0px-g0p02",
+      "status": "BUILT",
+      "files": {
+        "nan": {
+          "format_valid": true,
+          "checks": {
+            "geotiff": true,
+            "single_band": true,
+            "crs": true,
+            "shape": true,
+            "transform": true,
+            "real_dtype": true,
+            "dtype_float32": true,
+            "finite_inside": true,
+            "range_inside": true,
+            "no_masked_footprint": true,
+            "outside_nan": true,
+            "nonempty_footprint": true
+          },
+          "encoding": "nan",
+          "footprint_pixels": 5167373,
+          "sha256": "2d9c6f7253b8b3502b4ca0160c71b1aa6950dfe3585f0bfcd56dc85433073811",
+          "template_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+          "submission_authorized": false,
+          "scope": "Format only; scientific and human slot decisions remain separate."
+        },
+        "zeros": {
+          "format_valid": true,
+          "checks": {
+            "geotiff": true,
+            "single_band": true,
+            "crs": true,
+            "shape": true,
+            "transform": true,
+            "real_dtype": true,
+            "dtype_float32": true,
+            "finite_inside": true,
+            "range_inside": true,
+            "no_masked_footprint": true,
+            "finite_all": true,
+            "range_all": true,
+            "outside_zero": true,
+            "nonempty_footprint": true
+          },
+          "encoding": "zeros",
+          "footprint_pixels": 5167373,
+          "sha256": "259a8d88eb3f06a557f20a24fc137f6d8b3cf66f36ffe2e4221417561b960d38",
+          "template_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+          "submission_authorized": false,
+          "scope": "Format only; scientific and human slot decisions remain separate."
+        }
+      },
+      "n_dots": 37654,
+      "dots_added": 4152,
+      "dots_removed": 4152,
+      "symmetric_diff_pixels": 8304,
+      "symmetric_diff_pct": 22.053433898125032,
+      "removed_parent_dots_pct": 11.026716949062516,
+      "strict_catalogue_clearance": {
+        "minimum_distance_px": 2.23606797749979,
+        "catalogue_dots": 0,
+        "dots_below_3px": 1610,
+        "prune_collar_exception": false,
+        "passed": false
+      },
+      "rebuilt_this_session": false,
+      "submission_authorized": false
+    },
+    {
+      "id": "h33-h33-2-b2-mass-add10pct-20261023-ad925bd2",
+      "parent": "h33-h33-2-b2",
+      "axis": "MASS",
+      "value": "+10pct",
+      "status": "BUILT",
+      "files": {
+        "nan": {
+          "format_valid": true,
+          "checks": {
+            "geotiff": true,
+            "single_band": true,
+            "crs": true,
+            "shape": true,
+            "transform": true,
+            "real_dtype": true,
+            "dtype_float32": true,
+            "finite_inside": true,
+            "range_inside": true,
+            "no_masked_footprint": true,
+            "outside_nan": true,
+            "nonempty_footprint": true
+          },
+          "encoding": "nan",
+          "footprint_pixels": 5167373,
+          "sha256": "ad925bd2a42f5b231fa3cb4c5e35fa28aa491602c45c8a6da09df6143494b4b5",
+          "template_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+          "submission_authorized": false,
+          "scope": "Format only; scientific and human slot decisions remain separate."
+        },
+        "zeros": {
+          "format_valid": true,
+          "checks": {
+            "geotiff": true,
+            "single_band": true,
+            "crs": true,
+            "shape": true,
+            "transform": true,
+            "real_dtype": true,
+            "dtype_float32": true,
+            "finite_inside": true,
+            "range_inside": true,
+            "no_masked_footprint": true,
+            "finite_all": true,
+            "range_all": true,
+            "outside_zero": true,
+            "nonempty_footprint": true
+          },
+          "encoding": "zeros",
+          "footprint_pixels": 5167373,
+          "sha256": "dc3444636f8f80661f87fda61a700572a54cb60ab88ae28130f9e5b57fd13100",
+          "template_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+          "submission_authorized": false,
+          "scope": "Format only; scientific and human slot decisions remain separate."
+        }
+      },
+      "n_dots": 41419,
+      "dots_added": 3765,
+      "dots_removed": 0,
+      "symmetric_diff_pixels": 3765,
+      "symmetric_diff_pct": 9.998937695862326,
+      "removed_parent_dots_pct": 0.0,
+      "strict_catalogue_clearance": {
+        "minimum_distance_px": 2.23606797749979,
+        "catalogue_dots": 0,
+        "dots_below_3px": 1611,
+        "prune_collar_exception": false,
+        "passed": false
+      },
+      "rebuilt_this_session": false,
+      "submission_authorized": false
+    },
+    {
+      "id": "h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3",
+      "parent": "h33-h33-2-b2",
+      "axis": "MASS",
+      "value": "-10pct",
+      "status": "BUILT",
+      "files": {
+        "nan": {
+          "format_valid": true,
+          "checks": {
+            "geotiff": true,
+            "single_band": true,
+            "crs": true,
+            "shape": true,
+            "transform": true,
+            "real_dtype": true,
+            "dtype_float32": true,
+            "finite_inside": true,
+            "range_inside": true,
+            "no_masked_footprint": true,
+            "outside_nan": true,
+            "nonempty_footprint": true
+          },
+          "encoding": "nan",
+          "footprint_pixels": 5167373,
+          "sha256": "2cde51f32b5a22a4489044904a3fabc3dba8f41a5488bad044d6f12ac0783079",
+          "template_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+          "submission_authorized": false,
+          "scope": "Format only; scientific and human slot decisions remain separate."
+        },
+        "zeros": {
+          "format_valid": true,
+          "checks": {
+            "geotiff": true,
+            "single_band": true,
+            "crs": true,
+            "shape": true,
+            "transform": true,
+            "real_dtype": true,
+            "dtype_float32": true,
+            "finite_inside": true,
+            "range_inside": true,
+            "no_masked_footprint": true,
+            "finite_all": true,
+            "range_all": true,
+            "outside_zero": true,
+            "nonempty_footprint": true
+          },
+          "encoding": "zeros",
+          "footprint_pixels": 5167373,
+          "sha256": "fa0d0564258f3445ba5756f1585d5d341718196fa37b92ecb91ee66c24fe4e32",
+          "template_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+          "submission_authorized": false,
+          "scope": "Format only; scientific and human slot decisions remain separate."
+        }
+      },
+      "n_dots": 33889,
+      "dots_added": 0,
+      "dots_removed": 3765,
+      "symmetric_diff_pixels": 3765,
+      "symmetric_diff_pct": 9.998937695862326,
+      "removed_parent_dots_pct": 9.998937695862326,
+      "strict_catalogue_clearance": {
+        "minimum_distance_px": 2.23606797749979,
+        "catalogue_dots": 0,
+        "dots_below_3px": 1566,
+        "prune_collar_exception": false,
+        "passed": false
+      },
+      "rebuilt_this_session": false,
+      "submission_authorized": false
+    },
+    {
+      "id": "h33-h33-2-b2-mass-drop20pct-20261023-62bfc392",
+      "parent": "h33-h33-2-b2",
+      "axis": "MASS",
+      "value": "-20pct",
+      "status": "BUILT",
+      "files": {
+        "nan": {
+          "format_valid": true,
+          "checks": {
+            "geotiff": true,
+            "single_band": true,
+            "crs": true,
+            "shape": true,
+            "transform": true,
+            "real_dtype": true,
+            "dtype_float32": true,
+            "finite_inside": true,
+            "range_inside": true,
+            "no_masked_footprint": true,
+            "outside_nan": true,
+            "nonempty_footprint": true
+          },
+          "encoding": "nan",
+          "footprint_pixels": 5167373,
+          "sha256": "62bfc392b6a1e6cbffcf0e1ac7085b6d02a8676044dae8f0df031ffd416e2e5c",
+          "template_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+          "submission_authorized": false,
+          "scope": "Format only; scientific and human slot decisions remain separate."
+        },
+        "zeros": {
+          "format_valid": true,
+          "checks": {
+            "geotiff": true,
+            "single_band": true,
+            "crs": true,
+            "shape": true,
+            "transform": true,
+            "real_dtype": true,
+            "dtype_float32": true,
+            "finite_inside": true,
+            "range_inside": true,
+            "no_masked_footprint": true,
+            "finite_all": true,
+            "range_all": true,
+            "outside_zero": true,
+            "nonempty_footprint": true
+          },
+          "encoding": "zeros",
+          "footprint_pixels": 5167373,
+          "sha256": "53e39cd15731233b7a05ee5a89d53e439a76318453637295dc9be64a7264f929",
+          "template_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+          "submission_authorized": false,
+          "scope": "Format only; scientific and human slot decisions remain separate."
+        }
+      },
+      "n_dots": 30123,
+      "dots_added": 0,
+      "dots_removed": 7531,
+      "symmetric_diff_pixels": 7531,
+      "symmetric_diff_pct": 20.000531152068838,
+      "removed_parent_dots_pct": 20.000531152068838,
+      "strict_catalogue_clearance": {
+        "minimum_distance_px": 2.23606797749979,
+        "catalogue_dots": 0,
+        "dots_below_3px": 1512,
+        "prune_collar_exception": false,
+        "passed": false
+      },
+      "rebuilt_this_session": false,
+      "submission_authorized": false
+    }
+  ],
+  "ledger_unchanged": true
+}
