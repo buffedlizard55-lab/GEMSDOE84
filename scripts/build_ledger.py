@@ -91,6 +91,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--out", default=str(ROOT / "ledger" / "submissions.csv"))
     ap.add_argument("--snap-rows", default=str(ROOT / "ledger" / "_snap_rows.json"))
+    ap.add_argument("--mass-rows", default=str(ROOT / "ledger" / "_mass_rows.json"))
     args = ap.parse_args()
 
     rows: list[dict] = []
@@ -139,9 +140,9 @@ def main() -> int:
                 })
 
     # 3. files BUILT this session ------------------------------------------------------
-    snap = Path(args.snap_rows)
-    if snap.exists():
-        rows.extend(json.loads(snap.read_text()))
+    for extra_path in (Path(args.snap_rows), Path(args.mass_rows)):
+        if extra_path.exists():
+            rows.extend(json.loads(extra_path.read_text()))
 
     # collapse exact repeats (same content digest or same core name, same score) -------
     collapsed: dict[str, dict] = {}

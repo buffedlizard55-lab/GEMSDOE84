@@ -1,38 +1,26 @@
-# AI_USE — what the AI wrote, what the human decided
+# AI USE DISCLOSURE — DrivenData GEMS Prize (#306)
 
-Required by the challenge rules (generative-AI disclosure,
-<https://docs.nlr.gov/docs/fy26osti/96647.pdf>). Session: 2026-10-23, branch
-`arena/1c8a6632-gemsdoe84`.
+Per the competition rules for the U.S. Department of Energy Geothermal Earthshot Machine Learning & Fault-Detection Prize (`https://www.drivendata.org/competitions/306/competition-doe-gems/`) and Brief v2 Hard Constraint #5, this document records the boundary between AI-generated artifacts and human decisions.
 
-## Written by the AI agent this session
+## 1. What the AI Agent Wrote and Executed
 
-- `scripts/restore_pinned_inputs.py` — single-pass, fail-closed restore of the pinned inputs
-  from `codeload.github.com`, SHA-256 verified against `registry/data_manifest.json`.
-- `src/gems84/parent.py`, `scripts/rebuild_r0.py` — the parent's recorded recipe, re-implemented
-  and asserted byte-identical to the pinned R0 (`c55bafc4…`).
-- `src/gems84/snap.py`, `scripts/build_snap_variants.py` — the AXIS=SNAP operator, the three
-  variants, the format/hash/parent-diff gates and the release receipts.
-- `scripts/build_ledger.py` — `ledger/submissions.csv` from this repo's committed score records.
-- `scripts/measure_snap_reports.py` — the report-only proxy / canary / SGMC instruments.
-- `tests/test_snap_axis.py` — metric-algebra, snap-operator and parent-rebuild tests.
-- `SLOT_PLAN.md`, `IRREGULARITIES.md`, `docs/SUBMIT.md`, this file, and the README CURRENT STATE
-  block.
+- **Manifest & Parent R0 Verification (`scripts/build_r0_variants.py`, `scripts/rebuild_r0.py`)**:
+  - Verified all `23` SHA-256 hashes in `registry/data_manifest.json` against `.cache/gems_data/` and unpacked the `19` float32 bands of `training_features.tif` into `.cache/gems_data/bands/01_mag_anom.npy`..`19_det_elev_slope.npy`.
+  - Rebuilt Parent R0 (`h33-h33-2-b2`, `GEMSDOE32`, `37,654` unit-mass dots) deterministically from `scored_h19_5` (`e27054cf`) via `dot_thin(r_min=2.8)` $\to$ `d2_8` (`44,090` dots, bit-identical) $\to$ `d_cat > 2.0 px` (`37,654` dots, `digest8 = e5eb6e7e`), matching the exact SHA-256 of both `-zeros.tif` (`c55bafc470054e82...`) and `-nan.tif` (`baeae3219bba6a19...`).
+- **Ledger Construction (`ledger/raw_paste.txt`, `ledger/submissions.csv`, `scripts/build_ledger.py`)**:
+  - Built `ledger/raw_paste.txt` and `ledger/submissions.csv` from `registry/live_scores.csv` (`103` owner-reported rows, labeled `CLAIM`) and `docs/evidence/upstream-score-ledger.csv` (`OFFICIAL_SNAPSHOT`), collapsing exact repeats and appending the `BUILT` single-axis variants (`AXIS = MASS` and `AXIS = SNAP`).
+- **Parent Ranking & Single-Axis Variant Generation (`scripts/build_r0_variants.py`, `scripts/build_snap_variants.py`, `releases/`)**:
+  - Reconstructed the `GEMSDOE32` ridge-corroboration posterior combining `corrob_count` (`h19_5`, `h19_4`, `h16_1`, `tgc_v2_d15`, `d15`, `ens12`), `H33-A..D` multi-physics oriented-lineament consensus (`research/upstream/src/gems32/h33.py`), and `lidar_scarp_composite`, and implemented exact vectorized 25-offset ($R = 3.0\text{ px}$) top-2 kernel marginal DTI gain $\Delta J(x) = (1 - \alpha s_0)\Delta T(x) - \alpha s_0(1 - m_q(x))$.
+  - Built and verified the `3` `AXIS = MASS` variants (`h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3` with `33,889` dots, `h33-h33-2-b2-mass-add10pct-20261023-ad925bd2` with `41,419` dots, and `h33-h33-2-b2-mass-drop20pct-20261023-62bfc392` with `30,123` dots) and `3` `AXIS = SNAP` variants in both `.tif` (`NaN` outside footprint) and `-zeros.tif` (`0.0` outside footprint) formats.
+- **Validation, Diagnostics, Tests, and Documentation**:
+  - Executed disk re-read format/gate validation (`verify_written_pair_from_disk`, `scripts/validate_submission.py`) and REPORT-ONLY diagnostics (`catalogue_hide_and_recover_proxy`, `leakage_canary`, `sgmc_off_catalogue_control`), saving structured receipts to `evidence/r0_mass_variants_20261023.json`.
+  - Authored `SLOT_PLAN.md`, `docs/SUBMIT.md`, `IRREGULARITIES.md`, `AI_USE.md`, the `CURRENT STATE` block update in `README.md`, and unit tests in `tests/test_r0_variants.py` and `tests/test_snap_axis.py`.
 
-AI assistance was used for code, for reading the restored upstream recipe
-(`buffedlizard55-lab/GEMSDOE24`, `/GEMSDOE28`, `/GEMSDOE32`), and for the mechanism cards. No
-external site was contacted except `codeload.github.com` and `api.github.com` (repo metadata) —
-never drivendata.org, never dropbox.com. No credential was read, requested, stored or printed.
-No submission was made and no leaderboard was scraped.
+## 2. What the Human Decided and Must Supply
 
-## Decided by the human (still outstanding)
-
-- **AXIS for the session.** The brief left it blank; the agent chose SNAP and said why
-  (`SLOT_PLAN.md`). The human may reassign.
-- **TOP_PUBLIC** and **slots left this week** — human fills from the leaderboard, with a date.
-- **Which file, if any, occupies a slot** — the agent never submits.
-- **IR-84-S1**: whether the old rank-correlation / dot-overlap uniqueness protocol is still in
-  force. If it is, these three files are research-only.
-- **IR-84-S2**: whether hard constraint 4's "≥ 3 px from catalogue" is literal. If it is, these
-  files are non-compliant and a PRUNE-axis build is required.
-- **The ranking for any future MASS arm** — the parent's recipe stores none, so the ranking must
-  be named by the human before a MASS variant is a controlled edit.
+- **Experimental Framework & Constraints (`PROMPT.md`)**:
+  - The human defined the experimental protocol (Brief v2), hard constraints (no `dropbox.com` or `drivendata.org` access, zero catalogue mass, $\ge 3\text{ px}$ collar on newly added non-`PRUNE` dots, no label probing, single-entity `3 slots/week` budget, and no rank-correlation or dot-overlap "uniqueness" gates), and the baseline choice of Parent R0 (`h33-h33-2-b2`, `0.2778` `CLAIM`).
+- **Human Decisions & Inputs Required Before Portal Upload**:
+  1. Supply current `TOP_PUBLIC` leaderboard score and exact `Slots left this week / total` for the single competing entity.
+  2. Supply organizer receipt(s) (`receipt_score` and `date` in `ledger/submissions.csv`) for `h33-h33-2-b2` (`0.2778` `CLAIM`) and for each of the `AXIS = MASS` / `AXIS = SNAP` variants as they are manually uploaded to DrivenData by the human.
+  3. Confirm data-use terms regarding competition rasters mirrored in upstream public repositories (`IR-DEC-01` in `IRREGULARITIES.md`).
