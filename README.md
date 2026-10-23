@@ -1,67 +1,34 @@
 # `GEMSDOE84` — Lane `H84-THMS`: Thermo-Hydro-Mechanical Silica-Seal Fault-Valve, Seamless 1m-LiDAR + 10m-3DEP Fluvial-$\chi$ Scarp Bridge & Collar-Decoupled Dual-Head Ridge-Coherent Dinkelbach 300 m Submodular Allocator
 
-[![Validation Status](https://img.shields.io/badge/Automated_Portal_Validator-15%2F15_PASSED_(OK_TO_SUBMIT)-22c55e?style=for-the-badge)](#1-executive-summary--immediate-validated-submission-download)
-[![Dual-Seed HOLDOUT-DTI](https://img.shields.io/badge/Dual--Seed_HOLDOUT--DTI-0.2255_(22%2C663_px)-38bdf8?style=for-the-badge)](#4-parallel-run-protocol-results-exp-84-1-exp-84-2-exp-84-3)
-[![Uniqueness Gate](https://img.shields.io/badge/359--Raster_Uniqueness-PASS_(Max_Overlap_0.6500_%E2%89%A4_0.70)-a78bfa?style=for-the-badge)](#4-parallel-run-protocol-results-exp-84-1-exp-84-2-exp-84-3)
-[![Leakage Canary](https://img.shields.io/badge/96--Ch_Leakage_Canary-PASS_(Max_AUC_0.8060_%E2%89%A4_0.90)-22c55e?style=for-the-badge)](#4-parallel-run-protocol-results-exp-84-1-exp-84-2-exp-84-3)
+> ## Release status: **NOT CLEARED — DO NOT SUBMIT**
+>
+> The H84-THMS GeoTIFF passes local format and `[0,1]` checks, but its candidate-specific
+> uniqueness audit covers only 359 of the 1,143 registry rasters indexed in this repo.
+> Full-corpus uniqueness is unverified; no organizer receipt or current slot confirmation
+> is available. The TIFF is retained as a research artifact only. **Do not upload it to
+> DrivenData.** The separate LITI duplicate scan does not measure this H84-THMS file.
+>
+> Current decision and evidence: [`registry/current_release_status.json`](registry/current_release_status.json) ·
+> [three-pass review](research/REVIEW_20261023.md).
+
+- **Artifact (research-only, not submission-authorized):** [`submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif`](submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif)
+- **SHA-256:** `509fa4971a3cdf119a0ae7140b0fac31860d063af9bcc914266d98294f2ba7b5`
+- **Format preflight:** local pass for single-band GeoTIFF, template CRS/shape/transform, finite values, and `[0,1]`; not organizer acceptance or uniqueness clearance.
+- **HOLDOUT-DTI (prior experiment, not rerun in this review):** evaluator `gems57-pooled-hide-v2`; 22,663 withheld positive pixels; 0.2255085730; 95% CI [0.2100895961, 0.2404376417].
+- **Uniqueness:** partial only; 359 candidate-specific rasters checked. Maximum recorded absolute rank correlation 0.365582 and 3-pixel overlap 0.649997 apply only to that scanned subset.
+
+For background: `PROMPT.md` preserves the project brief; see the [PhD forensic analysis](research/why-h33-scored-02778.md), [hypothesis slate](research/h84_thms_hypotheses.md), [official-source register](registry/sources.json), and [executive summary](docs/executive-summary.html). Historical scores copied from the prompt are owner-reported unless accompanied by an organizer receipt; no higher leaderboard score is claimed.
 
 ---
 
-## 1. Executive Summary & Immediate Validated Submission Download
-
-> ### ✅ AUTOMATED VALIDATION VERDICT: `PROMOTE` — `OK TO DOWNLOAD & SUBMIT WITHOUT HUMAN INTERVENTION`
-> - **All 15 / 15 Automated Portal Preflight & Range Checks PASSED** (`vendor/gems57/validate.py` + `pytest`)
-> - **DrivenData Range Guarantee:** Every single one of the `12,279,160` cells (`3730 × 3292`, `EPSG:32611`) is a finite IEEE-754 `float32` value strictly in `[0.0, 1.0]` (binary `{0.0, 1.0}`, `0` NaN inside footprint, `0` NaN outside footprint, `0` Inf, `nodata=None`), eliminating the DrivenData `"Predicted values must be in range [0, 1]"` error (`IR-84-04`).
-
-### Direct Download Links (Repo & GitHub Pages)
-| Artifact | Workspace / Repo Path | GitHub Pages Path | Size | SHA-256 Checksum |
-|---|---|---|---:|---|
-| **Primary GeoTIFF (`.tif`)** | [`submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif`](submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif) | [`docs/downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif`](docs/downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif) | `144,420 B` | `509fa4971a3cdf119a0ae7140b0fac31860d063af9bcc914266d98294f2ba7b5` |
-| **Compressed Archive (`.zip`)** | [`submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.zip`](submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.zip) | [`docs/downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.zip`](docs/downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.zip) | `111,224 B` | `ef336ef406c1489a26bc4ff7ffeb0328e5b96eeaacda684df235713533093fb0` |
-| **Submission Receipt (`.json`)** | [`submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.json`](submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.json) | [`docs/downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.json`](docs/downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.json) | `2,960 B` | Validated metadata + validator receipt |
-| **Protocol JSON Run Card** | [`run_card.json`](run_card.json) | [`docs/evidence/run_card.json`](docs/evidence/run_card.json) | `29,079 B` | Complete 6-point Parallel-Run Protocol Run Card |
-
-### Copy-Ready DrivenData Portal Form Fields
-- **Unique Submission Name:**
-  ```text
-  gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros
-  ```
-- **Short Submission Note (`111 / 140` characters):**
-  ```text
-  H84-THMS silica-valve & 1m/10m scarp-chi Dual-Head Dinkelbach 300m; 37654 dots >3px off cat; HOLDOUT-DTI 0.2255
-  ```
-
-### Automated 15-Point Validation Receipt (`run_card.json` / `vendor/gems57/validate.py`)
-| Validation Gate | Key | Measured Value on Generated `.tif` | Status |
-|---|---|---|---|
-| Single-Band GeoTIFF | `single_band` | `count = 1` (`DEFLATE` compressed) | **PASS** |
-| IEEE-754 Float32 Data Type | `dtype_float32` | `dtype = float32` | **PASS** |
-| Exact Grid Dimensions | `dimensions_3730x3292` | `3730 × 3292` (`12,279,160` cells) | **PASS** |
-| Coordinate Reference System | `crs_epsg_32611` | `EPSG:32611` (`100 m` UTM Zone 11N) | **PASS** |
-| Geotransform Match | `transform_matches_sample_submission` | `(100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0)`, `nodata=None` | **PASS** |
-| Zero NaN Anywhere | `no_nan_anywhere` | `n_nan = 0` across all `12,279,160` cells | **PASS** |
-| Zero Inf Anywhere | `no_inf_anywhere` | `n_infinite = 0` | **PASS** |
-| No Sentinel Values | `no_sentinel_values` | `min = 0.0`, `max = 1.0` | **PASS** |
-| Guaranteed `[0, 1]` Range | `range_0_1_guaranteed` | Strictly binary `{0.0, 1.0} ⊂ [0.0, 1.0]` | **PASS** |
-| Minimum Value $\ge 0$ | `min_ge_0` | `min = 0.0` | **PASS** |
-| Maximum Value $\le 1$ | `max_le_1` | `max = 1.0` | **PASS** |
-| Active Footprint Finite | `in_footprint_all_finite` | `5,167,373 / 5,167,373` finite cells | **PASS** |
-| Active Footprint in `[0, 1]` | `in_footprint_range_0_1` | `37,654` binary `1.0` dots (`0.7287%` of footprint) | **PASS** |
-| Outside Footprint Zero | `outside_footprint_zero` | `7,111,787` outer cells `= 0.0` | **PASS** |
-| Zero Mapped Catalogue Overlap | `zero_dots_on_mapped_catalogue` | `0` dots on `60,988` `existing_faults.tif` pixels ($d_{\min} = \sqrt{10} \approx 3.1623\text{ px}$) | **PASS** |
-
-![GEMSDOE84 Lane H84-THMS 4-Panel Diagnostic Figure](figures/h84_thms_surface_and_dots.png)
-
----
-
-## 2. PhD Forensic Analysis: Why `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros` (`GEMSDOE32`) Scored `0.2778` (`ORGANIZER-CONFIRMED`) — and How to Score Higher
+## 2. PhD Forensic Analysis: Why `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros` (`GEMSDOE32`) Scored `0.2778` (`OWNER-REPORTED (not receipt-verified)`) — and How to Score Higher
 
 Full mathematical proof and byte-level audit in [`research/why-h33-scored-02778.md`](research/why-h33-scored-02778.md).
 
-### 2.1 Byte-Level Genealogy of `0.2778` (`ORGANIZER-CONFIRMED`)
+### 2.1 Byte-Level Genealogy of `0.2778` (`OWNER-REPORTED (not receipt-verified)`)
 Direct inspection of `gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif` (`sha256=c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9`) and its ancestors across `GEMSDOE19 → GEMSDOE24 → GEMSDOE25 → GEMSDOE31 → GEMSDOE32` establishes the **Collar-Pruning Law**:
 
-| Generation | Repo / Submission ID | Distance Collar Around `existing_faults.tif` | Emitted Binary Dots | Dots Pruned vs Parent | Live Portal Score (`ORGANIZER-CONFIRMED`) | Marginal Score Gain |
+| Generation | Repo / Submission ID | Distance Collar Around `existing_faults.tif` | Emitted Binary Dots | Dots Pruned vs Parent | Live Portal Score (`OWNER-REPORTED (not receipt-verified)`) | Marginal Score Gain |
 |---|---|---|---:|---:|---:|---:|
 | **Gen 1** | `GEMSDOE19` (`H19-5` continuous ridges) | $d_{\text{cat}} \ge 0\text{ px}$ | `351,613` (`>0`) | — | `0.1922` | Baseline |
 | **Gen 2** | `GEMSDOE24` (`D1.5` Poisson-disk $r=1.5\text{ px}$) | $d_{\text{cat}} > 0\text{ px}$ | `116,973` | `-234,640` | `0.2477` | `+0.0555` |
@@ -98,7 +65,7 @@ Full PhD specifications in [`research/h84_thms_hypotheses.md`](research/h84_thms
 
 ## 4. Parallel-Run Protocol Results (`EXP-84-1`, `EXP-84-2`, `EXP-84-3`)
 
-Every score below is explicitly labeled as either **`HOLDOUT-DTI`** (with evaluator version `gems57-pooled-hide-v2`, withheld positive pixel count, and 95% block-bootstrap CI) or **`ORGANIZER-CONFIRMED`**.
+Every locally generated evaluation score below is labeled **`HOLDOUT-DTI`** with evaluator version, withheld-positive count, and 95% CI. Historical leaderboard values supplied by the owner are **`OWNER-REPORTED (not receipt-verified)`**; no organizer submission-page receipt is present.
 
 ### 4.1 `EXP-84-1` — 96-Channel Single-Feature Leakage Canary (`evidence/h84_exp1_canary.json`)
 - **Protocol Gate:** Single-feature symmetric ROC AUC on withheld positive fault pixels vs off-catalogue negatives must not exceed `0.9000`.
@@ -117,17 +84,17 @@ Every score below is explicitly labeled as either **`HOLDOUT-DTI`** (with evalua
 | Ref: `GEMSDOE83` (`Lane H83-GVCD`, 84-Ch + Dual-Head Dinkelbach) | `HOLDOUT-DTI` | `gems57-pooled-hide-v2` | `0.2138` `[0.1976, 0.2321]` | `0.1999` `[0.1816, 0.2156]` | `0.2068` `[0.1927, 0.2198]` |
 | Ref: `GEMSDOE82` (`Lane H82-CSAM`, 72-Ch + Uncapped Dinkelbach) | `HOLDOUT-DTI` | `gems57-pooled-hide-v2` | `0.1726` `[0.1563, 0.1892]` | `0.1564` `[0.1411, 0.1715]` | `0.1645` `[0.1526, 0.1760]` |
 | Ref: Fold-Fair `H33` Rule (`D2.8` re-applied to fold-visible faults at $d > 2\text{ px}$) | `HOLDOUT-DTI` | `gems57-pooled-hide-v2` | `0.0981` | `0.0969` | `0.0975` `[0.0872, 0.1082]` |
-| Live Anchor: `GEMSDOE32` (`h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros`) | **`ORGANIZER-CONFIRMED`** | Live Portal | — | — | **`0.2778`** (`37,654` dots) |
+| Live Anchor: `GEMSDOE32` (`h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros`) | **`OWNER-REPORTED (not receipt-verified)`** | Live Portal | — | — | **`0.2778`** (`37,654` dots) |
 
 - **External Zero-Training Piedmont SGMC Diagnostic (`2,361,145` low-slope $\le 6^\circ$ off-catalogue pixels, `5,579` USGS SGMC bedrock fault pixels):** Out-of-quadrant ROC AUC improves from `0.6444` (`phys72`) to **`0.7084`** (`thms96`), and the `11,396` emitted piedmont dots achieve a **`5.21%` 300 m hit rate** on unmapped SGMC bedrock faults (`22×` background density).
 
-### 4.3 `EXP-84-3` — 359-Raster Uniqueness Audit (`evidence/h84_uniqueness.json`)
+### 4.3 `EXP-84-3` — 359-Raster Partial Uniqueness Audit (not full registry clearance) (`evidence/h84_uniqueness.json`)
 | Uniqueness Gate | Hard Threshold | Continuous LOQO Surface | Final `37,654` Emitted Dots | Status |
 |---|---:|---:|---:|---|
-| **Max Spearman Rank Correlation (`|ρ|`) vs 359 Rasters** | `<= 0.9000` | **`0.365582`** (vs `GEMSDOE82__surface_h82.tif`) | **`0.085702`** (vs `GEMSDOE83`) | **PASS** |
-| **Max 3-Pixel (300 m) Dot Overlap vs 359 Rasters** | `<= 0.7000` | **`0.649997`** (all 359 rasters $\le 0.6500$) | **`0.649997`** (all 359 rasters $\le 0.6500$) | **PASS** |
-| **Overlap vs `GEMSDOE32` (`H33`, `0.2778` `ORGANIZER-CONFIRMED`)** | `<= 0.7000` | `0.321666` ($\rho = 0.0222$) | **`0.321666`** ($\rho = 0.0222$) | **UNIQUE** |
-| **Overlap vs `GEMSDOE24` (`D2.8`, `0.2600` `ORGANIZER-CONFIRMED`)** | `<= 0.7000` | `0.331811` ($\rho = 0.0194$) | **`0.331811`** ($\rho = 0.0194$) | **UNIQUE** |
+| **Max Spearman Rank Correlation (`|ρ|`) in the 359-raster subset** | `<= 0.9000` | **`0.365582`** (vs `GEMSDOE82__surface_h82.tif`) | **`0.085702`** (vs `GEMSDOE83`) | **PARTIAL ONLY** |
+| **Max 3-Pixel (300 m) Dot Overlap in the 359-raster subset** | `<= 0.7000` | **`0.649997`** (all 359 scanned rasters $\le 0.6500$) | **`0.649997`** (all 359 scanned rasters $\le 0.6500$) | **PARTIAL ONLY** |
+| **Overlap vs `GEMSDOE32` (`H33`, `0.2778` `OWNER-REPORTED (not receipt-verified)`)** | `<= 0.7000` | `0.321666` ($\rho = 0.0222$) | **`0.321666`** ($\rho = 0.0222$) | **UNIQUE** |
+| **Overlap vs `GEMSDOE24` (`D2.8`, `0.2600` `OWNER-REPORTED (not receipt-verified)`)** | `<= 0.7000` | `0.331811` ($\rho = 0.0194$) | **`0.331811`** ($\rho = 0.0194$) | **UNIQUE** |
 | **Overlap vs `GEMSDOE82` (`H82-CSAM`)** | `<= 0.7000` | `0.484464` ($\rho = 0.0338$) | **`0.484464`** ($\rho = 0.0338$) | **UNIQUE** |
 | **Overlap vs `GEMSDOE83` (`H83-GVCD`)** | `<= 0.7000` | `0.649997` ($\rho = 0.0857$) | **`0.649997`** ($\rho = 0.0857$) | **UNIQUE** |
 
@@ -142,7 +109,7 @@ Full audit in [`research/irregularities.md`](research/irregularities.md) and [`r
 4. **`IR-84-04` (Critical — DrivenData Portal Range Rejection):** Writing `NaN` outside the active footprint or setting a numeric GDAL `nodata` tag triggers DrivenData's `"Predicted values must be in range [0, 1]"` error. Prevented by `vendor/gems57/submission_writer.py` (`0` NaN anywhere, `nodata=None`, `{0.0, 1.0}`).
 5. **`IR-84-05` (Medium — `labels.tif` vs `existing_faults.tif` vs `sample_submission.tif`):** `labels.tif` and `existing_faults.tif` are byte-identical (`60,988` positive cells), and `sample_submission.tif` has `1.0` on those `60,988` cells. Explicitly masked (`on_catalogue_positive_pixels = 0`).
 6. **`IR-84-06` (Medium — 24.60% NE Nevada 1 m LiDAR Gap):** Bridged in `H84-B` via `100%`-coverage 10 m USGS 3DEP profile curvature and fluvial $\chi$-knickpoints.
-7. **`IR-84-07` (Low — Space-Filling Continuous/Lattice Rasters):** Handled via bit-packed 3-px halo cap across all 359 rasters simultaneously (`max_overlap_3px = 0.649997 <= 0.70`).
+7. **`IR-84-07` (Low — Space-Filling Continuous/Lattice Rasters):** The historical bit-packed cap kept the 3-px overlap at `0.649997` across the 359 rasters scanned then. The indexed corpus has 1,143 rasters; full candidate-specific clearance is unverified, so the artifact is NOT CLEARED for submission.
 
 ---
 

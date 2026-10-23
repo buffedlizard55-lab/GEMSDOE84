@@ -138,9 +138,11 @@ def test_uniqueness_and_run_card_contract():
     ):
         assert key in card
 
-    assert card["verdict"] == "promote"
-    assert card["ok_to_download"] is True
-    assert card["ok_to_submit"] is True
+    assert card["verdict"] == "negative"
+    assert card["ok_to_download"] is False
+    assert card["ok_to_submit"] is False
+    assert card["submission_authorized"] is False
+    assert card["correlation_overlap_vs_registry"]["candidate_specific_full_registry_clearance"] == "NOT RUN / NOT CLEARED"
     assert 1 <= len(card["portal_note"]) <= 140
     assert card["experiments_executed"] <= 3
 
@@ -158,7 +160,9 @@ def test_site_and_readme_deliverables():
     readme = (ROOT / "README.md").read_text()
     assert "PARALLEL-RUN PROTOCOL (keep this block verbatim):" in readme
     assert "gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros" in readme
-    assert "OK TO DOWNLOAD & SUBMIT WITHOUT HUMAN INTERVENTION" in readme
+    assert "NOT CLEARED — DO NOT SUBMIT" in readme
+    assert "research-only, not submission-authorized" in readme
+    assert "current_release_status.json" in readme
 
     for rel in (
         "index.html",

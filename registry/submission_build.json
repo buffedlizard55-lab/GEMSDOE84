@@ -17,6 +17,11 @@
   "dots_over_5000m": 63,
   "min_dist_to_catalogue_px": 3.1622776985168457,
   "all_checks_passed": true,
-  "ok_to_download": true,
-  "ok_to_submit": true
+  "ok_to_download": false,
+  "ok_to_submit": false,
+  "verdict": "negative",
+  "release_status_receipt": "registry/current_release_status.json",
+  "release_blockers": [
+    "Full candidate-specific 1,143-raster uniqueness clearance not established; do not submit."
+  ]
 }

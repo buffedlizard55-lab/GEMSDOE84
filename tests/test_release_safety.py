@@ -6,7 +6,7 @@ import pytest
 import rasterio
 from rasterio.transform import from_origin
 
-from scripts.build_site import check_blocked_release
+from scripts.build_site import check_blocked_release, validator_hero_html
 from scripts.validate_submission import audit
 
 
@@ -51,3 +51,32 @@ def test_infinity_cannot_pass_combined_finite_range_flag(tmp_path):
     result = audit(candidate, ref)
     assert result['status'] == 'FAIL'
     assert not result['checks']['all_finite_values_in_[0,1]']
+
+
+def test_current_h84_release_is_fail_closed_despite_historical_promote_card():
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parents[1]
+    status = json.loads((root / 'registry/current_release_status.json').read_text())
+    historical = json.loads((root / 'run_card.json').read_text())
+    rendered = validator_hero_html(historical, 'downloads/', 'evidence/')
+
+    assert status['verdict'] == 'negative'
+    assert status['submission_authorized'] is False
+    assert status['candidate_specific_uniqueness']['rasters_checked'] == 359
+    assert status['candidate_specific_uniqueness']['full_registry_raster_count'] == 1143
+    assert 'NOT CLEARED' in rendered
+    assert 'DO NOT SUBMIT' in rendered
+    assert 'NOT FOR SUBMISSION' in rendered
+    assert 'OK TO DOWNLOAD &amp; SUBMIT' not in rendered
+    assert 'PROMOTE' not in rendered
+
+
+def test_release_status_scopes_other_lane_registry_scan():
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parents[1]
+    status = json.loads((root / 'registry/current_release_status.json').read_text())
+    assert 'separate LITI candidate' in status['separate_lane_scan_note']
+    assert status['organizer_receipt'] is None
+    assert status['weekly_submission_slot_status'] == 'unverified'

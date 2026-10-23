@@ -116,5 +116,11 @@
   "promoted": false,
   "submission_slots_used": 0,
   "status": "locally validated within separately recorded inventory scope; not organizer acceptance or slot approval",
-  "metadata": {}
+  "metadata": {},
+  "ok_to_download": false,
+  "ok_to_submit": false,
+  "submission_authorized": false,
+  "verdict": "negative",
+  "release_status_receipt": "registry/current_release_status.json",
+  "release_blocker": "Format-valid research artifact only. Candidate-specific uniqueness scan covers 359/1143 registry rasters; do not submit."
 }
