@@ -1,84 +1,102 @@
 {
-  "run_id": "gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros",
-  "hypothesis": "Structural tip wing-crack splay + relay-ramp gap closure predicted from catalogue geometry alone",
-  "mechanism": "Fault tips generate wing-crack splays at 30-45 deg; gaps between subparallel faults develop breached relay ramps; combined with far-field distance this marks plausible unmapped structure without any radiometric or terrain sensor.",
-  "non_fault_mimic": "Erosional terrace, lithologic contact, or alluvial fan margin that appears as a linear step between faults; also random hash/lattice modulation (shown as tip/gap-independent baseline)",
-  "holdout": {
-    "evidence_class": "HOLDOUT-DTI",
-    "evaluator_version": "gems57-pooled-hide-v2",
-    "alpha": 0.2,
-    "beta": 0.8,
-    "triangular_radius_m": 300.0,
-    "pooled": true,
-    "scores": {
-      "wing": {
-        "evidence_class": "HOLDOUT-DTI",
-        "evaluator_version": "gems57-pooled-hide-v2",
-        "dti": 0.0013545493525472096,
-        "ci95": [
-          0.000506245734946082,
-          0.0023089335681178865
-        ],
-        "withheld_positive_pixels": 11318,
-        "tpw": 21.865896554886497,
-        "fpw": 35418.942809041575,
-        "fnw": 11296.134103445112
-      },
-      "control": {
-        "evidence_class": "HOLDOUT-DTI",
-        "evaluator_version": "gems57-pooled-hide-v2",
-        "dti": 0.0,
-        "ci95": [
-          0.0,
-          0.0
-        ],
-        "withheld_positive_pixels": 11318,
-        "tpw": 0.0,
-        "fpw": 35430.0,
-        "fnw": 11318.0
-      }
-    },
-    "best_comparable_control": "control",
-    "paired_differences": {
-      "control": {
-        "evidence_class": "HOLDOUT-DTI",
-        "evaluator_version": "gems57-pooled-hide-v2",
-        "delta": 0.0013545493525472096,
-        "ci95": [
-          0.000506245734946082,
-          0.0023089335681178865
-        ],
-        "withheld_positive_pixels": 11318
-      }
-    },
-    "bootstrap": {
-      "method": "paired physical spatial-cluster percentile",
-      "clusters": 155,
-      "draws": 1000,
-      "seed": 289926028,
-      "confidence": 0.95,
-      "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
-    },
-    "implementation_sha256": {
-      "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
-      "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
-      "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
-      "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
-    }
+  "schema": "gems84-release-audit-v1",
+  "audited_utc": "2026-10-23T00:09:54.978327+00:00",
+  "lane": "H84-THMS (inherited; no new lane selected)",
+  "hypothesis": "Thermal/sinter evidence corroborates geomorphic fault-valve corridors.",
+  "mechanism": "Existing H84-THMS candidate; audit only, no new fit or prediction.",
+  "named_nonfault_mimic": "Lateral thermal outflow in an alluvial aquifer; pluvial shoreline benches.",
+  "new_candidate": null,
+  "new_raster_sha256": null,
+  "new_submission_name": null,
+  "note": "NEGATIVE: literal registry overlap blocks H84; archived TIFF is format-valid research only. No slot authorized.",
+  "verdict": "negative",
+  "stop_required": true,
+  "download_allowed_for_research": true,
+  "submission_authorized": false,
+  "new_experiments_executed": 0,
+  "submission_slots_used_this_session": 0,
+  "holdout_dti": null,
+  "holdout_status": "Not rerun. Archived A5 uses full-catalogue registry halos during hide-and-recover; not certified leakage-free.",
+  "organizer_confirmed_score": null,
+  "witness_provenance": {
+    "repository": "buffedlizard55-lab/17GEMSDOE",
+    "git_blob": "374c88b1da2b803e2ed160de467fd71ae114010d",
+    "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "url": "https://api.github.com/repos/buffedlizard55-lab/17GEMSDOE/git/blobs/374c88b1da2b803e2ed160de467fd71ae114010d",
+    "trust": "Team registry artifact, not an official scientific source."
   },
-  "registry": {
-    "surface_rank_correlation": null,
-    "candidate_dots_within_3px_of_registry_percent": null,
-    "status": "not_run_registry_corpus_missing",
-    "checked_local": 0,
-    "total_inventory": 1017,
-    "note": "Full 1,143-blob correlation requires GEMS84_DATA corpus; this run verifies format and catalogue masking locally. Worst Spearman among locally available rasters is reported if any; otherwise pending."
+  "audited_artifact": {
+    "name": "gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros",
+    "path": "submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif",
+    "sha256": "509fa4971a3cdf119a0ae7140b0fac31860d063af9bcc914266d98294f2ba7b5",
+    "newly_generated": false
   },
-  "raster_sha256": "c6d0b71096e13a6210ec55f9a022793e51a911edf31d245e4a79c4c4ab38aefe",
+  "certificate": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "witness_file": "/home/user/GEMSDOE84/.cache/audit/registry-witness.tif",
+    "witness_sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+    "positive_pixels": 5167373,
+    "allowed_pixels": 5106385,
+    "uncovered_allowed_pixels": 0,
+    "covered_allowed_fraction": 1.0,
+    "universal_overlap_blocker": true,
+    "overlap_limit": 0.7,
+    "support_definition": "finite prediction > 0 (inherited literal support rule)",
+    "implication": "Every nonempty candidate dot set in the allowed domain has forward overlap 1.0 with this prior; therefore it cannot pass the 0.70 gate."
+  },
+  "registry_comparison": {
+    "my_file": null,
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "my_dots": 37654,
+    "candidate_decoded_sha256": "2f4190b4e72e9a129ad7125daa9188c6918ba3937d82f50c23301f2047b68ce9",
+    "candidate_file_sha256": "509fa4971a3cdf119a0ae7140b0fac31860d063af9bcc914266d98294f2ba7b5",
+    "rho_limit": 0.9,
+    "overlap_limit": 0.7,
+    "jaccard_limit": 0.5,
+    "registry_rasters_expected": 1,
+    "registry_rasters_checked": 1,
+    "complete_accessible_scan": false,
+    "missing_or_invalid": 0,
+    "source_errors": [],
+    "worst_spearman_full_footprint": 0.06683575204996181,
+    "worst_rho_submission": "17GEMSDOE E-proba-multiscale (literal witness)",
+    "worst_dot_overlap": 1.0,
+    "worst_overlap_submission": "17GEMSDOE E-proba-multiscale (literal witness)",
+    "worst_jaccard_dot_sets": 0.007286874781441169,
+    "worst_jaccard_submission": "17GEMSDOE E-proba-multiscale (literal witness)",
+    "byte_unique_among_checked": true,
+    "pixel_unique_among_checked": true,
+    "duplicate_count": 1,
+    "unique": false,
+    "rows": [
+      {
+        "repo": "buffedlizard55-lab/17GEMSDOE",
+        "submission": "17GEMSDOE E-proba-multiscale (literal witness)",
+        "file": "/home/user/GEMSDOE84/.cache/audit/registry-witness.tif",
+        "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+        "decoded_sha256": "11cb7dffcc88926fee8260f61df01d7712d3a7bb34fcc1bb333fb6b47f77ec05",
+        "their_dots": 5167373,
+        "my_dots_within_3px_of_theirs": 1.0,
+        "their_dots_within_3px_of_mine": 0.15009580303183068,
+        "spearman_full_footprint": 0.06683575204996181,
+        "jaccard_dot_sets": 0.007286874781441169,
+        "identical_bytes": false,
+        "identical_decoded_predictions": false,
+        "duplicate_by_rho": false,
+        "duplicate_by_overlap": true,
+        "duplicate_by_jaccard": false
+      }
+    ],
+    "jaccard_diagnostic_only": true,
+    "verdict": "negative",
+    "stop_required": true,
+    "candidate_rank_variation": true,
+    "scope": "All hash-verified accessible entries in the indexed public owner-repository inventory; not a complete organizer registry. External/private/unlinked/inaccessible files may be absent. Reverse overlap is diagnostic only."
+  },
   "validator_output": {
-    "file": "/home/user/GEMSDOE84/docs/downloads/gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.tif",
-    "bytes": 125323,
-    "sha256": "c6d0b71096e13a6210ec55f9a022793e51a911edf31d245e4a79c4c4ab38aefe",
+    "file": "/home/user/GEMSDOE84/submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif",
+    "bytes": 144420,
+    "sha256": "509fa4971a3cdf119a0ae7140b0fac31860d063af9bcc914266d98294f2ba7b5",
     "meta": {
       "crs": "EPSG:32611",
       "shape": [
@@ -106,8 +124,8 @@
     "n_infinite": 0,
     "min": 0.0,
     "max": 1.0,
-    "mean": 0.003080015303567052,
-    "emitted_positive_pixels": 37820,
+    "mean": 0.0030664964579045773,
+    "emitted_positive_pixels": 37654,
     "checks": {
       "single_band": true,
       "dtype_float32": true,
@@ -128,14 +146,28 @@
     "all_checks_passed": true,
     "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
     "on_catalogue_positive_pixels": 0,
-    "in_footprint_positive_pixels": 37820,
-    "footprint_fraction": 0.007318999421949993
+    "in_footprint_positive_pixels": 37654,
+    "footprint_fraction": 0.007286874781441169
   },
-  "submission_name": "gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros",
-  "note": "Wing-crack splay at fault tips + relay-ramp gaps; catalogue geometry only; 37.8k dots; research preview.",
-  "verdict": "negative",
+  "pre_placement_stop": true,
+  "final_duplicate": true,
+  "limitations": [
+    "A single pinned witness refutes uniqueness; no complete registry refresh was performed.",
+    "Surface is absent locally; its correlation is not invented. Universal saturation proves a pre-placement impossibility.",
+    "No organizer submission receipt, current leaderboard or weekly cap was retrieved.",
+    "Cached training/external feature stacks are absent from this checkout."
+  ],
+  "raster_sha256": null,
+  "submission_name": null,
+  "submission_note": "NEGATIVE: literal registry overlap blocks H84; archived TIFF is format-valid research only. No slot authorized.",
   "download_allowed": true,
-  "submission_authorized": false,
-  "experiments_executed": 1,
-  "historical_record_only": false
+  "submission_file": "docs/downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif",
+  "registry_correlation_overlap": {
+    "duplicate": true,
+    "complete_accessible_scan": false,
+    "overlap_3px": 1.0,
+    "rank_correlation": 0.06683575204996181,
+    "pre_placement_stop": true
+  },
+  "submission_slots_used": 0
 }

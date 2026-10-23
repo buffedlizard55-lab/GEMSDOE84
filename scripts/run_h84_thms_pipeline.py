@@ -399,7 +399,7 @@ def run_exp2_dualseed_holdout(
     n_halos: int,
 ) -> dict:
     exp2_path = EVID_DIR / "h84_exp2_dualseed_holdout.json"
-    if exp2_path.exists():
+    if exp2_path.exists() and json.loads(exp2_path.read_text()).get("holdout_registry_policy") == "none-fold-only-v1":
         log("Loading cached EXP-84-2 dual-seed holdout report from h84_exp2_dualseed_holdout.json")
         return json.loads(exp2_path.read_text())
     log("=== EXP-84-2: Paired 6-Arm Dual-Seed Spatial-Quadrant Holdout (Seeds 30 & 20) ===")
@@ -450,9 +450,9 @@ def run_exp2_dualseed_holdout(
                 BUDGET,
                 temperature=0.70,
                 min_sep_px=2.40,
-                packed_halos_fp=packed_halos,
-                fp_lut=lut,
-                n_halos=n_halos,
+                packed_halos_fp=None,
+                fp_lut=None,
+                n_halos=0,
                 overlap_cap=OVERLAP_CAP,
                 dual_head_ridge=True,
             )[0],
@@ -509,6 +509,7 @@ def run_exp2_dualseed_holdout(
 
     out = {
         "experiment": "EXP-84-2",
+        "holdout_registry_policy": "none-fold-only-v1",
         "evidence_class": "HOLDOUT-DTI",
         "evaluator_version": EH.VERSION,
         "implementation_sha256": EH.implementation_hashes(),
@@ -567,178 +568,24 @@ def build_or_load_full_production_surface(
     return surf_full
 
 
-def audit_uniqueness_against_registry(
-    surf_full: np.ndarray,
-    dots: np.ndarray,
-    foot: np.ndarray,
-    cat: np.ndarray,
-    scored_dir: Path,
-    packed_halos: np.ndarray,
-    lut: np.ndarray,
-    n_halos: int,
-) -> dict:
-    log("=== Auditing Pre-Placement Surface & Final Dots Against Registry Rasters ===")
-    d_cat = ndi.distance_transform_edt(~cat).astype(np.float32)
-    allow_20 = foot & (d_cat > 2.0)
-    allow_30 = foot & (d_cat > 3.0)
-    pre_dots, _ = DE.emit_dinkelbach_submodular(
-        surf_full,
-        allow_20,
-        budget=BUDGET,
-        pi_true=0.0022,
-        temperature=0.70,
-        fp_lambda=0.012,
-        min_sep_px=2.45,
-        packed_halos_fp=packed_halos,
-        fp_lut=lut,
-        n_halos=n_halos,
-        overlap_cap=OVERLAP_CAP,
-        dual_head_ridge=False,
+def literal_registry_phase(array: np.ndarray, g: GRID.Grid) -> dict:
+    """Delegate to the shared literal gate; no truncation, exemptions or sampling.
+
+    Absolute cache paths in an old inventory are NOT proof of availability. The
+    shared comparator fails closed for missing entries or an incomplete scan.
+    """
+    report = U.compare_array_to_registry(
+        array, ROOT / "registry/registry_index.json", g.footprint,
+        expected_grid=(g.shape, g.crs, g.transform), include_reverse=False,
     )
-
-    paths = sorted(glob.glob(str(scored_dir / "*.tif")))
-    rng = np.random.default_rng(8484)
-    fp_idx = np.flatnonzero(foot.ravel())
-    sample_idx = rng.choice(fp_idx, size=min(250_000, fp_idx.size), replace=False)
-
-    surf_sample = surf_full.ravel()[sample_idx].astype(np.float32)
-    dots_sample = dots.ravel()[sample_idx].astype(np.float32)
-    pre_pts = np.flatnonzero(pre_dots)
-    fin_pts = np.flatnonzero(dots)
-    n_fp = int(foot.sum())
-    y, x = np.ogrid[-3:4, -3:4]
-    disk3 = (x * x + y * y) <= 9.0
-
-    pre_rows = []
-    fin_rows = []
-    disc_max_pre_ov = 0.0
-    disc_max_pre_file = ""
-    disc_max_fin_ov = 0.0
-    disc_max_fin_file = ""
-    max_pre_rho = 0.0
-    max_pre_rho_file = ""
-    max_fin_rho = 0.0
-    max_fin_rho_file = ""
-
-    for p_str in paths:
-        p = Path(p_str)
-        try:
-            with rasterio.open(p) as ds:
-                if ds.shape != foot.shape:
-                    continue
-                arr = ds.read(1).astype(np.float32)
-        except Exception:
-            continue
-        pos = np.isfinite(arr) & (arr > 0) & foot
-        n_pos = int(pos.sum())
-        if n_pos == 0:
-            continue
-        arr_clean = np.where(np.isfinite(arr) & foot, arr, 0.0)
-        their_sample = arr_clean.ravel()[sample_idx]
-        if np.ptp(their_sample) > 0:
-            r_pre = float(spearmanr(surf_sample, their_sample).statistic)
-            r_fin = float(spearmanr(dots_sample, their_sample).statistic)
-        else:
-            r_pre, r_fin = 0.0, 0.0
-        if not np.isfinite(r_pre):
-            r_pre = 0.0
-        if not np.isfinite(r_fin):
-            r_fin = 0.0
-
-        if n_pos > 2 * BUDGET:
-            vals = np.where(foot & np.isfinite(arr), arr, -np.inf).ravel()
-            top_idx = np.argpartition(vals, -BUDGET)[-BUDGET:]
-            b_trunc = np.zeros(foot.shape, dtype=bool)
-            b_trunc.ravel()[top_idx] = True
-            b_trunc &= foot & (arr > 0)
-            halo = ndi.binary_dilation(b_trunc, structure=disk3)
-        else:
-            halo = ndi.binary_dilation(pos, structure=disk3)
-        halo_cov = float(halo[allow_30].mean())
-        ov_pre = float(halo.ravel()[pre_pts].mean())
-        ov_fin = float(halo.ravel()[fin_pts].mean())
-        is_disc = (n_pos <= int(0.05 * n_fp)) and (halo_cov < 0.70)
-
-        if abs(r_pre) > abs(max_pre_rho):
-            max_pre_rho = r_pre
-            max_pre_rho_file = p.name
-        if abs(r_fin) > abs(max_fin_rho):
-            max_fin_rho = r_fin
-            max_fin_rho_file = p.name
-        if is_disc:
-            if ov_pre > disc_max_pre_ov:
-                disc_max_pre_ov = ov_pre
-                disc_max_pre_file = p.name
-            if ov_fin > disc_max_fin_ov:
-                disc_max_fin_ov = ov_fin
-                disc_max_fin_file = p.name
-
-        fin_rows.append(
-            {
-                "submission": p.name,
-                "file": p.name,
-                "their_dots": n_pos,
-                "halo_coverage": round(halo_cov, 6),
-                "representation": "dot_field" if is_disc else "continuous_surface",
-                "spearman_full_footprint": round(r_fin, 6),
-                "forward_overlap": round(ov_fin, 6),
-                "my_dots_within_3px_of_theirs": round(ov_fin, 6),
-            }
-        )
-        pre_rows.append(
-            {
-                "submission": p.name,
-                "file": p.name,
-                "their_dots": n_pos,
-                "halo_coverage": round(halo_cov, 6),
-                "spearman_full_footprint": round(r_pre, 6),
-                "forward_overlap": round(ov_pre, 6),
-            }
-        )
-
-    binding_pre = U.binding_duplicate_decision(pre_rows)
-    binding_fin = U.binding_duplicate_decision(fin_rows)
-
-    # Specific key comparisons (H33 0.2778, D2.8 0.2600, H83-GVCD, H82-CSAM)
-    key_comparisons = {}
-    for row in fin_rows:
-        fn = row["file"]
-        if any(k in fn for k in ("h33-h33-2-b2", "dotted-h19-5-d2-8", "gems83-h83-gvcd", "gems82-h82-csam")):
-            key_comparisons[fn] = {
-                "spearman_rho": row["spearman_full_footprint"],
-                "forward_overlap_3px": row["forward_overlap"],
-                "their_dots": row["their_dots"],
-            }
-
-    out = {
-        "evidence_class": "REGISTRY-MEASUREMENT",
-        "rasters_checked": len(fin_rows),
-        "thresholds": {"max_spearman_rho": 0.90, "max_3px_overlap": 0.70},
-        "pre_placement_surface": {
-            "unique": bool(not binding_pre["duplicate"]),
-            "worst_spearman_full_footprint": round(float(max_pre_rho), 6),
-            "worst_spearman_file": max_pre_rho_file,
-            "worst_dot_overlap_3px": round(float(disc_max_pre_ov), 6),
-            "worst_dot_overlap_file": disc_max_pre_file,
-            "binding_decision": binding_pre,
-        },
-        "final_emitted_dots": {
-            "unique": bool(not binding_fin["duplicate"]),
-            "worst_spearman_full_footprint": round(float(max_fin_rho), 6),
-            "worst_spearman_file": max_fin_rho_file,
-            "worst_dot_overlap_3px": round(float(disc_max_fin_ov), 6),
-            "worst_dot_overlap_file": disc_max_fin_file,
-            "binding_decision": binding_fin,
-        },
-        "key_comparisons": key_comparisons,
+    return {
+        "unique": report["unique"],
+        "worst_spearman_full_footprint": report["worst_spearman_full_footprint"],
+        "worst_spearman_file": report["worst_rho_submission"],
+        "worst_dot_overlap_3px": report["worst_dot_overlap"],
+        "worst_dot_overlap_file": report["worst_overlap_submission"],
+        "shared_report": report,
     }
-    (EVID_DIR / "h84_uniqueness.json").write_text(json.dumps(out, indent=2) + "\n")
-    (DOCS_EVID_DIR / "h84_uniqueness.json").write_text(json.dumps(out, indent=2) + "\n")
-    log(
-        f"Uniqueness vs {len(fin_rows)} registry rasters: pre_rho={max_pre_rho:.4f}, "
-        f"pre_ov={disc_max_pre_ov:.4f}; fin_rho={max_fin_rho:.4f}, fin_ov={disc_max_fin_ov:.4f}"
-    )
-    return out
 
 
 def run_exp3_build_and_audit(
@@ -752,6 +599,10 @@ def run_exp3_build_and_audit(
 ) -> Tuple[dict, dict, Path, Path]:
     foot, cat = g.footprint, g.catalogue
     surf_full = build_or_load_full_production_surface(g, X_phys, phys_names, flat_fp, lut)
+    pre = literal_registry_phase(surf_full, g)
+    if not pre["unique"]:
+        (EVID_DIR / "h84_preplacement_stop.json").write_text(json.dumps(pre, indent=2) + "\n")
+        raise RuntimeError("Literal surface registry gate failed: STOP before dot placement")
     d_cat = ndi.distance_transform_edt(~cat).astype(np.float32)
     allow_30 = foot & (d_cat > 3.0)
 
@@ -771,9 +622,13 @@ def run_exp3_build_and_audit(
         dual_head_ridge=True,
     )
 
-    uniq_out = audit_uniqueness_against_registry(
-        surf_full, dots, foot, cat, RAW_DIR / "scored", packed_halos, lut, n_halos
-    )
+    final = literal_registry_phase(dots.astype(np.float32), g)
+    uniq_out = {
+        "pre_placement_surface": pre,
+        "final_emitted_dots": final,
+        "rasters_checked": final["shared_report"]["registry_rasters_checked"],
+        "key_comparisons": {},
+    }
     if not (uniq_out["pre_placement_surface"]["unique"] and uniq_out["final_emitted_dots"]["unique"]):
         raise RuntimeError(f"Uniqueness gate failed: {uniq_out}")
 
@@ -847,6 +702,8 @@ def run_exp3_build_and_audit(
 
 
 def main() -> int:
+    from audit_release import assert_lane_open
+    assert_lane_open()
     t0 = time.time()
     g = GRID.load_grid(BRIDGE_DIR)
     foot = g.footprint
@@ -887,7 +744,7 @@ def main() -> int:
     run_card = {
         "lane_id": "H84-THMS",
         "repo": "buffedlizard55-lab/GEMSDOE84",
-        "branch": "arena/010446b1-gemsdoe84",
+        "branch": "arena/585c0bc8-gemsdoe84",
         "date_utc": "2026-10-22",
         "hypothesis": HYP.H84_HYPOTHESES[0]["title"] + " — " + str(HYP.H84_HYPOTHESES[0]["why_off_catalogue"]),
         "mechanism": HYP.H84_HYPOTHESES[0]["physical_signature"],
@@ -905,9 +762,9 @@ def main() -> int:
         "tif_size_bytes": exp3["tif_size_bytes"],
         "zip_size_bytes": exp3["zip_size_bytes"],
         "ok_to_download": bool(exp3["validator_output"]["all_checks_passed"]),
-        "ok_to_submit": bool(beats_all),
+        "ok_to_submit": False,
         "verdict": "promote" if beats_all else "negative",
-        "verdict_banner": "PROMOTE — OK TO DOWNLOAD AND SUBMIT" if beats_all else "HOLD — DO NOT SUBMIT",
+        "verdict_banner": "Candidate for selector only — no slot authorized" if beats_all else "HOLD — DO NOT SUBMIT",
         "evidence_class": "HOLDOUT-DTI",
         "evaluator_version": EH.VERSION,
         "organizer_confirmed_score": None,
@@ -933,8 +790,8 @@ def main() -> int:
             "vs_H83_GVCD_seed30_0213755": round(s30_dti["dti"] - 0.213755, 6),
             "vs_H83_GVCD_seed20_0199862": round(s20_dti["dti"] - 0.199862, 6),
         },
-        "organizer_confirmed_reference_context": {
-            "evidence_class": "ORGANIZER-CONFIRMED",
+        "user_reported_reference_context": {
+            "evidence_class": "UNVERIFIED USER-REPORTED; no receipt",
             "GEMSDOE32_H33_2_B2_live_dti": 0.2778,
             "GEMSDOE36_PINN_live_dti": 0.2750,
             "GEMSDOE28_H36_1_live_dti": 0.2710,

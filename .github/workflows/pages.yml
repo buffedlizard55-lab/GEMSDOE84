@@ -18,12 +18,14 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      # NOTE (H84-DEMAG lane, 2026-10-22): removed the `build_site.py` render-and-diff gate
-      # here, for the same reason documented in ci.yml -- that script unconditionally fails
-      # whenever any .tif/.zip exists under docs/, which has been true on `main` since the
-      # H84-WING lane shipped its own (clearly-labelled-negative) download, well before this
-      # fix. In practice this meant the live Pages site had stopped deploying entirely.
-      # docs/ is now hand-maintained directly by each lane; deploy it as committed.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Refuse stale or unauthorized release state
+        run: |
+          python scripts/build_run_card.py
+          python scripts/build_site.py
+          git diff --exit-code -- docs index.html executive-summary.html run_card.json evidence/run-card.json evidence/run_card.json registry/run_card.json
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -109,8 +109,11 @@ def test_site_local_links_and_fail_closed_release():
     note = card.get('note') or card.get('submission_note') or ''
     assert len(note)<=140
     # If registry was flagged as duplicate with literal rule, old lane required no TIFF; new lane allows a format-valid research artifact with explicit caveat
-    if card['registry_correlation_overlap'].get('duplicate') and card.get('raster_sha256') is None:
-        assert not list((ROOT/'docs').rglob('*.tif'))
+    if card['registry_correlation_overlap'].get('duplicate'):
+        assert card['submission_authorized'] is False
+        assert card['new_candidate'] is None
+        assert 'DO NOT SUBMIT' in html
+        assert card['audited_artifact']['newly_generated'] is False
     # If a raster is shipped, verify its format regardless of verdict
     if card.get('raster_sha256'):
         tif = None
