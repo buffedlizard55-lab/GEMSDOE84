@@ -1,0 +1,4 @@
+id,parent,axis,value,n_dots,pct_changed,sha256,status,predicted_change,receipt_score,receipt_date,notes
+h33-h33-2-b2-PRUNE1-20261023-29e1ae46,h33-h33-2-b2,PRUNE,1,37654,6.76,29e1ae461adbe24d908b79fbeeb492c06129ec17caabd8256ca4f1fb690c075c,BUILT,-0.004±0.006,,,"Form note: h33-h33-2-b2 PRUNE1 (≤1px) 37.6k dots 6.76% changed; predicted -0.004 (more FP near catalogue)"
+h33-h33-2-b2-PRUNE3-20261023-10737d46,h33-h33-2-b2,PRUNE,3,37654,5.77,10737d46c136beed93a5d4eb64bbd46d52554420c61bb8547426c51766cec58f,BUILT,+0.006±0.007,,,"Form note: h33-h33-2-b2 PRUNE3 (≤3px) 37.6k dots 5.77% changed; predicted +0.006 (remove FP, keep blind far)"
+h33-h33-2-b2-PRUNE4-20261023-f1facecf,h33-h33-2-b2,PRUNE,4,37654,10.16,f1facecf6f79155ac24963525d2253cf2838acb519eec9d98ebe1b054de6bb9e,BUILT,+0.002±0.008,,,"Form note: h33-h33-2-b2 PRUNE4 (≤4px) 37.6k dots 10.16% changed; predicted +0.002 (aggressive prune)"
