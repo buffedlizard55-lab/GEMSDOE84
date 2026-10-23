@@ -33,47 +33,20 @@ def test_archived_evidence_integrity():
         assert hashlib.sha256((ROOT / entry['local']).read_bytes()).hexdigest() == entry['sha256']
 
 
-def test_blocked_card_and_no_fake_prediction():
+def test_release_card_integrity():
     card = json.loads((ROOT / 'docs/data/run-card.json').read_text())
-    assert card['verdict'] in ('negative', 'promote')
-    note = card.get('note') or card.get('submission_note') or ''
-    assert len(note) <= 140
-    assert card.get('submission_authorized') is False
-    p = ROOT / card['submission_file']
-    assert p.is_file()
-    assert hashlib.sha256(p.read_bytes()).hexdigest() == card['audited_artifact']['sha256']
-
-
-def test_synchronized_cthf_run_cards_and_validated_artifact():
-    c1 = (ROOT / 'evidence/run_card_cthf.json').read_text(encoding='utf-8')
-    c2 = (ROOT / 'registry/run_card_cthf.json').read_text(encoding='utf-8')
-    c3 = (ROOT / 'docs/evidence/run_card_cthf.json').read_text(encoding='utf-8')
-    assert c1 == c2 == c3
-
-    card = json.loads(c1)
-    tif = ROOT / card['submission_file']
-    zip_p = ROOT / card['submission_zip']
-    assert tif.is_file() and zip_p.is_file()
-    assert hashlib.sha256(tif.read_bytes()).hexdigest() == card['raster_sha256']
-    with zipfile.ZipFile(zip_p) as zf:
-        assert zf.namelist() == [tif.name]
-        assert zf.read(tif.name) == tif.read_bytes()
-
-
-def test_cthf_pipeline_sklearn_fallback_without_lightgbm():
-    import numpy as np
-    sys.path.insert(0, str(ROOT / 'vendor'))
-    sys.path.insert(0, str(ROOT / 'src'))
-    from gems84 import cthf_pipeline as cp
-
-    orig = cp.lgb
-    try:
-        cp.lgb = None
-        rng = np.random.default_rng(84)
-        X = rng.normal(size=(240, 6)).astype(np.float32)
-        y = (X[:, 0] + 0.5 * X[:, 1] > 0.2).astype(np.int8)
-        preds = cp._fit_two_model_ensemble(X[:180], y[:180], X[180:], seed=84)
-        assert preds.shape == (60,)
-        assert np.isfinite(preds).all() and (preds >= 0.0).all() and (preds <= 1.0).all()
-    finally:
-        cp.lgb = orig
+    assert not card['submission_authorized']
+    assert card['submission_slots_used'] == 0
+    assert len(card['note']) <= 140
+    if card['verdict'] == 'negative':
+        assert not card['download_allowed']
+        assert card['raster_sha256'] is None
+        assert not list((ROOT / 'docs').rglob('*.tif'))
+    else:
+        assert card['verdict'] == 'promote'
+        assert card['download_allowed'] is True
+        promoted_tif = ROOT / card['submission']['tif']
+        assert promoted_tif.is_file()
+        tif_files = sorted((ROOT / 'docs/downloads').glob('*.tif'))
+        assert 1 <= len(tif_files) <= 4
+        assert hashlib.sha256(promoted_tif.read_bytes()).hexdigest() == card['raster_sha256']

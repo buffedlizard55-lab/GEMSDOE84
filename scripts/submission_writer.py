@@ -25,7 +25,8 @@ def main() -> int:
         return 1
     card = json.loads(card_path.read_text())
     g = GRID.load_grid(ROOT / "data" / "bridge")
-    rep = V.validate(ROOT / card["audited_artifact"]["path"], g.footprint, g.catalogue)
+    target_rel = card["submission"]["tif"] if "submission" in card else card["audited_artifact"]["path"]
+    rep = V.validate(ROOT / target_rel, g.footprint, g.catalogue)
     print(json.dumps(rep, indent=2))
     return 0 if rep["all_checks_passed"] else 1
 

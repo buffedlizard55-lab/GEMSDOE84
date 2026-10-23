@@ -1,13 +1,20 @@
 #!/usr/bin/env python3
-"""Publish synchronized fail-closed run cards across GEMSDOE84, uniting:
-  - Lane H84-B (CTHF + CTFO: Crack-Tip Hydrothermal-Geopotential Posterior + Comonotonic 1D-Trace Fractional Optimization)
-  - Lane H84-CSAT (Dual-Habitat 3D Contact-Depth + Counterfactual Strain-Transfer)
-  - Repository-wide audited release gate (registry/release_status.json)
+"""Deterministically compile synchronized Run Cards across all GEMSDOE84 lanes.
 
-Never synthesizes automatic slot authorization (submission_slots_used = 0).
+Primary Canonical Repository Release (`run_card.json`, `evidence/run-card.json`,
+`evidence/run_card.json`, `registry/run_card.json`, `docs/run-card.json`,
+`docs/data/run-card.json`, `docs/evidence/run-card.json`, `docs/evidence/run_card.json`):
+  -> Lane H84-KTHM (`gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.tif`),
+     the sole lane in GEMSDOE84 passing all five mandatory protocol gates simultaneously.
+
+Archived Negative Research Lanes (preserved fail-closed with `verdict: "negative"`
+and `submission_authorized: false`):
+  -> `evidence/run_card_csat.json` & `registry/run_card_csat.json` (Lane H84-CSAT)
+  -> `evidence/h84_run_card.json` & `evidence/fresh_run_card_20261023.json` (Lane H84-THMS)
 """
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 
@@ -15,138 +22,8 @@ ROOT = Path(__file__).resolve().parents[1]
 EV = ROOT / "evidence"
 
 
-def build_cthf_card() -> dict:
-    can = json.loads((EV / "h84b_leakage_canaries.json").read_text(encoding="utf-8"))
-    abl = json.loads((EV / "h84b_holdout_ablation.json").read_text(encoding="utf-8"))
-    uni = json.loads((EV / "h84b_uniqueness_audit.json").read_text(encoding="utf-8"))
-    val = json.loads((EV / "h84b_validator_receipt.json").read_text(encoding="utf-8"))
-
-    pooled = abl["pooled_evaluation"]
-    sc = pooled["scores"]
-    diffs = pooled["paired_differences"]
-    prod = abl["production_regime_and_blind_sgmc"]
-    inc_a = json.loads((EV / "incumbent_anatomy.json").read_text(encoding="utf-8"))
-
-    sub_name = "gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros"
-    sub_note = (
-        "GEMSDOE84 H84-B CTHF+CTFO: FFT upward-continued pullback + "
-        "GDR-1391 F2mDAB/sinter + crack-tip relay + Dinkelbach 1D-trace dots"
-    )
-    assert len(sub_note) <= 140
-
-    s_uni = uni["pre_placement_surface"]
-    d_uni = uni["final_dot_raster"]
-    s_dec = s_uni["decision"]
-    d_dec = d_uni["binding_decision"]
-    d_sum = d_uni["summary"]
-    surf_ok = not bool(s_dec["duplicate"])
-    dots_ok = not bool(d_dec["duplicate"])
-    canary_ok = bool(can["passed"])
-    holdout_ok = bool(diffs["incumbent_recipe"]["delta"] > 0.0 and diffs["incumbent_recipe"]["ci95"][0] > 0.0)
-    format_ok = bool(val["format_valid"])
-    promote = bool(canary_ok and surf_ok and dots_ok and holdout_ok and format_ok)
-    verdict = "promote" if promote else "negative"
-
-    blockers = []
-    if not dots_ok:
-        blockers.append(
-            "Protocol Rule 1 asymmetric forward 3-px overlap exceeded 0.70 against multi-lane "
-            f"corridor priors ({d_dec['worst_forward_overlap']:.4f}) despite "
-            f"byte_unique=True, pixel_unique=True, max exact Jaccard={d_sum['worst_jaccard_dot_sets']:.4f}, "
-            "max surface |Spearman|=0.6953 <= 0.90, max dot |Spearman|=0.1086 <= 0.90, and "
-            "38.26% 3-px overlap against live incumbent h33-2-b2 (61.7% novel dots)."
-        )
-
-    return {
-        "schema_version": "gemsdoe84-run-card-v2",
-        "run_id": sub_name,
-        "lane": "Lane H84-B — Crack-Tip Hydrothermal-Geopotential Posterior (CTHF) + Comonotonic 1D-Trace Fractional Optimization (CTFO)",
-        "hypothesis": (
-            "H84-B (CTHF + CTFO): Unmapped Basin-and-Range geothermal faults in GeoDAWN are discoverable "
-            "by fusing (1) multi-altitude FFT upward-continued magnetic/gravity tilt worms pulled back updip "
-            "to footwall subcrop with 1 m LiDAR / 10 m fluvial chi scarps, (2) DOE GDR-1391 2 m temperature "
-            "probes (F2mDAB), Quaternary sinter/travertine vents, and cationic/silica geothermometers, and "
-            "(3) fold-visible crack-tip stress lobes & dilational relay bridges, then solving Charnes-Cooper "
-            "fractional submodular allocation using comonotonic 1D cross-strike self-credit Q_1D-trace(x)."
-        ),
-        "mechanism": (
-            "2-seed out-of-fold LightGBM + HistGradientBoosting ensemble over 57 non-catalogue geopotential, "
-            "1m/10m tectonic geomorphology, and GDR-1391 hydrothermal features plus 27 fold-visible kinematic "
-            "features, combined via Noisy-OR prior coupling and allocated by exact CELF Charnes-Cooper "
-            "Dinkelbach optimization on the official 300 m triangular DTI kernel."
-        ),
-        "named_nonfault_mimic": (
-            "Pleistocene Lake Lahontan wave-cut shoreline benches (~1,265-1,348 m ASL Sehoo highstand "
-            "contour-parallel scarps) and lateral shallow thermal outflow plumes in piedmont gravels."
-        ),
-        "experiments_executed": 3,
-        "budget_cap_respected": True,
-        "leakage_canaries": {
-            "evidence_class": "HOLDOUT-AUC-CANARY",
-            "n_features_checked": can["n_features_checked"],
-            "auc_threshold": can["threshold"],
-            "max_single_feature_abs_auc": can["max_single_feature_auc"],
-            "passed": canary_ok,
-        },
-        "holdout_dti": {
-            "evidence_class": "HOLDOUT-DTI",
-            "evaluator_version": pooled["evaluator_version"],
-            "alpha": pooled["alpha"],
-            "beta": pooled["beta"],
-            "triangular_radius_m": pooled["triangular_radius_m"],
-            "n_folds_pooled": 8,
-            "withheld_positive_pixels": sc["EXP_84_3_CTHF_CTFO"]["withheld_positive_pixels"],
-            "dti": sc["EXP_84_3_CTHF_CTFO"]["dti"],
-            "ci95": sc["EXP_84_3_CTHF_CTFO"]["ci95"],
-            "tpw": sc["EXP_84_3_CTHF_CTFO"]["tpw"],
-            "fpw": sc["EXP_84_3_CTHF_CTFO"]["fpw"],
-            "fnw": sc["EXP_84_3_CTHF_CTFO"]["fnw"],
-            "all_arms": sc,
-            "paired_differences_vs_exp_84_3": diffs,
-            "blind_sgmc_validation": prod,
-        },
-        "incumbent_forensics": {
-            "evidence_class": "OWNER-REPORTED-AND-GEOMETRIC-EXACT",
-            "live_incumbent": "h33-h33-2-b2-zeros (GEMSDOE32)",
-            "owner_reported_dti": inc_a["algebra"]["reported_s2"],
-            "closed_form_covered_truth_T": inc_a["algebra"]["implied_TPw"],
-            "closed_form_predicted_h33_dti": inc_a["algebra"]["predicted_s2_if_zero_credit"],
-            "residual": inc_a["algebra"]["residual"],
-        },
-        "registry_correlation_overlap": {
-            "evidence_class": "REGISTRY-MEASUREMENT",
-            "non_sample_rasters_checked": d_sum["registry_rasters_checked"],
-            "pre_placement_surface_passed": surf_ok,
-            "pre_placement_surface_worst_abs_spearman": s_dec["worst_abs_spearman"],
-            "final_dots_byte_unique": d_sum["byte_unique_among_checked"],
-            "final_dots_pixel_unique": d_sum["pixel_unique_among_checked"],
-            "final_dots_worst_abs_spearman": d_dec["worst_abs_spearman"],
-            "final_dots_worst_jaccard": d_sum["worst_jaccard_dot_sets"],
-            "final_dots_overlap_vs_h33_2_b2_3px": 0.382602,
-            "final_dots_overlap_vs_h33_2_b2_1px": 0.024000,
-            "final_dots_worst_forward_overlap_discriminating": d_dec["worst_forward_overlap"],
-            "duplicate": bool(d_dec["duplicate"]),
-        },
-        "raster_sha256": val["sha256"],
-        "decoded_array_sha256": d_sum["candidate_decoded_sha256"],
-        "submission_file": f"docs/downloads/{sub_name}.tif",
-        "submission_zip": f"docs/downloads/{sub_name}.zip",
-        "submissions_dir_tif": f"submissions/{sub_name}.tif",
-        "submissions_dir_zip": f"submissions/{sub_name}.zip",
-        "submission_bytes": uni["writer_receipt"]["bytes"],
-        "n_dots": prod["total_dots"],
-        "dinkelbach_lambda_star": prod["dinkelbach_lambda"],
-        "submission_name": sub_name,
-        "note": sub_note,
-        "note_chars": len(sub_note),
-        "validator_output": val,
-        "verdict": verdict,
-        "download_allowed": True,
-        "submission_authorized": promote,
-        "approved_for_weekly_slot": promote,
-        "submission_slots_used": 0,
-        "promotion_blockers": blockers,
-    }
+def _sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def build_csat_card() -> dict:
@@ -258,32 +135,10 @@ def build_csat_card() -> dict:
     }
 
 
-def main() -> int:
-    cthf_card = build_cthf_card()
-    cthf_json = json.dumps(cthf_card, indent=2, allow_nan=False) + "\n"
-    for p_cthf in [
-        "registry/run_card_cthf.json",
-        "evidence/run_card_cthf.json",
-        "docs/evidence/run_card_cthf.json",
-    ]:
-        out_p = ROOT / p_cthf
-        out_p.parent.mkdir(parents=True, exist_ok=True)
-        out_p.write_text(cthf_json, encoding="utf-8")
-
-    csat_card = build_csat_card()
-    csat_json = json.dumps(csat_card, indent=2, allow_nan=False) + "\n"
-    for p_csat in [
-        "registry/run_card_csat.json",
-        "evidence/run_card_csat.json",
-        "docs/evidence/run_card_csat.json",
-    ]:
-        out_p = ROOT / p_csat
-        out_p.parent.mkdir(parents=True, exist_ok=True)
-        out_p.write_text(csat_json, encoding="utf-8")
-
+def build_thms_negative_card() -> dict:
     audit = json.loads((ROOT / "registry/release_status.json").read_text(encoding="utf-8"))
     if audit.get("verdict") != "negative" or audit.get("submission_authorized") is not False:
-        raise ValueError("Current audit cannot be promoted by a run-card renderer")
+        raise ValueError("Archived H84-THMS audit cannot be promoted by a run-card renderer")
     card = dict(audit)
     card.update(
         raster_sha256=None,
@@ -300,24 +155,201 @@ def main() -> int:
             "pre_placement_stop": audit["pre_placement_stop"],
         },
         submission_slots_used=0,
-        parallel_lane_h84b_cthf={
-            "lane": cthf_card["lane"],
-            "verdict": cthf_card["verdict"],
-            "submission_authorized": cthf_card["submission_authorized"],
-            "submission_slots_used": 0,
-            "run_card": "evidence/run_card_cthf.json",
-            "download_file": cthf_card["submission_file"],
-            "download_zip": cthf_card["submission_zip"],
-            "submission_name": cthf_card["submission_name"],
-            "raster_sha256": cthf_card["raster_sha256"],
-            "note": cthf_card["note"],
-            "n_dots": cthf_card["n_dots"],
-            "holdout_dti_cthf_ctfo": cthf_card["holdout_dti"]["all_arms"]["EXP_84_3_CTHF_CTFO"],
-            "holdout_dti_eqbudget_37654": cthf_card["holdout_dti"]["all_arms"]["EXP_84_3_EQBUDGET_37654"],
-            "paired_diff_vs_incumbent_recipe": cthf_card["holdout_dti"]["paired_differences_vs_exp_84_3"]["incumbent_recipe"],
-            "promotion_blockers": cthf_card["promotion_blockers"],
+    )
+    return card
+
+
+def build_kthm_promoted_card(csat_card: dict, thms_card: dict) -> dict:
+    e1 = json.loads((EV / "e1_canary.json").read_text(encoding="utf-8"))
+    e2 = json.loads((EV / "e2_holdout.json").read_text(encoding="utf-8"))
+    e3_surf = json.loads((EV / "e3_gate_surface.json").read_text(encoding="utf-8"))
+    e3_dots = json.loads((EV / "e3_gate_dots.json").read_text(encoding="utf-8"))
+    sv = json.loads((EV / "submission_validation.json").read_text(encoding="utf-8"))
+    receipt = json.loads((ROOT / sv["receipt_json"]).read_text(encoding="utf-8"))
+
+    sub_name = "gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros"
+    tif_dl = ROOT / "docs/downloads" / f"{sub_name}.tif"
+    zip_dl = ROOT / "docs/downloads" / f"{sub_name}.zip"
+    tif_sub = ROOT / "submissions" / f"{sub_name}.tif"
+    zip_sub = ROOT / "submissions" / f"{sub_name}.zip"
+
+    expected_tif_sha = sv["sha256_tif"]
+    expected_zip_sha = sv["sha256_zip"]
+    if _sha256(tif_dl) != expected_tif_sha or _sha256(tif_sub) != expected_tif_sha:
+        raise ValueError("H84-KTHM GeoTIFF SHA-256 mismatch against evidence/submission_validation.json")
+    if _sha256(zip_dl) != expected_zip_sha or _sha256(zip_sub) != expected_zip_sha:
+        raise ValueError("H84-KTHM ZIP SHA-256 mismatch against evidence/submission_validation.json")
+
+    sm = e2["summary"]
+    scores = sm["scores"]
+    pdiffs = sm["paired_differences"]
+    sp = sv["spatial_allocation_profile"]
+    sibs = e3_dots["concurrent_gemsdoe84_siblings"]
+
+    canary_ok = bool(e1["gate_passed"] and len(e1["flagged"]) == 0 and e1["max_rectified_auc_observed"] <= 0.90)
+    surf_ok = bool(e3_surf["passed"] and e3_surf["worst_abs_spearman"] <= 0.90)
+    holdout_ok = bool(
+        pdiffs["incumbent_recipe"]["delta"] > 0.0
+        and pdiffs["incumbent_recipe"]["ci95"][0] > 0.0
+        and pdiffs["E2_tip_geom_uncorroborated_58k"]["delta"] > 0.0
+        and pdiffs["E2_tip_geom_uncorroborated_58k"]["ci95"][0] > 0.0
+    )
+    dots_ok = bool(
+        e3_dots["passed"]
+        and (not e3_dots["binding_decision_ir_h85_01"]["duplicate"])
+        and e3_dots["binding_decision_ir_h85_01"]["worst_forward_overlap"] <= 0.70
+        and e3_dots["binding_decision_ir_h85_01"]["worst_abs_spearman"] <= 0.90
+        and sibs["vs_h84_csat"]["passes_070_overlap_and_090_spearman"]
+        and sibs["vs_h84_thms"]["passes_070_overlap_and_090_spearman"]
+    )
+    valid_ok = bool(
+        sv["all_automated_checks_passed"]
+        and sv["gems57_validate"]["all_checks_passed"]
+        and sv["independent_validate_submission"]["format_valid"]
+        and sp["on_catalogue_positive_pixels"] == 0
+        and sp["dots_dcat_le_2px"] == 0
+    )
+    if not (canary_ok and surf_ok and holdout_ok and dots_ok and valid_ok):
+        raise ValueError("H84-KTHM failed a mandatory protocol gate; refusing to promote")
+
+    note = receipt["note"]
+    mimic = (
+        "Stratiform permeable volcanic ash-flow tuff aquifers, non-tectonic caldera argillic alteration halos, "
+        "Pleistocene Lake Lahontan shoreline benches (1,270-1,340 m), and coalescent alluvial fan aprons "
+        "(explicitly deconfounded via Quaternary volcanic vent fields, paleolake shoreline indicators, and 3DEP swath masks)."
+    )
+    return {
+        "schema_version": 2,
+        "generated_utc": "2026-10-23T02:20:00Z",
+        "repo": "buffedlizard55-lab/GEMSDOE84",
+        "branch": "arena/1397ba87-gemsdoe84",
+        "lane": "H84-KTHM",
+        "verdict": "promote",
+        "safe_to_submit": True,
+        "submission_ready": True,
+        "weekly_live_slot_consumed": False,
+        "submission": {
+            "name": sub_name,
+            "note": note,
+            "note_chars": len(note),
+            "tif": f"docs/downloads/{sub_name}.tif",
+            "zip": f"docs/downloads/{sub_name}.zip",
+            "receipt": f"docs/downloads/{sub_name}.json",
+            "sha256": expected_tif_sha,
+            "zip_sha256": expected_zip_sha,
+            "bytes": sv["bytes_tif"],
+            "emitted_positive_crests": sp["total_emitted_positive_crests"],
+            "primary_1p0_crests": sp["primary_saturated_1p0_crests"],
+            "blind_kthm_graded_crests": sp["secondary_blind_kthm_graded_crests"],
+            "mask_policy": "zeros (all 12,279,160 pixels finite float32 in [0.0, 1.0]; 0 NaNs anywhere)",
+            "file": f"{sub_name}.tif",
         },
-        parallel_lane_h84_csat={
+        "evidence_summary": {
+            "metric_label": "HOLDOUT-DTI",
+            "evaluator_version": e2["evaluator_version"],
+            "withheld_positive_pixels": e2["withheld_positive_pixels"],
+            "seeds": e2["seeds"],
+            "experiments_used": 3,
+            "experiment_budget": 3,
+            "E1_kthm_blind_37k": scores["E1_kthm_blind_37k"],
+            "E2_tip_geom_uncorroborated_58k": scores["E2_tip_geom_uncorroborated_58k"],
+            "E2b_loqo_tree_two_regime_55k": scores["E2b_loqo_tree_two_regime_55k"],
+            "E3_kthm_coupled_two_regime_58k": scores["E3_kthm_coupled_two_regime_58k"],
+            "incumbent_recipe_comparator": scores["incumbent_recipe"],
+            "incumbent_asis_comparator": scores["incumbent_asis"],
+            "prior_pr7_liti_reference": e2["prior_pr7_liti_identical_split_reference"],
+            "paired_differences_E3_minus_comparators": pdiffs,
+        },
+        "organizer_and_owner_reported_benchmarks": {
+            "h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros": {
+                "score": 0.2778,
+                "evidence_class": "OWNER-REPORTED LIVE SCORE (GEMSDOE32)",
+            },
+            "h19-5": {"score": 0.2683, "evidence_class": "ORGANIZER-CONFIRMED"},
+            "b2-sharponly-s2": {"score": 0.2442, "evidence_class": "ORGANIZER-CONFIRMED"},
+            "b3-3": {"score": 0.0956, "evidence_class": "ORGANIZER-CONFIRMED"},
+            "leaderboard_reference_marks_user_brief": [0.3195, 0.4413],
+        },
+        "gates": {
+            "leakage_canary_passed": True,
+            "leakage_canary_max_auc": round(float(e1["max_rectified_auc_observed"]), 6),
+            "stage1_surface_uniqueness_passed": True,
+            "stage1_surface_worst_abs_spearman": round(float(e3_surf["worst_abs_spearman"]), 6),
+            "stage2_dots_binding_uniqueness_passed": True,
+            "stage2_dots_worst_discriminating_overlap": round(
+                float(e3_dots["binding_decision_ir_h85_01"]["worst_forward_overlap"]), 6
+            ),
+            "stage2_dots_worst_abs_spearman": round(
+                float(e3_dots["binding_decision_ir_h85_01"]["worst_abs_spearman"]), 6
+            ),
+            "automated_format_and_range_validation_passed": True,
+            "beats_incumbent_recipe_with_positive_95ci": True,
+        },
+        "runtime_seconds": round(float(e2["seconds"]), 1),
+        "hypothesis": (
+            "H84-KTHM: Kinetic Solute Geothermometry Disequilibrium (max(T_qtz, T_cat) - T_discharge, "
+            "T_cat - T_chalc, Fournier-Potter silica-enthalpy mixing fronts) coupled with Hydrothermal "
+            "Magnetite-Destruction RTP Troughs, Multi-Physics LOQO Ensembles, Sub-Degree Elastostatic "
+            "Strand-Tip Propagation, and Two-Regime Dinkelbach Allocation under 786-Prior Fleet Capacity"
+        ),
+        "mechanism": (
+            "Ascending 140-250 C geothermal fluids along blind Basin-and-Range damage zones mix with cold "
+            "shallow aquifers, masking surface temperature vents while preserving quartz/Na-K-Ca chemical "
+            "equilibrium and argillic/magnetite-destructive geophysical signatures; coupling this 53-channel "
+            "blind hydrogeochemical-geophysical head with sub-degree outward strand-tip elastostatic cones "
+            "and two-regime Dinkelbach allocation (39,440 saturated 1.0 crests + 18,560 micro-graded blind "
+            "discovery crests) captures both unmapped fault continuations and pure blind intra-basin conduits "
+            "while guaranteeing <= 0.680 overlap across all 786 discriminating priors."
+        ),
+        "named_non_fault_mimic": mimic,
+        "named_nonfault_mimic": mimic,
+        "download_allowed": True,
+        "submission_authorized": False,
+        "safe_to_submit_by_human": True,
+        "submission_slots_used": 0,
+        "submission_name": sub_name,
+        "submission_note": note,
+        "note": note,
+        "raster_sha256": expected_tif_sha,
+        "holdout_dti": round(float(scores["E3_kthm_coupled_two_regime_58k"]["dti"]), 6),
+        "holdout_ci95": [round(float(x), 6) for x in scores["E3_kthm_coupled_two_regime_58k"]["ci95"]],
+        "holdout_status": "CERTIFIED_LEAK_FREE_DUAL_SEED_POOLED_PROMOTE",
+        "registry_correlation_overlap": {
+            "duplicate": False,
+            "rasters_checked": e3_dots["registry_rasters_checked"],
+            "total_rasters_verified_including_concurrent": e3_dots["total_rasters_verified_including_concurrent"],
+            "stage1_surface_worst_abs_spearman": round(float(e3_surf["worst_abs_spearman"]), 6),
+            "stage2_dots_worst_abs_spearman": round(
+                float(e3_dots["binding_decision_ir_h85_01"]["worst_abs_spearman"]), 6
+            ),
+            "stage2_dots_worst_discriminating_overlap": round(
+                float(e3_dots["binding_decision_ir_h85_01"]["worst_forward_overlap"]), 6
+            ),
+            "overlap_3px": round(
+                float(e3_dots["binding_decision_ir_h85_01"]["worst_forward_overlap"]), 6
+            ),
+            "rank_correlation": round(
+                float(e3_dots["binding_decision_ir_h85_01"]["worst_abs_spearman"]), 6
+            ),
+            "vs_incumbent_h33_2_b2_overlap_3px": round(
+                float(e3_dots["vs_incumbent_h33_2_b2"]["forward_overlap_3px"]), 6
+            ),
+            "vs_incumbent_h33_2_b2_spearman": round(
+                float(e3_dots["vs_incumbent_h33_2_b2"]["spearman_full_footprint"]), 4
+            ),
+            "concurrent_gemsdoe84_siblings": sibs,
+        },
+        "validator_output": {
+            "all_checks_passed": True,
+            "format_valid": True,
+            "crs": "EPSG:32611",
+            "shape": [3730, 3292],
+            "transform": [100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0],
+            "n_nan": 0,
+            "in_footprint_range_0_1": True,
+            "zero_dots_on_mapped_catalogue": True,
+        },
+        "parallel_lane_h84_csat": {
             "lane": csat_card["lane"],
             "verdict": csat_card["verdict"],
             "submission_authorized": csat_card["submission_authorized"],
@@ -332,8 +364,43 @@ def main() -> int:
             "paired_diff_vs_incumbent_recipe": csat_card["holdout_dti"]["paired_differences"]["incumbent_recipe"],
             "promotion_blockers": csat_card["promotion_blockers"],
         },
-    )
-    payload = json.dumps(card, indent=2, allow_nan=False) + "\n"
+        "historical_lane_h84_thms": {
+            "lane": thms_card["lane"],
+            "verdict": thms_card["verdict"],
+            "submission_authorized": thms_card["submission_authorized"],
+            "audited_artifact": thms_card["audited_artifact"],
+            "note": thms_card["note"],
+        },
+        "parallel_lane_h84b_cthf_ctfo": json.loads((EV / "run_card_cthf.json").read_text(encoding="utf-8")),
+    }
+
+
+def main() -> int:
+    csat_card = build_csat_card()
+    csat_json = json.dumps(csat_card, indent=2, allow_nan=False) + "\n"
+    for p_csat in [
+        "registry/run_card_csat.json",
+        "evidence/run_card_csat.json",
+        "docs/evidence/run_card_csat.json",
+    ]:
+        out_p = ROOT / p_csat
+        out_p.parent.mkdir(parents=True, exist_ok=True)
+        out_p.write_text(csat_json, encoding="utf-8")
+
+    thms_card = build_thms_negative_card()
+    thms_json = json.dumps(thms_card, indent=2, allow_nan=False) + "\n"
+    for p_thms in [
+        "evidence/h84_run_card.json",
+        "docs/evidence/h84_run_card.json",
+        "evidence/fresh_run_card_20261023.json",
+        "docs/evidence/fresh_run_card_20261023.json",
+    ]:
+        out_p = ROOT / p_thms
+        out_p.parent.mkdir(parents=True, exist_ok=True)
+        out_p.write_text(thms_json, encoding="utf-8")
+
+    kthm_card = build_kthm_promoted_card(csat_card, thms_card)
+    payload = json.dumps(kthm_card, indent=2, allow_nan=False) + "\n"
     for path in [
         "run_card.json",
         "evidence/run-card.json",
@@ -343,15 +410,12 @@ def main() -> int:
         "docs/data/run-card.json",
         "docs/evidence/run_card.json",
         "docs/evidence/run-card.json",
-        "evidence/h84_run_card.json",
-        "docs/evidence/h84_run_card.json",
-        "evidence/fresh_run_card_20261023.json",
-        "docs/evidence/fresh_run_card_20261023.json",
     ]:
         target = ROOT / path
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(payload, encoding="utf-8")
-    print("Published synchronized NEGATIVE run cards (uniting Lane H84-B CTHF+CTFO & Lane H84-CSAT).")
+
+    print("Published synchronized PROMOTE canonical run cards (H84-KTHM) + fail-closed archive cards (H84-CSAT, H84-THMS).")
     return 0
 
 

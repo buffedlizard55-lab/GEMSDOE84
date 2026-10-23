@@ -121,6 +121,13 @@ def test_validated_submission_geotiff_and_zip():
 
 
 def test_uniqueness_and_run_card_contract():
+    # Archived H84-THMS card remains strictly fail-closed negative
+    thms_card = json.loads((ROOT / "evidence/h84_run_card.json").read_text())
+    assert thms_card["verdict"] == "negative"
+    assert thms_card["submission_authorized"] is False
+    assert thms_card["pre_placement_stop"] is True
+
+    # Canonical repository Run Card promotes verified H84-KTHM across all 1,191 rasters
     card = json.loads((ROOT / "run_card.json").read_text())
     for key in (
         "hypothesis",
@@ -137,14 +144,14 @@ def test_uniqueness_and_run_card_contract():
     ):
         assert key in card
 
-    assert card['verdict'] == 'negative'
-    assert card['submission_authorized'] is False
-    assert card['raster_sha256'] is None  # no new TIFF generated
-    assert card['holdout_dti'] is None  # no freshly certified result
-    assert len(card['submission_note']) <= 140
-    assert card['registry_correlation_overlap']['duplicate'] is True
-    assert card['registry_correlation_overlap']['overlap_3px'] > 0.70
-    assert card['pre_placement_stop'] is True
+    assert card["verdict"] == "promote"
+    assert card["safe_to_submit"] is True
+    assert card["submission_authorized"] is False
+    assert len(card["raster_sha256"]) == 64
+    assert card["holdout_dti"] > 0.16
+    assert len(card["submission_note"]) <= 140
+    assert card["registry_correlation_overlap"]["duplicate"] is False
+    assert card["registry_correlation_overlap"]["overlap_3px"] <= 0.70
 
 
 def test_site_and_readme_deliverables():

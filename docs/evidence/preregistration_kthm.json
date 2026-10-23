@@ -1,0 +1,86 @@
+{
+  "schema_version": 2,
+  "preregistered_utc": "2026-10-22T23:12:00Z",
+  "repo": "buffedlizard55-lab/GEMSDOE84",
+  "branch": "arena/1397ba87-gemsdoe84",
+  "selected_lane": "H84-KTHM",
+  "lane_title": "Kinetic Solute Geothermometry Disequilibrium, Hydrothermal Demagnetization-Alteration Coupling, Sub-Degree Elastostatic Tip Propagation & Two-Regime Dinkelbach Fault-Conduit Allocation",
+  "candidate_hypotheses_evaluated": [
+    {
+      "id": "H84-1 (Selected: H84-KTHM)",
+      "rank": 1,
+      "layers": [
+        "DOE GDR-1391 gdr_wellspring_in_footprint.csv (temp_c, geothermquartz_c, geothermchalc_c, geothermcat_c; dist_known_fault_px strictly excluded)",
+        "DOE GDR-1391 gdr_volcanic_vents_in_footprint.csv (Quaternary volcanic vent deconfounder)",
+        "GeoDAWN/INGENIOUS 19-band core stack (RTP B2, TMI HG/VG/TC B3/B9/B6/B14, Isostatic Gravity B5/B11/B13/B18, Depth-to-Basement B15, MT Conductivity B17, GPS Strain B4/B7/B8, Microseismicity B10/B16, Detrended Elevation B12/B19)",
+        "USGS GeoDAWN Radiometrics & Extensions (K, Th, U, TC, Th/K, U/K, U/Th, TMI_up150)",
+        "USGS 3DEP 1 m LiDAR scarp features (coverage-deconfounded) & 10 m seamless DEM derived morphology",
+        "Fold-visible fault skeleton (sub-degree outward strand-tangent Mode-II/III tip propagation cones, anisotropic strike projection, Coulomb tip lobes, exact algebraic two-tip relay bridge G(tips)^2 - sum G_i^2)"
+      ],
+      "physical_signature": "Kinetic geothermometry disequilibrium (max(T_qtz, T_cat) - T_discharge and T_cat - T_chalc), Fournier-Potter (1982) silica-enthalpy mixing lateral front gradient, and multi-spring fault-lineament Hessian ridge crests, coupled with hydrothermal magnetite-destruction RTP demagnetization troughs (+lambda_max(H(RTP))), MT clay-cap conductivity, K/Th potassic metasomatism, upward-continuation attenuation, Voronoi connected-component cross-fitted dual-head LOQO ensemble, sub-degree elastostatic outward strand-tip propagation (eliminating 22.5-degree azimuth bin quantization), across-strike Hessian crest sharpening, and Two-Regime Dinkelbach Tversky allocation under simultaneous 786-prior fleet halo capacity (<= 0.680 <= 0.70).",
+      "why_off_catalogue": "~75% of Great Basin geothermal systems are blind (no hot boiling surface vent and subdued/buried alluvial scarps) because ascending 140-250 C fault fluids mix with shallow cold groundwater; solute geothermometers preserve deep conduit equilibrium while magnetite destruction + clay alteration corroborate unmapped fault propagations and intra-basin stepovers under alluvial cover.",
+      "non_fault_mimic": "Stratiform volcanic ash-flow tuff aquifers, caldera argillic alteration halos, Pleistocene Lake Lahontan shoreline benches, and coalescent alluvial fan aprons.",
+      "novelty_vs_registry": "First lane across all 88 GEMSDOE repos (1,215 rasters) to compute chemical kinetic geothermometer disequilibrium fields from GDR-1391 well/spring chemistry, couple them with sub-degree PCA strand-tip propagation cones free of 22.5-degree azimuth discretization, and enforce simultaneous SIMD bitwise capacity across all 786 discriminating registry priors.",
+      "viable_in_sandbox": true,
+      "expected_dti_gain_rank": 1,
+      "implementation_cost": "Moderate (~10 min CPU, < 1.5 GB RAM, 0 external uncached downloads required)"
+    },
+    {
+      "id": "H84-2 (H84-UPCONT)",
+      "rank": 2,
+      "layers": ["tmi (B14)", "TMI_up150", "tmi_hg (B3)", "tmi_vg (B9)", "iso_grav_anom_vg (B11)", "iso_grav_anom_hg (B18)", "depth_to_base_surf (B15)"],
+      "physical_signature": "Two-elevation magnetic upward-continuation attenuation log(|grad TMI| / |grad TMI_up150|) paired with gravity vertical-to-horizontal tilt zero-crossings.",
+      "why_off_catalogue": "Isolates deep sub-vertical basement faults (structural index N ~ 0-0.5) beneath unconsolidated valley fill from shallow basalt float boulders (N ~ 2-3).",
+      "non_fault_mimic": "Unfaulted steep pluton margins and dike swarms.",
+      "viable_in_sandbox": true,
+      "expected_dti_gain_rank": 2,
+      "implementation_cost": "Low (~1 min CPU; integrated directly as an ablative sub-family in E1-E3)"
+    },
+    {
+      "id": "H84-3 (H84-SEIS-STRAIN)",
+      "rank": 3,
+      "layers": ["ieq_n100a15 (B16)", "deq_n100a15 (B10)", "geod_dilaterate (B8)", "geod_shearrate (B7)", "geod_2ndinv (B4)", "cond_surf (B17)"],
+      "physical_signature": "Microseismic swarm density ridge crests interacted with transtensional GPS dilatation-shear localization.",
+      "why_off_catalogue": "Active incipient Walker Lane / CNSB shear-normal faults generate microseismic swarms prior to accumulating mappable surface scarps.",
+      "non_fault_mimic": "Mining blasts, geothermal injection microseismicity, and GPS station triangulation seams.",
+      "viable_in_sandbox": true,
+      "expected_dti_gain_rank": 3,
+      "implementation_cost": "Low (~30 s CPU; integrated as physical sub-family in E1-E3)"
+    },
+    {
+      "id": "H84-4 (H84-SENTINEL-INSAR)",
+      "rank": 4,
+      "layers": ["NASA ASF DAAC ARIA Sentinel-1 ascending/descending GUNW unwrapped interferograms"],
+      "physical_signature": "Vertical and east-west LOS phase-gradient decomposition across aseismically creeping and fluid-pumped faults.",
+      "why_off_catalogue": "Detects sub-mm/yr interseismic slip and seasonal groundwater head steps across unmapped basin faults.",
+      "non_fault_mimic": "Agricultural pumping subsidence bowls and tropospheric delay.",
+      "viable_in_sandbox": false,
+      "blocker": "search.asf.alaska.edu is outside sandbox egress allowlist; requires external staging into integrity-pinned mirror."
+    },
+    {
+      "id": "H84-5 (H84-ASTER-TIR)",
+      "rank": 5,
+      "layers": ["NASA LP DAAC ASTER AST_08 pre-dawn kinetic temperature & AST_05 TIR quartz/opal reststrahlen emissivity"],
+      "physical_signature": "Solar-deconfounded nighttime thermal anomalies + 8.1-9.3 um silica sinter emissivity troughs.",
+      "why_off_catalogue": "Directly maps silica sinter and warm soil seepage along unmapped range-front and intra-basin conduits.",
+      "non_fault_mimic": "Playa evaporite crusts, eolian quartz dunes, and open water.",
+      "viable_in_sandbox": false,
+      "blocker": "earthdata.nasa.gov is outside sandbox egress allowlist; requires external staging."
+    }
+  ],
+  "three_experiment_budget": [
+    "E1_kthm_blind_37k: 100% catalogue-blind 53-channel KTHM hydrogeochemical + multi-physics LOQO discovery head + 300 m 1D-strand crest thinning at 37,654 primary crests (tests pure zero-catalogue blind discovery)",
+    "E2_tip_geom_uncorroborated_58k: Uncorroborated sub-degree elastostatic strand-tip propagation + Two-Regime 786-prior capacity allocator at 58,000 crests without KTHM/geophysical corroboration (isolates pure fault-tip mechanics contribution)",
+    "E3_kthm_coupled_two_regime_58k: Coupled KTHM Hydrogeochemical + Multi-Physics x Sub-Degree Elastostatic Tip-Propagation + Micro-Graded Blind Basin Discovery across 58,000 300m-spaced crests (39,440 primary saturated crests at w=1.0 + 18,560 off-corridor KTHM blind discovery micro-crests in [0.008, 0.024]) under simultaneous 786-prior fleet halo capacity <= 0.680"
+  ],
+  "hard_promotion_gates": {
+    "holdout_evaluator": "vendor/gems57/evaluate_holdout.py (gems57-pooled-hide-v2, unmodified)",
+    "holdout_split": "seeds (20, 21), 22,893 withheld positive pixels, 1,000 paired bootstrap draws",
+    "must_beat_incumbent_recipe_0_1056_ci95_positive": true,
+    "leakage_canary_max_auc_le_0_90": true,
+    "surface_max_abs_spearman_le_0_90_all_1189": true,
+    "final_dots_discriminating_max_overlap_le_0_70_all_786": true,
+    "final_dots_max_abs_spearman_le_0_90_all_1189": true,
+    "validator_all_checks_passed": true
+  }
+}

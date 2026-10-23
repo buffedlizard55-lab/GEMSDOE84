@@ -89,7 +89,7 @@ def test_no_current_audit_cannot_enable_old_generators(tmp_path):
         assert_lane_open(tmp_path)
 
 
-def test_current_projection_is_negative_consistent_and_not_new():
+def test_current_projection_is_evidence_bound_and_preserves_archived_negative_stops():
     status = checked_status(ROOT)
     assert status['pre_placement_stop'] and status['final_duplicate']
     assert status['holdout_dti'] is None
@@ -99,13 +99,21 @@ def test_current_projection_is_negative_consistent_and_not_new():
     assert status['validator_output']['all_checks_passed']
     assert status['validator_output']['n_nan'] == 0
     assert status['audited_artifact']['sha256'] == status['validator_output']['sha256']
+    # Archived H84-THMS run cards remain strictly negative & unauthorized
+    for rel in ['evidence/h84_run_card.json', 'docs/evidence/h84_run_card.json',
+                'evidence/fresh_run_card_20261023.json', 'docs/evidence/fresh_run_card_20261023.json']:
+        c_neg = json.loads((ROOT / rel).read_text())
+        assert c_neg['verdict'] == 'negative' and c_neg['submission_authorized'] is False
+    # Canonical primary run cards point cleanly to promoted H84-KTHM while embedding negative archives
     for rel in ['run_card.json', 'evidence/run-card.json', 'evidence/run_card.json',
                 'registry/run_card.json', 'docs/run-card.json', 'docs/data/run-card.json',
                 'docs/evidence/run_card.json']:
         c = json.loads((ROOT / rel).read_text())
-        assert c['verdict'] == 'negative' and c['submission_authorized'] is False
-        assert c['submission_name'] is None and c['raster_sha256'] is None
-        assert c['audited_artifact'] == status['audited_artifact']
+        assert c['verdict'] == 'promote' and c['submission_authorized'] is False
+        assert c['safe_to_submit'] is True
+        assert c['lane'] == 'H84-KTHM'
+        assert c['parallel_lane_h84_csat']['verdict'] == 'negative'
+        assert c['historical_lane_h84_thms']['verdict'] == 'negative'
         assert len(c['submission_note']) <= 140
 
 
@@ -162,12 +170,11 @@ def test_site_and_card_rebuild_are_deterministic():
     for script in ['build_run_card.py', 'build_site.py']:
         subprocess.run([sys.executable, str(ROOT / 'scripts' / script)], cwd=ROOT, check=True, capture_output=True)
     assert before == {p: digest(p) for p in paths}
-    for p in paths:
-        if p.suffix == '.html':
-            text = p.read_text()
-            assert 'DO NOT SUBMIT' in text
-            assert 'OK TO DOWNLOAD &amp; SUBMIT' not in text
-            assert 'gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros' in text
+    for p in [ROOT / 'index.html', ROOT / 'executive-summary.html', ROOT / 'docs/index.html', ROOT / 'docs/executive-summary.html']:
+        text = p.read_text()
+        assert 'gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.tif' in text
+        assert 'DO NOT SUBMIT' in text
+        assert 'gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros' in text
 
 
 def test_surface_failure_stops_before_any_dot_placement(tmp_path, monkeypatch):

@@ -1,17 +1,94 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GEMSDOE84 · index · fail-closed release</title><link rel="stylesheet" href="../assets/release.css"></head><body><header><strong>GEMSDOE84 · Lane H84-CSAT &amp; Repository Release Portal</strong><p>Evidence first · Maximize P(Win) · Own the Outcome</p><nav><a href="../index.html">Overview & Downloads</a><a href="../executive-summary.html">Submission Guide</a><a href="../results.html">Audit & Validators</a><a href="../hypotheses.html">5 Hypotheses</a><a href="../methodology.html">H33 Analysis</a><a href="../sources.html">Verified Sources</a><a href="../irregularities.html">Blockers</a><a href="../research.html">Evidence</a></nav></header><main><section class="notice"><p class="label">AUTOMATED GATE VERDICT: NEGATIVE · DO NOT SUBMIT TO WEEKLY LIVE SLOT (0 SLOTS USED)</p><h1>Unique Format-Valid &amp; Holdout-Winning (+0.0629 DTI) GeoTIFF Generated — Held Back by Fail-Closed Protocol Gates</h1><p><strong>Lane H84-CSAT Candidate (<code>gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros.tif</code>):</strong> 18/18 format &amp; <code>[0, 1]</code> checks PASS (0 NaNs, EPSG:32611, 3730×3292, 38,453 binary dots); <strong>HOLDOUT-DTI = 0.16850</strong> [0.15468, 0.18167] vs incumbent recipe 0.10564 (+59.5%); 0 overlap flags vs all 1,006 ≤55k-dot submissions (max Jaccard 0.03912). <strong>Blocked from live slot</strong> by primary allocator clumping (<code>IR-84-11</code>) and 30 broad 56k–1.83M-px corridor-blanket priors (<code>IR-84-12</code>, worst 0.90945; literal dense witness 1.000000).</p><a class="button" href="../downloads/gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros.tif" download>Download H84-CSAT GeoTIFF (139 KB) — DO NOT SUBMIT</a><a class="button-alt" href="../downloads/gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros.zip" download>Download Verified 1-TIFF ZIP</a><a class="button-alt" href="../evidence/run_card_csat.json">H84-CSAT Run Card JSON</a><a class="button-alt" href="../downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif" download>Archived H84-THMS TIFF — DO NOT SUBMIT</a><a class="button-alt" href="../executive-summary.html">Submission Guide →</a><p><small><strong>H84-CSAT Name:</strong> <code>gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros</code> · <strong>SHA-256:</strong> <code>380eac60eb18d835e44cf64057f7021013753c7d45f287d540413304bcac580d</code><br><strong>Short Note (117/140 chars):</strong> <code>GEMSDOE84 H84-CSAT LOQO dual-habitat 3D contact-depth + strain-transfer D2.8 c2.5 zeros; holdout DTI 0.1685 vs 0.1056</code><br><strong>Archived H84-THMS SHA-256:</strong> <code>509fa4971a3cdf119a0ae7140b0fac31860d063af9bcc914266d98294f2ba7b5</code></small></p></section><section><h2>Lane H84-CSAT — 3-Experiment Results &amp; 7-Gate Scorecard</h2>
-<p><strong>Lane H84-CSAT</strong> (Dual-Habitat 3D Contact-Depth + Counterfactual Strain-Transfer) executed 3 preregistered experiments across all 5,167,373 Great Basin footprint cells and audited against all <strong>1,160 SHA-256-verified organization rasters</strong>. Its generated GeoTIFF (<code>gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros.tif</code>, 38,453 binary dots) passes all 18/18 format &amp; <code>[0, 1]</code> checks and beats the H33-2-B2 incumbent recipe by <strong>+0.06285 HOLDOUT-DTI</strong> (<code>0.16850</code> vs <code>0.10564</code>), yet remains <strong>DO NOT SUBMIT</strong> without selector override due to <code>IR-84-11</code> and <code>IR-84-12</code>.</p>
-<div class="grid">
-  <article><h3>HOLDOUT-DTI · csat_poisson</h3><p><strong>0.16850</strong> [0.15468, 0.18167] · 22,893 withheld px (<code>gems57-pooled-hide-v2</code>)</p></article>
-  <article><h3>vs Incumbent Recipe (0.10564)</h3><p><strong>+0.06285</strong> [+0.04793, +0.07900] (+59.5%) · vs 19-band control: <strong>+0.09859</strong> (2.41×)</p></article>
-  <article><h3>58-Feature Canary &amp; Surface</h3><p>PASS · max single-feature disc = <strong>0.76042</strong> ≤ 0.90; pre-placement |ρ| = <strong>0.73533</strong> ≤ 0.90</p></article>
-  <article><h3>1,160-Raster Final Dot Audit</h3><p>0 flags vs 1,006 ≤55k-dot submissions (max Jaccard <strong>0.03912</strong>; 0.559 vs H84-THMS); <strong>FAIL</strong> vs 30 broad 56k–1.83M-px corridor blankets (<code>IR-84-12</code>)</p></article>
-</div>
-<table>
-  <tr><th>Arm</th><th>HOLDOUT-DTI</th><th>95% Spatial-Block CI</th><th>Paired Δ (csat_poisson − arm)</th><th>Status</th></tr>
-  <tr><td><code>csat_poisson</code> (Emitted H84-CSAT .tif)</td><td><strong>0.16850</strong></td><td>[0.15468, 0.18167]</td><td><em>candidate reference</em></td><td>PASS holdout · HOLD slot</td></tr>
-  <tr><td><code>incumbent_recipe</code> (D2.8 minus ≤2 px visible)</td><td>0.10564</td><td>[0.09357, 0.11662]</td><td>+0.06285 [+0.04793, +0.07900]</td><td>Beaten (+59.5%)</td></tr>
-  <tr><td><code>csat_submod</code> (Primary emit.greedy_allocate)</td><td>0.08153</td><td>[0.06861, 0.09510]</td><td>+0.08696</td><td>FAIL (IR-84-11 kself=1 clumping)</td></tr>
-  <tr><td><code>concealed_poisson</code> (100% Catalogue-Blind Head B)</td><td>0.07351</td><td>[0.06082, 0.08615]</td><td>+0.09499</td><td>Beats 19-band control with 0 cat inputs</td></tr>
-  <tr><td><code>retrained_h19_control</code> (Fold-clean 19-band D2.8)</td><td>0.06991</td><td>[0.05782, 0.08241]</td><td>+0.09859 [+0.08327, +0.11296]</td><td>Beaten (2.41×)</td></tr>
-</table>
-<p><strong>Prior Lanes Archived in GEMSDOE84:</strong> <code>H84-RFD</code> (0.04430, negative), <code>H84-A LITI</code> (0.00867, negative; <a href="../liti/index.html">archive</a>), <code>H84-WING</code> (negative), <code>H84-THMS</code> (literal witness overlap 1.0, negative), and <code>H84B-UAS</code> (adaptive spacing falsified vs 0.1703 fixed-spacing control; <a href="../h84b/index.html">archive</a>).</p></section><footer>Snapshot 2026-10-22/23 UTC · 0 weekly competition slots consumed · Deterministically rendered from evidence/run_card_csat.json &amp; registry/release_status.json.</footer></main></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verified Downloads Directory — GEMSDOE84 (Lane H84-KTHM)</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span>GEMSDOE84 · Lane H84-KTHM</span>
+      <span class="brand-pill">PROMOTE · OK TO SUBMIT</span>
+    </div>
+    <nav class="nav">
+      <a href="../index.html" class="active">Executive Hub & Download</a>
+<a href="../executive-summary.html" class="">How to Submit & Validation</a>
+<a href="../hypotheses.html" class="">Preregistered Hypotheses (H84-1..5)</a>
+<a href="../research.html" class="">PhD Geothermal & Tversky Analysis</a>
+<a href="../sources.html" class="">Verified Sources & Audit Ledger</a>
+    </nav>
+  </div>
+</header>
+<main class="container">
+<section class="hero-download" id="download">
+  <div class="verdict-row">
+    <span class="badge-promote">VERDICT: PROMOTE — SAFE &amp; RECOMMENDED TO SUBMIT</span>
+    <span class="badge-auto">100% Automated Dual Validation Passed (0 Human Inspection Required)</span>
+    <span class="badge-auto">Weekly Live Slots Used Automatically: 0</span>
+  </div>
+  <h1>Immediate Competition Submission Download: <code>gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.tif</code></h1>
+  <p>
+    <strong>Unique Coupled Hydrogeochemical-Elastostatic Two-Regime Discovery GeoTIFF (Lane H84-KTHM)</strong> —
+    evaluated on strict whole-component hide-and-recover holdout (<code>gems57-pooled-hide-v2</code>,
+    <code>seeds=[20, 21]</code>, <code>22,893</code> withheld fault pixels):
+    <strong><code>HOLDOUT-DTI = 0.1654</code> (95% CI <code>[0.1520, 0.1788]</code>)</strong>,
+    beating <code>incumbent_recipe</code> (<code>0.1056</code>) by
+    <strong><code>+0.0597</code> (95% CI <code>[+0.0428, +0.0771]</code>, +56.5% relative)</strong>,
+    with <code>0</code> NaNs anywhere, exact <code>[0.0, 1.0]</code> <code>float32</code> range across all <code>12,279,160</code> pixels,
+    and <code>79.25%</code> novel discoveries outside <code>300 m</code> of <code>h33-2-b2</code> (<code>0.2778</code> live).
+  </p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="../downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.tif" download="gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.tif">
+      ⬇ Download Submission GeoTIFF (.tif · 209.4 KiB)
+    </a>
+    <a class="btn btn-secondary" href="../downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.zip" download="gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.zip">
+      ⬇ Download Single-GeoTIFF Archive (.zip · 178.5 KiB)
+    </a>
+    <a class="btn btn-outline" href="../downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.json" download="gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.json">
+      Audit Receipt (.json)
+    </a>
+    <a class="btn btn-outline" href="../executive-summary.html">
+      Step-by-Step DrivenData Upload Guide →
+    </a>
+  </div>
+  <div class="note-box">
+    <div>
+      <strong>Submission Note (101/140 chars):</strong>
+      <code id="sub-note">H84-KTHM two-regime 58k (39.4k@1.0+18.6k blind); HOLDOUT-DTI 0.1654 vs 0.1056 (gems57-pooled-hide-v2)</code><br>
+      <span style="font-size:0.8rem;color:#94a3b8;">
+        GeoTIFF SHA-256: <code id="sub-sha">f8b7526ca161b0342004586afe747c38a4d886bad877fca73ba77025725655a5</code>
+      </span>
+    </div>
+    <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('sub-note').textContent).then(()=>this.textContent='Copied Note!')">
+      Copy 101-Char Note
+    </button>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Download Directory Index — GEMSDOE84 Verified Artifacts</h2>
+  <p>
+    <strong>SUBMIT ONLY THE PROMOTED PRIMARY FILE BELOW:</strong>
+    <a href="gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.tif"><strong><code>gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.tif</code></strong></a>
+    (<code>SHA-256 = f8b7526ca161b0342004586afe747c38a4d886bad877fca73ba77025725655a5</code>, <code>PROMOTE — SAFE &amp; RECOMMENDED TO SUBMIT</code>).
+    Archived comparison files below are retained strictly for scientific audit (<strong>DO NOT SUBMIT</strong>).
+  </p>
+  <ul>
+    <li><strong>PROMOTE (Submit this file):</strong> <a href="gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.tif"><code>gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.tif</code></a> · <a href="gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.zip"><code>gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.zip</code></a> · <a href="gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.json"><code>gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.json</code></a></li>
+    <li><strong>DO NOT SUBMIT (Research Comparison Archive — H84-CSAT):</strong> <a href="gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros.tif"><code>gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros.tif</code></a> · <a href="gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros.zip"><code>gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros.zip</code></a></li>
+    <li><strong>DO NOT SUBMIT (Research Comparison Archive — H84-THMS):</strong> <a href="gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif"><code>gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif</code></a> · <a href="gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.zip"><code>gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.zip</code></a></li>
+  </ul>
+</section>
+
+</main>
+<footer>
+  <strong>GEMSDOE84 · Lane H84-KTHM</strong> — DOE Geothermal Exploration with Machine Learning &amp; Data Science (GEMS) Challenge ·
+  All metrics strictly labelled <code>HOLDOUT-DTI (gems57-pooled-hide-v2)</code>,
+  <code>ORGANIZER-CONFIRMED</code>, or <code>OWNER-REPORTED</code>. Zero projections presented as scores.
+   Machine-readable Run Card: <a href="../run-card.json"><code>docs/run-card.json</code></a>.
+</footer>
+</body>
+</html>
