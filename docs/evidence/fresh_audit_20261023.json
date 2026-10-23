@@ -1,0 +1,89 @@
+{
+  "audit_date_utc": "2026-10-23",
+  "branch": "arena/eb4e95a5-gemsdoe84",
+  "auditor": "fresh_audit_20261023.py (independent of vendor/gems57/validate.py)",
+  "submission_name": "gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros",
+  "portal_note": "H84-THMS silica-valve & 1m/10m scarp-chi Dual-Head Dinkelbach 300m; 37654 dots >3px off cat; HOLDOUT-DTI 0.2255",
+  "portal_note_chars": 111,
+  "tif": {
+    "path": "submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif",
+    "sha256": "509fa4971a3cdf119a0ae7140b0fac31860d063af9bcc914266d98294f2ba7b5",
+    "bytes": 144420,
+    "count": 1,
+    "dtype": "float32",
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "nodata": null,
+    "transform_matches_sample": true,
+    "crs_matches_sample": true
+  },
+  "values": {
+    "n_cells": 12279160,
+    "n_nan": 0,
+    "n_inf": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "unique": [
+      0.0,
+      1.0
+    ],
+    "positive_pixels": 37654,
+    "all_finite": true,
+    "in_range_0_1": true,
+    "footprint_cells": 5167373,
+    "outside_footprint_positive": 0,
+    "catalogue_positive_pixels": 60988,
+    "dots_on_catalogue": 0
+  },
+  "zip": {
+    "sha256": "ef336ef406c1489a26bc4ff7ffeb0328e5b96eeaacda684df235713533093fb0",
+    "bytes": 111224,
+    "entries": [
+      "gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif"
+    ],
+    "single_tif": true
+  },
+  "docs_downloads_inventory": [
+    {
+      "file": "gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif",
+      "sha256": "509fa4971a3cdf119a0ae7140b0fac31860d063af9bcc914266d98294f2ba7b5",
+      "is_promoted": true,
+      "n_nan": 0,
+      "min": 0.0,
+      "max": 1.0,
+      "portal_range_safe": true
+    },
+    {
+      "file": "gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.zip",
+      "sha256": "ef336ef406c1489a26bc4ff7ffeb0328e5b96eeaacda684df235713533093fb0",
+      "is_promoted": true
+    }
+  ],
+  "format_range_gate_pass": true,
+  "not_rerun_this_session": [
+    "HOLDOUT-DTI (feature cache .cache/gems_data/processed absent in clean checkout; 2026-10-22 value 0.2255, gems57-pooled-hide-v2, 22663 withheld px, 95% CI [0.2101,0.2404] retained as labelled prior evidence, NOT a fresh score)",
+    "359-raster uniqueness scan (registry rasters not in clean checkout; 2026-10-22 worst overlap 0.6500 / rho 0.0857 retained as prior evidence)",
+    "ORGANIZER-CONFIRMED score for this file (none; no DrivenData submission receipt in repo)"
+  ],
+  "official_checks_2026_10_23": {
+    "competition_id": 306,
+    "problem_page": "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/",
+    "metric": "alpha=0.2 beta=0.8 R=300m triangular kernel (fetched 2026-10-23)",
+    "leaderboard_top_fetched_2026_10_23": {
+      "participant": "xiaofanhu",
+      "score": 0.4413,
+      "class": "ORGANIZER-CONFIRMED (public leaderboard)"
+    }
+  }
+}

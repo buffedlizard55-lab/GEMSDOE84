@@ -48,6 +48,7 @@
     </div>
   </div>
 </section>
+<div class="card" id="how-to-submit"><h2>Exactly how a submission would be made on DrivenData (competition 306) — selector authorization required first</h2><ol><li><strong>Status gate:</strong> OK to download for review after local format preflight, but <strong>NOT AUTHORIZED TO SUBMIT</strong>. Only a separate selector step (within the weekly cap) can authorize a slot.</li><li>Download <code>gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif</code> from the banner above (or the single-TIF .zip). Every non-promoted binary was removed 2026-10-23 (IR-84-08), including a NaN file that triggers <em>Predicted values must be in range [0, 1]</em>.</li><li>Self-check: <code>python3 scripts/fresh_audit_20261023.py</code> — must pass (0 NaN, [0,1], EPSG:32611, 3730x3292). The format validator reports <code>submission_authorized: false</code> by design.</li><li>After selector authorization only: DrivenData #306 → <strong>New submission</strong> → <strong>File to submit</strong> = the .tif/.zip → <strong>Note (optional)</strong> = <code>H84-THMS silica-valve &amp; 1m/10m scarp-chi Dual-Head Dinkelbach 300m; 37654 dots &gt;3px off cat; HOLDOUT-DTI 0.2255</code> (111/140).</li><li>File the submission-page receipt here as ORGANIZER-CONFIRMED; until then this file has no organizer score.</li></ol></div>
 
 <div class="kpi-grid">
   <div class="kpi-card">

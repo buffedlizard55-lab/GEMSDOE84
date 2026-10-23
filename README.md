@@ -8,6 +8,8 @@
 ---
 
 > **Session-start rule:** Read [`NORTH_STAR.md`](NORTH_STAR.md), [`PROMPT.md`](PROMPT.md), and the latest [`repository review`](research/REPO_REVIEW_20261023.md) before new work. `PROMPT.md` is the reconstructed standing brief, not a verbatim transcript.
+>
+> **Fresh audit 2026-10-23 (this branch, reconciled with PR #12):** independent re-validation (`scripts/fresh_audit_20261023.py` → `evidence/fresh_audit_20261023.json`) confirms the TIF below (SHA `509fa497…b5`, 0 NaN/Inf, `{0,1}⊂[0,1]`, EPSG:32611, 3730×3292, 37,654 dots, 0 on catalogue). **Status remains: OK TO DOWNLOAD FOR REVIEW; NOT AUTHORIZED TO SUBMIT** — only a separate selector can spend a weekly slot. All non-promoted `.tif/.zip` binaries were removed from `docs/downloads/` (IR-84-08: a removed audit-only file had 7,114,860 NaN cells and would trigger “Predicted values must be in range [0, 1]”). Official competition ID is **306**; live #1 fetched 2026-10-23 is **xiaofanhu 0.4413 (ORGANIZER-CONFIRMED)**. Sibling scores incl. 0.2778 are **OWNER-REPORTED** (no receipt in repo, IR-84-10). HOLDOUT-DTI 0.2255 is 2026-10-22 evidence, **not rerun** today (cache absent, IR-84-11). Next unvalidated hypotheses: `docs/research/next-hypotheses-20261023.md`. Fresh card: `evidence/fresh_run_card_20261023.json`.
 
 ## 1. Executive Summary & Downloadable Research Artifact
 

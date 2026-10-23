@@ -134,8 +134,9 @@
   "submission_name": "gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros",
   "note": "Wing-crack splay at fault tips + relay-ramp gaps; catalogue geometry only; 37.8k dots; research preview.",
   "verdict": "negative",
-  "download_allowed": true,
+  "download_allowed": false,
   "submission_authorized": false,
   "experiments_executed": 1,
-  "historical_record_only": false
+  "historical_record_only": false,
+  "binary_removed_2026_10_23": "IR-84-08: negative-lane binary removed from docs/downloads to prevent mistaken submission; sha256 retained in this card and in docs/downloads/gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.json. Superseded by H84-THMS run_card.json."
 }
