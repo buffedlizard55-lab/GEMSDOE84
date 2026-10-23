@@ -151,11 +151,14 @@ def test_prune_releases_match_ledger_and_parent_count():
 
 def test_prune_rows_are_new_pairs_with_bounded_change():
     rows = list(csv.DictReader((ROOT / "ledger" / "submissions.csv").open()))
+    # Scope to this script's values: a second, independent PRUNE implementation
+    # (scripts/build_prune_collar_sweep.py) also has BUILT rows in the same ledger (IR-DEC-12).
+    vals = {"dcat>1px-swapin", "dcat>=3px-refill", "dcat>3px-refill"}
     pairs = [(r["parent"], r["axis"], r["value"]) for r in rows
-             if r["status"] == "BUILT" and r["axis"] == "PRUNE"]
+             if r["status"] == "BUILT" and r["axis"] == "PRUNE" and r["value"] in vals]
     assert len(pairs) == 3 and len(set(pairs)) == 3
     for r in rows:
-        if r["status"] == "BUILT" and r["axis"] == "PRUNE":
+        if r["status"] == "BUILT" and r["axis"] == "PRUNE" and r["value"] in vals:
             assert r["parent"] == "h33-h33-2-b2"
             assert 1.0 <= float(r["pct_changed"]) <= 50.0
             assert len(r["form_note"]) <= 140
