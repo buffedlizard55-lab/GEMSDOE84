@@ -1,4 +1,4 @@
-"""IR-DEC-13 guardrails: sentinel-cleaned bands, the reproduction audit, and the
+"""IR-DEC-17 guardrails: sentinel-cleaned bands, the reproduction audit, and the
 withdrawal of the third parallel PRUNE implementation's duplicate files."""
 import csv
 import hashlib
@@ -88,12 +88,15 @@ def test_ledger_prune_inventory_is_exactly_mains_six():
     assert prune == MAIN_PRUNE_IDS
     for r in rows:
         assert r["id"] not in WITHDRAWN_IDS
-    side_rows = json.loads((ROOT / "ledger" / "_prune_rows.json").read_text())
-    assert isinstance(side_rows, list) and len(side_rows) == 6
-    assert {r["id"] for r in side_rows} == MAIN_PRUNE_IDS
+    side_ids = set()
+    for name in ("_prune_rows.json", "_prune_sweep_rows.json"):
+        side_rows = json.loads((ROOT / "ledger" / name).read_text())
+        assert isinstance(side_rows, list)
+        side_ids |= {r["id"] for r in side_rows}
+    assert side_ids == MAIN_PRUNE_IDS
     summary = json.loads((ROOT / "ledger" / "_summary.json").read_text())
-    assert summary["rows"] == 125
-    assert summary["built"] == 12
+    assert summary["rows"] == 128
+    assert summary["built"] == 15
 
 
 def test_withdrawn_files_are_not_in_releases():
@@ -119,8 +122,8 @@ def test_audit_is_wired_into_docs():
     irregularities = (ROOT / "IRREGULARITIES.md").read_text()
     doc = Path(ROOT, "scripts", "audit_prune_reproduction.py").read_text()
     for text in (slot, readme, submit, irregularities):
-        assert "IR-DEC-13" in text
-    assert "IR-DEC-14" in irregularities
+        assert "IR-DEC-17" in text
+    assert "IR-DEC-18" in irregularities
     for wid in WITHDRAWN_IDS:
         assert wid in doc  # withdrawal record lives in the audit module docstring
     assert "a7d86ed4" in submit          # operator-facing do-not-submit note

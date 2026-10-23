@@ -1,7 +1,7 @@
 {
-  "generated_utc": "2026-10-23T16:21:52Z",
-  "git_head_sha": "874a63c56f455fa70feb56b7c14a757cd49ba899",
-  "purpose": "IR-DEC-13 reproduction audit: no submission file is built here.",
+  "generated_utc": "2026-10-23T16:27:04Z",
+  "git_head_sha": "0aa4ff7a5d22d9871c5cca0c370419eddd274ddf",
+  "purpose": "IR-DEC-17 reproduction audit: no submission file is built here.",
   "manifest_files_verified": 23,
   "parent_r0_sha256_verified": true,
   "lineage_identities_measured": {
@@ -32,7 +32,7 @@
         "within_tolerance": true
       }
     },
-    "cache_key": "12dabb79fa3a"
+    "cache_key": "feadabb98607"
   },
   "canary_fingerprints": {
     "q_posterior": {
@@ -139,5 +139,5 @@
     }
   },
   "disposition": "Main's six PRUNE files stand as the built-once PRUNE set. The sentinel cleaning changes <=273 refill dots in the >3 px class (measured pairwise above), far below the 0.01 live-DTI evidence band, so no merged file is rebuilt. The third parallel implementation's two duplicate files were withdrawn in PR #28 before merge (ids/sha256 in this module's docstring).",
-  "elapsed_seconds": 90.05
+  "elapsed_seconds": 90.18
 }

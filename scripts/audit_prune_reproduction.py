@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Reproduction audit for the 2026-10-23 AXIS=PRUNE builds (IR-DEC-13).
+"""Reproduction audit for the 2026-10-23 AXIS=PRUNE builds (IR-DEC-17).
 
 This script BUILDS NOTHING for submission. It re-derives the parent MASS-session ranking
-from the committed recipe (``scripts/build_r0_variants.py`` with the IR-DEC-13
+from the committed recipe (``scripts/build_r0_variants.py`` with the IR-DEC-17
 sentinel->NaN band cleaning) and measures, writing everything to
 ``evidence/prune_reproduction_audit_20261023.json``:
 
@@ -17,7 +17,7 @@ sentinel->NaN band cleaning) and measures, writing everything to
    arms rebuilt in memory (never written to releases/), quantifying that the poisoned
    ranking changed at most a few hundred refill dots per file;
 5. the disposition: main's six PRUNE files stand (built-once rule); the third parallel
-   implementation that found IR-DEC-13 withdrew its two duplicate files in PR #28:
+   implementation that found IR-DEC-17 withdrew its two duplicate files in PR #28:
    h33-h33-2-b2-prune-dcatgt3px-20261023-a7d86ed4 (nan sha256
    a7d86ed4266cf3c9e408fccb6ee81aee43bddf18c49a5e54a9436b5a9d36f5f0) and
    h33-h33-2-b2-prune-dcatgt1px-20261023-f5c7e4fb (nan sha256
@@ -299,7 +299,7 @@ def main() -> int:
     report = {
         "generated_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "git_head_sha": git_head_sha(),
-        "purpose": "IR-DEC-13 reproduction audit: no submission file is built here.",
+        "purpose": "IR-DEC-17 reproduction audit: no submission file is built here.",
         "manifest_files_verified": len(manifest_verified),
         "parent_r0_sha256_verified": True,
         "lineage_identities_measured": {

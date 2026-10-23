@@ -106,18 +106,9 @@ def test_drop_collar_band_diagonal_distances():
 
 
 # --------------------------------------------------------------------------- shipped rasters
-# ledger/_prune_rows.json now carries all six merged PRUNE rows (this module's three
-# dcat* rows plus the collar-sweep d2p5/d3p0/d4p0, merged in PR #28 so build_ledger.py
-# regeneration is stable).  This module verifies its own three; the sweep rows are
-# covered by tests/test_prune_collar_sweep.py and tests/test_sentinel_reproduction_audit.py.
-_OWN_VALUES = {"dcat>1px-swapin", "dcat>=3px-refill", "dcat>3px-refill"}
-
-
 def _prune_rows() -> list[dict]:
-    all_rows = json.loads((ROOT / "ledger" / "_prune_rows.json").read_text())
-    assert all(r["axis"] == "PRUNE" for r in all_rows)
-    rows = [r for r in all_rows if r["value"] in _OWN_VALUES]
-    assert {r["value"] for r in rows} == _OWN_VALUES
+    rows = json.loads((ROOT / "ledger" / "_prune_rows.json").read_text())
+    assert len(rows) == 3 and all(r["axis"] == "PRUNE" for r in rows)
     return rows
 
 

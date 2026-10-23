@@ -203,8 +203,55 @@ Second, independent PRUNE implementation (`scripts/build_prune_collar_sweep.py`,
 
 ---
 
-## Reproduction-audit note (2026-10-23, PR #28 / IR-DEC-13) — read before uploading any PRUNE file
+## `AXIS = CONCENTRATION` Variants (Built 2026-10-23, `evidence/r0_concentration_variants_20261023.json`)
 
-- A third parallel session independently built two more fixed-count collar files, then **withdrew them as duplicates** of the six packets above before merge. They are **not** in `releases/` or `ledger/submissions.csv` and must not be submitted: `h33-h33-2-b2-prune-dcatgt3px-20261023-a7d86ed4` (nan sha256 `a7d86ed4266cf3c9e408fccb6ee81aee43bddf18c49a5e54a9436b5a9d36f5f0`) and `h33-h33-2-b2-prune-dcatgt1px-20261023-f5c7e4fb` (nan sha256 `f5c7e4fb3db30907dd361c89018e4cb937620f963fe27a3809a9d1ba205da56d`), preserved only in PR #28's pre-merge commit `874a63c`.
-- That session's fidelity gate found **IR-DEC-13**: the float32 nodata sentinel in the unpacked training bands silently zeroed the H33-A ranking surface in every fresh-sandbox rebuild. All six packets above were ranked with that degraded surface (canary fingerprint max AUC `0.5944`; the MASS session's effective ranking gives `0.5949` and reproduces the committed MASS masks). `ensure_unpacked_bands` is fixed in this branch (sentinel→NaN at unpack).
-- Measured impact (`evidence/prune_reproduction_audit_20261023.json`, `scripts/audit_prune_reproduction.py`): a clean-ranking `d_cat>3 px` arm shares 37,447/37,654 dots with slot-2 nominee `prune-dgt3refill` (207 refill dots differ); all three `>3 px`-class files share ≥37,381 dots. This is far below the `<0.010` live no-evidence band, so **no file above changes and the slot order in `SLOT_PLAN.md` stands**. Future ranking rebuilds (weeks 3–4 combinations) must use the fixed unpacker.
+- **Design**: 5×5 km blocks (50×50 px, origin 0,0; 2,046 blocks with ≥50% footprint). Block prior = mean parent ranking surface `q` over footprint pixels (eligible-block percentiles: p10 0.0748, p50 0.1075, p90 0.1429; means: bottom-half 0.0865, top-half 0.1300, top-quartile 0.1428). Count fixed at 37,654; donors = lowest exact-gain R0 dots in donor blocks; refills = greedy top-gain canonical-pool dots in recipient blocks at `d_cat >= 3.0 px`, `r_min = 2.8 px`. R0 block shares: bottom-half 31.36% (11,807 dots), top-half 66.21%, top-quartile 39.70%; 917 dots outside eligible blocks are frozen in all arms.
+- **Capacity finding**: R0 is a maximal 2.8 px packing, so recipient blocks are saturated — measured greedy capacities are 4,287 (top-half) / 2,496 (top-quartile) / 2,494 (bottom-half, spread) extra dots. Doses below are the largest round moves inside that envelope; no off-ridge pool was invented.
+- **Block-density CV** (`gems84.snap.density_cv`, dots-per-footprint-pixel std/mean): R0 = 1.883 (1 km) / 0.961 (5 km) / 0.801 (10 km). The brief's reported "best files 0.51–0.59" does not reproduce under this definition at any of these scales (`UNVERIFIED`, definition unstated) and was not used as a target.
+- **Ranking audit**: rebuilt ranking reproduces the merged PRUNE `dgt1in` removal set bit-for-bit; shipped MASS drop tails agree only 80.9% / 85.1% (`IR-DEC-13`).
+
+### 1. `5km-t50-move3765` — move 3,765 dots (10.00%; 20.00% symmetric diff) bottom-half → top-half
+
+- **Name**: `h33-h33-2-b2-conc5km-t50-m3765-20261023-6310efe0`
+- **File (NaN outside, spec)**: `releases/h33-h33-2-b2-conc5km-t50-m3765-20261023-6310efe0.tif` — `6310efe0df90949cb8e5a8463d450e52fb9ed1aa212e0c045a11ceda70ce5ee5`
+- **File (zeros outside, fallback)**: `releases/h33-h33-2-b2-conc5km-t50-m3765-20261023-6310efe0-zeros.tif` — `cb7e964222c6bb5fe71c8163dda26a84e39ff49738b071c69e7d52237e01c537`
+- **Form note**: `h33-h33-2-b2; CONC 5km move 3765 (10%) low->high prior blocks, 37654; pred -0.004..+0.013` (89 chars)
+- **Format receipt**: EPSG:32611, (3730, 3292), float32, 1 band, transform match; no NaN in footprint; values in [0,1]; catalogue mass 0; refill `d_cat` min 3.0 px; CV 1.847/1.013/0.843 (1/5/10 km); top-half dot share 66.21% → 76.21%.
+- **Mechanism card**: Hypothesis — km-scale fault clustering (systems/relays/step-overs) makes high-q blocks richer in unmapped structure per ridge pixel, so geographic concentration at fixed count/ranking gains DTI. Mechanism — only block membership changes; per-dot gain, spacing and collar held. Non-fault mimic — block q tracks survey density (GeoDAWN Areas 1/2 line spacing, lidar/radiometric coverage) and volcanic lineament swarms. Predicted — −0.004 to +0.013 DTI (MODEL credit scenario). Falsifier — live ≤ 0.2758 while spread ≥ R0: high-q blocks are catalogue-complete, residual truth is in quiet blocks.
+
+### 2. `5km-t25-move2400` — move 2,400 dots (6.37%; 12.75% sym) bottom-half → top-quartile
+
+- **Name**: `h33-h33-2-b2-conc5km-t25-m2400-20261023-caadfcce`
+- **File (NaN outside, spec)**: `releases/h33-h33-2-b2-conc5km-t25-m2400-20261023-caadfcce.tif` — `caadfccefec8e5202c0b8f10884a972ae49130a79517f10e34d0cf54008a01a7`
+- **File (zeros outside, fallback)**: `releases/h33-h33-2-b2-conc5km-t25-m2400-20261023-caadfcce-zeros.tif` — `e264e73a95540812a15e11c2355e33afebb93c8fc3617c5d19461de215d3b2f6`
+- **Form note**: `h33-h33-2-b2; CONC 5km move 2400 (6.4%) low->top-quartile blocks, 37654; pred -0.002..+0.009` (92 chars)
+- **Format receipt**: as above; CV 1.855/0.999/0.829; top-quartile share 39.70% → 46.07%.
+- **Mechanism card**: stronger per-dot contrast into the most saturated blocks (capacity 2,496); prices saturation/kernel-redundancy of infill. Predicted −0.002 to +0.009 (MODEL); pre-registered ≥ spread, unordered vs t50. Falsifier — live < t50 receipt by ≥0.002 with t50 > R0: benefit stops at saturation.
+
+### 3. `spread5km-move2400` — move 2,400 dots (6.37%; 12.75% sym) top-quartile → bottom-half (reverse arm)
+
+- **Name**: `h33-h33-2-b2-spread5km-b50-m2400-20261023-ceb1073d`
+- **File (NaN outside, spec)**: `releases/h33-h33-2-b2-spread5km-b50-m2400-20261023-ceb1073d.tif` — `ceb1073d77869b920cd82c6283bb27b68af4c12b95c02416fcacd7ee9bc07422`
+- **File (zeros outside, fallback)**: `releases/h33-h33-2-b2-spread5km-b50-m2400-20261023-ceb1073d-zeros.tif` — `bd9e30dc346eca9675fdeecc5d25e21323ee4a299a15351d6059eb2a4f60a0d2`
+- **Form note**: `h33-h33-2-b2; SPREAD 5km move 2400 (6.4%) high->low prior blocks, 37654; pred -0.006..+0.003` (92 chars)
+- **Format receipt**: as above; CV 1.817/0.901/0.771; bottom-half share 31.36% → 37.73%.
+- **Mechanism card**: mirror construction; wins only under catalogue-completeness (high-q blocks already mapped/masked; blind faults remain under quiet, cover-masked blocks). Predicted −0.006 to +0.003 (MODEL). Falsifier (of the CONC prior) — live ≥ both CONC receipts: invert/flatten the km prior.
+
+### REPORT-ONLY diagnostics (`PROXY` — never gates)
+
+| Arm | Fold-clean hide-and-recover (n=22,893 withheld+, 95% CI) | SGMC raw / calibrated (n=62,703) |
+|---|---|---|
+| R0 | 0.10564 [0.09363, 0.11696] | 0.09606 / 0.06412 |
+| conc-t50 | 0.10405 [0.09210, 0.11477] | 0.10042 / 0.06708 |
+| conc-t25 | 0.10489 [0.09274, 0.11575] | 0.09913 / 0.06620 |
+| spread | 0.10520 [0.09329, 0.11648] | 0.09931 / 0.06633 |
+
+Leakage canary: 27 features, max AUC 0.5944 ≤ 0.90. All fold-clean deltas include 0; withheld truth is catalogue-derived (clustered where mapping is dense), so this PROXY cannot judge the completeness-vs-clustering question — only live receipts can.
+
+---
+
+## Reproduction-audit note (2026-10-23, PR #28 / IR-DEC-17) — read before uploading any PRUNE/CONCENTRATION file
+
+- A third parallel session independently built two more fixed-count collar files, then **withdrew them as duplicates** before merge. They are **not** in `releases/` or `ledger/submissions.csv` and must not be submitted: `h33-h33-2-b2-prune-dcatgt3px-20261023-a7d86ed4` (nan sha256 `a7d86ed4266cf3c9e408fccb6ee81aee43bddf18c49a5e54a9436b5a9d36f5f0`) and `h33-h33-2-b2-prune-dcatgt1px-20261023-f5c7e4fb` (nan sha256 `f5c7e4fb3db30907dd361c89018e4cb937620f963fe27a3809a9d1ba205da56d`), preserved only in PR #28's pre-merge commit `874a63c`.
+- That session's fidelity gate found **IR-DEC-17** (root cause of `IR-DEC-13`): the float32 nodata sentinel in the unpacked training bands silently zeroed the H33-A ranking surface in every fresh-sandbox rebuild. All six PRUNE packets above and the CONCENTRATION ×3 were ranked with that degraded surface (canary fingerprint max AUC `0.5944`; the MASS-effective ranking gives `0.5949` and reproduces the committed MASS masks after the fix). `ensure_unpacked_bands` is fixed in this branch (sentinel→NaN at unpack).
+- Measured PRUNE impact (`evidence/prune_reproduction_audit_20261023.json`, `scripts/audit_prune_reproduction.py`): a clean-ranking `d_cat>3 px` arm shares 37,447/37,654 dots with slot-2 nominee `prune-dgt3refill` (207 refill dots differ); all three `>3 px`-class files share ≥37,381 dots — far below the `<0.010` live no-evidence band, so **no PRUNE file changes and the slot order in `SLOT_PLAN.md` stands**. CONCENTRATION clean-ranking deltas are **unmeasured** (IR-DEC-17 point 3): measure before spending a CONCENTRATION slot or state the caveat in its form note. Future ranking rebuilds (weeks 3–4 combinations) must use the fixed unpacker.

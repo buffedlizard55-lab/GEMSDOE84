@@ -115,7 +115,7 @@ def verify_manifest(data_dir: Path, manifest_path: Path) -> dict:
 def ensure_unpacked_bands(data_dir: Path) -> Path:
     """Unpack the 19 training bands to per-band .npy files, cleaning the nodata sentinel.
 
-    IR-DEC-13 (found 2026-10-23 in the PRUNE session): ``training_features.tif`` stores
+    IR-DEC-17 (found 2026-10-23 in the third parallel PRUNE session): ``training_features.tif`` stores
     nodata as the *finite* float32 sentinel -3.4028235e38 (~3,060 px per band inside the
     footprint).  Writing the raw reads through (the previous behaviour) poisons every
     downstream consumer that masks with ``np.isfinite`` only: the upstream
