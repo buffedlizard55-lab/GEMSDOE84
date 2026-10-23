@@ -5,8 +5,14 @@ Built 2026-10-23 from parent **R0 = `h33-h33-2-b2`** (SHA-256
 `evidence/r0_rebuild_receipt.json`). **The agent never submits.** Upload one file per slot from
 your own registered account, at <https://www.drivendata.org/competitions/306/competition-doe-gems/>.
 
-Upload the **`-zeros.tif`** twin (NaN-outside twins have failed the range check before —
-`IR-57-NAN-02`); the `.tif` NaN twin is the fallback and is byte-equivalent inside the footprint.
+**Upload the `-zeros.tif` twin.** All three `-zeros.tif` files were re-checked with the repo's
+independent validator and passed every check
+(`python scripts/validate_submission.py <file> --template …/sample_submission.tif` →
+`format_valid: true`, footprint 5,167,373 px, exit 0). The `.tif` NaN twins match the brief's
+"null/NaN outside the footprint" wording but **fail that validator's all-finite rule**
+(`finite_all: false`), which is the historical `IR-57-NAN-02` failure mode; the brief records
+that the two encodings score identically, so the zeros twin is the safer upload and the NaN twin
+is the fallback.
 
 ---
 
