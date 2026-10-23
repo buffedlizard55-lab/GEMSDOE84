@@ -147,7 +147,7 @@
     "No organizer-authenticated data or receipt",
     "No comparable reproduced current holdout best under whole-fault instrument"
   ],
-  "ok_to_submit": "FORMAT-VALID ONLY \u2014 portal will accept (finite [0,1], no NaN, CRS/shape/transform match, zero outside/on catalogue). Scientific promotion is BLOCKED; this is a research artifact. Do not spend a weekly slot expecting to beat 0.2778.",
+  "ok_to_submit": false,
   "slots_used": 0,
   "budget": 37820,
   "seed": 289926028,
@@ -223,6 +223,9 @@
       "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
     }
   },
-  "binary_removed_2026_10_23": "IR-84-08: negative-lane binary removed from docs/downloads to prevent mistaken submission; sha256 retained in this card and in docs/downloads/gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.json. Superseded by H84-THMS run_card.json.",
+  "submission_authorized": false,
+  "selector_status": "pending; format validity is not slot authorization",
+  "organizer_acceptance": "not observed; no submission-page receipt",
+  "binary_removed_2026_10_23": "IR-84-08: negative-lane binary removed from docs/downloads to prevent mistaken submission; sha256 retained in this card. Superseded by H84-THMS run_card.json (promote to selector review only, not authorized to submit).",
   "download_allowed": false
 }

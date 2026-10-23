@@ -3,16 +3,45 @@
   "hypothesis": "Thermo-Hydro-Mechanical silica-seal fault-valve + seamless 1m/10m scarp-chi bridge + dual-head Dinkelbach 300m allocator recovers unmapped faults (H84-A, src/gems84/hypotheses.py).",
   "mechanism": "Sibson fault-valve breach index (geothermometers + 709 sinter seals + 3800 2m probes) x seamless LiDAR/3DEP scarp-chi x 200m up-dip potential-field advection, emitted by collar-decoupled (d>3px) dual-head Dinkelbach submodular allocator at 37,654 dots.",
   "named_nonfault_mimic": "Pleistocene Lake Lahontan/Bonneville pluvial shoreline benches; distal lateral thermal outflow plumes; non-tectonic steep canyon walls.",
-  "holdout_dti": {"evidence_class": "HOLDOUT-DTI", "evaluator_version": "gems57-pooled-hide-v2", "value": 0.2255, "ci95": [0.2101, 0.2404], "withheld_positive_pixels": 22663, "status": "2026-10-22 evidence (evidence/h84_exp2_dualseed_holdout.json); NOT rerun 2026-10-23 - feature cache absent in clean checkout"},
-  "leakage_canary": {"status": "2026-10-22 evidence; max single-feature AUC 0.8060 <= 0.90 (96 channels); not rerun 2026-10-23"},
-  "correlation_overlap_vs_registry": {"status": "2026-10-22 evidence (evidence/h84_uniqueness.json); worst final-dots Spearman 0.0857 <= 0.90, worst 3px overlap 0.6500 <= 0.70 across 359 rasters; not rerun 2026-10-23"},
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "value": 0.2255,
+    "ci95": [
+      0.2101,
+      0.2404
+    ],
+    "withheld_positive_pixels": 22663,
+    "status": "2026-10-22 evidence (evidence/h84_exp2_dualseed_holdout.json); NOT rerun 2026-10-23 - feature cache absent in clean checkout"
+  },
+  "leakage_canary": {
+    "status": "2026-10-22 evidence; max single-feature AUC 0.8060 <= 0.90 (96 channels); not rerun 2026-10-23"
+  },
+  "correlation_overlap_vs_registry": {
+    "status": "2026-10-22 evidence (evidence/h84_uniqueness.json); worst final-dots Spearman 0.0857 <= 0.90, worst 3px overlap 0.6500 <= 0.70 across 359 rasters; not rerun 2026-10-23"
+  },
   "raster_sha256": "509fa4971a3cdf119a0ae7140b0fac31860d063af9bcc914266d98294f2ba7b5",
-  "validator_output_fresh_2026_10_23": {"file": "evidence/fresh_audit_20261023.json", "format_range_gate_pass": true, "n_nan": 0, "n_inf": 0, "values": "{0.0, 1.0} within [0,1]", "crs": "EPSG:32611", "shape": [3730, 3292], "transform_matches_sample_submission": true, "dots_on_catalogue": 0, "zip_single_tif": true, "tests": "50 passed (pytest, 2026-10-23, clean venv)"},
+  "validator_output_fresh_2026_10_23": {
+    "file": "evidence/fresh_audit_20261023.json",
+    "format_range_gate_pass": true,
+    "n_nan": 0,
+    "n_inf": 0,
+    "values": "{0.0, 1.0} within [0,1]",
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform_matches_sample_submission": true,
+    "dots_on_catalogue": 0,
+    "zip_single_tif": true,
+    "tests": "50 passed (pytest, 2026-10-23, clean venv)"
+  },
   "submission_name": "gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros",
   "submission_note": "H84-THMS silica-valve & 1m/10m scarp-chi Dual-Head Dinkelbach 300m; 37654 dots >3px off cat; HOLDOUT-DTI 0.2255",
   "submission_note_chars": 111,
   "organizer_confirmed_score_for_this_file": null,
-  "verdict": "promote (format/range gate fresh-passed 2026-10-23; scientific gates are labelled 2026-10-22 evidence; final slot selection remains a separate human/selector step within the weekly cap - this card does not spend a slot)",
+  "verdict": "promote to selector review only \u2014 NOT AUTHORIZED TO SUBMIT (reconciled with PR #12 on main, 2026-10-23); format/range gate fresh-passed, scientific gates are labelled 2026-10-22 evidence, no slot spent",
   "experiments_this_session": 0,
   "new_hypotheses_proposed_not_validated": "docs/research/next-hypotheses-20261023.md (NX-5, NX-3, NX-1, NX-2, NX-4)"
 }

@@ -1,17 +1,107 @@
 [
-  {"id": "competition", "title": "DrivenData DOE GEMS Geothermal Prize Home", "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/", "role": "Official competition portal, timeline, and submission rules", "status": "verified"},
-  {"id": "problem", "title": "DrivenData DOE GEMS Problem Description & DTI Metric", "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/", "role": "Official Distance-Weighted Tversky Index (alpha=0.2, beta=0.8, 300 m linear triangular kernel) and [0, 1] GeoTIFF validator specification", "status": "verified"},
-  {"id": "leaderboard", "title": "DrivenData DOE GEMS Live Leaderboard", "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/", "role": "Live organizer-confirmed scores (0.4413 top, 0.3195 benchmark, 0.2778 GEMSDOE32 H33 anchor)", "status": "verified"},
-  {"id": "rules_pdf", "title": "DOE NREL Official Prize Rules (FY26 OSTI #96647)", "url": "https://docs.nlr.gov/docs/fy26osti/96647.pdf", "role": "Official DOE Geothermal Technologies Office rules (max 3 submissions/week)", "status": "verified sha256 50d854b1e0239fe6..."},
-  {"id": "reference_solution", "title": "DrivenData GEMS Prize Reference Solution", "url": "https://github.com/drivendataorg/gems-prize-reference-solution", "role": "Official baseline code and raster grid specification", "status": "verified"},
-  {"id": "gdr1391", "title": "DOE GDR #1391 — INGENIOUS Great Basin Geothermal Dataset", "url": "https://gdr.openei.org/submissions/1391", "role": "Official source for 19-band training_features.tif, 27,092 well/spring geothermometers, 3,800 2m temperature probes, 709 paleo-sinter seals, and 21 volcanic vents (DOI 10.15121/1881483, CC BY 4.0)", "status": "verified"},
-  {"id": "gbcge", "title": "Nevada Bureau of Mines and Geology — Great Basin Center for Geothermal Energy (INGENIOUS)", "url": "https://gbcge.org/current-projects/ingenious/", "role": "INGENIOUS structural geology & fault compilation methodology (Faulds et al., 2021)", "status": "verified"},
-  {"id": "geodawn", "title": "USGS GeoDAWN Airborne Magnetic & Radiometric Surveys", "url": "https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and", "role": "High-resolution aeromagnetic (TMI_up150) and gamma-ray spectrometry (%K, eTh, eU) across NW Great Basin (DOI 10.5066/P93LGLVQ)", "status": "verified"},
-  {"id": "usgs_qfaults", "title": "USGS Quaternary Fault and Fold Database of the United States", "url": "https://www.usgs.gov/natural-hazards/earthquake-hazards/faults", "role": "Primary Quaternary fault trace catalogue and slip-rate classification", "status": "verified"},
-  {"id": "usgs_3dep", "title": "USGS 3D Elevation Program (3DEP) 1 m LiDAR & 10 m DEM", "url": "https://www.usgs.gov/3d-elevation-program", "role": "Source for 1 m LiDAR scarp features (75.4% coverage) and 10 m seamless profile curvature & fluvial chi breaklines (100% coverage)", "status": "verified"},
-  {"id": "usgs_sgmc", "title": "USGS State Geologic Map Compilation (SGMC) Digital Database", "url": "https://doi.org/10.3133/ds1052", "role": "Horton et al. (2017) 1:500k bedrock fault traces used strictly as external zero-training piedmont diagnostic", "status": "verified"},
-  {"id": "sibson_1990", "title": "Sibson (1990, 2000) Fault-Valve Behavior & Hydrothermal Silica Sealing", "url": "https://doi.org/10.1016/0191-8141(90)90093-E", "role": "Physical foundation for H84-A: cyclic hydrothermal silica/calcite self-sealing and overpressure breach in extensional step-over faults", "status": "verified"},
-  {"id": "faulds_2011", "title": "Faulds & Hinz (2015) / Faulds et al. (2011) Structural Controls of Great Basin Geothermal Systems", "url": "https://www.unr.edu/nevada-today/news/2021/ingenious-project", "role": "Establishes that >39% of Great Basin geothermal systems are blind and localized in step-over relay ramps, fault tips, and accommodation zones", "status": "verified"},
-  {"id": "mcre_srl", "title": "Koehler et al. (2021) 2020 Mw 6.5 Monte Cristo Range Earthquake Surface Rupture", "url": "https://doi.org/10.1785/0220200371", "role": "Documents 28 km of distributed surface rupture on previously unmapped intrabasin & piedmont faults inside the GEMS footprint", "status": "verified"},
-  {"id": "epsg32611", "title": "EPSG:32611 — WGS 84 / UTM Zone 11N", "url": "https://epsg.io/32611", "role": "Target metric projection (100 m pixel spacing, 3730 x 3292 grid)", "status": "verified"}
+  {
+    "id": "competition",
+    "title": "DrivenData DOE GEMS Geothermal Prize Home",
+    "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/",
+    "role": "Official competition portal, timeline, and submission rules",
+    "status": "user-supplied pointer; not live-checked in this review"
+  },
+  {
+    "id": "problem",
+    "title": "DrivenData DOE GEMS Problem Description & DTI Metric",
+    "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/",
+    "role": "Official Distance-Weighted Tversky Index (alpha=0.2, beta=0.8, 300 m linear triangular kernel) and [0, 1] GeoTIFF validator specification",
+    "status": "user-supplied pointer; not live-checked in this review"
+  },
+  {
+    "id": "leaderboard",
+    "title": "DrivenData DOE GEMS Live Leaderboard",
+    "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+    "role": "Historical score context is OWNER-REPORTED; no submission-page receipts attached, and current leaderboard not checked in this review.",
+    "status": "user-supplied pointer; not live-checked in this review"
+  },
+  {
+    "id": "rules_pdf",
+    "title": "DOE NREL Official Prize Rules (FY26 OSTI #96647)",
+    "url": "https://docs.nlr.gov/docs/fy26osti/96647.pdf",
+    "role": "Official DOE Geothermal Technologies Office rules (max 3 submissions/week)",
+    "status": "verified sha256 50d854b1e0239fe6..."
+  },
+  {
+    "id": "reference_solution",
+    "title": "DrivenData GEMS Prize Reference Solution",
+    "url": "https://github.com/drivendataorg/gems-prize-reference-solution",
+    "role": "Official baseline code and raster grid specification",
+    "status": "verified"
+  },
+  {
+    "id": "gdr1391",
+    "title": "DOE GDR #1391 \u2014 INGENIOUS Great Basin Geothermal Dataset",
+    "url": "https://gdr.openei.org/submissions/1391",
+    "role": "Official source for 19-band training_features.tif, 27,092 well/spring geothermometers, 3,800 2m temperature probes, 709 paleo-sinter seals, and 21 volcanic vents (DOI 10.15121/1881483, CC BY 4.0)",
+    "status": "verified"
+  },
+  {
+    "id": "gbcge",
+    "title": "Nevada Bureau of Mines and Geology \u2014 Great Basin Center for Geothermal Energy (INGENIOUS)",
+    "url": "https://gbcge.org/current-projects/ingenious/",
+    "role": "INGENIOUS structural geology & fault compilation methodology (Faulds et al., 2021)",
+    "status": "verified"
+  },
+  {
+    "id": "geodawn",
+    "title": "USGS GeoDAWN Airborne Magnetic & Radiometric Surveys",
+    "url": "https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and",
+    "role": "High-resolution aeromagnetic (TMI_up150) and gamma-ray spectrometry (%K, eTh, eU) across NW Great Basin (DOI 10.5066/P93LGLVQ)",
+    "status": "verified"
+  },
+  {
+    "id": "usgs_qfaults",
+    "title": "USGS Quaternary Fault and Fold Database of the United States",
+    "url": "https://www.usgs.gov/natural-hazards/earthquake-hazards/faults",
+    "role": "Primary Quaternary fault trace catalogue and slip-rate classification",
+    "status": "verified"
+  },
+  {
+    "id": "usgs_3dep",
+    "title": "USGS 3D Elevation Program (3DEP) 1 m LiDAR & 10 m DEM",
+    "url": "https://www.usgs.gov/3d-elevation-program",
+    "role": "Source for 1 m LiDAR scarp features (75.4% coverage) and 10 m seamless profile curvature & fluvial chi breaklines (100% coverage)",
+    "status": "verified"
+  },
+  {
+    "id": "usgs_sgmc",
+    "title": "USGS State Geologic Map Compilation (SGMC) Digital Database",
+    "url": "https://doi.org/10.3133/ds1052",
+    "role": "Horton et al. (2017) 1:500k bedrock fault traces used strictly as external zero-training piedmont diagnostic",
+    "status": "verified"
+  },
+  {
+    "id": "sibson_1990",
+    "title": "Sibson (1990, 2000) Fault-Valve Behavior & Hydrothermal Silica Sealing",
+    "url": "https://doi.org/10.1016/0191-8141(90)90093-E",
+    "role": "Physical foundation for H84-A: cyclic hydrothermal silica/calcite self-sealing and overpressure breach in extensional step-over faults",
+    "status": "verified"
+  },
+  {
+    "id": "faulds_2011",
+    "title": "Faulds & Hinz (2015) / Faulds et al. (2011) Structural Controls of Great Basin Geothermal Systems",
+    "url": "https://www.unr.edu/nevada-today/news/2021/ingenious-project",
+    "role": "Establishes that >39% of Great Basin geothermal systems are blind and localized in step-over relay ramps, fault tips, and accommodation zones",
+    "status": "verified"
+  },
+  {
+    "id": "mcre_srl",
+    "title": "Koehler et al. (2021) 2020 Mw 6.5 Monte Cristo Range Earthquake Surface Rupture",
+    "url": "https://doi.org/10.1785/0220200371",
+    "role": "Documents 28 km of distributed surface rupture on previously unmapped intrabasin & piedmont faults inside the GEMS footprint",
+    "status": "verified"
+  },
+  {
+    "id": "epsg32611",
+    "title": "EPSG:32611 \u2014 WGS 84 / UTM Zone 11N",
+    "url": "https://epsg.io/32611",
+    "role": "Target metric projection (100 m pixel spacing, 3730 x 3292 grid)",
+    "status": "verified"
+  }
 ]
