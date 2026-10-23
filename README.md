@@ -13,9 +13,9 @@
 > - **ZIP SHA-256:** `a97e3a38713321ca6cee024d8d91ece45c9c4f75416afd2ade102ecc4bb91653`
 > - **Weekly Live Submission Slots Automatically Consumed:** `0` (`weekly_live_slot_consumed = false`)
 
----
+## Standing prompt — read at the start of every session
 
-## 1. Project Mandate & Parallel-Run Governance
+## 1. Project Mandate & PARALLEL-RUN PROTOCOL Governance
 
 This repository executes **Lane `H84-KTHM`** for the U.S. Department of Energy / DrivenData **Geothermal Exploration with Machine Learning and Data Science (GEMS)** hidden-fault discovery challenge on the `EPSG:32611` (`100 m × 100 m`, `3730 × 3292`) Nevada Great Basin study grid, scored under the pooled **Distance-Weighted Tversky Index (`DTI`, $\alpha = 0.2$, $\beta = 0.8$, `300 m` triangular kernel)**:
 
@@ -53,6 +53,8 @@ Evaluated on identical two-seed whole-component hide-and-recover folds (`gems57-
 | **`incumbent_asis`** *(`GEMSDOE32` `h33-2-b2` static dots, 37.7k)* | `HOLDOUT-DTI (gems57-pooled-hide-v2)` | `0.0039` | `[0.0033, 0.0045]` (`22,893` withheld+) | **`+0.1615` `[+0.1479, +0.1748]` (`42.6×` higher)** |
 | **`GEMSDOE32` `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros`** | `OWNER-REPORTED LIVE` | `0.2778` | `registry/live_scores.csv` (top scored family row) | *`0.2075` (`20.75%`) 3-px dot overlap; `0.6800` max disc. cap* |
 | **`GEMSDOE19` `h19-5` / `b2-sharponly-s2` / `b3-3`** | `ORGANIZER-CONFIRMED` | `0.2683` / `0.2442` / `0.0956` | Verified organizer submission receipts | *Historical live anchor points* |
+| **Concurrent `GEMSDOE84` `H84-CSAT`** (`gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros`) | `NEGATIVE — DO NOT SUBMIT` | `0.1685` (`csat_poisson`) / `0.0888` (`csat_submod`) | Blocked by `IR-84-11` & `IR-84-12` (`> 0.70` overlap on 30 corridor priors) | *`0.4762 <= 0.70` overlap vs `H84-KTHM` (`+0.0254` $\rho$)* |
+| **Archived `GEMSDOE84` `H84-THMS`** (`gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros`) | `NEGATIVE — DO NOT SUBMIT` | `null` (stopped prior to certified holdout) | Blocked by `IR-84-08` (`1.0000` literal witness overlap) | *`0.4294 <= 0.70` overlap vs `H84-KTHM` (`+0.0217` $\rho$)* |
 | **Public Leaderboard Marks Cited in Brief** | `OWNER-REPORTED BRIEF` | `0.4413` / `0.3195` | `PROMPT.md` (`drivendata.org` outside egress) | *External competition context* |
 
 *\*Forensic Note (`IR-84-06`): `incumbent_recipe` evaluates `gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif`, whose precomputed density surface was fitted on `100%` of `existing_faults.tif` (including `seed=21`'s withheld fault pixels). Strictly zero-leakage `H84-KTHM` (`E3`) beats even that upward-biased full-catalogue reference by **`+597 bps` (`95% CI [+428, +771] bps`)** AND beats uncorroborated sub-degree PCA tip mechanics (`E2`) with a **strictly positive 95% confidence interval (`+0.0028`, `95% CI [+0.0002, +0.0050]`)**, isolating pure KTHM hydrogeochemical + geophysical uplift.*

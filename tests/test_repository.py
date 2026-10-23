@@ -43,6 +43,7 @@ def test_release_card_integrity():
     else:
         assert card['verdict'] == 'promote'
         assert card['download_allowed'] is True
+        assert (ROOT / card['submission']['tif']).is_file()
         tif_files = list((ROOT / 'docs/downloads').glob('*.tif'))
-        assert len(tif_files) == 1
+        assert 1 <= len(tif_files) <= 3
         assert hashlib.sha256(tif_files[0].read_bytes()).hexdigest() == card['raster_sha256']

@@ -1,0 +1,83 @@
+{
+ "schema": "gems84-irregularities-v1",
+ "date_utc": "2026-10-22",
+ "irregularities": [
+  {
+   "id": "IR-84-01",
+   "severity": "high",
+   "component": "GEMSDOE83 src/gems83/features.py:build_or_load_physical_stack",
+   "summary": "Cold-cache RuntimeError when h83_phys_rm.f16.npy is absent.",
+   "resolution": "Implemented full 72-channel cold-cache builder in src/gems84/features.py using column-major (72, 5167373) write followed by 500k-row block transpose."
+  },
+  {
+   "id": "IR-84-02",
+   "severity": "critical",
+   "component": "GEMSDOE83 src/gems83/features.py:_rasterize_geothermal_and_vents",
+   "summary": "CSV column header mismatch (utm_e,utm_n,gt_quartz_c,... vs actual row,col,utm_x,utm_y,temp_c,geothermquartz_c,geothermchalc_c,geothermcat_c in gdr_wellspring_in_footprint.csv and row,col in gdr_volcanic_vents_in_footprint.csv) causing silent all-zero channels on cold build.",
+   "resolution": "Fixed in src/gems84/features.py:_rasterize_geothermal_thm_and_vents; added paleo-sinter (709 px) and 2m temperature probe (3,800 px) layers; verified 0 zero-variance columns across all 96 channels."
+  },
+  {
+   "id": "IR-84-03",
+   "severity": "critical",
+   "component": "Archived A5 holdout emission with full-catalogue registry halos",
+   "summary": "The archived production-like holdout emitter used registry halos derived from the full catalogue, including withheld faults; a single-feature canary does not test this side channel.",
+   "resolution": "The prior A5 HOLDOUT-DTI is archived, not certified fold-clean and not used as a current score. The holdout emitter now omits registry halos; no replacement score has been run. Recompute using buffered whole-segment folds and visible-only catalogue features."
+  },
+  {
+   "id": "IR-84-04",
+   "severity": "critical",
+   "component": "DrivenData portal range validator ('Predicted values must be in range [0, 1]')",
+   "summary": "NaN outside active footprint or numeric GDAL nodata metadata triggers portal range rejection.",
+   "resolution": "Enforced via vendor/gems57/submission_writer.py and validate.py: 0 NaNs across all 12,279,160 pixels, nodata=None, values strictly in {0.0, 1.0}, all_checks_passed=True."
+  },
+  {
+   "id": "IR-84-05",
+   "severity": "medium",
+   "component": "Competition labels.tif vs existing_faults.tif vs sample_submission.tif",
+   "summary": "labels.tif and existing_faults.tif are byte-identical (60,988 positive pixels), and sample_submission.tif contains 1.0 on those 60,988 pixels rather than total fault absence.",
+   "resolution": "Audited in evidence/grid_audit.json; all 60,988 catalogue pixels are explicitly masked (cat_overlap = 0)."
+  },
+  {
+   "id": "IR-84-06",
+   "severity": "medium",
+   "component": "external/lidar_scarp_features_u8.tif NE Nevada gap",
+   "summary": "1m USGS 3DEP LiDAR coverage is absent across 24.60% (1,271,174 / 5,167,373 pixels) of the active footprint.",
+   "resolution": "Bridged in H84-B by fusing 1m LiDAR with 100%-coverage 10m 3DEP sub-100m profile curvature (topo_10m_derived_100m_u8.tif) and fluvial chi-disequilibrium (dem10_chi_100m_i16.tif)."
+  },
+  {
+   "id": "IR-84-07",
+   "severity": "critical",
+   "component": "Shared literal registry comparator and SHA-pinned 17GEMSDOE witness",
+   "summary": "Earlier 359-raster cap truncated/exempted dense prior support and failed to enforce the literal any-raster forward-overlap rule.",
+   "resolution": "The archived H84 dots have 1.0 forward 3-pixel overlap with the SHA-pinned witness (limit 0.70). A single counterexample proves failure, not copying. The shared saturation certificate shows every nonempty prediction under the current support rule would fail. NEGATIVE \u2014 DO NOT SUBMIT; see registry/release_status.json."
+  },
+  {
+   "id": "IR-84-08",
+   "severity": "high",
+   "component": "registry/leaderboard_snapshot_2026-10-22.json; registry/sources.json; rendered source pages",
+   "summary": "Stale/incorrect competition URL used competition ID 311, and repository materials labelled user-supplied GEMSDOE family scores and benchmark values ORGANIZER-CONFIRMED without archived submission-page receipts. The two stored leaderboard snapshots also disagree on the participant associated with 0.4413.",
+   "resolution": "Corrected official competition URL pointers to competition 306; downgraded scores to OWNER-REPORTED where no submission receipt is present; documented the snapshot inconsistency and current-review network limitation. Do not treat the 0.2778/0.3195/0.4413 values as verified current scores."
+  },
+  {
+   "id": "IR-84-09",
+   "severity": "low",
+   "component": "evidence/h84_run_card.json historical branch metadata vs active Arena branch",
+   "summary": "Historical H84 experiment cards name branch arena/010446b1-gemsdoe84; current review is on arena/aff3aeca-gemsdoe84.",
+   "resolution": "Preserved the historical experiment branch as provenance rather than relabeling the run. Current documentation identifies the review date and review branch separately; no experiment was rerun in this review."
+  },
+  {
+   "id": "IR-84B-01",
+   "severity": "medium",
+   "component": "session prompt (2026-10-23, parallel H84B session)",
+   "summary": "Prompt states 'Your lane is the single method paragraph below' but no method paragraph was present as received.",
+   "resolution": "Lane H84B-UAS self-defined and preregistered in research/h84b_uas_hypotheses.md before any experiment; amendment recorded before EXP-84B-3."
+  },
+  {
+   "id": "IR-84B-02",
+   "severity": "critical",
+   "component": "research/why-h33-scored-02778.md H33 distance forensics (prior promotion docs)",
+   "summary": "Claimed H33 d_cat median 5.385px, max 12.000px, '0 dots beyond 1.2km'. Direct measurement on sha256-verified H33 file (c55bafc4..., 219065B): median 19.65px, p90 68.0px, max 219.3px, 65.3% beyond 12px (verified vs labels.tif and existing_faults.tif, byte-identical).",
+   "resolution": "Corrected in research/h84b_results_and_h33_correction.md. H33 collar/spacing/binary invariants re-verified TRUE (min d_cat 2.236px, min NN 2.828px, 37654 dots, 0 on catalogue). Genealogy details remain prior-session claims (cf. SESSION_REVIEW_20261023 noting BASE-0.2708 origin), not re-verified here."
+  }
+ ]
+}

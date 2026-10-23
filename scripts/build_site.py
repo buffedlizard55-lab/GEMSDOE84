@@ -9,6 +9,7 @@ research.html,sources.html} deterministically so CI (`python scripts/build_site.
 """
 from __future__ import annotations
 
+import hashlib
 import html
 import json
 import shutil
@@ -18,6 +19,29 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 EVIDENCE = ROOT / "evidence"
 REGISTRY = ROOT / "registry"
+
+
+def check_blocked_release(card: dict, docs: Path) -> None:
+    """Guardrail helper preserving fail-closed checks on legacy negative release directories."""
+    if card.get("verdict") == "promote":
+        raise ValueError("A site renderer cannot authorize a selector decision without upstream gate evidence")
+    if any(p.is_file() and p.suffix.lower() in {".tif", ".tiff", ".zip"} for p in docs.rglob("*")):
+        raise ValueError("Blocked legacy release contains downloadable artifacts")
+
+
+def checked_status(root: Path) -> dict:
+    """Verify archived H84-THMS fail-closed negative status in registry/release_status.json."""
+    card = json.loads((root / "registry/release_status.json").read_text(encoding="utf-8"))
+    if card.get("submission_authorized") is not False or card.get("verdict") != "negative":
+        raise ValueError("Archived negative release status cannot authorize a selector decision")
+    a = card["audited_artifact"]
+    paths = [root / a["path"], root / "docs/downloads" / f"{a['name']}.tif"]
+    for path in paths:
+        if hashlib.sha256(path.read_bytes()).hexdigest() != a["sha256"]:
+            raise ValueError(f"Artifact hash mismatch: {path}")
+    if not card["stop_required"]:
+        raise ValueError("Missing literal lane stop")
+    return card
 
 
 def _esc(val: object) -> str:
@@ -1058,15 +1082,106 @@ def build_all() -> None:
         ("hypotheses.html", "Preregistered Geological Hypotheses & Canary Audit", hypotheses_body),
         ("research.html", "PhD Geothermal Synthesis & Irregularities Register", research_body),
         ("sources.html", "Verified Official Sources & SHA-256 Audit Ledger", sources_body),
+        ("methodology.html", "Methodology, Hypotheses & Canary Audit", hypotheses_body),
+        ("results.html", "Two-Seed Pooled Holdout & Multi-Lane Results", index_body),
+        ("irregularities.html", "Forensic Irregularities & Data-Hygiene Register", research_body),
+    ]
+    checked_status(ROOT)
+    sibs = dots["concurrent_gemsdoe84_siblings"]
+    csat_card = json.loads((EVIDENCE / "run_card_csat.json").read_text(encoding="utf-8"))
+    thms_status = checked_status(ROOT)
+    multi_lane_card = f"""
+<section class="card">
+  <h2>Multi-Lane GEMSDOE84 Portfolio Uniqueness &amp; Verdict Ledger (1,191 Rasters Verified)</h2>
+  <p>
+    Multiple independent experimental lanes ran concurrently in <code>GEMSDOE84</code>. Only
+    <strong>Lane H84-KTHM</strong> passed all five mandatory Parallel-Run Protocol gates simultaneously;
+    all concurrent research lanes remain archived strictly as <strong>NEGATIVE — DO NOT SUBMIT</strong>:
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>GEMSDOE84 Lane &amp; Artifact</th>
+          <th>Pooled HOLDOUT-DTI (95% CI)</th>
+          <th>Uniqueness vs Promoted H84-KTHM</th>
+          <th>Protocol Gate Outcome</th>
+          <th>Submission Gate Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight-row">
+          <td><strong>Lane H84-KTHM (Canonical Primary)</strong><br><code>{_esc(sub['file'])}</code></td>
+          <td><strong><code>{e3['dti']:.4f}</code></strong> <code>[{e3['ci95'][0]:.4f}, {e3['ci95'][1]:.4f}]</code></td>
+          <td><strong>Self (Canonical Winner)</strong> · max disc. overlap <code>0.6800 &le; 0.7000</code> across all <code>1,106</code> discriminating priors; <code>0.2075</code> vs <code>h33-2-b2</code></td>
+          <td>Passed canary (<code>0.7902</code>), surface (<code>0.6449</code>), dots (<code>0.6800</code>), dual holdout (<code>+0.0597</code> vs recipe, <code>+0.0028</code> vs E2), &amp; dual GeoTIFF checks</td>
+          <td><span class="pass-pill">PROMOTE — SAFE &amp; RECOMMENDED TO SUBMIT</span></td>
+        </tr>
+        <tr>
+          <td><strong>Lane H84-CSAT (Concurrent Archive)</strong><br><code>{_esc(csat_card['submission_name'])}.tif</code></td>
+          <td><code>csat_submod: 0.0888</code> (negative vs recipe)<br><code>csat_poisson: 0.1685</code></td>
+          <td><code>forward_overlap = {sibs['vs_h84_csat']['forward_overlap_3px']:.4f} &le; 0.7000</code><br><code>Spearman &rho; = {sibs['vs_h84_csat']['spearman_full_footprint']:+.4f}</code></td>
+          <td>Blocked by <code>IR-84-11</code> (primary submodular allocator negative) &amp; <code>IR-84-12</code> (<code>&gt; 0.70</code> overlap vs 30 <code>56k–1.83M</code> corridor priors)</td>
+          <td><strong style="color:#b91c1c;">NEGATIVE — DO NOT SUBMIT</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Lane H84-THMS (Historical Archive)</strong><br><code>{_esc(thms_status['audited_artifact']['name'])}.tif</code></td>
+          <td><code>null</code> (stopped prior to certified leak-free holdout)</td>
+          <td><code>forward_overlap = {sibs['vs_h84_thms']['forward_overlap_3px']:.4f} &le; 0.7000</code><br><code>Spearman &rho; = {sibs['vs_h84_thms']['spearman_full_footprint']:+.4f}</code></td>
+          <td>Blocked by <code>IR-84-08</code> (literal <code>1.0000</code> witness stop vs <code>17GEMSDOE</code>)</td>
+          <td><strong style="color:#b91c1c;">NEGATIVE — DO NOT SUBMIT</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+"""
+    pages_to_write = [
+        ("index.html", "Executive Download & Promotion Hub", multi_lane_card + index_body),
+        ("executive-summary.html", "How to Submit & Automated Validation", multi_lane_card + exec_body),
+        ("hypotheses.html", "Preregistered Geological Hypotheses & Canary Audit", hypotheses_body),
+        ("research.html", "PhD Geothermal Synthesis & Irregularities Register", research_body),
+        ("sources.html", "Verified Official Sources & SHA-256 Audit Ledger", sources_body),
+        ("methodology.html", "Methodology, Hypotheses & Canary Audit", hypotheses_body),
+        ("results.html", "Two-Seed Pooled Holdout & Multi-Lane Results", multi_lane_card + index_body),
+        ("irregularities.html", "Forensic Irregularities & Data-Hygiene Register", research_body),
     ]
     for fname, title, body in pages_to_write:
         (DOCS / fname).write_text(_page_shell(title, fname, body, rc, sv, prefix=""))
 
-    # Root index.html: full standalone executive download page pointing directly into docs/!
-    (ROOT / "index.html").write_text(
-        _page_shell("Executive Download & Promotion Hub", "index.html", index_body.replace('src="assets/', 'src="docs/assets/').replace('href="evidence/', 'href="docs/evidence/'), rc, sv, prefix="docs/")
+    # Deterministic downloads directory index clearly separating PROMOTE vs DO NOT SUBMIT archives
+    dl_index_body = f"""
+<section class="card">
+  <h2>Download Directory Index — GEMSDOE84 Verified Artifacts</h2>
+  <p>
+    <strong>SUBMIT ONLY THE PROMOTED PRIMARY FILE BELOW:</strong>
+    <a href="{_esc(sub['file'])}"><strong><code>{_esc(sub['file'])}</code></strong></a>
+    (<code>SHA-256 = {_esc(sub['sha256'])}</code>, <code>PROMOTE — SAFE &amp; RECOMMENDED TO SUBMIT</code>).
+    Archived comparison files below are retained strictly for scientific audit (<strong>DO NOT SUBMIT</strong>).
+  </p>
+  <ul>
+    <li><strong>PROMOTE (Submit this file):</strong> <a href="{_esc(sub['file'])}"><code>{_esc(sub['file'])}</code></a> · <a href="{_esc(sub['name'])}.zip"><code>{_esc(sub['name'])}.zip</code></a> · <a href="{_esc(sub['name'])}.json"><code>{_esc(sub['name'])}.json</code></a></li>
+    <li><strong>DO NOT SUBMIT (Research Comparison Archive — H84-CSAT):</strong> <a href="{_esc(csat_card['submission_name'])}.tif"><code>{_esc(csat_card['submission_name'])}.tif</code></a> · <a href="{_esc(csat_card['submission_name'])}.zip"><code>{_esc(csat_card['submission_name'])}.zip</code></a></li>
+    <li><strong>DO NOT SUBMIT (Research Comparison Archive — H84-THMS):</strong> <a href="{_esc(thms_status['audited_artifact']['name'])}.tif"><code>{_esc(thms_status['audited_artifact']['name'])}.tif</code></a> · <a href="{_esc(thms_status['audited_artifact']['name'])}.zip"><code>{_esc(thms_status['audited_artifact']['name'])}.zip</code></a></li>
+  </ul>
+</section>
+"""
+    (DOCS / "downloads/index.html").write_text(
+        _page_shell("Verified Downloads Directory", "index.html", dl_index_body, rc, sv, prefix="../")
     )
-    print(f"Built 5 docs pages + root index.html + synced run cards cleanly for {sub['file']}")
+
+    # Root index.html & executive-summary.html: standalone entrypoints pointing cleanly into docs/
+    for root_name, src_body, page_title in (
+        ("index.html", multi_lane_card + index_body, "Executive Download & Promotion Hub"),
+        ("executive-summary.html", multi_lane_card + exec_body, "How to Submit & Automated Validation"),
+    ):
+        patched = (
+            src_body.replace('src="assets/', 'src="docs/assets/')
+            .replace('href="evidence/', 'href="docs/evidence/')
+            .replace('href="irregularities.md"', 'href="docs/irregularities.md"')
+        )
+        (ROOT / root_name).write_text(_page_shell(page_title, root_name, patched, rc, sv, prefix="docs/"))
+    print(f"Built 8 docs pages + downloads/index.html + root entrypoints cleanly for {sub['file']}")
 
 
 if __name__ == "__main__":

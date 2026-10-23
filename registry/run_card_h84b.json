@@ -1,0 +1,113 @@
+{
+ "schema": "parallel-run-protocol-run-card-v1",
+ "session_date": "2026-10-23",
+ "repo": "buffedlizard55-lab/GEMSDOE84",
+ "branch": "arena/202ee691-gemsdoe84",
+ "lane": "H84B-UAS \u2014 Uncertainty-Adaptive Spacing on a distance-blind bagged-HGB surface (59 physical channels, NO catalogue-distance feature). NOTE IR-84B-01: the session prompt's 'single method paragraph below' was absent as received; lane self-defined and preregistered in research/h84b_uas_hypotheses.md BEFORE any experiment, amended on record before EXP-84B-3.",
+ "hypothesis": "H-UAS-1: matching dot spacing to local trace-location uncertainty (dense 1.5px where certain, sparse 3.4px where not) beats H33-style fixed 2.83px spacing at equal dot budget, because on a correctly located trace extra dots cost ~0 FP (k_self~1) and raise max-kernel TP_w, while under positional uncertainty dense dots cannibalise kernel disks.",
+ "mechanism": "Bagged HistGradientBoosting (4 seeds, 70% row bags) -> mean surface mu(x) + disagreement sigma(x); greedy emission sorted by mu with per-dot exclusion disk s(x); collar d_cat>2px; budget-matched 37,654 dots. EXP-3 variant: s(x) driven by positional sharpness h(x)=mu-blur2(mu) (preregistered H-UAS-4 variable).",
+ "named_non_fault_mimic": "Ensemble disagreement/sharpness also peak at lithologic contacts, caldera margins and road corridors (mapping ambiguity, not faulting); empirically sigma tracked decision-boundary ambiguity mu(1-mu), raw AUC 0.61-0.64 FOR withheld faults, inverting the intended spacing response.",
+ "holdout": {
+  "evidence_class": "HOLDOUT-DTI",
+  "evaluator": "exact finite-kernel weighted dilation (alpha 0.2, beta 0.8, R 3px triangular), verified identical to vendor gems57 dti_binary/dti_exact to <1e-5 on synthetic cases this session",
+  "design": "hide-and-recover: 6x6 spatial blocks in 4 checkerboard fold groups; whole connected fault segments withheld; 3px buffer excluded from training and scoring; per-fold retraining on visible segments only; pooled TP/FP/FN across folds; 95% CI by block bootstrap (2000 resamples over per-block components)",
+  "n_withheld_positives": 59282,
+  "arms": {
+   "A0_fixed28_control": {
+    "holdout_dti": 0.1703,
+    "ci95": [
+     0.1457,
+     0.1983
+    ]
+   },
+   "A1_sigma_adaptive": {
+    "holdout_dti": 0.157,
+    "ci95": [
+     0.1311,
+     0.1872
+    ],
+    "verdict": "FALSIFIED vs control"
+   },
+   "A2_sigma_adaptive_farfield_quota": {
+    "holdout_dti": 0.1571,
+    "ci95": [
+     0.1313,
+     0.1877
+    ],
+    "verdict": "quota added nothing"
+   },
+   "A3_soft_fractional": {
+    "holdout_dti": 0.1356,
+    "ci95": [
+     0.111,
+     0.1649
+    ],
+    "verdict": "negative as bang-bang theory predicts"
+   },
+   "A4_sharpness_adaptive": {
+    "holdout_dti": 0.1561,
+    "ci95": [
+     0.1305,
+     0.1862
+    ],
+    "verdict": "FALSIFIED vs control"
+   }
+  },
+  "determinism": "A0 re-run in EXP-84B-3 reproduced 0.1703 [0.1457,0.1983] exactly",
+  "leakage_canary_EXP_84B_1": "max single-channel symmetric AUC 0.5735 (topo_slope_std) <= 0.90 PASS, 59 channels, 15023 pos / 60000 neg",
+  "comparability_warning": "These HOLDOUT-DTI values use a different holdout design than H84-THMS's gems57-pooled-hide-v2 numbers (0.2255) and are NOT comparable to live ORGANIZER-CONFIRMED scores (H33 0.2778). No live-score projection is made."
+ },
+ "uniqueness_vs_registry": {
+  "scope": "7-raster local subset: H33(0.2778 anchor, sha256 c55bafc4... verified), H19-5, D2.8, D1.5, H19-4, H16-1, H84-THMS (prior in-repo lane). Full 359-raster corpus not re-fetched this session (limitation).",
+  "surface_max_abs_spearman": 0.0839,
+  "dots_max_abs_spearman": 0.0393,
+  "surface_gate_le": 0.9,
+  "max_overlap_3px": 0.4444,
+  "overlap_gate_le": 0.7,
+  "vs_H33": {
+   "surface_rho": 0.0727,
+   "dots_rho": 0.0252,
+   "overlap3px": 0.3212
+  },
+  "verdict": "Subset (7 dotted/binary rasters): PASS as above. Literal full-registry gate: FAIL 1.0 vs space-filling witness -> BLOCKED.",
+  "literal_full_registry_gate": {
+   "status": "FAIL / BLOCKED (protocol stop)",
+   "witness": "buffedlizard55-lab/17GEMSDOE git blob 374c88b1da2b803e2ed160de467fd71ae114010d, sha256 ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+   "witness_positive_pixels": 5167373,
+   "measured_this_session": "witness positive on 5,167,373/5,167,373 footprint px (values 0.00046..0.984); 3px halo covers 100% of footprint; this candidate literal forward overlap = 1.0 > 0.70",
+   "implication": "Under the literal >0-support any-raster rule NO nonempty candidate can pass; an explicit owner protocol revision (e.g. support := each registry raster's own emitted-dot/top-budget support) is required before any lane can be promoted. Candidate is RESEARCH ONLY / DO NOT SUBMIT, consistent with registry/release_status.json (submission_authorized=false)."
+  }
+ },
+ "raster": {
+  "file": "submissions/gems84b-uas-ctrl-37654dots-20261023-2f774850-zeros.tif",
+  "sha256": "38f0e886f8f74e760139ad29aabc2c4422d596163cb1aac820b2fdab2a42076d",
+  "bytes": 138413,
+  "n_dots": 37654,
+  "values": "{0.0, 1.0} float32, single band, EPSG:32611, 3730x3292, transform = sample_submission, nodata=None",
+  "provenance": "A0 control arm (fixed 2.83px spacing) on the distance-blind surface, full-catalogue training. Shipped because the owner requires a unique downloadable TIF per session; the LANE HYPOTHESIS ITSELF IS NEGATIVE.",
+  "status": "RESEARCH ONLY \u2014 DO NOT SUBMIT (lane negative + literal registry gate blocked)"
+ },
+ "validator_output": {
+  "tool": "vendor/gems57/validate.py (15 checks incl. footprint+catalogue)",
+  "all_checks_passed": true,
+  "no_nan_anywhere": true,
+  "range_0_1_guaranteed": true,
+  "min": 0.0,
+  "max": 1.0,
+  "on_catalogue_positive_pixels": 0,
+  "outside_footprint_zero": true,
+  "receipt": "evidence/h84b_validation.json",
+  "portal_note": "Binary {0,1} finite float32 with nodata=None cannot trigger the DrivenData 'Predicted values must be in range [0, 1]' error class seen previously."
+ },
+ "submission": {
+  "name": "gems84b-uas-ctrl-37654dots-20261023-2f774850-zeros",
+  "note_100_of_140_chars": "H84B-UAS CONTROL surface dist-blind baggedHGB fixed2.83px; 37654 dots; HOLDOUT-DTI 0.1703 UNPROMOTED"
+ },
+ "verdict": "negative",
+ "verdict_detail": "NEGATIVE for the lane hypothesis (both adaptive-spacing mechanisms falsified against the fixed-spacing control on identical folds). The control-surface raster above is format-valid, gate-passing and unique, but is NOT promoted over this repo's primary H84-THMS file and must not be described as expected to beat 0.2778. Any portal submission is a separate selector decision (protocol section 6). Scientific deliverable: fixed ~2.83px spacing is near-optimal on ML surfaces at this scale; remaining headroom is top-tail ranking quality, not emission geometry. See research/h84b_results_and_h33_correction.md.",
+ "irregularities_flagged": [
+  "IR-84B-01: session prompt referenced a lane method paragraph that was not present as received; lane self-defined + preregistered.",
+  "IR-84B-02 (critical): research/why-h33-scored-02778.md and README claim H33 dots have median d_cat 5.385px / max 12px / 0 beyond 1.2km. Direct measurement on the sha256-verified H33 file: median 19.65px, max 219.3px, 65.3% beyond 12px. Prior '1.2km truncation bottleneck' narrative is contradicted; dependent design justifications (incl. in H84-THMS) need re-reading."
+ ],
+ "budget_used": "3 experiments (EXP-84B-1 canary, EXP-84B-2 4-arm holdout, EXP-84B-3 A4 holdout) + production build; elapsed well under 2h compute"
+}

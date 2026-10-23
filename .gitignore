@@ -1,10 +1,20 @@
-data/
+# Local heavy dataset, memmap & registry caches
 .cache/
-__pycache__/
-.pytest_cache/
+data/raw
+data/processed/
+data/cache/
+data/rasters/
+data/registry/
+
+# Python bytecode & test caches
 .venv/
-*.pyc
-*.part
-docs/downloads/.*.tif
-docs/downloads/.*.zip
-docs/downloads/.*.json
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# OS & temporary scratch
+.DS_Store
+*.log
+*.tmp

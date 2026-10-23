@@ -68,6 +68,51 @@
   </div>
 </section>
 
+<section class="card">
+  <h2>Multi-Lane GEMSDOE84 Portfolio Uniqueness &amp; Verdict Ledger (1,191 Rasters Verified)</h2>
+  <p>
+    Multiple independent experimental lanes ran concurrently in <code>GEMSDOE84</code>. Only
+    <strong>Lane H84-KTHM</strong> passed all five mandatory Parallel-Run Protocol gates simultaneously;
+    all concurrent research lanes remain archived strictly as <strong>NEGATIVE — DO NOT SUBMIT</strong>:
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>GEMSDOE84 Lane &amp; Artifact</th>
+          <th>Pooled HOLDOUT-DTI (95% CI)</th>
+          <th>Uniqueness vs Promoted H84-KTHM</th>
+          <th>Protocol Gate Outcome</th>
+          <th>Submission Gate Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight-row">
+          <td><strong>Lane H84-KTHM (Canonical Primary)</strong><br><code>gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.tif</code></td>
+          <td><strong><code>0.1654</code></strong> <code>[0.1520, 0.1788]</code></td>
+          <td><strong>Self (Canonical Winner)</strong> · max disc. overlap <code>0.6800 &le; 0.7000</code> across all <code>1,106</code> discriminating priors; <code>0.2075</code> vs <code>h33-2-b2</code></td>
+          <td>Passed canary (<code>0.7902</code>), surface (<code>0.6449</code>), dots (<code>0.6800</code>), dual holdout (<code>+0.0597</code> vs recipe, <code>+0.0028</code> vs E2), &amp; dual GeoTIFF checks</td>
+          <td><span class="pass-pill">PROMOTE — SAFE &amp; RECOMMENDED TO SUBMIT</span></td>
+        </tr>
+        <tr>
+          <td><strong>Lane H84-CSAT (Concurrent Archive)</strong><br><code>gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros.tif</code></td>
+          <td><code>csat_submod: 0.0888</code> (negative vs recipe)<br><code>csat_poisson: 0.1685</code></td>
+          <td><code>forward_overlap = 0.4762 &le; 0.7000</code><br><code>Spearman &rho; = +0.0254</code></td>
+          <td>Blocked by <code>IR-84-11</code> (primary submodular allocator negative) &amp; <code>IR-84-12</code> (<code>&gt; 0.70</code> overlap vs 30 <code>56k–1.83M</code> corridor priors)</td>
+          <td><strong style="color:#b91c1c;">NEGATIVE — DO NOT SUBMIT</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Lane H84-THMS (Historical Archive)</strong><br><code>gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif</code></td>
+          <td><code>null</code> (stopped prior to certified leak-free holdout)</td>
+          <td><code>forward_overlap = 0.4294 &le; 0.7000</code><br><code>Spearman &rho; = +0.0217</code></td>
+          <td>Blocked by <code>IR-84-08</code> (literal <code>1.0000</code> witness stop vs <code>17GEMSDOE</code>)</td>
+          <td><strong style="color:#b91c1c;">NEGATIVE — DO NOT SUBMIT</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
 <div class="kpi-grid">
   <div class="kpi-card">
     <div class="kpi-label">Promoted H84-KTHM Holdout</div>

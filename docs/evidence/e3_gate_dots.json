@@ -890,5 +890,28 @@
     }
   ],
   "passed": true,
-  "seconds": 389.6
+  "seconds": 389.6,
+  "concurrent_gemsdoe84_siblings": {
+    "vs_h84_csat": {
+      "submission": "GEMSDOE84:submissions/gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros.tif",
+      "sha256": "380eac60eb18d835e44cf64057f7021013753c7d45f287d540413304bcac580d",
+      "their_dots": 38453,
+      "forward_overlap_3px": 0.4761896551724138,
+      "reverse_overlap_3px": 0.5624268587626453,
+      "jaccard_dot_sets": 0.017039762961713254,
+      "spearman_full_footprint": 0.0254304763617807,
+      "passes_070_overlap_and_090_spearman": true
+    },
+    "vs_h84_thms": {
+      "submission": "GEMSDOE84:submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif",
+      "sha256": "509fa4971a3cdf119a0ae7140b0fac31860d063af9bcc914266d98294f2ba7b5",
+      "their_dots": 37654,
+      "forward_overlap_3px": 0.42944827586206896,
+      "reverse_overlap_3px": 0.4995485207414883,
+      "jaccard_dot_sets": 0.015079643012532765,
+      "spearman_full_footprint": 0.0216603859913572,
+      "passes_070_overlap_and_090_spearman": true
+    }
+  },
+  "total_rasters_verified_including_concurrent": 1191
 }

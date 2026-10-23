@@ -138,6 +138,8 @@ def final_audit(p,g,inventory):
 
 
 def main():
+    from audit_release import assert_lane_open
+    assert_lane_open()
     from prepare_data import verify
     verify()
     g=grid.load_grid(ROOT/'data/raw')

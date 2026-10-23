@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GEMSDOE84 — DOE GEMS Prize fault-discovery pipeline</title>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<header class="site">
+  <a class="brand" href="index.html">GEMSDOE84 · H84-DEMAG lane</a>
+  <nav class="site">
+    <a href="index.html" class="active">Home</a>
+    <a href="executive-summary.html">How to submit</a>
+    <a href="hypotheses.html">Hypotheses</a>
+    <a href="leaderboard.html">Leaderboard &amp; irregularities</a>
+    <a href="research.html">Research notes</a>
+    <a href="../index.html">↩ Main site</a>
+    <a href="https://github.com/buffedlizard55-lab/GEMSDOE84">GitHub</a>
+  </nav>
+</header>
+<main>
+  <h1>GEMSDOE84</h1>
+  <p class="muted">An auditable fault-discovery pipeline for the
+    <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DOE GEMS Prize Challenge</a>
+    (DrivenData #306). Every number on this site is tagged
+    <span class="tag off">OFFICIAL</span><span class="tag org">OWNER-REPORTED (no submission-page receipt attached)</span>
+    <span class="tag hold">HOLDOUT-DTI</span> or flagged as an irregularity — never written as a
+    score it isn't.</p>
+
+  <div class="banner danger">
+    <strong>⚠ Do not submit the file below to the competition yet.</strong>
+    It is published for audit and reproducibility. It <strong>failed its own validation
+    gate</strong>: on our own holdout, it scored 2.8×–4.3× <em>below</em> a uniform-random
+    control at every emission budget we tried (see <a href="hypotheses.html">Hypotheses &amp;
+    findings</a>). The format is 100% valid and it is 100% safe to open/inspect — it is the
+    <em>content</em>, not the file, that isn't ready.
+  </div>
+
+  <h2>⬇ The submission file (one click, audit copy)</h2>
+  <div class="card">
+    <p><strong>gemsdoe84-h84-fused-demag-cond-corridor-20261022T000000Z-auditonly</strong></p>
+    <p>
+      <strong>⛔ Binaries removed 2026-10-23 (IR-84-08):</strong> the audit-only .tif files are no longer downloadable from this site, because the NaN-outside twin (7,114,860 NaN cells) would trigger DrivenData's “Predicted values must be in range [0, 1]” error if uploaded by mistake. SHA-256 receipts remain in <code>../downloads/gemsdoe84-h84-fused-demag-cond-corridor-20261022T000000Z-auditonly-receipts.json</code>. The only OK-to-submit file is on the <a href="../index.html">main portal</a>.</strong>
+    </p>
+    <div class="kv">
+      <div>Format</div><div>single-band float32 GeoTIFF, EPSG:32611, 100 m, 3730×3292 — matches the official template exactly</div>
+      <div>Value range</div><div>0.0 – 1.0 inside the footprint, validated (no out-of-range, no non-finite inside footprint)</div>
+      <div>Content</div><div>Top-44,090-px rank-emitted "demagnetized conductive corridor" field (H84-1 ∪ H84-3) — see <a href="hypotheses.html">Hypotheses</a></div>
+      <div>Holdout verdict</div><div><span class="tag neg">NEGATIVE</span> — did not beat the uniform-random control (full numbers: <a href="../../registry/run_card.json">run_card.json</a>)</div>
+      <div>sha256 (zeros)</div><div><code>e65539d392345b10…</code> — full digest in <a href="../../registry/submission_receipts.json">submission_receipts.json</a></div>
+    </div>
+  </div>
+
+  <h2>What this project found</h2>
+  <ol>
+    <li><span class="tag org">OWNER-REPORTED (no submission-page receipt attached)</span> The real public leaderboard's current #1
+      is <strong>xiaofanhu at 0.4413</strong> (fetched live from
+      <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">drivendata.org</a>,
+      2026-10-22 — no login needed to view it). See <a href="leaderboard.html">full snapshot</a>.</li>
+    <li><strong>Irregularity flagged:</strong> every per-repository score quoted for the
+      GEMSDOE/1–88 sibling lineage (e.g. "0.2778") is a <em>self-reported local holdout proxy</em>,
+      not an organizer score — the source repo itself says so in bold. The lineage does not
+      appear in the real leaderboard's top 50. Details: <a href="leaderboard.html">Leaderboard &amp; irregularities</a>.</li>
+    <li>We obtained the <strong>real</strong> competition GeoTIFFs (no DrivenData login) via
+      hash-pinned GitHub mirrors the human project owner placed in two sibling repos before this
+      session, and re-verified every sha256 ourselves. See <a href="research.html">Research notes</a>.</li>
+    <li>We built and unit-tested our own exact implementation of the organizer's distance-weighted
+      Tversky metric and a spatially-blocked "hide-and-recover" holdout, then tested a new,
+      literature-grounded hypothesis (magnetic demagnetization × surface conductivity "blind
+      alteration corridor") — and it <strong>failed</strong> to beat a random baseline. A
+      <a href="hypotheses.html">mechanistic explanation</a> is provided, and the negative result
+      is reported as a deliverable, not hidden.</li>
+  </ol>
+
+  <h2>Explore</h2>
+  <div class="grid">
+    <div class="card"><h3>How to submit</h3><p class="muted">Step-by-step instructions for the
+      real DrivenData submission form, and why this file isn't ready yet.</p>
+      <a href="executive-summary.html">Read →</a></div>
+    <div class="card"><h3>Hypotheses &amp; findings</h3><p class="muted">5 ranked candidate
+      hypotheses, literature citations, leakage canary, full holdout numbers.</p>
+      <a href="hypotheses.html">Read →</a></div>
+    <div class="card"><h3>Leaderboard &amp; irregularities</h3><p class="muted">The real public
+      leaderboard, and the self-reported-score irregularity across the sibling lineage.</p>
+      <a href="leaderboard.html">Read →</a></div>
+    <div class="card"><h3>Research notes</h3><p class="muted">Data provenance, metric derivation,
+      literature review, and the GeoDAWN/INGENIOUS background.</p>
+      <a href="research.html">Read →</a></div>
+  </div>
+</main>
+<footer>GEMSDOE84 · <a href="https://github.com/buffedlizard55-lab/GEMSDOE84">source on GitHub</a>
+  · Not affiliated with DrivenData or the U.S. Department of Energy. All data provenance disclosed in
+  <a href="../../registry/data_manifest.json">registry/data_manifest.json</a>.</footer>
+</body>
+</html>
