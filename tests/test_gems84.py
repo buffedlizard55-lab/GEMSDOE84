@@ -59,7 +59,7 @@ def test_leakage_canary_gate():
 
 
 def test_dualseed_holdout_progression():
-    card = json.loads((ROOT / "research/official/previous-h84-run-card.json").read_text())
+    card = json.loads((ROOT / "research/archive/previous-h84-run-card.json").read_text())
     arms = card["holdout_dti"]["all_arms_dualseed"]
     required_arms = [
         "A0_random",
@@ -86,7 +86,7 @@ def test_dualseed_holdout_progression():
 
 
 def test_validated_submission_geotiff_and_zip():
-    card = json.loads((ROOT / "research/official/previous-h84-run-card.json").read_text())
+    card = json.loads((ROOT / "research/archive/previous-h84-run-card.json").read_text())
     sub_name = card["submission_name"]
     tif_sub = ROOT / "submissions" / f"{sub_name}.tif"
     zip_sub = ROOT / "submissions" / f"{sub_name}.zip"

@@ -304,3 +304,11 @@ footer {
   color: var(--muted);
   font-size: 0.84rem;
 }
+
+/* Distinguish local file-format checks from scientific or organizer approval. */
+.validator-hero.review-only {
+  background: linear-gradient(135deg, rgba(120, 53, 15, 0.35), rgba(17, 24, 39, 0.98));
+  border-color: var(--amber);
+}
+.status-pill.review-only { background: var(--amber); color: #1f1300; }
+.review-disclosure { margin: 1rem 0; padding: 1rem 1.1rem; border: 1px solid var(--amber); border-left: 5px solid var(--amber); border-radius: 8px; background: rgba(120, 53, 15, 0.24); color: #fef3c7; }

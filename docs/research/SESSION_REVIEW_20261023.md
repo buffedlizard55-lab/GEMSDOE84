@@ -59,3 +59,9 @@ The [organizer reference repository](https://github.com/drivendataorg/gems-prize
 - Pass 3: rebuilt all site entry points from one release status, checked local links and reproducibility, ran the full suite and command smoke tests. CI now checks generated-site drift. See PR/check output for remote status; deployment is not assumed from a local build.
 
 **Next work:** the protocol owner/selector must resolve the saturated-registry definition (a proposed representation-aware protocol would be a policy change, not silently binding today). After an explicitly revised protocol, restore every required hash-pinned source, authenticate source metadata when reachable, verify the corrected fold-only holdout emission on restored data, rerun a frozen comparable control and the top residual-thermal hypothesis, and admit only candidates that beat the current holdout best with uncertainty reported. No weekly slot has been authorized.
+
+## Concurrent-main integration
+
+Main advanced with PR #12 while this review was running. Its independent selector-safety, source-caveat, receipt and archived-page corrections were merged into this fixed session branch. Where generated landing pages/current cards conflicted, the stricter fresh literal-stop evidence supersedes the older “promote to selector” state. Historical source/snapshot fixes and the other review were retained. No prior TIFF bytes were modified.
+
+GitHub Pages was observed through the API in legacy mode, serving the main branch root. The root and docs entry points are both rebuilt consistently; workflow-mode deployment must not be assumed without observing its settings/checks.

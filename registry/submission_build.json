@@ -18,5 +18,8 @@
   "min_dist_to_catalogue_px": 3.1622776985168457,
   "all_checks_passed": true,
   "ok_to_download": true,
-  "ok_to_submit": true
+  "ok_to_submit": false,
+  "submission_authorized": false,
+  "selector_status": "pending",
+  "authorization_note": "Local format validation only; no organizer acceptance or weekly-slot approval."
 }

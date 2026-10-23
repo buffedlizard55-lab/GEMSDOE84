@@ -763,6 +763,8 @@ def main() -> int:
         "zip_size_bytes": exp3["zip_size_bytes"],
         "ok_to_download": bool(exp3["validator_output"]["all_checks_passed"]),
         "ok_to_submit": False,
+        "submission_authorized": False,
+        "selector_status": "pending" if beats_all else "blocked by holdout",
         "verdict": "promote" if beats_all else "negative",
         "verdict_banner": "Candidate for selector only — no slot authorized" if beats_all else "HOLD — DO NOT SUBMIT",
         "evidence_class": "HOLDOUT-DTI",
