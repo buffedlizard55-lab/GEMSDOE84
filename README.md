@@ -1,5 +1,16 @@
 # GEMSDOE84 — Lane `H84-KTHM`: Coupled Solute Geothermometry Disequilibrium, Multi-Physics LOQO Ensembles & Sub-Degree Elastostatic Two-Regime Fault Allocation
 
+<!-- CURRENT STATE:START -->
+## CURRENT STATE — R0 CONCENTRATION, 2026-10-23
+
+- **Parent:** `h33-h33-2-b2` (GEMSDOE32), 37,654 dots; byte-exact rebuild SHA-256 `c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9`.
+- **Best receipt:** none supplied; `0.2778` remains **CLAIM**, not RECEIPT.
+- **TOP_PUBLIC:** **UNSUPPLIED** — human must provide the current public value and date; no other target is used.
+- **Slots left this week / total:** **UNSUPPLIED / UNVERIFIED**. The brief says three per rolling week; the page was not accessed. Deadline 2026-12-03 is also **UNVERIFIED**.
+- **Next 3 slots:** CONCENTRATION 10% (`06d2274f`) → 15% (`8950fb40`) → 20% (`2bffc619`), conditional on `SLOT_PLAN.md`; all are BUILT, none submitted.
+- **Submission card:** `docs/SUBMIT.md`. New raster bytes are workspace-only until data-use terms are confirmed; code and validation receipts are in the PR.
+<!-- CURRENT STATE:END -->
+
 > **VERDICT: `PROMOTE` — AUTOMATED DUAL VALIDATION PASSED (`SAFE & RECOMMENDED TO DOWNLOAD & SUBMIT`)**
 > - **Download Ready-to-Submit Single-Band GeoTIFF (`209.4 KiB`):** [`docs/downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.tif`](docs/downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.tif)
 > - **Download DrivenData Single-GeoTIFF ZIP Archive (`178.5 KiB`):** [`docs/downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.zip`](docs/downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.zip)

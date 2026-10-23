@@ -1,0 +1,74 @@
+{
+  "evidence_class": "PROXY",
+  "feature": "H19-5 support density in fixed 1-km blocks",
+  "folds": [
+    {
+      "seed": 20,
+      "fold": "NW",
+      "auc": 0.5409625955953181,
+      "direction_free_auc": 0.5409625955953181,
+      "active_pixels": 1090262,
+      "withheld_positives": 1923
+    },
+    {
+      "seed": 20,
+      "fold": "NE",
+      "auc": 0.5366083743874768,
+      "direction_free_auc": 0.5366083743874768,
+      "active_pixels": 1351805,
+      "withheld_positives": 2367
+    },
+    {
+      "seed": 20,
+      "fold": "SW",
+      "auc": 0.48792442163769134,
+      "direction_free_auc": 0.5120755783623087,
+      "active_pixels": 1328785,
+      "withheld_positives": 3781
+    },
+    {
+      "seed": 20,
+      "fold": "SE",
+      "auc": 0.49896798164973544,
+      "direction_free_auc": 0.5010320183502646,
+      "active_pixels": 1069946,
+      "withheld_positives": 3250
+    },
+    {
+      "seed": 21,
+      "fold": "NW",
+      "auc": 0.5893326864249587,
+      "direction_free_auc": 0.5893326864249587,
+      "active_pixels": 1090257,
+      "withheld_positives": 1918
+    },
+    {
+      "seed": 21,
+      "fold": "NE",
+      "auc": 0.5527939516664864,
+      "direction_free_auc": 0.5527939516664864,
+      "active_pixels": 1351799,
+      "withheld_positives": 2361
+    },
+    {
+      "seed": 21,
+      "fold": "SW",
+      "auc": 0.48494699940884756,
+      "direction_free_auc": 0.5150530005911524,
+      "active_pixels": 1328817,
+      "withheld_positives": 3813
+    },
+    {
+      "seed": 21,
+      "fold": "SE",
+      "auc": 0.4935143346057984,
+      "direction_free_auc": 0.5064856653942016,
+      "active_pixels": 1070176,
+      "withheld_positives": 3480
+    }
+  ],
+  "max_direction_free_auc": 0.5893326864249587,
+  "stop_threshold": 0.9,
+  "stop_required": false,
+  "caveat": "Inherited full-catalogue H19 lineage; diagnostic only, never a live gate."
+}

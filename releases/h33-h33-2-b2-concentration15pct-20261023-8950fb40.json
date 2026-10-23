@@ -1,0 +1,152 @@
+{
+  "id": "h33-h33-2-b2-concentration15pct-20261023-8950fb40",
+  "parent": "h33-h33-2-b2",
+  "axis": "CONCENTRATION",
+  "value": "15pct",
+  "status": "BUILT",
+  "n_dots": 37654,
+  "pct_changed": 14.999734423965581,
+  "sha256": "8950fb40314b1bc8e00a029c1a9015e8b088b1d8cdc6266b911e90c53acd6a2b",
+  "zeros_sha256": "7a4f939d02ae176eecbbdd4897d46b18ba35d6d02765baaa9a9cf6e7b7985a8c",
+  "predicted_change": "MODEL +0.008",
+  "submission_name": "h33-h33-2-b2-concentration15pct-20261023-8950fb40",
+  "form_note": "R0; move 5,648 dots (15.000%) across 1km H19 prior blocks; fixed >=3px repair; MODEL +0.008.",
+  "form_note_chars": 92,
+  "files": {
+    "main": "releases/h33-h33-2-b2-concentration15pct-20261023-8950fb40.tif",
+    "zeros": "releases/h33-h33-2-b2-concentration15pct-20261023-8950fb40-zeros.tif"
+  },
+  "dose": {
+    "requested_fraction": 0.15,
+    "moved_dots": 5648,
+    "moved_pct_of_37654": 14.999734423965581,
+    "donor_blocks_touched": 5648,
+    "receiver_blocks_touched": 5648
+  },
+  "parent_diff": {
+    "parent_dots": 37654,
+    "candidate_dots": 37654,
+    "removed_parent_dots": 6788,
+    "added_candidate_dots": 6788,
+    "symmetric_difference_pixels": 13576,
+    "relocated_dot_equivalent": 6788.0,
+    "relocated_pct_of_parent_including_compliance": 18.027301216338238,
+    "symmetric_difference_pct_of_parent": 36.054602432676475
+  },
+  "compliant_parent_diff": {
+    "parent_dots": 37654,
+    "candidate_dots": 37654,
+    "removed_parent_dots": 5648,
+    "added_candidate_dots": 5648,
+    "symmetric_difference_pixels": 11296,
+    "relocated_dot_equivalent": 5648.0,
+    "relocated_pct_of_parent_including_compliance": 14.999734423965581,
+    "symmetric_difference_pct_of_parent": 29.999468847931162
+  },
+  "block_report": {
+    "dots": 37654,
+    "occupied_blocks": 11370,
+    "all_footprint_block_density_cv": 2.261623123521156,
+    "all_eligible_block_density_cv": 2.418546481902348,
+    "occupied_block_dot_count_cv": 0.5535462413536072,
+    "occupied_block_density_cv_footprint": 0.5719944929463496,
+    "density_definition": "population std/mean; 1-km blocks; zero-dot blocks included except occupied-only diagnostics"
+  },
+  "remaining_off_h19_support_dots": 148,
+  "mechanism_card": {
+    "hypothesis": "New-fault credit is concentrated in kilometres-scale corridors with dense H19-5 structural support; diffuse low-support blocks contain more expendable false-positive dots.",
+    "mechanism": "Move the 15pct dose from ascending-prior to descending-prior 1-km blocks at fixed total mass, round-robin to avoid unnecessary local packing; receiver pixels remain on H19-5 support.",
+    "non_fault_mimic": "Pluvial shoreline benches, alluvial-fan distributary networks, and unfaulted lithologic contacts can form dense aligned H19-5 lineaments without new faults.",
+    "predicted_live_change": "MODEL +0.008",
+    "prediction_class": "MODEL subjective projection frozen before diagnostics; not a score or confidence interval",
+    "falsifier": "A same-arm live decrease of at least 0.01 falsifies the predicted sign. Any absolute live change below 0.01 is no evidence.",
+    "compliance_confound": "All arms share the mandatory >=3px repair; only dose-to-dose comparisons isolate concentration."
+  },
+  "validation": {
+    "main": {
+      "file": "releases/h33-h33-2-b2-concentration15pct-20261023-8950fb40.tif",
+      "mode": "nan",
+      "bytes": 350142,
+      "sha256": "8950fb40314b1bc8e00a029c1a9015e8b088b1d8cdc6266b911e90c53acd6a2b",
+      "n_dots": 37654,
+      "checks": {
+        "geotiff": true,
+        "single_band": true,
+        "dtype_float32": true,
+        "shape_matches": true,
+        "crs_matches": true,
+        "transform_matches": true,
+        "bounds_match": true,
+        "no_infinity": true,
+        "no_nan_inside_footprint": true,
+        "inside_footprint_in_0_1": true,
+        "zero_catalogue_mass": true,
+        "unit_mass_dots": true,
+        "expected_dot_count": true,
+        "literal_minimum_3px": true,
+        "nan_outside_footprint": true,
+        "nodata_is_nan": true
+      },
+      "all_checks_passed": true,
+      "scope": "local re-read format/exclusion receipt; not organizer acceptance or a live score"
+    },
+    "zeros": {
+      "file": "releases/h33-h33-2-b2-concentration15pct-20261023-8950fb40-zeros.tif",
+      "mode": "zeros",
+      "bytes": 214634,
+      "sha256": "7a4f939d02ae176eecbbdd4897d46b18ba35d6d02765baaa9a9cf6e7b7985a8c",
+      "n_dots": 37654,
+      "checks": {
+        "geotiff": true,
+        "single_band": true,
+        "dtype_float32": true,
+        "shape_matches": true,
+        "crs_matches": true,
+        "transform_matches": true,
+        "bounds_match": true,
+        "no_infinity": true,
+        "no_nan_inside_footprint": true,
+        "inside_footprint_in_0_1": true,
+        "zero_catalogue_mass": true,
+        "unit_mass_dots": true,
+        "expected_dot_count": true,
+        "literal_minimum_3px": true,
+        "zeros_outside_footprint": true,
+        "all_finite": true,
+        "all_values_in_0_1": true
+      },
+      "all_checks_passed": true,
+      "scope": "local re-read format/exclusion receipt; not organizer acceptance or a live score"
+    }
+  },
+  "proxy": {
+    "evidence_class": "PROXY",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "dti": 0.0,
+    "ci95": [
+      0.0,
+      0.0
+    ],
+    "withheld_positive_pixels": 22893,
+    "tpw": 0.0,
+    "fpw": 70464.0,
+    "fnw": 22893.0
+  },
+  "proxy_delta_vs_r0": {
+    "evidence_class": "PROXY",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "delta": -0.0038851762665228526,
+    "ci95": [
+      -0.004452597240467501,
+      -0.0033182227337915323
+    ],
+    "withheld_positive_pixels": 22893
+  },
+  "sgmc_control": {
+    "dti": 0.08609421359664264,
+    "tp": 4955.50397643954,
+    "fp": 34351.91045503545,
+    "fn": 57166.49602356046,
+    "n_emitted_in_domain": 36824
+  }
+}

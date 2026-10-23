@@ -1,0 +1,44 @@
+{
+  "evidence_class": "PROXY",
+  "control": "derived SGMC off-catalogue faults",
+  "domain": "footprint with Euclidean d_catalogue > 3 px",
+  "truth_pixels": 62122,
+  "results": {
+    "r0": {
+      "dti": 0.09369415658974158,
+      "tp": 5378.5353488786695,
+      "fp": 33159.65415137226,
+      "fn": 56743.46465112133,
+      "n_emitted_in_domain": 35483
+    },
+    "compliance_only": {
+      "dti": 0.09565217776414427,
+      "tp": 5518.368595762831,
+      "fp": 34453.79638708934,
+      "fn": 56603.63140423717,
+      "n_emitted_in_domain": 36879
+    },
+    "concentration10pct": {
+      "dti": 0.08887184925148843,
+      "tp": 5118.761770352502,
+      "fp": 34378.79346815134,
+      "fn": 57003.2382296475,
+      "n_emitted_in_domain": 36827
+    },
+    "concentration15pct": {
+      "dti": 0.08609421359664264,
+      "tp": 4955.50397643954,
+      "fp": 34351.91045503545,
+      "fn": 57166.49602356046,
+      "n_emitted_in_domain": 36824
+    },
+    "concentration20pct": {
+      "dti": 0.08249744060620617,
+      "tp": 4744.265372807341,
+      "fp": 34307.88968810225,
+      "fn": 57377.73462719266,
+      "n_emitted_in_domain": 36803
+    }
+  },
+  "caveat": "SGMC is an auxiliary mapped-fault control, not organizer truth or a live score."
+}
