@@ -141,14 +141,16 @@
   "receipt_file": "docs/downloads/gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.json",
   "promotion_blockers": [
     "Exploratory HOLDOUT-DTI 0.00135 [0.00051, 0.00231] far below current holdout best 0.04430 on identical folds",
-    "Holdout surface was built from full catalogue, not recomputed from visible-only per fold (leakage) — violates parallel-run protocol rule 2",
+    "Holdout surface was built from full catalogue, not recomputed from visible-only per fold (leakage) \u2014 violates parallel-run protocol rule 2",
     "Whole geological segment plus buffer holdout not available (template chunks <=12 px, not whole faults)",
     "Full registry surface/dot uniqueness requires 1,143-blob corpus not downloaded here (0 of 1017 checked locally)",
     "No organizer-authenticated data or receipt",
     "No comparable reproduced current holdout best under whole-fault instrument"
   ],
-  "ok_to_submit": "FORMAT-VALID ONLY — portal will accept (finite [0,1], no NaN, CRS/shape/transform match, zero outside/on catalogue). Scientific promotion is BLOCKED; this is a research artifact. Do not spend a weekly slot expecting to beat 0.2778.",
+  "ok_to_submit": "FORMAT-VALID ONLY \u2014 portal will accept (finite [0,1], no NaN, CRS/shape/transform match, zero outside/on catalogue). Scientific promotion is BLOCKED; this is a research artifact. Do not spend a weekly slot expecting to beat 0.2778.",
   "slots_used": 0,
   "budget": 37820,
-  "seed": 289926028
+  "seed": 289926028,
+  "binary_removed_2026_10_23": "IR-84-08: negative-lane binary removed from docs/downloads to prevent mistaken submission; sha256 retained in this card and in docs/downloads/gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.json. Superseded by H84-THMS run_card.json.",
+  "download_allowed": false
 }

@@ -1,7 +1,7 @@
 {
   "schema": "gems84-leaderboard-snapshot-v1",
   "snapshot_date_utc": "2026-10-22",
-  "competition_url": "https://www.drivendata.org/competitions/311/competition-doe-gems/leaderboard/",
+  "competition_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
   "organizer_confirmed_anchors": [
     {
       "rank_context": "Top External Competitor",

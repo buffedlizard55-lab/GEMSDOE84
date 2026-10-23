@@ -7,6 +7,13 @@
 
 ---
 
+> ## 🔄 Fresh audit 2026-10-23 (branch `arena/eb4e95a5-gemsdoe84`) — read this first
+> - **Format/range gate: FRESH PASS.** Independent re-audit (`scripts/fresh_audit_20261023.py` → `evidence/fresh_audit_20261023.json`, 50+4 pytest passed in a clean venv) confirms the promoted TIF below: SHA-256 `509fa497…b5`, 0 NaN / 0 Inf, values `{0.0,1.0} ⊂ [0,1]`, `EPSG:32611`, `3730×3292`, transform = sample submission, 37,654 dots, 0 on catalogue, single-TIF ZIP. **This is the only file on the site that is OK to download & submit.**
+> - **⚠️ Dangerous files removed (IR-84-08):** `docs/downloads/` previously also offered an audit-only TIF with **7,114,860 NaN cells** — uploading it reproduces the exact DrivenData error *“Predicted values must be in range [0, 1]”*. All non-promoted `.tif/.zip` binaries were removed from `docs/downloads/` (SHA receipts kept); see `docs/downloads/index.html`.
+> - **Evidence classes corrected (IR-84-09/10/11):** official competition ID is **306** (not 311; re-fetched 2026-10-23). Live #1 is **xiaofanhu 0.4413 (ORGANIZER-CONFIRMED, public leaderboard fetched 2026-10-23)** — not “etiennedufayet”. H33's 0.2778 and all sibling scores are **OWNER-REPORTED** (no DrivenData receipt in this repo). `HOLDOUT-DTI 0.2255` and the 359-raster uniqueness pass are **2026-10-22 evidence, not rerun 2026-10-23** (feature cache absent in a clean checkout). No organizer score exists yet for the promoted file; slot selection remains a separate step within the weekly cap.
+> - **Next hypotheses (proposals only, none validated, no new TIF emitted):** `docs/research/next-hypotheses-20261023.md` — NX-5 divide-asymmetry (validate first, cached DEM, low cost), NX-3 ComCat seismicity-alignment, NX-1 Sentinel-1 InSAR, NX-2 ASTER/ECOSTRESS TIR, NX-4 hydrochemistry mixing.
+> - **Fresh run card:** `evidence/fresh_run_card_20261023.json`.
+
 ## 1. Executive Summary & Immediate Validated Submission Download
 
 > ### ✅ AUTOMATED VALIDATION VERDICT: `PROMOTE` — `OK TO DOWNLOAD & SUBMIT WITHOUT HUMAN INTERVENTION`

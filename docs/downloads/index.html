@@ -1,34 +1,25 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Downloads — GEMSDOE84 H84-DEMAG lane</title>
-<link rel="stylesheet" href="../assets/site.css">
-</head>
-<body>
-<header class="site">
-  <a class="brand" href="../h84demag/index.html">GEMSDOE84 · H84-DEMAG lane</a>
-  <nav class="site">
-    <a href="../h84demag/index.html">Home</a>
-    <a href="../h84demag/executive-summary.html">How to submit</a>
-    <a href="../h84demag/hypotheses.html">Hypotheses</a>
-    <a href="../h84demag/leaderboard.html">Leaderboard &amp; irregularities</a>
-    <a href="../h84demag/research.html">Research notes</a>
-    <a href="../index.html">↩ Main site</a>
-  </nav>
-</header>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Downloads — GEMSDOE84 (only one file is OK to submit)</title><link rel="stylesheet" href="../assets/site.css"></head>
+<body><header class="site"><a class="brand" href="../index.html">GEMSDOE84 · Lane H84-THMS</a>
+<nav class="site"><a href="../index.html">Portal &amp; Validator</a><a href="../executive-summary.html">Executive Summary — how to submit</a><a href="https://github.com/buffedlizard55-lab/GEMSDOE84">GitHub</a></nav></header>
 <main>
-  <h1>Downloads (H84-DEMAG lane)</h1>
-  <div class="banner danger"><strong>Audit-only artifact. See the lane home page banner before
-    using this for anything beyond inspection/reproducibility.</strong></div>
-  <ul>
-    <li><a href="gemsdoe84-h84-fused-demag-cond-corridor-20261022T000000Z-auditonly-zeros.tif">gemsdoe84-h84-fused-demag-cond-corridor-20261022T000000Z-auditonly-zeros.tif</a> (primary, 0.0 outside footprint)</li>
-    <li><a href="gemsdoe84-h84-fused-demag-cond-corridor-20261022T000000Z-auditonly-nan.tif">gemsdoe84-h84-fused-demag-cond-corridor-20261022T000000Z-auditonly-nan.tif</a> (secondary, NaN outside footprint, spec-literal)</li>
-    <li><a href="gemsdoe84-h84-fused-demag-cond-corridor-20261022T000000Z-auditonly-receipts.json">receipts.json</a> — sha256 + validator output for both variants</li>
-  </ul>
-  <p class="muted">This project's other lane's submission candidate (also format-valid,
-    also scientifically negative) is linked from the <a href="../index.html">main site</a>.</p>
-</main>
-<footer>GEMSDOE84 · <a href="https://github.com/buffedlizard55-lab/GEMSDOE84">source on GitHub</a></footer>
-</body>
-</html>
+<h1>Downloads</h1>
+<div class="banner" style="background:#052e16;border:2px solid #22c55e;padding:1rem"><strong>✅ ONLY ONE FILE ON THIS PAGE IS OK TO DOWNLOAD &amp; SUBMIT:</strong>
+<code>gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif</code> (SHA-256 <code>509fa4971a3cdf119a0ae7140b0fac31860d063af9bcc914266d98294f2ba7b5</code>).
+Fresh independent audit 2026-10-23: 0 NaN, 0 Inf, values {0.0,1.0} ⊂ [0,1], EPSG:32611, 3730×3292, transform matches sample submission. See <code>../evidence/fresh_audit_20261023.json</code>.</div>
+<ul>
+<li><a href="gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif">⬇ gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif — THE submission (.tif)</a></li>
+<li><a href="gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.zip">⬇ Same submission as single-TIF .zip</a></li>
+<li><a href="gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.json">Submission receipt (.json)</a></li>
+</ul>
+<p><strong>DrivenData name:</strong> <code>gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros</code><br>
+<strong>Note (111/140):</strong> <code>H84-THMS silica-valve &amp; 1m/10m scarp-chi Dual-Head Dinkelbach 300m; 37654 dots &gt;3px off cat; HOLDOUT-DTI 0.2255</code></p>
+<h2>⛔ Removed 2026-10-23 — DO NOT SUBMIT (binaries deleted to prevent a mistaken upload)</h2>
+<table><thead><tr><th>Removed file</th><th>SHA-256 (receipt preserved)</th><th>Why removed</th></tr></thead><tbody>
+<tr><td><code>…auditonly-nan.tif</code></td><td><code>69674e62fe45cd27…</code></td><td><strong>7,114,860 NaN cells</strong> — would trigger the exact DrivenData error “Predicted values must be in range [0, 1]”. Receipt: <a href="gemsdoe84-h84-fused-demag-cond-corridor-20261022T000000Z-auditonly-receipts.json">auditonly-receipts.json</a></td></tr>
+<tr><td><code>…auditonly-zeros.tif</code></td><td><code>e65539d392345b10…</code></td><td>Negative lane (H84-DEMAG); format-valid but holdout-negative. Same receipt as above.</td></tr>
+<tr><td><code>gems84-wing-splay-gap-37820-….tif/.zip</code></td><td><code>c6d0b71096e13a62…</code></td><td>Negative lane (H84-WING, HOLDOUT-DTI 0.00135 prior evidence). Receipt: <a href="gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.json">wing receipt .json</a></td></tr>
+</tbody></table>
+<p class="muted">Full hashes are in the linked receipts; the pre-removal inventory is in git history and <code>evidence/fresh_audit_20261023.json</code> now lists only the promoted files. Removing the binaries does not delete the science: code, receipts and holdout records remain in the repo.</p>
+</main><footer>GEMSDOE84 · <a href="https://github.com/buffedlizard55-lab/GEMSDOE84">source on GitHub</a></footer></body></html>

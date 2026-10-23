@@ -222,5 +222,7 @@
       "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
       "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
     }
-  }
+  },
+  "binary_removed_2026_10_23": "IR-84-08: negative-lane binary removed from docs/downloads to prevent mistaken submission; sha256 retained in this card and in docs/downloads/gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.json. Superseded by H84-THMS run_card.json.",
+  "download_allowed": false
 }
