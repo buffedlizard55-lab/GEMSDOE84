@@ -2,6 +2,25 @@
 
 **Read this operating brief at the beginning of every session.**
 
+## Current Release Status — Lane `H84-CSAT` (`arena/fcacc90c-gemsdoe84`, 2026-10-22 UTC)
+
+> **AUTOMATED VERDICT: `negative` · `DO NOT SUBMIT TO WEEKLY LIVE SLOT WITHOUT SELECTOR OVERRIDE` (`0` live competition slots consumed)**
+>
+> - **Generated Unique GeoTIFF**: [`docs/downloads/gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros.tif`](docs/downloads/gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros.tif) (`142,515` bytes · SHA-256 `380eac60eb18d835e44cf64057f7021013753c7d45f287d540413304bcac580d` · `38,453` dots · `float32` in `{0.0, 1.0}`, `0` NaNs anywhere, `0` dots on mapped catalogue)
+> - **Verified One-TIFF ZIP**: [`docs/downloads/gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros.zip`](docs/downloads/gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros.zip)
+> - **Short Submission Note (`117 <= 140` chars)**: `GEMSDOE84 H84-CSAT LOQO dual-habitat 3D contact-depth + strain-transfer D2.8 c2.5 zeros; holdout DTI 0.1685 vs 0.1056`
+> - **Canonical Run Card**: [`evidence/run-card.json`](evidence/run-card.json) · **Pages Overview**: [`docs/index.html`](docs/index.html) · **Submission Guide**: [`docs/executive-summary.html`](docs/executive-summary.html)
+
+| Automated Gate | Protocol Requirement | Measured Receipt | Status |
+|---|---|---|---|
+| **1. GeoTIFF Format & `[0, 1]` Range** | `EPSG:32611`, `3730x3292`, `float32`, `0` NaN/Inf, `[0, 1]`, `0` on catalogue | `18/18` checks PASS (`min=0.0`, `max=1.0`, `n_nan=0`, `38,453` dots) | **PASS** |
+| **2. 58-Feature Leakage Canary** | `max(AUC, 1-AUC) <= 0.90` on `22,893` withheld positive pixels | `0.76042` (`s02_log_d2`); max catalogue-blind `0.56467` (`p32_topo10m_relief`) | **PASS** |
+| **3. Pre-Placement Surface Uniqueness** | `|Spearman rho| <= 0.90` across all `1,160` registry rasters | `0.73533` (`5GEMSDOE:context_detector_prob_4fold_base.tif`) | **PASS** |
+| **4a. Holdout — Primary `csat_submod`** | Beat `incumbent_recipe` (`0.10564`) on `gems57-pooled-hide-v2` | `0.08153` `[0.06861, 0.09510]` (`Δ = -0.02411`; `emit.py` `kself=1` peak-clumping defect `IR-84-11`) | **FAIL** |
+| **4b. Holdout — Preregistered Ablation `csat_poisson` (`.tif`)** | Same `H84-CSAT` LOQO surface + `D2.8` spacing (`sep=2.83 px`, `c=2.5 px`) | **`0.16850` `[0.15468, 0.18167]`** (`+0.06285` vs `incumbent_recipe`, `+0.09859` vs `retrained_h19_control`) | **PASS** |
+| **5a. Final Dots — Comparable Submissions (`<= 55k` dots)** | `<= 0.70` forward 3-px overlap across `1,006` dot-budget priors | `0` flags · byte & pixel unique · max Jaccard `0.03912` · max `|rho| = 0.09234` | **PASS** |
+| **5b. Final Dots — `binding_duplicate_decision`** | `<= 0.70` forward 3-px overlap across all `1,091` priors with global `H < 0.70` | `30` broad `56k–1.83M`-px corridor-blanket priors exceed `0.70` (worst `0.90945` vs `GEMSDOE3:coverage-v3-wide` `624,025` px; `IR-84-12`) | **FAIL** |
+
 ## Submission status
 
 The site and `evidence/run-card.json` are the release authority. **A local format pass is not permission to submit.** No weekly slot is used by this project. A negative result, duplicate veto, missing evidence, or an incomparable holdout best blocks promotion. The download area must never quietly substitute an older submission.
@@ -96,3 +115,27 @@ python scripts/build_run_card.py && python scripts/build_site_liti.py
 
 Lane code: `src/gems84/` (basis, inversion, catalogue-analogue field). It uses the shared
 `vendor/gems57` (pinned; see `registry/template_pin.json`).
+
+---
+
+## Lane H84-CSAT — Dual-Habitat 3D Contact-Depth & Strain-Transfer · session `arena/fcacc90c-gemsdoe84`
+
+Preregistration: [`docs/research/hypotheses.md`](docs/research/hypotheses.md) and [`registry/preregistration.json`](registry/preregistration.json). Evidence receipts: [`evidence/exp84_1_canary_and_surface.json`](evidence/exp84_1_canary_and_surface.json), [`evidence/exp84_2_holdout_eval.json`](evidence/exp84_2_holdout_eval.json), [`evidence/exp84_3_emission_and_uniqueness.json`](evidence/exp84_3_emission_and_uniqueness.json).
+
+### Key Takeaways & Next-Session Roadmap
+1. **Substantial Out-of-Quadrant `HOLDOUT-DTI` Lift (`+59.5%` over `incumbent_recipe`, `2.41x` over fold-retrained 19-band control)**: On `gems57-pooled-hide-v2` (`22,893` withheld positive pixels across whole buffered 8-connected components, `1,000` paired 20 km spatial-block bootstrap draws), `csat_poisson` achieved **`0.16850` `[0.15468, 0.18167]`** (`NW=0.16620`, `NE=0.17070`, `SW=0.16839`, `SE=0.16843`) vs `incumbent_recipe = 0.10564` `[0.09357, 0.11662]` and `retrained_h19_control = 0.06991` `[0.05782, 0.08241]`. Even the **100% catalogue-blind** Head B (`concealed_poisson = 0.07351` `[0.06082, 0.08615]`) beat the 19-band `retrained_h19_control` with zero catalogue inputs.
+2. **Allocator Defect `IR-84-11` Identified in `vendor/gems57/emit.py`**: Clamping `kself = np.minimum(ekc, 1.0)` collapses $c(1-k(x))$ to `0` on high-probability ridges (`E[k] >= 1`), clumping 1-px neighbor dots and halving `TP_w` (`2,353.4` vs `5,062.9` at matched `31,057`/`30,474` dot counts). Upstream `emit.py` should replace `min(E[k], 1)` with noisy-OR marginal self-credit $1 - \prod_g (1 - p(g)k(d(x,g)))$.
+3. **Domain-Restricted Corridor Blocker `IR-84-12` & Next-Session Solution**: Broad corridor blankets (`7GEMSDOE:gems7-halo15` `1,828,699` px = `100%` of `d <= 15 px`, `0%` of `d > 18 px`) have global `halo_coverage = 0.4018 < 0.70` yet veto any unstratified candidate placing `> 70%` of dots near mapped faults. Next session should preregister a **Distance-Stratified Dual-Habitat Emitter** (`50%` budget in `2.5 < d <= 18 px` via Head A + `50%` budget in `d > 18 px` low-relief concealed contacts via Head B) to pass `binding_duplicate_decision` (`<= 0.70` across all `1,091` discriminating priors) while preserving strong `HOLDOUT-DTI` lift.
+
+### Reproduce Lane H84-CSAT
+```bash
+.venv/bin/python scripts/fetch_data.py
+.venv/bin/python scripts/build_registry_index.py
+.venv/bin/python scripts/exp84_1_features_canary_surface.py
+.venv/bin/python scripts/exp84_2_holdout_eval.py
+.venv/bin/python scripts/exp84_3_emit_and_audit.py
+.venv/bin/python scripts/build_run_card.py
+.venv/bin/python scripts/build_site.py
+.venv/bin/pytest -q
+```
+

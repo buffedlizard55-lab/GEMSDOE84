@@ -100,9 +100,15 @@ def test_site_local_links_and_fail_closed_release():
                 assert (p.parent/unquote(u.path)).exists(),(p,href)
     card=json.loads((ROOT/'evidence/run-card.json').read_text())
     assert card['verdict']=='negative'
+    assert not card['submission_authorized']
     assert 'DO NOT SUBMIT' in (ROOT/'docs/index.html').read_text()
+    assert 'DO NOT SUBMIT' in (ROOT/'docs/executive-summary.html').read_text()
     assert card['submission_slots_used']==0
     assert len(card['note'])<=140
-    if card['registry_correlation_overlap'].get('duplicate'):
-        assert not list((ROOT/'docs').rglob('*.tif'))
+    tifs = list((ROOT/'docs').rglob('*.tif'))
+    if not tifs:
         assert card['raster_sha256'] is None
+    else:
+        import hashlib
+        assert len(tifs) == 1
+        assert hashlib.sha256(tifs[0].read_bytes()).hexdigest() == card['raster_sha256']

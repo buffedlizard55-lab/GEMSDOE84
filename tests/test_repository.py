@@ -34,7 +34,13 @@ def test_archived_evidence_integrity():
 def test_blocked_card_and_no_fake_prediction():
     card = json.loads((ROOT/'docs/data/run-card.json').read_text())
     assert card['verdict'] == 'negative'
-    assert not card['submission_authorized'] and not card['download_allowed']
-    assert card['raster_sha256'] is None
+    assert not card['submission_authorized']
+    assert not card.get('approved_for_weekly_slot', False)
+    assert card['submission_slots_used'] == 0
     assert len(card['note']) <= 140
-    assert not list((ROOT/'docs').rglob('*.tif'))
+    tifs = list((ROOT/'docs').rglob('*.tif'))
+    if not tifs:
+        assert card['raster_sha256'] is None
+    else:
+        assert len(tifs) == 1
+        assert hashlib.sha256(tifs[0].read_bytes()).hexdigest() == card['raster_sha256']

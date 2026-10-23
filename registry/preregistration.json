@@ -1,1 +1,45 @@
-{"lane":"H84-RFD","selected_without_assigned_method":true,"experiments_max":3,"seed":20,"sigma_px":3,"dot_budget":37654,"separation_px":3,"candidate":"signed K/Th curvature discordance times relief-normalized coherent LiDAR step","no_catalogue_features":true,"promotion_requires_full_segment_buffer_instrument":true,"submission_slots_used":0}
+{
+  "lane": "H84-CSAT",
+  "title": "Contact-Depth 3D Analytic Signal & Elastic Strain-Accommodation Transfer with Submodular 300m Kernel Allocation",
+  "session_branch": "arena/fcacc90c-gemsdoe84",
+  "preregistered_date": "2026-10-22",
+  "selected_without_assigned_method_paragraph": true,
+  "prior_negative_lanes_preserved": [
+    "H84-RFD (PR #6, chunked holdout 0.0443, negative)",
+    "H84-A LITI (PR #7, buffered holdout 0.0087, 56 binding overlap flags, negative)"
+  ],
+  "experiments_max": 3,
+  "time_budget_hours": 2.0,
+  "holdout_instrument": {
+    "evaluator": "vendor/gems57/evaluate_holdout.py (gems57-pooled-hide-v2)",
+    "split": "vendor/gems57/holdout.py::buffered_component_draw",
+    "seeds": [20, 21],
+    "hide_frac": 0.20,
+    "feature_buffer_px": 3,
+    "boundary_erode_px": 12,
+    "bootstrap_draws": 1000,
+    "bootstrap_block_px": 200
+  },
+  "model_parameters_fixed": {
+    "prevalence_prior_pi0": 0.0024,
+    "collar_exclusion_px": 2.5,
+    "counterfactual_inner_draws": 2,
+    "counterfactual_hide_frac": 0.25,
+    "transfer_weight_near": 0.72,
+    "transfer_weight_far": 0.30,
+    "concealed_weight": 0.62,
+    "max_dots_cap": 42000,
+    "uses_registry_rasters_in_model_or_emitter": false,
+    "uses_sgmc_in_features": false,
+    "uses_gdr_dist_known_fault_px": false
+  },
+  "gates": {
+    "leakage_canary_max_symmetric_auc": 0.90,
+    "surface_spearman_limit": 0.90,
+    "dots_spearman_limit": 0.90,
+    "dots_forward_overlap_3px_limit": 0.70,
+    "binding_rule": "vendor/gems57/uniqueness.py::binding_duplicate_decision (like-for-like H < 0.70, with literal reading & saturation_certificate reported alongside)",
+    "require_positive_paired_ci95_vs_controls": true
+  },
+  "submission_slots_used": 0
+}

@@ -1,7 +1,7 @@
 {
  "owner": "buffedlizard55-lab",
- "corpus_entries": 1149,
- "n_unique_grid_rasters": 1143,
+ "corpus_entries": 1166,
+ "n_unique_grid_rasters": 1160,
  "skipped_non_grid": [
   {
    "repo": "14GEMSDOE",
@@ -11472,6 +11472,176 @@
     "GEMSDOE79:archive/concurrent_2026-10-22_5d14587/docs/downloads/g79b-scarpdipole-geoand-E1-20261022-5cb0eb8f-DO-NOT-SUBMIT.tif"
    ],
    "repo_first": "GEMSDOE79"
+  },
+  {
+   "sha256": "8f8c2cd17b8484a8ab61fbc7b370e3dde6ed4cedeb2d1ee362e9d9c214bb64ca",
+   "bytes": 10257729,
+   "blob": "a39c46de1ba3340cb1841a039aa9741979cb460f",
+   "cache_file": "/home/user/gemsdata/registry/a39c46de1ba3340cb1841a039aa9741979cb460f.tif",
+   "sources": [
+    "GEMSDOE79:archive/g79_fabric_offset_e1/downloads/g79-fabric-offset-surface-E1-20261021-89cab569-DO-NOT-SUBMIT.tif"
+   ],
+   "repo_first": "GEMSDOE79"
+  },
+  {
+   "sha256": "aa0685b0bcbead416b41d22b8c327393d55e32e18e360fa460eb0af020d018ec",
+   "bytes": 49139380,
+   "blob": "09cc1c48c54f786f76aae3b59da07442b4e2ad4e",
+   "cache_file": "/home/user/gemsdata/registry/09cc1c48c54f786f76aae3b59da07442b4e2ad4e.tif",
+   "sources": [
+    "GEMSDOE79:docs/downloads/gems79-tilt-ring-100000dots-20261022T212135Z-50a5d7498c71-zeros.tif"
+   ],
+   "repo_first": "GEMSDOE79"
+  },
+  {
+   "sha256": "1a860abfb84ab6875fdc6e8f7c7a220f9329712490256467ed866b3f9f744783",
+   "bytes": 339110,
+   "blob": "c4f5a409705813fadd5873435a30ebd38a9cd658",
+   "cache_file": "/home/user/gemsdata/registry/c4f5a409705813fadd5873435a30ebd38a9cd658.tif",
+   "sources": [
+    "GEMSDOE85:docs/downloads/gems85-geopb-crest-37654dots-sep4-20261022T222707Z-60029d07-nan.tif"
+   ],
+   "repo_first": "GEMSDOE85"
+  },
+  {
+   "sha256": "a211e7c6e2cdb6665537b19d4902824d12bd1951185f6c66c1df86a843a5281e",
+   "bytes": 301369,
+   "blob": "9df62523100c78e8f7abeaa9fb4d982ce197b39b",
+   "cache_file": "/home/user/gemsdata/registry/9df62523100c78e8f7abeaa9fb4d982ce197b39b.tif",
+   "sources": [
+    "GEMSDOE85:docs/downloads/gems85-geopb-crest-37654dots-sep4-20261022T222707Z-60029d07-zeros.tif"
+   ],
+   "repo_first": "GEMSDOE85"
+  },
+  {
+   "sha256": "f971f8c58ceb82db97d61e71300bc4c31468f549925810a597c0809f02f435ca",
+   "bytes": 401298,
+   "blob": "a444fb2ee41d14b0ad75f795c58a739db0ce4241",
+   "cache_file": "/home/user/gemsdata/registry/a444fb2ee41d14b0ad75f795c58a739db0ce4241.tif",
+   "sources": [
+    "GEMSDOE85:docs/downloads/gems85-geopb-crest-60000dots-sep4-20261022T222707Z-cbb4e82c-nan.tif"
+   ],
+   "repo_first": "GEMSDOE85"
+  },
+  {
+   "sha256": "2bdae85a89b2ce6f953fcbcda06a49c036776e0939a3bc1a62a0b1305d28aecc",
+   "bytes": 363090,
+   "blob": "5d5c2ae44a7f9821d9d47a8de84169845b913b61",
+   "cache_file": "/home/user/gemsdata/registry/5d5c2ae44a7f9821d9d47a8de84169845b913b61.tif",
+   "sources": [
+    "GEMSDOE85:docs/downloads/gems85-geopb-crest-60000dots-sep4-20261022T222707Z-cbb4e82c-zeros.tif"
+   ],
+   "repo_first": "GEMSDOE85"
+  },
+  {
+   "sha256": "085c45c57d6532c7fdd9a00715c0f4f03465f8e665aa0cc2de3f71e25a33818c",
+   "bytes": 476599,
+   "blob": "02c3c857a43d05eff737b3d73d64dab9a26c0b7a",
+   "cache_file": "/home/user/gemsdata/registry/02c3c857a43d05eff737b3d73d64dab9a26c0b7a.tif",
+   "sources": [
+    "GEMSDOE85:docs/downloads/gems85-geopb-crest-90000dots-sep4-20261022T222707Z-a4e1f57c-nan.tif"
+   ],
+   "repo_first": "GEMSDOE85"
+  },
+  {
+   "sha256": "ba33ea18936e6324037457e1ff5070d8e879b7b29a25b4ae2c0003bc509a567f",
+   "bytes": 438042,
+   "blob": "93a4460c24ad144cf74c00ae3342f907856680df",
+   "cache_file": "/home/user/gemsdata/registry/93a4460c24ad144cf74c00ae3342f907856680df.tif",
+   "sources": [
+    "GEMSDOE85:docs/downloads/gems85-geopb-crest-90000dots-sep4-20261022T222707Z-a4e1f57c-zeros.tif"
+   ],
+   "repo_first": "GEMSDOE85"
+  },
+  {
+   "sha256": "ce8fb8c0f0b2fad1513bff4e34fa15a3e4c7bb8d373efa8f3cff6ceebcb99040",
+   "bytes": 215503,
+   "blob": "fa3f58f0bb327ae7ce333f0b2bae33867281803f",
+   "cache_file": "/home/user/gemsdata/registry/fa3f58f0bb327ae7ce333f0b2bae33867281803f.tif",
+   "sources": [
+    "GEMSDOE85:docs/downloads/gems85-h85-duplex-pullapart-worm-20261022T220544Z-2f8b57d9-nan.tif"
+   ],
+   "repo_first": "GEMSDOE85"
+  },
+  {
+   "sha256": "10efc0a5adf13b9e56c08e1be470eac88153a4985b9b9da776ed63772be298cb",
+   "bytes": 88372,
+   "blob": "ab18b85820822546bf4bebf41167a576ff83ff11",
+   "cache_file": "/home/user/gemsdata/registry/ab18b85820822546bf4bebf41167a576ff83ff11.tif",
+   "sources": [
+    "GEMSDOE85:docs/downloads/gems85-h85-duplex-pullapart-worm-20261022T220544Z-2f8b57d9-zeros.tif"
+   ],
+   "repo_first": "GEMSDOE85"
+  },
+  {
+   "sha256": "bf83e0a3b00592c1b355b9e54402a83d4f61af75da1c6223f5301f8b4fa22379",
+   "bytes": 258932,
+   "blob": "a566e77cff34392983a599ee786d853637df94ca",
+   "cache_file": "/home/user/gemsdata/registry/a566e77cff34392983a599ee786d853637df94ca.tif",
+   "sources": [
+    "GEMSDOE85:docs/downloads/gems85-h85-ti-pure-20261022T221047Z-f53a0c81-nan.tif"
+   ],
+   "repo_first": "GEMSDOE85"
+  },
+  {
+   "sha256": "e695ba4e00200837fce14dd08b60111c30d54f7b9bc91f9d372b383f2f665f0e",
+   "bytes": 129895,
+   "blob": "cd9c3a64cb09a8cec7e1ca8e7f6cc1cc226d29a8",
+   "cache_file": "/home/user/gemsdata/registry/cd9c3a64cb09a8cec7e1ca8e7f6cc1cc226d29a8.tif",
+   "sources": [
+    "GEMSDOE85:docs/downloads/gems85-h85-ti-pure-20261022T221047Z-f53a0c81-zeros.tif"
+   ],
+   "repo_first": "GEMSDOE85"
+  },
+  {
+   "sha256": "b3d3f846de50c6fd2521757efe9362f25a03b61b3fd90fff6718f9e91479d37f",
+   "bytes": 305762,
+   "blob": "86b6f1e5a970bca9337c1217000ea9de73dd77c0",
+   "cache_file": "/home/user/gemsdata/registry/86b6f1e5a970bca9337c1217000ea9de73dd77c0.tif",
+   "sources": [
+    "GEMSDOE85:docs/downloads/gems85-h85-worm-pure-20261022T221114Z-e3091ec2-nan.tif"
+   ],
+   "repo_first": "GEMSDOE85"
+  },
+  {
+   "sha256": "5544436d93354b92a6e6c1a8222b3cda9a1c3624ce53009227cb66e252d005d2",
+   "bytes": 175572,
+   "blob": "ebc5f36190a8fe75678a66d214133c88d3e900fd",
+   "cache_file": "/home/user/gemsdata/registry/ebc5f36190a8fe75678a66d214133c88d3e900fd.tif",
+   "sources": [
+    "GEMSDOE85:docs/downloads/gems85-h85-worm-pure-20261022T221114Z-e3091ec2-zeros.tif"
+   ],
+   "repo_first": "GEMSDOE85"
+  },
+  {
+   "sha256": "3404308cb068e6230a63831a3cba50af93b266ed2b8c639d4d1b9b109f4648ec",
+   "bytes": 325261,
+   "blob": "6d5e9dc57258b3cc448509137a478fd7b4a129e0",
+   "cache_file": "/home/user/gemsdata/registry/6d5e9dc57258b3cc448509137a478fd7b4a129e0.tif",
+   "sources": [
+    "GEMSDOE85:submissions/gems85-h85a-foldproper-hgb-maxcov-37654-20261022T221031Z-bf96e456-nan.tif"
+   ],
+   "repo_first": "GEMSDOE85"
+  },
+  {
+   "sha256": "ccc8a7a4e53c406de00c5ba40612f5d3df2b0f4afc869dd1b997d5b836a0209b",
+   "bytes": 191404,
+   "blob": "1c098690898b9dc0d7dd68ccecb49dcf1eb948dd",
+   "cache_file": "/home/user/gemsdata/registry/1c098690898b9dc0d7dd68ccecb49dcf1eb948dd.tif",
+   "sources": [
+    "GEMSDOE85:submissions/gems85-h85a-foldproper-hgb-maxcov-37654-20261022T221031Z-bf96e456-zeros.tif"
+   ],
+   "repo_first": "GEMSDOE85"
+  },
+  {
+   "sha256": "3af5d290e7e0f362cd69bc2db416c8e7a2fe25a61189546218169a90e097730b",
+   "bytes": 119914,
+   "blob": "4bfc2b8e3fd7fc9927fee8b2efc4a4f914f7ad4e",
+   "cache_file": "/home/user/gemsdata/registry/4bfc2b8e3fd7fc9927fee8b2efc4a4f914f7ad4e.tif",
+   "sources": [
+    "GEMSDOE88:docs/downloads/gems88-mgc-crossgradient-37654-20261022-v1-DO-NOT-SUBMIT.tif"
+   ],
+   "repo_first": "GEMSDOE88"
   }
  ],
  "scope": "owner-published public GitHub rasters listed in registry/uniqueness_corpus.txt; not an organizer registry"
