@@ -16,6 +16,12 @@ Per the competition rules for the U.S. Department of Energy Geothermal Earthshot
   - Executed disk re-read format/gate validation (`verify_written_pair_from_disk`, `scripts/validate_submission.py`) and REPORT-ONLY diagnostics (`catalogue_hide_and_recover_proxy`, `leakage_canary`, `sgmc_off_catalogue_control`), saving structured receipts to `evidence/r0_mass_variants_20261023.json`.
   - Authored `SLOT_PLAN.md`, `docs/SUBMIT.md`, `IRREGULARITIES.md`, `AI_USE.md`, the `CURRENT STATE` block update in `README.md`, and unit tests in `tests/test_r0_variants.py` and `tests/test_snap_axis.py`.
 
+- **AXIS=PRUNE session (2026-10-23, branch `arena/8db38540-gemsdoe84`)**:
+  - The human supplied Brief v2 without an `AXIS` assignment, `TOP_PUBLIC`, or slot quota and skipped the agent's clarifying questions; the agent recorded defaults (`IR-DEC-07`) and chose `AXIS = PRUNE` (next unbuilt axis; MASS and SNAP already built once).
+  - Restored all pinned inputs (`scripts/restore_pinned_inputs.py --ids all`, SHA-256 fail-closed), re-verified all `23` manifest hashes, rebuilt R0 bit-for-bit a second time, and verified the lineage identity solo `0.2708` base `= d2_8 & d_cat>1` (`40,199` dots).
+  - Wrote `src/gems84/prune.py` (fixed-count collar operators) and `scripts/build_prune_variants.py`; built/gated `h33-h33-2-b2-prune-dgt1in-20261023-02ad0d5c`, `h33-h33-2-b2-prune-dge3refill-20261023-3745ebf6`, `h33-h33-2-b2-prune-dgt3refill-20261023-10ce9ad1` (all `37,654` dots; `13.52%` / `8.56%` / `11.53%` changed), ran REPORT-ONLY diagnostics (`evidence/r0_prune_variants_20261023.json`), extended `scripts/build_ledger.py` (`--prune-rows`), added `tests/test_prune_axis.py`, and updated `SLOT_PLAN.md`, `docs/SUBMIT.md`, `README.md` CURRENT STATE, `IRREGULARITIES.md`.
+  - The agent submitted nothing and contacted only `codeload.github.com` (pinned mirrors) and PyPI (numpy/scipy/rasterio/pytest in a git-ignored `.venv`).
+
 ## 2. What the Human Decided and Must Supply
 
 - **Experimental Framework & Constraints (`PROMPT.md`)**:

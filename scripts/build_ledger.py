@@ -92,6 +92,7 @@ def main() -> int:
     ap.add_argument("--out", default=str(ROOT / "ledger" / "submissions.csv"))
     ap.add_argument("--snap-rows", default=str(ROOT / "ledger" / "_snap_rows.json"))
     ap.add_argument("--mass-rows", default=str(ROOT / "ledger" / "_mass_rows.json"))
+    ap.add_argument("--prune-rows", default=str(ROOT / "ledger" / "_prune_rows.json"))
     args = ap.parse_args()
 
     rows: list[dict] = []
@@ -140,7 +141,7 @@ def main() -> int:
                 })
 
     # 3. files BUILT this session ------------------------------------------------------
-    for extra_path in (Path(args.snap_rows), Path(args.mass_rows)):
+    for extra_path in (Path(args.snap_rows), Path(args.mass_rows), Path(args.prune_rows)):
         if extra_path.exists():
             rows.extend(json.loads(extra_path.read_text()))
 

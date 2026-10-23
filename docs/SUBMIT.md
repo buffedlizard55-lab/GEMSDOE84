@@ -106,3 +106,41 @@
 | **Slot 3 (`MASS -20%`)** | `30,123` | `0.10149` (`[0.08969, 0.11274]`) | `0.00400` (`[0.00341, 0.00456]`) | `0.08368` | `0.07571` | `0.05940` |
 
 - **Leakage canary (`REPORT ONLY`)**: All `27` features (`01_mag_anom`..`19_det_elev_slope`, `H33-A..D`, `h33_union`, `lidar_scarp_composite`, `corrob_count`, `q_posterior`) passed on the `22,893` withheld positive pixels (`max_single_feature_auc = 0.5949 <= 0.90`).
+
+---
+
+## `AXIS = PRUNE` Variants (Built 2026-10-23, Queued After MASS/SNAP — see `SLOT_PLAN.md`)
+
+Collar geometry at fixed count `37,654` (the historical `0.2600 -> 0.2708 -> 0.2778` CLAIM ladder confounded collar with mass; these do not). Parent R0 rebuilt bit-for-bit again this session (`evidence/r0_prune_variants_20261023.json`; solo `0.2708` base verified identical to `d2_8 & d_cat>1`, `40,199` dots). Upload only one encoding per slot (`.tif` per spec, `-zeros.tif` fallback).
+
+### 1. `dcat>=3px-refill` (submit first of the three)
+- **Name**: `h33-h33-2-b2-prune-dge3refill-20261023-3745ebf6`
+- **Files**: `releases/h33-h33-2-b2-prune-dge3refill-20261023-3745ebf6.tif` (`sha256`: `3745ebf6c4d5c6506bcbb4360616271de3da84f8842be17cd5e92201a329ed16`) · `-zeros.tif` (`sha256`: `c960774fe90a1df4560e5df23e0083aece4ca0bc7ace8db3d010cde03ec523c1`)
+- **Form note (88 chars)**: `h33-h33-2-b2; PRUNE collar >=3px, replace 1611 diag dots refilled, 37654; pred 0..+0.003`
+- **Format receipt**: `crs = EPSG:32611`, `shape = (3730, 3292)`, `dtype = float32`, `count = 1`, no NaN inside footprint, values in `[0,1]`, `catalogue_mass = 0.0`, `n_dots = 37,654` (`+1,611 / -1,611`, `8.56%` changed, `d_cat_min = 3.0000 px`, median `20.6155 px`), `scripts/validate_submission.py`: `format_valid = True`.
+- **Mechanism card**: Hypothesis — R0's `1,611` dots at `224–283 m` (`sqrt5/sqrt8 px`) are the remnant of a `>2.0 px` (not `>=3 px`) prune and still spend kernel mass on the masked catalogue halo; replacing them with top-ranked ridge dots at `d_cat >= 3.0 px` gains slightly. Mimic — true en-echelon relay steps / hanging-wall splays `220–290 m` off a master fault. Predicted `0.000 to +0.003` DTI (MODEL). Falsifier — a live drop `> 0.001` vs R0 proves the `(2,3) px` ring carries real unmapped splays.
+
+### 2. `dcat>1px-swapin` (the bracket / falsification arm)
+- **Name**: `h33-h33-2-b2-prune-dgt1in-20261023-02ad0d5c`
+- **Files**: `releases/h33-h33-2-b2-prune-dgt1in-20261023-02ad0d5c.tif` (`sha256`: `02ad0d5cb9836ebc868ceabbfd4a966836f98b473dc0f33004bf4f42e41936d2`) · `-zeros.tif` (`sha256`: `ffb1c3264b166bc6ae46df42db5954d605222d614438dff82d60c1c24ceb7ad0`)
+- **Form note (88 chars)**: `h33-h33-2-b2; PRUNE collar >1px swap-in 2545 ring dots, count 37654; pred -0.002..-0.006`
+- **Format receipt**: as above; `n_dots = 37,654` (`+2,545` ring dots at `1<d_cat<=2` / `-2,545` lowest-gain R0 dots, `13.52%` changed, `d_cat_min = 1.4142 px`, median `17.0880 px`), `format_valid = True`. Zero catalogue mass; the `>=3 px` rule is relaxed only under the Brief's AXIS=PRUNE exception.
+- **Mechanism card**: Hypothesis — the `100–200 m` ring is net-negative at fixed count (organizer masks catalogue pixels exactly; neighbours score vs new-fault truth only). Mimic — the mapped trace misregistered by `100–200 m` in source linework. Predicted `-0.002 to -0.006` DTI (MODEL). Falsifier — a receipt `>= 0.2778` proves the `0.2708 -> 0.2778` step was pure mass, not collar.
+
+### 3. `dcat>3px-refill`
+- **Name**: `h33-h33-2-b2-prune-dgt3refill-20261023-10ce9ad1`
+- **Files**: `releases/h33-h33-2-b2-prune-dgt3refill-20261023-10ce9ad1.tif` (`sha256`: `10ce9ad11aa5bd6b26cdcfdf6a069b0f4a80a1df971bb4981834f2a404fef7f2`) · `-zeros.tif` (`sha256`: `c05d1524d71ff12a5bca61af02b222d03f93c0afbcdab7e8a9a298eb507f110f`)
+- **Form note (92 chars)**: `h33-h33-2-b2; PRUNE collar >3px, replace 2171 ring dots refilled, 37654; pred -0.001..+0.003`
+- **Format receipt**: as above; `n_dots = 37,654` (`+2,171 / -2,171`, `11.53%` changed, `d_cat_min = 3.1623 px`, median `21.0238 px`), `format_valid = True`.
+- **Mechanism card**: Hypothesis — tests whether ANY dot whose 300 m kernel touches a mapped trace is net-negative at fixed count (Brief PRUNE `<=3 px` point). Mimic — newly mapped strands of existing systems, explicitly in the organizer's "new fault" definition, sitting inside the vacated halo. Predicted `-0.001 to +0.003` DTI (MODEL). Falsifier — scoring `> 0.001` below `dge3refill` shows the exact-`3.0 px` ring carries truth.
+
+### REPORT-ONLY diagnostics (`evidence/r0_prune_variants_20261023.json`, PROXY — never gates)
+
+| Arm | `n_dots` | Fold-clean PROXY ($n=22,893$) | Paired $\Delta$ vs R0 (95% CI) | SGMC raw / cal DTI PROXY ($n=62,703$) |
+|---|---:|---|---|---|
+| R0 | `37,654` | `0.10564` `[0.09363, 0.11696]` | — | `0.09606` / `0.06412` |
+| `dgt1in` | `37,654` | `0.10327` `[0.09132, 0.11414]` | `-0.00238` `[-0.00370, -0.00117]` | `0.09292` / `0.06200` |
+| `dge3refill` | `37,654` | `0.10566` `[0.09346, 0.11685]` | `+0.00002` `[-0.00098, +0.00105]` | `0.09973` / `0.06662` |
+| `dgt3refill` | `37,654` | `0.10489` `[0.09291, 0.11584]` | `-0.00075` (CI straddles 0) | `0.10074` / `0.06730` |
+
+- Leakage canary: `27` features, `max_single_feature_auc = 0.5944 <= 0.90` (passed). Shipped-mask holdout is `0.03051` for `dgt1in` and `0.0` for the outward collars by construction (shipped masks exclude the full catalogue; only the fold-clean column is interpretable). Per the brief, a live change `< 0.01` is no evidence on its own — the ordered pattern across the three collar receipts is the measurement.
