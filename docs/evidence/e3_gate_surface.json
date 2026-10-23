@@ -1,11 +1,76 @@
 {
- "gate": "surface",
- "reading": "Spearman only (a whole-footprint surface trivially overlaps everything)",
- "worst_spearman": 0.27429388743081395,
- "worst_submission": "GEMSDOE48:docs/downloads/GEMSDOE48-H53-3SRC-DS-20261007-9242c831-diag-plausibility-nan.tif",
- "checked": 1143,
- "errors": 0,
- "limit": 0.9,
- "passed": true,
- "seconds": 708.6
+  "gate": "surface",
+  "evidence_class": "REGISTRY-MEASUREMENT",
+  "reading": "Spearman rank correlation on full footprint across all 1,189 valid fleet rasters (GEMSDOE..GEMSDOE88)",
+  "worst_abs_spearman": 0.644879,
+  "worst_signed_spearman": 0.644879,
+  "worst_submission": "57GEMSDOE:docs/downloads/h57-continuous-anatomy-20261009T201252Z-f44b207a70f0.tif",
+  "worst_repo": "57GEMSDOE",
+  "checked": 1189,
+  "errors": 0,
+  "limit": 0.9,
+  "passed": true,
+  "top_10_by_abs_spearman": [
+    {
+      "repo": "57GEMSDOE",
+      "submission": "57GEMSDOE:docs/downloads/h57-continuous-anatomy-20261009T201252Z-f44b207a70f0.tif",
+      "sha256": "66e8ea67c86374ed67075812e6ab7c7b17d5eaa714b521dcd35c57f58454a46e",
+      "spearman_full_footprint": 0.644879
+    },
+    {
+      "repo": "57GEMSDOE",
+      "submission": "57GEMSDOE:docs/downloads/gems57-h57g-width-normalized-b1329dc0f248-RESEARCH-DO-NOT-SUBMIT.tif",
+      "sha256": "07d03560f0ef4a793d98b1925156d0fdb74fa21b412579d94b44a4e7f0681d92",
+      "spearman_full_footprint": 0.63175
+    },
+    {
+      "repo": "17GEMSDOE",
+      "submission": "17GEMSDOE:docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
+      "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
+      "spearman_full_footprint": 0.602105
+    },
+    {
+      "repo": "5GEMSDOE",
+      "submission": "5GEMSDOE:data/derived/context_detector_prob_topo_rad.tif",
+      "sha256": "8ce89331d404a15522a485c2511d81838854147ad27d4047a0b8abb2737b73c2",
+      "spearman_full_footprint": 0.600635
+    },
+    {
+      "repo": "5GEMSDOE",
+      "submission": "5GEMSDOE:data/derived/context_detector_prob_topo.tif",
+      "sha256": "ffaeea106e6ae36a25bc26001e42444e541d147ab37f82777f99a8500af95f19",
+      "spearman_full_footprint": 0.599871
+    },
+    {
+      "repo": "5GEMSDOE",
+      "submission": "5GEMSDOE:data/derived/context_detector_prob_4fold_base.tif",
+      "sha256": "2505ac5fa1db2ba142b1ecbe5c3fc221e88f2156cc6e5b8d36d0e75cb290f107",
+      "spearman_full_footprint": 0.59491
+    },
+    {
+      "repo": "5GEMSDOE",
+      "submission": "5GEMSDOE:data/derived/context_detector_prob_u8.tif",
+      "sha256": "c9155f228cdca724ebaf4fa65984f37637a5b4a710595ca1928f6c896addaa47",
+      "spearman_full_footprint": 0.594898
+    },
+    {
+      "repo": "57GEMSDOE",
+      "submission": "57GEMSDOE:docs/downloads/gems57-twohost-relay-bend-surface-20261010T201504Z-47ccc38b6bec.tif",
+      "sha256": "cf7b903dd9e669fb6ef71241e6e5e3e840acd2f39df7d599f8472b2d9a489648",
+      "spearman_full_footprint": 0.586864
+    },
+    {
+      "repo": "57GEMSDOE",
+      "submission": "57GEMSDOE:docs/downloads/gems57-relative-strand-surface-20261009T195324Z-88e3bcb35a95.tif",
+      "sha256": "f273e778341ff726edc5d36bda61c45f53cb0c8f3361f1c55817bc87ddb1012a",
+      "spearman_full_footprint": 0.579748
+    },
+    {
+      "repo": "7GEMSDOE",
+      "submission": "7GEMSDOE:downloads/gems7-halo15-gbt-v1-90fb7dc0fc1f.tif",
+      "sha256": "90fb7dc0fc1f6e7d3dbb20927417c6af7d110ca41167329d792c75c145f75b6a",
+      "spearman_full_footprint": 0.519558
+    }
+  ],
+  "seconds": 758.1
 }

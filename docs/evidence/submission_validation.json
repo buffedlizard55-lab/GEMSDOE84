@@ -1,0 +1,109 @@
+{
+  "all_automated_checks_passed": true,
+  "human_inspection_required": false,
+  "verdict": "SAFE_AND_RECOMMENDED_TO_SUBMIT",
+  "candidate_tif": "docs/downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.tif",
+  "candidate_zip": "docs/downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.zip",
+  "receipt_json": "docs/downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.json",
+  "sha256_tif": "f8b7526ca161b0342004586afe747c38a4d886bad877fca73ba77025725655a5",
+  "sha256_zip": "a97e3a38713321ca6cee024d8d91ece45c9c4f75416afd2ade102ecc4bb91653",
+  "bytes_tif": 214401,
+  "bytes_zip": 182773,
+  "gems57_validate": {
+    "file": "/home/user/GEMSDOE84/docs/downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.tif",
+    "bytes": 214401,
+    "sha256": "f8b7526ca161b0342004586afe747c38a4d886bad877fca73ba77025725655a5",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0032255316618829966,
+    "emitted_positive_pixels": 58000,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 58000,
+    "footprint_fraction": 0.011224271985010565
+  },
+  "independent_validate_submission": {
+    "format_valid": true,
+    "checks": {
+      "geotiff": true,
+      "single_band": true,
+      "crs": true,
+      "shape": true,
+      "transform": true,
+      "real_dtype": true,
+      "finite_all": true,
+      "range_all": true,
+      "no_masked_footprint": true,
+      "nonempty_footprint": true,
+      "footprint_has_no_nan": true,
+      "all_finite_values_in_unit_interval": true,
+      "crs_match": true,
+      "shape_match": true,
+      "transform_match": true,
+      "nan_inside_footprint": 0,
+      "all_finite_values_in_[0,1]": true,
+      "finite_values_outside_[0,1]_count": 0
+    },
+    "footprint_pixels": 5167373,
+    "sha256": "f8b7526ca161b0342004586afe747c38a4d886bad877fca73ba77025725655a5",
+    "template_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+    "submission_authorized": false,
+    "scope": "Format only; scientific, registry and selector gates remain separate.",
+    "status": "PASS"
+  },
+  "spatial_allocation_profile": {
+    "total_emitted_positive_crests": 58000,
+    "primary_saturated_1p0_crests": 39440,
+    "secondary_blind_kthm_graded_crests": 18560,
+    "total_probability_mass": 39606.82,
+    "on_catalogue_positive_pixels": 0,
+    "dots_dcat_le_2px": 0,
+    "primary_median_dcat_px": 5.0,
+    "blind_kthm_median_dcat_px": 38.626,
+    "overall_median_dcat_px": 8.0,
+    "overall_p90_dcat_px": 52.202
+  }
+}

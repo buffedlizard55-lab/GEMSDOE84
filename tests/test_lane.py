@@ -85,24 +85,43 @@ def test_empty_mask_and_zero_budget_fail_closed():
 
 
 def test_site_local_links_and_fail_closed_release():
-    import json
+    import hashlib, json
     from html.parser import HTMLParser
-    from urllib.parse import urlsplit,unquote
+    from urllib.parse import urlsplit, unquote
+
     class Links(HTMLParser):
-        def __init__(self):super().__init__();self.links=[]
-        def handle_starttag(self,tag,attrs):
-            self.links.extend(v for k,v in attrs if k in ('href','src') and v)
-    for p in (ROOT/'docs').glob('*.html'):
-        parser=Links();parser.feed(p.read_text())
+        def __init__(self):
+            super().__init__()
+            self.links = []
+
+        def handle_starttag(self, tag, attrs):
+            self.links.extend(v for k, v in attrs if k in ('href', 'src') and v)
+
+    for p in list((ROOT / 'docs').glob('*.html')) + [ROOT / 'index.html']:
+        parser = Links()
+        parser.feed(p.read_text())
         for href in parser.links:
-            u=urlsplit(href)
+            u = urlsplit(href)
             if not u.scheme and u.path:
-                assert (p.parent/unquote(u.path)).exists(),(p,href)
-    card=json.loads((ROOT/'evidence/run-card.json').read_text())
-    assert card['verdict']=='negative'
-    assert 'DO NOT SUBMIT' in (ROOT/'docs/index.html').read_text()
-    assert card['submission_slots_used']==0
-    assert len(card['note'])<=140
-    if card['registry_correlation_overlap'].get('duplicate'):
-        assert not list((ROOT/'docs').rglob('*.tif'))
+                assert (p.parent / unquote(u.path)).exists(), (p, href)
+
+    card = json.loads((ROOT / 'evidence/run-card.json').read_text())
+    assert card['submission_slots_used'] == 0
+    assert len(card['note']) <= 140
+    if card['verdict'] == 'negative' or card['registry_correlation_overlap'].get('duplicate'):
+        assert 'DO NOT SUBMIT' in (ROOT / 'docs/index.html').read_text()
+        assert not list((ROOT / 'docs/downloads').glob('*.tif'))
         assert card['raster_sha256'] is None
+    else:
+        assert card['verdict'] == 'promote'
+        assert card['safe_to_submit'] is True
+        tif = ROOT / card['submission']['tif']
+        zpath = ROOT / card['submission']['zip']
+        assert tif.is_file() and zpath.is_file()
+        assert hashlib.sha256(tif.read_bytes()).hexdigest() == card['raster_sha256']
+        assert hashlib.sha256(zpath.read_bytes()).hexdigest() == card['submission']['zip_sha256']
+        assert card['gates']['leakage_canary_max_auc'] <= 0.90
+        assert card['gates']['stage1_surface_worst_abs_spearman'] <= 0.90
+        assert card['gates']['stage2_dots_worst_discriminating_overlap'] <= 0.70
+        assert card['gates']['stage2_dots_worst_abs_spearman'] <= 0.90
+        assert card['gates']['beats_incumbent_recipe_with_positive_95ci'] is True

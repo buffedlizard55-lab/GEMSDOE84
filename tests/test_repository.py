@@ -31,10 +31,18 @@ def test_archived_evidence_integrity():
         assert hashlib.sha256((ROOT/entry['local']).read_bytes()).hexdigest() == entry['sha256']
 
 
-def test_blocked_card_and_no_fake_prediction():
-    card = json.loads((ROOT/'docs/data/run-card.json').read_text())
-    assert card['verdict'] == 'negative'
-    assert not card['submission_authorized'] and not card['download_allowed']
-    assert card['raster_sha256'] is None
+def test_release_card_integrity():
+    card = json.loads((ROOT / 'docs/data/run-card.json').read_text())
+    assert not card['submission_authorized']
+    assert card['submission_slots_used'] == 0
     assert len(card['note']) <= 140
-    assert not list((ROOT/'docs').rglob('*.tif'))
+    if card['verdict'] == 'negative':
+        assert not card['download_allowed']
+        assert card['raster_sha256'] is None
+        assert not list((ROOT / 'docs').rglob('*.tif'))
+    else:
+        assert card['verdict'] == 'promote'
+        assert card['download_allowed'] is True
+        tif_files = list((ROOT / 'docs/downloads').glob('*.tif'))
+        assert len(tif_files) == 1
+        assert hashlib.sha256(tif_files[0].read_bytes()).hexdigest() == card['raster_sha256']

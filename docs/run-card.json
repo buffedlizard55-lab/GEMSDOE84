@@ -1,31 +1,258 @@
 {
-  "hypothesis": "Rank 1: conductivity / conductive-base edge coherence with matched-null controls",
-  "mechanism": "Aligned, scale-persistent lateral breaks cohere between the surface-conductivity field and depth-to-conductive-base geometry; an edge-coherence interaction tests whether these independent expressions mark concealed fluid pathways.",
-  "named_non_fault_mimic": "Lithologic or clay-content boundaries, salinity variation, groundwater, and survey-resolution transitions can create similar conductivity patterns.",
-  "holdout_dti": {
-    "evidence_class": "HOLDOUT-DTI",
-    "value": null,
-    "evaluator_version": null,
-    "withheld_positive_count": null,
-    "confidence_interval_95": null,
-    "status": "NOT RUN: competition labels/features and shared evaluator are absent from checkout"
+  "schema_version": 2,
+  "generated_utc": "2026-10-23T02:20:00Z",
+  "repo": "buffedlizard55-lab/GEMSDOE84",
+  "branch": "arena/1397ba87-gemsdoe84",
+  "lane": "H84-KTHM",
+  "verdict": "promote",
+  "safe_to_submit": true,
+  "submission_ready": true,
+  "weekly_live_slot_consumed": false,
+  "submission": {
+    "name": "gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros",
+    "note": "H84-KTHM two-regime 58k (39.4k@1.0+18.6k blind); HOLDOUT-DTI 0.1654 vs 0.1056 (gems57-pooled-hide-v2)",
+    "note_chars": 101,
+    "tif": "docs/downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.tif",
+    "zip": "docs/downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.zip",
+    "receipt": "docs/downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.json",
+    "sha256": "f8b7526ca161b0342004586afe747c38a4d886bad877fca73ba77025725655a5",
+    "zip_sha256": "a97e3a38713321ca6cee024d8d91ece45c9c4f75416afd2ade102ecc4bb91653",
+    "bytes": 214401,
+    "emitted_positive_crests": 58000,
+    "primary_1p0_crests": 39440,
+    "blind_kthm_graded_crests": 18560,
+    "mask_policy": "zeros (all 12,279,160 pixels finite float32 in [0.0, 1.0]; 0 NaNs anywhere)",
+    "file": "gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.tif"
   },
-  "correlation_overlap_vs_registry": {
-    "surface_rank_correlation": null,
-    "candidate_dots_within_3px_of_registry_percent": null,
-    "status": "NOT RUN: registry rasters and candidate surface/dots are absent"
+  "evidence_summary": {
+    "metric_label": "HOLDOUT-DTI",
+    "evaluator_version": "gems57-pooled-hide-v2",
+    "withheld_positive_pixels": 22893,
+    "seeds": [
+      20,
+      21
+    ],
+    "experiments_used": 3,
+    "experiment_budget": 3,
+    "E1_kthm_blind_37k": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.07848696003759315,
+      "ci95": [
+        0.06357644903269308,
+        0.09215932687931361
+      ],
+      "withheld_positive_pixels": 22893,
+      "tpw": 2575.060406854872,
+      "fpw": 69896.77602288376,
+      "fnw": 20317.939593145118
+    },
+    "E2_tip_geom_uncorroborated_58k": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.16258789171581448,
+      "ci95": [
+        0.14982454580896057,
+        0.1752425521852477
+      ],
+      "withheld_positive_pixels": 22893,
+      "tpw": 5475.82082946938,
+      "fpw": 71347.89338031033,
+      "fnw": 17417.179170530613
+    },
+    "E2b_loqo_tree_two_regime_55k": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.10201996787785718,
+      "ci95": [
+        0.08812530799114841,
+        0.11628616494127511
+      ],
+      "withheld_positive_pixels": 22893,
+      "tpw": 3358.301572978108,
+      "fpw": 69660.10375820255,
+      "fnw": 19534.698427021885
+    },
+    "E3_kthm_coupled_two_regime_58k": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.16539147678940527,
+      "ci95": [
+        0.15199236155269558,
+        0.17881210612283416
+      ],
+      "withheld_positive_pixels": 22893,
+      "tpw": 5565.377496025621,
+      "fpw": 71111.24099572643,
+      "fnw": 17327.622503974373
+    },
+    "incumbent_recipe_comparator": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.10564450185732029,
+      "ci95": [
+        0.09395258755699702,
+        0.1173705147222687
+      ],
+      "withheld_positive_pixels": 22893,
+      "tpw": 3524.103620286295,
+      "fpw": 71694.57447131119,
+      "fnw": 19368.896379713697
+    },
+    "incumbent_asis_comparator": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.0038851762665228526,
+      "ci95": [
+        0.0033163452898184367,
+        0.004477890943922922
+      ],
+      "withheld_positive_pixels": 22893,
+      "tpw": 126.10656936923311,
+      "fpw": 70593.84715207116,
+      "fnw": 22766.893430630775
+    },
+    "prior_pr7_liti_reference": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.008671628338565563,
+      "ci95": [
+        0.003737103006582962,
+        0.014936738102491296
+      ],
+      "withheld_positive_pixels": 22893,
+      "tpw": 239.95899738109853,
+      "fpw": 46546.713683459326,
+      "fnw": 22653.0410026189
+    },
+    "paired_differences_E3_minus_comparators": {
+      "E2_tip_geom_uncorroborated_58k": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.0028035850735907974,
+        "ci95": [
+          0.000243014204142806,
+          0.005037307975656037
+        ],
+        "withheld_positive_pixels": 22893
+      },
+      "E2b_loqo_tree_two_regime_55k": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.0633715089115481,
+        "ci95": [
+          0.05124001504715738,
+          0.07465696339324378
+        ],
+        "withheld_positive_pixels": 22893
+      },
+      "E1_kthm_blind_37k": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.08690451675181213,
+        "ci95": [
+          0.06801248537659542,
+          0.10491108243723019
+        ],
+        "withheld_positive_pixels": 22893
+      },
+      "incumbent_recipe": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.05974697493208499,
+        "ci95": [
+          0.04281562798129927,
+          0.07714076688309349
+        ],
+        "withheld_positive_pixels": 22893
+      },
+      "incumbent_asis": {
+        "evidence_class": "HOLDOUT-DTI",
+        "evaluator_version": "gems57-pooled-hide-v2",
+        "delta": 0.16150630052288242,
+        "ci95": [
+          0.14786257785382712,
+          0.17479385219710672
+        ],
+        "withheld_positive_pixels": 22893
+      }
+    }
   },
-  "raster_sha256": null,
+  "organizer_and_owner_reported_benchmarks": {
+    "h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros": {
+      "score": 0.2778,
+      "evidence_class": "OWNER-REPORTED LIVE SCORE (GEMSDOE32)"
+    },
+    "h19-5": {
+      "score": 0.2683,
+      "evidence_class": "ORGANIZER-CONFIRMED"
+    },
+    "b2-sharponly-s2": {
+      "score": 0.2442,
+      "evidence_class": "ORGANIZER-CONFIRMED"
+    },
+    "b3-3": {
+      "score": 0.0956,
+      "evidence_class": "ORGANIZER-CONFIRMED"
+    },
+    "leaderboard_reference_marks_user_brief": [
+      0.3195,
+      0.4413
+    ]
+  },
+  "gates": {
+    "leakage_canary_passed": true,
+    "leakage_canary_max_auc": 0.790193,
+    "stage1_surface_uniqueness_passed": true,
+    "stage1_surface_worst_abs_spearman": 0.644879,
+    "stage2_dots_binding_uniqueness_passed": true,
+    "stage2_dots_worst_discriminating_overlap": 0.680017,
+    "stage2_dots_worst_abs_spearman": 0.093863,
+    "automated_format_and_range_validation_passed": true,
+    "beats_incumbent_recipe_with_positive_95ci": true
+  },
+  "runtime_seconds": 411.5,
+  "hypothesis": "H84-KTHM: Kinetic Solute Geothermometry Disequilibrium (max(T_qtz, T_cat) - T_discharge, T_cat - T_chalc, Fournier-Potter silica-enthalpy mixing fronts) coupled with Hydrothermal Magnetite-Destruction RTP Troughs, Multi-Physics LOQO Ensembles, Sub-Degree Elastostatic Strand-Tip Propagation, and Two-Regime Dinkelbach Allocation under 786-Prior Fleet Capacity",
+  "mechanism": "Ascending 140-250 C geothermal fluids along blind Basin-and-Range damage zones mix with cold shallow aquifers, masking surface temperature vents while preserving quartz/Na-K-Ca chemical equilibrium and argillic/magnetite-destructive geophysical signatures; coupling this 53-channel blind hydrogeochemical-geophysical head with sub-degree outward strand-tip elastostatic cones and two-regime Dinkelbach allocation (39,440 saturated 1.0 crests + 18,560 micro-graded blind discovery crests) captures both unmapped fault continuations and pure blind intra-basin conduits while guaranteeing <= 0.680 overlap across all 786 discriminating priors.",
+  "named_non_fault_mimic": "Stratiform permeable volcanic ash-flow tuff aquifers, non-tectonic caldera argillic alteration halos, Pleistocene Lake Lahontan shoreline benches (1,270-1,340 m), and coalescent alluvial fan aprons (explicitly deconfounded via Quaternary volcanic vent fields, paleolake shoreline indicators, and 3DEP swath masks).",
+  "download_allowed": true,
+  "submission_authorized": false,
+  "submission_slots_used": 0,
+  "submission_name": "gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros",
+  "note": "H84-KTHM two-regime 58k (39.4k@1.0+18.6k blind); HOLDOUT-DTI 0.1654 vs 0.1056 (gems57-pooled-hide-v2)",
+  "raster_sha256": "f8b7526ca161b0342004586afe747c38a4d886bad877fca73ba77025725655a5",
+  "holdout_dti": 0.165391,
+  "holdout_ci95": [
+    0.151992,
+    0.178812
+  ],
+  "registry_correlation_overlap": {
+    "duplicate": false,
+    "rasters_checked": 1189,
+    "stage1_surface_worst_abs_spearman": 0.644879,
+    "stage2_dots_worst_abs_spearman": 0.093863,
+    "stage2_dots_worst_discriminating_overlap": 0.680017,
+    "vs_incumbent_h33_2_b2_overlap_3px": 0.207466,
+    "vs_incumbent_h33_2_b2_spearman": 0.0053
+  },
   "validator_output": {
-    "status": "NOT RUN: no candidate raster exists",
-    "no_nan_inside_footprint": null,
-    "values_in_[0,1]": null,
-    "crs_shape_transform_match": null
-  },
-  "submission_name": null,
-  "submission_note": null,
-  "verdict": "negative",
-  "verdict_reason": "Blocked at readiness gate; this is not a measured negative holdout result. The candidate may overlap prior sibling work. No submission slot was used.",
-  "historical_record_only": true,
-  "superseded_by": "evidence/run-card.json"
+    "all_checks_passed": true,
+    "format_valid": true,
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "n_nan": 0,
+    "in_footprint_range_0_1": true,
+    "zero_dots_on_mapped_catalogue": true
+  }
 }
