@@ -147,8 +147,11 @@
     "No organizer-authenticated data or receipt",
     "No comparable reproduced current holdout best under whole-fault instrument"
   ],
-  "ok_to_submit": "FORMAT-VALID ONLY — portal will accept (finite [0,1], no NaN, CRS/shape/transform match, zero outside/on catalogue). Scientific promotion is BLOCKED; this is a research artifact. Do not spend a weekly slot expecting to beat 0.2778.",
+  "ok_to_submit": false,
   "slots_used": 0,
   "budget": 37820,
-  "seed": 289926028
+  "seed": 289926028,
+  "submission_authorized": false,
+  "selector_status": "pending; format validity is not slot authorization",
+  "organizer_acceptance": "not observed; no submission-page receipt"
 }

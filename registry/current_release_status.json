@@ -15,7 +15,10 @@
     "sha256": "509fa4971a3cdf119a0ae7140b0fac31860d063af9bcc914266d98294f2ba7b5",
     "single_band_geotiff": true,
     "crs": "EPSG:32611",
-    "shape": [3730, 3292],
+    "shape": [
+      3730,
+      3292
+    ],
     "transform_matches_template": true,
     "all_values_finite": true,
     "all_values_in_0_1": true,
@@ -26,7 +29,10 @@
     "evaluator_version": "gems57-pooled-hide-v2",
     "withheld_positive_pixels": 22663,
     "dti": 0.22550857303418045,
-    "ci95": [0.21008959612422373, 0.24043764173610696],
+    "ci95": [
+      0.21008959612422373,
+      0.24043764173610696
+    ],
     "source": "evidence/h84_exp2_dualseed_holdout.json",
     "note": "Prior recorded experiment; not rerun during this review and not an organizer score."
   },
@@ -45,5 +51,6 @@
   "separate_lane_scan_note": "evidence/e3_gate_dots.json reports a full 1,143-raster scan for a separate LITI candidate; its overlap and correlation values are not measurements of this H84-THMS TIFF and cannot clear or fail this candidate.",
   "organizer_receipt": null,
   "weekly_submission_slot_status": "unverified",
-  "promotion": "not performed; selector authorization is separate"
+  "promotion": "negative; no selector authorization",
+  "artifact_download_for_review_allowed": true
 }

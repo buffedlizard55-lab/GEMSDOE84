@@ -139,10 +139,13 @@ def test_uniqueness_and_run_card_contract():
         assert key in card
 
     assert card["verdict"] == "negative"
-    assert card["ok_to_download"] is False
+    assert card["ok_to_download"] is True  # review-only artifact download
     assert card["ok_to_submit"] is False
     assert card["submission_authorized"] is False
     assert card["correlation_overlap_vs_registry"]["candidate_specific_full_registry_clearance"] == "NOT RUN / NOT CLEARED"
+    assert card["submission_authorized"] is False
+    assert card["selector_status"].startswith("pending")
+    assert card["organizer_acceptance"].startswith("not observed")
     assert 1 <= len(card["portal_note"]) <= 140
     assert card["experiments_executed"] <= 3
 
@@ -160,9 +163,16 @@ def test_site_and_readme_deliverables():
     readme = (ROOT / "README.md").read_text()
     assert "PARALLEL-RUN PROTOCOL (keep this block verbatim):" in readme
     assert "gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros" in readme
-    assert "NOT CLEARED — DO NOT SUBMIT" in readme
-    assert "research-only, not submission-authorized" in readme
-    assert "current_release_status.json" in readme
+    assert "OK TO DOWNLOAD FOR REVIEW; NOT AUTHORIZED TO SUBMIT" in readme
+    assert "research/REPO_REVIEW_20261023.md" in readme
+    for page in (ROOT / "docs/index.html", ROOT / "docs/executive-summary.html"):
+        body = page.read_text()
+        assert "DO NOT SUBMIT YET" in body
+        assert "Uniqueness clearance is incomplete" in body
+        assert "NOT FOR SUBMISSION" in body
+    snapshot = json.loads((ROOT / "registry/leaderboard_snapshot_2026-10-22.json").read_text())
+    assert snapshot["evidence_class"].startswith("OWNER-REPORTED")
+    assert snapshot["competition_url"].startswith("https://www.drivendata.org/competitions/306/")
 
     for rel in (
         "index.html",

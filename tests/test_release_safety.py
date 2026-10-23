@@ -65,7 +65,7 @@ def test_current_h84_release_is_fail_closed_despite_historical_promote_card():
     assert status['submission_authorized'] is False
     assert status['candidate_specific_uniqueness']['rasters_checked'] == 359
     assert status['candidate_specific_uniqueness']['full_registry_raster_count'] == 1143
-    assert 'NOT CLEARED' in rendered
+    assert 'NOT AUTHORIZED TO SUBMIT' in rendered
     assert 'DO NOT SUBMIT' in rendered
     assert 'NOT FOR SUBMISSION' in rendered
     assert 'OK TO DOWNLOAD &amp; SUBMIT' not in rendered

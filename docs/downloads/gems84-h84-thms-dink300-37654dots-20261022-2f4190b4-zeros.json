@@ -115,12 +115,13 @@
   "approved_for_weekly_slot": false,
   "promoted": false,
   "submission_slots_used": 0,
-  "status": "locally validated within separately recorded inventory scope; not organizer acceptance or slot approval",
+  "status": "local format preflight passed; downloadable for review only; not approved to submit",
   "metadata": {},
-  "ok_to_download": false,
   "ok_to_submit": false,
   "submission_authorized": false,
-  "verdict": "negative",
+  "selector_status": "pending; full H84-THMS registry uniqueness audit incomplete",
+  "ok_to_download": true,
+  "download_scope": "research/review only",
   "release_status_receipt": "registry/current_release_status.json",
-  "release_blocker": "Format-valid research artifact only. Candidate-specific uniqueness scan covers 359/1143 registry rasters; do not submit."
+  "release_blocker": "Candidate-specific uniqueness audit covers 359/1143 indexed rasters; do not submit."
 }

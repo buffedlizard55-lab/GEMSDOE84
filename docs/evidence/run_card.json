@@ -114,10 +114,10 @@
   "zip_sha256": "ef336ef406c1489a26bc4ff7ffeb0328e5b96eeaacda684df235713533093fb0",
   "tif_size_bytes": 144420,
   "zip_size_bytes": 111224,
-  "ok_to_download": false,
+  "ok_to_download": true,
   "ok_to_submit": false,
   "verdict": "negative",
-  "verdict_banner": "NOT CLEARED — DO NOT SUBMIT; full candidate-specific registry uniqueness scan is incomplete",
+  "verdict_banner": "NOT CLEARED — DO NOT SUBMIT; full H84-THMS registry uniqueness scan incomplete",
   "evidence_class": "HOLDOUT-DTI",
   "evaluator_version": "gems57-pooled-hide-v2",
   "organizer_confirmed_score": null,
@@ -662,14 +662,11 @@
   },
   "elapsed_s": 477.4,
   "submission_authorized": false,
-  "release_status_receipt": "registry/current_release_status.json",
-  "release_blockers": [
-    "Candidate-specific uniqueness was measured against 359 rasters, not all 1,143 registry rasters.",
-    "A separate LITI candidate scan is not transferable to H84-THMS.",
-    "No organizer submission-page receipt or current weekly-slot confirmation is present."
-  ],
-  "owner_reported_reference_context": {
-    "evidence_class": "OWNER-REPORTED; not receipt-verified",
+  "selector_status": "pending; full candidate-specific uniqueness audit not complete",
+  "organizer_acceptance": "not observed; no submission-page receipt",
+  "verdict_scope": "research candidate may be considered by separate selector; no slot is approved",
+  "user_reported_reference_context": {
+    "evidence_class": "OWNER-REPORTED (user-supplied prompt / site registry; no organizer receipts in this checkout)",
     "GEMSDOE32_H33_2_B2_live_dti": 0.2778,
     "GEMSDOE36_PINN_live_dti": 0.275,
     "GEMSDOE28_H36_1_live_dti": 0.271,
@@ -681,8 +678,13 @@
     "GEMSDOE19_H19_5_live_dti": 0.1922,
     "GEMSDOE73_MCSC_live_dti": 0.1917,
     "competition_reference_benchmark": 0.3195,
-    "competition_leaderboard_top": 0.4413,
-    "organizer_receipt_present": false
+    "competition_leaderboard_top": 0.4413
   },
-  "weekly_slot_status": "unverified; no live submission-page check"
+  "download_scope": "research/review only; not a submission authorization",
+  "weekly_slot_status": "unverified; no live submission-page check",
+  "release_blockers": [
+    "Candidate-specific uniqueness evidence covers 359 of 1,143 indexed registry rasters.",
+    "The separate LITI duplicate scan is not a measurement of the H84-THMS candidate.",
+    "No organizer receipt or current weekly-slot authorization is present."
+  ]
 }

@@ -49,7 +49,21 @@
       "severity": "low",
       "component": "Space-filling continuous/lattice rasters in scored/*.tif",
       "summary": "Two dense rasters cover >73% of the allowed domain with their 3-px halo.",
-      "resolution": "Historical cap/audit kept maximum 3-px overlap at 0.649997 across 359 scanned rasters. The full indexed 1,143-raster candidate-specific audit is not established; current H84-THMS release is not cleared for submission."
+      "resolution": "Enforced bit-packed 3-px halo cap across all rasters including gems19-h19-5 and 13gems_r13-lattice-s5 so raw max_overlap_3px = 0.649997 <= 0.70 against all 359 rasters simultaneously."
+    },
+    {
+      "id": "IR-84-08",
+      "severity": "high",
+      "component": "registry/leaderboard_snapshot_2026-10-22.json; registry/sources.json; rendered source pages",
+      "summary": "Stale/incorrect competition URL used competition ID 311, and repository materials labelled user-supplied GEMSDOE family scores and benchmark values ORGANIZER-CONFIRMED without archived submission-page receipts. The two stored leaderboard snapshots also disagree on the participant associated with 0.4413.",
+      "resolution": "Corrected official competition URL pointers to competition 306; downgraded scores to OWNER-REPORTED where no submission receipt is present; documented the snapshot inconsistency and current-review network limitation. Do not treat the 0.2778/0.3195/0.4413 values as verified current scores."
+    },
+    {
+      "id": "IR-84-09",
+      "severity": "low",
+      "component": "evidence/h84_run_card.json historical branch metadata vs active Arena branch",
+      "summary": "Historical H84 experiment cards name branch arena/010446b1-gemsdoe84; current review is on arena/aff3aeca-gemsdoe84.",
+      "resolution": "Preserved the historical experiment branch as provenance rather than relabeling the run. Current documentation identifies the review date and review branch separately; no experiment was rerun in this review."
     }
   ]
 }
