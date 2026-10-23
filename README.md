@@ -8,6 +8,8 @@
 ---
 
 > **Session-start rule:** Read [`NORTH_STAR.md`](NORTH_STAR.md), [`PROMPT.md`](PROMPT.md), and the latest [`repository review`](research/REPO_REVIEW_20261023.md) before new work. `PROMPT.md` is the reconstructed standing brief, not a verbatim transcript.
+>
+> **Fresh audit evidence 2026-10-23 (script/run card merged from PR #14):** independent re-validation (`scripts/fresh_audit_20261023.py` → `evidence/fresh_audit_20261023.json`) confirms the TIF below (SHA `509fa497…b5`, 0 NaN/Inf, `{0,1}⊂[0,1]`, EPSG:32611, 3730×3292, 37,654 dots, 0 on catalogue). **Status remains: OK TO DOWNLOAD FOR REVIEW; NOT AUTHORIZED TO SUBMIT** — only a separate selector can spend a weekly slot. All other `.tif/.zip` binaries were removed from `docs/downloads/` (IR-84-08: a removed audit-only file had 7,114,860 NaN cells and would trigger “Predicted values must be in range [0, 1]”). Official competition ID is **306**; live #1 fetched 2026-10-23 is **xiaofanhu 0.4413 (ORGANIZER-CONFIRMED)**. Sibling scores incl. 0.2778 are **OWNER-REPORTED** (no receipt in repo, IR-84-10). HOLDOUT-DTI 0.2255 is 2026-10-22 evidence, **not rerun** today (cache absent, IR-84-11). Next unvalidated hypotheses: `docs/research/next-hypotheses-20261023.md`. Fresh card: `evidence/fresh_run_card_20261023.json`.
 
 ## 1. Executive Summary & Downloadable Research Artifact
 
@@ -21,7 +23,7 @@
 |---|---|---|---:|---|
 | **Primary GeoTIFF (`.tif`)** | [`submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif`](submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif) | [`docs/downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif`](docs/downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif) | `144,420 B` | `509fa4971a3cdf119a0ae7140b0fac31860d063af9bcc914266d98294f2ba7b5` |
 | **Compressed Archive (`.zip`)** | [`submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.zip`](submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.zip) | [`docs/downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.zip`](docs/downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.zip) | `111,224 B` | `ef336ef406c1489a26bc4ff7ffeb0328e5b96eeaacda684df235713533093fb0` |
-| **Submission Receipt (`.json`)** | [`submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.json`](submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.json) | [`docs/downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.json`](docs/downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.json) | `2,960 B` | Validated metadata + validator receipt |
+| **Local build/format metadata (`.json`; not organizer receipt)** | [`submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.json`](submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.json) | [`docs/downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.json`](docs/downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.json) | `2,960 B` | Validated metadata + validator receipt |
 | **Protocol JSON Run Card** | [`run_card.json`](run_card.json) | [`docs/evidence/run_card.json`](docs/evidence/run_card.json) | `29,079 B` | Complete 6-point Parallel-Run Protocol Run Card |
 
 ### Form Fields for Selector-Approved Future Upload (not authorization)

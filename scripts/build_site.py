@@ -863,6 +863,21 @@ def page_shell(title: str, css_href: str, nav: str, body: str) -> str:
 """
 
 
+
+def submission_steps_html() -> str:
+    return """\
+<div class="card" id="how-to-submit">
+  <h2>Exactly how a submission would be made on DrivenData (competition 306) — selector authorization required first</h2>
+  <ol>
+    <li><strong>Status gate:</strong> this candidate is <em>OK to download for review</em> after local format preflight, but <strong>NOT AUTHORIZED TO SUBMIT</strong>. Only a separate selector step (within the weekly cap) can authorize spending a slot. Do not upload on the basis of this page alone.</li>
+    <li>Download <code>gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif</code> from the banner at the top of this page (or the .zip — it contains that single TIF). Do not use any other .tif: every non-promoted binary was removed from this site on 2026-10-23 (IR-84-08), including a NaN file that triggers <em>Predicted values must be in range [0, 1]</em>.</li>
+    <li>Optional self-check (no human inspection needed): <code>python3 scripts/fresh_audit_20261023.py</code> and <code>python3 scripts/validate_submission.py submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif --template data/bridge/sample_submission.tif</code> — both must pass (0 NaN, values in [0,1], EPSG:32611, 3730x3292, transform matches). Note the validator itself reports <code>submission_authorized: false</code> — it is a format check only.</li>
+    <li>After selector authorization only: go to <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">the DOE GEMS competition (DrivenData #306)</a>, open <strong>New submission</strong>, choose the .tif (or .zip) at <strong>File to submit</strong>, and paste at <strong>Note (optional)</strong>: <code>H84-THMS silica-valve &amp; 1m/10m scarp-chi Dual-Head Dinkelbach 300m; 37654 dots &gt;3px off cat; HOLDOUT-DTI 0.2255</code> (111/140).</li>
+    <li>Record the organizer score from the submission-page receipt and file it here as ORGANIZER-CONFIRMED; until then this file has no organizer score.</li>
+  </ol>
+</div>
+"""
+
 def main() -> int:
     card = json.loads((ROOT / "run_card.json").read_text())
     ir_data = json.loads((ROOT / "registry" / "irregularities.json").read_text())
@@ -933,7 +948,7 @@ def main() -> int:
             "GEMSDOE84 · Executive Summary & Validated GeoTIFF Download",
             "docs/assets/style.css",
             nav_html("docs/", "Executive Summary"),
-            root_body,
+            validator_hero_html(card, "submissions/", "") + submission_steps_html() + root_body,
         )
     )
 
@@ -963,7 +978,7 @@ def main() -> int:
             "GEMSDOE84 · Executive Summary & Validated GeoTIFF Download",
             "assets/style.css",
             nav_html("", "Executive Summary"),
-            docs_body,
+            validator_hero_html(card, "downloads/", "evidence/") + submission_steps_html() + docs_body,
         )
     )
     (docs_dir / "methodology.html").write_text(

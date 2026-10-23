@@ -59,12 +59,19 @@ def test_current_h84_release_is_fail_closed_despite_historical_promote_card():
     root = Path(__file__).resolve().parents[1]
     status = json.loads((root / 'registry/current_release_status.json').read_text())
     historical = json.loads((root / 'run_card.json').read_text())
+    public_card = json.loads((root / 'docs/run-card.json').read_text())
+    fresh_card = json.loads((root / 'evidence/fresh_run_card_20261023.json').read_text())
     rendered = validator_hero_html(historical, 'downloads/', 'evidence/')
 
     assert status['verdict'] == 'negative'
     assert status['submission_authorized'] is False
     assert status['candidate_specific_uniqueness']['rasters_checked'] == 359
     assert status['candidate_specific_uniqueness']['full_registry_raster_count'] == 1143
+    assert status['candidate_specific_uniqueness']['decision'] == 'not cleared'
+    assert status['candidate_specific_uniqueness']['full_registry_candidate_specific_scan'] == 'not available in this checkout'
+    for card in (historical, public_card, fresh_card):
+        assert str(card['verdict']).startswith('negative')
+        assert card['submission_authorized'] is False
     assert 'NOT AUTHORIZED TO SUBMIT' in rendered
     assert 'DO NOT SUBMIT' in rendered
     assert 'NOT FOR SUBMISSION' in rendered

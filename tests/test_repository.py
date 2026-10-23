@@ -44,8 +44,9 @@ def test_blocked_card_and_no_fake_prediction():
         assert not card.get('submission_authorized') and not card.get('download_allowed')
         assert not list((ROOT/'docs').rglob('*.tif')) or card['verdict'] == 'negative'
     else:
-        # Research artifact exists: download_allowed true, but submission_authorized remains false for negative verdict
-        assert card.get('download_allowed') is True or card.get('verdict') == 'promote'
+        # Research artifact exists: download_allowed true, but submission_authorized remains false for negative verdict.
+        # IR-84-08 exception: a binary_removed_2026_10_23 card is receipt-only, so download_allowed must be False.
+        assert card.get('download_allowed') is True or card.get('verdict') == 'promote' or card.get('binary_removed_2026_10_23')
         # If a raster is declared, it must exist and be valid
         import hashlib, numpy as np, rasterio
         # find tif via evidence or docs/downloads

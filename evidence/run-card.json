@@ -141,7 +141,7 @@
   "receipt_file": "docs/downloads/gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.json",
   "promotion_blockers": [
     "Exploratory HOLDOUT-DTI 0.00135 [0.00051, 0.00231] far below current holdout best 0.04430 on identical folds",
-    "Holdout surface was built from full catalogue, not recomputed from visible-only per fold (leakage) — violates parallel-run protocol rule 2",
+    "Holdout surface was built from full catalogue, not recomputed from visible-only per fold (leakage) \u2014 violates parallel-run protocol rule 2",
     "Whole geological segment plus buffer holdout not available (template chunks <=12 px, not whole faults)",
     "Full registry surface/dot uniqueness requires 1,143-blob corpus not downloaded here (0 of 1017 checked locally)",
     "No organizer-authenticated data or receipt",
@@ -225,5 +225,7 @@
   },
   "submission_authorized": false,
   "selector_status": "pending; format validity is not slot authorization",
-  "organizer_acceptance": "not observed; no submission-page receipt"
+  "organizer_acceptance": "not observed; no submission-page receipt",
+  "binary_removed_2026_10_23": "IR-84-08: negative-lane binary removed from docs/downloads to prevent mistaken submission; sha256 retained in this card. Superseded by H84-THMS run_card.json (promote to selector review only, not authorized to submit).",
+  "download_allowed": false
 }
