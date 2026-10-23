@@ -99,10 +99,19 @@ def test_site_local_links_and_fail_closed_release():
             if not u.scheme and u.path:
                 assert (p.parent/unquote(u.path)).exists(),(p,href)
     card=json.loads((ROOT/'evidence/run-card.json').read_text())
-    assert card['verdict']=='negative'
-    assert 'DO NOT SUBMIT' in (ROOT/'docs/index.html').read_text()
+    assert card['verdict'] in ('negative', 'promote')
     assert card['submission_slots_used']==0
     assert len(card['note'])<=140
-    if card['registry_correlation_overlap'].get('duplicate'):
+    if card['verdict'] == 'negative' or card['registry_correlation_overlap'].get('duplicate'):
+        assert 'DO NOT SUBMIT' in (ROOT/'docs/index.html').read_text()
         assert not list((ROOT/'docs').rglob('*.tif'))
         assert card['raster_sha256'] is None
+    else:
+        import hashlib
+        assert 'OK TO DOWNLOAD &amp; SUBMIT' in (ROOT/'docs/index.html').read_text() or 'OK TO DOWNLOAD & SUBMIT' in (ROOT/'docs/index.html').read_text()
+        assert card['registry_correlation_overlap']['duplicate'] is False
+        assert card['max_corr_vs_registry'] <= 0.90
+        assert card['dot_overlap_vs_registry'] <= 0.70
+        tif = ROOT / card['artifact']
+        assert tif.is_file()
+        assert hashlib.sha256(tif.read_bytes()).hexdigest() == card['raster_sha256']

@@ -1,135 +1,109 @@
 {
-  "hypothesis": "H84-RFD",
-  "mechanism": "Opposite K/Th Gaussian curvature flanks coincident with coherent relief-normalized LiDAR step",
-  "non_fault_mimic": "Lithologic contact and transported sediment",
-  "holdout_dti": {
-    "evidence_class": "HOLDOUT-DTI",
-    "evaluator_version": "gems57-pooled-hide-v2",
-    "alpha": 0.2,
-    "beta": 0.8,
-    "triangular_radius_m": 300.0,
-    "pooled": true,
-    "scores": {
-      "rfd": {
-        "evidence_class": "HOLDOUT-DTI",
-        "evaluator_version": "gems57-pooled-hide-v2",
-        "dti": 0.04429761854469787,
-        "ci95": [
-          0.03819478978329092,
-          0.05049389386541517
-        ],
-        "withheld_positive_pixels": 11318,
-        "tpw": 716.9913389277446,
-        "fpw": 34939.88954484648,
-        "fnw": 10601.008661072257
-      },
-      "step_control": {
-        "evidence_class": "HOLDOUT-DTI",
-        "evaluator_version": "gems57-pooled-hide-v2",
-        "dti": 0.04436352673339927,
-        "ci95": [
-          0.037375661647228754,
-          0.051672887948430314
-        ],
-        "withheld_positive_pixels": 11318,
-        "tpw": 718.0309753721581,
-        "fpw": 34935.79123068629,
-        "fnw": 10599.969024627837
-      }
-    },
-    "best_comparable_control": "step_control",
-    "paired_differences": {
-      "step_control": {
-        "evidence_class": "HOLDOUT-DTI",
-        "evaluator_version": "gems57-pooled-hide-v2",
-        "delta": -6.590818870140513e-05,
-        "ci95": [
-          -0.005920618405241086,
-          0.006213482938352434
-        ],
-        "withheld_positive_pixels": 11318
-      }
-    },
-    "bootstrap": {
-      "method": "paired physical spatial-cluster percentile",
-      "clusters": 157,
-      "draws": 1000,
-      "seed": 84,
-      "confidence": 0.95,
-      "caveat": "Conditional on fitted folds, catalogue labels and fixed budgets; not a leaderboard interval."
-    },
-    "implementation_sha256": {
-      "evaluate_holdout.py": "ad86640b46f3c5fc6b1aceec4c4bfc82d03e35008b37ab2a8ad6076e6810ff3a",
-      "holdout.py": "7a0a84176986190b527aa9c6a84216c2dab4b599f25b1143db5f420e85020ab1",
-      "metric.py": "4afe10cbaa229948520c75194b1ebc32676e72544f05582f0725092b097b4d7f",
-      "spatial.py": "fad7b09db9efc512247b9a176a7e7ce8631e287592b4e07902d0b9c38bed00f8"
-    }
-  },
-  "registry_correlation_overlap": {
-    "rows": [
-      {
-        "repo": "buffedlizard55-lab/58GEMSDOE",
-        "path": "docs/downloads/58GEMSDOE-ribbon-sparse-review-only-20261011T182511Z.tif",
-        "sha256": "b4cd208015892a19bb2de36585a6f5ff8203dd78b95d49d6b88c8d4c927c1448",
-        "overlap": 0.05717852021033622,
-        "rho": 0.0017211918640481045
-      },
-      {
-        "repo": "buffedlizard55-lab/GEMSDOE79",
-        "path": "docs/downloads/gems79-tilt-ring-100000dots-20261022T212135Z-50a5d7498c71-zeros.tif",
-        "sha256": "aa0685b0bcbead416b41d22b8c327393d55e32e18e360fa460eb0af020d018ec",
-        "overlap": 0.10150316035480958,
-        "rho": 0.0068596357274395975
-      },
-      {
-        "repo": "buffedlizard55-lab/17GEMSDOE",
-        "path": "docs/downloads/17GEMSDOE_E-proba-multiscale_20260930T044527Z.tif",
-        "sha256": "ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be",
-        "overlap": 1.0,
-        "rho": -0.0010655796024000848
-      }
-    ],
-    "duplicate": true,
-    "stopped_at_first_duplicate": true,
-    "thresholds": {
-      "rho": 0.9,
-      "overlap": 0.7
-    },
-    "no_representation_exemptions": true
-  },
-  "raster_sha256": null,
-  "validator_output": {
-    "status": "NOT RUN: TIFF not generated after binding duplicate veto",
-    "no_nan_inside_footprint": null,
-    "values_in_0_1": null,
-    "crs_shape_transform_match": null,
-    "reason": "No output raster exists; null is not a PASS."
-  },
-  "submission_name": "gems84-rfd-s3-fixed-20261022",
-  "note": "Radiometric flanking dipole x coherent normalized scarp; fixed sigma3; research only.",
-  "verdict": "negative",
+  "schema_version": "gems-parallel-run-card-v2",
+  "repo": "buffedlizard55-lab/GEMSDOE84",
+  "branch": "arena/825b0be4-gemsdoe84",
+  "generated_utc": "2026-10-23T01:10:28Z",
+  "lane": "H84-B",
+  "lane_title": "H84-TCDH: Multi-Altitude Tilt-Worm + Coulomb + INGENIOUS Hydrothermal + Lahontan-Deconfounded Two-Stratum LOQO",
+  "hypothesis": "Combine GeoDAWN multi-altitude magnetic/gravity tilt-derivative persistence, Coulomb transtensional reactivation, DOE GDR 1391 INGENIOUS hydrothermal upflow (2 m temperature probes, paleo-sinter halos, spring disequilibrium), and Lake Lahontan (<1335 m) shoreline deconfounding in a 2-stage 4-quadrant LOQO model with Two-Stratum sep=3 px (300 m) discrete dot emission (24,500 corridor/relay/tip + 14,500 concealed blind-basin discovery = 39,000 dots).",
+  "verdict": "promote",
+  "status_banner": "OK TO DOWNLOAD & SUBMIT \u2014 VERIFIED UNIQUE & VALIDATED",
+  "submission_authorized": true,
+  "download_allowed": true,
   "submission_slots_used": 0,
-  "promotion_blockers": [
-    "Whole geological segment plus buffer holdout not available in inherited template",
-    "No organizer-authenticated data or receipt",
-    "No comparable reproduced current holdout best",
-    "Final dots duplicate by literal protocol: stopped before TIFF packaging",
-    "Candidate did not beat paired step-only control on this exploratory holdout",
-    "One unreadable registry raster prevents full comparable-registry clearance"
+  "experiments_used": 3,
+  "experiment_budget_max": 3,
+  "evidence_class": "HOLDOUT-DTI",
+  "evaluator_version": "gems57-pooled-hide-v2",
+  "holdout_seeds": [
+    20,
+    21
   ],
-  "decoded_array_sha256": "a4a3bbaf5e7ffb4d47714473c7d455c488e7c191015ba8444cd77123ccca6bad",
-  "surface_audit_summary": {
-    "indexed": 1017,
-    "compared": 1016,
-    "unreadable": 1,
-    "native_grid_mismatches": 5,
-    "max_full_footprint_rho": 0.08237648399969341,
-    "receipt": "evidence/surface-audit.json"
+  "withheld_positive_pixels": 22893,
+  "holdout_dti": 0.12343,
+  "holdout_ci95": [
+    0.111296,
+    0.136284
+  ],
+  "incumbent_holdout_dti": 0.105645,
+  "incumbent_holdout_ci95": [
+    0.09435,
+    0.116593
+  ],
+  "delta_vs_incumbent": 0.017785,
+  "delta_vs_incumbent_ci95": [
+    0.004002,
+    0.032148
+  ],
+  "unstratified_ablation_holdout_dti": 0.16117,
+  "unstratified_gate3b_stop_overlap": 0.8955,
+  "leakage_canary": {
+    "passed": true,
+    "ceiling_auc": 0.9,
+    "features_checked": 52,
+    "max_symmetric_auc": 0.772399,
+    "max_feature": "anat_log_d2"
   },
-  "canary_summary": {
-    "evidence_class": "HOLDOUT-DIAGNOSTIC-AUC",
-    "feature_fold_tests": 24,
-    "max_auc": 0.5694483792207792,
-    "passed": true
-  }
+  "max_corr_vs_registry": 0.2629,
+  "max_dot_corr_vs_registry": 0.038,
+  "dot_overlap_vs_registry": 0.676,
+  "registry_correlation_overlap": {
+    "evidence_class": "REGISTRY-MEASUREMENT",
+    "rasters_checked": 1163,
+    "discriminating_priors": 1092,
+    "space_filling_priors": 71,
+    "surface_max_abs_spearman": 0.2629,
+    "surface_nearest_prior": "GEMSDOE4:GEMSDOE4__prob_raw__faa8ee8c0f.tif",
+    "dot_max_abs_spearman": 0.038,
+    "dot_worst_3px_forward_overlap": 0.676,
+    "dot_nearest_prior": "13GEMSDOE__13gems-r6-ensemble-20260929T182914Z__9f9dccae71.tif",
+    "rho_limit": 0.9,
+    "overlap_limit": 0.7,
+    "duplicate": false,
+    "pixel_unique": true
+  },
+  "artifact": "docs/downloads/gems84-h84b-tcdh-twostrat-39000d-20261022T235800Z-zeros.tif",
+  "zip_artifact": "docs/downloads/gems84-h84b-tcdh-twostrat-39000d-20261022T235800Z-zeros.zip",
+  "raster_sha256": "89abda09900ade5092c00491ef72d97b1d0ae9b1c3fe8f9383259ca7e6a0443b",
+  "zip_sha256": "982310d80c2a1129539e95e83eedb77c04e2f5ae24f4774dec2351b77041b48a",
+  "submission_name": "GEMSDOE84 H84-B TCDH TwoStrat-NMS3-39000d",
+  "note": "GEMSDOE84 H84-TCDH: LOQO tilt-worm+Coulomb+INGENIOUS hydro+Lahontan-deconf 2-stratum NMS3 (39000d; holdout DTI 0.1234)",
+  "submission": {
+    "file": "gems84-h84b-tcdh-twostrat-39000d-20261022T235800Z-zeros.tif",
+    "zip_file": "gems84-h84b-tcdh-twostrat-39000d-20261022T235800Z-zeros.zip",
+    "receipt_file": "gems84-h84b-tcdh-twostrat-39000d-20261022T235800Z-zeros.json",
+    "sha256": "89abda09900ade5092c00491ef72d97b1d0ae9b1c3fe8f9383259ca7e6a0443b",
+    "zip_sha256": "982310d80c2a1129539e95e83eedb77c04e2f5ae24f4774dec2351b77041b48a",
+    "bytes": 141933,
+    "zip_bytes": 106347,
+    "emitted_dots": 39000,
+    "name": "GEMSDOE84 H84-B TCDH TwoStrat-NMS3-39000d",
+    "note": "GEMSDOE84 H84-TCDH: LOQO tilt-worm+Coulomb+INGENIOUS hydro+Lahontan-deconf 2-stratum NMS3 (39000d; holdout DTI 0.1234)",
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "value_range": [
+      0.0,
+      1.0
+    ],
+    "on_catalogue_pixels": 0,
+    "outside_footprint_nonzero": 0,
+    "n_nan": 0,
+    "n_inf": 0
+  },
+  "prior_closed_lanes": [
+    {
+      "lane": "H84-RFD (PR #5)",
+      "verdict": "negative",
+      "reason": "Chunked holdout DTI 0.04430 and unstratified literal Gate 3B stop."
+    },
+    {
+      "lane": "H84-A LITI (PR #7)",
+      "verdict": "negative",
+      "reason": "Live-score inversion leaked target signal; HOLDOUT-DTI 0.00867 and 56 Gate 3B overlap trips."
+    }
+  ]
 }

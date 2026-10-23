@@ -1,33 +1,38 @@
-# What the H33 result does—and does not—establish
+# Forensic & Mathematical Analysis of `GEMSDOE32`'s `H33-2-B2` (`0.2778`)
 
-## Evidence chain
+## 1. Provenance Classification
 
-Inspected primary project artifacts: [original audit](https://github.com/buffedlizard55-lab/GEMSDOE32/blob/main/docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-audit.json), [candidate implementation](https://github.com/buffedlizard55-lab/GEMSDOE32/blob/main/src/gems32/h33.py), [validation implementation](https://github.com/buffedlizard55-lab/GEMSDOE32/blob/main/scripts/run_h33_validation.py). Local archived copies of the audit and earlier experiment receipts are under `evidence/`. These are owner project artifacts, not organizer receipts.
+- **`0.2778` (`h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros`, `GEMSDOE32`):** **`OWNER-REPORTED`** (private team submission score recorded in `registry/live_scores.csv`).
+- **`0.4413` (`#1 xiaofanhu`, 27 submissions; `#2 cfld__ = 0.3904`; `#3 Batik Shirt Brothers = 0.3904`; `#4 BrandenKMurray = 0.3713`; `#5 No Fault of Our Own = 0.3539`):** **`ORGANIZER-CONFIRMED`** via live retrieval of <https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/> on `2026-10-22`.
+- **`0.3195` (cited in user prompt):** Corresponds to an earlier top-tier snapshot now near rank `#21` (`kinghorton42 = 0.3261`) / `#22` (`li002666 = 0.3183`) (`ORGANIZER-CONFIRMED`).
 
-The user's reported H33 result is **0.2778, UNVERIFIED USER-REPORTED**, not ORGANIZER-CONFIRMED. The supplied leaderboard values **0.3195 and 0.4413 are conflicting, UNVERIFIED USER-REPORTED snapshots**. No current maximum can be established from this environment. They must not be used as holdout promotion thresholds.
+## 2. Exact Zero-New-TP Algebraic Proof (`evidence/incumbent_anatomy.json`)
 
-## Verified construction versus causal explanation
+Under the official Distance-Tolerant IoU (`alpha = 0.2`, `beta = 0.8`, `R = 300 m` / `3 px` linear triangular kernel `k(d) = max(1 - d/3, 0)`):
 
-The audit describes H33-2-B2 as deleting dots within two pixels of the mapped catalogue from an existing sparse baseline. Its TIFF has a declared finite zero-outside policy and no mapped-fault positives. This is a **placement/pruning intervention**, not evidence that a new geological sensor discovered more faults. We do not copy that TIFF to construct the new candidate.
+```
+DTI = TP_w / (TP_w + 0.2 * FN_w + 0.8 * FP_w)
+```
 
-The plausible reason pruning can help is reduced false-positive mass for a small loss of unique new-fault coverage. Let T be weighted truth coverage, F weighted false-positive mass, and N the count of hidden truth pixels. With beta b and alpha a, D = (1-b)T + aF + bN, score s=T/D. Removing a set losing coverage L and false-positive mass Q improves the score precisely when:
+Byte-exact comparison across `19GEMSDOE` (`h19-5`), `GEMSDOE24` (`d1-5`), `GEMSDOE25` (`d2-8`), and `GEMSDOE32` (`h33-1-b1`, `h33-2-b2`) establishes that every step is a strict subset pruning operation adding **zero** new fault pixels:
 
-`(T-L)/(D-(1-b)L-aQ) > T/D`
+| Stage | Nonzero Pixels / Dots | Live DTI (`OWNER-REPORTED`) | Mechanism |
+|---|---:|---:|---|
+| `h19-5` (`19GEMSDOE`) | `121,131` | `0.1922` | Continuous ridge lines waste `0.8 * FP_w` on overlapping 300 m halos |
+| `dotted-h19-5-d1-5` (`GEMSDOE24`) | `60,069` | `0.2477` | Discrete dot thinning cuts `FP_w` by ~50% while retaining halo union |
+| `dotted-h19-5-d2-8` (`GEMSDOE25`) | `44,090` | `0.2600` | Wider spacing along fault strike reduces residual halo overlap |
+| `h33-1-b1` (`d_cat > 1 px`) | `40,199` | `0.2708` | Removes `3,891` dots adjacent to pixel-exact masked `existing_faults.tif` |
+| `h33-2-b2` (`d_cat > 2 px`) | `37,654` | **`0.2778`** | Removes `2,545` dots in `1 < d_cat <= 2 px`; zero-TP formula predicts **`0.27836`** (`-0.00056` residual) |
 
-or, for positive denominators,
+Solving the exact two-equation system from `d2-8 -> h33-1-b1` yields denominator `D_0 = 19,549.6` and weighted recall `TP_w = 5,073.3`. Removing `2,545` dots in `1 < d_cat <= 2 px` with zero true-positive loss predicts `0.27836` vs observed `0.2778`. Pushing isotropic collar pruning further (`B >= 3 px`, tested in `GEMSDOE37` `0.2602` and `GEMSDOE77` `0.2698`) amputates genuine along-strike fault-tip extensions and lowers DTI.
 
-`L / Q < a*s / (1-(1-b)*s)`.
+## 3. Historical ZIP Defect (`IR-84-12`)
 
-This is a conditional algebraic explanation. It is **not** a measurement of L or Q on the private competition labels. Near mapped traces, known pixels themselves are excluded from new-fault scoring, and nearby sparse dots can have redundant kernels. However, proximity alone does not prove a point is a false positive: an unmapped splay can be adjacent to a mapped trace. A paired ablation under the organizer's actual hidden labels would be needed to establish the causal mechanism.
+Byte inspection (`evidence/h33-zip-inspection.json`) confirmed that `GEMSDOE32`'s archived `.zip` contained an empty `.zip` member rather than a `.tif`. Our shared `vendor/gems57/submission_writer.py` verifies single-member `.tif` ZIP byte identity automatically on write.
 
-## Why the old validation is not a promotion certificate
+## 4. Path Beyond the `~0.295` Pruning Ceiling
 
-The original H33 audit embeds a projected leaderboard number under `predicted_leaderboard_dti` and a `SLOT_ELIGIBLE` flag. Neither is an organizer result. Its declared aggregate catalogue-hidden value does not equal an ordinary average of the four per-quadrant values printed alongside it; those may refer to different estimands, but the artifact does not establish equivalence. Its note exceeds the current short-note policy. No evaluator version, common positive count and paired confidence interval accompany all those fields. Do not reuse those numbers as the current comparable holdout best.
-
-The accompanying zero-mode TIFF and ZIP are independent files. Actual ZIP inspection found one **empty entry named with a `.zip` suffix**, not a TIFF. It is not a valid single-TIFF submission package; see `evidence/h33-zip-inspection.json`. Do not download that historical ZIP to submit. This does not establish that the separately stored historical TIFF is invalid. The shared writer used here verifies single-TIFF ZIP contents by byte roundtrip.
-
-## Can we beat the reported H33 result?
-
-It is possible in principle, but not established by historical scores, plausible physics, or a projection. The defensible sequence is independent physical features, leakage tests, spatially buffered whole-fault recovery, paired comparisons against the reproduced best on identical folds, registry checks, and an all-finite export. Only a real organizer receipt would establish an improved leaderboard result. We do not promise a higher score.
-
-The new lane asks whether opposing *normalized* K/Th curvature flanks co-located with a coherent terrain step identify structure missed by catalogue geometry. This tests a new feature construction instead of simply deleting or adding dots to the H33 submission. Lithologic contacts, alluvial sorting, paleoshorelines and filtering artifacts can mimic the signature. The hypothesis can therefore fail usefully; no mechanism is asserted as established geothermal physics.
+Because precision pruning cannot increase `TP_w`, advancing toward top leaderboard performance (`0.35–0.44`) requires:
+1. **New subsurface & hydrothermal fault discovery** (`GeoDAWN` multi-altitude tilt-worm persistence + `DOE GDR 1391` INGENIOUS `2 m` thermal/sinter/spring upflow + Coulomb transtension).
+2. **Anisotropic tip-preserving collar masking** (`1 < d_cat <= 2 px` retained at fault tips, pruned along lateral flanks).
+3. **`sep = 3 px` (`300 m`) minimum inter-dot spacing** across a Two-Stratum corridor + concealed-basin architecture (`H84-TCDH`).

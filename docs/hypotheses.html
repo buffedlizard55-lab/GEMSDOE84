@@ -1,7 +1,99 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hypothesis slate — GEMSDOE84</title><link rel="stylesheet" href="site.css"></head><body><header class="top"><div class="wrap"><a class="brand" href="index.html">GEMSDOE84</a><nav class="nav"><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="sources.html">Sources</a></nav></div></header><main class="wrap"><div class="crumb"><a href="index.html">Home</a> / Hypotheses</div><section class="section"><div class="eyebrow">Pre-implementation slate · not experiments</div><h1 style="font:800 clamp(34px,5vw,52px)/1.1 Manrope,sans-serif;letter-spacing:-.05em">Five mechanisms to assess — none scored here</h1><p>These candidates use feature families named in the official challenge description and are distinct from any geological detector in this checkout (none exists here). The linked sibling GEMSDOE archives report extensive prior geophysical, conductivity, gravity, strain, topographic and fusion work. Their summaries are not a complete source-code audit; therefore <strong>global novelty and “never tried before” status are unverified</strong>. Rank and cost are qualitative research priorities, not DTI forecasts. No holdout result can be computed without the official local rasters and shared evaluator.</p><div class="callout"><strong>Gate:</strong> treat the first candidate as a pre-registered hypothesis only after comparing it with the recovered registry/history. It cannot enter an experiment or submission slot until that novelty check and the shared holdout gate pass.</div></section>
-<section class="section" style="padding-top:0"><div class="grid"><article class="card span12"><span class="badge">Rank 1 · highest priority from prior review · moderate cost</span><h2 style="margin-top:14px">Conductive-base / surface-conductivity break coherence</h2><p><strong>Layers:</strong> surface conductivity and depth to conductive base, both named in the official feature stack.</p><p><strong>Physical signature:</strong> aligned, scale-persistent lateral breaks that cohere between the surface-conductivity field and conductive-base geometry; test an edge-coherence interaction against orientation- and location-matched nulls, not a catalogue-trained classifier.</p><p><strong>Why it could identify an uncatalogued fault:</strong> a buried fluid pathway or altered structure may perturb conductivity and the geometry of a conductive base where there is no mapped surface trace. The mechanism is conditional and does not equate conductivity with geothermal productivity.</p><p><strong>Named non-fault mimic:</strong> lithologic/clay boundaries, salinity variation, groundwater, and survey-resolution transitions can generate the same signature.</p><p><strong>Difference from this repository:</strong> there is no geological detector here; this paired conductivity/depth edge-coherence feature is distinct from the utility-only code currently in the checkout. However, the GEMSDOE83 archive mentions conductivity-breach/alteration coupling, so this may overlap prior sibling work. Novelty is <strong>not established</strong> until the exact prior run registry and code are compared.</p><p><strong>Holdout plan:</strong> apply the leakage canary to each channel and the interaction alone; derive catalogue features only from visible faults; withhold whole segments with buffer, mask visible faults pixel-exactly, and use the shared pooled DTI evaluator. Match emitted mass to the incumbent and report evaluator version, withheld-positive count, and 95% CI. No HOLDOUT-DTI value exists here.</p></article>
-<article class="card span6"><span class="badge">Rank 2 · potentially useful · moderate cost</span><h2 style="margin-top:14px">Cross-scale magnetic contact persistence</h2><p><strong>Layers:</strong> reduced-to-pole magnetic anomaly, total magnetic intensity, and provided vertical/horizontal TMI slopes.</p><p><strong>Signature:</strong> scale-space edge persistence with orientation consistency across magnetic representations, rather than a single-band threshold.</p><p><strong>Why it could add faults:</strong> buried fault boundaries may juxtapose magnetic units and retain a linear edge even where the surface expression is weak.</p><p><strong>Mimics:</strong> ordinary lithologic contacts, intrusive bodies, survey-line processing seams.</p><p><strong>Difference and caveat:</strong> no such code in this repo; magnetic/fusion work is claimed in sibling archives, so exact novelty cannot be inferred from titles alone.</p></article>
-<article class="card span6"><span class="badge">Rank 3 · moderate potential · low-to-moderate cost</span><h2 style="margin-top:14px">Strain-transition corridors</h2><p><strong>Layers:</strong> dilatation rate, shear strain rate, and second invariant of strain rate.</p><p><strong>Signature:</strong> localized sign/gradient transitions and linearly organized strain concentration, evaluated with spatial blocks to prevent catalogue memorization.</p><p><strong>Why it could add faults:</strong> deformation discontinuities may expose active structural zones beyond mapped Quaternary traces.</p><p><strong>Mimics:</strong> geodetic interpolation smoothness, block boundaries, regional deformation, and non-fault strain sources.</p><p><strong>Difference and caveat:</strong> no strain-transition detector exists here; similar strain/tensor coupling is discussed in the GEMSDOE83 archive, so prior overlap must be resolved.</p></article>
-<article class="card span6"><span class="badge">Rank 4 · moderate potential · moderate-to-high cost</span><h2 style="margin-top:14px">Gravity–magnetic cross-gradient junctions</h2><p><strong>Layers:</strong> isostatic gravity anomaly and slope plus magnetic gradients.</p><p><strong>Signature:</strong> junctions where independent density and magnetic boundaries align or terminate, scored geometrically rather than by adding anomaly magnitudes.</p><p><strong>Why it could add faults:</strong> buried structural junctions may organize permeability and remain unmapped at the surface.</p><p><strong>Mimics:</strong> stratigraphic contacts, inversion artifacts, and unrelated boundaries that coincide by chance.</p><p><strong>Difference and caveat:</strong> this exact cross-gradient junction score is not implemented here, but both physical families appear in sibling archive descriptions. Novelty is unverified.</p></article>
-<article class="card span6"><span class="badge">Rank 5 · exploratory · low-to-moderate cost</span><h2 style="margin-top:14px">Earthquake-density lineament versus swarm null</h2><p><strong>Layer:</strong> provided earthquake-density feature, interpreted with existing structural context only after its construction and time window are verified.</p><p><strong>Signature:</strong> elongated density gradients that align with a linear structure; compare against matched clustered/swarm controls so spatial clustering alone cannot drive the result.</p><p><strong>Why it could add faults:</strong> some active unmapped structures may organize seismicity along a line not represented in mapped fault traces.</p><p><strong>Mimics:</strong> geothermal-fluid swarms, catalog completeness, and clustered earthquakes without a surface fault.</p><p><strong>Difference and caveat:</strong> no such interaction is implemented here. Earlier sibling usage and the provided density layer’s provenance/window are unknown; treat as lower-priority until audited.</p></article>
-<article class="card span12"><h2>Priority and cost interpretation</h2><p>The first candidate is carried forward from the previous project review, not proven novel. The GEMSDOE83 public owner page describes prior methods using conductivity/alteration, magnetic, gravity, strain, geothermal and structural-coupling features; its claims must be reconciled against actual code/registry artifacts before asserting this is new. The linked GEMSDOE32 page and GEMSDOE83 page also make conflicting statements about the H33 artifact's score status. These are reasons to audit, not grounds for copying or selecting a submission.</p><p>There is no numeric DTI-improvement estimate. The current holdout best is unknown in this checkout; all candidates are untested here. Do not implement the top-ranked idea until the shared template and prior experiment registry are recovered. No submission slot was used.</p></article></div></section></main><footer class="footer"><div class="wrap"><a href="index.html">GEMSDOE84</a> · hypotheses are not scores</div></footer></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pre-Registered Geological Hypotheses · GEMSDOE84 Fault Discovery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">GEMSDOE84 <span class="pill">OK TO SUBMIT</span></a>
+      <nav class="site-nav"><a href="index.html">Overview &amp; Download</a><a href="executive-summary.html" class="cta-nav">How To Submit (Executive Summary)</a><a href="h33-analysis.html">H33-2-B2 (0.2778) Analysis</a><a href="hypotheses.html" class="active">Geological Hypotheses</a><a href="research.html">Validation &amp; Audit</a><a href="sources.html">Verified Sources</a></nav>
+    </div>
+  </header>
+  <main class="container">
+    <section class="card">
+      <p class="tag tag-holdout">PRE-REGISTERED GEOLOGICAL HYPOTHESES</p>
+      <h2>Five Structural &amp; Geophysical Hypotheses Formulated Before Model Coding</h2>
+      <p>
+        Per the Parallel-Run Protocol, five falsifiable NW Great Basin structural geology hypotheses (<code>H84-B</code> through <code>H84-F</code>; <code>H84-A</code> closed in PR #7) were specified in
+        <a href="research/hypotheses.md"><code>docs/research/hypotheses.md</code></a> prior to writing model code, ranked by expected DTI gain and compute cost, and consolidated into our single coherent lane <strong><code>H84-B</code> (<code>H84-TCDH</code>)</strong>.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Rank &amp; ID</th>
+              <th>Hypothesis &amp; Exact Sensor Layers</th>
+              <th>Physical Transform</th>
+              <th>Why Missing in USGS / INGENIOUS Catalogues</th>
+              <th>Primary Non-Fault Confounder &amp; Mitigation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="highlight-row">
+              <td><strong>#1 · H84-B</strong><br>(Selected Primary)</td>
+              <td><strong>Multi-Altitude Tilt-Worm &amp; Basement Offset</strong><br><code>tmi</code>, <code>magnetic_rtp</code>, <code>cba_gravity</code>, <code>gravity_hgm</code>, <code>depth_to_basement</code>, <code>geodawn_extensions_u8.tif</code></td>
+              <td>Upward-continued (<code>150 m &rarr; 600 m &rarr; 1500 m</code>) Miller &amp; Singh (1994) tilt zero-crossing persistence + gravity-magnetic co-alignment + alluvial piedmont gate</td>
+              <td>Quaternary alluvial fans &amp; playas bury basement-cutting intrabasin faults completely invisible in aerial photos/LiDAR</td>
+              <td>Caldera ring margins, pluton contacts, &amp; 200 m E–W GeoDAWN flight-line leveling ringing &rarr; directional E–W band-stop penalty + multi-altitude dip check</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>#2 · H84-C</strong><br>(Integrated Module)</td>
+              <td><strong>INGENIOUS Hydrothermal Upflow &amp; Radiometric K/U Halo</strong><br><code>2m_temperature_probe_INGENIOUS_regional_data.zip</code>, <code>Paleo_geothermal_final.csv</code>, <code>gdr_wellspring_in_footprint.csv</code>, <code>geodawn_rad_u8.tif</code>, <code>mt_resistivity_*</code></td>
+              <td>Local <code>2 m</code> thermal residual (&Delta;T), paleo-sinter/travertine halos, Na-K-Ca disequilibrium (<code>dist_known_fault_px</code> dropped!), block-normalized K% &amp; U/K, MT smectite cap edge</td>
+              <td>Blind geothermal systems (Bradys, Desert Peak, McGinness Hills) channel fluids up dilatant step-overs with zero surface scarp</td>
+              <td>Felsic ash-flow tuffs (high primary K/Th) &amp; lateral outflow tongues in gravel aquifers &rarr; block normalization + structural-gradient gating</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>#3 · H84-D</strong><br>(Integrated Module)</td>
+              <td><strong>Coulomb Transtensional Walker Lane–Basin &amp; Range Reactivation</strong><br><code>geodetic_shear_strain</code>, <code>geodetic_dilation_strain</code>, <code>slip_tendency</code>, <code>dilation_tendency</code>, <code>earthquake_density</code>, <code>trace_segments_utm11.csv</code></td>
+              <td>Spin-2 structure-tensor strike <code>(cos 2&theta;, sin 2&theta;)</code> projected onto local GPS shear/dilation + kinematic relay facing + anisotropic tip mask</td>
+              <td>Distributed NNW right-lateral Walker Lane shear &amp; WNW extension partition across hundreds of unmapped horse-tail splays &amp; relay ramps</td>
+              <td>10–25 km smooth GPS interpolation &amp; mining blasts &rarr; gated strictly by localized 100 m scarp/tilt ridges</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>#4 · H84-E</strong><br>(Integrated Deconfounder)</td>
+              <td><strong>Pleistocene Lake Lahontan Shoreline &amp; Anthropogenic Deconfounding</strong><br><code>elevation</code>, <code>detrended_elevation</code>, <code>lidar_scarp_features_u8.tif</code>, <code>topo_10m_derived_100m_u8.tif</code>, <code>tiger_road_distance_m.tif</code></td>
+              <td>Bathymetric highstand gate (<code>1,170–1,345 m</code>) &times; contour-parallelism <code>|&nabla;z &middot; e_ridge| / ||&nabla;z||</code> + road-prism proximity</td>
+              <td>USGS compilers exclude wave-cut shorelines manually, whereas ML models fire massive false positives on 5–25 m Lahontan benches</td>
+              <td>Genuine range-front faults near highstand elevation (e.g. Dixie Valley) &rarr; preserved when backed by deep gravity/magnetic basement steps</td>
+            </tr>
+            <tr>
+              <td><strong>#5 · H84-F</strong><br>(Diagnostic Sub-layer)</td>
+              <td><strong>Drainage &chi;-Disequilibrium &amp; Knickpoint Alignment</strong><br><code>dem10_chi_100m_i16.tif</code> (<code>!= -32768</code> masked), <code>dem10_chi_100m_sig_i32.tif</code></td>
+              <td>Cross-divide <code>|&nabla;&chi;|</code> step &amp; slope–&chi; residual uncorrelated with radiometric lithology transitions</td>
+              <td>Slow-slipping (<code>&lt; 0.2 mm/yr</code>) intrabasin faults have degraded scarps but preserve transient fluvial knickzones</td>
+              <td>Resistant basalt caprock ledges &rarr; down-weighted when coinciding with Th/K lithologic steps</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <figure class="diag">
+        <img src="assets/figures/fig4_leakage_canary_and_features.png" alt="52-feature leakage canary and 39,000-dot structural allocation">
+        <figcaption>
+          <strong>Figure 4.</strong> (A) Pre-model single-feature symmetric holdout AUC across top visible-only anatomy and blind physical features (all 52 features &le; 0.7724 vs 0.90 leakage stop). (B) Structural composition of the promoted 39,000-dot submission.
+        </figcaption>
+      </figure>
+    </section>
+  </main>
+  <footer class="site-footer">
+    GEMSDOE84 · Lane H84-B (H84-TCDH) · Deterministic build from verified receipts (2026-10-23T01:10:28Z) ·
+    0 live DrivenData weekly slots spent automatically ·
+    <a href="data/run_card.json">JSON Run Card</a> · <a href="liti/index.html">Archived Closed Lane (H84-A LITI)</a>
+  </footer>
+  <script>
+    function copyText(id, btn) {
+      var el = document.getElementById(id);
+      if (!el || !navigator.clipboard) return;
+      navigator.clipboard.writeText(el.innerText.trim()).then(function() {
+        var prev = btn.innerText;
+        btn.innerText = "Copied!";
+        setTimeout(function() { btn.innerText = prev; }, 1600);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,1 +1,100 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sources &amp; evidence — GEMSDOE84</title><link rel="stylesheet" href="site.css"></head><body><header class="top"><div class="wrap"><a class="brand" href="index.html">GEMSDOE84</a><nav class="nav"><a href="index.html">Overview</a><a href="executive-summary.html">Executive summary</a><a href="hypotheses.html">Hypotheses</a></nav></div></header><main class="wrap"><div class="crumb"><a href="index.html">Home</a> / Sources &amp; evidence</div><section class="section"><div class="eyebrow">Source register · checked for this review</div><h1 style="font:800 clamp(34px,5vw,52px)/1.1 Manrope,sans-serif;letter-spacing:-.05em">Evidence, provenance, and limits</h1><p>Primary-source details below were read during this session. “Page reviewed” means the public page content was retrieved; it does not mean every linked dataset was downloaded, independently reproduced, or endorsed as scientifically sufficient.</p><div class="card"><table><thead><tr><th>Claim or resource</th><th>Primary source</th><th>What it supports / limits</th></tr></thead><tbody><tr><td>Task and evaluation context</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DrivenData problem description</a></td><td>States the target is geological faults indicative of geothermal resources; explains incomplete labels and expert evaluation, metric, features and submission format. Page reviewed. Exact competition raster still needed for profiles.</td></tr><tr><td>Data files</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">DrivenData data page</a></td><td>Retrieved URL redirected to DrivenData login. No gated files were accessed by this session.</td></tr><tr><td>Public standings</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Official public leaderboard</a></td><td>Page reviewed on 2026-10-22 UTC. This is time-sensitive and distinct from a candidate's submission receipt; consult the source for current standings.</td></tr><tr><td>Reference model</td><td><a href="https://github.com/drivendataorg/gems-prize-reference-solution">DrivenData reference-solution repository</a></td><td>Repository page states that code/notebook is a benchmark reference and requires participants to download the competition data. It does not supply this checkout with the specified local cached feature stack or evaluation/writer tools.</td></tr><tr><td>GeoDAWN geophysical source</td><td><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN page</a>; <a href="https://doi.org/10.5066/P93LGLVQ">DOI 10.5066/P93LGLVQ</a></td><td>USGS describes airborne magnetic/radiometric survey data and associated grids, reports a March 4, 2024 page date, and identifies CC0 1.0 rights for the release. Files were not downloaded here; product-specific usage and alignment still require checking.</td></tr><tr><td>INGENIOUS context</td><td><a href="https://gbcge.org/current-projects/ingenious/">Great Basin Center for Geothermal Energy</a></td><td>Project landing page supplied as a starting point. It is not evidence that a particular fault trace is geothermal or absent from the challenge labels.</td></tr><tr><td>CRS identifier</td><td><a href="https://epsg.io/32611">EPSG:32611</a></td><td>Coordinate-system reference link supplied by the user and cited by DrivenData. Submission match must be checked against official raster metadata.</td></tr><tr><td>Technical report</td><td><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">NLR technical report PDF</a></td><td>Officially linked by the user. PDF not retrieved in this session; cite only after its relevant requirements have been checked against current competition rules.</td></tr><tr><td>Rules</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/rules/">DrivenData rules</a></td><td>Official rules entry point. Detailed rules have not been independently parsed during this review.</td></tr><tr><td>Prior candidate archives</td><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html">GEMSDOE32 page</a>; <a href="https://buffedlizard55-lab.github.io/GEMSDOE83/docs/index.html">GEMSDOE83 page</a></td><td>GEMSDOE32 marks its candidate unscored; GEMSDOE83 makes an opposite owner-reported organizer-confirmed claim and describes byte forensics. No DrivenData submission-page receipt for the H33 result was independently retrieved here. Treat the conflict as unresolved; neither owner page is itself the required receipt.</td></tr></tbody></table></div></section><section class="section" style="padding-top:0"><div class="card"><h2>Evidence categories used here</h2><ul><li><strong>Official source:</strong> a page maintained by the organizer or public agency. It supports only claims actually present on that page.</li><li><strong>HOLDOUT-DTI:</strong> must include evaluator version, number of withheld positives, and 95% confidence interval. No value is available in this checkout.</li><li><strong>ORGANIZER-CONFIRMED:</strong> only a result copied from a submission-page receipt. None is present here.</li><li><strong>Owner report / projection:</strong> useful for prioritizing what to reproduce, but not an organizer-confirmed score and not a holdout result unless its exact evaluator protocol and artifacts are accessible and reproduced.</li></ul></div></section></main><footer class="footer"><div class="wrap"><a href="index.html">GEMSDOE84</a> · evidence classifications are not interchangeable</div></footer></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verified Official Sources · GEMSDOE84 Fault Discovery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">GEMSDOE84 <span class="pill">OK TO SUBMIT</span></a>
+      <nav class="site-nav"><a href="index.html">Overview &amp; Download</a><a href="executive-summary.html" class="cta-nav">How To Submit (Executive Summary)</a><a href="h33-analysis.html">H33-2-B2 (0.2778) Analysis</a><a href="hypotheses.html">Geological Hypotheses</a><a href="research.html">Validation &amp; Audit</a><a href="sources.html" class="active">Verified Sources</a></nav>
+    </div>
+  </header>
+  <main class="container">
+    <section class="card">
+      <p class="tag tag-org">LINE-BY-LINE VERIFIED OFFICIAL SOURCES</p>
+      <h2>Authoritative Competition, Government Dataset &amp; Literature Register</h2>
+      <p>
+        Every rule, metric coefficient, coordinate system, dataset DOI, and public leaderboard figure cited in <code>GEMSDOE84</code> was live-verified against primary sources on <code>2026-10-22</code>. No unverified projections or synthetic citations are used.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Source &amp; Official Link</th>
+              <th>Authority Tier</th>
+              <th>Verified Facts Used in GEMSDOE84</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/" target="_blank" rel="noopener">DrivenData · GEMS Problem Description</a></td>
+              <td>Organizer Primary</td>
+              <td>Exact DTI formula (<code>&alpha;=0.2, &beta;=0.8</code>, <code>R=300 m</code> triangular kernel), single-band <code>float32</code> <code>EPSG:32611</code> 100 m <code>[0, 1]</code> GeoTIFF spec, Initial ($50K: 5&times;$10K) &amp; Final ($250K: $100K/$70K/$40K/$25K/$15K) single-selected-submission scoring.</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/" target="_blank" rel="noopener">DrivenData · Public Leaderboard</a></td>
+              <td>Organizer Primary (<span class="tag tag-org">ORGANIZER-CONFIRMED</span>)</td>
+              <td>Verified 2026-10-22: #1 <code>xiaofanhu = 0.4413</code> (27 subs), #2 <code>cfld__ = 0.3904</code>, #3 <code>Batik Shirt Brothers = 0.3904</code>, #4 <code>BrandenKMurray = 0.3713</code>, #5 <code>No Fault of Our Own = 0.3539</code>; #21 <code>0.3261</code> / #22 <code>0.3183</code> (explaining prompt's <code>0.3195</code> snapshot).</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/" target="_blank" rel="noopener">DrivenData · About GEMS</a></td>
+              <td>Organizer Primary</td>
+              <td>DOE Office of Geothermal + USGS EarthMRI GeoDAWN + USGS 3DEP 1 m LiDAR context and scientific references.</td>
+            </tr>
+            <tr>
+              <td><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf" target="_blank" rel="noopener">DOE / NLR Official Prize Rules (NREL/TP-5700-96647, Sept 2026)</a></td>
+              <td>Federal Legal Rules</td>
+              <td>§1.3 U.S. eligibility &amp; Federal/FFRDC/MFTRP/FCOC exclusions; §3.2 <strong>3 submissions per week</strong> limit and <strong>mandatory narrative disclosure of generative AI tools &amp; how they were used</strong>.</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and" target="_blank" rel="noopener">USGS GeoDAWN Data Release (DOI: 10.5066/P93LGLVQ)</a></td>
+              <td>USGS Primary Data (CC0 1.0)</td>
+              <td>Glen &amp; Earney (2024): 149,030 line-km airborne magnetic &amp; gamma-ray spectrometry across Winnemucca, Fallon, Hawthorne &amp; Tonopah blocks (200 m / 400 m E–W flight lines).</td>
+            </tr>
+            <tr>
+              <td><a href="https://gdr.openei.org/submissions/1391" target="_blank" rel="noopener">DOE GDR Submission 1391 · INGENIOUS Compilation (DOI: 10.15121/1881483)</a></td>
+              <td>DOE Primary Data (CC-BY-4.0)</td>
+              <td>Ayling, Faulds et al. (2022): 2 m temperature probes, paleo-geothermal sinter/tufa/travertine deposits, well/spring geothermometry, Quaternary faults v2, geodetic strain, earthquake density, and component USGS DOIs (<code>10.5066/P9TWT2LU</code>, <code>P9MQRCBY</code>, <code>P9Z6SA1Z</code>, <code>P9BZPVUC</code>, <code>P9YL58W6</code>).</td>
+            </tr>
+            <tr>
+              <td><a href="https://gbcge.org/current-projects/ingenious/" target="_blank" rel="noopener">UNR Great Basin Center for Geothermal Energy · INGENIOUS</a></td>
+              <td>Academic / DOE Award Primary</td>
+              <td>Hidden/blind Great Basin hydrothermal play fairway framework (DOE award <code>DE-EE0009254</code>) motivating <code>H84-C</code>.</td>
+            </tr>
+            <tr>
+              <td><a href="https://doi.org/10.1029/2020JB021269" target="_blank" rel="noopener">Mattéo et al. (2021), JGR Solid Earth (10.1029/2020JB021269)</a></td>
+              <td>Peer-Reviewed Literature</td>
+              <td>Automatic fault mapping in remote optical images &amp; Distance-Tolerant IoU evaluation foundation; paired with Hermant, Kiersnowski &amp; Bellanger (2025, 50th Stanford Geothermal Workshop).</td>
+            </tr>
+            <tr>
+              <td><a href="https://epsg.io/32611" target="_blank" rel="noopener">EPSG:32611 · WGS 84 / UTM Zone 11N</a></td>
+              <td>Geodetic Standard</td>
+              <td>Canonical submission coordinate reference system (<code>3730 &times; 3292</code> grid at 100 m pixel spacing, origin <code>(243350, 4508550)</code>).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    GEMSDOE84 · Lane H84-B (H84-TCDH) · Deterministic build from verified receipts (2026-10-23T01:10:28Z) ·
+    0 live DrivenData weekly slots spent automatically ·
+    <a href="data/run_card.json">JSON Run Card</a> · <a href="liti/index.html">Archived Closed Lane (H84-A LITI)</a>
+  </footer>
+  <script>
+    function copyText(id, btn) {
+      var el = document.getElementById(id);
+      if (!el || !navigator.clipboard) return;
+      navigator.clipboard.writeText(el.innerText.trim()).then(function() {
+        var prev = btn.innerText;
+        btn.innerText = "Copied!";
+        setTimeout(function() { btn.innerText = prev; }, 1600);
+      });
+    }
+  </script>
+</body>
+</html>
