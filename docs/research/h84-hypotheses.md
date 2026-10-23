@@ -1,3 +1,5 @@
+> ARCHIVED HISTORICAL H84 EXPERIMENT — superseded for release decisions by the H84-THMS literal registry stop in `../SESSION_REVIEW_20261023.md`. No hypothesis or TIFF described here is currently promoted or submission-authorized.
+
 # H84 hypotheses — ranked before implementation, validated on holdout, reported honestly
 
 Session: `arena/4ac2f662-gemsdoe84`, 2026-10-22. Every claim below carries one of:

@@ -1,6 +1,6 @@
 {
   "schema": "gems84-release-audit-v1",
-  "audited_utc": "2026-10-23T00:09:54.978327+00:00",
+  "audited_utc": "2026-10-23T00:30:39.347301+00:00",
   "lane": "H84-THMS (inherited; no new lane selected)",
   "hypothesis": "Thermal/sinter evidence corroborates geomorphic fault-valve corridors.",
   "mechanism": "Existing H84-THMS candidate; audit only, no new fit or prediction.",

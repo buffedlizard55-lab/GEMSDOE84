@@ -6,7 +6,7 @@ Superseded as current status. The prior README called this verbatim; it differs 
 
 ```text
 Review our Repo. Look at it. Look at our previous research and sites on the competition:
-buffedlizard55-lab/1GEMSDOE 
+buffedlizard55-lab/1GEMSDOE
 buffedlizard55-lab/GEMSDOE2
 buffedlizard55-lab/GEMSDOE3
 buffedlizard55-lab/GEMSDOE4
@@ -107,7 +107,7 @@ End with one JSON Run Card containing: hypothesis, mechanism, one named non-faul
 
 You MUST generate a unique TIF submission for the competition. Do not copy a previous submission, except for baseline, comparison, learning etc. Make the TIF submission (and ZIP if helpful) easy to download at the very beginning/executive summary. Make sure that it is obvious on the site and executive summary whether the TIF submission is validated and OK to download and submit, without human intervention. We don't want to submit to the competition if there is an error that could be prevented. Remember an error that we have received from the competition before when submitting is "Predicted values must be in range [0, 1]". So we need to prevent this and any other errors from happening. Also give the submission a unique name and a short note (140 characters max) for the submission form on DrivenData.
 
-Do not do the bare minimum. Try your best to analyze everything in the repo and cross-reference what is in the repo, the competition, the goal of the competition and more. Think from first principles and make sure we are heading in the right direction for what this competition wants and needs. Look into how we can maximize our score in the competition while staying true to the rules and scientific method. We have a limit of 3 submissions per week on the competition site. 
+Do not do the bare minimum. Try your best to analyze everything in the repo and cross-reference what is in the repo, the competition, the goal of the competition and more. Think from first principles and make sure we are heading in the right direction for what this competition wants and needs. Look into how we can maximize our score in the competition while staying true to the rules and scientific method. We have a limit of 3 submissions per week on the competition site.
 
 PARALLEL-RUN PROTOCOL (keep this block verbatim):
 1. Lane & uniqueness check: inspect registry/ or prior submissions; pick a genuinely different geological mechanism. Hard gate on BOTH the pre-placement surface AND the final emitted dots: rank-corr <= 0.90 and 3px dot overlap <= 70% against every registry raster.
