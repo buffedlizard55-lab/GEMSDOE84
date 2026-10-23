@@ -115,7 +115,10 @@ def test_site_local_links_and_fail_closed_release():
         assert 'DO NOT SUBMIT' in html
         assert card['audited_artifact']['newly_generated'] is False
     # If a raster is shipped, verify its format regardless of verdict
-    if card.get('raster_sha256'):
+    if card.get('binary_removed_2026_10_23'):
+        # IR-84-08: negative-lane binary deliberately removed; sha is receipt-only.
+        assert not (ROOT / card['submission_file']).exists() if card.get('submission_file') else True
+    elif card.get('raster_sha256'):
         tif = None
         # support both old and new run-card schemas
         if card.get('submission_file'):

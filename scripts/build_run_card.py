@@ -34,7 +34,8 @@ def main() -> int:
     for path in ['run_card.json', 'evidence/run-card.json', 'evidence/run_card.json',
                  'registry/run_card.json', 'docs/run-card.json', 'docs/data/run-card.json',
                  'docs/evidence/run_card.json', 'docs/evidence/run-card.json',
-                 'evidence/h84_run_card.json', 'docs/evidence/h84_run_card.json']:
+                 'evidence/h84_run_card.json', 'docs/evidence/h84_run_card.json',
+                 'evidence/fresh_run_card_20261023.json', 'docs/evidence/fresh_run_card_20261023.json']:
         (ROOT / path).write_text(json.dumps(card, indent=2, allow_nan=False) + '\n')
     print('Published NEGATIVE run card. No new TIFF; archived download is research only.')
     return 0

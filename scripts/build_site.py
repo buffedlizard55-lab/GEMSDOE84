@@ -74,6 +74,8 @@ def main() -> int:
             # Root copies are fully usable, with all browser-relative paths rebased.
             document = document.replace('href="', 'href="docs/')
             (ROOT / f'{page}.html').write_text(document)
+    (ROOT / 'docs/downloads/index.html').write_text(
+        (ROOT / 'docs/index.html').read_text().replace('href="', 'href="../'))
     for folder in ('research',):
         target = ROOT / 'docs' / folder
         target.mkdir(exist_ok=True)
