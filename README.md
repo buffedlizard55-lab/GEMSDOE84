@@ -4,14 +4,17 @@
 <!-- CURRENT_STATE_START -->
 ## CURRENT STATE (2026-10-23, branch `arena/0a63cbb2-gemsdoe84`)
 
-- Parent: R0 `h33-h33-2-b2`, 37,654 dots; both encodings rebuilt byte-identically in this session (`evidence/r0_preflight_0a63cbb2.json`).
-- Best receipt: none verified; incumbent 0.2778 remains **CLAIM**.
-- TOP_PUBLIC: unknown; human must supply current value and dated evidence.
-- Slots left: unknown; zero submissions made this session.
-- Next 3 slots: **on hold**, pending human AXIS assignment, quota and collar decision. Existing MASS/SNAP pairs must not be rebuilt.
-- Status: preflight only; no new variants or live-change predictions. R0 has 1,611 dots at distances in (2,3) px; inherited exceptions do not override the current brief.
-- Historical recommendations below are frozen history, not current submission authorization.
-Historical MASS IDs (not current recommendations): `h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3`, `h33-h33-2-b2-mass-add10pct-20261023-ad925bd2`, `h33-h33-2-b2-mass-drop20pct-20261023-62bfc392`.
+- **Parent:** R0 `h33-h33-2-b2`, 37,654 dots; both encodings rebuilt byte-identically before PRUNE.
+- **Best receipt:** none verified; 0.2778 remains **CLAIM**.
+- **TOP_PUBLIC:** unknown; human supplies current value and date.
+- **Slots left:** unknown; no submissions made by this agent.
+- **Selected AXIS:** PRUNE, selected by agent under the latest explicit authorization.
+- **Built:** `h33-h33-2-b2-prunegt3-refill-ancestor-union-20261023-54c38bfe`; 2,171 dots replaced (5.7656557072%), count fixed; all dots >3 px from catalogue.
+- **Prediction:** **MODEL** +0.002, judgment range −0.01 to +0.01; |live change| <0.01 is no evidence.
+- **Next 3 slots:** (1) this PRUNE arm, conditional on human quota and receipt baseline; (2–3) reserve, not duplicate R0 or past MASS/SNAP settings. See SLOT_PLAN.md.
+- Format/hash gates passed; no fold-clean holdout or SGMC result. Ancestor canary is association-only, not proof of leakage-free construction.
+- Historical MASS IDs (not current recommendations): `h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3`, `h33-h33-2-b2-mass-add10pct-20261023-ad925bd2`, `h33-h33-2-b2-mass-drop20pct-20261023-62bfc392`.
+- The frozen historical banner below is not current submission authorization.
 <!-- CURRENT_STATE_END -->
 <!-- /CURRENT STATE -->
 

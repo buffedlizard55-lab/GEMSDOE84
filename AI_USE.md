@@ -31,3 +31,12 @@ GitHub, ran existing R0 rebuild and tests, and wrote preflight/hold documentatio
 Human supplied brief v2; AXIS clarification was skipped, not approved. AI chose
 no axis, built no variants, made no score predictions and submitted nothing.
 No competition pages, Dropbox, credentials or leaderboard scraping were used.
+
+## PRUNE continuation — 2026-10-23
+Human explicitly delegated AXIS selection; AI chose PRUNE and wrote the refill
+algorithm, exact-marginal unit tests, builder, ledger entry, mechanism card and
+documentation. AI selected one >3 px fixed-count arm and a judgment-only MODEL
+prediction. Human has not chosen a slot or confirmed scores/quota/deadline.
+Inputs: existing manifest pins and lineage-base pin; no new external science data.
+Generated TIFFs are predictions; competition input bytes stay in ignored cache.
+No submission, credential access, competition-page fetch or site redesign.

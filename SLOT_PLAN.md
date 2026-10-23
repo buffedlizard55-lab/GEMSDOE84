@@ -1,18 +1,26 @@
-# Slot plan — 2026-10-23 (preflight only)
+# Slot plan — 2026-10-23 / PRUNE
 
-One entity; at most 3 scored submissions per rolling week, one final file selected blind.
-No slots authorized here. AXIS, remaining quota and dated TOP_PUBLIC are unknown.
-R0 0.2778 is CLAIM, not RECEIPT. No new variants built.
+One entity; 3 scored submissions per rolling week; one final file chosen blind.
+Quota and TOP_PUBLIC unknown. R0 0.2778 is CLAIM. No agent submissions.
+Agent selected PRUNE under the human's latest authorization; only one arm built.
 
-## Next three slots (conditional, not file recommendations)
-1. First unused value on the human-assigned axis after parent, input and format gates pass.
-   A live change >=0.01 in magnitude informs the direction; smaller changes are no evidence.
-2. Second unused value on that same axis: test whether the first directional result persists.
-3. Third unused value only if justified by mechanism and quota; otherwise reserve the slot.
-No repeat (parent, axis, value), no exact-hash repeats; no overlap/correlation gates.
-Ledger already records MASS -10pct/+10pct/-20pct and three SNAP settings.
-R0's inherited 1,611 dots in (2,3) px violate the non-PRUNE collar constraint:
-choose PRUNE or explicitly resolve the conflict before a different-axis build.
+## Next three slots, in order (human decides whether to spend)
+1. `h33-h33-2-b2-prunegt3-refill-ancestor-union-20261023-54c38bfe`:
+   replace 2,171 collar dots, fixed 37,654 count. MODEL +0.002 (judgment range
+   −0.01 to +0.01, not a calibrated interval). Compare to a receipted R0.
+   Change >=+0.01 supports this collar/refill policy; <=−0.01 rejects its benefit
+   on public chunks; smaller changes are no evidence, not a promotion signal.
+2. Reserve for an unused orthogonal axis only after the first result and quota
+   review. A future non-PRUNE experiment must resolve the inherited R0 collar
+   or explicitly name a compliant parent; never silently change two axes.
+3. Reserve for a mechanism-backed interaction or confirmation decision; no exact
+   repeats, no resubmitting R0's <=2 px control, no quota assumptions.
+
+No <=1 px arm: loosening R0's collar does not remove any R0 dots and needs a
+separately specified replacement policy. No <=2 px arm: exact R0 is a duplicate.
+The >3 px arm changes 5.7657% of R0 locations (symmetric difference 11.5313%).
+Refill uses the fixed ancestor support union and exact MODEL marginal DTI;
+it tests collar-plus-refill, not collar distance independent of replacement quality.
 
 ## Time to deadline
 December 3 is supplied by the brief, not independently confirmed. October 23 to

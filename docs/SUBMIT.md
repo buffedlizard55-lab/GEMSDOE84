@@ -1,8 +1,27 @@
-> **CURRENT SESSION HOLD — 2026-10-23 (`arena/0a63cbb2-gemsdoe84`)**
-> No new candidate file, name, form note or format receipt. Do not treat the historical
-> packet below as current authorization. AXIS was not assigned (clarification skipped).
-> R0 rebuild receipt: `evidence/r0_preflight_0a63cbb2.json`; this is integrity evidence,
-> not a submission-page score receipt. No submissions made.
+# Current PRUNE packet — built, unscored
+
+- **Name:** `h33-h33-2-b2-prunegt3-refill-ancestor-union-20261023-54c38bfe`
+- **File:** `../releases/h33-h33-2-b2-prunegt3-refill-ancestor-union-20261023-54c38bfe.tif` (NaN outside footprint).
+- **Fallback:** `../releases/h33-h33-2-b2-prunegt3-refill-ancestor-union-20261023-54c38bfe-zeros.tif` (zeros outside). Upload only one encoding per slot.
+- **Form note (87 chars):** `h33-h33-2-b2; PRUNE >3px, refill 2171, count fixed; MODEL +0.002 (range -0.01 to +0.01)`
+- **NaN SHA-256:** `54c38bfeb8a9e3e31a0d57583e25aeb580fff7496dc0a030b8aabfed059244ad`
+- **Zeros SHA-256:** `17672a4bf34cb82ef367cbe2786564109097dfd8669df239bbdbf269b9854441`
+- **Format inspection (not an organizer RECEIPT):** one float32 band, EPSG:32611,
+  shape/transform match sample; inside finite [0,1]; outside matches encoding;
+  zero catalogue mass; 37,654 unit dots; minimum catalogue distance 3.162278 px.
+- **Parent diff:** 35,483 retained, 2,171 removed, 2,171 added; 5.7656557072%
+  replaced; 4,342 symmetric-difference pixels (11.5313114145% of parent count).
+- **Evidence:** `evidence/prune_gt3_20261023.json` includes mechanism card,
+  input hashes, source-code git SHA, deterministic selection order and gate results.
+- **Prediction:** MODEL +0.002 (judgment range −0.01 to +0.01); below 0.01 is no evidence.
+- **Limitations:** ranking truth is an ancestor-support MODEL, not observations.
+  Fold-clean holdout and SGMC control NOT_RUN. No claim of leakage-free ancestors.
+- **Human only:** confirm quota, receipted R0 baseline, deadline and current dated
+  TOP_PUBLIC; decide whether to spend a slot. Record actual receipt_score/date
+  in the ledger afterward. Agent does not submit or access competition pages.
+
+---
+## Historical packets below — not current slot recommendations
 
 # SUBMISSION PACKET — `AXIS = MASS` & `AXIS = SNAP` Variants of Parent R0 (`h33-h33-2-b2`)
 

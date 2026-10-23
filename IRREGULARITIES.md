@@ -25,3 +25,21 @@ Per Brief v2 Section 7, this register lists **only** findings that change a conc
   source URL in IR-DEC-01). No additional raster bytes are committed this session.
 - Deadline confirmation conflicts with the ban on fetching competition pages;
   human must supply a dated excerpt from the official page. Deadline UNVERIFIED here.
+
+## PRUNE continuation — 2026-10-23
+
+- Latest human instruction authorizes the agent to select AXIS despite the older
+  “human assigns” template line. Agent selected PRUNE; prior unassigned-axis hold
+  is resolved without overriding the non-PRUNE collar rule.
+- Only >3 px arm built: <=2 px duplicates R0; <=1 px cannot remove any R0 dot.
+  Building three files would not provide three controlled, nonduplicate edits.
+- Fixed count requires refill beyond the single ancestor's saturated support.
+  Used pinned H19-5/H19-4/H16-1 support union and exact marginal DTI on that
+  declared MODEL surrogate; no claim of exact gain on unseen truth. This is a
+  collar-plus-fixed-refill experiment, not a pure causal estimate of distance.
+- Ancestor predictions lack verified fold-clean reconstruction. Hide/recover
+  PROXY and CI are NOT_RUN rather than misleading masked-only evaluation;
+  full-catalogue canary is association-only and cannot certify no leakage.
+- Existing general format CLI rejects NaN outside. The PRUNE builder instead
+  explicitly validates both required encodings against the pinned sample;
+  it does not weaken the historical all-finite validator for other workflows.
