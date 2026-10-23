@@ -1,0 +1,12 @@
+{
+  "rows": 116,
+  "built": 3,
+  "submitted_claim": 99,
+  "receipts_committed": 0,
+  "best_claim": 0.2778,
+  "top_public_snapshot": 0.3195,
+  "collapsed_repeats": 4,
+  "skipped_nonnumeric_snapshot_rows": [
+    "rank-1..5 re-read confirmation"
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "id": "h33-2-b2-snap2p0px-g0p02-20261023-b2019f55",
+  "parent": "h33-2-b2",
+  "parent_sha256_zeros": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+  "parent_score": "0.2778 (CLAIM: owner-reported; no receipt in ledger/)",
+  "axis": "snap",
+  "value": "2p0px-g0p02",
+  "generated_utc": "2026-10-23T03:49:31Z",
+  "git_sha": "cf7f56115fca67550c5dc11fc81c448494673130",
+  "recipe": {
+    "inputs": [
+      "parent R0 rebuilt byte-identically by scripts/rebuild_r0.py",
+      "training_features.tif band 3 tmi_hg + band 18 iso_grav_anom_hg (sha256 4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5)"
+    ],
+    "response": "per-band: nodata-fill with footprint median -> gaussian sigma=1.0 px -> robust_unit (median/IQR z, 1.0 = 99.5th pct) -> pixel-wise max",
+    "window_px": 2.0,
+    "margin": 0.02,
+    "allowed_targets": "footprint & ~catalogue & d_cat > 2.0 px (parent's own exclusion)",
+    "determinism": "no RNG; candidates ordered by response, then distance, then (dy,dx)",
+    "seed": null
+  },
+  "mechanism_card": {
+    "hypothesis": "Same mechanism, larger search disc: GeoDAWN Area 2 was flown at ~400 m line spacing, so lineament positions are uncertain by about the 300 m kernel radius and the correcting displacement is often 2 px, not 1 px.",
+    "mechanism": "Identical rule with a 2.0 px Euclidean disc (24 neighbours). Compared with 1p4px-g0p02 this isolates the window; compared with 2p0px-g0p01 it isolates the gate strength.",
+    "non_fault_mimic": "A wider disc also reaches further off the mapped trace, so it can jump onto a parallel but unrelated gradient (e.g. a buried paleo-topographic step or a Lahontan shoreline break) that is not a fault.",
+    "predicted_sign": "positive",
+    "predicted_live_change": "+0.0074 to +0.0185 (MODEL)",
+    "prediction_basis": "pure position change => dDTI ~= dT / D with D = 18734.44 from the recorded live-anchor inversion (T = 5073.29, DTI = 0.2708) in evidence/incumbent_anatomy.json; scenario = 10%-25% of moved dots close one full pixel of gap (kernel gain 1/3 each). Evidence class MODEL, not a score.",
+    "no_evidence_threshold": 0.01,
+    "falsifier": "live change <= +0.007 (i.e. < 0.01 above the parent's 0.2778 CLAIM) means no evidence for the snap mechanism; a live change of -0.01 or worse falsifies it and says the TMI/gravity crests R0 was pulled onto are non-fault contacts."
+  },
+  "parent_diff": {
+    "max_shift_px": 2.0,
+    "margin": 0.02,
+    "candidate_offsets": 12,
+    "dots_in": 37654,
+    "dots_out": 37654,
+    "count_preserved": true,
+    "dots_moved": 4152,
+    "pct_dots_moved": 11.027,
+    "mean_displacement_px": 1.9104220359588493,
+    "median_displacement_px": 2.0,
+    "max_displacement_px": 2.0,
+    "mean_response_gain": 0.037708384851257895,
+    "median_response_gain": 0.029763493686914444,
+    "candidate_pixels_rejected_infeasible": 11607,
+    "candidate_pixels_rejected_already_claimed": 59,
+    "block_density_cv_1km_parent": 1.8834056250795637,
+    "block_density_cv_1km_variant": 1.8819376190211023,
+    "min_d_cat_parent_px": 2.23606797749979,
+    "min_d_cat_variant_px": 2.23606797749979,
+    "median_d_cat_parent_px": 19.6468827043885,
+    "median_d_cat_variant_px": 19.4164878389476
+  },
+  "gates": {
+    "mask": {
+      "count_preserved": true,
+      "one_dot_per_pixel": true,
+      "zero_on_catalogue": true,
+      "inside_footprint": true,
+      "exclusion_preserved_dcat_gt_2": true,
+      "differs_from_parent": true
+    },
+    "file": {
+      "nan_format_ok": true,
+      "zeros_format_ok": true,
+      "sha256_not_in_ledger": true,
+      "reread_dot_count_matches": true
+    },
+    "all_passed": true
+  },
+  "files": {
+    "nan": {
+      "path": "releases/h33-2-b2-snap2p0px-g0p02-20261023-b2019f55.tif",
+      "sha256": "2d9c6f7253b8b3502b4ca0160c71b1aa6950dfe3585f0bfcd56dc85433073811",
+      "bytes": 355512,
+      "checks": {
+        "crs_matches_template": true,
+        "transform_matches_template": true,
+        "shape_3730x3292": true,
+        "dtype_float32": true,
+        "single_band": true,
+        "in_footprint_all_finite": true,
+        "in_footprint_in_0_1": true,
+        "zero_mass_on_catalogue": true,
+        "outside_footprint_ok": true,
+        "all_passed": true
+      },
+      "meta": {
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "transform": [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ]
+      },
+      "dots": 37654,
+      "in_footprint_min": 0.0,
+      "in_footprint_max": 1.0
+    },
+    "zeros": {
+      "path": "releases/h33-2-b2-snap2p0px-g0p02-20261023-b2019f55-zeros.tif",
+      "sha256": "259a8d88eb3f06a557f20a24fc137f6d8b3cf66f36ffe2e4221417561b960d38",
+      "bytes": 219126,
+      "checks": {
+        "crs_matches_template": true,
+        "transform_matches_template": true,
+        "shape_3730x3292": true,
+        "dtype_float32": true,
+        "single_band": true,
+        "in_footprint_all_finite": true,
+        "in_footprint_in_0_1": true,
+        "zero_mass_on_catalogue": true,
+        "outside_footprint_ok": true,
+        "all_passed": true
+      },
+      "meta": {
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "transform": [
+          100.0,
+          0.0,
+          243350.0,
+          0.0,
+          -100.0,
+          4508550.0
+        ]
+      },
+      "dots": 37654,
+      "in_footprint_min": 0.0,
+      "in_footprint_max": 1.0
+    }
+  },
+  "form_note": "R0 + snap 2p0px-g0p02 (4,152/37,654 dots moved, mean 1.91 px); predicted +0.007..+0.018",
+  "form_note_chars": 87
+}

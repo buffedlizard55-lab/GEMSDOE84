@@ -1,5 +1,25 @@
 # GEMSDOE84 — Lane `H84-KTHM`: Coupled Solute Geothermometry Disequilibrium, Multi-Physics LOQO Ensembles & Sub-Degree Elastostatic Two-Regime Fault Allocation
 
+<!-- CURRENT STATE — the only block a session may edit. Everything below it is frozen. -->
+## CURRENT STATE (2026-10-23, branch `arena/1c8a6632-gemsdoe84`)
+
+| Field | Value | Evidence class |
+| :--- | :--- | :--- |
+| **Parent (R0)** | `h33-h33-2-b2` (GEMSDOE32), 37,654 dots, SHA-256 `c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9` — **rebuilt byte-identically this session** (`evidence/r0_rebuild_receipt.json`) | REBUILD |
+| **Best receipt** | **none.** No submission-page receipt is committed in this repo (`ledger/submissions.csv`: `receipts_committed = 0`). The incumbent's `0.2778` is owner-reported. | CLAIM |
+| **TOP_PUBLIC** | `0.3195` (rank 1, "DARD"), manual read of the public leaderboard **2026-10-03** — owner must refresh with a date | OFFICIAL_SNAPSHOT (stale) |
+| **Slots left this week** | **unknown — owner must fill** (1 entity, 3 scored/rolling week, 1 final blind). Deadline 2026-12-03 (confirm on the competition page) | — |
+| **Next 3 slots** | 1) `releases/h33-2-b2-snap1p4px-g0p02-20261023-0b6a2ab2-zeros.tif` (6.42 % of dots moved) · 2) `releases/h33-2-b2-snap2p0px-g0p02-20261023-b2019f55-zeros.tif` (11.03 %) · 3) `releases/h33-2-b2-snap2p0px-g0p01-20261023-7bdaa58b-zeros.tif` (26.47 %) — see [`SLOT_PLAN.md`](SLOT_PLAN.md) and [`docs/SUBMIT.md`](docs/SUBMIT.md) | BUILT (unscored) |
+
+Session status: AXIS = **SNAP**; three variants of R0 built, gated and re-read from disk;
+predicted live change **+0.004…+0.044 (MODEL)**, i.e. slot 1's band straddles the 0.01
+"no evidence" line. Report-only instruments came back mildly negative
+([`IRREGULARITIES.md`](IRREGULARITIES.md) IR-84-S6). **The `H84-KTHM` banner below is frozen
+history from an earlier session and is not this session's recommendation** — it was never
+scored, and `AGENTS.md` records that lane as stopped.
+
+<!-- /CURRENT STATE -->
+
 > **VERDICT: `PROMOTE` — AUTOMATED DUAL VALIDATION PASSED (`SAFE & RECOMMENDED TO DOWNLOAD & SUBMIT`)**
 > - **Download Ready-to-Submit Single-Band GeoTIFF (`209.4 KiB`):** [`docs/downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.tif`](docs/downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.tif)
 > - **Download DrivenData Single-GeoTIFF ZIP Archive (`178.5 KiB`):** [`docs/downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.zip`](docs/downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.zip)
