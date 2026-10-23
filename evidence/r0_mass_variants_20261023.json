@@ -1,0 +1,476 @@
+{
+  "generated_utc": "2026-10-23T04:15:00Z",
+  "git_head_sha": "cf7f56115fca67550c5dc11fc81c448494673130",
+  "seed": 520810,
+  "axis": "MASS",
+  "manifest_files_verified": 23,
+  "parent_r0": {
+    "id": "h33-h33-2-b2",
+    "source_repo": "buffedlizard55-lab/GEMSDOE32",
+    "live_score": 0.2778,
+    "evidence_label": "CLAIM",
+    "n_dots": 37654,
+    "d_cat_min_px": 2.2361,
+    "d_cat_median_px": 19.6469,
+    "d_cat_p90_px": 68.0074,
+    "d_cat_gt_3px_dots": 35483,
+    "d_cat_eq_3px_dots": 560,
+    "d_cat_between_2_and_3px_dots": 1611,
+    "digest8": "e5eb6e7e",
+    "nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "exact_rebuild_verified": true
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3",
+      "key": "drop10pct",
+      "parent": "h33-h33-2-b2",
+      "axis": "MASS",
+      "value": "-10pct",
+      "n_dots": 33889,
+      "dots_added": 0,
+      "dots_removed": 3765,
+      "symmetric_diff_dots": 3765,
+      "pct_changed_vs_r0": 10.0,
+      "jaccard_vs_r0": 0.900011,
+      "d_cat_min_px": 2.2361,
+      "d_cat_median_px": 19.105,
+      "d_cat_p90_px": 67.0,
+      "added_dots_d_cat_min_px": null,
+      "digest8_mask": "2f6718a4",
+      "nan_tif": {
+        "path": "releases/h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3.tif",
+        "sha256": "2cde51f32b5a22a4489044904a3fabc3dba8f41a5488bad044d6f12ac0783079",
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "no_nan_in_footprint": true,
+        "values_in_0_1": true,
+        "outside_footprint_encoding_ok": true,
+        "n_dots": 33889,
+        "catalogue_mass": 0.0,
+        "gate_passed": true
+      },
+      "zeros_tif": {
+        "path": "releases/h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3-zeros.tif",
+        "sha256": "fa0d0564258f3445ba5756f1585d5d341718196fa37b92ecb91ee66c24fe4e32",
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "no_nan_in_footprint": true,
+        "values_in_0_1": true,
+        "outside_footprint_encoding_ok": true,
+        "n_dots": 33889,
+        "catalogue_mass": 0.0,
+        "gate_passed": true
+      },
+      "form_note": "h33-h33-2-b2; MASS -10% (drop 3765 lowest-rank dots -> 33889); pred +0.002 to +0.005 DTI",
+      "predicted_change": "+0.0020 to +0.0045 DTI (MODEL: prunes 3,765 lowest-marginal-gain dots where FP penalty outweighs marginal coverage)",
+      "mechanism_card": {
+        "hypothesis": "Removing the lowest-ranked 10% (3,765 dots) of R0 increases live DTI because those tail dots sit on single-channel topographic/geophysical noise or already-covered fault segments where marginal truth credit dT < 0.0719 px-equiv (the break-even bar at s0 = 0.2778).",
+        "mechanism": "Under DTI = T / (0.2*T + 0.2*(S - M) + 0.8*|G|), each unit-mass dot adds 0.2*(1 - m_q(x)) to the denominator and (1 - 0.2*s0)*dT(x) to the numerator. Dots ranked in the bottom decile of R0 have minimum multi-channel corroboration (corrob_count <= 1) and weak H33 multi-physics strike consensus (H33-A..D), contributing excess false-positive mass (S - M) without expanding the 300 m max-coverage envelope.",
+        "non_fault_mimic": "Erosional pediment dissection scarps, alluvial-fan channel margins, and volcanic flow-lobe edges that trigger a single DEM/openness ridge channel (h19_5) without magnetic (RTP/TMI), gravity (isostatic HGM), MT conductivity, or 1 m LiDAR en-echelon scarplet corroboration.",
+        "predicted_sign_and_size": "Positive: +0.0020 to +0.0045 DTI on public test (MODEL; fold-clean hide-and-recover PROXY delta reported separately).",
+        "falsifier": "A live score < 0.2768 (drop >= 0.0010 below R0's 0.2778 CLAIM) falsifies the hypothesis that R0's bottom decile is net-FP-dominated and proves hidden test faults populate low-corroboration DEM ridges."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-mass-add10pct-20261023-ad925bd2",
+      "key": "add10pct",
+      "parent": "h33-h33-2-b2",
+      "axis": "MASS",
+      "value": "+10pct",
+      "n_dots": 41419,
+      "dots_added": 3765,
+      "dots_removed": 0,
+      "symmetric_diff_dots": 3765,
+      "pct_changed_vs_r0": 10.0,
+      "jaccard_vs_r0": 0.9091,
+      "d_cat_min_px": 2.2361,
+      "d_cat_median_px": 19.2354,
+      "d_cat_p90_px": 67.4759,
+      "added_dots_d_cat_min_px": 3.0,
+      "digest8_mask": "067370da",
+      "nan_tif": {
+        "path": "releases/h33-h33-2-b2-mass-add10pct-20261023-ad925bd2.tif",
+        "sha256": "ad925bd2a42f5b231fa3cb4c5e35fa28aa491602c45c8a6da09df6143494b4b5",
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "no_nan_in_footprint": true,
+        "values_in_0_1": true,
+        "outside_footprint_encoding_ok": true,
+        "n_dots": 41419,
+        "catalogue_mass": 0.0,
+        "gate_passed": true
+      },
+      "zeros_tif": {
+        "path": "releases/h33-h33-2-b2-mass-add10pct-20261023-ad925bd2-zeros.tif",
+        "sha256": "dc3444636f8f80661f87fda61a700572a54cb60ab88ae28130f9e5b57fd13100",
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "no_nan_in_footprint": true,
+        "values_in_0_1": true,
+        "outside_footprint_encoding_ok": true,
+        "n_dots": 41419,
+        "catalogue_mass": 0.0,
+        "gate_passed": true
+      },
+      "form_note": "h33-h33-2-b2; MASS +10% (add 3765 top-rank dots at dcat>=3px -> 41419); pred -0.003 to +0.003",
+      "predicted_change": "-0.0030 to +0.0025 DTI (MODEL: adds 3,765 next-ranked corroborated ridge dots at r>=2.8px, d_cat>=3px; tests if G_test > 15k)",
+      "mechanism_card": {
+        "hypothesis": "Adding the next-ranked 10% (+3,765 dots -> 41,419 dots) from multi-channel corroborated ridge extensions (h19_4 | h16_1 | tgc_v2_d15 | h19_5) at r_min = 2.8 px and d_cat >= 3.0 px increases DTI if and only if off-catalogue fault prevalence in those secondary ridges exceeds the 7.2% break-even coverage bar.",
+        "mechanism": "Selects 3,765 candidate dots outside R0's 300 m kernel shadow by lazy greedy maximization of exact marginal DTI gain weighted by H33-A..D multi-physics lineament consensus and 1 m LiDAR scarp step height, strictly >= 300 m from all existing_faults.tif pixels.",
+        "non_fault_mimic": "Intrabasinal playette desiccation cracks, lithologic dike swarms in TMI, and range-parallel strandline terraces that form collinear geophysical/topographic ridges >300 m off mapped Quaternary faults.",
+        "predicted_sign_and_size": "Bracketing sign: -0.0030 to +0.0025 DTI (MODEL). Paired with MASS -10%, the two points bracket the exact optimal mass S* on the R0 ranking curve in one week.",
+        "falsifier": "A live score < 0.2735 while MASS -10% scores > 0.2785 falsifies under-allocation and proves the R0 ridge family is already over-budgeted past S* <= 37,654."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-mass-drop20pct-20261023-62bfc392",
+      "key": "drop20pct",
+      "parent": "h33-h33-2-b2",
+      "axis": "MASS",
+      "value": "-20pct",
+      "n_dots": 30123,
+      "dots_added": 0,
+      "dots_removed": 7531,
+      "symmetric_diff_dots": 7531,
+      "pct_changed_vs_r0": 20.0,
+      "jaccard_vs_r0": 0.799995,
+      "d_cat_min_px": 2.2361,
+      "d_cat_median_px": 18.6815,
+      "d_cat_p90_px": 65.7951,
+      "added_dots_d_cat_min_px": null,
+      "digest8_mask": "6e56c103",
+      "nan_tif": {
+        "path": "releases/h33-h33-2-b2-mass-drop20pct-20261023-62bfc392.tif",
+        "sha256": "62bfc392b6a1e6cbffcf0e1ac7085b6d02a8676044dae8f0df031ffd416e2e5c",
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "no_nan_in_footprint": true,
+        "values_in_0_1": true,
+        "outside_footprint_encoding_ok": true,
+        "n_dots": 30123,
+        "catalogue_mass": 0.0,
+        "gate_passed": true
+      },
+      "zeros_tif": {
+        "path": "releases/h33-h33-2-b2-mass-drop20pct-20261023-62bfc392-zeros.tif",
+        "sha256": "53e39cd15731233b7a05ee5a89d53e439a76318453637295dc9be64a7264f929",
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "no_nan_in_footprint": true,
+        "values_in_0_1": true,
+        "outside_footprint_encoding_ok": true,
+        "n_dots": 30123,
+        "catalogue_mass": 0.0,
+        "gate_passed": true
+      },
+      "form_note": "h33-h33-2-b2; MASS -20% (drop 7531 lowest-rank dots -> 30123); pred +0.001 to +0.007 DTI",
+      "predicted_change": "+0.0010 to +0.0065 DTI (MODEL: prunes 7,531 lowest-ranked 20% of R0 -> 30,123 dots; tests steeper precision-recall regime)",
+      "mechanism_card": {
+        "hypothesis": "Pruning the bottom 20% (7,531 dots -> 30,123 dots) of R0 tests whether true unmapped test fault prevalence |G| is sparse enough (< 10,000 px) that aggressive denominator compression (-1,506 units in 0.2*S) outweighs the loss of second-decile ridge coverage.",
+        "mechanism": "Retains only the top 80% (30,123 dots) of R0 where multi-channel ridge corroboration (h19_5 + h19_4 + h16_1 + tgc + d15 + ens12) and H33-A..D strike alignment both exceed the 20th-percentile marginal DTI gain threshold.",
+        "non_fault_mimic": "Secondary tributary drainage alignments and low-relief piedmont slope breaks that pass 2-channel corroboration but lack deep basement (depth_to_base_surf / MT conductivity) or 1 m LiDAR scarplet step support.",
+        "predicted_sign_and_size": "Positive if MASS -10% is positive: +0.0010 to +0.0065 DTI (MODEL). Determines curvature d^2(DTI)/dS^2 of the live score with respect to total dot mass.",
+        "falsifier": "A live score < MASS -10% and < 0.2760 falsifies aggressive pruning and bounds optimal R0 mass firmly inside [33,889, 37,654]."
+      }
+    }
+  ],
+  "report_only_diagnostics": {
+    "evidence_label": "PROXY",
+    "note": "REPORT ONLY diagnostics (never gates per Brief Section 6).",
+    "leakage_canary": {
+      "gate": "single_feature_holdout_auc_canary",
+      "threshold": 0.9,
+      "n_features_checked": 27,
+      "max_single_feature_auc": 0.5949,
+      "passed": true,
+      "withheld_positives_seed20": 11321,
+      "withheld_positives_seed21": 11572,
+      "total_withheld_positive_pixels": 22893,
+      "top_10_features": [
+        {
+          "feature": "q_posterior",
+          "auc_seed20": 0.6039,
+          "auc_seed21": 0.586,
+          "auc_mean": 0.5949,
+          "abs_strength": 0.5949
+        },
+        {
+          "feature": "lidar_scarp_composite",
+          "auc_seed20": 0.5855,
+          "auc_seed21": 0.5616,
+          "auc_mean": 0.5735,
+          "abs_strength": 0.5735
+        },
+        {
+          "feature": "h33_union",
+          "auc_seed20": 0.5813,
+          "auc_seed21": 0.5614,
+          "auc_mean": 0.5713,
+          "abs_strength": 0.5713
+        },
+        {
+          "feature": "07_geod_shearrate",
+          "auc_seed20": 0.5663,
+          "auc_seed21": 0.5611,
+          "auc_mean": 0.5637,
+          "abs_strength": 0.5637
+        },
+        {
+          "feature": "19_det_elev_slope",
+          "auc_seed20": 0.5636,
+          "auc_seed21": 0.5622,
+          "auc_mean": 0.5629,
+          "abs_strength": 0.5629
+        },
+        {
+          "feature": "04_geod_2ndinv",
+          "auc_seed20": 0.5668,
+          "auc_seed21": 0.5573,
+          "auc_mean": 0.562,
+          "abs_strength": 0.562
+        },
+        {
+          "feature": "16_ieq_n100a15",
+          "auc_seed20": 0.5428,
+          "auc_seed21": 0.563,
+          "auc_mean": 0.5529,
+          "abs_strength": 0.5529
+        },
+        {
+          "feature": "06_tc",
+          "auc_seed20": 0.4715,
+          "auc_seed21": 0.4305,
+          "auc_mean": 0.451,
+          "abs_strength": 0.549
+        },
+        {
+          "feature": "10_deq_n100a15",
+          "auc_seed20": 0.5371,
+          "auc_seed21": 0.5398,
+          "auc_mean": 0.5385,
+          "abs_strength": 0.5385
+        },
+        {
+          "feature": "13_iso_grav_anom",
+          "auc_seed20": 0.4593,
+          "auc_seed21": 0.4665,
+          "auc_mean": 0.4629,
+          "abs_strength": 0.5371
+        }
+      ]
+    },
+    "catalogue_hide_and_recover_proxy": {
+      "evidence_label": "PROXY",
+      "withheld_positive_pixels": 22893,
+      "spatial_clusters_20km": 156,
+      "bootstrap_draws": 1000,
+      "fold_clean_recipe_scores": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.10564450185732029,
+          "ci95": [
+            0.09363329810252148,
+            0.11695500848630204
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 3524.103620286295,
+          "fpw": 71694.57447131119,
+          "fnw": 19368.896379713697
+        },
+        "drop10pct": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.10438926402583099,
+          "ci95": [
+            0.09228099315176617,
+            0.11564978612946775
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 3325.2393731888446,
+          "fpw": 64373.89852687428,
+          "fnw": 19567.760626811145
+        },
+        "add10pct": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.1073683052391357,
+          "ci95": [
+            0.095027427038084,
+            0.11861648280634751
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 3736.298064595289,
+          "fpw": 78686.16223137525,
+          "fnw": 19156.701935404715
+        },
+        "drop20pct": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.10148718976480166,
+          "ci95": [
+            0.08968736289355637,
+            0.11274114047524833
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 3079.677990365954,
+          "fpw": 57075.746796110165,
+          "fnw": 19813.322009634037
+        }
+      },
+      "fold_clean_paired_differences_vs_add10pct": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.0017238033818154086,
+          "ci95": [
+            0.00041593446889988986,
+            0.0030826863869314832
+          ],
+          "withheld_positive_pixels": 22893
+        },
+        "drop10pct": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.002979041213304709,
+          "ci95": [
+            0.0008135056333122632,
+            0.005177382119887661
+          ],
+          "withheld_positive_pixels": 22893
+        },
+        "drop20pct": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "delta": 0.005881115474334037,
+          "ci95": [
+            0.002360520216057372,
+            0.009770097347390712
+          ],
+          "withheld_positive_pixels": 22893
+        }
+      },
+      "shipped_mask_scores": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0038851762665228526,
+          "ci95": [
+            0.003318222733791532,
+            0.004452597240467501
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 126.10656936923311,
+          "fpw": 70593.84715207116,
+          "fnw": 22766.893430630775
+        },
+        "drop10pct": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.003927281402662701,
+          "ci95": [
+            0.0033333603493938143,
+            0.004476229562777093
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 121.82938158938857,
+          "fpw": 63412.67954693823,
+          "fnw": 22771.17061841062
+        },
+        "add10pct": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0037228140705711653,
+          "ci95": [
+            0.003178580607457606,
+            0.004273961220062213
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 126.10656936923311,
+          "fpw": 77671.84715207116,
+          "fnw": 22766.893430630775
+        },
+        "drop20pct": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.003997836721350689,
+          "ci95": [
+            0.0034106291903928713,
+            0.004557899676307542
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 118.28481504745461,
+          "fpw": 56245.740705639015,
+          "fnw": 22774.71518495255
+        }
+      }
+    },
+    "sgmc_off_catalogue_control": {
+      "R0": {
+        "evidence_label": "PROXY",
+        "sgmc_off_catalogue_truth_pixels": 62703,
+        "emitted_dots": 37654,
+        "sgmc_raw_dti": 0.09606,
+        "sgmc_coverage": 0.089346,
+        "sgmc_prevalence_calibrated_dti": 0.064121
+      },
+      "drop10pct": {
+        "evidence_label": "PROXY",
+        "sgmc_off_catalogue_truth_pixels": 62703,
+        "emitted_dots": 33889,
+        "sgmc_raw_dti": 0.091562,
+        "sgmc_coverage": 0.084022,
+        "sgmc_prevalence_calibrated_dti": 0.062982
+      },
+      "add10pct": {
+        "evidence_label": "PROXY",
+        "sgmc_off_catalogue_truth_pixels": 62703,
+        "emitted_dots": 41419,
+        "sgmc_raw_dti": 0.107194,
+        "sgmc_coverage": 0.10114,
+        "sgmc_prevalence_calibrated_dti": 0.069621
+      },
+      "drop20pct": {
+        "evidence_label": "PROXY",
+        "sgmc_off_catalogue_truth_pixels": 62703,
+        "emitted_dots": 30123,
+        "sgmc_raw_dti": 0.083676,
+        "sgmc_coverage": 0.075712,
+        "sgmc_prevalence_calibrated_dti": 0.059395
+      }
+    }
+  },
+  "elapsed_seconds": 210.31
+}

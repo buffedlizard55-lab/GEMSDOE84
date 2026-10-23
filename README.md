@@ -15,6 +15,19 @@
 
 ## Standing prompt — read at the start of every session
 
+<!-- CURRENT_STATE_START -->
+### CURRENT STATE (Updated `2026-10-23`, Brief v2)
+
+- **Parent (`R0`)**: `h33-h33-2-b2` (`GEMSDOE32`, `37,654` unit-mass dots, `d_cat > 2.0 px`; rebuilt bit-for-bit from `scored_h19_5` with exact SHA-256 match `c55bafc470054e82...` `-zeros.tif` / `baeae3219bba6a19...` `-nan.tif`).
+- **Best receipt**: `None` (`0` organizer-confirmed receipts in repo; best live score is `0.2778` `CLAIM` for `h33-h33-2-b2` in `ledger/submissions.csv`).
+- **`TOP_PUBLIC`**: `UNVERIFIED` (human to supply; sandbox blocks `drivendata.org` per competition rules).
+- **Slots left**: `UNVERIFIED` by human (`41 days` / `5.86 weeks` to `2026-12-03` deadline = up to `3 slots/week` / `18 slots total` for ONE entity; `0` live slots consumed this session).
+- **Next 3 slots (`AXIS = MASS`, built in `releases/` and logged in `ledger/submissions.csv`)**:
+  1. `h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3` (`MASS = -10pct`, `33,889` dots, `10.00%` changed vs R0; predicted `+0.0020` to `+0.0045` DTI `MODEL`).
+  2. `h33-h33-2-b2-mass-add10pct-20261023-ad925bd2` (`MASS = +10pct`, `41,419` dots, `10.00%` changed vs R0, added dots $d_{\text{cat}} \ge 3.0\text{ px}$; predicted `-0.0030` to `+0.0025` DTI `MODEL`).
+  3. `h33-h33-2-b2-mass-drop20pct-20261023-62bfc392` (`MASS = -20pct`, `30,123` dots, `20.00%` changed vs R0; predicted `+0.0010` to `+0.0065` DTI `MODEL`).
+<!-- CURRENT_STATE_END -->
+
 ## 1. Project Mandate & PARALLEL-RUN PROTOCOL Governance
 
 This repository executes **Lane `H84-KTHM`** for the U.S. Department of Energy / DrivenData **Geothermal Exploration with Machine Learning and Data Science (GEMS)** hidden-fault discovery challenge on the `EPSG:32611` (`100 m × 100 m`, `3730 × 3292`) Nevada Great Basin study grid, scored under the pooled **Distance-Weighted Tversky Index (`DTI`, $\alpha = 0.2$, $\beta = 0.8$, `300 m` triangular kernel)**:
