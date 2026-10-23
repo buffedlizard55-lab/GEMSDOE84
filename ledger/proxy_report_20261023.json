@@ -1,0 +1,39 @@
+{
+  "class": "PROXY (local holdout) -- report only, never a gate, never a score",
+  "evaluator": "vendor/gems57 pooled hide-and-recover, seeds=[20,21], mode=all, static dots as-is",
+  "n_withheld_positives": 22641,
+  "bias_note": "lineage prune used the full catalogue incl. withheld segments; PROXY understates pruned files",
+  "candidates": {
+    "R0": {
+      "holdout_dti_PROXY": 0.004384809306270315,
+      "paired_diff_vs_R0_PROXY": null
+    },
+    "h33-h33-2-b2-prune3r-20261023-8316df41": {
+      "holdout_dti_PROXY": 0.0,
+      "paired_diff_vs_R0_PROXY": {
+        "mean": -0.004376876513113166,
+        "ci95_cell_bootstrap": [
+          -0.005106747858290089,
+          -0.003795804660457113
+        ]
+      }
+    },
+    "h33-h33-2-b2-prune4r-20261023-2459d700": {
+      "holdout_dti_PROXY": 0.0,
+      "paired_diff_vs_R0_PROXY": {
+        "mean": -0.004372843162427495,
+        "ci95_cell_bootstrap": [
+          -0.005078207870666086,
+          -0.003767756101170137
+        ]
+      }
+    }
+  },
+  "sgmc_control_PROXY": {
+    "n_sgmc_off_catalogue_px": 79615,
+    "R0": 0.0928930494744682,
+    "h33-h33-2-b2-prune3r-20261023-8316df41": 0.08513939164776774,
+    "h33-h33-2-b2-prune4r-20261023-2459d700": 0.07799394401996904,
+    "note": "SGMC geologic-map faults are a control surface, not scored truth"
+  }
+}

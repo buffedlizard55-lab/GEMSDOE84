@@ -1,0 +1,30 @@
+{
+  "file": "releases/h33-h33-2-b2-prune3r-20261023-8316df41-zeros.tif",
+  "mode": "zeros",
+  "sha256": "af6106f1f6e03795bfe6f95aa9802d7527deced05122e6bb1d105645245810b9",
+  "bytes": 146933,
+  "n_dots": 37654,
+  "on_catalogue_dots": 0,
+  "checks": {
+    "single_band": true,
+    "dtype_float32": true,
+    "crs_shape_transform_bounds_match_sample": true,
+    "no_nan_inside_footprint": true,
+    "values_in_0_1_inside": true,
+    "zeros_outside_footprint": true,
+    "zero_catalogue_mass": true,
+    "nodata_tag_consistent": true
+  },
+  "all_must_gates_passed": true,
+  "scope": "local format/catalogue gate (brief v2 s6); not organiser acceptance",
+  "parent_diff": {
+    "parent": "/home/user/gemsdata/parent/r0-zeros.tif",
+    "parent_dots": 37654,
+    "kept": 35483,
+    "removed": 2171,
+    "added": 2171,
+    "pct_of_parent_dots_replaced": 5.7657,
+    "candidate_min_d_catalogue_px": 3.1622776601683795,
+    "candidate_median_d_catalogue_px": 19.79898987322333
+  }
+}

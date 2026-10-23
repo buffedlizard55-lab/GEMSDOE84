@@ -1,5 +1,13 @@
 # GEMSDOE84 — Lane `H84-KTHM`: Coupled Solute Geothermometry Disequilibrium, Multi-Physics LOQO Ensembles & Sub-Degree Elastostatic Two-Regime Fault Allocation
 
+## CURRENT STATE (2026-10-23, brief v2 session — this block supersedes the verdict below)
+
+- **Parent (incumbent):** R0 `h33-h33-2-b2` (GEMSDOE32), 37,654 dots, 0 within 2 px of catalogue; file sha256 `c55bafc4…` verified and dot set rebuilt exactly. Live 0.2778 is **CLAIM** (no receipt on file).
+- **Best receipt:** none — every live number in `ledger/submissions.csv` is CLAIM until the human pastes submission-page receipts.
+- **TOP_PUBLIC:** not supplied (TBD by human, with date). No other target number is valid.
+- **Slots left this week / total:** not supplied (TBD). Deadline 2026-12-03 unconfirmed.
+- **Next 3 slots:** (1) `h33-h33-2-b2-prune3r-20261023-8316df41` BUILT, gates pass; (2) `h33-h33-2-b2-prune4r-20261023-2459d700` BUILT, gates pass; (3) HOLD per decision tree in `SLOT_PLAN.md`. Files/notes/format receipts: `docs/SUBMIT.md`; mechanism cards: `ledger/mechanism_cards.md`. The brief-v2 protocol supersedes the old duplicate-gate STOP for R0-variant work (`IRREGULARITIES.md` #2); README §4's R0 anatomy is measured-inverted (#1).
+
 > **VERDICT: `PROMOTE` — AUTOMATED DUAL VALIDATION PASSED (`SAFE & RECOMMENDED TO DOWNLOAD & SUBMIT`)**
 > - **Download Ready-to-Submit Single-Band GeoTIFF (`209.4 KiB`):** [`docs/downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.tif`](docs/downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.tif)
 > - **Download DrivenData Single-GeoTIFF ZIP Archive (`178.5 KiB`):** [`docs/downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.zip`](docs/downloads/gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros.zip)

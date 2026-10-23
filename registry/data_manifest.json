@@ -260,6 +260,39 @@
       "sha256": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
       "bytes": 1635084,
       "provenance": "owner-supplied scored-artifact mirror (GEMSDOE27 primary candidate manifest, generated_utc 2026-10-03T00:32:37Z); UNSCORED on the leaderboard; added 2026-10-04 because scripts/run_pipeline.py required it and it was absent from this manifest, which made the documented reproduce command abort (IR-32-MANIFEST-01)"
+    },
+    {
+      "id": "parent_r0_zeros",
+      "repo": "buffedlizard55-lab/GEMSDOE32",
+      "ref": "078f3cea1bc75d15beb81b095ab488a912327a5d",
+      "path": "docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+      "dest": "parent/r0-zeros.tif",
+      "group": "parent",
+      "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "bytes": 219065,
+      "provenance": "R0 incumbent (brief v2 parent); owner-reported live 0.2778 = CLAIM, no submission-page receipt in ledger/ as of 2026-10-23; pin cross-checked in evidence/h33-original-audit.json; verified byte-exact 2026-10-23 and rebuilt as h27-4 minus d_catalogue<=2px"
+    },
+    {
+      "id": "parent_r0_nan",
+      "repo": "buffedlizard55-lab/GEMSDOE32",
+      "ref": "078f3cea1bc75d15beb81b095ab488a912327a5d",
+      "path": "docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-nan.tif",
+      "dest": "parent/r0-nan.tif",
+      "group": "parent",
+      "sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+      "bytes": 355443,
+      "provenance": "NaN-outside twin of parent_r0_zeros (identical dot set, verified 2026-10-23); pin from evidence/h33-original-audit.json"
+    },
+    {
+      "id": "parent_h27_4_base",
+      "repo": "buffedlizard55-lab/GEMSDOE28",
+      "ref": "d618b648f3ff3b30d04f376dcd6610c3cf28cf28",
+      "path": "docs/downloads/gems28-h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan.tif",
+      "dest": "parent/h27-4-r1-nan.tif",
+      "group": "parent",
+      "sha256": "ab02300152248fdda04e988e2cd2a0c13f35eec42fcf670a15e8b76b19e24a73",
+      "bytes": 1595850,
+      "provenance": "R0 base (owner-reported live 0.2708 = CLAIM); pin from evidence/h33_validation.json; verified 2026-10-23: equals d2.8 minus d_catalogue<=1px, and R0 equals this file minus d_catalogue<=2px"
     }
   ]
 }
