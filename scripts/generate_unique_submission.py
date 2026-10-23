@@ -184,6 +184,8 @@ def dots(surface: np.ndarray, allowed: np.ndarray, budget: int, sep: int = 3) ->
     return out
 
 def main():
+    from audit_release import assert_lane_open
+    assert_lane_open()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--budget", type=int, default=BUDGET)
     parser.add_argument("--out", type=Path, default=ROOT / "docs/downloads" / f"{SUBMISSION_NAME}.tif")

@@ -18,10 +18,10 @@
     },
     {
       "id": "IR-84-03",
-      "severity": "high",
-      "component": "Hide-and-recover holdout evaluation with production registry-halo cap (IR-82-02)",
-      "summary": "Historical rasters in scored/*.tif masked cat = visible | hidden, so enforcing the 3-px registry halo cap during holdout steers dots away from visible faults toward hidden holes.",
-      "resolution": "Evaluated both strictly fold-clean uncapped Dinkelbach (A4_thms96_dink_c20 = 0.185023 HOLDOUT-DTI) and production-capped Dual-Head Dinkelbach (A5_thms96_dualhead_dink_c30 = 0.225509 HOLDOUT-DTI) side-by-side on 22,663 withheld positives; both beat GEMSDOE82 and GEMSDOE83 under their respective conventions."
+      "severity": "critical",
+      "component": "Archived A5 holdout emission with full-catalogue registry halos",
+      "summary": "The archived production-like holdout emitter used registry halos derived from the full catalogue, including withheld faults; a single-feature canary does not test this side channel.",
+      "resolution": "The prior A5 HOLDOUT-DTI is archived, not certified fold-clean and not used as a current score. The holdout emitter now omits registry halos; no replacement score has been run. Recompute using buffered whole-segment folds and visible-only catalogue features."
     },
     {
       "id": "IR-84-04",
@@ -46,10 +46,10 @@
     },
     {
       "id": "IR-84-07",
-      "severity": "low",
-      "component": "Space-filling continuous/lattice rasters in scored/*.tif",
-      "summary": "Two dense rasters cover >73% of the allowed domain with their 3-px halo.",
-      "resolution": "Enforced bit-packed 3-px halo cap across all rasters including gems19-h19-5 and 13gems_r13-lattice-s5 so raw max_overlap_3px = 0.649997 <= 0.70 against all 359 rasters simultaneously."
+      "severity": "critical",
+      "component": "Shared literal registry comparator and SHA-pinned 17GEMSDOE witness",
+      "summary": "Earlier 359-raster cap truncated/exempted dense prior support and failed to enforce the literal any-raster forward-overlap rule.",
+      "resolution": "The archived H84 dots have 1.0 forward 3-pixel overlap with the SHA-pinned witness (limit 0.70). A single counterexample proves failure, not copying. The shared saturation certificate shows every nonempty prediction under the current support rule would fail. NEGATIVE \u2014 DO NOT SUBMIT; see registry/release_status.json."
     },
     {
       "id": "IR-84-08",

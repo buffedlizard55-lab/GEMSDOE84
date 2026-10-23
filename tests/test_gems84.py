@@ -59,7 +59,7 @@ def test_leakage_canary_gate():
 
 
 def test_dualseed_holdout_progression():
-    card = json.loads((ROOT / "run_card.json").read_text())
+    card = json.loads((ROOT / "research/archive/previous-h84-run-card.json").read_text())
     arms = card["holdout_dti"]["all_arms_dualseed"]
     required_arms = [
         "A0_random",
@@ -78,16 +78,15 @@ def test_dualseed_holdout_progression():
         assert len(arm["ci95"]) == 2
         assert arm["ci95"][0] <= arm["dti"] <= arm["ci95"][1]
 
-    # Strict monotonic progression across all 6 arms
-    scores = [arms[k]["dti"] for k in required_arms]
-    assert scores == sorted(scores), f"Non-monotonic progression: {scores}"
-    # Verify both uncapped A4 and production-capped A5 beat prior fleet baselines
-    assert arms["A4_thms96_dink_c20"]["dti"] > 0.174632  # > GEMSDOE83 uncapped & > GEMSDOE82 (0.164497)
-    assert arms["A5_thms96_dualhead_dink_c30"]["dti"] > 0.206817  # > GEMSDOE83 production (0.206817)
+    # Archive arithmetic is inspectable, not scientific acceptance or a required
+    # monotonic "success" progression. A5 is not certified leakage-free.
+    for arm in arms.values():
+        tp, fp, fn = arm['tpw'], arm['fpw'], arm['fnw']
+        assert np.isclose(arm['dti'], tp / (tp + 0.2 * fp + 0.8 * fn))
 
 
 def test_validated_submission_geotiff_and_zip():
-    card = json.loads((ROOT / "run_card.json").read_text())
+    card = json.loads((ROOT / "research/archive/previous-h84-run-card.json").read_text())
     sub_name = card["submission_name"]
     tif_sub = ROOT / "submissions" / f"{sub_name}.tif"
     zip_sub = ROOT / "submissions" / f"{sub_name}.zip"
@@ -128,51 +127,31 @@ def test_uniqueness_and_run_card_contract():
         "mechanism",
         "named_nonfault_mimic",
         "holdout_dti",
-        "leakage_canary",
-        "correlation_overlap_vs_registry",
+        "holdout_status",
+        "registry_correlation_overlap",
         "raster_sha256",
         "validator_output",
         "submission_name",
-        "portal_note",
+        "submission_note",
         "verdict",
     ):
         assert key in card
 
-    assert card["verdict"] == "negative"
-    assert card["ok_to_download"] is True  # review-only artifact download
-    assert card["ok_to_submit"] is False
-    assert card["submission_authorized"] is False
-    assert card["correlation_overlap_vs_registry"]["candidate_specific_full_registry_clearance"] == "NOT RUN / NOT CLEARED"
-    assert card["submission_authorized"] is False
-    assert card["selector_status"].startswith("pending")
-    assert card["organizer_acceptance"].startswith("not observed")
-    assert 1 <= len(card["portal_note"]) <= 140
-    assert card["experiments_executed"] <= 3
-
-    u = card["correlation_overlap_vs_registry"]
-    assert u["pre_placement_surface_unique"] is True
-    assert u["final_dots_unique"] is True
-    assert u["pre_placement_worst_spearman"] <= 0.90
-    assert u["pre_placement_worst_overlap_3px"] <= 0.70
-    assert u["final_dots_worst_spearman"] <= 0.90
-    assert u["final_dots_worst_overlap_3px"] <= 0.70
-    assert u["rasters_checked"] >= 359
+    assert card['verdict'] == 'negative'
+    assert card['submission_authorized'] is False
+    assert card['raster_sha256'] is None  # no new TIFF generated
+    assert card['holdout_dti'] is None  # no freshly certified result
+    assert len(card['submission_note']) <= 140
+    assert card['registry_correlation_overlap']['duplicate'] is True
+    assert card['registry_correlation_overlap']['overlap_3px'] > 0.70
+    assert card['pre_placement_stop'] is True
 
 
 def test_site_and_readme_deliverables():
     readme = (ROOT / "README.md").read_text()
-    assert "PARALLEL-RUN PROTOCOL (keep this block verbatim):" in readme
+    assert "PARALLEL-RUN PROTOCOL" in readme
     assert "gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros" in readme
-    assert "OK TO DOWNLOAD FOR REVIEW; NOT AUTHORIZED TO SUBMIT" in readme
-    assert "research/REPO_REVIEW_20261023.md" in readme
-    for page in (ROOT / "docs/index.html", ROOT / "docs/executive-summary.html"):
-        body = page.read_text()
-        assert "DO NOT SUBMIT YET" in body
-        assert "Uniqueness clearance is incomplete" in body
-        assert "NOT FOR SUBMISSION" in body
-    snapshot = json.loads((ROOT / "registry/leaderboard_snapshot_2026-10-22.json").read_text())
-    assert snapshot["evidence_class"].startswith("OWNER-REPORTED")
-    assert snapshot["competition_url"].startswith("https://www.drivendata.org/competitions/306/")
+    assert "DO NOT SUBMIT" in readme
 
     for rel in (
         "index.html",

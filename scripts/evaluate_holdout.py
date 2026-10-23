@@ -15,11 +15,9 @@ sys.path.insert(0, str(ROOT / "vendor"))
 
 from gems57.evaluate_holdout import (  # noqa: E402,F401
     VERSION,
-    check_canary,
     evaluate,
     from_terms,
     implementation_hashes,
-    paired_bootstrap_ci,
     pooled_summary,
 )
 
@@ -33,6 +31,8 @@ def main() -> int:
                 {
                     "evaluator_version": VERSION,
                     "implementation_hashes": implementation_hashes(),
+                    "status": "ARCHIVED_REPORT_ONLY_NOT_RECOMPUTED",
+                    "scientific_clearance": False,
                     "dualseed_pooled_scores": data["dualseed_pooled_summary"]["scores"],
                 },
                 indent=2,

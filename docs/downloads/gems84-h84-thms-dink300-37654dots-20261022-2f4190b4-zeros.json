@@ -122,6 +122,7 @@
   "selector_status": "pending; full H84-THMS registry uniqueness audit incomplete",
   "ok_to_download": true,
   "download_scope": "research/review only",
-  "release_status_receipt": "registry/current_release_status.json",
-  "release_blocker": "Candidate-specific uniqueness audit covers 359/1143 indexed rasters; do not submit."
+  "release_status_receipt": "registry/release_status.json",
+  "release_blocker": "Candidate-specific uniqueness audit covers 359/1143 indexed rasters; do not submit.",
+  "decision_note": "Archived research artifact only. Current literal registry-witness audit is NEGATIVE; do not submit."
 }
