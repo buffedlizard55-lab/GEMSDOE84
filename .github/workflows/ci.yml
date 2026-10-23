@@ -11,9 +11,7 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install -r requirements.txt
-      - run: |
-          out=$(python -m pytest -q --tb=short 2>&1) || { echo "::error::$(echo "$out" | tail -c 3500 | tr '\n' ' ')"; exit 1; }
-          echo "$out"
+      - run: python -m pytest -q
       - name: Current run cards and site must reproduce exactly
         run: |
           python scripts/build_run_card.py

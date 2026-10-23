@@ -45,7 +45,8 @@ def test_release_card_integrity():
     else:
         assert card['verdict'] == 'promote'
         assert card['download_allowed'] is True
-        assert (ROOT / card['submission']['tif']).is_file()
-        tif_files = list((ROOT / 'docs/downloads').glob('*.tif'))
+        promoted_tif = ROOT / card['submission']['tif']
+        assert promoted_tif.is_file()
+        tif_files = sorted((ROOT / 'docs/downloads').glob('*.tif'))
         assert 1 <= len(tif_files) <= 4
-        assert hashlib.sha256(tif_files[0].read_bytes()).hexdigest() == card['raster_sha256']
+        assert hashlib.sha256(promoted_tif.read_bytes()).hexdigest() == card['raster_sha256']
