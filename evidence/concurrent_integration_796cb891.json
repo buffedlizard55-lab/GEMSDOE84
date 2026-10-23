@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "incoming_main": "0b68d54a76e58b0561f4148582929880aae34934",
+  "scope": "Inherited files hash-checked and collar-measured only; no new variant built or slot authorized",
+  "preserved_local_rows_before_integration": 126,
+  "new_inherited_rows": 3,
+  "new_total_rows": 129,
+  "files": [
+    {
+      "id": "h33-h33-2-b2-conc5km-t25-m2400-20261023-caadfcce",
+      "sha256": "caadfccefec8e5202c0b8f10884a972ae49130a79517f10e34d0cf54008a01a7",
+      "axis": "CONCENTRATION",
+      "n_dots": 37654,
+      "minimum_catalogue_distance_px": 2.23606797749979,
+      "dots_below_3px": 1583,
+      "newly_built_in_this_session": false,
+      "strict_non_prune_collar_passes": false
+    },
+    {
+      "id": "h33-h33-2-b2-conc5km-t50-m3765-20261023-6310efe0",
+      "sha256": "6310efe0df90949cb8e5a8463d450e52fb9ed1aa212e0c045a11ceda70ce5ee5",
+      "axis": "CONCENTRATION",
+      "n_dots": 37654,
+      "minimum_catalogue_distance_px": 2.23606797749979,
+      "dots_below_3px": 1561,
+      "newly_built_in_this_session": false,
+      "strict_non_prune_collar_passes": false
+    },
+    {
+      "id": "h33-h33-2-b2-spread5km-b50-m2400-20261023-ceb1073d",
+      "sha256": "ceb1073d77869b920cd82c6283bb27b68af4c12b95c02416fcacd7ee9bc07422",
+      "axis": "CONCENTRATION",
+      "n_dots": 37654,
+      "minimum_catalogue_distance_px": 2.23606797749979,
+      "dots_below_3px": 1591,
+      "newly_built_in_this_session": false,
+      "strict_non_prune_collar_passes": false
+    }
+  ]
+}

@@ -82,10 +82,13 @@ def test_clean_gt3_agrees_with_merged_gt3_class():
     assert within["shared_dots"] == 37519
 
 
-def test_ledger_prune_inventory_is_exactly_mains_six():
+def test_historical_prune_inventory_survives_later_unused_values():
     rows = _ledger_rows()
     prune = {r["id"] for r in rows if r.get("axis") == "PRUNE"}
-    assert prune == MAIN_PRUNE_IDS
+    # The audit owns six historical endpoint files, not a ban on future unused
+    # collar states. Preserve all six; the new PRUNE1.5 pair has independent
+    # byte/metric/geometry regression tests in test_prune_intermediate.py.
+    assert MAIN_PRUNE_IDS <= prune
     for r in rows:
         assert r["id"] not in WITHDRAWN_IDS
     side_ids = set()
@@ -95,8 +98,8 @@ def test_ledger_prune_inventory_is_exactly_mains_six():
         side_ids |= {r["id"] for r in side_rows}
     assert side_ids == MAIN_PRUNE_IDS
     summary = json.loads((ROOT / "ledger" / "_summary.json").read_text())
-    assert summary["rows"] == 128
-    assert summary["built"] == 15
+    assert summary["rows"] == len(rows)
+    assert summary["built"] == sum(r.get("status") == "BUILT" for r in rows)
 
 
 def test_withdrawn_files_are_not_in_releases():
@@ -106,7 +109,7 @@ def test_withdrawn_files_are_not_in_releases():
 
 
 def test_merged_prune_files_match_ledger_sha256():
-    rows = {r["id"]: r for r in _ledger_rows() if r.get("axis") == "PRUNE"}
+    rows = {r["id"]: r for r in _ledger_rows() if r["id"] in MAIN_PRUNE_IDS}
     assert set(rows) == MAIN_PRUNE_IDS
     for pid, row in rows.items():
         nan_data = (ROOT / "releases" / f"{pid}.tif").read_bytes()

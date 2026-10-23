@@ -2,22 +2,25 @@
 
 <!-- CURRENT STATE — the only block a session may edit. Everything below it is frozen. -->
 <!-- CURRENT_STATE_START -->
-## CURRENT STATE (2026-10-23; PRUNE merged on `main`, CONCENTRATION built this session)
+## CURRENT STATE (2026-10-23, branch `arena/796cb891-gemsdoe84`)
 
-| Field | Value | Evidence class |
+| Field | Value | Evidence |
 | :--- | :--- | :--- |
-| **Parent (R0)** | `h33-h33-2-b2` (`GEMSDOE32`), `37,654` unit-mass dots (`d_cat > 2.0 px`), SHA-256 `c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9` (`-zeros.tif`) / `baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd` (`-nan.tif`) — rebuilt byte-identically twice on 2026-10-23 from pinned inputs (`evidence/r0_prune_variants_20261023.json`, `evidence/prune_variants_receipt.json`, `evidence/r0_rebuild_receipt.json`) | REBUILD |
-| **Best receipt** | **none.** No submission-page receipt is committed (`receipts_committed = 0`); the incumbent's `0.2778` is owner-reported. | CLAIM |
-| **TOP_PUBLIC** | `UNVERIFIED` live (latest manual snapshot in repo: `0.3195`, rank 1 "DARD", read `2026-10-03` — owner must refresh with a date) | OFFICIAL_SNAPSHOT (stale) |
-| **Slots left this week** | **unknown — owner must fill** (`1` entity, `3` scored/rolling week, `41 days` / `5.86` weeks to `2026-12-03` = max `18` slots). `0` live slots consumed; assumed nothing submitted yet (`IR-DEC-07`). | — |
-| **Next 3 slots** | 1) `h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3` · 2) `h33-h33-2-b2-prune-dgt3refill-20261023-10ce9ad1` · 3) `h33-2-b2-snap2p0px-g0p01-20261023-7bdaa58b`; queue in [`SLOT_PLAN.md`](SLOT_PLAN.md) | BUILT (unscored) |
+| **Parent R0** | `h33-h33-2-b2` (GEMSDOE32), **37,654 unit dots**. Rebuilt exactly: zeros SHA-256 `c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9`; NaN `baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd`. All 23 manifest + four lineage pins verified. | [Build evidence](evidence/prune_1p5_796cb891.json) |
+| **Best receipt** | **None supplied.** R0 `0.2778` remains owner-reported, not a submission-page receipt. | CLAIM |
+| **TOP_PUBLIC** | **Not supplied with a current date.** Historical figures below are not targets. | UNVERIFIED |
+| **Slots left / deadline** | **Unknown this week / total.** One entity, three scored per rolling week; **0 used here**. Supplied `2026-12-03` cutoff/timezone requires human confirmation. | Human input required |
+| **AXIS / build** | **Agent-selected PRUNE**, explicitly delegated by the owner. One new file: **`h33-h33-2-b2-PRUNE1p5-20261023-3d2ac85f`**; `>1.5 px` collar, **1,344 original 200 m-ring dots in / 1,344 least H19-kernel-loss dots out**, count unchanged; **7.138683805173421%** symmetric difference. Zero catalogue mass. Both encodings pass disk validation. **The <3 px mass is permitted only by the PRUNE exception.** | BUILT, unscored |
+| **Prediction** | Weak positive **+0.002 DTI**, plausible **−0.010..+0.015**; uncalibrated scenario, not CI. No automatic weekly-slot promotion. **Every absolute live change <0.01 is no evidence.** | MODEL |
+| **Next 3 conditional slots** | **1)** review PRUNE1.5 vs R0; **2)** existing outward PRUNE >3 px control if unscored (never rebuild its twin); **3)** proposed RELIEF 10%, only from a named pinned ≥3 px parent. | [SLOT_PLAN.md](SLOT_PLAN.md) · [file/name/note](docs/SUBMIT.md) |
 
-Session status — `AXIS = CONCENTRATION` (AXIS again unassigned; MASS/SNAP/PRUNE already built once on `main`), three fixed-count (`37,654`) 5 km-block variants, gated and re-read from disk (`evidence/r0_concentration_variants_20261023.json`, canary `max_auc = 0.5944`):
-- `h33-h33-2-b2-conc5km-t50-m3765-20261023-6310efe0` — move `3,765` dots bottom-half → top-half prior blocks (`20.00%` sym-diff; CV₅km `0.961 → 1.013`; pred `−0.004..+0.013` MODEL).
-- `h33-h33-2-b2-conc5km-t25-m2400-20261023-caadfcce` — move `2,400` → top-quartile blocks (`12.75%`; CV `0.999`; pred `−0.002..+0.009`).
-- `h33-h33-2-b2-spread5km-b50-m2400-20261023-ceb1073d` — reverse move `2,400` (`12.75%`; CV `0.901`; pred `−0.006..+0.003`); the `t25 − spread` signed pair prices clustering vs catalogue-completeness.
-- Also this session: canonical ranking proved against merged PRUNE (`IR-DEC-13`: shipped MASS tails only 81–85% concordant — do not calibrate off them); ledger rebuild no longer drops the collar-sweep rows (`IR-DEC-14`, 128 rows / 15 BUILT). PRUNE ×6 from the parallel sessions remains as previously recorded (`pruned3p0`/`prune-dgt3refill` near-duplicate: submit one, `IR-DEC-12`).
-- Reproduction audit (third parallel PRUNE session, PR #28 / `IR-DEC-17`): `IR-DEC-13` is root-caused and its interpretation inverted — the float32 nodata sentinel in the unpacked bands silently zeroed H33-A, so the ranking shared by PRUNE ×6 and CONCENTRATION ×3 is the degraded one, while the shipped MASS masks reproduce to ≤14 dots after the unpacker fix now in `scripts/build_r0_variants.py`. PRUNE impact measured ≤273 dots/`>3 px`-class file (`evidence/prune_reproduction_audit_20261023.json`): nothing is rebuilt, the queue is unchanged, and that session's own two duplicate collar files were withdrawn before merge (not in `releases/` or the ledger). CONCENTRATION clean-ranking deltas remain unmeasured. **The `H84-KTHM` banner below is frozen history and is not this session's recommendation.**
+The catalogue shipped-mask **PROXY** is biased toward restoring the ring: `0.016259 [0.013981, 0.018417]` vs R0 `0.003885 [0.003318, 0.004453]`, with 22,893 withheld instances (21,032 unique). **Not live evidence or a gate.** Binary canary strength `0.51171` does not prove leakage freedom; SGMC is not run because derived-mirror license/shareability is UNVERIFIED. Only pinned parent-lineage competition artifacts were consumed; no new physical field/external data.
+
+Archived MASS example `h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3` and SNAP example `h33-2-b2-snap1p4px-g0p02-20261023-0b6a2ab2` are already built, not new candidates. They still violate the strict non-PRUNE collar. Integer/fractional PRUNE endpoints in the ledger and [PR #21](https://github.com/buffedlizard55-lab/GEMSDOE84/pull/21) are not rebuilt. The complete 125-row historical ledger prefix and all receipt fields were preserved before appending one row.
+
+**Concurrent audit / IR-DEC-17:** inherited H33-based recipes had a finite-nodata unpacking bug ([audit](evidence/prune_reproduction_audit_20261023.json)); this new H19-only procedure never unpacks raw feature bands. Do not infer any live-change bound from shared-dot counts. Inherited CONCENTRATION files `h33-h33-2-b2-conc5km-t25-m2400-20261023-caadfcce`, `h33-h33-2-b2-conc5km-t50-m3765-20261023-6310efe0`, and `h33-h33-2-b2-spread5km-b50-m2400-20261023-ceb1073d` are recorded, not rebuilt; all retain <3 px dots and remain HOLD under the strict non-PRUNE rule ([checks](evidence/concurrent_integration_796cb891.json)). The ledger now has 129 rows after preserving the complete local prefix and adding the three incoming records.
+
+**Frozen recommendations below are historical, not current submission approval.** No correlation/overlap uniqueness gates apply. Existing public competition-data mirrors remain flagged for human data-use review (`IR-DEC-01`). The agent never submits.
 <!-- CURRENT_STATE_END -->
 <!-- /CURRENT STATE -->
 

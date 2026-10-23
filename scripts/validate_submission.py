@@ -19,7 +19,14 @@ def sha256(path):
     return digest.hexdigest()
 
 
-def validate(candidate, template):
+def validate(candidate, template, encoding='zeros'):
+    """Re-read the exact template grid and check the selected exterior encoding.
+
+    ``nan`` is Brief v2's primary file; ``zeros`` remains the conservative fallback
+    and the backwards-compatible default. Neither result is organizer acceptance.
+    """
+    if encoding not in ('zeros', 'nan'):
+        raise ValueError("encoding must be 'zeros' or 'nan'")
     checks = {}
     with rasterio.open(template) as ref, rasterio.open(candidate) as src:
         checks.update(
@@ -29,27 +36,41 @@ def validate(candidate, template):
             shape=(src.height, src.width) == (ref.height, ref.width),
             transform=src.transform == ref.transform,
             real_dtype=np.dtype(src.dtypes[0]).kind in 'fiu',
+            dtype_float32=src.dtypes[0] == 'float32',
         )
         if not all(checks.values()):
             return {'format_valid': False, 'checks': checks, 'sha256': sha256(candidate),
-                    'submission_authorized': False}
+                    'encoding': encoding, 'submission_authorized': False}
         footprint_pixels = 0
-        checks.update(finite_all=True, range_all=True, no_masked_footprint=True)
+        checks.update(finite_inside=True, range_inside=True, no_masked_footprint=True)
+        if encoding == 'zeros':
+            checks.update(finite_all=True, range_all=True, outside_zero=True)
+        else:
+            checks['outside_nan'] = True
         for _, window in ref.block_windows(1):
-            footprint = ref.dataset_mask(window=window) > 0
+            # The pinned sample's footprint is its finite band-1 cells. The mask
+            # additionally excludes explicit nodata for small synthetic templates.
+            footprint = ((ref.dataset_mask(window=window) > 0)
+                         & np.isfinite(ref.read(1, window=window)))
             footprint_pixels += int(footprint.sum())
             values = src.read(1, window=window)
             valid = src.read_masks(1, window=window) > 0
-            # Stronger than minimum footprint rule: finite, bounded values everywhere.
-            checks['finite_all'] &= bool(np.isfinite(values).all())
-            checks['range_all'] &= bool(((values >= 0) & (values <= 1)).all())
+            inside, outside = values[footprint], values[~footprint]
+            checks['finite_inside'] &= bool(np.isfinite(inside).all())
+            checks['range_inside'] &= bool(((inside >= 0) & (inside <= 1)).all())
             checks['no_masked_footprint'] &= bool(valid[footprint].all())
+            if encoding == 'zeros':
+                checks['finite_all'] &= bool(np.isfinite(values).all())
+                checks['range_all'] &= bool(((values >= 0) & (values <= 1)).all())
+                checks['outside_zero'] &= bool((outside == 0).all())
+            else:
+                checks['outside_nan'] &= bool(np.isnan(outside).all())
         checks['nonempty_footprint'] = footprint_pixels > 0
     return {'format_valid': all(checks.values()), 'checks': checks,
-            'footprint_pixels': footprint_pixels, 'sha256': sha256(candidate),
-            'template_sha256': sha256(template),
+            'encoding': encoding, 'footprint_pixels': footprint_pixels,
+            'sha256': sha256(candidate), 'template_sha256': sha256(template),
             'submission_authorized': False,
-            'scope': 'Format only; scientific, registry and selector gates remain separate.'}
+            'scope': 'Format only; scientific and human slot decisions remain separate.'}
 
 
 def audit(candidate, reference, footprint_path=None, footprint_band=1):
@@ -90,10 +111,12 @@ def main():
     parser.add_argument('candidate', type=Path)
     parser.add_argument('--template', '--reference', dest='template', required=True, type=Path)
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--encoding', choices=('zeros', 'nan'), default='zeros',
+                        help='Exterior encoding: zeros fallback (default) or primary NaN file.')
     parser.add_argument('--json', action='store_true', help='JSON is always printed')
     args = parser.parse_args()
     try:
-        result = validate(args.candidate, args.template)
+        result = validate(args.candidate, args.template, encoding=args.encoding)
     except (OSError, ValueError, rasterio.errors.RasterioError) as exc:
         result = {'format_valid': False, 'submission_authorized': False, 'error': str(exc)}
     if args.output is not None:

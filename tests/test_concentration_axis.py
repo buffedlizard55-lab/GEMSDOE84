@@ -161,11 +161,21 @@ def test_conc_rows_unique_pairs_bounded_change_and_docs():
         assert r["parent"] == "h33-h33-2-b2"
         assert 1.0 <= float(r["pct_changed"]) <= 50.0
         assert len(r["form_note"]) <= 140
-        assert r["receipt_score"] == "" and r["date"] == ""   # human fills after upload
+        # These are human-editable after a manual upload; tests must not reject
+        # a genuine receipt simply because the original BUILT row was blank.
+        if r["receipt_score"]:
+            assert 0.0 <= float(r["receipt_score"]) <= 1.0
+            assert r["date"]
     all_hashes = [r["sha256"] for r in rows if r["sha256"]]
     assert len(all_hashes) == len(set(all_hashes))
     # every merged PRUNE row survives the ledger rebuild (regression: _prune_sweep_rows)
-    assert sum(1 for r in rows if r["status"] == "BUILT" and r["axis"] == "PRUNE") == 6
+    historical_prune_ids = {
+        row["id"]
+        for name in ("_prune_rows.json", "_prune_sweep_rows.json")
+        for row in json.loads((ROOT / "ledger" / name).read_text())
+    }
+    assert len(historical_prune_ids) == 6
+    assert historical_prune_ids <= {r["id"] for r in rows if r["axis"] == "PRUNE"}
     ev = json.loads(EVIDENCE.read_text())
     assert ev["ranking_audit"]["canonical_ranking_reproduces_prune_dgt1in_removals"] is True
     assert ev["report_only_diagnostics"]["leakage_canary"]["passed"] is True

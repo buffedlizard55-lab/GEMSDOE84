@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Build ``ledger/submissions.csv`` -- one row per scored or built submission.
 
-The brief asks for ``ledger/submissions.csv`` built from ``ledger/raw_paste.txt``.  That paste
-does not exist in this repository, so the ledger is built from the repo's own committed score
-records instead, and the substitution is recorded in ``IRREGULARITIES.md``:
+Initialise only an absent ``ledger/submissions.csv``. Existing history and human
+receipt fields are never replaced. Prefer ``ledger/raw_paste.txt`` for historical
+owner claims; the committed registry is a fallback. Other historical sources:
 
 * ``registry/live_scores.csv``      -- owner-reported live scores of the GEMSDOE fleet
   (evidence class CLAIM: no submission-page receipt is committed anywhere in this repo);
@@ -17,7 +17,8 @@ Repeats are collapsed exactly as the brief instructs: identical content digest +
 score (the NaN-outside / zeros-outside twins and the cross-site re-uploads of one file), never
 on a similarity threshold.
 
-Usage:  python scripts/build_ledger.py
+Usage:  python scripts/build_ledger.py  # initialisation only, refuses an existing output
+An existing ledger is never regenerated; validated new builds append rows.
 """
 from __future__ import annotations
 
@@ -99,12 +100,22 @@ def main() -> int:
                     default=str(ROOT / "ledger" / "_concentration_rows.json"))
     ap.add_argument("--prune-sweep-rows",
                     default=str(ROOT / "ledger" / "_prune_sweep_rows.json"))
+    ap.add_argument("--prune-intermediate-rows",
+                    default=str(ROOT / "ledger" / "_prune_intermediate_rows.json"))
     args = ap.parse_args()
 
+    # Existing experiment/receipt history is authoritative. Initialisation from
+    # historical sidecars can otherwise silently drop directly appended builds
+    # and human receipt fields. New builders must append validated rows instead.
+    if Path(args.out).exists():
+        print(f"Refusing to replace existing ledger/receipts: {args.out}. Append validated rows; do not regenerate history.", file=sys.stderr)
+        return 2
+    raw_paste = ROOT / "ledger" / "raw_paste.txt"
+    source = raw_paste if raw_paste.exists() else LIVE
     rows: list[dict] = []
 
     # 1. owner-reported fleet scores (CLAIM) -------------------------------------------
-    with LIVE.open(newline="") as fh:
+    with source.open(newline="") as fh:
         for r in csv.DictReader(fh):
             name = r["submission_name"].strip()
             enc, core = encoding_of(name)
@@ -148,7 +159,8 @@ def main() -> int:
 
     # 3. files BUILT this session ------------------------------------------------------
     for extra_path in (Path(args.snap_rows), Path(args.mass_rows), Path(args.prune_rows),
-                       Path(args.prune_sweep_rows), Path(args.concentration_rows)):
+                       Path(args.prune_sweep_rows), Path(args.concentration_rows),
+                       Path(args.prune_intermediate_rows)):
         if extra_path.exists():
             rows.extend(json.loads(extra_path.read_text()))
 
