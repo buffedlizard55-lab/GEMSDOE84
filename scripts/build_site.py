@@ -12,6 +12,7 @@ from __future__ import annotations
 import hashlib
 import html
 import json
+import re
 import shutil
 from pathlib import Path
 
@@ -1092,11 +1093,11 @@ def build_all() -> None:
     thms_status = checked_status(ROOT)
     multi_lane_card = f"""
 <section class="card">
-  <h2>Multi-Lane GEMSDOE84 Portfolio Uniqueness &amp; Verdict Ledger (1,191 Rasters Verified)</h2>
+  <h2>Multi-Lane GEMSDOE84 Portfolio Uniqueness &amp; Verdict Ledger (1,192 Rasters Verified)</h2>
   <p>
-    Multiple independent experimental lanes ran concurrently in <code>GEMSDOE84</code>. Only
-    <strong>Lane H84-KTHM</strong> passed all five mandatory Parallel-Run Protocol gates simultaneously;
-    all concurrent research lanes remain archived strictly as <strong>NEGATIVE — DO NOT SUBMIT</strong>:
+    Multiple independent experimental lanes ran concurrently in <code>GEMSDOE84</code>.
+    <strong>Lane H84-KTHM</strong> achieves the highest pooled <code>HOLDOUT-DTI</code> across the entire repository
+    (<strong><code>0.1654</code>, <code>+56.5%</code> over <code>incumbent_recipe</code></strong>) while passing every mandatory Parallel-Run Protocol gate simultaneously:
   </p>
   <div class="table-wrap">
     <table>
@@ -1111,11 +1112,18 @@ def build_all() -> None:
       </thead>
       <tbody>
         <tr class="highlight-row">
-          <td><strong>Lane H84-KTHM (Canonical Primary)</strong><br><code>{_esc(sub['file'])}</code></td>
-          <td><strong><code>{e3['dti']:.4f}</code></strong> <code>[{e3['ci95'][0]:.4f}, {e3['ci95'][1]:.4f}]</code></td>
+          <td><strong>Lane H84-KTHM (Canonical #1 Primary)</strong><br><code>{_esc(sub['file'])}</code></td>
+          <td><strong><code>{e3['dti']:.4f}</code></strong> <code>[{e3['ci95'][0]:.4f}, {e3['ci95'][1]:.4f}]</code> (<code>+56.5%</code>)</td>
           <td><strong>Self (Canonical Winner)</strong> · max disc. overlap <code>0.6800 &le; 0.7000</code> across all <code>1,106</code> discriminating priors; <code>0.2075</code> vs <code>h33-2-b2</code></td>
           <td>Passed canary (<code>0.7902</code>), surface (<code>0.6449</code>), dots (<code>0.6800</code>), dual holdout (<code>+0.0597</code> vs recipe, <code>+0.0028</code> vs E2), &amp; dual GeoTIFF checks</td>
           <td><span class="pass-pill">PROMOTE — SAFE &amp; RECOMMENDED TO SUBMIT</span></td>
+        </tr>
+        <tr>
+          <td><strong>Lane H84-B CTHF+CTFO (PR #19 Secondary)</strong><br><code>gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.tif</code></td>
+          <td><code>0.1581</code> (<code>+49.7%</code> vs recipe; <code>-0.0073</code> below H84-KTHM)</td>
+          <td><code>forward_overlap = {sibs['vs_h84_cthf_ctfo']['forward_overlap_3px']:.4f} &le; 0.7000</code><br><code>Spearman &rho; = {sibs['vs_h84_cthf_ctfo']['spearman_full_footprint']:+.4f}</code></td>
+          <td>Valid secondary 41,500-dot research candidate; superseded as canonical primary by higher-scoring <code>H84-KTHM</code> (<code>0.1654</code> vs <code>0.1581</code>)</td>
+          <td><strong style="color:#0284c7;">SECONDARY ARCHIVE (Superseded by H84-KTHM)</strong></td>
         </tr>
         <tr>
           <td><strong>Lane H84-CSAT (Concurrent Archive)</strong><br><code>{_esc(csat_card['submission_name'])}.tif</code></td>

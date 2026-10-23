@@ -911,7 +911,17 @@
       "jaccard_dot_sets": 0.015079643012532765,
       "spearman_full_footprint": 0.0216603859913572,
       "passes_070_overlap_and_090_spearman": true
+    },
+    "vs_h84_cthf_ctfo": {
+      "submission": "GEMSDOE84:submissions/gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.tif",
+      "sha256": "34dfefb16c0c54e9537a3c7988f3ffb9d5c0d3938cb706b58502567b5311e701",
+      "their_dots": 41500,
+      "forward_overlap_3px": 0.4129655172413793,
+      "reverse_overlap_3px": 0.588,
+      "jaccard_dot_sets": 0.017767458036271392,
+      "spearman_full_footprint": 0.026284164324046667,
+      "passes_070_overlap_and_090_spearman": true
     }
   },
-  "total_rasters_verified_including_concurrent": 1191
+  "total_rasters_verified_including_concurrent": 1192
 }

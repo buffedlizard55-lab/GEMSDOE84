@@ -7,7 +7,8 @@ ROOT = Path(__file__).resolve().parents[1]
 KTHM_NAME = "gems84-h84-kthm-tworegime-58000px-20261022T235900Z-zeros"
 THMS_NAME = "gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros"
 CSAT_NAME = "gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros"
-ALLOWED_PREFIXES = (KTHM_NAME, THMS_NAME, CSAT_NAME)
+CTHF_NAME = "gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros"
+ALLOWED_PREFIXES = (KTHM_NAME, THMS_NAME, CSAT_NAME, CTHF_NAME)
 
 
 def test_docs_downloads_contains_only_verified_candidate_binaries():

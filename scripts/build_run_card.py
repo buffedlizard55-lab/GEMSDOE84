@@ -371,6 +371,7 @@ def build_kthm_promoted_card(csat_card: dict, thms_card: dict) -> dict:
             "audited_artifact": thms_card["audited_artifact"],
             "note": thms_card["note"],
         },
+        "parallel_lane_h84b_cthf_ctfo": json.loads((EV / "run_card_cthf.json").read_text(encoding="utf-8")),
     }
 
 

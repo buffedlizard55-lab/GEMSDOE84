@@ -1,5 +1,7 @@
 import hashlib
 import json
+import sys
+import zipfile
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -18,17 +20,17 @@ class Links(HTMLParser):
 
 
 def test_local_site_links():
-    for page in (ROOT/'docs').glob('*.html'):
+    for page in (ROOT / 'docs').glob('*.html'):
         links = Links()
         links.feed(page.read_text())
         for target in links.targets:
             if '://' not in target and not target.startswith('#'):
-                assert (page.parent/target.split('#')[0]).is_file(), target
+                assert (page.parent / target.split('#')[0]).is_file(), target
 
 
 def test_archived_evidence_integrity():
-    for entry in json.loads((ROOT/'research/source-receipts.json').read_text()):
-        assert hashlib.sha256((ROOT/entry['local']).read_bytes()).hexdigest() == entry['sha256']
+    for entry in json.loads((ROOT / 'research/source-receipts.json').read_text()):
+        assert hashlib.sha256((ROOT / entry['local']).read_bytes()).hexdigest() == entry['sha256']
 
 
 def test_release_card_integrity():
@@ -45,5 +47,5 @@ def test_release_card_integrity():
         assert card['download_allowed'] is True
         assert (ROOT / card['submission']['tif']).is_file()
         tif_files = list((ROOT / 'docs/downloads').glob('*.tif'))
-        assert 1 <= len(tif_files) <= 3
+        assert 1 <= len(tif_files) <= 4
         assert hashlib.sha256(tif_files[0].read_bytes()).hexdigest() == card['raster_sha256']
