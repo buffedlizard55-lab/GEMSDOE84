@@ -2,7 +2,7 @@
 
 <!-- CURRENT STATE — the only block a session may edit. Everything below it is frozen. -->
 <!-- CURRENT_STATE_START -->
-## CURRENT STATE (2026-10-23; two parallel PRUNE sessions merged on `main`)
+## CURRENT STATE (2026-10-23; PRUNE merged on `main`, CONCENTRATION built this session)
 
 | Field | Value | Evidence class |
 | :--- | :--- | :--- |
@@ -12,11 +12,11 @@
 | **Slots left this week** | **unknown — owner must fill** (`1` entity, `3` scored/rolling week, `41 days` / `5.86` weeks to `2026-12-03` = max `18` slots). `0` live slots consumed; assumed nothing submitted yet (`IR-DEC-07`). | — |
 | **Next 3 slots** | 1) `h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3` · 2) `h33-h33-2-b2-prune-dgt3refill-20261023-10ce9ad1` · 3) `h33-2-b2-snap2p0px-g0p01-20261023-7bdaa58b`; queue in [`SLOT_PLAN.md`](SLOT_PLAN.md) | BUILT (unscored) |
 
-Session status — `AXIS = PRUNE`, six collar variants at the fixed parent count `37,654`, from two parallel sessions (no exact hash and no repeated `(parent, axis, value)`):
-- `scripts/build_prune_variants.py` + `src/gems84/prune.py` (`evidence/r0_prune_variants_20261023.json`): `prune-dgt1in` (`>1 px` swap-in, `13.52%`), `prune-dge3refill` (`>=3 px`, `8.56%`), `prune-dgt3refill` (`>3 px`, `11.53%`).
-- `scripts/build_prune_collar_sweep.py` (`evidence/prune_variants_receipt.json`): `pruned2p5` (`2.5 px`, `5.00%`), `pruned3p0` (`3.0 px`, `11.53%`), `pruned4p0` (`4.0 px`, `20.32%` — the only point beyond the kernel radius).
-- `pruned3p0` and `prune-dgt3refill` remove the same `2,171` collar dots and differ only in the refill floor (`d_cat >= 3.0` vs `> 3.0`): submit **one**, they are a near-duplicate probe (`IR-DEC-12`).
-- All six gated and re-read from disk; 27-feature leakage canary `max_auc = 0.5944 <= 0.90`. **The `H84-KTHM` banner below is frozen history and is not this session's recommendation.**
+Session status — `AXIS = CONCENTRATION` (AXIS again unassigned; MASS/SNAP/PRUNE already built once on `main`), three fixed-count (`37,654`) 5 km-block variants, gated and re-read from disk (`evidence/r0_concentration_variants_20261023.json`, canary `max_auc = 0.5944`):
+- `h33-h33-2-b2-conc5km-t50-m3765-20261023-6310efe0` — move `3,765` dots bottom-half → top-half prior blocks (`20.00%` sym-diff; CV₅km `0.961 → 1.013`; pred `−0.004..+0.013` MODEL).
+- `h33-h33-2-b2-conc5km-t25-m2400-20261023-caadfcce` — move `2,400` → top-quartile blocks (`12.75%`; CV `0.999`; pred `−0.002..+0.009`).
+- `h33-h33-2-b2-spread5km-b50-m2400-20261023-ceb1073d` — reverse move `2,400` (`12.75%`; CV `0.901`; pred `−0.006..+0.003`); the `t25 − spread` signed pair prices clustering vs catalogue-completeness.
+- Also this session: canonical ranking proved against merged PRUNE (`IR-DEC-13`: shipped MASS tails only 81–85% concordant — do not calibrate off them); ledger rebuild no longer drops the collar-sweep rows (`IR-DEC-14`, 128 rows / 15 BUILT). PRUNE ×6 from the parallel sessions remains as previously recorded (`pruned3p0`/`prune-dgt3refill` near-duplicate: submit one, `IR-DEC-12`). **The `H84-KTHM` banner below is frozen history and is not this session's recommendation.**
 <!-- CURRENT_STATE_END -->
 <!-- /CURRENT STATE -->
 

@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "evidence_class": "BUILT (unscored)",
+  "parent_score": "0.2778 (CLAIM: owner-reported; no receipt in ledger/)",
+  "no_evidence_threshold": 0.01,
+  "block_info": {
+    "block_px": 50,
+    "block_km": 5.0,
+    "eligible_blocks": 2046,
+    "prior_percentiles": {
+      "0": 0.05585,
+      "10": 0.07476,
+      "25": 0.08711,
+      "50": 0.10746,
+      "75": 0.12718,
+      "90": 0.14287,
+      "100": 0.20838
+    },
+    "prior_mean_bot50": 0.08648,
+    "prior_mean_top50": 0.12996,
+    "prior_mean_top25": 0.14277,
+    "r0_shares": {
+      "dots_bot50": 11807,
+      "share_bot50": 0.3136,
+      "dots_top50": 24930,
+      "share_top50": 0.6621,
+      "dots_top25": 14947,
+      "share_top25": 0.397,
+      "dots_outside_eligible_blocks": 917,
+      "n_dots": 37654
+    },
+    "density_cv_definition": "gems84.snap.density_cv: std/mean of dots-per-footprint-pixel over blocks with any footprint (10px grid crop)",
+    "r0_density_cv": {
+      "1km_10px": 1.8834,
+      "5km_50px": 0.9608,
+      "10km_100px": 0.8012
+    },
+    "brief_reported_best_cv": "0.51-0.59 (UNVERIFIED: definition/block size unstated; R0 measures 1.88/0.96/0.80 at 1/5/10 km under the definition above, so the reported range is not comparable and is not used as a target)"
+  },
+  "id": "h33-h33-2-b2-conc5km-t25-m2400-20261023-caadfcce",
+  "key": "t25m2400",
+  "parent": "h33-h33-2-b2",
+  "axis": "CONCENTRATION",
+  "value": "5km-t25-move2400",
+  "n_dots": 37654,
+  "dots_added": 2400,
+  "dots_removed": 2400,
+  "dots_moved": 2400,
+  "pct_moved_vs_r0": 6.37,
+  "pct_changed_vs_r0": 12.75,
+  "pct_changed_definition": "symmetric-difference dots / 37654 * 100 (a move of k dots counts 2k), as in MASS/PRUNE rows",
+  "jaccard_vs_r0": 0.880162,
+  "donor_blocks": "bot50",
+  "recipient_blocks": "top25",
+  "d_cat_min_px": 2.2361,
+  "added_dots_d_cat_min_px": 3.0,
+  "density_cv": {
+    "1km_10px": 1.855,
+    "5km_50px": 0.9985,
+    "10km_100px": 0.8291
+  },
+  "block_shares": {
+    "dots_bot50": 9407,
+    "share_bot50": 0.2498,
+    "dots_top50": 27330,
+    "share_top50": 0.7258,
+    "dots_top25": 17347,
+    "share_top25": 0.4607,
+    "dots_outside_eligible_blocks": 917,
+    "n_dots": 37654
+  },
+  "build_stats": {
+    "n_moved": 2400,
+    "removed_gain_mean": 0.827236,
+    "refill_gain_mean": 1.224266,
+    "refill_gain_min": 0.578149,
+    "cand_pool_in_recip": 7443
+  },
+  "digest8_mask": "56ac96fb",
+  "nan_tif": {
+    "path": "releases/h33-h33-2-b2-conc5km-t25-m2400-20261023-caadfcce.tif",
+    "sha256": "caadfccefec8e5202c0b8f10884a972ae49130a79517f10e34d0cf54008a01a7",
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "count": 1,
+    "no_nan_in_footprint": true,
+    "values_in_0_1": true,
+    "outside_footprint_encoding_ok": true,
+    "n_dots": 37654,
+    "catalogue_mass": 0.0,
+    "gate_passed": true
+  },
+  "zeros_tif": {
+    "path": "releases/h33-h33-2-b2-conc5km-t25-m2400-20261023-caadfcce-zeros.tif",
+    "sha256": "e264e73a95540812a15e11c2355e33afebb93c8fc3617c5d19461de215d3b2f6",
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "count": 1,
+    "no_nan_in_footprint": true,
+    "values_in_0_1": true,
+    "outside_footprint_encoding_ok": true,
+    "n_dots": 37654,
+    "catalogue_mass": 0.0,
+    "gate_passed": true
+  },
+  "form_note": "h33-h33-2-b2; CONC 5km move 2400 (6.4%) low->top-quartile blocks, 37654; pred -0.002..+0.009",
+  "predicted_change": "-0.002 to +0.009 DTI (MODEL: 5km-block move of 2400 dots at fixed count; credit scenario in receipt)",
+  "model_scenario": {
+    "n_move": 2400,
+    "assumed_mean_live_credit_in": [
+      0.04,
+      0.09
+    ],
+    "assumed_mean_live_credit_out": [
+      0.02,
+      0.055
+    ],
+    "predicted_live_change": [
+      -0.0019,
+      0.0087
+    ],
+    "basis": "credit-scenario on incumbent_anatomy anchor (D=18262.37 at s=0.2778 CLAIM; marginal bar 0.0556); c ranges bracket second-tier refill dots vs weakest retained-class dots. No ranking-unit sum is divided by D (IR-DEC-11)."
+  },
+  "mechanism_card": {
+    "hypothesis": "Same mechanism, stronger per-dot contrast: refills only into the top-quartile prior blocks. If the km prior is real, this arm should match or beat conc-t50 per receipt despite moving 36% fewer dots; if capacity-driven second-tier placements dominate, it will not.",
+    "mechanism": "Top-quartile blocks are the most packing-saturated (greedy capacity 2,496 dots measured), so dose is capacity-limited to 2,400; the arm therefore also prices saturation: refills must use residual ridge gaps between retained dots.",
+    "non_fault_mimic": "Saturated blocks are saturated because ridge detectors fire densely on non-fault lineament swarms (joint sets, flow banding, yardang/dune lineations).",
+    "predicted_sign_and_size": "Bracketing: -0.002 to +0.009 DTI (MODEL). Pre-registered >= spread-m2400; unordered vs t50 (contrast vs dose).",
+    "falsifier": "Live < conc-t50 receipt by >=0.002 with conc-t50 > R0: concentration helps only before saturation; top-quartile infill is kernel-redundant with retained dots."
+  }
+}
