@@ -1,36 +1,38 @@
-# SLOT PLAN — Single-Entity 3-Slots/Week Schedule to 2026-12-03
+# SLOT PLAN — one entity, 3 scored slots/rolling week, one final file
 
-- **Current date**: `2026-10-23` (UTC) | **Competition deadline**: `2026-12-03` (`41 days` = `5.86 weeks`, max `18 slots` at `3 slots/week` for ONE entity; human to confirm exact remaining weekly/total quota).
-- **Parent R0**: `h33-h33-2-b2` (`GEMSDOE32`, `37,654` unit-mass dots, `d_cat > 2.0 px`, `0.2778` `CLAIM` — owner-reported in `registry/live_scores.csv`; `0` organizer receipts in repo).
-- **Built single-axis variants in `releases/` and `ledger/submissions.csv`**:
-  - `AXIS = MASS`: `3` variants (`-10pct`, `+10pct`, `-20pct`) built by `scripts/build_r0_variants.py` (`evidence/r0_mass_variants_20261023.json`).
-  - `AXIS = SNAP`: `3` variants (`1p4px-g0p02`, `2p0px-g0p02`, `2p0px-g0p01`) built by `scripts/build_snap_variants.py` (`evidence/snap_variants_receipt.json`).
+- **Today / deadline**: 2026-10-23 → 2026-12-03 (**UNVERIFIED**, human to confirm on the competition page) = 41 days ≈ 5.9 weeks → max ~18 slots. Slots left this week / total: **UNVERIFIED (human to supply)**. `TOP_PUBLIC`: **UNVERIFIED** — the repo's 0.3195 snapshot was read 2026-10-03 (OFFICIAL_SNAPSHOT, stale) and is not a target.
+- **Parent R0**: `h33-h33-2-b2` (GEMSDOE32), 37,654 unit dots at `d_cat > 2 px`, 0.2778 **CLAIM** (no organizer receipt in repo; `ledger/submissions.csv` receipts = 0). Rebuilt byte-identically again this session (`evidence/r0_rebuild_receipt_20261023_prune.json`).
+- **BUILT, unscored (8 files = 8 potential slots)**: MASS ×3, SNAP ×3, PRUNE ×2 — `h33-h33-2-b2-prune-dcatgt3px-20261023-a7d86ed4` (swap 2,171 ring dots, 11.53% changed) and `h33-h33-2-b2-prune-dcatgt1px-20261023-f5c7e4fb` (2,492 ring dots in, 13.24% changed), both at exactly 37,654 dots (`evidence/r0_prune_variants_20261023.json`). This session's AXIS was agent-selected, not human-assigned (IR-DEC-08); IR-DEC-07 fixed the silent H33-A band-sentinel failure in the ranking pipeline.
+- **Evidence discipline**: every number below is CLAIM / MODEL / PROXY as labelled; a live change < 0.01 on the public chunks is **no evidence** (brief §5); the human records `receipt_score` + date in the ledger after each manual upload. Upload **one** file per slot (`.tif` = NaN outside footprint per spec; `-zeros.tif` only if the portal rejects NaN).
 
-## 1. Next 3 Slots in Order (Week 1 — `AXIS = MASS`)
+## Next 3 slots in order (Week 1 — AXIS=MASS, unchanged)
 
-| Slot | Variant ID (`releases/<id>.tif` & `<id>-zeros.tif`) | Change vs R0 (`37,654` dots) | Predicted Live Change (`MODEL`) | Fold-Clean Hide & Recover (`PROXY`, $n=22,893$) | SGMC Off-Cat Control (`PROXY`, $n=62,703$) | Decision Rule: What the Live Receipt Changes |
-|---:|---|---|---|---|---|---|
-| **1** | `h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3` | Drop lowest-ranked `10.00%` (`-3,765` dots $\to$ `33,889`) | `+0.0020` to `+0.0045` DTI | `0.10439` (`95% CI [0.09228, 0.11565]`, $\Delta = -0.00126$) | `0.09156` raw / `0.06298` cal | **If $> 0.2778$**: R0 is over-budgeted; adopt `33,889`-dot parent as $R_1$ and test Slot 3 (`-20%`). **If $< 0.2778$**: R0 tail decile carries net-positive truth credit; prioritize Slot 2 (`+10%`). |
-| **2** | `h33-h33-2-b2-mass-add10pct-20261023-ad925bd2` | Add next-ranked `10.00%` (`+3,765` dots at $r \ge 2.8\text{ px}, d_{\text{cat}} \ge 3.0\text{ px} \to$ `41,419`) | `-0.0030` to `+0.0025` DTI | `0.10737` (`95% CI [0.09503, 0.11862]`, $\Delta = +0.00172$) | `0.10719` raw / `0.06962` cal | **If $> 0.2778$**: unseen test fault prevalence $|G_{\text{test}}|$ supports $>37.6\text{k}$ dots; promote `41,419`-dot map to $R_1$. **If $< 0.2778$**: secondary ridges ($d_{\text{cat}} \ge 3\text{ px}$) dilute precision below the `7.19%` break-even bar. |
-| **3** | `h33-h33-2-b2-mass-drop20pct-20261023-62bfc392` | Drop lowest-ranked `20.00%` (`-7,531` dots $\to$ `30,123`) | `+0.0010` to `+0.0065` DTI | `0.10149` (`95% CI [0.08969, 0.11274]`, $\Delta = -0.00416$) | `0.08368` raw / `0.05940` cal | Together with Slots 1–2, fits the 3-point quadratic $\text{DTI}(S)$ across $S \in \{30123, 33889, 37654, 41419\}$ to lock optimal mass $S^*$ before Week 2. |
+| Slot | File (`releases/`) | Change vs R0 | Predicted (MODEL) | What the receipt changes |
+|---:|---|---|---|---|
+| 1 | `h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3` | −3,765 lowest-ranked dots → 33,889 | +0.0020..+0.0045 | > R0: R0 is over-budgeted, 33,889-dot parent candidate; slot 3 tests deeper. < R0: tail decile earns its keep. |
+| 2 | `h33-h33-2-b2-mass-add10pct-20261023-ad925bd2` | +3,765 next-ranked dots → 41,419 | −0.0030..+0.0025 | > R0: test-set prevalence supports >37.6k dots. < R0: secondary ridges dilute below break-even. |
+| 3 | `h33-h33-2-b2-mass-drop20pct-20261023-62bfc392` | −7,531 dots → 30,123 | +0.0010..+0.0065 | With slots 1–2, fits DTI(S) at S ∈ {30123, 33889, 37654, 41419} and locks S\* before any combination build. |
 
-## 2. Multi-Week Schedule (6 Weeks / 18 Slots to `2026-12-03`)
+Fold-clean hide-and-recover (PROXY, n=22,893): R0 0.10564 [0.09363, 0.11696]; drop10 0.10439; add10 0.10737; drop20 0.10149 — report-only, historically −0.87..+0.54 correlated with live.
 
-- **Weeks 1–2 (Slots 1–6)**: Single-axis isolation on `MASS` (Week 1: Slots 1–3 above) followed by `SNAP` (`h33-2-b2-snap1p4px-g0p02-20261023-0b6a2ab2`, `h33-2-b2-snap2p0px-g0p02-20261023-b2019f55`, `h33-2-b2-snap2p0px-g0p01-20261023-7bdaa58b`), `PRUNE` (`d_cat > 3.0 px` refilled at $S^*$ vs `d_cat > 2.0 px`), or `CONCENTRATION`.
-- **Weeks 3–4 (Slots 7–12)**: Orthogonal combination of the 2–3 single axes that beat R0's live receipt (`MASS` $S^*$ + winning `SNAP`/`PRUNE`/`CONCENTRATION`/`RELIEF` setting), testing one interaction at a time.
-- **Weeks 5–6 (Slots 13–18)**: Reserve slots for final variance-reduced ensemble verification and `TRACKB` geologist-vetted $\ge 1\text{ km}$ strike-consistent fault traces (GeoJSON + raster).
+## Week 2 (slots 4–6) — SNAP mid-dose, then PRUNE tighten
 
-## 3. Proposed Better Single-Axis Experiments for Future Sessions (Not Built This Session)
+| Slot | File | Predicted (MODEL) | What the receipt changes |
+|---:|---|---|---|
+| 4 | `h33-2-b2-snap2p0px-g0p02-20261023-b2019f55` (4,152 dots moved ≤2 px, mean 1.91 px) | +0.0074..+0.0185 | Mid-dose SNAP: ≥ R0+0.01 ⇒ positional correction is real, spend slot 6 on high-dose `…snap2p0px-g0p01-20261023-7bdaa58b`. |
+| 5 | `h33-h33-2-b2-prune-dcatgt3px-20261023-a7d86ed4` | +0.001..+0.007 | ≥ R0+0.01 ⇒ misregistration-halo model supported; build conditional `d_cat>4 px` next session. ≤ R0−0.01 ⇒ (2,3] px ring carries real splays; collar stays at 2 px. |
+| 6 | Conditional: SNAP high-dose (above) if slot 4 ≥ R0+0.01; else PRUNE `h33-h33-2-b2-prune-dcatgt1px-20261023-f5c7e4fb` (pred −0.007..+0.001, bracketing arm) **only if** slot 5 lands in the no-evidence band and collar remains the key unknown; else SNAP low-dose `h33-2-b2-snap1p4px-g0p02-20261023-0b6a2ab2` for dose-response. | — | Do not spend slot 6 on a second collar arm if slot 5 was decisive. |
 
-1. **`AXIS = COLLAR_REFILL` (Euclidean $d_{\text{cat}} \ge 3.0\text{ px}$ Prune + Ranked Ridge Refill at Fixed $S = 37,654$)**:
-   - *Mechanism*: R0 (`d_cat > 2.0 px`) retains `1,611` dots at diagonal distances $d_{\text{cat}} \in \{\sqrt{5}, \sqrt{8}\} \subset (2.0, 3.0)\text{ px}$ (`224–283 m`) from mapped catalogue faults. Under the $R = 300\text{ m}$ ($3.0\text{ px}$) triangular kernel, a dot at $2.24\text{ px}$ from a catalogue trace still has $38\%$ of its kernel disk overlapping the mapped trace's immediate halo where unmapped parallel splays are rare, incurring false-positive weight $0.2(1 - m_q)$. Replacing those `1,611` diagonal-collar dots (`4.28%` of R0) with the top `1,611` corroborated off-catalogue ridge dots ($d_{\text{cat}} \ge 3.0\text{ px}$) isolates pure collar geometry at fixed dot count.
-   - *Confounder*: True en-echelon fault relay steps or sub-parallel hanging-wall splays lying `220–290 m` off a mapped master fault.
-   - *Falsifier*: Live score drops by $> 0.0010$ relative to R0 at matched count `37,654`, proving that the $(2.0, 3.0)\text{ px}$ per-fault zone contains real unmapped test splays in `labels.tif`.
-2. **`AXIS = TIP_CONE` (Along-Strike Catalogue Tip Continuation vs Intrabasinal Ridge Allocation at Fixed $S$)**:
-   - *Mechanism*: Normal faults in the Basin and Range grow by along-strike tip propagation and relay-ramp linkage; unmapped fault segments preferentially extend within a $\pm 22^\circ$, `0.3–2.5 km` (`3–25 px`) cone ahead of mapped catalogue fault terminations when corroborated by horizontal gravity gradient (`18_iso_grav_anom_hg`) or 1 m LiDAR scarplets (`H33-C`). Shifting `10%` (`3,765` dots) of R0 from isolated intrabasinal ridges ($d_{\text{cat}} > 40\text{ px}$) into corroborated tip-continuation cones tests tip-growth localization at fixed count.
-   - *Confounder*: Alluvial fan-head trenches and range-front stream mouths emerging at fault tips that mimic short scarp continuations.
-   - *Falsifier*: Live score decreases relative to R0 while `SGMC` off-catalogue control increases, proving hidden public-test faults are whole unmapped range/basin structures rather than unmapped tip extensions of existing catalogue traces.
-3. **`AXIS = SUBSURFACE_ANCHOR` (Basement-Depth / MT-Conductivity Step Re-Weighting Under Quaternary Cover at Fixed $S$)**:
-   - *Mechanism*: Across `24.60%` of the active footprint where 1 m 3DEP LiDAR coverage is zero and across thick Quaternary playas where surface scarps are obliterated, active hydrothermal faults are imaged primarily by step gradients in basement depth (`15_depth_to_base_surf`), magnetotelluric conductivity (`17_cond_surf`, `H33-D`), and horizontal gravity gradient (`18_iso_grav_anom_hg`). Reallocating `10%` of R0 dots from DEM-only ridges (`corrob_count == 1`) onto basement/MT-anchored ridges ($r_{\min} = 2.8\text{ px}, d_{\text{cat}} \ge 3.0\text{ px}$) tests blind-fault recovery.
-   - *Confounder*: Non-tectonic conductive playa evaporite brines and buried caldera ring-fracture lithologic contacts.
-   - *Falsifier*: Live score drops below `h33-h33-2-b2-mass-drop10pct` (`33,889` dots), proving that adding subsurface-anchored dots performs worse than simply omitting the bottom 10% of DEM-only dots.
+PRUNE fold-clean PROXY (n=22,893): R0 0.10564; `d_cat>3` 0.10486 (Δ −0.0008, CI spans 0); `d_cat>1` 0.10358 (Δ −0.0021, CI excludes 0). SGMC control is structurally biased toward the tight collar on this axis (IR-DEC-09) — never rank the PRUNE arms by it.
+
+## Weeks 3–6
+
+- **Weeks 3–4 (slots 7–12)**: combine the winning single axes only — rebuild at S\* with (winning collar) × (winning SNAP dose), one interaction per build, same ranking pipeline (post-IR-DEC-07). Any axis whose receipts all sit in the no-evidence band stays at its R0 setting.
+- **Weeks 5–6 (slots 13–18)**: confirm the best combination once, choose the final file + one fallback, re-validate both formats from disk, and hold slots in reserve. TRACKB (≥1 km strike-consistent traces, GeoJSON + raster + per-trace evidence paragraphs) is Phase-2 preparation, not a weekly slot, unless the human decides otherwise.
+
+## Proposed for later sessions (not built)
+
+1. **Conditional `PRUNE d_cat>4 px` (refill to S\*)** — only if slot 5 ≥ R0+0.01. *Mechanism*: extends the collar beyond the 300 m kernel radius; tests whether the halo is really bounded by positional uncertainty. *Confounder*: genuine splays at 300–400 m from mapped traces. *Falsifier*: scores below the `d_cat>3` receipt.
+2. **`TIP_CONE`** — shift 10% of dots from isolated intrabasinal ridges (`d_cat > 40 px`) into ±22°, 0.3–2.5 km along-strike cones ahead of catalogue fault terminations, corroborated by gravity-gradient / LiDAR scarplets. *Mechanism*: normal faults grow by tip propagation and relay linkage. *Confounder*: fan-head trenches at fault tips. *Falsifier*: live < R0 while the SGMC control rises (whole unmapped structures, not tip extensions).
+3. **`SUBSURFACE_ANCHOR`** — reallocate 10% of dots from DEM-only ridges (`corrob_count == 1`) to basement-depth / MT-conductivity step ridges under Quaternary cover and the 24.6% of footprint without 1 m LiDAR. *Mechanism*: blind hydrothermal faults image in basement/MT steps where scarps are buried. *Confounder*: playa brine conductors, caldera ring contacts. *Falsifier*: live < MASS−10% receipt (worse than just deleting the bottom decile).
+4. The earlier `COLLAR_REFILL` proposal is **built** as slot 5 above — with one recorded difference: the shipped arm swaps all 2,171 dots at `d_cat ∈ (2,3] px` including the 560 at exactly 3.0 px, where the proposal kept those (≥3 px).

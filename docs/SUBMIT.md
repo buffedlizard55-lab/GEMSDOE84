@@ -106,3 +106,55 @@
 | **Slot 3 (`MASS -20%`)** | `30,123` | `0.10149` (`[0.08969, 0.11274]`) | `0.00400` (`[0.00341, 0.00456]`) | `0.08368` | `0.07571` | `0.05940` |
 
 - **Leakage canary (`REPORT ONLY`)**: All `27` features (`01_mag_anom`..`19_det_elev_slope`, `H33-A..D`, `h33_union`, `lidar_scarp_composite`, `corrob_count`, `q_posterior`) passed on the `22,893` withheld positive pixels (`max_single_feature_auc = 0.5949 <= 0.90`).
+
+---
+
+## `AXIS = PRUNE` Variants (session 2026-10-23, branch `arena/5be6452b-gemsdoe84`) — fixed-count collar sweep
+
+- **Queue position**: Slots 1–3 remain the MASS files above (see `SLOT_PLAN.md`). `PRUNE d_cat>3px` is queued as slot 5; `PRUNE d_cat>1px` is a conditional bracketing arm (slot 6 only if the `>3px` receipt is inconclusive). Upload one file per slot.
+- **AXIS provenance**: Brief v2 left the session AXIS blank for the human; PRUNE was agent-selected as next in the `SLOT_PLAN.md` sequence and is recorded as such (IR-DEC-08). `TOP_PUBLIC` and slot quota remain UNVERIFIED.
+- **IR-DEC-07 (ranking pipeline fix)**: the refill/trim ranking below uses the MASS session's recorded recipe with the float32 nodata-sentinel cleaned at band unpack. Without the cleaning, H33-A silently collapses to a constant surface (float32 mean overflow) and the committed MASS masks do not reproduce (602–2,246 px/arm); with it they reproduce to ≤12 boundary dots per arm and this session's fold-clean R0 PROXY (0.10564) and canary max AUC (0.5949) match the MASS session's recorded values.
+- **Lineage identities (measured)**: `d2_8` 44,090 dots → `& (d_cat>1)` = pinned 0.2708 CLAIM solo file (40,199) → `& (d_cat>2)` = R0 (37,654, rebuilt byte-identical). Ring counts: (1,2] px = 2,545 dots; (2,3] px = 2,171 dots.
+
+### `h33-h33-2-b2-prune-dcatgt3px-20261023-a7d86ed4` — PRUNE `dcat>3px-refill37654` (37,654 dots, 11.53% changed vs R0)
+
+- **File (NaN outside footprint, per spec)**: `releases/h33-h33-2-b2-prune-dcatgt3px-20261023-a7d86ed4.tif` — `sha256: a7d86ed4266cf3c9e408fccb6ee81aee43bddf18c49a5e54a9436b5a9d36f5f0`
+- **File (zeros outside footprint, fallback)**: `releases/h33-h33-2-b2-prune-dcatgt3px-20261023-a7d86ed4-zeros.tif` — `sha256: 33e07daaf88fdc844dee18770795842c6fbf0794835069827a47e0375b429af2`
+- **Form note (≤140 chars)**: `h33-h33-2-b2; PRUNE dcat>3px refill to 37654 (swap 2171 ring dots); pred +0.001 to +0.007` (89 chars)
+- **Predicted live change (MODEL)**: +0.001 to +0.007 DTI (MODEL: swap 2,171 misregistration-halo ring dots for top-ranked >3 px ridge dots at fixed count)
+- **Format & gate receipt** (re-read from disk): `EPSG:32611`, `(3730, 3292)`, float32, 1 band, transform = sample submission; no NaN inside footprint (5,167,373 px); values in [0,1]; catalogue mass 0.0; `d_cat` min/median/p90 = 3.1623 / 21.0238 / 68.884 px; +2171/−2171 dots; Jaccard vs R0 = 0.890973; `validate_submission.py` on `-zeros.tif`: format_valid = True.
+- **Construction**: {'collar_px': 3.0, 'target_dots': 37654, 'kept_after_collar': 35483, 'refill_pool_dots': 18908, 'adjustment': 'refill', 'refill_dots': 2171, 'refill_gain_sum_model': 2986.342, 'refill_gain_mean_model': 1.375561}
+- **Mechanism card (for a structural geologist)**:
+  - *Hypothesis*: R0's 2,171 dots at 2.24-3.00 px (224-300 m) from a catalogue trace are mostly off-position re-detections of the catalogue faults themselves, not unmapped splays. Replacing them with the top-ranked corroborated ridge dots lying >3 px (>300 m) from every catalogue pixel, at unchanged count 37,654, increases live DTI.
+  - *Mechanism*: GeoDAWN Area 2 was flown at ~400 m line spacing, so lineament positions are uncertain by about the 300 m kernel radius (https://data.usgs.gov/datacatalog/data/USGS:657e1d85d34e23d3533209f7): a ridge detected within ~300 m of a mapped trace is most parsimoniously that same fault, misregistered. The organizers mask known pixels pixel-exactly and score neighbouring pixels against new-fault truth only (https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516), so a re-detection dot's kernel credit falls on masked pixels that are not in the test truth set: it pays the alpha-weighted false-positive cost and earns ~nothing. The parent's lineage already tightened this collar twice (44,090 dots 0.2600 CLAIM -> d_cat>1 40,199 dots 0.2708 CLAIM -> d_cat>2 37,654 dots 0.2778 CLAIM) but cut mass each time, so the collar effect was never isolated; this arm extends the collar to the kernel radius at fixed mass, refilling by the parent's own exact-marginal-gain ranking.
+  - *Non-fault mimic / confounder*: Two confounders. (1) The signal being removed could be real: unmapped parallel splays, relay strands or fault-zone widening within 300 m of a mapped trace count as new fault per the organizers (https://community.drivendata.org/t/where-do-you-draw-the-line/11536). (2) The refill targets could be non-faults: lithologic contacts, dike-swarm magnetic lineaments or strandline terraces >300 m from mapped faults (the same mimic class as the MASS +10% arm).
+  - *Predicted sign and size*: Positive: +0.001 to +0.007 DTI (MODEL). Decomposition: the confounded d_cat>1 -> d_cat>2 step gained +0.0070 CLAIM while also removing 2,545 dots of mass; attributing roughly half of that to the collar gives ~+0.003 for removing 2,171 comparable ring dots, plus a refill value near break-even (the MASS +10% arm's marginal dots are predicted -0.003..+0.0025). The parent ranking q itself values near-catalogue dots highly (its ridge fields respond to the known faults), so q-based gain sums understate the case for tightening; only a live receipt adjudicates. Per brief section 5, a live change under 0.01 on the public chunks is no evidence either way.
+  - *Falsifier*: A receipt at or below 0.2678 (R0 CLAIM 0.2778 minus the 0.01 no-evidence band) falsifies the misregistration-halo hypothesis and proves the (2,3] px ring carries real unmapped test splays worth more than the best >3 px refill dots. A receipt at or above 0.2878 supports it. Between the two: no evidence on public chunks; do not spend another collar slot until a MASS receipt fixes the parent mass.
+
+### `h33-h33-2-b2-prune-dcatgt1px-20261023-f5c7e4fb` — PRUNE `dcat>1px-trim37654` (37,654 dots, 13.24% changed vs R0)
+
+- **File (NaN outside footprint, per spec)**: `releases/h33-h33-2-b2-prune-dcatgt1px-20261023-f5c7e4fb.tif` — `sha256: f5c7e4fb3db30907dd361c89018e4cb937620f963fe27a3809a9d1ba205da56d`
+- **File (zeros outside footprint, fallback)**: `releases/h33-h33-2-b2-prune-dcatgt1px-20261023-f5c7e4fb-zeros.tif` — `sha256: 80551b8399134306e043ca120c812e9e1fe5f65dbaaec90165082140bfa01770`
+- **Form note (≤140 chars)**: `h33-h33-2-b2; PRUNE dcat>1px rank-trim to 37654 (2492 ring dots in); pred -0.007 to +0.001` (90 chars)
+- **Predicted live change (MODEL)**: -0.007 to +0.001 DTI (MODEL: re-admit (1,2] px ring dots, rank-trimmed to 37,654; bracketing arm for the collar curve)
+- **Format & gate receipt** (re-read from disk): `EPSG:32611`, `(3730, 3292)`, float32, 1 band, transform = sample submission; no NaN inside footprint (5,167,373 px); values in [0,1]; catalogue mass 0.0; `d_cat` min/median/p90 = 1.4142 / 17.4642 / 65.7343 px; +2492/−2492 dots; Jaccard vs R0 = 0.875853; `validate_submission.py` on `-zeros.tif`: format_valid = True.
+- **Construction**: {'collar_px': 1.0, 'target_dots': 37654, 'kept_after_collar': 40199, 'adjustment': 'rank_trim', 'trimmed_dots': 2545, 'trimmed_gain_sum_model': 2129.9199}
+- **Mechanism card (for a structural geologist)**:
+  - *Hypothesis*: Loosening the collar from >2 px to >1 px -- re-admitting the 2,545 lineage dots at 141-200 m from catalogue traces and dropping the same number of lowest-ranked dots elsewhere to hold 37,654 -- decreases live DTI if those ring dots are misregistered re-detections of mapped faults, and increases it if they are unmapped near-trace splays.
+  - *Mechanism*: This is the historical 0.2708 CLAIM emission's collar (measured identity: solo == d2_8 & (d_cat > 1)) rebuilt at R0's mass. The 0.2708 -> 0.2778 step mixed collar tightening with a 6.3% mass cut; holding the count at 37,654 by the parent's exact-marginal-gain ranking isolates the collar. Together with R0 (d_cat>2) and the d_cat>3 arm, the three receipts would trace the fixed-mass collar response curve. Note the ranking q is structurally favourable to ring dots (its inputs respond to the known faults themselves), so the trim retains the ring dots q likes most -- the strongest form of the loose-collar case this lineage can make.
+  - *Non-fault mimic / confounder*: The ring dots' topographic/geophysical ridges can be produced by the mapped fault's own scarp, damage-zone fracturing or juxtaposed-lithology contact offset by survey misregistration -- signal that is real geology but is the catalogue fault, whose pixels are masked out of the test truth. Alluvial fan-head trenching along the range front produces the same 100-200 m offset lineaments without any fault.
+  - *Predicted sign and size*: Negative: -0.007 to +0.001 DTI (MODEL) -- the reverse of the lineage's d_cat>1 -> d_cat>2 gain, net of the mass effect that this arm removes. This is a bracketing/diagnostic arm, not a score-maximising one; SLOT_PLAN holds it conditional on the d_cat>3 receipt being inconclusive.
+  - *Falsifier*: A receipt at or above 0.2878 (R0 CLAIM + 0.01) falsifies the misregistration-halo model of the near-catalogue ring and would redirect the campaign toward near-trace splay hunting. At or below 0.2678 it corroborates the model. Between: no evidence on public chunks.
+
+### REPORT-ONLY diagnostics for the PRUNE arms (`evidence/r0_prune_variants_20261023.json`, PROXY — never gates)
+
+| Arm | n_dots | Fold-clean hide-and-recover PROXY (n=22,893, 95% CI) | Shipped-mask PROXY | SGMC raw DTI PROXY (n=62,703) | SGMC coverage | SGMC calibrated DTI |
+|---|---:|---|---|---:|---:|---:|
+| Parent R0 | 37,654 | 0.10564 ([0.09363, 0.11696]) | 0.00389 ([0.00332, 0.00445]) | 0.09606 | 0.08935 | 0.06412 |
+| PRUNE d_cat>3px | 37,654 | 0.10486 ([0.09296, 0.11579]) | 0.00000 ([0.00000, 0.00000]) | 0.10137 | 0.09437 | 0.06772 |
+| PRUNE d_cat>1px | 37,654 | 0.10358 ([0.09156, 0.11460]) | 0.03013 ([0.02604, 0.03395]) | 0.09331 | 0.08676 | 0.06226 |
+
+- Fold-clean paired deltas vs R0: `>3px` −0.0008 (95% CI [−0.0022, +0.0005], spans 0); `>1px` −0.0021 (CI [−0.0032, −0.0011], excludes 0). On withheld-catalogue recovery, loosening loses and tightening is neutral; live truth (unmapped splays near known traces) is a different regime — which is why these receipts, not this PROXY, decide the collar.
+- Shipped-mask `>3px` = 0.00000 is a **construction artifact** (IR-DEC-09): every shipped dot is >3 px from the *full* catalogue including withheld pixels, so the 300 m kernel earns exactly zero there. It says nothing about live quality.
+- SGMC truth excludes a 3 px catalogue dilation band, so the SGMC column is structurally biased toward the tighter collar (IR-DEC-09): do not rank the two PRUNE arms by it.
+- Leakage canary: max single-feature AUC = 0.5949 over 27 features (≤ 0.90, passed).

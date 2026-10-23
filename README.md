@@ -2,17 +2,18 @@
 
 <!-- CURRENT STATE — the only block a session may edit. Everything below it is frozen. -->
 <!-- CURRENT_STATE_START -->
-## CURRENT STATE (2026-10-23, branch `arena/b04903f8-gemsdoe84`)
+## CURRENT STATE (2026-10-23, branch `arena/5be6452b-gemsdoe84`, session AXIS=PRUNE agent-selected — IR-DEC-08)
 
 | Field | Value | Evidence class |
 | :--- | :--- | :--- |
-| **Parent (R0)** | `h33-h33-2-b2` (`GEMSDOE32`), `37,654` unit-mass dots (`d_cat > 2.0 px`), SHA-256 `c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9` (`-zeros.tif`) / `baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd` (`-nan.tif`) — **rebuilt byte-identically** (`evidence/r0_mass_variants_20261023.json`, `evidence/r0_rebuild_receipt.json`) | REBUILD |
+| **Parent (R0)** | `h33-h33-2-b2` (`GEMSDOE32`), `37,654` unit-mass dots (`d_cat > 2.0 px`), SHA-256 `c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9` (`-zeros.tif`) / `baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd` (`-nan.tif`) — **rebuilt byte-identically again this session** (`evidence/r0_rebuild_receipt_20261023_prune.json`) | REBUILD |
 | **Best receipt** | **none.** No submission-page receipt is committed in this repo (`ledger/submissions.csv`: `receipts_committed = 0`). The incumbent's `0.2778` is owner-reported. | CLAIM |
 | **TOP_PUBLIC** | `UNVERIFIED` live (latest manual snapshot in repo: `0.3195`, rank 1 "DARD", read `2026-10-03` — owner must refresh with a date) | OFFICIAL_SNAPSHOT (stale) |
-| **Slots left this week** | **unknown — owner must fill** (`1` entity, `3` scored/rolling week, `41 days` / `5.86 weeks` to `2026-12-03` deadline = max `18` slots). `0` live slots consumed this session. | — |
-| **Next 3 slots (`AXIS = MASS`)** | 1) `releases/h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3` (`-10pct`, `33,889` dots, `10.00%` changed, pred `+0.0020..+0.0045` DTI) · 2) `releases/h33-h33-2-b2-mass-add10pct-20261023-ad925bd2` (`+10pct`, `41,419` dots, `10.00%` changed, added dots $d_{\text{cat}} \ge 3.0\text{ px}$, pred `-0.0030..+0.0025` DTI) · 3) `releases/h33-h33-2-b2-mass-drop20pct-20261023-62bfc392` (`-20pct`, `30,123` dots, `20.00%` changed, pred `+0.0010..+0.0065` DTI) — plus 3 `AXIS = SNAP` variants (`h33-2-b2-snap1p4px-g0p02-20261023-0b6a2ab2`, `h33-2-b2-snap2p0px-g0p02-20261023-b2019f55`, `h33-2-b2-snap2p0px-g0p01-20261023-7bdaa58b`) in [`SLOT_PLAN.md`](SLOT_PLAN.md) and [`docs/SUBMIT.md`](docs/SUBMIT.md) | BUILT (unscored) |
+| **Slots left this week** | **unknown — owner must fill** (`1` entity, `3` scored/rolling week, `41 days` to the `2026-12-03` deadline (UNVERIFIED) = max ~`18` slots). `0` live slots consumed by agent sessions; `8` variants BUILT unscored. | — |
+| **Next 3 slots (`AXIS = MASS`)** | 1) `releases/h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3` (`33,889` dots, pred `+0.0020..+0.0045`) · 2) `releases/h33-h33-2-b2-mass-add10pct-20261023-ad925bd2` (`41,419` dots, pred `-0.0030..+0.0025`) · 3) `releases/h33-h33-2-b2-mass-drop20pct-20261023-62bfc392` (`30,123` dots, pred `+0.0010..+0.0065`) — full queue incl. SNAP x3 and PRUNE x2 in [`SLOT_PLAN.md`](SLOT_PLAN.md) / [`docs/SUBMIT.md`](docs/SUBMIT.md) | BUILT (unscored) |
+| **Built this session (`AXIS = PRUNE`)** | `releases/h33-h33-2-b2-prune-dcatgt3px-20261023-a7d86ed4` (`37,654` dots, 2,171 ring dots swapped, `11.53%` changed, pred `+0.001..+0.007`, queued slot 5) · `releases/h33-h33-2-b2-prune-dcatgt1px-20261023-f5c7e4fb` (`37,654` dots, 2,492 ring dots re-admitted, `13.24%` changed, pred `-0.007..+0.001`, conditional) — `evidence/r0_prune_variants_20261023.json` | BUILT (unscored) |
 
-Session status: `AXIS = MASS` (`-10pct`, `+10pct`, `-20pct`) built, gated, and re-read from disk alongside `AXIS = SNAP`; all 27 features pass the single-feature holdout leakage canary (`max_auc = 0.5949 <= 0.90`). **The `H84-KTHM` banner below is frozen history from an earlier session and is not this session's recommendation.**
+Session status: PRUNE collar sweep built at fixed count from the parent's own ranking after fixing a silent ranking-pipeline failure (float32 nodata sentinel zeroing H33-A; IR-DEC-07 in `IRREGULARITIES.md` — with the fix, the committed MASS masks and their recorded canary/holdout numbers reproduce). Leakage canary max AUC `0.5949 <= 0.90` (27 features). **The `H84-KTHM` banner below is frozen history from an earlier session and is not this session's recommendation.**
 <!-- CURRENT_STATE_END -->
 <!-- /CURRENT STATE -->
 
