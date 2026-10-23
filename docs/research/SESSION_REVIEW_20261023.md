@@ -1,0 +1,69 @@
+# H84 review — 2026-10-23
+
+## Executive decision: NEGATIVE / DO NOT SUBMIT
+
+The existing H84-THMS TIFF is locally format-valid, but **does not pass the literal parallel-run protocol**. No new TIFF was generated and no competition slot was used this session. This is an explicit unmet deliverable, not a renamed/copied submission presented as unique.
+
+A freshly downloaded, SHA-256-pinned registry witness is positive across the complete bridge footprint. The shared, unchanged `gems57.uniqueness.saturation_certificate` establishes that its 3-pixel halo covers every allowed cell. The shared **literal** comparator measures forward overlap **1.0** for the archived H84 TIFF (limit **0.70**). A single counterexample suffices to disprove clearance; a complete scan would be necessary to establish clearance. We stop before new placement as required. This is a protocol duplicate, **not evidence that the H84 authors copied the witness**. With the current positive-support definition, no nonempty candidate can satisfy this gate against that registry entry.
+
+Evidence: [`release-audit-20261023.json`](../evidence/release-audit-20261023.json). Witness: [immutable GitHub blob](https://api.github.com/repos/buffedlizard55-lab/17GEMSDOE/git/blobs/374c88b1da2b803e2ed160de467fd71ae114010d), SHA-256 `ab0a0a62eecf066a82713b09dd49f0f638a91fa3dd81f54cc34ae89afa3872be`. This is a team artifact, not an organizer receipt or scientific authority.
+
+## What was wrong with the earlier promotion
+
+1. `scripts/run_h84_thms_pipeline.py:audit_uniqueness_against_registry` truncated dense priors to a top-budget support, then used support density and halo coverage to exempt overlap comparisons. It sampled ranks rather than computing full-footprint ranks. This is not the user's literal any-raster gate.
+2. The claimed pre-placement audit itself called an emitter, and was invoked only after production emission. Thus its ordering did not enforce the required stop before placement.
+3. The earlier audit checked a curated local set, whereas the stored broader inventory lists additional rasters. Its absolute paths point outside this checkout; an old completeness flag is not fresh availability evidence.
+4. The production-like A5 holdout arm supplies registry halos to the emitter. Those prior predictions were generated with the **full** catalogue, including withheld faults. A single-feature AUC canary does not test this side channel. The archived A5 result is therefore **not certified leakage-free**. This is an identified dependency, not a measured estimate of the bias's magnitude or direction. The holdout emission code now omits registry halos and rejects old cached-report policies; no replacement score has been run. The old private uniqueness audit was replaced by the shared literal comparator, and its surface gate now precedes emission. Chance-corrected diagnostics cannot override the package gate.
+5. `scripts/evaluate_holdout.py` imported `check_canary` and `paired_bootstrap_ci`, which do not exist in the pinned shared evaluator; `scripts/submission_writer.py` imported an absent `SubmissionError` and called an absent `validate_tif`. Both entry points failed on invocation despite the original test suite passing. Fixed the wrappers to use the real shared API; no private evaluator/writer was introduced.
+6. Source records labelled restricted-domain pages and leaderboard figures “verified” without fresh receipts. Competition URLs were silently changed from user-supplied ID 306 to 311. The current ledger retains 306 as **supplied, unresolved**, not a verified canonical ID. Neither leaderboard figure is organizer-confirmed here. The weekly cap is unknown; do not invent it.
+7. Data restoration manifest does not list all optional sources consumed by the THMS pipeline (notably 2m probes and paleo data); absent files can become zero fields. Thus “data placement is the only blocker” and “all 96 channels reproducible from this manifest” are not established.
+8. The legacy `src/gems84/submission.py` clips inputs and permits diagnostic exterior NaNs. It is not the release writer. Old generation commands are stopped by the current lane audit; future releases must use the shared fail-closed writer.
+
+## What explains H33's result?
+
+The immutable [H33 validation evidence](https://github.com/buffedlizard55-lab/GEMSDOE32/blob/780a5a534269c79adfe6d1d7d5aadead161332aa/evidence/h33_validation.json) identifies its starting point as `BASE-0.2708` from GEMSDOE28. The H33 family prunes dots near mapped faults; `H33-2-B2` excludes a two-pixel collar. It is **not demonstrated** to be a newly trained geological detector, nor a direct unmodified pruning of D2.8. [Implementation](https://github.com/buffedlizard55-lab/GEMSDOE32/blob/780a5a534269c79adfe6d1d7d5aadead161332aa/src/gems32/h33.py).
+
+For pooled DTI with weighted true-positive mass t, false-positive mass f, and fixed positive count G:
+
+`DTI = t / ((1-beta)t + alpha*f + beta*G)`.
+
+At current value s, adding a dot improves the objective iff `(1-(1-beta)*s)*delta_t > alpha*s*delta_f`, assuming a positive denominator. This follows by cross-multiplying the before/after ratios. For positive delta_f it gives a marginal coverage/cost threshold; for deletion use negative deltas, not an inverted rule of thumb. Removing low-credit redundant dots is a plausible precision-budget improvement. Sparse coverage can reduce false-positive mass relative to thick ribbons, but spacing alone does not prove useful geological discovery.
+
+**The hidden organizer truth is unavailable**, so neither exact credit loss nor a causal decomposition of the user-reported result is observable. Zero-filling exterior cells improves conservative export compatibility; the old NaN-containing and finite variants receiving equal user-reported results elsewhere is not proof that NaN caused the portal error. Range validation is necessary, not sufficient for scientific or portal acceptance.
+
+The user-reported H33 value and conflicting leaderboard targets are retained only in `registry/live_scores.csv` / the standing brief. They are not HOLDOUT-DTI and not ORGANIZER-CONFIRMED. No score higher than them is promised. Existing H84 reports are conditional catalogue hide-and-recover diagnostics, not predictions of leaderboard performance; A5's registry side channel prevents promotion on that report.
+
+## Four within-lane proposals, ranked before implementation
+
+These are **not experiments** and are not claimed globally novel. A source inspection of the current THMS features found isotropic thermal smoothing and fixed-weight interactions, not the following explicit residual/negative-control constructions. Broader family/registry novelty remains unverified. Ranking is qualitative expected validation value, **not a projected DTI score**. All remain blocked by the literal duplicate stop and missing source cache.
+
+| Priority / cost | Layers and falsifiable signature | Why potentially unmapped; named non-fault mimic | Difference from current implementation / data viability |
+|---|---|---|---|
+| 1 / medium | Wells/springs temperatures and geothermometers + DEM: fit out temperature dependence on elevation/downslope transport using training blocks only; score warm **upgradient plume heads**, suppress downstream tails | Deep upflow could localize a buried conduit with no visible scarp; lateral aquifer outflow mimics heat | Residual transport conditioning rather than Gaussian thermal proximity. CSV mirror pointer exists; field meaning and required DEM/temperature coverage must be verified before use. No new external source assumed available. |
+| 2 / medium | Same thermal points + MT depth slices: annular clay-cap edge contrast must be azimuthally concentrated toward a thermal head rather than a closed basin-wide conductor | Local breach of a cap may locate a blind fault; saline playa sediments mimic conductive caps | Explicit radial/azimuthal negative control instead of a generic conductivity gradient. Cached feature pointer exists but is not present locally; resolving depth units is required. |
+| 3 / medium-high | Paleo-sinter/travertine + shallow probes + terrain: contrast present-day heat residual near a paleo deposit against matched deposits without heat, using the latter as controls | Reactivation of a sealed pathway may be unmapped; abandoned lateral outflow or pluvial tufa is a mimic | Reactivation-versus-fossil matched control, not summation of all deposits as positives. Optional source files are not covered by the restore manifest. **Not currently data-viable.** |
+| 4 / medium-high | LiDAR/10m scarp and fluvial-chi layers: require co-located breaks in adjacent independent catchments, and test their thermal-head alignment after catchment/relief residualization | Distributed young deformation can be missing from map compilation; lake terraces or lithologic knickpoints mimic scarps | Replication and explicit shoreline negative control rather than quantile-bridging/scarp amplitude alone. Required caches absent; hydrologic derivation and coverage need verification. |
+
+**Top-candidate validation plan (not run):** freeze whole-component hide-and-recover plus buffer; train transport residuals on training blocks only; recompute catalogue features from visible faults; exclude all full-catalogue registry halos from the predictive/holdout path; canary each raw/residual feature separately; compare pooled shared-evaluator DTI and paired physical-block CI against the same-fold incumbent; check untouched outer-region performance before a separate selector. No hyperparameter sweep on the frozen test folds. Passing feature AUC canaries is not proof of no leakage.
+
+Official sources needed if caches cannot be restored: [DOE GDR INGENIOUS 1391](https://gdr.openei.org/submissions/1391) for thermal/paleo/probe metadata; [USGS 3DEP](https://www.usgs.gov/3d-elevation-program) for terrain; [USGS GeoDAWN landing page](https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and) for geophysical provenance. All are **not retrievable under this sandbox's allowlist**; exact asset availability, licensing, timestamps and overlap are unverified. Hence no new-external-data proposal is declared viable. GitHub mirror availability is not official provenance authentication.
+
+## Official evidence actually retrieved this session
+
+The [organizer reference repository](https://github.com/drivendataorg/gems-prize-reference-solution/tree/aebe92f7c8a990f0e3443451b7a825d9afd6336b) was checked through the GitHub API. Its README and notebook establish a U-Net/resnet18 Monte Carlo patch baseline, a data-placement requirement and training Tversky loss weights. The notebook is **not** an implementation/confirmation of this project's distance-weighted 300m evaluation or segment holdout. The official rules PDF, problem page and current submission page were not retrieved. The project concerns fault prediction for geothermal exploration, **not direct proof of geothermal vents**. Fault confidence alone does not establish temperature, permeability, sustainable flow or commercial resource capacity.
+
+## Three passes and next session
+
+- Pass 1: reopened the existing TIFF; retrieved immutable witness; ran shared saturation and exact literal comparison; stopped the lane. Replaced misleading release status and kept archived TIFF downloadable for research only.
+- Pass 2: exercised real evaluator/writer entry points; fixed nonexistent imports/API calls. Added regression tests for witness hash/grid corruption, strict boundaries, fail-closed missing evidence, full-catalogue side channels, and consistent website state.
+- Pass 3: rebuilt all site entry points from one release status, checked local links and reproducibility, ran the full suite and command smoke tests. CI now checks generated-site drift. See PR/check output for remote status; deployment is not assumed from a local build.
+
+**Next work:** the protocol owner/selector must resolve the saturated-registry definition (a proposed representation-aware protocol would be a policy change, not silently binding today). After an explicitly revised protocol, restore every required hash-pinned source, authenticate source metadata when reachable, verify the corrected fold-only holdout emission on restored data, rerun a frozen comparable control and the top residual-thermal hypothesis, and admit only candidates that beat the current holdout best with uncertainty reported. No weekly slot has been authorized.
+
+## Concurrent-main integration
+
+Main advanced with PR #12 while this review was running. Its independent selector-safety, source-caveat, receipt and archived-page corrections were merged into this fixed session branch. Where generated landing pages/current cards conflicted, the stricter fresh literal-stop evidence supersedes the older “promote to selector” state. Historical source/snapshot fixes and the other review were retained. No prior TIFF bytes were modified.
+
+GitHub Pages was observed through the API in legacy mode, serving the main branch root. The root and docs entry points are both rebuilt consistently; switching to workflow mode via API returned HTTP 403 (integration permission), not a password/authentication failure. The Pages workflow now detects the configured mode: legacy main/root publishing remains in place, and action-based deploy steps run only in workflow mode. Deployment success must still be observed separately.
+
+Concurrent PR #14 merged while PR #15 was in CI. Retained its removal of obsolete NaN/negative-lane binaries and extra source/review records. Its old current-card/green-download labels were superseded by the fresh literal-stop status. Its independent format script no longer hardcodes “official fetched” or public leaderboard verification; this code alone cannot establish an organizer receipt. All public download index labels now say research-only.

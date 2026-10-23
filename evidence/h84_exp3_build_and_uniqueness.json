@@ -1,0 +1,93 @@
+{
+  "experiment": "EXP-84-3",
+  "evidence_class": "BUILD-AND-VALIDATION",
+  "submission_name": "gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros",
+  "submission_note": "H84-THMS silica-valve & 1m/10m scarp-chi Dual-Head Dinkelbach 300m; 37654 dots >3px off cat; overlap<=0.650; 0 NaN",
+  "submission_note_chars": 114,
+  "tif_path": "submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif",
+  "zip_path": "submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.zip",
+  "docs_tif_path": "docs/downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif",
+  "docs_zip_path": "docs/downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.zip",
+  "raster_sha256": "509fa4971a3cdf119a0ae7140b0fac31860d063af9bcc914266d98294f2ba7b5",
+  "zip_sha256": "ef336ef406c1489a26bc4ff7ffeb0328e5b96eeaacda684df235713533093fb0",
+  "tif_size_bytes": 144420,
+  "zip_size_bytes": 111224,
+  "dinkelbach_stats": {
+    "n_dots": 37654,
+    "dual_head_ridge": true,
+    "expected_tp_w": 3843.3757,
+    "expected_fp_w": 37008.7112,
+    "expected_k_hat": 10387.2236,
+    "expected_dti_at_budget": 0.233212,
+    "dinkelbach_peak_expected_dti": 0.246794,
+    "dinkelbach_opt_budget": 25617,
+    "overlap_cap_skips": 583154,
+    "max_tracked_halo_overlap": 0.649997
+  },
+  "distance_breakdown": {
+    "total_binary_dots": 37654,
+    "min_distance_to_catalogue_px": 3.1623,
+    "median_distance_to_catalogue_px": 8.4853,
+    "mean_distance_to_catalogue_px": 12.0501,
+    "p90_distance_to_catalogue_px": 25.318,
+    "near_continuation_300m_to_1p2km_dots": 23366,
+    "step_over_and_piedmont_1p2km_to_5km_dots": 14225,
+    "blind_intrabasin_gt_5km_dots": 63
+  },
+  "validator_output": {
+    "file": "/home/user/GEMSDOE84/submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif",
+    "bytes": 144420,
+    "sha256": "509fa4971a3cdf119a0ae7140b0fac31860d063af9bcc914266d98294f2ba7b5",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030664964579045773,
+    "emitted_positive_pixels": 37654,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 37654,
+    "footprint_fraction": 0.007286874781441169
+  }
+}

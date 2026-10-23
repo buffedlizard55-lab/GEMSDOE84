@@ -1,5 +1,7 @@
 name: Tests and release-state checks
 on: [push, pull_request]
+permissions:
+  contents: read
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -10,5 +12,8 @@ jobs:
           python-version: '3.11'
       - run: pip install -r requirements.txt
       - run: python -m pytest -q
-      - run: python scripts/build_site.py
-      - run: git diff --exit-code -- docs
+      - name: Current run cards and site must reproduce exactly
+        run: |
+          python scripts/build_run_card.py
+          python scripts/build_site.py
+          git diff --exit-code -- docs index.html executive-summary.html run_card.json evidence/run-card.json evidence/run_card.json registry/run_card.json

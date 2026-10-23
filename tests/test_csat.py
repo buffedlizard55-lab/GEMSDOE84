@@ -116,7 +116,12 @@ def test_h84_csat_artifact_and_run_cards_synchronized():
     c4 = (ROOT / "docs/run-card.json").read_text(encoding="utf-8")
     assert c1 == c2 == c3 == c4
 
-    card = json.loads(c1)
+    cs1 = (ROOT / "evidence/run_card_csat.json").read_text(encoding="utf-8")
+    cs2 = (ROOT / "registry/run_card_csat.json").read_text(encoding="utf-8")
+    cs3 = (ROOT / "docs/evidence/run_card_csat.json").read_text(encoding="utf-8")
+    assert cs1 == cs2 == cs3
+
+    card = json.loads(cs1)
     assert len(card["note"]) <= 140
     assert card["submission_slots_used"] == 0
     tif_path = ROOT / card["submission_file"]
