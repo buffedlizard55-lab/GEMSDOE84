@@ -1,0 +1,178 @@
+{
+  "total_unique_tif_blobs_in_fleet": 1212,
+  "aligned_single_band_3730x3292_rasters": 1196,
+  "non_standard_or_corrupt_blobs": 16,
+  "details": [
+    {
+      "file": "064d9f69259dcdc0818db177fe57b39861fd4e80.tif",
+      "sha256": "3a14850f2d33bb8b7ae077951c589ad9866f1978e0722691f2ef6ffcffeee718",
+      "bands": 1,
+      "shape": [
+        3337,
+        3337
+      ],
+      "crs": "EPSG:26911",
+      "reason": "multi-band feature stack or non-3730x3292 auxiliary raster"
+    },
+    {
+      "file": "1fc3d38da885918711ceef9aebab0fa7b53cf765.tif",
+      "sha256": "400085c8ef9a1937a9a95b8b81d468ef67f9e39f02abc0403512b77521c24bbd",
+      "bands": 1,
+      "shape": [
+        512,
+        512
+      ],
+      "crs": "EPSG:32611",
+      "reason": "multi-band feature stack or non-3730x3292 auxiliary raster"
+    },
+    {
+      "file": "2fb1d57fdd33b0bdea51f2abef58fb5cddf53aa5.tif",
+      "sha256": "a35a9c6d2a14786f4dab85481ee59769213072f5dab5b2535ea82ae4d9bb7d9b",
+      "bands": 4,
+      "shape": [
+        3730,
+        3292
+      ],
+      "crs": "EPSG:32611",
+      "reason": "multi-band feature stack or non-3730x3292 auxiliary raster"
+    },
+    {
+      "file": "394e9f31e1c4d2ffcf678a5ad786030d9cdfa7c7.tif",
+      "sha256": "b5e53d67c3a7d3d1ca44ae04ae1e84d8574857da3fcd5e34ba47276d6c04b923",
+      "bands": 7,
+      "shape": [
+        3730,
+        3292
+      ],
+      "crs": "EPSG:32611",
+      "reason": "multi-band feature stack or non-3730x3292 auxiliary raster"
+    },
+    {
+      "file": "51d18ae2082396fba9187cc299da051fd9d6f77e.tif",
+      "sha256": "48326d816108330bddb6e329b71b5db60aea488d99b1d9788430d8575b8254a0",
+      "bands": 1,
+      "shape": [
+        512,
+        512
+      ],
+      "crs": "EPSG:32611",
+      "reason": "multi-band feature stack or non-3730x3292 auxiliary raster"
+    },
+    {
+      "file": "5388687c1396d98ba4a2298af431361eabd213f1.tif",
+      "sha256": "a6398d9950965dec6aae6ccecdaa6ced48645d133eab222cbdd11def9bdabfa4",
+      "bands": 9,
+      "shape": [
+        3730,
+        3292
+      ],
+      "crs": "EPSG:32611",
+      "reason": "multi-band feature stack or non-3730x3292 auxiliary raster"
+    },
+    {
+      "file": "67aa86ab4e36c8e3f30bc90f6d8e124723e1f90e.tif",
+      "sha256": "90838cbc194576b772c4c11b19b6d37aeb66cbe04818170ccaa3ca46591f40e7",
+      "bands": 1,
+      "shape": [
+        9200,
+        7600
+      ],
+      "crs": "EPSG:32611",
+      "reason": "multi-band feature stack or non-3730x3292 auxiliary raster"
+    },
+    {
+      "file": "67f853215db8bb339345446a294722d3852d1d56.tif",
+      "sha256": "927c36c88debcaa65e9de9fbd0f3adf02b338614fbaed86e3e321111084735de",
+      "bands": 1,
+      "shape": [
+        3337,
+        3337
+      ],
+      "crs": "EPSG:26911",
+      "reason": "multi-band feature stack or non-3730x3292 auxiliary raster"
+    },
+    {
+      "file": "80704748f974ea9dbc002924ddf971a957186ae6.tif",
+      "sha256": "c22420f75999030d7cc65c9e31e50d232ea6158423bca051613a18a8b20ba682",
+      "bands": 4,
+      "shape": [
+        3730,
+        3292
+      ],
+      "crs": "EPSG:32611",
+      "reason": "multi-band feature stack or non-3730x3292 auxiliary raster"
+    },
+    {
+      "file": "89ffb2d61840859392a758928ffdbae4260f2918.tif",
+      "sha256": "a65ccbb94d92988ddf1ddc599d05de756fa3339ea451c3711c6f2c4f5bc4e028",
+      "error": "89ffb2d61840859392a758928ffdbae4260f2918.tif: MissingRequired:TIFF directory is missing required \"StripOffsets\" field",
+      "reason": "corrupt upstream TIFF header (missing StripOffsets)"
+    },
+    {
+      "file": "a5d33edd0f8b35f3f0932e0135096d3172d9e79d.tif",
+      "sha256": "0020056dc438ee34174d12b996b0adb8098070951798ac4cddb885689275daa2",
+      "bands": 1,
+      "shape": [
+        512,
+        512
+      ],
+      "crs": "EPSG:32611",
+      "reason": "multi-band feature stack or non-3730x3292 auxiliary raster"
+    },
+    {
+      "file": "a6234b555fefe3a03d56d8d3f90e6a2be7c6f6b5.tif",
+      "sha256": "22ec31702ff6d03c4ba9a45c66e2a924f540891844d5e4c79a6c1bd83397cf04",
+      "bands": 19,
+      "shape": [
+        512,
+        512
+      ],
+      "crs": "EPSG:32611",
+      "reason": "multi-band feature stack or non-3730x3292 auxiliary raster"
+    },
+    {
+      "file": "a97c7b2a513225c9f9f2b35736afe5abf4d2a491.tif",
+      "sha256": "60543f8ea9d4ee432b018832337c3cf1fe0db4f71b87d15fea71869fe4f23638",
+      "bands": 1,
+      "shape": [
+        32,
+        48
+      ],
+      "crs": "EPSG:32611",
+      "reason": "multi-band feature stack or non-3730x3292 auxiliary raster"
+    },
+    {
+      "file": "b6b4c2193fad0b9266849d0838e27dee640a03d4.tif",
+      "sha256": "538b45735833b341fc455dbbf06c47bc82a8bd8943c254ae6d3a5a07e72e22ca",
+      "bands": 3,
+      "shape": [
+        3730,
+        3292
+      ],
+      "crs": "EPSG:32611",
+      "reason": "multi-band feature stack or non-3730x3292 auxiliary raster"
+    },
+    {
+      "file": "da733b53147efad5c141ffdb96e469ec5b4da8b8.tif",
+      "sha256": "d580bb8bdcdb941e32fefb8b38044bc5bf04e199bf2e83498c3576e6fc465568",
+      "bands": 12,
+      "shape": [
+        3730,
+        3292
+      ],
+      "crs": "EPSG:32611",
+      "reason": "multi-band feature stack or non-3730x3292 auxiliary raster"
+    },
+    {
+      "file": "dfc512ff03c0b610653217cf21ab9196b051b4ad.tif",
+      "sha256": "6cb051f70f941fd78028fe66a9f71e87204fcd8d9a85903df0b94993bad1ec4d",
+      "bands": 7,
+      "shape": [
+        3730,
+        3292
+      ],
+      "crs": "EPSG:32611",
+      "reason": "multi-band feature stack or non-3730x3292 auxiliary raster"
+    }
+  ]
+}

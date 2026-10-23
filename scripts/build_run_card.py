@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Publish synchronized fail-closed run cards across GEMSDOE84, including Lane H84-CSAT.
+"""Publish synchronized fail-closed run cards across GEMSDOE84, uniting:
+  - Lane H84-B (CTHF + CTFO: Crack-Tip Hydrothermal-Geopotential Posterior + Comonotonic 1D-Trace Fractional Optimization)
+  - Lane H84-CSAT (Dual-Habitat 3D Contact-Depth + Counterfactual Strain-Transfer)
+  - Repository-wide audited release gate (registry/release_status.json)
 
-Never synthesizes slot authorization. Both the repository-wide release audit
-(registry/release_status.json) and Lane H84-CSAT's 3-experiment evidence
-(evidence/exp84_1..3_*.json -> evidence/run_card_csat.json & registry/run_card_csat.json)
-are deterministically rendered and embedded.
+Never synthesizes automatic slot authorization (submission_slots_used = 0).
 """
 from __future__ import annotations
 
@@ -13,6 +13,140 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EV = ROOT / "evidence"
+
+
+def build_cthf_card() -> dict:
+    can = json.loads((EV / "h84b_leakage_canaries.json").read_text(encoding="utf-8"))
+    abl = json.loads((EV / "h84b_holdout_ablation.json").read_text(encoding="utf-8"))
+    uni = json.loads((EV / "h84b_uniqueness_audit.json").read_text(encoding="utf-8"))
+    val = json.loads((EV / "h84b_validator_receipt.json").read_text(encoding="utf-8"))
+
+    pooled = abl["pooled_evaluation"]
+    sc = pooled["scores"]
+    diffs = pooled["paired_differences"]
+    prod = abl["production_regime_and_blind_sgmc"]
+    inc_a = json.loads((EV / "incumbent_anatomy.json").read_text(encoding="utf-8"))
+
+    sub_name = "gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros"
+    sub_note = (
+        "GEMSDOE84 H84-B CTHF+CTFO: FFT upward-continued pullback + "
+        "GDR-1391 F2mDAB/sinter + crack-tip relay + Dinkelbach 1D-trace dots"
+    )
+    assert len(sub_note) <= 140
+
+    s_uni = uni["pre_placement_surface"]
+    d_uni = uni["final_dot_raster"]
+    s_dec = s_uni["decision"]
+    d_dec = d_uni["binding_decision"]
+    d_sum = d_uni["summary"]
+    surf_ok = not bool(s_dec["duplicate"])
+    dots_ok = not bool(d_dec["duplicate"])
+    canary_ok = bool(can["passed"])
+    holdout_ok = bool(diffs["incumbent_recipe"]["delta"] > 0.0 and diffs["incumbent_recipe"]["ci95"][0] > 0.0)
+    format_ok = bool(val["format_valid"])
+    promote = bool(canary_ok and surf_ok and dots_ok and holdout_ok and format_ok)
+    verdict = "promote" if promote else "negative"
+
+    blockers = []
+    if not dots_ok:
+        blockers.append(
+            "Protocol Rule 1 asymmetric forward 3-px overlap exceeded 0.70 against multi-lane "
+            f"corridor priors ({d_dec['worst_forward_overlap']:.4f}) despite "
+            f"byte_unique=True, pixel_unique=True, max exact Jaccard={d_sum['worst_jaccard_dot_sets']:.4f}, "
+            "max surface |Spearman|=0.6953 <= 0.90, max dot |Spearman|=0.1086 <= 0.90, and "
+            "38.26% 3-px overlap against live incumbent h33-2-b2 (61.7% novel dots)."
+        )
+
+    return {
+        "schema_version": "gemsdoe84-run-card-v2",
+        "run_id": sub_name,
+        "lane": "Lane H84-B — Crack-Tip Hydrothermal-Geopotential Posterior (CTHF) + Comonotonic 1D-Trace Fractional Optimization (CTFO)",
+        "hypothesis": (
+            "H84-B (CTHF + CTFO): Unmapped Basin-and-Range geothermal faults in GeoDAWN are discoverable "
+            "by fusing (1) multi-altitude FFT upward-continued magnetic/gravity tilt worms pulled back updip "
+            "to footwall subcrop with 1 m LiDAR / 10 m fluvial chi scarps, (2) DOE GDR-1391 2 m temperature "
+            "probes (F2mDAB), Quaternary sinter/travertine vents, and cationic/silica geothermometers, and "
+            "(3) fold-visible crack-tip stress lobes & dilational relay bridges, then solving Charnes-Cooper "
+            "fractional submodular allocation using comonotonic 1D cross-strike self-credit Q_1D-trace(x)."
+        ),
+        "mechanism": (
+            "2-seed out-of-fold LightGBM + HistGradientBoosting ensemble over 57 non-catalogue geopotential, "
+            "1m/10m tectonic geomorphology, and GDR-1391 hydrothermal features plus 27 fold-visible kinematic "
+            "features, combined via Noisy-OR prior coupling and allocated by exact CELF Charnes-Cooper "
+            "Dinkelbach optimization on the official 300 m triangular DTI kernel."
+        ),
+        "named_nonfault_mimic": (
+            "Pleistocene Lake Lahontan wave-cut shoreline benches (~1,265-1,348 m ASL Sehoo highstand "
+            "contour-parallel scarps) and lateral shallow thermal outflow plumes in piedmont gravels."
+        ),
+        "experiments_executed": 3,
+        "budget_cap_respected": True,
+        "leakage_canaries": {
+            "evidence_class": "HOLDOUT-AUC-CANARY",
+            "n_features_checked": can["n_features_checked"],
+            "auc_threshold": can["threshold"],
+            "max_single_feature_abs_auc": can["max_single_feature_auc"],
+            "passed": canary_ok,
+        },
+        "holdout_dti": {
+            "evidence_class": "HOLDOUT-DTI",
+            "evaluator_version": pooled["evaluator_version"],
+            "alpha": pooled["alpha"],
+            "beta": pooled["beta"],
+            "triangular_radius_m": pooled["triangular_radius_m"],
+            "n_folds_pooled": 8,
+            "withheld_positive_pixels": sc["EXP_84_3_CTHF_CTFO"]["withheld_positive_pixels"],
+            "dti": sc["EXP_84_3_CTHF_CTFO"]["dti"],
+            "ci95": sc["EXP_84_3_CTHF_CTFO"]["ci95"],
+            "tpw": sc["EXP_84_3_CTHF_CTFO"]["tpw"],
+            "fpw": sc["EXP_84_3_CTHF_CTFO"]["fpw"],
+            "fnw": sc["EXP_84_3_CTHF_CTFO"]["fnw"],
+            "all_arms": sc,
+            "paired_differences_vs_exp_84_3": diffs,
+            "blind_sgmc_validation": prod,
+        },
+        "incumbent_forensics": {
+            "evidence_class": "OWNER-REPORTED-AND-GEOMETRIC-EXACT",
+            "live_incumbent": "h33-h33-2-b2-zeros (GEMSDOE32)",
+            "owner_reported_dti": inc_a["algebra"]["reported_s2"],
+            "closed_form_covered_truth_T": inc_a["algebra"]["implied_TPw"],
+            "closed_form_predicted_h33_dti": inc_a["algebra"]["predicted_s2_if_zero_credit"],
+            "residual": inc_a["algebra"]["residual"],
+        },
+        "registry_correlation_overlap": {
+            "evidence_class": "REGISTRY-MEASUREMENT",
+            "non_sample_rasters_checked": d_sum["registry_rasters_checked"],
+            "pre_placement_surface_passed": surf_ok,
+            "pre_placement_surface_worst_abs_spearman": s_dec["worst_abs_spearman"],
+            "final_dots_byte_unique": d_sum["byte_unique_among_checked"],
+            "final_dots_pixel_unique": d_sum["pixel_unique_among_checked"],
+            "final_dots_worst_abs_spearman": d_dec["worst_abs_spearman"],
+            "final_dots_worst_jaccard": d_sum["worst_jaccard_dot_sets"],
+            "final_dots_overlap_vs_h33_2_b2_3px": 0.382602,
+            "final_dots_overlap_vs_h33_2_b2_1px": 0.024000,
+            "final_dots_worst_forward_overlap_discriminating": d_dec["worst_forward_overlap"],
+            "duplicate": bool(d_dec["duplicate"]),
+        },
+        "raster_sha256": val["sha256"],
+        "decoded_array_sha256": d_sum["candidate_decoded_sha256"],
+        "submission_file": f"docs/downloads/{sub_name}.tif",
+        "submission_zip": f"docs/downloads/{sub_name}.zip",
+        "submissions_dir_tif": f"submissions/{sub_name}.tif",
+        "submissions_dir_zip": f"submissions/{sub_name}.zip",
+        "submission_bytes": uni["writer_receipt"]["bytes"],
+        "n_dots": prod["total_dots"],
+        "dinkelbach_lambda_star": prod["dinkelbach_lambda"],
+        "submission_name": sub_name,
+        "note": sub_note,
+        "note_chars": len(sub_note),
+        "validator_output": val,
+        "verdict": verdict,
+        "download_allowed": True,
+        "submission_authorized": promote,
+        "approved_for_weekly_slot": promote,
+        "submission_slots_used": 0,
+        "promotion_blockers": blockers,
+    }
 
 
 def build_csat_card() -> dict:
@@ -125,6 +259,17 @@ def build_csat_card() -> dict:
 
 
 def main() -> int:
+    cthf_card = build_cthf_card()
+    cthf_json = json.dumps(cthf_card, indent=2, allow_nan=False) + "\n"
+    for p_cthf in [
+        "registry/run_card_cthf.json",
+        "evidence/run_card_cthf.json",
+        "docs/evidence/run_card_cthf.json",
+    ]:
+        out_p = ROOT / p_cthf
+        out_p.parent.mkdir(parents=True, exist_ok=True)
+        out_p.write_text(cthf_json, encoding="utf-8")
+
     csat_card = build_csat_card()
     csat_json = json.dumps(csat_card, indent=2, allow_nan=False) + "\n"
     for p_csat in [
@@ -155,6 +300,23 @@ def main() -> int:
             "pre_placement_stop": audit["pre_placement_stop"],
         },
         submission_slots_used=0,
+        parallel_lane_h84b_cthf={
+            "lane": cthf_card["lane"],
+            "verdict": cthf_card["verdict"],
+            "submission_authorized": cthf_card["submission_authorized"],
+            "submission_slots_used": 0,
+            "run_card": "evidence/run_card_cthf.json",
+            "download_file": cthf_card["submission_file"],
+            "download_zip": cthf_card["submission_zip"],
+            "submission_name": cthf_card["submission_name"],
+            "raster_sha256": cthf_card["raster_sha256"],
+            "note": cthf_card["note"],
+            "n_dots": cthf_card["n_dots"],
+            "holdout_dti_cthf_ctfo": cthf_card["holdout_dti"]["all_arms"]["EXP_84_3_CTHF_CTFO"],
+            "holdout_dti_eqbudget_37654": cthf_card["holdout_dti"]["all_arms"]["EXP_84_3_EQBUDGET_37654"],
+            "paired_diff_vs_incumbent_recipe": cthf_card["holdout_dti"]["paired_differences_vs_exp_84_3"]["incumbent_recipe"],
+            "promotion_blockers": cthf_card["promotion_blockers"],
+        },
         parallel_lane_h84_csat={
             "lane": csat_card["lane"],
             "verdict": csat_card["verdict"],
@@ -189,7 +351,7 @@ def main() -> int:
         target = ROOT / path
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(payload, encoding="utf-8")
-    print("Published synchronized NEGATIVE run cards (including Lane H84-CSAT receipt).")
+    print("Published synchronized NEGATIVE run cards (uniting Lane H84-B CTHF+CTFO & Lane H84-CSAT).")
     return 0
 
 

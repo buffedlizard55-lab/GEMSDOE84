@@ -170,6 +170,58 @@
     "pre_placement_stop": true
   },
   "submission_slots_used": 0,
+  "parallel_lane_h84b_cthf": {
+    "lane": "Lane H84-B \u2014 Crack-Tip Hydrothermal-Geopotential Posterior (CTHF) + Comonotonic 1D-Trace Fractional Optimization (CTFO)",
+    "verdict": "negative",
+    "submission_authorized": false,
+    "submission_slots_used": 0,
+    "run_card": "evidence/run_card_cthf.json",
+    "download_file": "docs/downloads/gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.tif",
+    "download_zip": "docs/downloads/gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros.zip",
+    "submission_name": "gemsdoe84-cthf-ctfo-20261023T013252Z-8c0b5a8b-zeros",
+    "raster_sha256": "34dfefb16c0c54e9537a3c7988f3ffb9d5c0d3938cb706b58502567b5311e701",
+    "note": "GEMSDOE84 H84-B CTHF+CTFO: FFT upward-continued pullback + GDR-1391 F2mDAB/sinter + crack-tip relay + Dinkelbach 1D-trace dots",
+    "n_dots": 41500,
+    "holdout_dti_cthf_ctfo": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.15811508653582998,
+      "ci95": [
+        0.14273205135334238,
+        0.1719895157691462
+      ],
+      "withheld_positive_pixels": 22893,
+      "tpw": 5420.5636273354385,
+      "fpw": 74419.40426565563,
+      "fnw": 17472.436372664557
+    },
+    "holdout_dti_eqbudget_37654": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.1577833027262077,
+      "ci95": [
+        0.14264012502746998,
+        0.17138285621948499
+      ],
+      "withheld_positive_pixels": 22893,
+      "tpw": 5183.658978365179,
+      "fpw": 67509.47202095494,
+      "fnw": 17709.341021634824
+    },
+    "paired_diff_vs_incumbent_recipe": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.052470584678509694,
+      "ci95": [
+        0.03702438278294799,
+        0.06758178877143413
+      ],
+      "withheld_positive_pixels": 22893
+    },
+    "promotion_blockers": [
+      "Protocol Rule 1 asymmetric forward 3-px overlap exceeded 0.70 against multi-lane corridor priors (0.9687) despite byte_unique=True, pixel_unique=True, max exact Jaccard=0.0345, max surface |Spearman|=0.6953 <= 0.90, max dot |Spearman|=0.1086 <= 0.90, and 38.26% 3-px overlap against live incumbent h33-2-b2 (61.7% novel dots)."
+    ]
+  },
   "parallel_lane_h84_csat": {
     "lane": "H84-CSAT \u2014 Dual-Habitat 3D Contact-Depth + Counterfactual Strain-Transfer",
     "verdict": "negative",

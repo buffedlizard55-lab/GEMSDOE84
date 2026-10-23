@@ -1,0 +1,769 @@
+{
+  "gate": "single_feature_holdout_auc_canary",
+  "threshold": 0.9,
+  "n_features_checked": 84,
+  "max_single_feature_auc": 0.7423,
+  "passed": true,
+  "withheld_positives_seed20": 11321,
+  "withheld_positives_seed21": 11572,
+  "total_withheld_positive_pixels": 22893,
+  "blind_off_catalogue_sgmc_pixels": 56467,
+  "features": [
+    {
+      "feature": "kin_tip_cone_short",
+      "kind": "fold_visible_kinematics",
+      "auc_seed20": 0.7598,
+      "auc_seed21": 0.7247,
+      "auc_mean": 0.7423,
+      "abs_strength": 0.7423,
+      "blind_sgmc_auc": 0.5056
+    },
+    {
+      "feature": "kin_dvis_exp8",
+      "kind": "fold_visible_kinematics",
+      "auc_seed20": 0.7555,
+      "auc_seed21": 0.7288,
+      "auc_mean": 0.7421,
+      "abs_strength": 0.7421,
+      "blind_sgmc_auc": 0.5264
+    },
+    {
+      "feature": "kin_dvis_exp26",
+      "kind": "fold_visible_kinematics",
+      "auc_seed20": 0.7555,
+      "auc_seed21": 0.7288,
+      "auc_mean": 0.7421,
+      "abs_strength": 0.7421,
+      "blind_sgmc_auc": 0.5264
+    },
+    {
+      "feature": "kin_dvis_log",
+      "kind": "fold_visible_kinematics",
+      "auc_seed20": 0.2445,
+      "auc_seed21": 0.2712,
+      "auc_mean": 0.2579,
+      "abs_strength": 0.7421,
+      "blind_sgmc_auc": 0.4736
+    },
+    {
+      "feature": "kin_tip_cone_long",
+      "kind": "fold_visible_kinematics",
+      "auc_seed20": 0.7555,
+      "auc_seed21": 0.7224,
+      "auc_mean": 0.739,
+      "abs_strength": 0.739,
+      "blind_sgmc_auc": 0.5058
+    },
+    {
+      "feature": "kin_relay_bridge",
+      "kind": "fold_visible_kinematics",
+      "auc_seed20": 0.6262,
+      "auc_seed21": 0.6041,
+      "auc_mean": 0.6152,
+      "abs_strength": 0.6152,
+      "blind_sgmc_auc": 0.5032
+    },
+    {
+      "feature": "det_trough_s2p8",
+      "kind": "static",
+      "auc_seed20": 0.5824,
+      "auc_seed21": 0.5961,
+      "auc_mean": 0.5892,
+      "abs_strength": 0.5892,
+      "blind_sgmc_auc": 0.6648
+    },
+    {
+      "feature": "lidar_relief",
+      "kind": "static",
+      "auc_seed20": 0.5921,
+      "auc_seed21": 0.585,
+      "auc_mean": 0.5885,
+      "abs_strength": 0.5885,
+      "blind_sgmc_auc": 0.7184
+    },
+    {
+      "feature": "lidar_cross_max",
+      "kind": "static",
+      "auc_seed20": 0.5964,
+      "auc_seed21": 0.5772,
+      "auc_mean": 0.5868,
+      "abs_strength": 0.5868,
+      "blind_sgmc_auc": 0.7101
+    },
+    {
+      "feature": "lidar_lappos",
+      "kind": "static",
+      "auc_seed20": 0.5941,
+      "auc_seed21": 0.5782,
+      "auc_mean": 0.5862,
+      "abs_strength": 0.5862,
+      "blind_sgmc_auc": 0.6987
+    },
+    {
+      "feature": "dem10_slope_std",
+      "kind": "static",
+      "auc_seed20": 0.5891,
+      "auc_seed21": 0.5767,
+      "auc_mean": 0.5829,
+      "abs_strength": 0.5829,
+      "blind_sgmc_auc": 0.7471
+    },
+    {
+      "feature": "lidar_lapneg",
+      "kind": "static",
+      "auc_seed20": 0.5883,
+      "auc_seed21": 0.5733,
+      "auc_mean": 0.5808,
+      "abs_strength": 0.5808,
+      "blind_sgmc_auc": 0.6941
+    },
+    {
+      "feature": "det_trough_s1p3",
+      "kind": "static",
+      "auc_seed20": 0.5794,
+      "auc_seed21": 0.5821,
+      "auc_mean": 0.5807,
+      "abs_strength": 0.5807,
+      "blind_sgmc_auc": 0.6909
+    },
+    {
+      "feature": "dem10_curv_prof",
+      "kind": "static",
+      "auc_seed20": 0.5863,
+      "auc_seed21": 0.568,
+      "auc_mean": 0.5771,
+      "abs_strength": 0.5771,
+      "blind_sgmc_auc": 0.7275
+    },
+    {
+      "feature": "lidar_step_max",
+      "kind": "static",
+      "auc_seed20": 0.5864,
+      "auc_seed21": 0.5667,
+      "auc_mean": 0.5765,
+      "abs_strength": 0.5765,
+      "blind_sgmc_auc": 0.6999
+    },
+    {
+      "feature": "lidar_ex_max",
+      "kind": "static",
+      "auc_seed20": 0.5834,
+      "auc_seed21": 0.5615,
+      "auc_mean": 0.5725,
+      "abs_strength": 0.5725,
+      "blind_sgmc_auc": 0.682
+    },
+    {
+      "feature": "dem10_hs_lineament",
+      "kind": "static",
+      "auc_seed20": 0.5771,
+      "auc_seed21": 0.5633,
+      "auc_mean": 0.5702,
+      "abs_strength": 0.5702,
+      "blind_sgmc_auc": 0.7561
+    },
+    {
+      "feature": "dem10_slope_max",
+      "kind": "static",
+      "auc_seed20": 0.573,
+      "auc_seed21": 0.5635,
+      "auc_mean": 0.5683,
+      "abs_strength": 0.5683,
+      "blind_sgmc_auc": 0.7692
+    },
+    {
+      "feature": "dem10_steep_frac",
+      "kind": "static",
+      "auc_seed20": 0.5741,
+      "auc_seed21": 0.5617,
+      "auc_mean": 0.5679,
+      "abs_strength": 0.5679,
+      "blind_sgmc_auc": 0.7326
+    },
+    {
+      "feature": "dem10_slope_p90",
+      "kind": "static",
+      "auc_seed20": 0.5699,
+      "auc_seed21": 0.5615,
+      "auc_mean": 0.5657,
+      "abs_strength": 0.5657,
+      "blind_sgmc_auc": 0.7697
+    },
+    {
+      "feature": "dem10_relief_local",
+      "kind": "static",
+      "auc_seed20": 0.5668,
+      "auc_seed21": 0.5605,
+      "auc_mean": 0.5636,
+      "abs_strength": 0.5636,
+      "blind_sgmc_auc": 0.7693
+    },
+    {
+      "feature": "geod_shearrate",
+      "kind": "static",
+      "auc_seed20": 0.5665,
+      "auc_seed21": 0.5604,
+      "auc_mean": 0.5634,
+      "abs_strength": 0.5634,
+      "blind_sgmc_auc": 0.4802
+    },
+    {
+      "feature": "det_elev_slope",
+      "kind": "static",
+      "auc_seed20": 0.5647,
+      "auc_seed21": 0.5614,
+      "auc_mean": 0.563,
+      "abs_strength": 0.563,
+      "blind_sgmc_auc": 0.7653
+    },
+    {
+      "feature": "joint_grav_rtp_pullback",
+      "kind": "static",
+      "auc_seed20": 0.5559,
+      "auc_seed21": 0.5688,
+      "auc_mean": 0.5624,
+      "abs_strength": 0.5624,
+      "blind_sgmc_auc": 0.4663
+    },
+    {
+      "feature": "lidar_ex_mean",
+      "kind": "static",
+      "auc_seed20": 0.5737,
+      "auc_seed21": 0.551,
+      "auc_mean": 0.5623,
+      "abs_strength": 0.5623,
+      "blind_sgmc_auc": 0.6832
+    },
+    {
+      "feature": "geod_2ndinv",
+      "kind": "static",
+      "auc_seed20": 0.5667,
+      "auc_seed21": 0.5563,
+      "auc_mean": 0.5615,
+      "abs_strength": 0.5615,
+      "blind_sgmc_auc": 0.4805
+    },
+    {
+      "feature": "geod_transtension_ratio",
+      "kind": "static",
+      "auc_seed20": 0.4427,
+      "auc_seed21": 0.4467,
+      "auc_mean": 0.4447,
+      "abs_strength": 0.5553,
+      "blind_sgmc_auc": 0.5208
+    },
+    {
+      "feature": "ieq_density",
+      "kind": "static",
+      "auc_seed20": 0.5426,
+      "auc_seed21": 0.5619,
+      "auc_mean": 0.5523,
+      "abs_strength": 0.5523,
+      "blind_sgmc_auc": 0.4807
+    },
+    {
+      "feature": "tc_tilt",
+      "kind": "static",
+      "auc_seed20": 0.4706,
+      "auc_seed21": 0.43,
+      "auc_mean": 0.4503,
+      "abs_strength": 0.5497,
+      "blind_sgmc_auc": 0.3734
+    },
+    {
+      "feature": "tc_zero_contour",
+      "kind": "static",
+      "auc_seed20": 0.5294,
+      "auc_seed21": 0.57,
+      "auc_mean": 0.5497,
+      "abs_strength": 0.5497,
+      "blind_sgmc_auc": 0.6266
+    },
+    {
+      "feature": "grav_worm_pullback60",
+      "kind": "static",
+      "auc_seed20": 0.5404,
+      "auc_seed21": 0.5516,
+      "auc_mean": 0.546,
+      "abs_strength": 0.546,
+      "blind_sgmc_auc": 0.4473
+    },
+    {
+      "feature": "rtp_worm_pullback60",
+      "kind": "static",
+      "auc_seed20": 0.536,
+      "auc_seed21": 0.5509,
+      "auc_mean": 0.5435,
+      "abs_strength": 0.5435,
+      "blind_sgmc_auc": 0.4985
+    },
+    {
+      "feature": "rtp_worm_persist4",
+      "kind": "static",
+      "auc_seed20": 0.533,
+      "auc_seed21": 0.5526,
+      "auc_mean": 0.5428,
+      "abs_strength": 0.5428,
+      "blind_sgmc_auc": 0.4947
+    },
+    {
+      "feature": "grav_worm_h1200",
+      "kind": "static",
+      "auc_seed20": 0.5394,
+      "auc_seed21": 0.5447,
+      "auc_mean": 0.542,
+      "abs_strength": 0.542,
+      "blind_sgmc_auc": 0.4362
+    },
+    {
+      "feature": "grav_worm_persist4",
+      "kind": "static",
+      "auc_seed20": 0.5361,
+      "auc_seed21": 0.5423,
+      "auc_mean": 0.5392,
+      "abs_strength": 0.5392,
+      "blind_sgmc_auc": 0.4394
+    },
+    {
+      "feature": "geo_sinter_conduit",
+      "kind": "static",
+      "auc_seed20": 0.4548,
+      "auc_seed21": 0.4667,
+      "auc_mean": 0.4608,
+      "abs_strength": 0.5392,
+      "blind_sgmc_auc": 0.5236
+    },
+    {
+      "feature": "rtp_worm_h1200",
+      "kind": "static",
+      "auc_seed20": 0.528,
+      "auc_seed21": 0.5489,
+      "auc_mean": 0.5385,
+      "abs_strength": 0.5385,
+      "blind_sgmc_auc": 0.4933
+    },
+    {
+      "feature": "rad_kth_alteration_hp",
+      "kind": "static",
+      "auc_seed20": 0.4679,
+      "auc_seed21": 0.4558,
+      "auc_mean": 0.4618,
+      "abs_strength": 0.5382,
+      "blind_sgmc_auc": 0.4731
+    },
+    {
+      "feature": "deq_log",
+      "kind": "static",
+      "auc_seed20": 0.5369,
+      "auc_seed21": 0.5388,
+      "auc_mean": 0.5379,
+      "abs_strength": 0.5379,
+      "blind_sgmc_auc": 0.4808
+    },
+    {
+      "feature": "geo_volcanic_vent",
+      "kind": "static",
+      "auc_seed20": 0.5438,
+      "auc_seed21": 0.5305,
+      "auc_mean": 0.5371,
+      "abs_strength": 0.5371,
+      "blind_sgmc_auc": 0.5762
+    },
+    {
+      "feature": "iso_grav_anom",
+      "kind": "static",
+      "auc_seed20": 0.4599,
+      "auc_seed21": 0.4665,
+      "auc_mean": 0.4632,
+      "abs_strength": 0.5368,
+      "blind_sgmc_auc": 0.615
+    },
+    {
+      "feature": "iso_grav_slope",
+      "kind": "static",
+      "auc_seed20": 0.5234,
+      "auc_seed21": 0.547,
+      "auc_mean": 0.5352,
+      "abs_strength": 0.5352,
+      "blind_sgmc_auc": 0.4218
+    },
+    {
+      "feature": "depth_base_grad_s2",
+      "kind": "static",
+      "auc_seed20": 0.5381,
+      "auc_seed21": 0.5302,
+      "auc_mean": 0.5342,
+      "abs_strength": 0.5342,
+      "blind_sgmc_auc": 0.3684
+    },
+    {
+      "feature": "tmi_hg",
+      "kind": "static",
+      "auc_seed20": 0.5286,
+      "auc_seed21": 0.5381,
+      "auc_mean": 0.5333,
+      "abs_strength": 0.5333,
+      "blind_sgmc_auc": 0.4936
+    },
+    {
+      "feature": "gallardo_meju_concordance",
+      "kind": "static",
+      "auc_seed20": 0.5231,
+      "auc_seed21": 0.5376,
+      "auc_mean": 0.5303,
+      "abs_strength": 0.5303,
+      "blind_sgmc_auc": 0.4804
+    },
+    {
+      "feature": "mag_destruction_shallow",
+      "kind": "static",
+      "auc_seed20": 0.5234,
+      "auc_seed21": 0.5368,
+      "auc_mean": 0.5301,
+      "abs_strength": 0.5301,
+      "blind_sgmc_auc": 0.5458
+    },
+    {
+      "feature": "rad_uth_redox",
+      "kind": "static",
+      "auc_seed20": 0.5098,
+      "auc_seed21": 0.5448,
+      "auc_mean": 0.5273,
+      "abs_strength": 0.5273,
+      "blind_sgmc_auc": 0.5022
+    },
+    {
+      "feature": "rtp_worm_h200",
+      "kind": "static",
+      "auc_seed20": 0.5211,
+      "auc_seed21": 0.5333,
+      "auc_mean": 0.5272,
+      "abs_strength": 0.5272,
+      "blind_sgmc_auc": 0.5038
+    },
+    {
+      "feature": "geod_dilaterate",
+      "kind": "static",
+      "auc_seed20": 0.5165,
+      "auc_seed21": 0.5332,
+      "auc_mean": 0.5249,
+      "abs_strength": 0.5249,
+      "blind_sgmc_auc": 0.4361
+    },
+    {
+      "feature": "grav_worm_h200",
+      "kind": "static",
+      "auc_seed20": 0.5212,
+      "auc_seed21": 0.5281,
+      "auc_mean": 0.5246,
+      "abs_strength": 0.5246,
+      "blind_sgmc_auc": 0.4616
+    },
+    {
+      "feature": "chi_ksn_max",
+      "kind": "static",
+      "auc_seed20": 0.524,
+      "auc_seed21": 0.5229,
+      "auc_mean": 0.5234,
+      "abs_strength": 0.5234,
+      "blind_sgmc_auc": 0.5514
+    },
+    {
+      "feature": "iso_grav_hg",
+      "kind": "static",
+      "auc_seed20": 0.492,
+      "auc_seed21": 0.4624,
+      "auc_mean": 0.4772,
+      "abs_strength": 0.5228,
+      "blind_sgmc_auc": 0.5068
+    },
+    {
+      "feature": "depth_to_base",
+      "kind": "static",
+      "auc_seed20": 0.5234,
+      "auc_seed21": 0.5221,
+      "auc_mean": 0.5227,
+      "abs_strength": 0.5227,
+      "blind_sgmc_auc": 0.3285
+    },
+    {
+      "feature": "det_crest_s5p5",
+      "kind": "static",
+      "auc_seed20": 0.5282,
+      "auc_seed21": 0.5171,
+      "auc_mean": 0.5226,
+      "abs_strength": 0.5226,
+      "blind_sgmc_auc": 0.6956
+    },
+    {
+      "feature": "det_crest_s2p8",
+      "kind": "static",
+      "auc_seed20": 0.5275,
+      "auc_seed21": 0.517,
+      "auc_mean": 0.5223,
+      "abs_strength": 0.5223,
+      "blind_sgmc_auc": 0.6591
+    },
+    {
+      "feature": "det_crest_s1p3",
+      "kind": "static",
+      "auc_seed20": 0.5235,
+      "auc_seed21": 0.5189,
+      "auc_mean": 0.5212,
+      "abs_strength": 0.5212,
+      "blind_sgmc_auc": 0.6344
+    },
+    {
+      "feature": "lidar_tectonic_step_ratio",
+      "kind": "static",
+      "auc_seed20": 0.5326,
+      "auc_seed21": 0.5083,
+      "auc_mean": 0.5204,
+      "abs_strength": 0.5204,
+      "blind_sgmc_auc": 0.5491
+    },
+    {
+      "feature": "basin_cover_index",
+      "kind": "static",
+      "auc_seed20": 0.4799,
+      "auc_seed21": 0.4829,
+      "auc_mean": 0.4814,
+      "abs_strength": 0.5186,
+      "blind_sgmc_auc": 0.2435
+    },
+    {
+      "feature": "rtp",
+      "kind": "static",
+      "auc_seed20": 0.5179,
+      "auc_seed21": 0.5186,
+      "auc_mean": 0.5182,
+      "abs_strength": 0.5182,
+      "blind_sgmc_auc": 0.5256
+    },
+    {
+      "feature": "lidar_coh100",
+      "kind": "static",
+      "auc_seed20": 0.4868,
+      "auc_seed21": 0.477,
+      "auc_mean": 0.4819,
+      "abs_strength": 0.5181,
+      "blind_sgmc_auc": 0.4889
+    },
+    {
+      "feature": "ahfv_fault_valve_throat",
+      "kind": "static",
+      "auc_seed20": 0.512,
+      "auc_seed21": 0.5235,
+      "auc_mean": 0.5177,
+      "abs_strength": 0.5177,
+      "blind_sgmc_auc": 0.4781
+    },
+    {
+      "feature": "geo_hotspring_plume",
+      "kind": "static",
+      "auc_seed20": 0.4913,
+      "auc_seed21": 0.475,
+      "auc_mean": 0.4831,
+      "abs_strength": 0.5169,
+      "blind_sgmc_auc": 0.4623
+    },
+    {
+      "feature": "geo_f2m_local",
+      "kind": "static",
+      "auc_seed20": 0.5129,
+      "auc_seed21": 0.5167,
+      "auc_mean": 0.5148,
+      "abs_strength": 0.5148,
+      "blind_sgmc_auc": 0.4872
+    },
+    {
+      "feature": "cond_surf",
+      "kind": "static",
+      "auc_seed20": 0.4775,
+      "auc_seed21": 0.4947,
+      "auc_mean": 0.4861,
+      "abs_strength": 0.5139,
+      "blind_sgmc_auc": 0.519
+    },
+    {
+      "feature": "tmi_vg",
+      "kind": "static",
+      "auc_seed20": 0.4874,
+      "auc_seed21": 0.4866,
+      "auc_mean": 0.487,
+      "abs_strength": 0.513,
+      "blind_sgmc_auc": 0.5041
+    },
+    {
+      "feature": "chi_raised_n",
+      "kind": "static",
+      "auc_seed20": 0.4879,
+      "auc_seed21": 0.4914,
+      "auc_mean": 0.4897,
+      "abs_strength": 0.5103,
+      "blind_sgmc_auc": 0.4483
+    },
+    {
+      "feature": "lidar_scarp_polarity",
+      "kind": "static",
+      "auc_seed20": 0.5094,
+      "auc_seed21": 0.511,
+      "auc_mean": 0.5102,
+      "abs_strength": 0.5102,
+      "blind_sgmc_auc": 0.5155
+    },
+    {
+      "feature": "det_elev",
+      "kind": "static",
+      "auc_seed20": 0.5131,
+      "auc_seed21": 0.5066,
+      "auc_mean": 0.5099,
+      "abs_strength": 0.5099,
+      "blind_sgmc_auc": 0.7197
+    },
+    {
+      "feature": "cond_smectite_edge",
+      "kind": "static",
+      "auc_seed20": 0.5236,
+      "auc_seed21": 0.496,
+      "auc_mean": 0.5098,
+      "abs_strength": 0.5098,
+      "blind_sgmc_auc": 0.5025
+    },
+    {
+      "feature": "geo_f2m_plume",
+      "kind": "static",
+      "auc_seed20": 0.5131,
+      "auc_seed21": 0.5063,
+      "auc_mean": 0.5097,
+      "abs_strength": 0.5097,
+      "blind_sgmc_auc": 0.4715
+    },
+    {
+      "feature": "kin_tip_vs_flank",
+      "kind": "fold_visible_kinematics",
+      "auc_seed20": 0.4923,
+      "auc_seed21": 0.4887,
+      "auc_mean": 0.4905,
+      "abs_strength": 0.5095,
+      "blind_sgmc_auc": 0.4822
+    },
+    {
+      "feature": "rad_lith_contact_grad",
+      "kind": "static",
+      "auc_seed20": 0.5012,
+      "auc_seed21": 0.4814,
+      "auc_mean": 0.4913,
+      "abs_strength": 0.5087,
+      "blind_sgmc_auc": 0.5734
+    },
+    {
+      "feature": "kin_anderson_2theta",
+      "kind": "fold_visible_kinematics",
+      "auc_seed20": 0.5004,
+      "auc_seed21": 0.4839,
+      "auc_mean": 0.4921,
+      "abs_strength": 0.5079,
+      "blind_sgmc_auc": 0.4842
+    },
+    {
+      "feature": "chi_knick_density",
+      "kind": "static",
+      "auc_seed20": 0.5219,
+      "auc_seed21": 0.4936,
+      "auc_mean": 0.5077,
+      "abs_strength": 0.5077,
+      "blind_sgmc_auc": 0.424
+    },
+    {
+      "feature": "tmi",
+      "kind": "static",
+      "auc_seed20": 0.5091,
+      "auc_seed21": 0.5058,
+      "auc_mean": 0.5074,
+      "abs_strength": 0.5074,
+      "blind_sgmc_auc": 0.5353
+    },
+    {
+      "feature": "iso_grav_vg",
+      "kind": "static",
+      "auc_seed20": 0.5138,
+      "auc_seed21": 0.5007,
+      "auc_mean": 0.5072,
+      "abs_strength": 0.5072,
+      "blind_sgmc_auc": 0.4667
+    },
+    {
+      "feature": "depth_base_scarp_crest",
+      "kind": "static",
+      "auc_seed20": 0.5111,
+      "auc_seed21": 0.5015,
+      "auc_mean": 0.5063,
+      "abs_strength": 0.5063,
+      "blind_sgmc_auc": 0.3897
+    },
+    {
+      "feature": "mag_anom",
+      "kind": "static",
+      "auc_seed20": 0.5088,
+      "auc_seed21": 0.5022,
+      "auc_mean": 0.5055,
+      "abs_strength": 0.5055,
+      "blind_sgmc_auc": 0.5204
+    },
+    {
+      "feature": "kin_conjugate_4theta",
+      "kind": "fold_visible_kinematics",
+      "auc_seed20": 0.5098,
+      "auc_seed21": 0.4995,
+      "auc_mean": 0.5047,
+      "abs_strength": 0.5047,
+      "blind_sgmc_auc": 0.4959
+    },
+    {
+      "feature": "dem10_aspect_coh",
+      "kind": "static",
+      "auc_seed20": 0.4938,
+      "auc_seed21": 0.5135,
+      "auc_mean": 0.5037,
+      "abs_strength": 0.5037,
+      "blind_sgmc_auc": 0.5123
+    },
+    {
+      "feature": "chi_step_max",
+      "kind": "static",
+      "auc_seed20": 0.499,
+      "auc_seed21": 0.5073,
+      "auc_mean": 0.5031,
+      "abs_strength": 0.5031,
+      "blind_sgmc_auc": 0.4857
+    },
+    {
+      "feature": "geo_diseq_reg",
+      "kind": "static",
+      "auc_seed20": 0.4914,
+      "auc_seed21": 0.5123,
+      "auc_mean": 0.5019,
+      "abs_strength": 0.5019,
+      "blind_sgmc_auc": 0.4833
+    },
+    {
+      "feature": "geo_diseq_short",
+      "kind": "static",
+      "auc_seed20": 0.4974,
+      "auc_seed21": 0.4999,
+      "auc_mean": 0.4986,
+      "abs_strength": 0.5014,
+      "blind_sgmc_auc": 0.482
+    },
+    {
+      "feature": "lahontan_shoreline_mimic",
+      "kind": "static",
+      "auc_seed20": 0.4859,
+      "auc_seed21": 0.5127,
+      "auc_mean": 0.4993,
+      "abs_strength": 0.5007,
+      "blind_sgmc_auc": 0.3425
+    }
+  ]
+}
