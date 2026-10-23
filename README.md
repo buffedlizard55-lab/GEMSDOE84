@@ -2,17 +2,17 @@
 
 <!-- CURRENT STATE — the only block a session may edit. Everything below it is frozen. -->
 <!-- CURRENT_STATE_START -->
-## CURRENT STATE (2026-10-23, branch `arena/b04903f8-gemsdoe84`)
+## CURRENT STATE (2026-10-23, branch `arena/8db38540-gemsdoe84`)
 
 | Field | Value | Evidence class |
 | :--- | :--- | :--- |
-| **Parent (R0)** | `h33-h33-2-b2` (`GEMSDOE32`), `37,654` unit-mass dots (`d_cat > 2.0 px`), SHA-256 `c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9` (`-zeros.tif`) / `baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd` (`-nan.tif`) — **rebuilt byte-identically** (`evidence/r0_mass_variants_20261023.json`, `evidence/r0_rebuild_receipt.json`) | REBUILD |
+| **Parent (R0)** | `h33-h33-2-b2` (`GEMSDOE32`), `37,654` unit-mass dots (`d_cat > 2.0 px`), SHA-256 `c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9` (`-zeros.tif`) / `baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd` (`-nan.tif`) — **rebuilt byte-identically again this session** (`evidence/r0_prune_variants_20261023.json`); solo `0.2708` base verified `= d2_8 & d_cat>1` (`40,199` dots) | REBUILD |
 | **Best receipt** | **none.** No submission-page receipt is committed in this repo (`ledger/submissions.csv`: `receipts_committed = 0`). The incumbent's `0.2778` is owner-reported. | CLAIM |
 | **TOP_PUBLIC** | `UNVERIFIED` live (latest manual snapshot in repo: `0.3195`, rank 1 "DARD", read `2026-10-03` — owner must refresh with a date) | OFFICIAL_SNAPSHOT (stale) |
-| **Slots left this week** | **unknown — owner must fill** (`1` entity, `3` scored/rolling week, `41 days` / `5.86 weeks` to `2026-12-03` deadline = max `18` slots). `0` live slots consumed this session. | — |
-| **Next 3 slots (`AXIS = MASS`)** | 1) `releases/h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3` (`-10pct`, `33,889` dots, `10.00%` changed, pred `+0.0020..+0.0045` DTI) · 2) `releases/h33-h33-2-b2-mass-add10pct-20261023-ad925bd2` (`+10pct`, `41,419` dots, `10.00%` changed, added dots $d_{\text{cat}} \ge 3.0\text{ px}$, pred `-0.0030..+0.0025` DTI) · 3) `releases/h33-h33-2-b2-mass-drop20pct-20261023-62bfc392` (`-20pct`, `30,123` dots, `20.00%` changed, pred `+0.0010..+0.0065` DTI) — plus 3 `AXIS = SNAP` variants (`h33-2-b2-snap1p4px-g0p02-20261023-0b6a2ab2`, `h33-2-b2-snap2p0px-g0p02-20261023-b2019f55`, `h33-2-b2-snap2p0px-g0p01-20261023-7bdaa58b`) in [`SLOT_PLAN.md`](SLOT_PLAN.md) and [`docs/SUBMIT.md`](docs/SUBMIT.md) | BUILT (unscored) |
+| **Slots left this week** | **unknown — owner must fill** (`1` entity, `3` scored/rolling week, `41 days` to `2026-12-03` = max `18` slots). `0` live slots consumed this session; assumed nothing submitted yet (`IR-DEC-07`). | — |
+| **Next 3 slots** | Week 1 unchanged (AXIS=MASS): 1) `h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3` · 2) `h33-h33-2-b2-mass-add10pct-20261023-ad925bd2` · 3) `h33-h33-2-b2-mass-drop20pct-20261023-62bfc392`. Week 2 queue in [`SLOT_PLAN.md`](SLOT_PLAN.md): SNAP `2p0px-g0p02`, then PRUNE `dge3refill`, `dgt1in` (all in [`docs/SUBMIT.md`](docs/SUBMIT.md)) | BUILT (unscored) |
 
-Session status: `AXIS = MASS` (`-10pct`, `+10pct`, `-20pct`) built, gated, and re-read from disk alongside `AXIS = SNAP`; all 27 features pass the single-feature holdout leakage canary (`max_auc = 0.5949 <= 0.90`). **The `H84-KTHM` banner below is frozen history from an earlier session and is not this session's recommendation.**
+Session status: `AXIS = PRUNE` built (human did not assign an axis — next unbuilt axis per the brief default plan, `IR-DEC-07`): `h33-h33-2-b2-prune-dgt1in-20261023-02ad0d5c` (collar `>1 px` swap-in, `13.52%` changed, pred `−0.002..−0.006`), `h33-h33-2-b2-prune-dge3refill-20261023-3745ebf6` (collar `>=3 px` refill, `8.56%`, pred `0.000..+0.003`), `h33-h33-2-b2-prune-dgt3refill-20261023-10ce9ad1` (collar `>3 px` refill, `11.53%`, pred `−0.001..+0.003`) — all at the parent count `37,654`, gated and re-read from disk; 27-feature leakage canary `max_auc = 0.5944 <= 0.90`. **The `H84-KTHM` banner below is frozen history from an earlier session and is not this session's recommendation.**
 <!-- CURRENT_STATE_END -->
 <!-- /CURRENT STATE -->
 

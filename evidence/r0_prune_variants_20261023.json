@@ -1,0 +1,519 @@
+{
+  "generated_utc": "2026-10-23",
+  "git_head_sha": "cd20b0c1113c6e193b875a0ae7a74651bf97f9ae",
+  "seed": 520810,
+  "axis": "PRUNE",
+  "axis_assignment": "not assigned by human (clarifying question skipped 2026-10-23); PRUNE chosen as next unbuilt axis in the brief default plan; subsumes SLOT_PLAN COLLAR_REFILL",
+  "manifest_files_verified": 23,
+  "parent_r0": {
+    "id": "h33-h33-2-b2",
+    "source_repo": "buffedlizard55-lab/GEMSDOE32",
+    "live_score": 0.2778,
+    "evidence_label": "CLAIM",
+    "n_dots": 37654,
+    "digest8": "e5eb6e7e",
+    "nan_sha256": "baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd",
+    "zeros_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+    "exact_rebuild_verified": true,
+    "d2_8_dots": 44090,
+    "solo_base_equals_d28_pruned_dgt1": true,
+    "ring_1lt_d_le2_in_d28": 2545,
+    "r0_dots_2lt_d_lt3": 1611,
+    "r0_dots_d_eq3": 560,
+    "historical_collar_ladder_claim": [
+      {
+        "file": "dotted-h19-5-d2-8 (no collar prune)",
+        "n_dots": 44090,
+        "score": 0.26
+      },
+      {
+        "file": "h27-4-r1-solo-d2-8 (d_cat>1)",
+        "n_dots": 40199,
+        "score": 0.2708
+      },
+      {
+        "file": "h33-h33-2-b2 (d_cat>2) = R0",
+        "n_dots": 37654,
+        "score": 0.2778
+      }
+    ]
+  },
+  "variants": [
+    {
+      "id": "h33-h33-2-b2-prune-dgt1in-20261023-02ad0d5c",
+      "key": "dgt1in",
+      "parent": "h33-h33-2-b2",
+      "axis": "PRUNE",
+      "value": "dcat>1px-swapin",
+      "n_dots": 37654,
+      "dots_added": 2545,
+      "dots_removed": 2545,
+      "pct_changed_vs_r0": 13.52,
+      "jaccard_vs_r0": 0.87338,
+      "collar_rule": "d_cat > 1.0 px",
+      "d_cat_min_px": 1.4142,
+      "d_cat_median_px": 17.088,
+      "d_cat_p90_px": 65.7647,
+      "added_dots_d_cat_min_px": 1.4142,
+      "build_stats": {
+        "swap": {
+          "dots_added": 2545,
+          "dots_removed": 2545,
+          "n_dots": 37654,
+          "removed_gain_min": 0.41859686374664307,
+          "removed_gain_max": 0.906423032283783,
+          "kept_gain_min": 0.906430721282959
+        },
+        "near_pool_dots": 2545
+      },
+      "nan_tif": {
+        "path": "releases/h33-h33-2-b2-prune-dgt1in-20261023-02ad0d5c.tif",
+        "sha256": "02ad0d5cb9836ebc868ceabbfd4a966836f98b473dc0f33004bf4f42e41936d2",
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "no_nan_in_footprint": true,
+        "values_in_0_1": true,
+        "outside_footprint_encoding_ok": true,
+        "n_dots": 37654,
+        "catalogue_mass": 0.0,
+        "gate_passed": true
+      },
+      "zeros_tif": {
+        "path": "releases/h33-h33-2-b2-prune-dgt1in-20261023-02ad0d5c-zeros.tif",
+        "sha256": "ffb1c3264b166bc6ae46df42db5954d605222d614438dff82d60c1c24ceb7ad0",
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "no_nan_in_footprint": true,
+        "values_in_0_1": true,
+        "outside_footprint_encoding_ok": true,
+        "n_dots": 37654,
+        "catalogue_mass": 0.0,
+        "gate_passed": true
+      },
+      "form_note": "h33-h33-2-b2; PRUNE collar >1px swap-in 2545 ring dots, count 37654; pred -0.002..-0.006",
+      "predicted_change": "-0.002 to -0.006 DTI (MODEL: prices the 100-200 m catalogue ring at fixed count 37,654)",
+      "mechanism_card": {
+        "hypothesis": "Moving the collar in from d_cat > 2 px to d_cat > 1 px at fixed count (swap all 2,545 pre-prune d2_8 dots in the 100-200 m ring back in, drop the 2,545 lowest-marginal-gain R0 dots) lowers live DTI, because the organizer masks known-fault pixels pixel-exactly and scores neighbours against new-fault truth only, so the 100-200 m halo of a mapped trace is where 'already captured' geometry concentrates.",
+        "mechanism": "Under alpha = 0.2, a dot 1-2 px from a catalogue trace spends most of its 300 m triangular kernel on the masked trace and its immediate hanging-wall/footwall sliver; its residual new-fault credit must still clear the ~0.056 x (denominator) bar at DTI 0.28. The historical CLAIM ladder (d>1: 0.2708 at 40,199 dots -> d>2: 0.2778 at 37,654) credits this ring with net-negative value, but mass fell at the same time; this variant holds mass at 37,654 so the receipt prices the ring alone.",
+        "non_fault_mimic": "The mapped trace itself, misregistered by 100-200 m in the source compilations (USGS/INGENIOUS linework vs 100 m grid), plus fault-parallel erosional benches and colluvial aprons at the scarp base that the h19_5 ridge detector follows.",
+        "predicted_sign_and_size": "Negative: -0.002 to -0.006 DTI vs R0 (MODEL).",
+        "falsifier": "A live receipt >= 0.2778 for dgt1in (at identical count) falsifies the collar story: the 0.2708 -> 0.2778 step was then a pure mass effect, and unmapped splays do populate the 100-200 m ring."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-prune-dge3refill-20261023-3745ebf6",
+      "key": "dge3refill",
+      "parent": "h33-h33-2-b2",
+      "axis": "PRUNE",
+      "value": "dcat>=3px-refill",
+      "n_dots": 37654,
+      "dots_added": 1611,
+      "dots_removed": 1611,
+      "pct_changed_vs_r0": 8.56,
+      "jaccard_vs_r0": 0.917942,
+      "collar_rule": "d_cat >= 3.0 px",
+      "d_cat_min_px": 3.0,
+      "d_cat_median_px": 20.6155,
+      "d_cat_p90_px": 68.6586,
+      "added_dots_d_cat_min_px": 3.0,
+      "build_stats": {
+        "removed_band_dots": 1611,
+        "refill_pool_dots": 19243,
+        "refill_gain_min": 0.7995573821028334,
+        "refill_gain_median": 1.3873599451444476
+      },
+      "nan_tif": {
+        "path": "releases/h33-h33-2-b2-prune-dge3refill-20261023-3745ebf6.tif",
+        "sha256": "3745ebf6c4d5c6506bcbb4360616271de3da84f8842be17cd5e92201a329ed16",
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "no_nan_in_footprint": true,
+        "values_in_0_1": true,
+        "outside_footprint_encoding_ok": true,
+        "n_dots": 37654,
+        "catalogue_mass": 0.0,
+        "gate_passed": true
+      },
+      "zeros_tif": {
+        "path": "releases/h33-h33-2-b2-prune-dge3refill-20261023-3745ebf6-zeros.tif",
+        "sha256": "c960774fe90a1df4560e5df23e0083aece4ca0bc7ace8db3d010cde03ec523c1",
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "no_nan_in_footprint": true,
+        "values_in_0_1": true,
+        "outside_footprint_encoding_ok": true,
+        "n_dots": 37654,
+        "catalogue_mass": 0.0,
+        "gate_passed": true
+      },
+      "form_note": "h33-h33-2-b2; PRUNE collar >=3px, replace 1611 diag dots refilled, 37654; pred 0..+0.003",
+      "predicted_change": "0.000 to +0.003 DTI (MODEL: removes (2,3)px diagonal-collar remnant, ranked refill at d_cat>=3px)",
+      "mechanism_card": {
+        "hypothesis": "R0's 1,611 dots at diagonal distances sqrt(5)/sqrt(8) px (224-283 m) are the last remnant of the >2.0 px (not >=3 px) prune; replacing them with the top-ranked corroborated ridge dots at d_cat >= 3.0 px, count fixed, raises live DTI slightly.",
+        "mechanism": "A dot at 2.24 px from a mapped trace still overlaps the masked trace's 300 m kernel footprint; moving that mass one kernel radius out places it on independent ridge pixels whose max-cover credit is not shadowed by catalogue geometry. Refill ranking is the parent's own exact 25-offset marginal-gain order (greedy, r_min = 2.8 px), so only position changes.",
+        "non_fault_mimic": "True en-echelon relay steps and sub-parallel hanging-wall splays 220-290 m off a master fault -- real new-fault pixels the organizer explicitly allows within 300 m of known traces.",
+        "predicted_sign_and_size": "Positive, small: 0.000 to +0.003 DTI vs R0 (MODEL).",
+        "falsifier": "A live drop > 0.001 vs R0 at matched count proves the (2, 3) px ring carries real unmapped test splays and the collar should move in, not out."
+      }
+    },
+    {
+      "id": "h33-h33-2-b2-prune-dgt3refill-20261023-10ce9ad1",
+      "key": "dgt3refill",
+      "parent": "h33-h33-2-b2",
+      "axis": "PRUNE",
+      "value": "dcat>3px-refill",
+      "n_dots": 37654,
+      "dots_added": 2171,
+      "dots_removed": 2171,
+      "pct_changed_vs_r0": 11.53,
+      "jaccard_vs_r0": 0.890973,
+      "collar_rule": "d_cat > 3.0 px",
+      "d_cat_min_px": 3.1623,
+      "d_cat_median_px": 21.0238,
+      "d_cat_p90_px": 68.884,
+      "added_dots_d_cat_min_px": 3.1623,
+      "build_stats": {
+        "removed_band_dots": 2171,
+        "refill_pool_dots": 18908,
+        "refill_gain_min": 0.6634112071657859,
+        "refill_gain_median": 1.3161986000331338
+      },
+      "nan_tif": {
+        "path": "releases/h33-h33-2-b2-prune-dgt3refill-20261023-10ce9ad1.tif",
+        "sha256": "10ce9ad11aa5bd6b26cdcfdf6a069b0f4a80a1df971bb4981834f2a404fef7f2",
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "no_nan_in_footprint": true,
+        "values_in_0_1": true,
+        "outside_footprint_encoding_ok": true,
+        "n_dots": 37654,
+        "catalogue_mass": 0.0,
+        "gate_passed": true
+      },
+      "zeros_tif": {
+        "path": "releases/h33-h33-2-b2-prune-dgt3refill-20261023-10ce9ad1-zeros.tif",
+        "sha256": "c05d1524d71ff12a5bca61af02b222d03f93c0afbcdab7e8a9a298eb507f110f",
+        "crs": "EPSG:32611",
+        "shape": [
+          3730,
+          3292
+        ],
+        "dtype": "float32",
+        "count": 1,
+        "no_nan_in_footprint": true,
+        "values_in_0_1": true,
+        "outside_footprint_encoding_ok": true,
+        "n_dots": 37654,
+        "catalogue_mass": 0.0,
+        "gate_passed": true
+      },
+      "form_note": "h33-h33-2-b2; PRUNE collar >3px, replace 2171 ring dots refilled, 37654; pred -0.001..+0.003",
+      "predicted_change": "-0.001 to +0.003 DTI (MODEL: full kernel-radius collar d_cat>3px, ranked refill, count fixed)",
+      "mechanism_card": {
+        "hypothesis": "Extending the collar past the full kernel radius (drop the 2,171 R0 dots at 2 < d_cat <= 3 px, refill at d_cat > 3.0 px) is the brief's PRUNE <=3 px point; it tests whether ANY dot whose kernel touches a mapped trace is net-negative once count is held fixed.",
+        "mechanism": "At d_cat = 3.0 px a dot's triangular kernel just reaches the catalogue pixel with weight 0; dots inside that ring share kernel support with masked pixels. If new-fault truth avoids the 0-300 m halo (mapped systems already captured there), the refilled off-halo dots win; if truth is halo-rich (new geometry of existing systems), they lose.",
+        "non_fault_mimic": "Newly mapped strands of existing systems -- explicitly included in the organizer's 'new fault' definition -- which by construction sit inside the 300 m halo this variant vacates.",
+        "predicted_sign_and_size": "Bracketed: -0.001 to +0.003 DTI vs R0 (MODEL); ordered with dge3refill it measures the marginal value of the exact-3.0 px ring (560 dots).",
+        "falsifier": "dgt3refill scoring below dge3refill by > 0.001 shows the =3.0 px ring itself carries truth credit, capping the optimal collar at >= 3.0 px inclusive rather than exclusive."
+      }
+    }
+  ],
+  "report_only_diagnostics": {
+    "evidence_label": "PROXY",
+    "note": "REPORT ONLY diagnostics (never gates per Brief Section 6).",
+    "leakage_canary": {
+      "gate": "single_feature_holdout_auc_canary",
+      "threshold": 0.9,
+      "n_features_checked": 27,
+      "max_single_feature_auc": 0.5944,
+      "passed": true,
+      "withheld_positives_seed20": 11321,
+      "withheld_positives_seed21": 11572,
+      "total_withheld_positive_pixels": 22893,
+      "top_10_features": [
+        {
+          "feature": "q_posterior",
+          "auc_seed20": 0.6035,
+          "auc_seed21": 0.5853,
+          "auc_mean": 0.5944,
+          "abs_strength": 0.5944
+        },
+        {
+          "feature": "lidar_scarp_composite",
+          "auc_seed20": 0.5855,
+          "auc_seed21": 0.5616,
+          "auc_mean": 0.5735,
+          "abs_strength": 0.5735
+        },
+        {
+          "feature": "h33_union",
+          "auc_seed20": 0.581,
+          "auc_seed21": 0.5583,
+          "auc_mean": 0.5696,
+          "abs_strength": 0.5696
+        },
+        {
+          "feature": "07_geod_shearrate",
+          "auc_seed20": 0.5663,
+          "auc_seed21": 0.5611,
+          "auc_mean": 0.5637,
+          "abs_strength": 0.5637
+        },
+        {
+          "feature": "19_det_elev_slope",
+          "auc_seed20": 0.5636,
+          "auc_seed21": 0.5622,
+          "auc_mean": 0.5629,
+          "abs_strength": 0.5629
+        },
+        {
+          "feature": "04_geod_2ndinv",
+          "auc_seed20": 0.5668,
+          "auc_seed21": 0.5573,
+          "auc_mean": 0.562,
+          "abs_strength": 0.562
+        },
+        {
+          "feature": "16_ieq_n100a15",
+          "auc_seed20": 0.5428,
+          "auc_seed21": 0.563,
+          "auc_mean": 0.5529,
+          "abs_strength": 0.5529
+        },
+        {
+          "feature": "06_tc",
+          "auc_seed20": 0.4715,
+          "auc_seed21": 0.4305,
+          "auc_mean": 0.451,
+          "abs_strength": 0.549
+        },
+        {
+          "feature": "10_deq_n100a15",
+          "auc_seed20": 0.5371,
+          "auc_seed21": 0.5398,
+          "auc_mean": 0.5385,
+          "abs_strength": 0.5385
+        },
+        {
+          "feature": "13_iso_grav_anom",
+          "auc_seed20": 0.4593,
+          "auc_seed21": 0.4665,
+          "auc_mean": 0.4629,
+          "abs_strength": 0.5371
+        }
+      ]
+    },
+    "catalogue_hide_and_recover_proxy": {
+      "evidence_label": "PROXY",
+      "withheld_positive_pixels": 22893,
+      "spatial_clusters_20km": 156,
+      "bootstrap_draws": 1000,
+      "fold_clean_recipe_scores": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.10564450185732029,
+          "ci95": [
+            0.09363329810252148,
+            0.11695500848630204
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 3524.103620286295,
+          "fpw": 71694.57447131119,
+          "fnw": 19368.896379713697
+        },
+        "dgt1in": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.10326825354087021,
+          "ci95": [
+            0.09132398970526406,
+            0.11414416354554865
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 3440.1320019346317,
+          "fpw": 71550.77014752117,
+          "fnw": 19452.86799806537
+        },
+        "dge3refill": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.10565988783603276,
+          "ci95": [
+            0.09346343400281097,
+            0.11684984638113763
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 3526.584102390634,
+          "fpw": 71785.1867692635,
+          "fnw": 19366.41589760937
+        },
+        "dgt3refill": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.10489288495201035,
+          "ci95": [
+            0.0929061640650436,
+            0.11583859021542647
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 3501.8209018023426,
+          "fpw": 71849.84143260978,
+          "fnw": 19391.179098197652
+        }
+      },
+      "fold_clean_paired_differences_vs_R0": {
+        "dgt1in": {
+          "R0": {
+            "evidence_class": "HOLDOUT-DTI",
+            "evaluator_version": "gems57-pooled-hide-v2",
+            "delta": -0.002376248316450072,
+            "ci95": [
+              -0.0037048039209818416,
+              -0.0011745325349282244
+            ],
+            "withheld_positive_pixels": 22893
+          }
+        },
+        "dge3refill": {
+          "R0": {
+            "evidence_class": "HOLDOUT-DTI",
+            "evaluator_version": "gems57-pooled-hide-v2",
+            "delta": 1.538597871247882e-05,
+            "ci95": [
+              -0.000977515620062602,
+              0.0010516122171576239
+            ],
+            "withheld_positive_pixels": 22893
+          }
+        },
+        "dgt3refill": {
+          "R0": {
+            "evidence_class": "HOLDOUT-DTI",
+            "evaluator_version": "gems57-pooled-hide-v2",
+            "delta": -0.0007516169053099347,
+            "ci95": [
+              -0.0021260528425779144,
+              0.0005357652810431246
+            ],
+            "withheld_positive_pixels": 22893
+          }
+        }
+      },
+      "shipped_mask_scores": {
+        "R0": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0038851762665228526,
+          "ci95": [
+            0.003318222733791532,
+            0.004452597240467501
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 126.10656936923311,
+          "fpw": 70593.84715207116,
+          "fnw": 22766.893430630775
+        },
+        "dgt1in": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.030506552407448026,
+          "ci95": [
+            0.026468397802825852,
+            0.03426492826722662
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 992.2367704979607,
+          "fpw": 70062.59127050206,
+          "fnw": 21900.763229502027
+        },
+        "dge3refill": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 0.0,
+          "fpw": 70728.0,
+          "fnw": 22893.0
+        },
+        "dgt3refill": {
+          "evidence_class": "HOLDOUT-DTI",
+          "evaluator_version": "gems57-pooled-hide-v2",
+          "dti": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "withheld_positive_pixels": 22893,
+          "tpw": 0.0,
+          "fpw": 70790.0,
+          "fnw": 22893.0
+        }
+      }
+    },
+    "sgmc_off_catalogue_control": {
+      "R0": {
+        "evidence_label": "PROXY",
+        "sgmc_off_catalogue_truth_pixels": 62703,
+        "emitted_dots": 37654,
+        "sgmc_raw_dti": 0.09606,
+        "sgmc_coverage": 0.089346,
+        "sgmc_prevalence_calibrated_dti": 0.064121
+      },
+      "dgt1in": {
+        "evidence_label": "PROXY",
+        "sgmc_off_catalogue_truth_pixels": 62703,
+        "emitted_dots": 37654,
+        "sgmc_raw_dti": 0.092917,
+        "sgmc_coverage": 0.086391,
+        "sgmc_prevalence_calibrated_dti": 0.062
+      },
+      "dge3refill": {
+        "evidence_label": "PROXY",
+        "sgmc_off_catalogue_truth_pixels": 62703,
+        "emitted_dots": 37654,
+        "sgmc_raw_dti": 0.099734,
+        "sgmc_coverage": 0.092821,
+        "sgmc_prevalence_calibrated_dti": 0.066615
+      },
+      "dgt3refill": {
+        "evidence_label": "PROXY",
+        "sgmc_off_catalogue_truth_pixels": 62703,
+        "emitted_dots": 37654,
+        "sgmc_raw_dti": 0.10074,
+        "sgmc_coverage": 0.093772,
+        "sgmc_prevalence_calibrated_dti": 0.067297
+      }
+    }
+  },
+  "elapsed_seconds": 360.94
+}
