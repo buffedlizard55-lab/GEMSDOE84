@@ -7,6 +7,22 @@
 
 ---
 
+## 0. 2026-10-23 Session — Lane `H84B-UAS` (READ FIRST: what is OK to submit)
+
+> **⚠️ CORRECTION (IR-84B-02, critical):** earlier text in this repo (`research/why-h33-scored-02778.md`, older README drafts) claimed H33's dots sit at median 5.385 px / max 12 px from the catalogue ("0 dots beyond 1.2 km"). **Direct re-measurement on the SHA-256-verified H33 file (`c55bafc4…`) gives median 19.65 px, max 219.3 px, 65.3% beyond 12 px.** The "1.2 km truncation" narrative is retracted; see `research/h84b_results_and_h33_correction.md`. H33's collar (min d_cat 2.236 px), spacing (min NN 2.828 px), 37,654 binary dots and 0-on-catalogue invariants re-verified TRUE.
+
+**This session's lane verdict: `negative`** (hypothesis falsified on holdout; negative results are deliverables). Two uncertainty-adaptive spacing mechanisms were tested against H33-style fixed 2.83 px spacing on identical spatially-blocked folds (59,282 withheld positives): σ-adaptive `HOLDOUT-DTI 0.1570` and μ-sharpness-adaptive `0.1561`, both **below** the fixed-spacing control `0.1703 [0.1457, 0.1983]`; soft-fractional emission `0.1356` (negative, as bang-bang theory predicts). Finding: fixed ≈kernel-radius spacing is near-optimal on ML surfaces — remaining headroom vs the `0.2778` ORGANIZER-CONFIRMED anchor is top-tail *ranking* quality, not emission geometry. Full record: `registry/run_card_h84b.json`.
+
+### Which file do I submit? (obvious-status table)
+| File | Status | Evidence |
+|---|---|---|
+| **`submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif`** (§1 below) | ✅ **PRIMARY — OK TO DOWNLOAD & SUBMIT** (promoted 2026-10-22, 15/15 validator) | HOLDOUT-DTI 0.2255 (gems57-pooled-hide-v2; different evaluator than H84B — not directly comparable) |
+| `submissions/gems84b-uas-ctrl-37654dots-20261023-2f774850-zeros.tif` (sha256 `38f0e886…`, also `.zip`/`.json`, mirrored in `docs/downloads/`) | ⚠️ **UNPROMOTED CANDIDATE** — format-valid (15/15, all values in [0,1], 0 NaN) and uniqueness-gate PASS (max ρ 0.084, max 3-px overlap 0.444 vs 7-raster subset incl. H33), but its lane hypothesis is **negative**; build = control-arm surface. Submit ONLY as an explicit selector decision, never described as expected to beat 0.2778. | HOLDOUT-DTI 0.1703 [0.1457, 0.1983] (block holdout, 59,282 px) |
+
+- **Candidate name:** `gems84b-uas-ctrl-37654dots-20261023-2f774850-zeros`
+- **Candidate note (100/140):** `H84B-UAS CONTROL surface dist-blind baggedHGB fixed2.83px; 37654 dots; HOLDOUT-DTI 0.1703 UNPROMOTED`
+- Reproduce: `bash` → `.venv/bin/python scripts/h84b_features.py && .venv/bin/python scripts/run_h84b_uas_pipeline.py all && .venv/bin/python scripts/run_h84b_exp3_a4.py && .venv/bin/python scripts/build_h84b_submission.py` (data via `scripts/fetch_data.py`, SHA-pinned GitHub mirrors; no DrivenData login needed).
+
 ## 1. Executive Summary & Immediate Validated Submission Download
 
 > ### ✅ AUTOMATED VALIDATION VERDICT: `PROMOTE` — `OK TO DOWNLOAD & SUBMIT WITHOUT HUMAN INTERVENTION`

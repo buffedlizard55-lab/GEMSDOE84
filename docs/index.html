@@ -15,6 +15,30 @@
 </header>
 
 <main class="container">
+<section style="border:3px solid #d97706;background:#fffbeb;padding:18px;border-radius:10px;margin:18px 0">
+<h2 style="margin-top:0">⚠️ 2026-10-23 UPDATE — Lane H84B-UAS: verdict <code>negative</code> + correction IR-84B-02</h2>
+<p><strong>Which file is OK to submit?</strong> The <strong>PRIMARY</strong> promoted file remains
+<code>gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif</code> below (15/15 validator, OK to download &amp; submit).
+This session additionally generated a unique <strong>UNPROMOTED CANDIDATE</strong> — format-valid and uniqueness-gate PASS,
+but its lane hypothesis was <em>falsified</em> on holdout. Do not prefer it over the primary except as an explicit selector decision.</p>
+<p><strong>Correction (IR-84B-02):</strong> prior pages claimed H33 dots sit within 12 px of the catalogue. Re-measurement on the
+SHA-256-verified H33 file: median 19.65 px, max 219.3 px, 65.3% beyond 12 px. Details in the repo
+(<code>research/h84b_results_and_h33_correction.md</code>).</p>
+<table>
+<tr><th>Candidate (UNPROMOTED)</th><th>Download</th><th>Evidence (labelled)</th></tr>
+<tr><td><code>gems84b-uas-ctrl-37654dots-20261023-2f774850-zeros</code><br>sha256 <code>38f0e886…</code> · 37,654 dots · binary {0,1} · 0 NaN · values in [0,1] (cannot trigger the portal range error)<br>
+Note (100/140): <code>H84B-UAS CONTROL surface dist-blind baggedHGB fixed2.83px; 37654 dots; HOLDOUT-DTI 0.1703 UNPROMOTED</code></td>
+<td><a href="downloads/gems84b-uas-ctrl-37654dots-20261023-2f774850-zeros.tif" download>⬇ .tif (138,413 B)</a><br>
+<a href="downloads/gems84b-uas-ctrl-37654dots-20261023-2f774850-zeros.zip" download>⬇ .zip</a><br>
+<a href="downloads/gems84b-uas-ctrl-37654dots-20261023-2f774850-zeros.json" download>⬇ receipt .json</a></td>
+<td>HOLDOUT-DTI <strong>0.1703 [0.1457, 0.1983]</strong> (block holdout, 59,282 withheld px) — control arm.<br>
+Lane arms falsified: σ-adaptive 0.1570 · sharpness-adaptive 0.1561 · soft 0.1356.<br>
+Canary PASS (max AUC 0.5735). Uniqueness PASS (max ρ 0.084, max 3-px overlap 0.444; vs H33 overlap 0.321).<br>
+<a href="evidence/run_card_h84b.json">Run card</a> · <a href="evidence/h84b_validation.json">Validator receipt</a></td></tr>
+</table>
+<p><img src="figures/h84b_surface_and_dots.png" alt="H84B surface and candidate dots" style="max-width:100%"></p>
+</section>
+
 <section class="validator-hero" id="download-submission">
   <div class="status-pill">✓ AUTOMATED VALIDATION PASSED — OK TO DOWNLOAD &amp; SUBMIT WITHOUT HUMAN INTERVENTION (15 / 15 CHECKS PASSED)</div>
   <h1 class="hero-title">Validated DrivenData DOE GEMS Submission: <code>gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif</code></h1>

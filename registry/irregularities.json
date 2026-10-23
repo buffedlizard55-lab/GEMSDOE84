@@ -1,55 +1,69 @@
 {
-  "schema": "gems84-irregularities-v1",
-  "date_utc": "2026-10-22",
-  "irregularities": [
-    {
-      "id": "IR-84-01",
-      "severity": "high",
-      "component": "GEMSDOE83 src/gems83/features.py:build_or_load_physical_stack",
-      "summary": "Cold-cache RuntimeError when h83_phys_rm.f16.npy is absent.",
-      "resolution": "Implemented full 72-channel cold-cache builder in src/gems84/features.py using column-major (72, 5167373) write followed by 500k-row block transpose."
-    },
-    {
-      "id": "IR-84-02",
-      "severity": "critical",
-      "component": "GEMSDOE83 src/gems83/features.py:_rasterize_geothermal_and_vents",
-      "summary": "CSV column header mismatch (utm_e,utm_n,gt_quartz_c,... vs actual row,col,utm_x,utm_y,temp_c,geothermquartz_c,geothermchalc_c,geothermcat_c in gdr_wellspring_in_footprint.csv and row,col in gdr_volcanic_vents_in_footprint.csv) causing silent all-zero channels on cold build.",
-      "resolution": "Fixed in src/gems84/features.py:_rasterize_geothermal_thm_and_vents; added paleo-sinter (709 px) and 2m temperature probe (3,800 px) layers; verified 0 zero-variance columns across all 96 channels."
-    },
-    {
-      "id": "IR-84-03",
-      "severity": "high",
-      "component": "Hide-and-recover holdout evaluation with production registry-halo cap (IR-82-02)",
-      "summary": "Historical rasters in scored/*.tif masked cat = visible | hidden, so enforcing the 3-px registry halo cap during holdout steers dots away from visible faults toward hidden holes.",
-      "resolution": "Evaluated both strictly fold-clean uncapped Dinkelbach (A4_thms96_dink_c20 = 0.185023 HOLDOUT-DTI) and production-capped Dual-Head Dinkelbach (A5_thms96_dualhead_dink_c30 = 0.225509 HOLDOUT-DTI) side-by-side on 22,663 withheld positives; both beat GEMSDOE82 and GEMSDOE83 under their respective conventions."
-    },
-    {
-      "id": "IR-84-04",
-      "severity": "critical",
-      "component": "DrivenData portal range validator ('Predicted values must be in range [0, 1]')",
-      "summary": "NaN outside active footprint or numeric GDAL nodata metadata triggers portal range rejection.",
-      "resolution": "Enforced via vendor/gems57/submission_writer.py and validate.py: 0 NaNs across all 12,279,160 pixels, nodata=None, values strictly in {0.0, 1.0}, all_checks_passed=True."
-    },
-    {
-      "id": "IR-84-05",
-      "severity": "medium",
-      "component": "Competition labels.tif vs existing_faults.tif vs sample_submission.tif",
-      "summary": "labels.tif and existing_faults.tif are byte-identical (60,988 positive pixels), and sample_submission.tif contains 1.0 on those 60,988 pixels rather than total fault absence.",
-      "resolution": "Audited in evidence/grid_audit.json; all 60,988 catalogue pixels are explicitly masked (cat_overlap = 0)."
-    },
-    {
-      "id": "IR-84-06",
-      "severity": "medium",
-      "component": "external/lidar_scarp_features_u8.tif NE Nevada gap",
-      "summary": "1m USGS 3DEP LiDAR coverage is absent across 24.60% (1,271,174 / 5,167,373 pixels) of the active footprint.",
-      "resolution": "Bridged in H84-B by fusing 1m LiDAR with 100%-coverage 10m 3DEP sub-100m profile curvature (topo_10m_derived_100m_u8.tif) and fluvial chi-disequilibrium (dem10_chi_100m_i16.tif)."
-    },
-    {
-      "id": "IR-84-07",
-      "severity": "low",
-      "component": "Space-filling continuous/lattice rasters in scored/*.tif",
-      "summary": "Two dense rasters cover >73% of the allowed domain with their 3-px halo.",
-      "resolution": "Enforced bit-packed 3-px halo cap across all rasters including gems19-h19-5 and 13gems_r13-lattice-s5 so raw max_overlap_3px = 0.649997 <= 0.70 against all 359 rasters simultaneously."
-    }
-  ]
+ "schema": "gems84-irregularities-v1",
+ "date_utc": "2026-10-22",
+ "irregularities": [
+  {
+   "id": "IR-84-01",
+   "severity": "high",
+   "component": "GEMSDOE83 src/gems83/features.py:build_or_load_physical_stack",
+   "summary": "Cold-cache RuntimeError when h83_phys_rm.f16.npy is absent.",
+   "resolution": "Implemented full 72-channel cold-cache builder in src/gems84/features.py using column-major (72, 5167373) write followed by 500k-row block transpose."
+  },
+  {
+   "id": "IR-84-02",
+   "severity": "critical",
+   "component": "GEMSDOE83 src/gems83/features.py:_rasterize_geothermal_and_vents",
+   "summary": "CSV column header mismatch (utm_e,utm_n,gt_quartz_c,... vs actual row,col,utm_x,utm_y,temp_c,geothermquartz_c,geothermchalc_c,geothermcat_c in gdr_wellspring_in_footprint.csv and row,col in gdr_volcanic_vents_in_footprint.csv) causing silent all-zero channels on cold build.",
+   "resolution": "Fixed in src/gems84/features.py:_rasterize_geothermal_thm_and_vents; added paleo-sinter (709 px) and 2m temperature probe (3,800 px) layers; verified 0 zero-variance columns across all 96 channels."
+  },
+  {
+   "id": "IR-84-03",
+   "severity": "high",
+   "component": "Hide-and-recover holdout evaluation with production registry-halo cap (IR-82-02)",
+   "summary": "Historical rasters in scored/*.tif masked cat = visible | hidden, so enforcing the 3-px registry halo cap during holdout steers dots away from visible faults toward hidden holes.",
+   "resolution": "Evaluated both strictly fold-clean uncapped Dinkelbach (A4_thms96_dink_c20 = 0.185023 HOLDOUT-DTI) and production-capped Dual-Head Dinkelbach (A5_thms96_dualhead_dink_c30 = 0.225509 HOLDOUT-DTI) side-by-side on 22,663 withheld positives; both beat GEMSDOE82 and GEMSDOE83 under their respective conventions."
+  },
+  {
+   "id": "IR-84-04",
+   "severity": "critical",
+   "component": "DrivenData portal range validator ('Predicted values must be in range [0, 1]')",
+   "summary": "NaN outside active footprint or numeric GDAL nodata metadata triggers portal range rejection.",
+   "resolution": "Enforced via vendor/gems57/submission_writer.py and validate.py: 0 NaNs across all 12,279,160 pixels, nodata=None, values strictly in {0.0, 1.0}, all_checks_passed=True."
+  },
+  {
+   "id": "IR-84-05",
+   "severity": "medium",
+   "component": "Competition labels.tif vs existing_faults.tif vs sample_submission.tif",
+   "summary": "labels.tif and existing_faults.tif are byte-identical (60,988 positive pixels), and sample_submission.tif contains 1.0 on those 60,988 pixels rather than total fault absence.",
+   "resolution": "Audited in evidence/grid_audit.json; all 60,988 catalogue pixels are explicitly masked (cat_overlap = 0)."
+  },
+  {
+   "id": "IR-84-06",
+   "severity": "medium",
+   "component": "external/lidar_scarp_features_u8.tif NE Nevada gap",
+   "summary": "1m USGS 3DEP LiDAR coverage is absent across 24.60% (1,271,174 / 5,167,373 pixels) of the active footprint.",
+   "resolution": "Bridged in H84-B by fusing 1m LiDAR with 100%-coverage 10m 3DEP sub-100m profile curvature (topo_10m_derived_100m_u8.tif) and fluvial chi-disequilibrium (dem10_chi_100m_i16.tif)."
+  },
+  {
+   "id": "IR-84-07",
+   "severity": "low",
+   "component": "Space-filling continuous/lattice rasters in scored/*.tif",
+   "summary": "Two dense rasters cover >73% of the allowed domain with their 3-px halo.",
+   "resolution": "Enforced bit-packed 3-px halo cap across all rasters including gems19-h19-5 and 13gems_r13-lattice-s5 so raw max_overlap_3px = 0.649997 <= 0.70 against all 359 rasters simultaneously."
+  },
+  {
+   "id": "IR-84B-01",
+   "severity": "medium",
+   "component": "session prompt (2026-10-23)",
+   "summary": "Prompt states 'Your lane is the single method paragraph below' but no method paragraph was present as received.",
+   "resolution": "Lane H84B-UAS self-defined and preregistered in research/h84b_uas_hypotheses.md before any experiment; amendment recorded before EXP-84B-3."
+  },
+  {
+   "id": "IR-84B-02",
+   "severity": "critical",
+   "component": "research/why-h33-scored-02778.md + README H33 distance forensics",
+   "summary": "Claimed H33 d_cat median 5.385px, max 12.000px, '0 dots beyond 1.2km'. Direct measurement on sha256-verified H33 file (c55bafc4..., 219065B): median 19.65px, p90 68.0px, max 219.3px, 65.3% of dots beyond 12px. Verified vs both labels.tif and existing_faults.tif (byte-identical).",
+   "resolution": "Corrected in research/h84b_results_and_h33_correction.md; README amended with correction banner; 'Bottleneck 1 (1.2km truncation)' design justification retracted pending re-derivation. H33 collar/spacing/binary invariants re-verified TRUE (min d_cat 2.236px, min NN 2.828px, 37654 dots, 0 on catalogue)."
+  }
+ ]
 }
