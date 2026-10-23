@@ -17,7 +17,11 @@ Gates enforced here (brief section 6, MUST):
 Report-only measurements (holdout PROXY, leakage canary, SGMC control) live in
 ``scripts/measure_snap_reports.py`` and are never gates.
 
-Usage:  python scripts/build_snap_variants.py [--data-dir .cache/gems_data]
+All fixed settings are already built; an explicit --axis SNAP and the pair guard
+now stop a repeated build before any output writes. Use preflight_brief_v2.py to
+audit the existing bytes. Strict >=3 px clearance has no parent-dot exception.
+
+Usage:  python scripts/build_snap_variants.py --axis SNAP [--data-dir .cache/gems_data]
 """
 from __future__ import annotations
 
@@ -43,6 +47,9 @@ from gems84.parent import (  # noqa: E402
     verify_r0_file,
 )
 from gems84.snap import density_cv, edge_response, snap_dots  # noqa: E402
+from gems84.brief_v2 import (  # noqa: E402
+    BriefViolation, catalogue_clearance, read_experiment_history, require_new_experiments,
+)
 
 PARENT_ID = "h33-2-b2"
 DATE_TAG = "20261023"
@@ -193,11 +200,25 @@ def check_format(path: Path, grid, template: Path, mode: str) -> dict:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--axis", required=True, choices=["SNAP"],
+                    help="Human-assigned axis, never inferred from a historical script.")
     ap.add_argument("--data-dir", default=str(ROOT / ".cache" / "gems_data"))
     ap.add_argument("--releases", default=str(ROOT / "releases"))
     ap.add_argument("--ledger", default=str(ROOT / "ledger" / "submissions.csv"))
     ap.add_argument("--receipt", default=str(ROOT / "evidence" / "snap_variants_receipt.json"))
     args = ap.parse_args()
+
+    # Pair deduplication precedes response calculation and directory/file writes.
+    # IDs, axis case and R0 aliases cannot be used to rebuild a recorded setting.
+    try:
+        history = read_experiment_history(ROOT / "ledger" / "submissions.csv")
+        if Path(args.ledger).resolve() != (ROOT / "ledger" / "submissions.csv").resolve():
+            history.extend(read_experiment_history(Path(args.ledger)))
+        require_new_experiments(
+            history, PARENT_ID, args.axis, (spec["value"] for spec in VARIANTS),
+        )
+    except (BriefViolation, OSError) as exc:
+        ap.error(str(exc))
 
     t0 = time.time()
     data_dir = Path(args.data_dir)
@@ -211,9 +232,10 @@ def main() -> int:
                                "gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif", grid)
     if r0_verify["sha256"] != R0_ZEROS_SHA256:
         raise SystemExit("parent R0 file does not match its pin; refusing to build variants")
-    # Parent's own exclusion, preserved exactly (see IRREGULARITIES.md IR-84-B02):
-    allowed = grid.foot & ~grid.catalogue & (grid.d_cat > 2.0)
-    if int((r0 & ~allowed).sum()) != 0:
+    # Verify the exact parent, but do not silently grandfather its diagonal collar.
+    parent_allowed = grid.foot & ~grid.catalogue & (grid.d_cat > 2.0)
+    allowed = grid.off_catalogue_3px
+    if int((r0 & ~parent_allowed).sum()) != 0:
         raise SystemExit("parent dots violate the parent's own exclusion; recipe drift")
 
     print(f"[snap] R0 dots = {int(r0.sum()):,}  min d_cat = {grid.d_cat[r0].min():.3f} px")
@@ -244,7 +266,9 @@ def main() -> int:
             "one_dot_per_pixel": bool(np.array_equal(mask, mask.astype(bool))),
             "zero_on_catalogue": int((mask & grid.catalogue).sum()) == 0,
             "inside_footprint": int((mask & ~grid.foot).sum()) == 0,
-            "exclusion_preserved_dcat_gt_2": int((mask & (grid.d_cat <= 2.0)).sum()) == 0,
+            "strict_catalogue_clearance_ge_3": catalogue_clearance(
+                mask, grid.catalogue, grid.d_cat, args.axis
+            )["passed"],
             "differs_from_parent": not np.array_equal(mask, r0),
         }
         if not all(gate_mask.values()):
@@ -306,7 +330,7 @@ def main() -> int:
                             "-> robust_unit (median/IQR z, 1.0 = 99.5th pct) -> pixel-wise max",
                 "window_px": spec["window_px"],
                 "margin": spec["margin"],
-                "allowed_targets": "footprint & ~catalogue & d_cat > 2.0 px (parent's own exclusion)",
+                "allowed_targets": "footprint & ~catalogue & d_cat >= 3.0 px (strict Brief v2)",
                 "determinism": "no RNG; candidates ordered by response, then distance, then (dy,dx)",
                 "seed": None,
             },

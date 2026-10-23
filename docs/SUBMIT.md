@@ -1,4 +1,39 @@
-# SUBMISSION PACKET — `AXIS = MASS` & `AXIS = SNAP` Variants of Parent R0 (`h33-h33-2-b2`)
+# SUBMISSION PACKET — HOLD (2026-10-23)
+
+**Current-session file: NONE. Name: not applicable. Form note: not applicable.** No candidate was built and no upload is authorized. The human did not assign an AXIS/unused value or resolve the strict catalogue-collar conflict. This session used zero slots; it has no predicted live improvement.
+
+## Fresh format receipt — local validation, not an organizer score RECEIPT
+
+[Machine-readable audit](../evidence/brief_v2_preflight_796cb891.json): all **23 manifest + 4 lineage pins** match; R0 rebuilds byte-identically in both encodings, with **37,654** unit dots and zero catalogue mass. Independent validators re-read the written parent files; the shared validator also passes the zeros encoding. No approximate parent was used.
+
+The following **existing** files were re-read, not rebuilt or renamed. Both encodings pass exact-template format checks, but none satisfies the brief's **>=3 px collar for all non-PRUNE dots**:
+
+| Existing setting | Dots | Dots <3 px from catalogue | Current decision |
+|---|---:|---:|---|
+| MASS −10% | 33,889 | 1,566 | HOLD |
+| MASS +10% | 41,419 | 1,611 | HOLD |
+| MASS −20% | 30,123 | 1,512 | HOLD |
+| SNAP 1p4px-g0p02 | 37,654 | 1,605 | HOLD |
+| SNAP 2p0px-g0p02 | 37,654 | 1,610 | HOLD |
+| SNAP 2p0px-g0p01 | 37,654 | 1,579 | HOLD |
+
+The earlier decision to grandfather R0's diagonal collar was **not authorized by this brief**. Do not silently prune/refill it while claiming a different single-axis edit. PRUNE 1/3/4 are reserved by another session ([PR #21](https://github.com/buffedlizard55-lab/GEMSDOE84/pull/21)); its files were not validated here. The primary `ledger/submissions.csv` was left byte-for-byte unchanged.
+
+Before any human upload, supply: AXIS + unused value(s); an explicit collar decision or exact pinned, compliant named parent; current TOP_PUBLIC/date; R0 submission-page receipt; remaining single-entity quota and submission dates; exact deadline/cutoff confirmation; data-use permission for the existing public mirrors. Only the human uploads one encoding per experiment and fills the receipt/date in the ledger. Never upload twins as separate experiments. See [SLOT_PLAN.md](../SLOT_PLAN.md).
+
+Recheck either encoding explicitly (format validity alone never authorizes a slot):
+
+```bash
+python scripts/validate_submission.py <file.tif> --reference data/bridge/sample_submission.tif --encoding nan
+python scripts/validate_submission.py <file-zeros.tif> --reference data/bridge/sample_submission.tif --encoding zeros
+python scripts/preflight_brief_v2.py  # audit only: expected exit 2 / BLOCKED without an assigned axis
+```
+
+## Archived packet below — not current submission clearance
+
+The old names, hashes, notes and MODEL projections are retained for provenance, not endorsed. **All |live Δ|<0.01 is no evidence**; the old sub-0.01 falsifiers and claims of proving hidden-label geology are superseded. Catalogue holdouts and SGMC remain **PROXY**, never gates or live scores. No diagnostics were rerun because no features or variants were generated.
+
+# ARCHIVED PACKET — `AXIS = MASS` & `AXIS = SNAP` Variants of Parent R0 (`h33-h33-2-b2`)
 
 - **Parent R0**: `h33-h33-2-b2` (`GEMSDOE32`, `37,654` unit-mass dots, `d_cat > 2.0 px`, `0.2778` `CLAIM` in `registry/live_scores.csv`)
   - Rebuilt bit-for-bit from `scored_h19_5` (`e27054cf`) $\to$ `dot_thin(r_min=2.8)` = `d2_8` (`44,090` dots, `0.2600` `CLAIM`) $\to$ prune `d_cat <= 2.0 px` = `37,654` dots (`digest8 = e5eb6e7e`).

@@ -2,17 +2,20 @@
 
 <!-- CURRENT STATE — the only block a session may edit. Everything below it is frozen. -->
 <!-- CURRENT_STATE_START -->
-## CURRENT STATE (2026-10-23, branch `arena/b04903f8-gemsdoe84`)
+## CURRENT STATE (2026-10-23, branch `arena/796cb891-gemsdoe84`)
 
-| Field | Value | Evidence class |
+| Field | Value | Evidence |
 | :--- | :--- | :--- |
-| **Parent (R0)** | `h33-h33-2-b2` (`GEMSDOE32`), `37,654` unit-mass dots (`d_cat > 2.0 px`), SHA-256 `c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9` (`-zeros.tif`) / `baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd` (`-nan.tif`) — **rebuilt byte-identically** (`evidence/r0_mass_variants_20261023.json`, `evidence/r0_rebuild_receipt.json`) | REBUILD |
-| **Best receipt** | **none.** No submission-page receipt is committed in this repo (`ledger/submissions.csv`: `receipts_committed = 0`). The incumbent's `0.2778` is owner-reported. | CLAIM |
-| **TOP_PUBLIC** | `UNVERIFIED` live (latest manual snapshot in repo: `0.3195`, rank 1 "DARD", read `2026-10-03` — owner must refresh with a date) | OFFICIAL_SNAPSHOT (stale) |
-| **Slots left this week** | **unknown — owner must fill** (`1` entity, `3` scored/rolling week, `41 days` / `5.86 weeks` to `2026-12-03` deadline = max `18` slots). `0` live slots consumed this session. | — |
-| **Next 3 slots (`AXIS = MASS`)** | 1) `releases/h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3` (`-10pct`, `33,889` dots, `10.00%` changed, pred `+0.0020..+0.0045` DTI) · 2) `releases/h33-h33-2-b2-mass-add10pct-20261023-ad925bd2` (`+10pct`, `41,419` dots, `10.00%` changed, added dots $d_{\text{cat}} \ge 3.0\text{ px}$, pred `-0.0030..+0.0025` DTI) · 3) `releases/h33-h33-2-b2-mass-drop20pct-20261023-62bfc392` (`-20pct`, `30,123` dots, `20.00%` changed, pred `+0.0010..+0.0065` DTI) — plus 3 `AXIS = SNAP` variants (`h33-2-b2-snap1p4px-g0p02-20261023-0b6a2ab2`, `h33-2-b2-snap2p0px-g0p02-20261023-b2019f55`, `h33-2-b2-snap2p0px-g0p01-20261023-7bdaa58b`) in [`SLOT_PLAN.md`](SLOT_PLAN.md) and [`docs/SUBMIT.md`](docs/SUBMIT.md) | BUILT (unscored) |
+| **Parent (R0)** | `h33-h33-2-b2` (`GEMSDOE32`), **37,654 unit-mass dots**, zero catalogue mass. Fresh rebuild matches `-zeros.tif` SHA-256 `c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9` and `-nan.tif` `baeae3219bba6a19bc8cfe79224e28555c50184b7c1ca65c2a822f54807c77dd`. | [Local preflight](evidence/brief_v2_preflight_796cb891.json), not a score receipt |
+| **Best receipt** | **None supplied.** Incumbent `0.2778` remains owner-reported; no submission-page receipt in the ledger. | CLAIM |
+| **TOP_PUBLIC** | **Not supplied with a current date.** Historical figures below are not session targets. | UNVERIFIED |
+| **Slots left** | **Unknown this week / total.** One entity, three scored submissions per rolling week; **0 used here**. Supplied `2026-12-03` deadline/cutoff needs human confirmation. | Human input required |
+| **AXIS / status** | **Unassigned → HOLD.** R0 retains **1,611 dots at <3 px**. No collar waiver is inferred. All six inherited MASS/SNAP files pass format but fail the strict non-PRUNE collar. No new candidate is built or authorized. | Fresh disk re-read |
+| **Next 3 slots** | Conditional only: **1)** collar-only PRUNE control (PRUNE 1/3/4 already reserved in [PR #21](https://github.com/buffedlizard55-lab/GEMSDOE84/pull/21), never rebuild); **2)** proposed CONCENTRATION 10%, 5 km blocks; **3)** proposed RELIEF 10%. Each needs human assignment, parent/collar resolution, validation and quota confirmation. | [SLOT_PLAN.md](SLOT_PLAN.md) · [docs/SUBMIT.md](docs/SUBMIT.md) |
 
-Session status: `AXIS = MASS` (`-10pct`, `+10pct`, `-20pct`) built, gated, and re-read from disk alongside `AXIS = SNAP`; all 27 features pass the single-feature holdout leakage canary (`max_auc = 0.5949 <= 0.90`). **The `H84-KTHM` banner below is frozen history from an earlier session and is not this session's recommendation.**
+Archived, **not submission-cleared** MASS IDs: `h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3`, `h33-h33-2-b2-mass-add10pct-20261023-ad925bd2`, `h33-h33-2-b2-mass-drop20pct-20261023-62bfc392`. Three SNAP settings are likewise already built; [cross-session reservations](ledger/experiment_reservations.json) also preserve the PRUNE work without replacing the 119-row ledger.
+
+**Current instructions supersede the frozen historical recommendations below.** No correlation/overlap uniqueness gates apply under Brief v2. Any absolute live change below **0.01 is no evidence**. No feature fitting or new PROXY was run; no live improvement is predicted for this audit-only session. Existing public competition-data mirrors remain a data-use issue for the human to resolve (`IR-DEC-01`).
 <!-- CURRENT_STATE_END -->
 <!-- /CURRENT STATE -->
 

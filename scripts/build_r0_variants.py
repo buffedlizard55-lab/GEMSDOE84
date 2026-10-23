@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
-"""Deterministic rebuild of Parent R0 (h33-h33-2-b2) and single-axis variants (Brief v2).
+"""Historical MASS recipe for Parent R0 (h33-h33-2-b2), retained for provenance.
 
-Steps:
+All three fixed settings are already in the ledger. An explicit --axis MASS is
+required, and the entry point refuses to rebuild recorded pairs before any
+writes. Use scripts/preflight_brief_v2.py for a read-only current-session audit.
+The strict >=3 px collar is not waived for unchanged parent dots.
+
+Historical steps:
 1. Verify all 23 SHA-256 hashes in registry/data_manifest.json.
 2. Rebuild Parent R0 (h33-h33-2-b2 from GEMSDOE32, 37,654 unit-mass dots, d_cat > 2.0 px)
    from scored_h19_5 via GEMSDOE24 dot_thin(r_min=2.8) -> d2_8 (44,090 dots) -> prune d_cat <= 2.0 px,
@@ -11,7 +16,7 @@ Steps:
 4. Rebuild Parent R0's dot ranking from the recorded GEMSDOE32 recipe (corroboration count +
    H33-A..D multi-physics lineament consensus + 1m LiDAR scarp composite + exact 25-offset
    top-2 kernel marginal DTI gain).
-5. Build 3 single-axis variants on AXIS=MASS (or --axis CLI argument), emit releases/<id>.tif
+5. Build 3 single-axis variants on AXIS=MASS, emit releases/<id>.tif
    (NaN outside footprint) and releases/<id>-zeros.tif (0.0 outside footprint), re-read from
    disk, verify all MUST-pass gates, compute REPORT-ONLY diagnostics (catalogue hide-and-recover
    PROXY with n withheld positives and 95% CI, single-feature leakage canary, SGMC off-catalogue
@@ -38,6 +43,9 @@ sys.path[:0] = [str(ROOT / "vendor"), str(ROOT / "src"), str(ROOT)]
 
 from gems57 import evaluate_holdout, holdout as gems57_holdout  # noqa: E402
 from gems57.grid import load_grid  # noqa: E402
+from gems84.brief_v2 import (  # noqa: E402
+    BriefViolation, catalogue_clearance, read_experiment_history, require_new_experiments,
+)
 from research.upstream.src.gems32.h33 import (  # noqa: E402
     H33_BUILDERS,
     lidar_scarp_composite,
@@ -804,14 +812,23 @@ def run_report_only_diagnostics(
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        "--axis",
-        default="MASS",
-        choices=["MASS", "CONCENTRATION", "SNAP", "PRUNE", "RELIEF", "SPACING", "TRACKB"],
-        help="Single experimental axis to execute this session (default: MASS per SLOT_PLAN.md).",
+        "--axis", required=True, choices=["MASS"],
+        help="Human-assigned axis; this historical builder implements MASS only. No default.",
     )
     parser.add_argument("--data-dir", type=Path, default=ROOT / ".cache" / "gems_data")
     parser.add_argument("--manifest", type=Path, default=ROOT / "registry" / "data_manifest.json")
     args = parser.parse_args()
+
+    # Read the actual ledger BEFORE any data unpacking, raster output or historical
+    # ledger regeneration. These three settings are already built; rerunning this
+    # historical recipe must not erase receipts/history or create renamed repeats.
+    try:
+        require_new_experiments(
+            read_experiment_history(ROOT / "ledger" / "submissions.csv"), PARENT_ID,
+            args.axis, ("-10pct", "+10pct", "-20pct"),
+        )
+    except (BriefViolation, OSError) as exc:
+        parser.error(str(exc))
 
     t0 = time.time()
     print("[1/6] Verifying all 23 SHA-256 hashes in registry/data_manifest.json ...")
@@ -995,6 +1012,9 @@ def main() -> int:
             raise RuntimeError(f"Duplicate (parent, axis, value) in ledger: {pair_key}")
 
         mask = spec["mask"]
+        clearance = catalogue_clearance(mask, cat, dcat, spec["axis"])
+        if not clearance["passed"]:
+            raise BriefViolation(f"Strict catalogue clearance failed before writing: {clearance}")
         n_dots = int(mask.sum())
         dots_added = int((mask & (~r0)).sum())
         dots_removed = int((r0 & (~mask)).sum())
