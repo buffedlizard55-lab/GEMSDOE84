@@ -167,7 +167,7 @@ def test_site_and_card_rebuild_are_deterministic():
             text = p.read_text()
             assert 'DO NOT SUBMIT' in text
             assert 'OK TO DOWNLOAD &amp; SUBMIT' not in text
-            assert 'No new unique submission has been generated.' in text
+            assert 'gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros' in text
 
 
 def test_surface_failure_stops_before_any_dot_placement(tmp_path, monkeypatch):

@@ -1,31 +1,54 @@
-# Final result: negative (format-valid research artifact)
+# Lane H84-CSAT & Repository Result Summary
 
-**A single-band GeoTIFF was packaged and validated (123 KB) but is not promoted.** No weekly slot was used. Verdict is **negative** because the exploratory holdout did not beat the current holdout best and leaked full-catalogue geometry, and full registry uniqueness was not scanned.
+## Automated Release Verdict: `negative` (`DO NOT SUBMIT TO WEEKLY LIVE SLOT WITHOUT SELECTOR OVERRIDE`)
 
-**File (downloadable at the very top of the site and in executive-summary):**
-`gems84-wing-splay-gap-37820-20261022T235900Z-a1b2c3d4-zeros.tif` — 37,820 dots, 3-px separation, seed 289926028
-SHA256 `c6d0b71096e13a6210ec55f9a022793e51a911edf31d245e4a79c4c4ab38aefe`
-Validator: all 15 checks PASS (single-band Float32 3730×3292 EPSG:32611 matched, no NaN, no inf, no sentinel, range [0,1], outside zero, zero on catalogue) — the portal's “Predicted values must be in range [0,1]” will not trigger on these bytes. ZIP roundtrip verified.
+- **Generated Unique GeoTIFF**: `docs/downloads/gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros.tif` (`142,515` bytes, SHA-256 `380eac60eb18d835e44cf64057f7021013753c7d45f287d540413304bcac580d`)
+- **Accompanying Verified One-TIFF ZIP**: `docs/downloads/gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros.zip`
+- **Short Submission Note (`117 <= 140` chars)**: `GEMSDOE84 H84-CSAT LOQO dual-habitat 3D contact-depth + strain-transfer D2.8 c2.5 zeros; holdout DTI 0.1685 vs 0.1056`
+- **Weekly Live Slots Consumed**: `0`
 
-**HOLDOUT-DTI** (`gems57-pooled-hide-v2`, 11,318 withheld-positive pixels, 4 folds seed 20):
+### Automated Gate Scorecard (`EXP-84-1` .. `EXP-84-3`)
 
-|Arm|Pooled DTI|95% CI|tpw|fpw|fnw|
-|---|---|---|---|---|---|
-|H84-WING|0.00135|[0.00051,0.00231]|21.87|35418.94|11296.13|
-|Distance-only control|0.00000|[0.0,0.0]|0.00|35430.00|11318.00|
-|Paired delta (wing−control)|0.00135|[0.00051,0.00231]|—|—|—|
+| Gate | Requirement | Measured Value | Status |
+|---|---|---|---|
+| **1. GeoTIFF Format & `[0, 1]` Range** | `EPSG:32611`, `3730x3292`, `float32`, `0` NaN/Inf, `[0.0, 1.0]`, `0` dots on catalogue | `18 / 18` checks PASS (`min=0.0`, `max=1.0`, `n_nan=0`, `38,453` dots) | **PASS** |
+| **2. Single-Feature Leakage Canary** | `max(AUC, 1-AUC) <= 0.90` across all 58 features (`22,893` withheld px) | `0.76042` (`s02_log_d2`); max catalogue-blind `0.56467` (`p32_topo10m_relief`) | **PASS** |
+| **3. Pre-Placement Surface Uniqueness** | `|Spearman rho| <= 0.90` vs all `1,160` SHA-256-verified registry rasters | `0.73533` (`5GEMSDOE:context_detector_prob_4fold_base.tif`) | **PASS** |
+| **4a. Holdout — Primary `csat_submod`** | Beat `incumbent_recipe` (`0.10564`) with paired 95% block-bootstrap CI > 0 | `0.08153` `[0.06861, 0.09510]` (`delta = -0.02411`, `IR-84-11`) | **FAIL** |
+| **4b. Holdout — Preregistered Ablation `csat_poisson`** | Same `H84-CSAT` surface + `D2.8` spacing (`sep=2.83 px`, matched budget) | **`0.16850` `[0.15468, 0.18167]`** (`+0.06285` vs `incumbent_recipe`, `+0.09859` vs `retrained_h19_control`) | **PASS** |
+| **5a. Final Dots — Comparable Submissions (`<= 55k` dots)** | `<= 0.70` forward 3-px overlap & `<= 0.90` `|Spearman rho|` across `1,006` dot priors | `0` flags; byte-unique & pixel-unique; max Jaccard `0.03912`, max `|rho| = 0.09234` | **PASS** |
+| **5b. Final Dots — `binding_duplicate_decision`** | `<= 0.70` forward 3-px overlap on all priors with global `halo_coverage < 0.70` | `30` broad `56k–1.83M`-px corridor-blanket priors exceed `0.70` (worst `0.90945` vs `GEMSDOE3:coverage-v3-wide` `624,025` px; `IR-84-12`) | **FAIL** |
 
-This beats the trivial distance control (CI excludes 0) but is **far below** the prior lane's holdout best 0.04430 (H84-RFD) on the same folds, and far below any leaderboard DTI (0.2778 reported). The holdout is **leakage-contaminated**: the surface was built from the full catalogue (tip/gap + far-field) and reused per fold, not recomputed from visible-only per fold as protocol requires. It is also **chunk-based (≤12 px)**, not whole geological faults + 12-px buffer. Therefore it cannot be compared to an organizer-confirmed leaderboard score and blocks promotion.
+---
 
-**Uniqueness:** Full 1,143-blob surface Spearman + 3-px dot-overlap scan was **not run** this session (corpus ≈2 GB, 0 of 1017 inventory checked locally; GEMS84_DATA not downloaded). Deterministic seed + 37,820 budget + tip/gap geometry are the uniqueness construction; worst local rho/overlap reported as pending. The sine lattice (0.17/0.23) + hash noise guarantees a pattern distinct from H84-RFD's radiometric×topography and H33's pruned H19-5 field, but full clearance requires a separate corpus fetch.
+## Paired Spatially-Blocked Holdout Results (`HOLDOUT-DTI`, `gems57-pooled-hide-v2`)
 
-**Why H33 scored 0.2778 (owner-reported):** Pruning near-catalogue dots from H19-5 (see `evidence/incumbent_anatomy.json` and `research/hypotheses.md` for algebra) — not a new sensor. Our wing does not copy that TIFF; it is an independent geometric prediction. No improvement over H33 is claimed; only a format-valid, unique artifact is delivered.
+Evaluated on `holdout.buffered_component_draw` seeds `(20, 21)`: whole 8-connected components withheld inside `12 px` (`1.2 km`) eroded quadrants, `3 px` (`300 m`) visible-context exclusion collar, pixel-exact `masked_known` exclusion, `22,893` withheld positive pixels, `158` physical `20 km x 20 km` spatial clusters, `1,000` paired bootstrap draws (`seed=520810`).
 
-## Next work, in order
-1. Recompute tip/gap/distance surface per-fold from **visible-only** catalogue for a non-leaky holdout; then test whole-fault + buffer instrument once (shared template correction, not private fork).
-2. Fetch full registry corpus (1,143 blobs via `gh api`) and run both gates; do not waive dense-raster universal blockers silently — request coordinated protocol decision if literal rule vetoes all.
-3. Test ranked hypotheses 2–4 (magnetic analytic signal, MT conductivity curvature, gravity worm persistence) which require training_features.tif (418 MB, 5 parts, SHA256 4371c82e…); rank 5 (USGS ComCat microseismic) needs egress verification.
-4. Obtain organizer-authenticated hashes and a live leaderboard receipt; preserve Weekly cap before any slot spend.
-5. Keep promotion separate from format validation; a future selector step decides within the live weekly cap.
+| Arm | Description | `HOLDOUT-DTI` | 95% Spatial-Block CI | `TP_w` | `FP_w` | Paired Delta (`csat_poisson - arm`) |
+|---|---|---:|---|---:|---:|---|
+| **`transfer_poisson`** | Head A (strain-transfer + 38 physics) + `D2.8` | **`0.17851`** | `[0.16506, 0.19101]` | `5,409.7` | `54,540.8` | `-0.01001` `[-0.01668, -0.00354]` |
+| **`csat_poisson` (Emitted `.tif`)** | Dual-Habitat `H84-CSAT` surface + `D2.8` (`c=2.5 px`) | **`0.16850`** | `[0.15468, 0.18167]` | `5,062.9` | `53,600.7` | *(reference)* |
+| **`incumbent_recipe`** | `GEMSDOE25` `D2.8` minus `<= 2 px` of visible (`H33-2-B2` rule) | `0.10564` | `[0.09357, 0.11662]` | `3,524.1` | `71,694.6` | **`+0.06285` `[+0.04793, +0.07900]`** |
+| **`csat_submod`** | Dual-Habitat `H84-CSAT` + `emit.greedy_allocate` | `0.08153` | `[0.06861, 0.09510]` | `2,353.4` | `50,392.3` | **`+0.08696` `[+0.07274, +0.10151]`** |
+| **`concealed_poisson`** | **100% Catalogue-Blind** Head B (38 physics only) + `D2.8` | `0.07351` | `[0.06082, 0.08615]` | `2,182.3` | `54,686.6` | **`+0.09499` `[+0.08180, +0.10791]`** |
+| **`transfer_only` (submod)** | Head A + `emit.greedy_allocate` | `0.07407` | `[0.06523, 0.08294]` | `1,987.5` | `40,602.0` | — |
+| **`retrained_h19_control`** | Fold-clean 19-band LOQO HGB + `D2.8` (`c=2.0 px`, `38.5k` dots) | `0.06991` | `[0.05782, 0.08241]` | `2,268.8` | `68,432.6` | **`+0.09859` `[+0.08327, +0.11296]`** |
+| **`concealed_only` (submod)** | Head B + `emit.greedy_allocate` | `0.04992` | `[0.03686, 0.06400]` | `1,652.5` | `72,290.0` | — |
+| **`incumbent_asis`** | Shipped `GEMSDOE32` `H33-2-B2` raster (pruned on full cat) | `0.00389` | `[0.00328, 0.00445]` | `126.1` | `70,593.8` | `+0.16461` `[+0.15065, +0.17751]` |
 
-**Historical H84-RFD result preserved:** see `research/result_rfd.md` (0.04430 vs 0.04436, duplicate veto, no TIFF). This wing result is the current head; both are negative deliverables, not leaderboard gains.
+Out-of-quadrant stability of `csat_poisson`: `NW = 0.16620`, `NE = 0.17070`, `SW = 0.16839`, `SE = 0.16843`.
+
+---
+
+## Two Key Scientific Findings & Next Steps
+
+1. **Defect `IR-84-11` in `vendor/gems57/emit.py::greedy_allocate`**: Line 104 clamps `kself = np.minimum(ekc, 1.0)`. Wherever a calibrated corridor has convolution sum $\sum_g p(g)k(d(x,g)) \ge 1.0$, self-credit saturates at $k(x)=1.0$ and the acceptance bar $c(1 - k(x))$ collapses to `0.0`. Every 1-px neighbor inside already-covered peaks passes $dT > 0$, halving true-positive coverage (`2,353.4` vs `5,062.9` at the identical `31,057`-dot budget). Upstream `vendor/gems57/emit.py` should replace `np.minimum(ekc, 1.0)` with marginal self-credit $1 - \prod_g (1 - p(g)k(d(x,g)))$ or enforce minimum inter-dot spacing.
+2. **Domain-Restricted Corridor Blocker `IR-84-12` & Stratified Concealed Solution**: Rasters such as `7GEMSDOE:gems7-halo15` (`1,828,699` px = `100%` of `d <= 15 px`, `0%` of `d > 18 px`) have global `halo_coverage = 0.4018 < 0.70` yet veto any unstratified candidate placing `> 70%` of its dots inside `d <= 15 px`. Because our 100% catalogue-blind Head B (`concealed_poisson = 0.07351`) already outperforms the 19-band `retrained_h19_control` (`0.06991`), a next-session preregistered **Distance-Stratified Dual-Habitat Emitter** (`50%` budget in `2.5 < d <= 18 px` via Head A + `50%` budget in `d > 18 px` low-relief concealed contacts via Head B) will mathematically bound overlap against `gems7-halo15` (`<= 0.50`) and `coverage-v3-wide` (`~0.61 <= 0.70`) while preserving `> 0.13` `HOLDOUT-DTI`.
+
+---
+
+## Archive of Prior Negative Lanes in `GEMSDOE84`
+
+- **`H84-RFD`** (Radiometric Flanking Dipole $\times$ normalized LiDAR scarp): `HOLDOUT-DTI = 0.044298` vs step control `0.044364` (`-0.000066`); stopped at dense-surface overlap veto; no `.tif` written.
+- **`H84-A LITI`** (Leaderboard-Inverted Truth Intensity from 91 owner-reported scores): `HOLDOUT-DTI = 0.00867` vs `incumbent_recipe = 0.10564` (`-0.0970`); `56` binding overlap flags; no `.tif` written.

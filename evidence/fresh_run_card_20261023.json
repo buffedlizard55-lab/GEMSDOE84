@@ -169,5 +169,44 @@
     "rank_correlation": 0.06683575204996181,
     "pre_placement_stop": true
   },
-  "submission_slots_used": 0
+  "submission_slots_used": 0,
+  "parallel_lane_h84_csat": {
+    "lane": "H84-CSAT \u2014 Dual-Habitat 3D Contact-Depth + Counterfactual Strain-Transfer",
+    "verdict": "negative",
+    "submission_authorized": false,
+    "submission_slots_used": 0,
+    "run_card": "evidence/run_card_csat.json",
+    "download_file": "docs/downloads/gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros.tif",
+    "submission_name": "gemsdoe84-h84-csat-d28-20261022T234500Z-a5483424-zeros",
+    "raster_sha256": "380eac60eb18d835e44cf64057f7021013753c7d45f287d540413304bcac580d",
+    "note": "GEMSDOE84 H84-CSAT LOQO dual-habitat 3D contact-depth + strain-transfer D2.8 c2.5 zeros; holdout DTI 0.1685 vs 0.1056",
+    "n_dots": 38453,
+    "holdout_dti_csat_poisson": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "dti": 0.16849822616790455,
+      "ci95": [
+        0.1546802195685453,
+        0.18166563264167232
+      ],
+      "withheld_positive_pixels": 22893,
+      "tpw": 5062.8862306003675,
+      "fpw": 53600.708106022525,
+      "fnw": 17830.113769399624
+    },
+    "paired_diff_vs_incumbent_recipe": {
+      "evidence_class": "HOLDOUT-DTI",
+      "evaluator_version": "gems57-pooled-hide-v2",
+      "delta": 0.06285372431058427,
+      "ci95": [
+        0.04792606930895567,
+        0.07899743770631994
+      ],
+      "withheld_positive_pixels": 22893
+    },
+    "promotion_blockers": [
+      "IR-84-11: Primary preregistered allocator csat_submod (emit.greedy_allocate) scored HOLDOUT-DTI 0.08153 vs incumbent_recipe 0.10564 (delta -0.02411) due to kself = min(E[k], 1.0) peak clumping; preregistered D2.8 ablation csat_poisson on the identical H84-CSAT surface scored 0.16850 (+0.06285 vs incumbent_recipe, +0.09859 vs retrained_h19_control).",
+      "IR-84-12: Emitted csat_poisson GeoTIFF (38,453 dots; byte-unique, pixel-unique, max Jaccard 0.03912 across 1,160 rasters; 0 overlap flags vs all 1,006 <=55k-dot submissions; 0.55899 vs H84-THMS) exceeded 0.70 asymmetric forward 3-px overlap against 30 broad 56k-1.83M-px corridor-blanket priors (worst 0.90945 vs GEMSDOE3:coverage-v3-wide [624,025 px])."
+    ]
+  }
 }
