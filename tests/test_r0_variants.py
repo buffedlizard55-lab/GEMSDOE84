@@ -100,8 +100,10 @@ def test_ledger_schema_and_built_variants():
         pair = (r["parent"], r["axis"], r["value"])
         assert pair not in seen_pairs
         seen_pairs.add(pair)
-        assert r["receipt_score"] == ""
-        assert r["date"] == ""
+        # The brief explicitly reserves these fields for human receipts.
+        if r["receipt_score"]:
+            assert 0.0 <= float(r["receipt_score"]) <= 1.0
+            assert r["date"]
 
 
 def test_releases_and_evidence_gates():

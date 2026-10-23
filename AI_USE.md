@@ -136,3 +136,37 @@ the R0 submission-page receipt, remaining weekly/total quota and actual submissi
 dates, exact deadline/cutoff confirmation, and competition-data-use/public-mirror
 permission. An explicit SGMC license is needed only to add that optional control.
 The agent spent **zero** scored slots and requests **no further axis decision**.
+
+## Inherited later concurrent audit additions (historical; current packet takes precedence)
+
+
+## 4. Session 2026-10-23 (`arena/60b5c7f6-gemsdoe84`, `AXIS = CONCENTRATION`)
+
+- **AI executed**: verified all 23 manifest hashes + parent pins in a fresh sandbox (`.venv` from PyPI; mirrors only from `codeload.github.com`), rebuilt R0 byte-identically, re-validated all 12 previously BUILT releases from disk, then discovered via `git fetch` that two parallel PRUNE sessions had merged to `main` (PRs #24/#25) after this branch forked — discarded its own duplicate PRUNE builder unbuilt, merged `origin/main`, and pivoted to the next unbuilt axis. Proved the canonical-ranking identity (PRUNE `dgt1in` removals bit-identical; MASS tails only 80.9%/85.1% concordant, `IR-DEC-13`) and measured CONCENTRATION greedy capacities before fixing doses (`IR-DEC-15`).
+- **AI wrote**: `src/gems84/concentration.py`, `scripts/build_concentration_variants.py` (built/gated `conc5km-t50-m3765-6310efe0`, `conc5km-t25-m2400-caadfcce`, `spread5km-b50-m2400-ceb1073d`, all 37,654 dots; `evidence/r0_concentration_variants_20261023.json`), `ledger/_concentration_rows.json` + `ledger/_prune_sweep_rows.json` (restores sweep rows dropped by ledger rebuilds, `IR-DEC-14`), `tests/test_concentration_axis.py`, and the CONCENTRATION sections of `docs/SUBMIT.md`, `SLOT_PLAN.md`, `README.md` CURRENT STATE, `IRREGULARITIES.md` (`IR-DEC-13..16`).
+- **Human decided / must still supply**: AXIS was again blank and the clarifying questions were skipped (third session; default logged in receipt + `IR-DEC-07/08` lineage). Still required: `TOP_PUBLIC` + date, slots left this week/total, a receipt for every uploaded file, resolution of the retained-dot collar reading (`IR-DEC-16`), and the data-use confirmation (`IR-DEC-01`). The AI has never logged in, scraped, or submitted.
+
+## 5. Session 2026-10-23 (`arena/5be6452b-gemsdoe84`, `AXIS = PRUNE`, third parallel implementation — landed as reproduction audit, PR #28)
+
+- The AI agent in this session independently selected `AXIS = PRUNE` (brief blank, clarification skipped — cf. `IR-DEC-07`/`IR-DEC-08`), restored all pinned inputs hash-verified from `codeload.github.com` only (`evidence/prune_input_restore_receipt.json`), rebuilt R0 byte-identically (`evidence/r0_rebuild_receipt_20261023_prune.json`), and built two fixed-count collar variants. Discovering on PR submission that two sibling sessions had already merged six PRUNE variants (PRs #24/#25) — and, during reconciliation, that a third sibling had merged CONCENTRATION ×3 (PR #29) — the agent **withdrew its two duplicates** rather than merge a third implementation (built-once rule).
+- The session's durable contribution is `IR-DEC-17`: a MASS-mask fidelity gate root-caused `IR-DEC-13` to the float32 nodata sentinel silently killing the H33-A surface via the committed band unpacker; `scripts/build_r0_variants.py:ensure_unpacked_bands` now cleans sentinel→NaN. `scripts/audit_prune_reproduction.py` + `evidence/prune_reproduction_audit_20261023.json` record the measurements (MASS masks reproduce to ≤14 boundary dots/arm post-fix; all six merged PRUNE files carry the pre-fix canary fingerprint `0.5944` vs MASS-effective `0.5949`; clean-ranking rebuilds would change ≤273 dots per `>3 px`-class file, so no merged file was rebuilt). `IR-DEC-18` records the SGMC control's structural bias on this axis. CONCENTRATION ×3 share the pre-fix ranking provenance; their clean-ranking deltas are unmeasured.
+- No drivendata.org or dropbox.com contact, no credentials touched, no submission automation, no slot spent. Human decisions still outstanding are exactly those in `IR-DEC-07` and §4/`IR-DEC-16`: `TOP_PUBLIC` + date, slots left, deadline confirmation, the retained-dot collar ruling, and a portal receipt per manual upload.
+
+### Final concurrent-main integration (no extra raster build)
+
+Main gained PR #29's CONCENTRATION records and PR #28's raw-band sentinel audit
+after the first full self-check. The agent retained all records, audit files,
+withdrawal warnings and sentinel fix, preserving the entire 126-row local CSV
+prefix while adding three incoming rows (**129 rows / 16 BUILT**). Their TIFFs
+were hash-checked against their ledger pins before collar inspection; all three
+violate the strict non-PRUNE >=3 px rule and remain HOLD, not grandfathered.
+PRUNE1.5's source/mask/file hashes and preregistered prediction did not change.
+
+The agent scoped the sentinel regression tests to the six historical audited
+files rather than banning later unused collar values, preserved every historical
+file-hash/withdrawal check, made summary-count checks dynamic, and allowed human
+receipt fields to be filled later. A recovery sidecar contains the one new row;
+the initializer refuses any existing ledger. No live-change bound is inferred
+from dot overlap. PRUNE1.5's fixed H19-reference operator never unpacks the raw
+feature bands affected by IR-DEC-17; this is not a claim that the upstream H19
+field is leakage-free. No further candidate or scored slot was created/used.

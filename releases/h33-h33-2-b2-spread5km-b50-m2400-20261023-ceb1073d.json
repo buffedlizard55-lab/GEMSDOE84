@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "evidence_class": "BUILT (unscored)",
+  "parent_score": "0.2778 (CLAIM: owner-reported; no receipt in ledger/)",
+  "no_evidence_threshold": 0.01,
+  "block_info": {
+    "block_px": 50,
+    "block_km": 5.0,
+    "eligible_blocks": 2046,
+    "prior_percentiles": {
+      "0": 0.05585,
+      "10": 0.07476,
+      "25": 0.08711,
+      "50": 0.10746,
+      "75": 0.12718,
+      "90": 0.14287,
+      "100": 0.20838
+    },
+    "prior_mean_bot50": 0.08648,
+    "prior_mean_top50": 0.12996,
+    "prior_mean_top25": 0.14277,
+    "r0_shares": {
+      "dots_bot50": 11807,
+      "share_bot50": 0.3136,
+      "dots_top50": 24930,
+      "share_top50": 0.6621,
+      "dots_top25": 14947,
+      "share_top25": 0.397,
+      "dots_outside_eligible_blocks": 917,
+      "n_dots": 37654
+    },
+    "density_cv_definition": "gems84.snap.density_cv: std/mean of dots-per-footprint-pixel over blocks with any footprint (10px grid crop)",
+    "r0_density_cv": {
+      "1km_10px": 1.8834,
+      "5km_50px": 0.9608,
+      "10km_100px": 0.8012
+    },
+    "brief_reported_best_cv": "0.51-0.59 (UNVERIFIED: definition/block size unstated; R0 measures 1.88/0.96/0.80 at 1/5/10 km under the definition above, so the reported range is not comparable and is not used as a target)"
+  },
+  "id": "h33-h33-2-b2-spread5km-b50-m2400-20261023-ceb1073d",
+  "key": "spreadm2400",
+  "parent": "h33-h33-2-b2",
+  "axis": "CONCENTRATION",
+  "value": "spread5km-move2400",
+  "n_dots": 37654,
+  "dots_added": 2400,
+  "dots_removed": 2400,
+  "dots_moved": 2400,
+  "pct_moved_vs_r0": 6.37,
+  "pct_changed_vs_r0": 12.75,
+  "pct_changed_definition": "symmetric-difference dots / 37654 * 100 (a move of k dots counts 2k), as in MASS/PRUNE rows",
+  "jaccard_vs_r0": 0.880162,
+  "donor_blocks": "top25",
+  "recipient_blocks": "bot50",
+  "d_cat_min_px": 2.2361,
+  "added_dots_d_cat_min_px": 3.0,
+  "density_cv": {
+    "1km_10px": 1.8168,
+    "5km_50px": 0.9013,
+    "10km_100px": 0.771
+  },
+  "block_shares": {
+    "dots_bot50": 14207,
+    "share_bot50": 0.3773,
+    "dots_top50": 22530,
+    "share_top50": 0.5983,
+    "dots_top25": 12547,
+    "share_top25": 0.3332,
+    "dots_outside_eligible_blocks": 917,
+    "n_dots": 37654
+  },
+  "build_stats": {
+    "n_moved": 2400,
+    "removed_gain_mean": 1.119625,
+    "refill_gain_mean": 0.817429,
+    "refill_gain_min": 0.371171,
+    "cand_pool_in_recip": 6156
+  },
+  "digest8_mask": "550787e0",
+  "nan_tif": {
+    "path": "releases/h33-h33-2-b2-spread5km-b50-m2400-20261023-ceb1073d.tif",
+    "sha256": "ceb1073d77869b920cd82c6283bb27b68af4c12b95c02416fcacd7ee9bc07422",
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "count": 1,
+    "no_nan_in_footprint": true,
+    "values_in_0_1": true,
+    "outside_footprint_encoding_ok": true,
+    "n_dots": 37654,
+    "catalogue_mass": 0.0,
+    "gate_passed": true
+  },
+  "zeros_tif": {
+    "path": "releases/h33-h33-2-b2-spread5km-b50-m2400-20261023-ceb1073d-zeros.tif",
+    "sha256": "bd9e30dc346eca9675fdeecc5d25e21323ee4a299a15351d6059eb2a4f60a0d2",
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "count": 1,
+    "no_nan_in_footprint": true,
+    "values_in_0_1": true,
+    "outside_footprint_encoding_ok": true,
+    "n_dots": 37654,
+    "catalogue_mass": 0.0,
+    "gate_passed": true
+  },
+  "form_note": "h33-h33-2-b2; SPREAD 5km move 2400 (6.4%) high->low prior blocks, 37654; pred -0.006..+0.003",
+  "predicted_change": "-0.006 to +0.003 DTI (MODEL: 5km-block move of 2400 dots at fixed count; credit scenario in receipt)",
+  "model_scenario": {
+    "n_move": 2400,
+    "assumed_mean_live_credit_in": [
+      0.015,
+      0.05
+    ],
+    "assumed_mean_live_credit_out": [
+      0.03,
+      0.065
+    ],
+    "predicted_live_change": [
+      -0.0062,
+      0.0025
+    ],
+    "basis": "credit-scenario on incumbent_anatomy anchor (D=18262.37 at s=0.2778 CLAIM; marginal bar 0.0556); c ranges bracket second-tier refill dots vs weakest retained-class dots. No ranking-unit sum is divided by D (IR-DEC-11)."
+  },
+  "mechanism_card": {
+    "hypothesis": "Reverse arm: spreading mass into low-prior blocks loses DTI under the clustering hypothesis. It wins only if the completeness mechanism dominates -- high-q blocks are already captured by USGS/INGENIOUS mapping (masked from labels), so undiscovered faults disproportionately remain where the field and the catalogue are quiet.",
+    "mechanism": "Mirror construction of conc-t25 (same donor/recipient block sets, roles swapped, same pool/selector/spacing), giving a signed dose pair at equal moved count.",
+    "non_fault_mimic": "Low-q blocks may be low because thick Quaternary cover hides scarps (blind faults present but field-blind) -- the genuine signal this arm hopes for if it wins; mimicked by playa/evaporite lineaments in the same basins.",
+    "predicted_sign_and_size": "Negative center: -0.006 to +0.003 DTI (MODEL).",
+    "falsifier": "Live >= both CONC receipts: the km block prior is anti-informative for NEW-fault labels; allocation should flatten or invert the prior (completeness beats clustering)."
+  }
+}

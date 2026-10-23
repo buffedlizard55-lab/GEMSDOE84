@@ -9,7 +9,9 @@ owner claims; the committed registry is a fallback. Other historical sources:
   (evidence class CLAIM: no submission-page receipt is committed anywhere in this repo);
 * ``docs/evidence/upstream-score-ledger.csv`` -- the dated manual read of the official public
   leaderboard (evidence class OFFICIAL_SNAPSHOT, read 2026-10-03);
-* ``ledger/_snap_rows.json``        -- rows for files this session BUILT (status BUILT, receipt N).
+* ``ledger/_snap_rows.json``, ``ledger/_mass_rows.json``, ``ledger/_prune_rows.json``
+                                    -- rows for files BUILT in the axis sessions (status
+                                    BUILT, receipt N; one rows file per axis session).
 
 Repeats are collapsed exactly as the brief instructs: identical content digest + identical
 score (the NaN-outside / zeros-outside twins and the cross-site re-uploads of one file), never
@@ -94,6 +96,12 @@ def main() -> int:
     ap.add_argument("--snap-rows", default=str(ROOT / "ledger" / "_snap_rows.json"))
     ap.add_argument("--mass-rows", default=str(ROOT / "ledger" / "_mass_rows.json"))
     ap.add_argument("--prune-rows", default=str(ROOT / "ledger" / "_prune_rows.json"))
+    ap.add_argument("--concentration-rows",
+                    default=str(ROOT / "ledger" / "_concentration_rows.json"))
+    ap.add_argument("--prune-sweep-rows",
+                    default=str(ROOT / "ledger" / "_prune_sweep_rows.json"))
+    ap.add_argument("--prune-intermediate-rows",
+                    default=str(ROOT / "ledger" / "_prune_intermediate_rows.json"))
     args = ap.parse_args()
 
     # Existing experiment/receipt history is authoritative. Initialisation from
@@ -150,7 +158,9 @@ def main() -> int:
                 })
 
     # 3. files BUILT this session ------------------------------------------------------
-    for extra_path in (Path(args.snap_rows), Path(args.mass_rows), Path(args.prune_rows)):
+    for extra_path in (Path(args.snap_rows), Path(args.mass_rows), Path(args.prune_rows),
+                       Path(args.prune_sweep_rows), Path(args.concentration_rows),
+                       Path(args.prune_intermediate_rows)):
         if extra_path.exists():
             rows.extend(json.loads(extra_path.read_text()))
 

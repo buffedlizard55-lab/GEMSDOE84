@@ -1,0 +1,25 @@
+[
+  {
+    "id": "h33-h33-2-b2-PRUNE1p5-20261023-3d2ac85f",
+    "site": "GEMSDOE84",
+    "name": "h33-h33-2-b2-PRUNE1p5-20261023-3d2ac85f",
+    "score": "",
+    "evidence_class": "MODEL",
+    "encoding": "nan+zeros",
+    "n_dots": "37654",
+    "pct_changed": "7.1386838051734207",
+    "sha8": "3d2ac85f",
+    "sha256": "3d2ac85f0d3b9e6c353214fa9b0a1eecf55d9b46231f39e9203cce05525e8cba",
+    "sha256_zeros": "b11fc67e790ab36f2d7ad0a115c7495d116b6a535d19ad987fde8ac35068b498",
+    "parent": "h33-h33-2-b2",
+    "axis": "PRUNE",
+    "value": "1.5",
+    "status": "BUILT",
+    "receipt": "N",
+    "receipt_score": "",
+    "predicted_change": "MODEL central +0.002 DTI; plausible -0.010..+0.015, uncalibrated scenario (not a confidence interval)",
+    "date": "",
+    "form_note": "h33-h33-2-b2; PRUNE >1.5px, 1344 ring-in/tail-out, n37654; MODEL +0.002 (-0.010..+0.015)",
+    "notes": "Only PRUNE: add 1344 original d_cat=2px dots; remove 1344 least exact H19-kernel-loss R0 dots; all count compensation on original field"
+  }
+]
