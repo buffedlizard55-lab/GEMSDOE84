@@ -105,7 +105,7 @@ def require_new_experiments(
 ) -> None:
     """Reject an implicit axis and reused pairs before fitting, writing or editing history."""
     if axis is None or axis.strip().upper() not in AXES:
-        raise BriefViolation("The human must explicitly assign one AXIS; there is no default.")
+        raise BriefViolation("The session must explicitly select one AXIS; there is no implicit default.")
     values = list(values)
     if not 1 <= len(values) <= 3 or any(not str(value).strip() for value in values):
         raise BriefViolation("Supply one to three explicit axis values.")

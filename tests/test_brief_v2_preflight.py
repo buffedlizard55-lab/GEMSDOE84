@@ -39,7 +39,7 @@ def write_ledger(path, rows):
 
 
 def test_axis_must_be_explicit_and_values_are_limited():
-    with pytest.raises(BriefViolation, match="human must explicitly assign"):
+    with pytest.raises(BriefViolation, match="session must explicitly select"):
         require_new_experiments([], R0_ID, None, ["x"])
     for values in ([], [""], ["1", "2", "3", "4"], ["x", "X"]):
         with pytest.raises(BriefViolation):
