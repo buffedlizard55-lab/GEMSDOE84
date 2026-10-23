@@ -184,9 +184,17 @@ def test_required_brief_v2_documents_exist():
     readme = (ROOT / "README.md").read_text()
     assert "<!-- CURRENT_STATE_START -->" in readme
     assert "<!-- CURRENT_STATE_END -->" in readme
-    assert "h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3" in readme
-    assert "h33-h33-2-b2-mass-add10pct-20261023-ad925bd2" in readme
-    assert "h33-h33-2-b2-mass-drop20pct-20261023-62bfc392" in readme
+    # CURRENT STATE must name at least one built candidate per axis it reports on, and the packet
+    # (docs/SUBMIT.md) must name every BUILT candidate, whatever axis the session worked on.
+    with (ROOT / "ledger" / "submissions.csv").open(newline="") as fh:
+        built = [r for r in csv.DictReader(fh) if r.get("status") == "BUILT"]
+    submit_text = (ROOT / "docs" / "SUBMIT.md").read_text()
+    assert built, "expected BUILT rows in the ledger"
+    for axis in {r["axis"] for r in built}:
+        ids = [r["id"] for r in built if r["axis"] == axis]
+        assert any(i in readme for i in ids), f"README CURRENT STATE names no {axis} candidate"
+    for r in built:
+        assert r["id"] in submit_text, f"{r['id']} missing from docs/SUBMIT.md"
 
     submit_doc = (ROOT / "docs" / "SUBMIT.md").read_text()
     ev = json.loads((ROOT / "evidence" / "r0_mass_variants_20261023.json").read_text())

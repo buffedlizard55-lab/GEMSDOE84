@@ -24,3 +24,9 @@ Per the competition rules for the U.S. Department of Energy Geothermal Earthshot
   1. Supply current `TOP_PUBLIC` leaderboard score and exact `Slots left this week / total` for the single competing entity.
   2. Supply organizer receipt(s) (`receipt_score` and `date` in `ledger/submissions.csv`) for `h33-h33-2-b2` (`0.2778` `CLAIM`) and for each of the `AXIS = MASS` / `AXIS = SNAP` variants as they are manually uploaded to DrivenData by the human.
   3. Confirm data-use terms regarding competition rasters mirrored in upstream public repositories (`IR-DEC-01` in `IRREGULARITIES.md`).
+
+## 3. Session 2026-10-23 (`arena/f95a2890-gemsdoe84`, `AXIS = PRUNE`)
+
+- **AI wrote**: `scripts/prune`-lane builder `scripts/build_prune_variants.py` (reuses the recorded `scripts/build_r0_variants.py` ranking, the shared `gems57` holdout evaluator and the shared `gems84.parent` emitter rather than any private metric or writer), `tests/test_prune_axis.py` (10 tests: format gates, refill floor, distinctness, ledger/receipt consistency), the `README.md` CURRENT STATE block, `SLOT_PLAN.md`, the `PRUNE` section of `docs/SUBMIT.md`, and `IR-DEC-07..10`.
+- **AI executed**: restored the pinned inputs from `codeload.github.com` (`scripts/restore_pinned_inputs.py`; 23/23 manifest hashes verified, receipt committed as `evidence/input_restore_receipt.json`), re-ran the parent gate (`scripts/rebuild_r0.py`: 6/6 checks PASS, `c55bafc4…`), built/gated/re-read the three collar variants, and ran the report-only diagnostics.
+- **Human decided / must still supply**: the axis for this session (blank in the pasted brief — `PRUNE` chosen and logged as `IR-DEC-07`); `TOP_PUBLIC` with a date; remaining weekly/total slot quota; and every `receipt_score` + `date` after uploading from the human's own account. The AI has never logged in, scraped the leaderboard, or submitted anything.

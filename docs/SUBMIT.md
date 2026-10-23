@@ -1,4 +1,4 @@
-# SUBMISSION PACKET — `AXIS = MASS` & `AXIS = SNAP` Variants of Parent R0 (`h33-h33-2-b2`)
+# SUBMISSION PACKET — `AXIS = PRUNE` (current), `AXIS = MASS` & `AXIS = SNAP` Variants of Parent R0 (`h33-h33-2-b2`)
 
 - **Parent R0**: `h33-h33-2-b2` (`GEMSDOE32`, `37,654` unit-mass dots, `d_cat > 2.0 px`, `0.2778` `CLAIM` in `registry/live_scores.csv`)
   - Rebuilt bit-for-bit from `scored_h19_5` (`e27054cf`) $\to$ `dot_thin(r_min=2.8)` = `d2_8` (`44,090` dots, `0.2600` `CLAIM`) $\to$ prune `d_cat <= 2.0 px` = `37,654` dots (`digest8 = e5eb6e7e`).
@@ -106,3 +106,63 @@
 | **Slot 3 (`MASS -20%`)** | `30,123` | `0.10149` (`[0.08969, 0.11274]`) | `0.00400` (`[0.00341, 0.00456]`) | `0.08368` | `0.07571` | `0.05940` |
 
 - **Leakage canary (`REPORT ONLY`)**: All `27` features (`01_mag_anom`..`19_det_elev_slope`, `H33-A..D`, `h33_union`, `lidar_scarp_composite`, `corrob_count`, `q_posterior`) passed on the `22,893` withheld positive pixels (`max_single_feature_auc = 0.5949 <= 0.90`).
+
+
+---
+
+## `AXIS = PRUNE` — collar-width sweep, count held at `37,654` (built this session)
+
+- **Script**: `scripts/build_prune_variants.py` (pinned inputs: 23/23 manifest hashes; parent R0 rebuilt byte-identically from `c55bafc4…`).
+- **Design**: one change only — the catalogue collar. `R0` dots inside the collar are removed and replaced **1:1** by the highest exact-marginal-DTI-gain dots from the parent's own pool (`dot_thin(h19_5|h19_4|h16_1|tgc, 2.8) & ~R0 & d_cat >= 3.0`, `19,243` candidates). Mass and mean spacing are held, so the files isolate *location*.
+- **Brief values not buildable**: `<= 1 px` and `<= 2 px` remove **0** dots from R0 (R0 already excludes `d_cat <= 2 px`), so they are recorded rather than emitted as empty files.
+
+### `h33-2-b2-pruned2p5-20261023-45faee56` — collar `2.5 px`
+
+- **File (NaN outside footprint, per spec)**: `releases/h33-2-b2-pruned2p5-20261023-45faee56.tif` — `sha256 45faee562e55c0b48d123ebbdf553f17ecfaf24cdd5592c27437c0d316ecb3c8`
+- **File (zeros outside footprint, fallback)**: `releases/h33-2-b2-pruned2p5-20261023-45faee56-zeros.tif` — `sha256 d484d54d200126fefbe37868993b4019d836f9bf9afd72bc2faab8cccca614ca`
+- **Form note (85 chars)**: `h33-2-b2; PRUNE collar 2.5px (941 dots out, 941 refill at dcat>=3px); pred +0.001 DTI`
+- **Gates (re-read from disk)**: `scripts/validate_submission.py` → `format_valid = true` on the `-zeros.tif` twin; the spec `.tif` fails only `finite_all`/`range_all`, i.e. the NaN-outside-footprint conflict already logged as `IR-DEC-06`. `EPSG:32611` · `(3730, 3292)` · `float32` · `1` band · transform exact · `no_nan_in_footprint` · `values_in_[0,1]` · `catalogue_mass = 0.0` · `n_dots = 37654` · outside-footprint encoding correct in both twins.
+- **Parent-diff**: `941` collar dots removed (max `d_cat` `2.2361` px), `941` refill dots added (min `d_cat` `3.0` px, median `13.3417` px), `pct_changed_vs_r0 = 5.0%`, `jaccard_vs_r0 = 0.951237`.
+- **Prediction (MODEL)**: `MODEL +0.0000..+0.0020 DTI (lineage-anchored +0.0010 central, refill assumed neutral); ranking arithmetic favors negative`. Ranking arithmetic (ranking units, **not** DTI) favours the **negative** direction: refill gain sum `1448.946` vs collar gain lost `1654.185`.
+- **Mechanism card (for a structural geologist)**:
+  - **Hypothesis**: Cutting the collar from 2.0 to 2.5 px removes only the 941 R0 dots in the innermost diagonal shell (d_cat in (2.0, 2.5]); at that distance a dot's 3 px triangular kernel is >83% dominated by masked catalogue pixels, so those dots should pay false-positive mass with little collectable credit. Refilling them from the off-catalogue ridge pool should be weakly positive.
+  - **Mechanism**: Under DTI = T / (0.2T + 0.2(S-M) + 0.8|G|) each unit-mass dot adds 0.2(1 - m_q) to the denominator and (1 - 0.2s)dT to the numerator. Known USGS/INGENIOUS pixels are masked pixel-exactly out of the label set, so a dot inside the 3 px (300 m) kernel footprint of a masked catalogue pixel can only collect credit from *new-fault* truth. Collar dots are swapped 1:1 for the highest exact-marginal-gain off-catalogue ridge dots (d_cat >= 3.0 px, r_min = 2.8 px) from the parent's own ranked pool, so total mass and mean spacing are held and only collar geometry changes.
+  - **Non-fault mimic**: Alluvial-fan head-cut scarps, pediment slope breaks and playa margins that parallel mapped range-front faults at 200-400 m; these mimic an unmapped splay and would make collar dots productive rather than wasteful.
+  - **Predicted sign & size (MODEL)**: MODEL +0.0000..+0.0020 DTI (central +0.0010 from 1.088e-6 DTI per removed collar dot x 941 dots, refill assumed neutral). Note the disagreement: the parent's own masking-blind ranking arithmetic prices the collar dots higher than the refill pool (negative), yet the lineage's one measured collar prune (0.2708 -> 0.2778 CLAIM) moved the other way, which is exactly why this axis is worth a slot. Live changes under 0.010 count as no evidence (public chunks only).
+  - **Falsifier**: A live score below 0.2768 (>= 0.0010 under R0's 0.2778 CLAIM) falsifies the claim that the innermost diagonal shell is net false-positive dominated.
+
+### `h33-2-b2-pruned3p0-20261023-26e80847` — collar `3 px`
+
+- **File (NaN outside footprint, per spec)**: `releases/h33-2-b2-pruned3p0-20261023-26e80847.tif` — `sha256 26e808472dd6a35eed7ab42762ebada2c7236370e2ca7dc42b4393cdbcd1d9c8`
+- **File (zeros outside footprint, fallback)**: `releases/h33-2-b2-pruned3p0-20261023-26e80847-zeros.tif` — `sha256 5a8161562a07dd04fcb87972e23623ce3850cb9571d52f5486c50988e0f4b80d`
+- **Form note (85 chars)**: `h33-2-b2; PRUNE collar 3px (2171 dots out, 2171 refill at dcat>=3px); pred +0.002 DTI`
+- **Gates (re-read from disk)**: `scripts/validate_submission.py` → `format_valid = true` on the `-zeros.tif` twin; the spec `.tif` fails only `finite_all`/`range_all`, i.e. the NaN-outside-footprint conflict already logged as `IR-DEC-06`. `EPSG:32611` · `(3730, 3292)` · `float32` · `1` band · transform exact · `no_nan_in_footprint` · `values_in_[0,1]` · `catalogue_mass = 0.0` · `n_dots = 37654` · outside-footprint encoding correct in both twins.
+- **Parent-diff**: `2171` collar dots removed (max `d_cat` `3.0` px), `2171` refill dots added (min `d_cat` `3.0` px, median `13.9284` px), `pct_changed_vs_r0 = 11.53%`, `jaccard_vs_r0 = 0.890973`.
+- **Prediction (MODEL)**: `MODEL +0.0000..+0.0047 DTI (lineage-anchored +0.0024 central, refill assumed neutral); ranking arithmetic favors negative`. Ranking arithmetic (ranking units, **not** DTI) favours the **negative** direction: refill gain sum `3063.705` vs collar gain lost `3764.559`.
+- **Mechanism card (for a structural geologist)**:
+  - **Hypothesis**: Removing every R0 dot within one full kernel radius (300 m) of masked catalogue pixels (2,171 dots, 5.77% of R0) and refilling at matched count with off-catalogue corroborated ridge dots removes mass that can earn almost no credit, because the catalogue pixels underneath are masked out of the label set.
+  - **Mechanism**: Under DTI = T / (0.2T + 0.2(S-M) + 0.8|G|) each unit-mass dot adds 0.2(1 - m_q) to the denominator and (1 - 0.2s)dT to the numerator. Known USGS/INGENIOUS pixels are masked pixel-exactly out of the label set, so a dot inside the 3 px (300 m) kernel footprint of a masked catalogue pixel can only collect credit from *new-fault* truth. Collar dots are swapped 1:1 for the highest exact-marginal-gain off-catalogue ridge dots (d_cat >= 3.0 px, r_min = 2.8 px) from the parent's own ranked pool, so total mass and mean spacing are held and only collar geometry changes.
+  - **Non-fault mimic**: Alluvial-fan head-cut scarps, pediment slope breaks and playa margins that parallel mapped range-front faults at 200-400 m; these mimic an unmapped splay and would make collar dots productive rather than wasteful.
+  - **Predicted sign & size (MODEL)**: MODEL +0.0000..+0.0047 DTI (central +0.0024 from 1.088e-6 DTI per removed collar dot x 2171 dots, refill assumed neutral). Note the disagreement: the parent's own masking-blind ranking arithmetic prices the collar dots higher than the refill pool (negative), yet the lineage's one measured collar prune (0.2708 -> 0.2778 CLAIM) moved the other way, which is exactly why this axis is worth a slot. Live changes under 0.010 count as no evidence (public chunks only).
+  - **Falsifier**: A live score below 0.2768 falsifies the collar-false-positive hypothesis and would show that unmapped new-fault truth sits inside 300 m of the known traces (as the organizer allowed), making the collar a productive band.
+
+### `h33-2-b2-pruned4p0-20261023-ff079f66` — collar `4 px`
+
+- **File (NaN outside footprint, per spec)**: `releases/h33-2-b2-pruned4p0-20261023-ff079f66.tif` — `sha256 ff079f66304afebb07e6ce0167fa848ebd1920020ce4f96421bb36a489d9a730`
+- **File (zeros outside footprint, fallback)**: `releases/h33-2-b2-pruned4p0-20261023-ff079f66-zeros.tif` — `sha256 37be4a3f4bd5d020487f47bed65c08ad665223542f771e5f57b9b90a3ff41c56`
+- **Form note (85 chars)**: `h33-2-b2; PRUNE collar 4px (3825 dots out, 3825 refill at dcat>=3px); pred +0.004 DTI`
+- **Gates (re-read from disk)**: `scripts/validate_submission.py` → `format_valid = true` on the `-zeros.tif` twin; the spec `.tif` fails only `finite_all`/`range_all`, i.e. the NaN-outside-footprint conflict already logged as `IR-DEC-06`. `EPSG:32611` · `(3730, 3292)` · `float32` · `1` band · transform exact · `no_nan_in_footprint` · `values_in_[0,1]` · `catalogue_mass = 0.0` · `n_dots = 37654` · outside-footprint encoding correct in both twins.
+- **Parent-diff**: `3825` collar dots removed (max `d_cat` `4.0` px), `3825` refill dots added (min `d_cat` `3.0` px, median `12.2066` px), `pct_changed_vs_r0 = 20.32%`, `jaccard_vs_r0 = 0.815569`.
+- **Prediction (MODEL)**: `MODEL +0.0000..+0.0083 DTI (lineage-anchored +0.0042 central, refill assumed neutral); ranking arithmetic favors negative`. Ranking arithmetic (ranking units, **not** DTI) favours the **negative** direction: refill gain sum `5103.21` vs collar gain lost `6392.286`.
+- **Mechanism card (for a structural geologist)**:
+  - **Hypothesis**: If the collar penalty is monotone, a 4 px exclusion (3,825 dots, 10.16% of R0) should beat the 3 px variant. Along-strike continuations and relay splays of mapped faults live in this band, so the sign is genuinely uncertain: this point measures where the collar-vs-continuation trade turns over.
+  - **Mechanism**: Under DTI = T / (0.2T + 0.2(S-M) + 0.8|G|) each unit-mass dot adds 0.2(1 - m_q) to the denominator and (1 - 0.2s)dT to the numerator. Known USGS/INGENIOUS pixels are masked pixel-exactly out of the label set, so a dot inside the 3 px (300 m) kernel footprint of a masked catalogue pixel can only collect credit from *new-fault* truth. Collar dots are swapped 1:1 for the highest exact-marginal-gain off-catalogue ridge dots (d_cat >= 3.0 px, r_min = 2.8 px) from the parent's own ranked pool, so total mass and mean spacing are held and only collar geometry changes.
+  - **Non-fault mimic**: Alluvial-fan head-cut scarps, pediment slope breaks and playa margins that parallel mapped range-front faults at 200-400 m; these mimic an unmapped splay and would make collar dots productive rather than wasteful.
+  - **Predicted sign & size (MODEL)**: MODEL +0.0000..+0.0083 DTI (central +0.0042 from 1.088e-6 DTI per removed collar dot x 3825 dots, refill assumed neutral). Note the disagreement: the parent's own masking-blind ranking arithmetic prices the collar dots higher than the refill pool (negative), yet the lineage's one measured collar prune (0.2708 -> 0.2778 CLAIM) moved the other way, which is exactly why this axis is worth a slot. Live changes under 0.010 count as no evidence (public chunks only).
+  - **Falsifier**: A live score below the 3 px variant falsifies monotonicity of the collar penalty and bounds the optimum collar width at or below 3 px.
+
+### REPORT-ONLY diagnostics (never gates)
+
+- **Leakage canary**: `27` features, `max_single_feature_auc = 0.5944 <= 0.90` (PASS), `22893` withheld positives.
+- **Catalogue hide-and-recover `PROXY`** (shipped masks, `gems57-pooled-hide-v2`, 2 seeds, 1,000 block-bootstrap draws): R0 `0.00389` `[0.00332, 0.00445]`; `d2p5` `0.00044`; `d3p0` `0.00000`; `d4p0` `0.00000`. **This proxy penalises exactly the mechanism under test** — its withheld truth is catalogue-derived, so widening the collar removes all kernel overlap with it. It is reported, never used to rank these arms (`IR-DEC-08`).
+- **SGMC off-catalogue control `PROXY`** (prevalence-calibrated): R0 `0.064121`; d2p5 `0.065814`; d3p0 `0.067125`; d4p0 `0.067564` — monotone with collar width, i.e. moving dots off the catalogue does raise off-catalogue coverage.
