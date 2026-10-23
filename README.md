@@ -14,6 +14,16 @@
 
 [Submission guide](docs/executive-summary.html) · [Current audit / run card](run_card.json) · [Machine-readable status](registry/release_status.json) · [Scientific review and four ranked hypotheses](research/SESSION_REVIEW_20261023.md) · [Source ledger](registry/sources.json)
 
+## Parallel session 2026-10-23 — Lane H84B-UAS (also NEGATIVE / DO NOT SUBMIT)
+
+A parallel session from the same prompt ran a new preregistered lane **H84B-UAS** (uncertainty-adaptive dot spacing on a distance-blind 59-channel bagged-HGB surface) to completion: 3 experiments, run card [`registry/run_card_h84b.json`](registry/run_card_h84b.json), analysis [`research/h84b_results_and_h33_correction.md`](research/h84b_results_and_h33_correction.md); site page: [`docs/h84b/index.html`](docs/h84b/index.html) (kept outside the generated portal pages; the parallel review's 'no new submission generated' statement covers its own session).
+
+- **New unique GeoTIFF generated:** `gems84b-uas-ctrl-37654dots-20261023-2f774850-zeros` (sha256 `38f0e886…`, in `submissions/` only — kept out of `docs/downloads/` by the archived-only downloads test) — locally format-valid (15/15: binary {0,1}, 0 NaN, [0,1] guaranteed, CRS/shape/transform match, 0 dots on catalogue) and distinct from every *dotted/binary* registry entry measured (max 3-px overlap 0.444, max |ρ| 0.084 vs 7-raster subset incl. H33). **It is nevertheless DO NOT SUBMIT:** (a) the lane hypothesis is falsified (below), so the file is the control-arm surface; (b) its literal forward overlap vs the space-filling 17GEMSDOE witness measures **1.0 > 0.70** (independently re-measured this session), so it is blocked by the same protocol stop as H84-THMS. Research download only.
+- **Holdout (all HOLDOUT-DTI, whole-segment block holdout, 59,282 withheld px, budget-matched):** fixed-2.83px control **0.1703 [0.1457, 0.1983]** (reproduced exactly) · σ-adaptive spacing 0.1570 · sharpness-adaptive 0.1561 · soft-fractional 0.1356 — both adaptive mechanisms **falsified**; leakage canary PASS (max AUC 0.5735). Programme finding: H33-style fixed ≈kernel-radius spacing is near-optimal; remaining headroom is top-tail ranking quality, not emission geometry.
+- **IR-84B-02 (critical):** prior promotion docs claimed H33 dots at median 5.385 px / max 12 px from the catalogue. Re-measurement on the SHA-verified H33 file: **median 19.65 px, max 219.3 px** — the "1.2 km truncation" narrative is retracted. H33 genealogy/score-chain claims remain owner-supplied, not re-verified (see `research/SESSION_REVIEW_20261023.md`).
+
+**Unblock condition (applies to every lane):** an explicit owner protocol revision of the duplicate gate's support definition (e.g. support := each registry raster's own emitted dots / top-budget support, instead of literal `>0` on continuous surfaces). Until then the gate is mathematically unsatisfiable and no slot may be spent.
+
 ## What changed in this review
 
 Three passes: inspect/reproduce; test and repair; rebuild/check against the brief.

@@ -1,0 +1,63 @@
+{
+ "verdict": "negative-lane-candidate-unpromoted",
+ "name": "gems84b-uas-ctrl-37654dots-20261023-2f774850-zeros",
+ "note": "H84B-UAS CONTROL surface dist-blind baggedHGB fixed2.83px; 37654 dots; HOLDOUT-DTI 0.1703 UNPROMOTED",
+ "arm": "A0_fixed28",
+ "promoted": false,
+ "n_dots": 37654,
+ "uniqueness": {
+  "gates": {
+   "max_spearman_abs_le": 0.9,
+   "max_overlap3px_le": 0.7
+  },
+  "per_raster": {
+   "H33_0.2778_GEMSDOE32": {
+    "surface_spearman": 0.0727,
+    "dots_spearman": 0.0252,
+    "overlap3px": 0.3212,
+    "reg_positive_px": 37654
+   },
+   "H19-5_GEMSDOE19": {
+    "surface_spearman": 0.0797,
+    "dots_spearman": 0.0362,
+    "overlap3px": 0.4245,
+    "reg_positive_px": 121131
+   },
+   "D2.8_GEMSDOE25": {
+    "surface_spearman": 0.0417,
+    "dots_spearman": 0.0135,
+    "overlap3px": 0.387,
+    "reg_positive_px": 44090
+   },
+   "D1.5_GEMSDOE24": {
+    "surface_spearman": 0.0528,
+    "dots_spearman": 0.0224,
+    "overlap3px": 0.4021,
+    "reg_positive_px": 60069
+   },
+   "H19-4_GEMSDOE19": {
+    "surface_spearman": 0.0781,
+    "dots_spearman": 0.0331,
+    "overlap3px": 0.433,
+    "reg_positive_px": 123779
+   },
+   "H16-1_GEMSDOE16": {
+    "surface_spearman": 0.0839,
+    "dots_spearman": 0.0393,
+    "overlap3px": 0.4405,
+    "reg_positive_px": 123939
+   },
+   "H84-THMS_GEMSDOE84": {
+    "surface_spearman": 0.0836,
+    "dots_spearman": 0.0109,
+    "overlap3px": 0.4444,
+    "reg_positive_px": 37654
+   }
+  },
+  "max_abs_spearman": 0.0839,
+  "max_overlap3px": 0.4444,
+  "pass": true,
+  "scope": "7-raster local registry subset (H33 anchor + parents + prior in-repo lane); full 359-raster corpus not re-fetched this session (see limitations)"
+ },
+ "writer_receipt": "{'file': 'gems84b-uas-ctrl-37654dots-20261023-2f774850-zeros.tif', 'sha256': '38f0e886f8f74e760139ad29aabc2c4422d596163cb1aac820b2fdab2a42076d', 'bytes': 138413, 'submission_name': 'gems84b-uas-ctrl-37654dots-20261023-2f774850-zeros', 'note': 'H84B-UAS CONTROL surface dist-blind baggedHGB fixed2.83px; 37654 dots; HOLDOUT-DTI 0.1703 UNPROMOTED', 'note_chars': 100, 'validator': {'file': '/home/user/GEMSDOE84/submissions/gems84b-uas-ctrl-37654dots-20261023-2f774850-zeros.tif', 'bytes': 138413, 'sha"
+}
