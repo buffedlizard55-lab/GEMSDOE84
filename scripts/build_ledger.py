@@ -9,7 +9,9 @@ records instead, and the substitution is recorded in ``IRREGULARITIES.md``:
   (evidence class CLAIM: no submission-page receipt is committed anywhere in this repo);
 * ``docs/evidence/upstream-score-ledger.csv`` -- the dated manual read of the official public
   leaderboard (evidence class OFFICIAL_SNAPSHOT, read 2026-10-03);
-* ``ledger/_snap_rows.json``        -- rows for files this session BUILT (status BUILT, receipt N).
+* ``ledger/_snap_rows.json``, ``ledger/_mass_rows.json``, ``ledger/_prune_rows.json``
+                                    -- rows for files BUILT in the axis sessions (status
+                                    BUILT, receipt N; one rows file per axis session).
 
 Repeats are collapsed exactly as the brief instructs: identical content digest + identical
 score (the NaN-outside / zeros-outside twins and the cross-site re-uploads of one file), never

@@ -1,0 +1,143 @@
+{
+  "generated_utc": "2026-10-23T16:27:04Z",
+  "git_head_sha": "0aa4ff7a5d22d9871c5cca0c370419eddd274ddf",
+  "purpose": "IR-DEC-17 reproduction audit: no submission file is built here.",
+  "manifest_files_verified": 23,
+  "parent_r0_sha256_verified": true,
+  "lineage_identities_measured": {
+    "solo_equals_d28_and_dcat_gt_1": true,
+    "r0_equals_d28_and_dcat_gt_2": true,
+    "ring_1_2_dots": 2545,
+    "ring_2_3_dots": 2171
+  },
+  "ranking_fidelity_gate": {
+    "tolerance_px": 50,
+    "arms": {
+      "drop10pct": {
+        "committed_file": "h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3.tif",
+        "mismatch_pixels": 24,
+        "bit_identical": false,
+        "within_tolerance": true
+      },
+      "drop20pct": {
+        "committed_file": "h33-h33-2-b2-mass-drop20pct-20261023-62bfc392.tif",
+        "mismatch_pixels": 22,
+        "bit_identical": false,
+        "within_tolerance": true
+      },
+      "add10pct": {
+        "committed_file": "h33-h33-2-b2-mass-add10pct-20261023-ad925bd2.tif",
+        "mismatch_pixels": 2,
+        "bit_identical": false,
+        "within_tolerance": true
+      }
+    },
+    "cache_key": "feadabb98607"
+  },
+  "canary_fingerprints": {
+    "q_posterior": {
+      "cleaned_ranking_auc_seed20": 0.6039,
+      "cleaned_ranking_auc_seed21": 0.5859,
+      "mass_session_recorded": [
+        0.6039,
+        0.586
+      ],
+      "merged_prune_sessions_recorded": [
+        0.6035,
+        0.5853
+      ]
+    },
+    "h33_union": {
+      "cleaned_ranking_auc_seed20": 0.5813,
+      "cleaned_ranking_auc_seed21": 0.5613,
+      "mass_session_recorded": [
+        0.5813,
+        0.5614
+      ],
+      "merged_prune_sessions_recorded": [
+        0.581,
+        0.5583
+      ]
+    },
+    "lidar_scarp_composite": {
+      "cleaned_ranking_auc_seed20": 0.5855,
+      "cleaned_ranking_auc_seed21": 0.5616,
+      "mass_session_recorded": [
+        0.5855,
+        0.5616
+      ],
+      "merged_prune_sessions_recorded": [
+        0.5855,
+        0.5616
+      ]
+    },
+    "H33-A": {
+      "cleaned_ranking_auc_seed20": 0.525,
+      "cleaned_ranking_auc_seed21": 0.5342,
+      "mass_session_recorded": null,
+      "merged_prune_sessions_recorded": null
+    }
+  },
+  "mask_agreements": {
+    "clean_gt3_vs_each_merged_prune_file": {
+      "h33-2-b2-pruned2p5-20261023-45faee56": {
+        "shared_dots": 36352,
+        "symmetric_diff_dots": 2604
+      },
+      "h33-2-b2-pruned3p0-20261023-26e80847": {
+        "shared_dots": 37381,
+        "symmetric_diff_dots": 546
+      },
+      "h33-2-b2-pruned4p0-20261023-ff079f66": {
+        "shared_dots": 35963,
+        "symmetric_diff_dots": 3382
+      },
+      "h33-h33-2-b2-prune-dge3refill-20261023-3745ebf6": {
+        "shared_dots": 36985,
+        "symmetric_diff_dots": 1338
+      },
+      "h33-h33-2-b2-prune-dgt1in-20261023-02ad0d5c": {
+        "shared_dots": 32969,
+        "symmetric_diff_dots": 9370
+      },
+      "h33-h33-2-b2-prune-dgt3refill-20261023-10ce9ad1": {
+        "shared_dots": 37447,
+        "symmetric_diff_dots": 414
+      }
+    },
+    "clean_gt1_vs_each_merged_prune_file": {
+      "h33-2-b2-pruned2p5-20261023-45faee56": {
+        "shared_dots": 34244,
+        "symmetric_diff_dots": 6820
+      },
+      "h33-2-b2-pruned3p0-20261023-26e80847": {
+        "shared_dots": 33051,
+        "symmetric_diff_dots": 9206
+      },
+      "h33-2-b2-pruned4p0-20261023-ff079f66": {
+        "shared_dots": 31476,
+        "symmetric_diff_dots": 12356
+      },
+      "h33-h33-2-b2-prune-dge3refill-20261023-3745ebf6": {
+        "shared_dots": 33598,
+        "symmetric_diff_dots": 8112
+      },
+      "h33-h33-2-b2-prune-dgt1in-20261023-02ad0d5c": {
+        "shared_dots": 37105,
+        "symmetric_diff_dots": 1098
+      },
+      "h33-h33-2-b2-prune-dgt3refill-20261023-10ce9ad1": {
+        "shared_dots": 33051,
+        "symmetric_diff_dots": 9206
+      }
+    },
+    "within_merged_gt3_class": {
+      "h33-h33-2-b2-prune-dgt3refill-20261023-10ce9ad1 vs h33-2-b2-pruned3p0-20261023-26e80847": {
+        "shared_dots": 37519,
+        "symmetric_diff_dots": 270
+      }
+    }
+  },
+  "disposition": "Main's six PRUNE files stand as the built-once PRUNE set. The sentinel cleaning changes <=273 refill dots in the >3 px class (measured pairwise above), far below the 0.01 live-DTI evidence band, so no merged file is rebuilt. The third parallel implementation's two duplicate files were withdrawn in PR #28 before merge (ids/sha256 in this module's docstring).",
+  "elapsed_seconds": 90.18
+}

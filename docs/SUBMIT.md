@@ -247,3 +247,11 @@ Second, independent PRUNE implementation (`scripts/build_prune_collar_sweep.py`,
 | spread | 0.10520 [0.09329, 0.11648] | 0.09931 / 0.06633 |
 
 Leakage canary: 27 features, max AUC 0.5944 ≤ 0.90. All fold-clean deltas include 0; withheld truth is catalogue-derived (clustered where mapping is dense), so this PROXY cannot judge the completeness-vs-clustering question — only live receipts can.
+
+---
+
+## Reproduction-audit note (2026-10-23, PR #28 / IR-DEC-17) — read before uploading any PRUNE/CONCENTRATION file
+
+- A third parallel session independently built two more fixed-count collar files, then **withdrew them as duplicates** before merge. They are **not** in `releases/` or `ledger/submissions.csv` and must not be submitted: `h33-h33-2-b2-prune-dcatgt3px-20261023-a7d86ed4` (nan sha256 `a7d86ed4266cf3c9e408fccb6ee81aee43bddf18c49a5e54a9436b5a9d36f5f0`) and `h33-h33-2-b2-prune-dcatgt1px-20261023-f5c7e4fb` (nan sha256 `f5c7e4fb3db30907dd361c89018e4cb937620f963fe27a3809a9d1ba205da56d`), preserved only in PR #28's pre-merge commit `874a63c`.
+- That session's fidelity gate found **IR-DEC-17** (root cause of `IR-DEC-13`): the float32 nodata sentinel in the unpacked training bands silently zeroed the H33-A ranking surface in every fresh-sandbox rebuild. All six PRUNE packets above and the CONCENTRATION ×3 were ranked with that degraded surface (canary fingerprint max AUC `0.5944`; the MASS-effective ranking gives `0.5949` and reproduces the committed MASS masks after the fix). `ensure_unpacked_bands` is fixed in this branch (sentinel→NaN at unpack).
+- Measured PRUNE impact (`evidence/prune_reproduction_audit_20261023.json`, `scripts/audit_prune_reproduction.py`): a clean-ranking `d_cat>3 px` arm shares 37,447/37,654 dots with slot-2 nominee `prune-dgt3refill` (207 refill dots differ); all three `>3 px`-class files share ≥37,381 dots — far below the `<0.010` live no-evidence band, so **no PRUNE file changes and the slot order in `SLOT_PLAN.md` stands**. CONCENTRATION clean-ranking deltas are **unmeasured** (IR-DEC-17 point 3): measure before spending a CONCENTRATION slot or state the caveat in its form note. Future ranking rebuilds (weeks 3–4 combinations) must use the fixed unpacker.

@@ -113,15 +113,41 @@ def verify_manifest(data_dir: Path, manifest_path: Path) -> dict:
 
 
 def ensure_unpacked_bands(data_dir: Path) -> Path:
+    """Unpack the 19 training bands to per-band .npy files, cleaning the nodata sentinel.
+
+    IR-DEC-17 (found 2026-10-23 in the third parallel PRUNE session): ``training_features.tif`` stores
+    nodata as the *finite* float32 sentinel -3.4028235e38 (~3,060 px per band inside the
+    footprint).  Writing the raw reads through (the previous behaviour) poisons every
+    downstream consumer that masks with ``np.isfinite`` only: the upstream
+    ``gems32.h33._fill`` keeps the sentinel as data, its Gaussian smears it, and
+    ``build_h33a``'s float32 ``np.mean``/``np.std`` overflows to inf/NaN, silently
+    zeroing the whole H33-A surface (holdout AUC exactly 0.5000) and turning
+    ``rank_surface`` of that constant surface into a row-major ramp inside ``h33_union``.
+    With raw bands the committed AXIS=MASS masks are NOT reproducible (720 of 3,765
+    boundary dots differ); with sentinel->NaN cleaning at unpack they reproduce to
+    within <=12 boundary dots per arm (float-path jitter) and the recorded canary AUCs
+    match (h33_union 0.5813, q_posterior 0.6039, seed 20).  The MASS-session run that
+    produced the committed masks therefore consumed cleaned bands; this function now
+    always produces them, and rewrites any pre-existing sentinel-bearing band files.
+    """
     bands_dir = data_dir / "bands"
     bands_dir.mkdir(parents=True, exist_ok=True)
-    if all((bands_dir / f"{name}.npy").exists() for name in BAND_NAMES):
+
+    def _clean(a: np.ndarray) -> np.ndarray:
+        return np.where(a <= -1e30, np.nan, a).astype(np.float32)
+
+    def _needs_write(out: Path) -> bool:
+        if not out.exists():
+            return True
+        return bool((np.load(out) <= -1e30).any())
+
+    if all(not _needs_write(bands_dir / f"{name}.npy") for name in BAND_NAMES):
         return bands_dir
     with rasterio.open(data_dir / "training_features.tif") as src:
         for idx, name in enumerate(BAND_NAMES, start=1):
             out = bands_dir / f"{name}.npy"
-            if not out.exists():
-                np.save(out, src.read(idx).astype(np.float32))
+            if _needs_write(out):
+                np.save(out, _clean(src.read(idx).astype(np.float32)))
     return bands_dir
 
 
