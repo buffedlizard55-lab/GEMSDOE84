@@ -1,13 +1,13 @@
-# PhD Forensic Analysis: Why `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros` (`GEMSDOE32`) Scored `0.2778` (`ORGANIZER-CONFIRMED`) — and How `Lane H84-THMS` Scores Higher
+# PhD Forensic Analysis: Why `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros` (`GEMSDOE32`) Scored `0.2778` (`OWNER-REPORTED (no submission-page receipt attached)`) — and What the Current Evidence Can (and Cannot) Establish
 
-## 1. Byte-Level Forensics of the `0.2778` `ORGANIZER-CONFIRMED` Anchor (`GEMSDOE32`)
+## 1. Byte-Level Forensics of the `0.2778` `OWNER-REPORTED (no submission-page receipt attached)` Anchor (`GEMSDOE32`)
 
-Direct byte-level inspection of `/home/user/GEMSDOE84/.cache/gems_data/scored/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif` (`GEMSDOE32`, submission ID `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros`) establishes the following exact physical and geometric invariants:
+The archived audit records direct byte-level inspection of the GEMSDOE32 TIFF and the following raster properties. The TIFF bytes are not in the current checkout, so these are inherited audit claims, not re-measured in this review. The score `0.2778` is OWNER-REPORTED here; no submission-page receipt is attached:
 
 | Property | Exact Audited Value | Verification Source |
 |---|---|---|
 | **Submission Filename** | `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif` | `GEMSDOE32/submissions/` |
-| **Live Leaderboard Score** | **`0.2778` (`ORGANIZER-CONFIRMED`)** | DrivenData portal (`2026-10-04`) |
+| **Live Leaderboard Score** | **`0.2778` (`OWNER-REPORTED (no submission-page receipt attached)`)** | DrivenData portal (`2026-10-04`) |
 | **File Size & SHA-256** | `219,065` bytes · `c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9` | `sha256sum` verified |
 | **Decoded Array SHA-256** | `e5eb6e7ec8aa320973e557eb58926db4aa5fc0cd9ba889249983da40339970fa` | Raw `float32` IEEE-754 bytes |
 | **Grid Geometry** | `3730 × 3292` (`12,279,160` cells), `EPSG:32611` (`100 m` UTM Zone 11N), `nodata=None` | Matches `sample_submission.tif` |
@@ -20,13 +20,13 @@ Direct byte-level inspection of `/home/user/GEMSDOE84/.cache/gems_data/scored/ge
 
 ---
 
-## 2. Exact Genealogy: The `0.2600 → 0.2708 → 0.2778` Collar-Pruning Law
+## 2. Reported score sequence and raster genealogy (causality unproven)
 
-Tracing the exact parent-child chain across `GEMSDOE19 → GEMSDOE25 → GEMSDOE31 → GEMSDOE32` reveals that `H33` (`37,654` dots) is an exact subset of `GEMSDOE25` (`D2.8`, `44,090` dots, `sha256=91eae1ca42ec...`), created by purely geometric across-strike collar pruning around `existing_faults.tif` ($C_0$):
+Tracing the exact parent-child chain across `GEMSDOE19 → GEMSDOE25 → GEMSDOE31 → GEMSDOE32` is reported to show that `H33` (`37,654` dots) is an exact subset of `GEMSDOE25` (`D2.8`, `44,090` dots, `sha256=91eae1ca42ec...`), created by purely geometric across-strike collar pruning around `existing_faults.tif` ($C_0$):
 
 $$\text{D2.8 } (44,090\text{ dots}, d_{\text{cat}} > 0\text{ px}) \xrightarrow{-3,891\text{ dots at } 0 < d_{\text{cat}} \le 1\text{ px}} \text{H27-4 } (40,199\text{ dots}, d_{\text{cat}} > 1\text{ px}) \xrightarrow{-2,545\text{ dots at } 1 < d_{\text{cat}} \le 2\text{ px}} \text{H33 } (37,654\text{ dots}, d_{\text{cat}} > 2\text{ px})$$
 
-| Generation | Repo / Artifact | Distance Collar | Emitted Dots | Dots Removed | Live Score (`ORGANIZER-CONFIRMED`) | Marginal Score Gain |
+| Generation | Repo / Artifact | Distance Collar | Emitted Dots | Dots Removed | Live Score (`OWNER-REPORTED (no submission-page receipt attached)`) | Marginal Score Gain |
 |---|---|---|---:|---:|---:|---:|
 | **Gen 1** | `GEMSDOE19` (`H19-5` continuous ridges) | $d_{\text{cat}} \ge 0\text{ px}$ | `351,613` (`>0`) | — | `0.1922` | Baseline |
 | **Gen 2** | `GEMSDOE24` (`D1.5` Poisson-disk $r=1.5\text{ px}$) | $d_{\text{cat}} > 0\text{ px}$ | `116,973` | `-234,640` | `0.2477` | `+0.0555` |
@@ -36,7 +36,7 @@ $$\text{D2.8 } (44,090\text{ dots}, d_{\text{cat}} > 0\text{ px}) \xrightarrow{-
 
 ---
 
-## 3. First-Principles Mathematical Proof of Why `H33` Scored `0.2778`
+## 3. Conditional DTI Algebra: Why Collar Pruning Could Improve a Score
 
 Under the official DOE GEMS **Distance-Weighted Tversky Index (DTI)** ($\alpha = 0.2$, $\beta = 0.8$, $R = 300\text{ m} = 3.0\text{ px}$ linear triangular kernel $k(d) = \max(1 - d / 3.0, 0)$):
 
@@ -60,16 +60,16 @@ $$\frac{\Delta \text{TP}_w(x)}{\Delta \text{FP}_w(x)} > \tau^*(s) = \frac{\alpha
 | Reference Benchmark | `0.3195` | `0.0683` | Requires extending beyond $1.2\text{ km}$ into unmapped step-over relays & blind systems |
 | Leaderboard Top (`etiennedufayet`) | `0.4413` | `0.0968` | High-precision off-catalogue fault recovery across all distance bands |
 
-### Why `H33`'s Three Design Choices Worked
+### Plausible mechanisms (not causal proof)
 1. **Voxel Binarization (`{0.0, 1.0}`) + Zero Outside Footprint (`-zeros.tif`)**: Eliminates the DrivenData portal `"Predicted values must be in range [0, 1]"` validator failure caused by NaN outside the footprint, while giving full unit weight ($p(x) = 1.0$) to each selected dot.
 2. **Poisson-Disk Decimation ($r = 2.8\text{ px} \approx \sqrt{8}\text{ px}$)**: Because $k(d)$ has radius $3.0\text{ px}$ and uses the $\max$ operator, two dots placed $1.0\text{ px}$ apart share $> 78\%$ of their $300\text{ m}$ kernel disk ($\Delta \text{TP}_w \approx 0$) while paying **double** the false-positive cost ($\Delta \text{FP}_w \approx 2$). Spacing dots by $\ge 2.8\text{ px}$ eliminates intra-cluster kernel cannibalization.
-3. **2-Pixel ($200\text{ m}$) Catalogue Exclusion Collar ($d_{\text{cat}} > 2.0\text{ px}$)**: The `60,988` pixels of `existing_faults.tif` are already known to the organizer; the test set $T$ consists of **unmapped/withheld** faults. Pixels at $0 < d_{\text{cat}} \le 2.0\text{ px}$ lie inside the $100\text{–}200\text{ m}$ across-strike digitization uncertainty collar of already-mapped faults (except right at fault tips, where a dot at $d_{\text{cat}} = 2.24\text{–}3.16\text{ px}$ already covers the tip via the $300\text{ m}$ kernel). Removing the `6,436` collar dots cut $\text{FP}_w$ by $\sim 6,150$ units (`-0.258 / 0.2 = -1,290` denominator units) at near-zero $\text{TP}_w$ loss, lifting the live score from `0.2600` to `0.2778` (`+0.0178`).
+3. **2-Pixel ($200\text{ m}$) Catalogue Exclusion Collar ($d_{\text{cat}} > 2.0\text{ px}$)**: The `60,988` pixels of `existing_faults.tif` are already known to the organizer; the test set $T$ consists of **unmapped/withheld** faults. Pixels at $0 < d_{\text{cat}} \le 2.0\text{ px}$ lie inside the $100\text{–}200\text{ m}$ across-strike digitization uncertainty collar of already-mapped faults (except right at fault tips, where a dot at $d_{\text{cat}} = 2.24\text{–}3.16\text{ px}$ already covers the tip via the $300\text{ m}$ kernel). Removing the `6,436` collar dots cut $\text{FP}_w$ by $\sim 6,150$ units (`-0.258 / 0.2 = -1,290` denominator units) at near-zero $\text{TP}_w$ loss, consistent with the owner-reported score sequence rising from `0.2600` to `0.2778`; the hidden-label contributions are not observed here (`+0.0178`).
 
 ---
 
-## 4. The Four Structural Bottlenecks Capping `H33` at `0.2778` — and How `Lane H84-THMS` Overcomes Them
+## 4. Hypothesized limits of the H33 pattern and what H84 tests
 
-| Bottleneck in `H33` (`0.2778`) | Forensic Measurement on `H33` | How `Lane H84-THMS` (`GEMSDOE84`) Solves It |
+| Bottleneck in `H33` (`0.2778`) | Forensic Measurement on `H33` | How `Lane H84-THMS` (`GEMSDOE84`) Tests It |
 |---|---|---|
 | **1. Hard $1,200\text{ m}$ Distance Truncation (`ns_logdist` Bias)** | `100.0%` of `H33`'s `37,654` dots lie at $2.24 \le d_{\text{cat}} \le 12.0\text{ px}$; **`0` dots** lie at $d_{\text{cat}} > 1.2\text{ km}$ where `53.2%` of withheld holdout fault pixels reside. | **Counterfactual Whole-Segment ($d > 3\text{ px}$) Training** + hollow-core directional beams ($400\text{ m–}4.0\text{ km}$) place **`14,225` dots** in $1.2\text{–}5.0\text{ km}$ relay/piedmont corridors and **`63` dots** in $> 5.0\text{ km}$ blind intrabasin conduits. |
 | **2. Zero Hydrothermal / Geothermometer / 2m-Probe / Sinter Physics** | `H33` used only `training_features.tif` + distance to mapped faults; it ignored `27,092` well/spring geothermometers, `3,800` 2m temperature probes, `709` paleo-sinter seals, and `21` volcanic vents. | **Sibson THM Silica-Seal Fault-Valve Breach Index (`H84-A`)** fuses quartz/chalcedony/Na-K-Ca enthalpy, `709` sinter/travertine seals, and `3,800` 2m probe heat-flux anomalies with geodetic transtension and MT clay-cap edges. |
@@ -83,3 +83,8 @@ $$\frac{\Delta \text{TP}_w(x)}{\Delta \text{FP}_w(x)} > \tau^*(s) = \frac{\alpha
 - `GEMSDOE83` (`Lane H83-GVCD`): **`0.2068`** (`95% CI [0.1927, 0.2198]`)
 - **`GEMSDOE84` (`Lane H84-THMS`, Strictly Fold-Clean Uncapped `A4_thms96_dink_c20`)**: **`0.1850`** (`95% CI [0.1703, 0.1991]`; Seed 30 = `0.1931`, Seed 20 = `0.1769`)
 - **`GEMSDOE84` (`Lane H84-THMS`, Full Production Specification `A5_thms96_dualhead_dink_c30`)**: **`0.2255`** (`95% CI [0.2101, 0.2404]`; Seed 30 = `0.2329`, Seed 20 = `0.2181`)
+
+
+## 8. Bottom line and evidence limits
+
+The repository evidence supports a **plausible metric-based explanation**: pruning near-catalogue dots can improve a distance-weighted precision/recall score when those dots add little hidden-truth coverage but retain false-positive cost. It does not prove that this caused the reported 0.2778 result, because the organizer test labels and submission-page receipt are absent. The listed sequence and H33 score are OWNER-REPORTED. H84-THMS HOLDOUT-DTI (0.2255; `gems57-pooled-hide-v2`; 22,663 withheld positives; 95% CI [0.2101, 0.2404]) cannot be compared as an organizer score and does **not** establish a higher competition result.

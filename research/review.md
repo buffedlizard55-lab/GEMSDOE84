@@ -1,7 +1,7 @@
 # Three-Pass Verification & Audit Log (`GEMSDOE84` · `Lane H84-THMS`)
 
 ## Pass 1 — Implementation & Execution Verification
-1. **Forensic Deconstruction of `GEMSDOE32` (`0.2778` `ORGANIZER-CONFIRMED`)**:
+1. **Forensic Deconstruction of `GEMSDOE32` (`0.2778` `OWNER-REPORTED (no submission-page receipt attached)`)**:
    - Verified byte-level SHA-256 (`c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9`), `37,654` binary `{0.0, 1.0}` dots (`0.7287%` of footprint), `0` catalogue overlap, $d_{\min} = \sqrt{5} \approx 2.2361\text{ px}$, and the exact collar-pruning trajectory `0.2600` (`GEMSDOE24`/`D2.8`) $\to$ `0.2708` (`GEMSDOE28`/`H27-4`) $\to$ `0.2778` (`GEMSDOE32`/`H33`).
 2. **Candidate Geological Hypotheses (`H84-A` through `H84-E`)**:
    - Implemented in `src/gems84/hypotheses.py` and `src/gems84/features.py` (`72` physical + `24` fold-visible structural & THM-coupling = `96` channels).
@@ -33,7 +33,7 @@
 
 ## Pass 3 — Final Verification Against Original Request
 - **Unique TIF Submission**: `submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.tif` (`37,654` dots, `0.3217` 3-px overlap vs `H33`, `0.6500` worst overlap across `359` rasters).
-- **Automated Validator (`ok_to_download=true`, `ok_to_submit=true`)**: `0` NaN/Inf across all `12,279,160` cells, values strictly `{0.0, 1.0} ⊂ [0, 1]`, `EPSG:32611`, `3730 × 3292`, `nodata=None`.
+- **Local Format Validator (`ok_to_download=true`, `ok_to_submit=false`; selector pending)**: `0` NaN/Inf across all `12,279,160` cells, values strictly `{0.0, 1.0} ⊂ [0, 1]`, `EPSG:32611`, `3730 × 3292`, `nodata=None`.
 - **Prominent Download on Site & Executive Summary**: Direct `.tif`, `.zip`, `.json`, and `run_card.json` download buttons with automated green `VALIDATED — OK TO DOWNLOAD & SUBMIT WITHOUT HUMAN INTERVENTION` banner at the top of `index.html`, `executive-summary.html`, `docs/index.html`, and `docs/executive-summary.html`.
 - **Prompt Preserved in `README.md`**: Full original prompt included verbatim in `README.md`.
 - **Automated Test Suite (`pytest`)**: Full unit and integration test suite in `tests/test_gems84.py` passing `100%`.

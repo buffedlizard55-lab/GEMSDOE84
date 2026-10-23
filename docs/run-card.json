@@ -3,7 +3,7 @@
   "repo": "buffedlizard55-lab/GEMSDOE84",
   "branch": "arena/010446b1-gemsdoe84",
   "date_utc": "2026-10-22",
-  "hypothesis": "Thermo-Hydro-Mechanical Silica-Seal Fault-Valve, Dual-Scale 1m/10m Fluvial-Scarp Discontinuity & Counterfactual Dual-Head 300m Dinkelbach Allocator \u2014 Over 39% of Great Basin geothermal systems are blind (Faulds et al., 2011, 2021): silica/travertine self-sealing and piedmont alluvial fans obscure surface scarps, while 24.60% of the study area lacks 1 m LiDAR. Combining upward 2m probe heat flux, paleo-sinter seals, geothermometers, up-dip potential-field projection, and 10m fluvial-chi breaklines recovers both blind geothermal conduits and unmapped relay/piedmont faults.",
+  "hypothesis": "Thermo-Hydro-Mechanical Silica-Seal Fault-Valve, Dual-Scale 1m/10m Fluvial-Scarp Discontinuity & Counterfactual Dual-Head 300m Dinkelbach Allocator — Over 39% of Great Basin geothermal systems are blind (Faulds et al., 2011, 2021): silica/travertine self-sealing and piedmont alluvial fans obscure surface scarps, while 24.60% of the study area lacks 1 m LiDAR. Combining upward 2m probe heat flux, paleo-sinter seals, geothermometers, up-dip potential-field projection, and 10m fluvial-chi breaklines recovers both blind geothermal conduits and unmapped relay/piedmont faults.",
   "mechanism": "(1) Sibson fault-valve silica-seal breach index coupling quartz/chalcedony/Na-K-Ca geothermometer enthalpy, 709 paleo-sinter/travertine fault seals, and 3,800 shallow 2m probe upward conductive heat-flux anomalies with geodetic transtension and MT clay-cap lateral boundaries; (2) Seamless 1m-LiDAR + 10m-3DEP profile-curvature and fluvial chi-knickpoint scarp bridge across the 24.60% NE Nevada LiDAR gap; (3) 200 m up-dip (-grad B15) advected gravity/basement/magnetic-demagnetization step concordance; (4) Counterfactual whole-segment d > 3 px training of a 3-family (LGBM + ExtraTrees-LGBM + HistGBDT) ensemble with Dual-Head Ridge-Coherent 300 m Dinkelbach allocation.",
   "named_nonfault_mimic": "Pleistocene Lake Lahontan/Bonneville pluvial shoreline benches, distal lateral thermal outflow plumes in permeable alluvial fans, and non-tectonic steep canyon walls.",
   "preregistered_hypotheses": [
@@ -115,9 +115,9 @@
   "tif_size_bytes": 144420,
   "zip_size_bytes": 111224,
   "ok_to_download": true,
-  "ok_to_submit": true,
+  "ok_to_submit": false,
   "verdict": "promote",
-  "verdict_banner": "PROMOTE \u2014 OK TO DOWNLOAD AND SUBMIT",
+  "verdict_banner": "PROMOTE TO SELECTOR REVIEW ONLY — NOT AUTHORIZED TO SUBMIT",
   "evidence_class": "HOLDOUT-DTI",
   "evaluator_version": "gems57-pooled-hide-v2",
   "organizer_confirmed_score": null,
@@ -476,21 +476,6 @@
     "vs_H83_GVCD_seed30_0213755": 0.019109,
     "vs_H83_GVCD_seed20_0199862": 0.018275
   },
-  "organizer_confirmed_reference_context": {
-    "evidence_class": "ORGANIZER-CONFIRMED",
-    "GEMSDOE32_H33_2_B2_live_dti": 0.2778,
-    "GEMSDOE36_PINN_live_dti": 0.275,
-    "GEMSDOE28_H36_1_live_dti": 0.271,
-    "GEMSDOE31_H27_4_live_dti": 0.2708,
-    "GEMSDOE33_H33D_live_dti": 0.2632,
-    "GEMSDOE25_D2_8_live_dti": 0.26,
-    "GEMSDOE70_P5_live_dti": 0.2478,
-    "GEMSDOE24_D1_5_live_dti": 0.2477,
-    "GEMSDOE19_H19_5_live_dti": 0.1922,
-    "GEMSDOE73_MCSC_live_dti": 0.1917,
-    "competition_reference_benchmark": 0.3195,
-    "competition_leaderboard_top": 0.4413
-  },
   "leakage_canary": {
     "passed": true,
     "gate_limit": 0.9,
@@ -672,5 +657,24 @@
     "overlap_cap_skips": 583154,
     "max_tracked_halo_overlap": 0.649997
   },
-  "elapsed_s": 477.4
+  "elapsed_s": 477.4,
+  "submission_authorized": false,
+  "selector_status": "pending; no weekly slot approval recorded",
+  "organizer_acceptance": "not observed; no submission-page receipt",
+  "verdict_scope": "research candidate may be considered by separate selector; no slot is approved",
+  "user_reported_reference_context": {
+    "evidence_class": "OWNER-REPORTED (user-supplied prompt / site registry; no organizer receipts in this checkout)",
+    "GEMSDOE32_H33_2_B2_live_dti": 0.2778,
+    "GEMSDOE36_PINN_live_dti": 0.275,
+    "GEMSDOE28_H36_1_live_dti": 0.271,
+    "GEMSDOE31_H27_4_live_dti": 0.2708,
+    "GEMSDOE33_H33D_live_dti": 0.2632,
+    "GEMSDOE25_D2_8_live_dti": 0.26,
+    "GEMSDOE70_P5_live_dti": 0.2478,
+    "GEMSDOE24_D1_5_live_dti": 0.2477,
+    "GEMSDOE19_H19_5_live_dti": 0.1922,
+    "GEMSDOE73_MCSC_live_dti": 0.1917,
+    "competition_reference_benchmark": 0.3195,
+    "competition_leaderboard_top": 0.4413
+  }
 }

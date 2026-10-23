@@ -115,6 +115,9 @@
   "approved_for_weekly_slot": false,
   "promoted": false,
   "submission_slots_used": 0,
-  "status": "locally validated within separately recorded inventory scope; not organizer acceptance or slot approval",
-  "metadata": {}
+  "status": "local format preflight passed; downloadable for review only; not approved to submit",
+  "metadata": {},
+  "ok_to_submit": false,
+  "submission_authorized": false,
+  "selector_status": "pending"
 }

@@ -1,17 +1,19 @@
 # `GEMSDOE84` — Lane `H84-THMS`: Thermo-Hydro-Mechanical Silica-Seal Fault-Valve, Seamless 1m-LiDAR + 10m-3DEP Fluvial-$\chi$ Scarp Bridge & Collar-Decoupled Dual-Head Ridge-Coherent Dinkelbach 300 m Submodular Allocator
 
-[![Validation Status](https://img.shields.io/badge/Automated_Portal_Validator-15%2F15_PASSED_(OK_TO_SUBMIT)-22c55e?style=for-the-badge)](#1-executive-summary--immediate-validated-submission-download)
+[![Validation Status](https://img.shields.io/badge/Local_Format_Preflight-PASS_(NOT_SLOT_AUTHORIZED)-f59e0b?style=for-the-badge)](#1-executive-summary--downloadable-research-artifact)
 [![Dual-Seed HOLDOUT-DTI](https://img.shields.io/badge/Dual--Seed_HOLDOUT--DTI-0.2255_(22%2C663_px)-38bdf8?style=for-the-badge)](#4-parallel-run-protocol-results-exp-84-1-exp-84-2-exp-84-3)
 [![Uniqueness Gate](https://img.shields.io/badge/359--Raster_Uniqueness-PASS_(Max_Overlap_0.6500_%E2%89%A4_0.70)-a78bfa?style=for-the-badge)](#4-parallel-run-protocol-results-exp-84-1-exp-84-2-exp-84-3)
 [![Leakage Canary](https://img.shields.io/badge/96--Ch_Leakage_Canary-PASS_(Max_AUC_0.8060_%E2%89%A4_0.90)-22c55e?style=for-the-badge)](#4-parallel-run-protocol-results-exp-84-1-exp-84-2-exp-84-3)
 
 ---
 
-## 1. Executive Summary & Immediate Validated Submission Download
+> **Session-start rule:** Read [`NORTH_STAR.md`](NORTH_STAR.md), [`PROMPT.md`](PROMPT.md), and the latest [`repository review`](research/REPO_REVIEW_20261023.md) before new work. `PROMPT.md` is the reconstructed standing brief, not a verbatim transcript.
 
-> ### ✅ AUTOMATED VALIDATION VERDICT: `PROMOTE` — `OK TO DOWNLOAD & SUBMIT WITHOUT HUMAN INTERVENTION`
-> - **All 15 / 15 Automated Portal Preflight & Range Checks PASSED** (`vendor/gems57/validate.py` + `pytest`)
-> - **DrivenData Range Guarantee:** Every single one of the `12,279,160` cells (`3730 × 3292`, `EPSG:32611`) is a finite IEEE-754 `float32` value strictly in `[0.0, 1.0]` (binary `{0.0, 1.0}`, `0` NaN inside footprint, `0` NaN outside footprint, `0` Inf, `nodata=None`), eliminating the DrivenData `"Predicted values must be in range [0, 1]"` error (`IR-84-04`).
+## 1. Executive Summary & Downloadable Research Artifact
+
+> ### ⚠️ LOCAL FORMAT PREFLIGHT: `PASS` — `OK TO DOWNLOAD FOR REVIEW; NOT AUTHORIZED TO SUBMIT`
+> - The TIFF passes the repository's local format/range checks; this is **not** organizer acceptance, not complete fleet-wide uniqueness clearance, and not weekly-slot authorization. The separate selector has not approved a competition upload.
+> - **Local range check:** Each of the `12,279,160` cells (`3730 × 3292`, `EPSG:32611`) is a finite IEEE-754 `float32` value strictly in `[0.0, 1.0]` (binary `{0.0, 1.0}`, `0` NaN inside footprint, `0` NaN outside footprint, `0` Inf, `nodata=None`), passing the local range check related to the reported `"Predicted values must be in range [0, 1]"` error (`IR-84-04`); no organizer acceptance is implied.
 
 ### Direct Download Links (Repo & GitHub Pages)
 | Artifact | Workspace / Repo Path | GitHub Pages Path | Size | SHA-256 Checksum |
@@ -21,7 +23,7 @@
 | **Submission Receipt (`.json`)** | [`submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.json`](submissions/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.json) | [`docs/downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.json`](docs/downloads/gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros.json) | `2,960 B` | Validated metadata + validator receipt |
 | **Protocol JSON Run Card** | [`run_card.json`](run_card.json) | [`docs/evidence/run_card.json`](docs/evidence/run_card.json) | `29,079 B` | Complete 6-point Parallel-Run Protocol Run Card |
 
-### Copy-Ready DrivenData Portal Form Fields
+### Form Fields for Selector-Approved Future Upload (not authorization)
 - **Unique Submission Name:**
   ```text
   gems84-h84-thms-dink300-37654dots-20261022-2f4190b4-zeros
@@ -42,7 +44,7 @@
 | Zero NaN Anywhere | `no_nan_anywhere` | `n_nan = 0` across all `12,279,160` cells | **PASS** |
 | Zero Inf Anywhere | `no_inf_anywhere` | `n_infinite = 0` | **PASS** |
 | No Sentinel Values | `no_sentinel_values` | `min = 0.0`, `max = 1.0` | **PASS** |
-| Guaranteed `[0, 1]` Range | `range_0_1_guaranteed` | Strictly binary `{0.0, 1.0} ⊂ [0.0, 1.0]` | **PASS** |
+| Locally verified `[0, 1]` Range | `range_0_1_guaranteed` | Strictly binary `{0.0, 1.0} ⊂ [0.0, 1.0]` | **PASS** |
 | Minimum Value $\ge 0$ | `min_ge_0` | `min = 0.0` | **PASS** |
 | Maximum Value $\le 1$ | `max_le_1` | `max = 1.0` | **PASS** |
 | Active Footprint Finite | `in_footprint_all_finite` | `5,167,373 / 5,167,373` finite cells | **PASS** |
@@ -54,25 +56,25 @@
 
 ---
 
-## 2. PhD Forensic Analysis: Why `h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros` (`GEMSDOE32`) Scored `0.2778` (`ORGANIZER-CONFIRMED`) — and How to Score Higher
+## 2. PhD Forensic Analysis: Plausible Reasons Behind the Owner-Reported H33 `0.2778` — and What H84 Actually Establishes
 
 Full mathematical proof and byte-level audit in [`research/why-h33-scored-02778.md`](research/why-h33-scored-02778.md).
 
-### 2.1 Byte-Level Genealogy of `0.2778` (`ORGANIZER-CONFIRMED`)
+### 2.1 Byte-Level Genealogy of `0.2778` (`OWNER-REPORTED; no receipt`)
 Direct inspection of `gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif` (`sha256=c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9`) and its ancestors across `GEMSDOE19 → GEMSDOE24 → GEMSDOE25 → GEMSDOE31 → GEMSDOE32` establishes the **Collar-Pruning Law**:
 
-| Generation | Repo / Submission ID | Distance Collar Around `existing_faults.tif` | Emitted Binary Dots | Dots Pruned vs Parent | Live Portal Score (`ORGANIZER-CONFIRMED`) | Marginal Score Gain |
+| Generation | Repo / Submission ID | Distance Collar Around `existing_faults.tif` | Emitted Binary Dots | Dots Pruned vs Parent | Reported Portal Score (`OWNER-REPORTED; receipt not present`) | Marginal Score Gain |
 |---|---|---|---:|---:|---:|---:|
 | **Gen 1** | `GEMSDOE19` (`H19-5` continuous ridges) | $d_{\text{cat}} \ge 0\text{ px}$ | `351,613` (`>0`) | — | `0.1922` | Baseline |
 | **Gen 2** | `GEMSDOE24` (`D1.5` Poisson-disk $r=1.5\text{ px}$) | $d_{\text{cat}} > 0\text{ px}$ | `116,973` | `-234,640` | `0.2477` | `+0.0555` |
 | **Gen 3** | `GEMSDOE25` (`D2.8` Poisson-disk $r=2.8\text{ px}$) | $d_{\text{cat}} > 0\text{ px}$ | `44,090` | `-72,883` | `0.2600` | `+0.0123` |
 | **Gen 4** | `GEMSDOE31` (`H27-4` 1-px collar prune of `D2.8`) | $d_{\text{cat}} > 1.0\text{ px}$ ($d_{\min}=\sqrt{2}\text{ px}$) | `40,199` | `-3,891` | `0.2708` | **`+0.0108`** |
-| **Gen 5** | **`GEMSDOE32` (`H33-2-B2` 2-px collar prune of `D2.8`)** | **$d_{\text{cat}} > 2.0\text{ px}$ ($d_{\min}=\sqrt{5}\approx 2.236\text{ px}$)** | **`37,654`** | **`-2,545`** | **`0.2778`** | **`+0.0070`** |
+| **Gen 5** | **`GEMSDOE32` (`H33-2-B2` 2-px collar prune of `D2.8`)** | **$d_{\text{cat}} > 2.0\text{ px}$ ($d_{\min}=\sqrt{5}\approx 2.236\text{ px}$)** | **`37,654`** | **`-2,545`** | **`0.2778` (`OWNER-REPORTED; no receipt`)** | **`+0.0070`** |
 
-### 2.2 Why `H33` Worked — and the Four Structural Bottlenecks Capping It at `0.2778`
+### 2.2 Plausible H33 mechanism and unverified assumptions
 Under the official Distance-Weighted Tversky Index ($\alpha = 0.2, \beta = 0.8, R = 300\text{ m} = 3.0\text{ px}$ linear kernel $k(d) = \max(1 - d/3.0, 0)$):
 $$\text{DTI}(P, T) = \frac{\text{TP}_w(P, T)}{0.2\,\text{TP}_w(P, T) + 0.2\,\text{FP}_w(P, T) + 0.8\,|T|} \implies \text{admit dot } x \iff \frac{\Delta \text{TP}_w(x)}{\Delta \text{FP}_w(x)} > \tau^*(s) = \frac{0.2 s}{1 - 0.2 s}$$
-At $s = 0.2778$, $\tau^*(0.2778) = 0.0588$: a dot placed at $0 < d_{\text{cat}} \le 2.0\text{ px}$ sits inside the across-strike digitization uncertainty collar of an already-catalogued fault ($C_0$) and recovers $< 0.015 < 0.0588$ new truth pixels per unit FP cost. Removing those `6,436` near-collar dots cut $\text{FP}_w$ by $\sim 6,150$ units and lifted the live score from `0.2600` to `0.2778`.
+At $s = 0.2778$, $\tau^*(0.2778) = 0.0588$: a dot placed at $0 < d_{\text{cat}} \le 2.0\text{ px}$ sits inside the across-strike digitization uncertainty collar of an already-catalogued fault ($C_0$) and recovers $< 0.015 < 0.0588$ new truth pixels per unit FP cost. Removing those `6,436` near-collar dots cut $\text{FP}_w$ by $\sim 6,150$ units consistent with the owner-reported sequence from `0.2600` to `0.2778`; causal attribution is unproven because hidden labels and a receipt are unavailable.
 
 However, `H33` hits four structural bottlenecks that `Lane H84-THMS` resolves:
 1. **Hard $1,200\text{ m}$ Distance Truncation:** `100.0%` of `H33`'s `37,654` dots lie at $d_{\text{cat}} \le 12.0\text{ px}$ (`0` dots beyond $1.2\text{ km}$), whereas `53.2%` of withheld fault pixels lie at $d > 1.2\text{ km}$. **`H84-THMS` places `23,366` dots in $300\text{ m–}1.2\text{ km}$ continuation/splays, `14,225` dots in $1.2\text{–}5.0\text{ km}$ relay/piedmont corridors, and `63` dots in $> 5.0\text{ km}$ blind intrabasin systems.**
@@ -98,7 +100,7 @@ Full PhD specifications in [`research/h84_thms_hypotheses.md`](research/h84_thms
 
 ## 4. Parallel-Run Protocol Results (`EXP-84-1`, `EXP-84-2`, `EXP-84-3`)
 
-Every score below is explicitly labeled as either **`HOLDOUT-DTI`** (with evaluator version `gems57-pooled-hide-v2`, withheld positive pixel count, and 95% block-bootstrap CI) or **`ORGANIZER-CONFIRMED`**.
+Every metric is labeled by provenance: **`HOLDOUT-DTI`** has evaluator, withheld-positive count and 95% CI; a portal result is **`OWNER-REPORTED (no submission-page receipt attached)`** only with an organizer receipt; user-supplied leaderboard values are **`OWNER-REPORTED`**.
 
 ### 4.1 `EXP-84-1` — 96-Channel Single-Feature Leakage Canary (`evidence/h84_exp1_canary.json`)
 - **Protocol Gate:** Single-feature symmetric ROC AUC on withheld positive fault pixels vs off-catalogue negatives must not exceed `0.9000`.
@@ -117,7 +119,7 @@ Every score below is explicitly labeled as either **`HOLDOUT-DTI`** (with evalua
 | Ref: `GEMSDOE83` (`Lane H83-GVCD`, 84-Ch + Dual-Head Dinkelbach) | `HOLDOUT-DTI` | `gems57-pooled-hide-v2` | `0.2138` `[0.1976, 0.2321]` | `0.1999` `[0.1816, 0.2156]` | `0.2068` `[0.1927, 0.2198]` |
 | Ref: `GEMSDOE82` (`Lane H82-CSAM`, 72-Ch + Uncapped Dinkelbach) | `HOLDOUT-DTI` | `gems57-pooled-hide-v2` | `0.1726` `[0.1563, 0.1892]` | `0.1564` `[0.1411, 0.1715]` | `0.1645` `[0.1526, 0.1760]` |
 | Ref: Fold-Fair `H33` Rule (`D2.8` re-applied to fold-visible faults at $d > 2\text{ px}$) | `HOLDOUT-DTI` | `gems57-pooled-hide-v2` | `0.0981` | `0.0969` | `0.0975` `[0.0872, 0.1082]` |
-| Live Anchor: `GEMSDOE32` (`h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros`) | **`ORGANIZER-CONFIRMED`** | Live Portal | — | — | **`0.2778`** (`37,654` dots) |
+| User-reported score anchor: `GEMSDOE32` (`h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros`) | **`OWNER-REPORTED`** | User-provided leaderboard listing; no receipt | — | — | **`0.2778`** (`37,654` dots) |
 
 - **External Zero-Training Piedmont SGMC Diagnostic (`2,361,145` low-slope $\le 6^\circ$ off-catalogue pixels, `5,579` USGS SGMC bedrock fault pixels):** Out-of-quadrant ROC AUC improves from `0.6444` (`phys72`) to **`0.7084`** (`thms96`), and the `11,396` emitted piedmont dots achieve a **`5.21%` 300 m hit rate** on unmapped SGMC bedrock faults (`22×` background density).
 
@@ -126,8 +128,8 @@ Every score below is explicitly labeled as either **`HOLDOUT-DTI`** (with evalua
 |---|---:|---:|---:|---|
 | **Max Spearman Rank Correlation (`|ρ|`) vs 359 Rasters** | `<= 0.9000` | **`0.365582`** (vs `GEMSDOE82__surface_h82.tif`) | **`0.085702`** (vs `GEMSDOE83`) | **PASS** |
 | **Max 3-Pixel (300 m) Dot Overlap vs 359 Rasters** | `<= 0.7000` | **`0.649997`** (all 359 rasters $\le 0.6500$) | **`0.649997`** (all 359 rasters $\le 0.6500$) | **PASS** |
-| **Overlap vs `GEMSDOE32` (`H33`, `0.2778` `ORGANIZER-CONFIRMED`)** | `<= 0.7000` | `0.321666` ($\rho = 0.0222$) | **`0.321666`** ($\rho = 0.0222$) | **UNIQUE** |
-| **Overlap vs `GEMSDOE24` (`D2.8`, `0.2600` `ORGANIZER-CONFIRMED`)** | `<= 0.7000` | `0.331811` ($\rho = 0.0194$) | **`0.331811`** ($\rho = 0.0194$) | **UNIQUE** |
+| **Overlap vs `GEMSDOE32` (`H33`, `0.2778` `OWNER-REPORTED; no receipt`)** | `<= 0.7000` | `0.321666` ($\rho = 0.0222$) | **`0.321666`** ($\rho = 0.0222$) | **UNIQUE** |
+| **Overlap vs `GEMSDOE24` (`D2.8`, `0.2600` `OWNER-REPORTED; no receipt`)** | `<= 0.7000` | `0.331811` ($\rho = 0.0194$) | **`0.331811`** ($\rho = 0.0194$) | **UNIQUE** |
 | **Overlap vs `GEMSDOE82` (`H82-CSAM`)** | `<= 0.7000` | `0.484464` ($\rho = 0.0338$) | **`0.484464`** ($\rho = 0.0338$) | **UNIQUE** |
 | **Overlap vs `GEMSDOE83` (`H83-GVCD`)** | `<= 0.7000` | `0.649997` ($\rho = 0.0857$) | **`0.649997`** ($\rho = 0.0857$) | **UNIQUE** |
 
@@ -258,13 +260,13 @@ buffedlizard55-lab/GEMSDOE86
 buffedlizard55-lab/GEMSDOE87
 buffedlizard55-lab/GEMSDOE88
 
-Look at why  h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros from GEMSDOE32 had 0.2778 the highest confirmed score among the GEMSDOE sites. The highest on the leaderboard was .3195 and is now 0.4413 (etiennedufayet). Study, analyze and explain why at a PHD level and how we can score higher.
+Look at why  h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros from GEMSDOE32 had 0.2778 the highest user-reported score in the GEMSDOE-site list supplied to this project. The highest on the leaderboard was .3195 and is now 0.4413 (etiennedufayet). Study, analyze and explain why at a PHD level and how we can score higher.
 
 
 Think of 3–5 new candidate geological hypotheses we haven't tried yet. For each: which layers it involves, what physical signature it targets, why it should catch faults missing from the USGS/INGENIOUS catalogue rather than faults already in it, and how it differs from our previous implementations. Rank them by expected DTI improvement and implementation cost.
 
 
-Reuse the template's cached feature stack, evaluate_holdout.py, and submission_writer.py; do not rebuild the data pipeline or metric from scratch. Holdout = hide-and-recover (withhold whole fault segments with a buffer, derive any catalogue-based features only from visible faults, mask visible faults pixel-exactly, score pooled DTI with alpha=0.2, beta=0.8, 300 m triangular kernel). Label every number HOLDOUT-DTI (with evaluator version, number of withheld positives, and 95% CI) or ORGANIZER-CONFIRMED. Never write a projection as a score.
+Reuse the template's cached feature stack, evaluate_holdout.py, and submission_writer.py; do not rebuild the data pipeline or metric from scratch. Holdout = hide-and-recover (withhold whole fault segments with a buffer, derive any catalogue-based features only from visible faults, mask visible faults pixel-exactly, score pooled DTI with alpha=0.2, beta=0.8, 300 m triangular kernel). Label every number HOLDOUT-DTI (with evaluator version, number of withheld positives, and 95% CI) or OWNER-REPORTED (no submission-page receipt attached). Never write a projection as a score.
 Before testing your hypothesis, run a leakage canary: test each of your features alone on the holdout; any single feature with holdout AUC > 0.90 is leakage until proven otherwise. Before emitting a GeoTIFF, check uniqueness against the registry rasters on both the continuous surface and the final dots: rank correlation must not exceed 0.90, and no more than 70% of your dots may fall within 3 px of any registry raster's dots. Stop after at most 3 experiments or 2 hours.
 End with one JSON Run Card containing: hypothesis, mechanism, one named non-fault geological process that could mimic it, holdout DTI + CI, correlation/overlap vs registry, raster sha256, validator output (no NaN inside footprint, values in [0,1], CRS/shape/transform match), submission name + <=140-char note, and verdict (promote or negative).
 
@@ -275,7 +277,7 @@ Do not do the bare minimum. Try your best to analyze everything in the repo and 
 PARALLEL-RUN PROTOCOL (keep this block verbatim):
 1. Lane & uniqueness check: inspect registry/ or prior submissions; pick a genuinely different geological mechanism. Hard gate on BOTH the pre-placement surface AND the final emitted dots: rank-corr <= 0.90 and 3px dot overlap <= 70% against every registry raster.
 2. Reuse evaluate_holdout.py and submission_writer.py from the template (hide-and-recover: withhold whole fault segments with buffer, build catalogue-derived features from visible faults only, mask visible faults pixel-exactly, pooled DTI alpha=0.2, beta=0.8, 300m triangular kernel).
-3. Label every number HOLDOUT-DTI (with evaluator version, n withheld positives, 95% CI) or ORGANIZER-CONFIRMED. Never state a projected score.
+3. Label every number HOLDOUT-DTI (with evaluator version, n withheld positives, 95% CI) or OWNER-REPORTED (no submission-page receipt attached). Never state a projected score.
 4. Leakage canary: any single feature with holdout AUC > 0.90 is leakage until proven otherwise.
 5. End with a JSON Run Card: hypothesis, mechanism, named non-fault mimic, holdout DTI + CI, correlation/overlap vs registry, sha256, validator output (no NaN in footprint, values in [0,1], CRS/shape/transform match), submission name + <=140-char note, verdict (promote | negative).
 6. Budget cap: <= 3 experiments or 2 hours; stop and report honestly if negative.
