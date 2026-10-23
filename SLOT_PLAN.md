@@ -1,33 +1,31 @@
 # SLOT PLAN — single entity, 3 scored slots/week, deadline 2026-12-03
 
-- **Today** `2026-10-23` (UTC) · **Deadline** `2026-12-03` = `41` days = `5.86` weeks · max `18` slots at `3/week` for ONE entity (owner must confirm the live quota; `TopPublic` is still `UNVERIFIED`).
-- **Parent R0** `h33-h33-2-b2` (`37,654` unit-mass dots, `d_cat > 2.0 px`, `0.2778` **CLAIM** — no organizer receipt in `ledger/`). Re-verified byte-identical this session (`c55bafc4…`).
-- **Built, gated, unscored** (`ledger/submissions.csv`): MASS `-10pct` / `+10pct` / `-20pct` · SNAP `1p4px-g0p02` / `2p0px-g0p02` / `2p0px-g0p01` · **PRUNE `d2p5` / `d3p0` / `d4p0`** (this session, `scripts/build_prune_variants.py`, `evidence/prune_variants_receipt.json`).
-- Treat any live change `< 0.010` as **no evidence** (public chunks only; the private score differs).
+- **Today** `2026-10-23` · **Deadline** `2026-12-03` (`41` days ≈ `5.9` weeks; max `18` slots at `3/week` for ONE entity — human must confirm the remaining quota).
+- **Parent R0**: `h33-h33-2-b2`, `37,654` dots, `d_cat > 2.0 px`, `0.2778` **CLAIM** (`0` receipts in repo). **TOP_PUBLIC**: `UNVERIFIED` (stale snapshot `0.3195`, `2026-10-03`).
+- **Built, gated, unscored** (`ledger/submissions.csv`, `releases/`): MASS ×3, SNAP ×3, **PRUNE ×6** from two parallel sessions (`evidence/r0_prune_variants_20261023.json`, `evidence/prune_variants_receipt.json`).
+- Reading rule: a single live change `< 0.010` is **no evidence**; an ordered pattern across one axis's receipts is.
+- Nothing has been submitted yet (`IR-DEC-07`); if any file below already has a receipt, tell the next session and re-plan around the winner.
 
-## 1. Next three slots
+## 1. Next 3 slots
 
-| # | File (`releases/<id>.tif`; upload the matching `-zeros.tif` only if the portal rejects NaN) | Change vs R0 | Predicted live change | What the receipt decides |
-|---|---|---|---|---|
-| **1** | `h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3` | drop lowest-ranked `10.00%` (`37,654 → 33,889`) | `+0.0020..+0.0045` (MODEL) | The whole lineage wins by pruning. If `> 0.2778`: the tail is FP-dominated → make `33,889` the new parent and burn slot 2 on the steepest prune (`-20pct`). If `< 0.2778`: R0's tail carries real credit → stop pruning, spend the week on SNAP. |
-| **2** | `h33-2-b2-pruned3p0-20261023-26e80847` | collar `2.0 → 3.0 px`, count held at `37,654` (`2,171` out / `2,171` in, `11.53%` changed) | `+0.0000..+0.0047`, central `+0.0024` (MODEL) | **The masking test.** Known catalogue pixels are masked out of the labels, so dots inside the 3 px kernel alive only on *new-fault* truth. If `≥ 0.2790`: masking dominates → move to `d4p0` next week. If `≤ 0.2768`: new-fault truth does lie within 300 m of the known traces → collar is productive, revert to `<= 2 px` and never widen it. |
-| **3** | `h33-2-b2-snap2p0px-g0p01-20261023-7bdaa58b` | `26.47%` of dots moved ≤2 px onto the TMI/gravity-gradient edge, mean shift `1.90 px` | `+0.018..+0.044` (MODEL) | Largest built effect and it does not change mass or collar. If it lands, position error (not dot selection) is the real headroom → SNAP becomes the weekly lever and slot 3 next week is `snap` × winning collar. If it does not, the 400 m line spacing is already unresolved at the 3 px kernel and no geometry work will pay. |
+| # | Variant | Change vs R0 | Pred. (MODEL) | What the receipt changes |
+|---:|---|---|---|---|
+| **1** | `h33-h33-2-b2-mass-drop10pct-20261023-2cde51f3` | `33,889` dots (−10% of the lowest-ranked tail) | `+0.0020..+0.0045` | The lineage's only repeated win is pruning. `> 0.2778`: the tail is FP-dominated → new parent at `33,889`, spend slot 3 on `-20pct`. `< 0.2778`: the tail carries real credit → stop pruning and drop `MASS` to a background axis. |
+| **2** | `h33-h33-2-b2-prune-dgt3refill-20261023-10ce9ad1` | collar `2.0 → >3.0 px`: `2,171` collar dots out, ranked refill strictly outside the kernel (`11.53%`) | `−0.001..+0.003` | **The masking test.** Known catalogue pixels are masked out of the labels, so dots inside the 3 px kernel can only be paid by *new-fault* truth. `>= 0.2790`: masking dominates → widen to `pruned4p0` next week. `<= 0.2768`: new-fault truth does live within 300 m of known traces → collar is productive; consider `prune-dgt1in` (inward) and never widen again. |
+| **3** | `h33-2-b2-snap2p0px-g0p01-20261023-7bdaa58b` | `26.47%` of dots moved `<= 2 px` onto the stronger TMI/gravity HG edge; mean shift `1.90 px` | `+0.018..+0.044` | Largest built effect; changes neither mass nor collar. If it lands, position error (GeoDAWN 400 m line spacing) is the real headroom and `SNAP` becomes the weekly lever. If it does not, kernel-scale geometry is exhausted and the remaining budget belongs to mass/ranking, not snapping. |
 
-Fallbacks already built: `mass-add10pct` (tests under-allocation), `snap2p0px-g0p02` (weaker variant of slot 3), `pruned2p5`/`pruned4p0` (either side of slot 2).
+Swap-ins (all built): `pruned3p0-…-26e80847` (same removed dots as slot 2, refill floor `>= 3.0 px` — near-duplicate, `IR-DEC-12`), `prune-dge3refill-…-3745ebf6` (`>= 3 px` collar, `8.56%`), `pruned4p0-…-ff079f66` (beyond the kernel, `20.32%`), `snap2p0px-g0p02-…-b2019f55` (weaker snap), `mass-add10pct` / `mass-drop20pct`.
 
 ## 2. Weeks to the deadline
 
-- **Wk 1** slots 1–3 above (one point each on MASS, PRUNE, SNAP — three mechanisms, not one curve).
-- **Wk 2** (slots 4–6): escalate the winner and fill the mass curve — MASS `-20pct` and `+10pct` if slot 1 was ambiguous; otherwise `pruned4p0` or `snap1p4px-g0p02`.
-- **Wk 3–4** (slots 7–12): one interaction at a time on the 2 best axes (collar × snap; collar × mass), matched count each time.
-- **Wk 5–6** (slots 13–18): confirm the best file twice (shipped `.tif` and `-zeros.tif` twin), re-validate format on both, choose the **final blind submission** plus a fallback, re-run the format gate on the fallback.
+- **Wk 1** slots 1–3 above: one point each on MASS, PRUNE, SNAP — three mechanisms, not one curve.
+- **Wk 2** (4–6): follow the receipts — `mass-drop20pct` + `mass-add10pct` if slot 1 was ambiguous (bracket `S*`); `pruned4p0` if slot 2 was `>= R0`; `prune-dgt1in` (`−0.002..−0.006`, the falsification arm that tells whether the `0.2708 → 0.2778` step was mass or collar); `snap1p4px-g0p02` if slot 3 moved.
+- **Wk 3–4** (7–12): one interaction at a time on the two best receipts (`S*` × collar, `S*` × snap, collar × snap), matched count each time. Then the two still-unbuilt axes on the winning parent: `CONCENTRATION` (10–20% block reallocation, report block-density CV) and `RELIEF` (basin / piedmont / range-front terciles, count fixed).
+- **Wk 5–6** (13–18): confirm the best file twice (spec `.tif` and `-zeros.tif` twin), re-validate both formats from disk, choose the **final blind submission** plus a fallback and re-run the format gate on the fallback. `TRACKB` traces (`>= 1 km`, GeoJSON + raster + one evidence paragraph per trace) are prepared for Phase 2 expert review but are not a weekly slot unless the human decides.
 
-## 3. Provenance caveat that must gate the *reading* of results
+## 3. Proposed better axes (not built; for a future session)
 
-The catalogue hide-and-recover `PROXY` is structurally blind to collar geometry: the withheld truth is catalogue-derived, so any arm pushed `≥ 3 px` off the catalogue scores `0.0000` there while the same family scores `0.2778` live. Use the proxy for *ranking quality* only, never to rank PRUNE arms (`IR-DEC-08`).
-
-## 4. Better axes for future sessions (proposed, not built)
-
-1. **`AXIS = PRUNE-CONTINUOUS`**: replace the hard collar with a radial kernel-alignment weight — dots at `d_cat ∈ (3, 6) px` placed *along-strike* of the nearest mapped trace rather than across it. *Mechanism*: unmapped splays are strike-parallel; *confounder*: fan-head trenches parallel to range fronts; *falsifier*: no live change vs `d3p0` at matched count.
-2. **`AXIS = CONCENTRATION` (1 km blocks)**: move `10–20%` of dots from the lowest-prior blocks to the highest, report block-density CV (best files reportedly `0.51–0.59`). *Mechanism*: fault systems cluster at step-overs; *confounder*: Quaternary basin fill suppresses detection, so high-prior blocks may just be well-imaged; *falsifier*: CV rises but live score falls.
-3. **`AXIS = RELIEF`**: shift `10–15%` of mass between basin / piedmont / range-front terciles of detrended elevation, count fixed. *Mechanism*: range-front faults carry most new mapping; *confounder*: relief is also where lidar coverage and DEM texture are best.
+1. **`COLLAR_REFILL` / `PRUNE` — BUILT 2026-10-23.** Do not rebuild (`each (AXIS, value)` pair is built once).
+2. **`AXIS = TIP_CONE`**: shift 10% of dots from isolated intrabasinal ridges (`d_cat > 40 px`) into corroborated `±22°`, `0.3–2.5 km` along-strike cones ahead of catalogue terminations. *Confounder*: fan-head trenches at range-front stream mouths. *Falsifier*: live `< R0` while the SGMC control rises → hidden faults are whole unmapped structures, not tip extensions.
+3. **`AXIS = SUBSURFACE_ANCHOR`**: reallocate 10% from DEM-only ridges (`corrob_count == 1`) to basement-depth / MT / gravity-step-anchored ridges under Quaternary cover. *Confounder*: playa-brine conductors, caldera ring contacts. *Falsifier*: live `< MASS −10%` receipt → subsurface-anchored dots are worse than simply omitting the tail.
+4. **`AXIS = VALUE`** (new): R0 is unit mass; the format allows `[0,1]`. Halve the mass (`0.5`) of the lowest-gain decile instead of deleting it (same pixels, `S −5%`). *Mechanism*: a half dot pays half the FP penalty while keeping partial max-cover credit where it overlaps a truth line. *Confounder*: undocumented organizer-side thresholding. *Falsifier*: live `<= MASS −10%` receipt at matched pixels → fractional mass never beats deletion.
