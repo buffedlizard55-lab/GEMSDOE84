@@ -12,8 +12,8 @@ jobs:
           python-version: '3.11'
       - run: pip install -r requirements.txt
       - run: |
-          set -o pipefail
-          python -m pytest -q --tb=short 2>&1 | tee -a "$GITHUB_STEP_SUMMARY"
+          out=$(python -m pytest -q --tb=short 2>&1) || { echo "::error::$(echo "$out" | tail -c 3500 | tr '\n' ' ')"; exit 1; }
+          echo "$out"
       - name: Current run cards and site must reproduce exactly
         run: |
           python scripts/build_run_card.py
